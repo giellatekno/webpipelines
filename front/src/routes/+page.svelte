@@ -1,0 +1,248 @@
+<script>
+    import { env } from '$env/dynamic/public';
+    import { readablestream_to_blob, blob_to_base64 } from "$lib/index.js";
+    const upload_url = `${env.PUBLIC_BACKEND_URL}/unknown-lemmas-in-dict`;
+
+    let textarea_value = "";
+    let textarea_disabled = false;
+    let datafile;
+    const NOB_LANGS = [
+        { iso: "fin", value: "Finsk" },
+        { iso: "fkv", value: "Kvensk" },
+        { iso: "sme", value: "Nordsamisk" },
+        { iso: "sma", value: "Sørsamisk" },
+    ];
+    const FIN_LANGS = [
+        { iso: "sme", value: "Enaresamisk" },
+        { iso: "sme", value: "Nordsamisk" },
+        { iso: "sms", value: "Skoltesamisk" },
+    ];
+    let lang1 = "nob";
+    let lang2 = "fin";
+    $: to_langs = lang1 == "nob" ? NOB_LANGS : FIN_LANGS;
+
+    let results = "(...venter på valg...)";
+    // Timer used while waiting for server
+    let waiting_timer = null;
+
+    // file data set when choosing a file
+    let file_data = null;
+
+    const fetch_opts = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        }
+    };
+
+    function on_textarea_input() {
+        if (textarea_value) {
+            datafile.disabled = true;
+        } else {
+            datafile.disabled = false;
+        }
+    }
+
+    function start_waiting_timer() {
+        results = "(...server is processing... 0s)";
+        let t = 0;
+
+        function update() {
+            t += 1;
+            results = `(...server is processing... ${t}s)`;
+        }
+
+        waiting_timer = window.setInterval(update, 1000);
+    }
+
+    function stop_waiting_timer() {
+        if (waiting_timer) {
+            window.clearInterval(waiting_timer);
+            waiting_timer = null;
+        }
+    }
+
+    function reset() {
+        stop_waiting_timer();
+        results = "(...venter på valg...)";
+        textarea_disabled = false;
+        datafile.value = null;
+        textarea_value = "";
+        file_data = null;
+    }
+
+    async function do_query() {
+        let body;
+        if (file_data) {
+            body = JSON.stringify({ lang1, lang2, ...file_data });
+        } else {
+            body = JSON.stringify({ lang1, lang2, typ: "text", data: textarea_value });
+        }
+
+        const opts = { body, ...fetch_opts };
+
+        start_waiting_timer();
+        let response;
+        try {
+            response = await fetch(upload_url, opts);
+        } catch (e) {
+            // TODO check if aborted (abortcontroller etc)
+            if (e instanceof TypeError) {
+                // there are a number of things that can cause this, but
+                // we assume it's a network error
+                stop_waiting_timer();
+                results = "<Feil: Ingen kontakt med serveren. Serveren kan " +
+                    "være nede, eller det kan være at du ikke har internett.>";
+            }
+            return;
+        }
+        stop_waiting_timer();
+
+        switch (response.status) {
+            case 200:
+                results = await response.text();
+                break;
+            case 503:
+                results = "<Tjenesten opplever mye trafikk, og er opptatt nå. Prøv igjen om litt.>";
+                break;
+            default:
+                let status = response.status;
+                let msg = await response.text();
+                results = `<Feilmelding fra serveren: ${status}>:<br>${msg}`;
+        }
+    }
+
+    async function on_file_change() {
+        textarea_disabled = true;
+        const file = this.files[0];
+        const is_docx = file.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+        const type = is_docx ? "docx" : "text+gz+b64";
+
+        let blob;
+        if (is_docx) {
+            blob = file;
+        } else {
+            const gzipped_stream = file.stream().pipeThrough(new CompressionStream("gzip"));
+            blob = await readablestream_to_blob(gzipped_stream);
+        }
+        const base64_s = await blob_to_base64(blob);
+        const data_index = base64_s.indexOf("base64,") + 7;
+        const base64_data = base64_s.slice(data_index);
+        file_data = { data: base64_data, typ: type };
+    }
+</script>
+
+<svelte:head>
+    <title>Frekvensorterte ukjente - Giellatekno Web Pipeline</title>
+</svelte:head>
+
+<blockquote>
+    Programmet gir ei liste over ord i teksten som ikke finnes
+    i ordboka,<br>sortert slik at de ordene som opptrer oftest i teksten
+    kommer først.
+</blockquote>
+
+<form>
+    <h3>Språk:</h3>
+    <div class="x">
+        <div class="inner">
+            <div>
+                <div class="title">Fra..</div>
+                <label><input bind:group={lang1} type="radio" name="lang1" value="nob">Norsk</label>
+                <br>
+                <label><input bind:group={lang1} type="radio" name="lang1" value="fin">Finsk</label>
+            </div>
+            <div>
+                <div class="title">Til..</div>
+                {#each to_langs as { iso, value }}
+                    <label><input bind:group={lang2} type="radio" name="lang2" value={iso}>{value}</label>
+                    <br>
+                {/each}
+            </div>
+        </div>
+    </div>
+
+    <h3>Tekst:</h3>
+    <p>Teksten kan enten komme fra ei fil, eller den kan skrives rett inn i tekstfeltet.</p>
+    Fil: <input
+             bind:this={datafile}
+             on:change={on_file_change}
+             type="file"
+             id="textfile"
+             name="textfile"
+             accept="text/plain,.docx"
+          />
+    <p class="filetype">
+        Merk: Fila må være ei tekstfil (<span class="italic">.txt/.text</span>)
+        lagra i utf-8, eller et Word-dokument (<span class="italic">.docx</span>).
+    </p>
+    <textarea bind:value={textarea_value} on:input={on_textarea_input} disabled={textarea_disabled} rows="10"></textarea>
+    <div class="buttons">
+        <button type="submit" on:click={do_query}>Send</button>
+        <button on:click={reset} type="button">Nullstill</button>
+    </div>
+</form>
+
+<div id="results-area">
+    <h2>Resultater:</h2>
+    <pre>{results}</pre>
+</div>
+
+<style>
+    form label {
+        padding: 0.5em;
+    }
+
+    input[type="file"] {
+        margin-top: 1em;
+    }
+
+    p.filetype {
+        margin-top: 0.2em;
+        color: rgb(200, 50, 50);
+        font-size: 0.9em;
+    }
+
+    span.italic {
+        font-style: italic;
+    }
+
+    div.x {
+        display: grid;
+        place-items: center;
+    }
+
+    div.x > div.inner {
+        font-size: 1.4em;
+        width: 60%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    div.title {
+        font-size: 1.2em;
+        margin-bottom: 6px;
+    }
+
+    textarea {
+        width: 100%;
+    }
+
+    div.buttons {
+        margin-top: 1em;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    div.buttons > button {
+        font-size: 1.1rem;
+        padding: 4px 20px;
+    }
+
+    blockquote {
+        border-left: 4px solid orange;
+        padding-left: 1em;
+        margin-left: 0;
+        padding: 0.4em 1em 0.4em 1em;
+    }
+</style>
