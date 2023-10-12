@@ -14,9 +14,7 @@ where
 {
     tokio::task::spawn_blocking(move || {
         func(input, lang).map_err(|e| format!("Error running pipeline: {}", e))
-    })
-    .await
-    .map_err(|e| e.to_string())?
+    }).await.map_err(|e| e.to_string())?
 }
 
 pub async fn run_pipeline_two_langs<'a, F: 'a>(
@@ -28,7 +26,6 @@ where
 {
     tokio::task::spawn_blocking(move || {
         func(input, lang, lang2).map_err(|e| format!("Error running pipeline: {}", e))
-    })
-    .await
-    .map_err(|e| e.to_string())?
+    }).await.map_err(|e| e.to_string())?
 }
+

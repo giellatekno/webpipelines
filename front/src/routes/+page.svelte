@@ -3,36 +3,59 @@
     import { readablestream_to_blob, blob_to_base64 } from "$lib/index.js";
     const upload_url = `${env.PUBLIC_BACKEND_URL}/unknown-lemmas-in-dict`;
 
+    let results_big_warn = false;
     let textarea_value = "";
     let textarea_disabled = false;
     let datafile;
-    const NOB_LANGS = [
-        { iso: "fin", value: "Finsk" },
-        { iso: "fkv", value: "Kvensk" },
-        { iso: "sme", value: "Nordsamisk" },
-        { iso: "sma", value: "Sørsamisk" },
-    ];
-    const FIN_LANGS = [
-        { iso: "sme", value: "Enaresamisk" },
-        { iso: "sme", value: "Nordsamisk" },
-        { iso: "sms", value: "Skoltesamisk" },
+    const LANGS = {
+        "nob": {
+            "nob": "Norsk bokmål",
+        },
+        "fin": {
+            "nob": "Finsk",
+        },
+        "fkv": {
+            "nob": "Kvensk",
+        },
+        "sma": {
+            "nob": "Sørsamisk",
+        },
+        "sme": {
+            "nob": "Nordsamisk",
+        },
+        "smn": {
+            "nob": "Enaresamisk",
+        },
+        "sms": {
+            "nob": "Skoltesamisk"
+        },
+    };
+    const LANG_PAIRS = [
+        ["fin", ["nob", "sme", "smn", "sms"]],
+        ["fkv", ["nob"]],
+        ["nob", ["fin", "fkv", "sme", "sma"]],
+        ["sma", ["nob"]],
+        ["sme", ["nob", "fin", "smn"]],
+        ["smn", ["fin", "sme"]],
     ];
     let lang1 = "nob";
     let lang2 = "fin";
-    $: to_langs = lang1 == "nob" ? NOB_LANGS : FIN_LANGS;
+    $: to_langs = LANG_PAIRS.find(([iso, _]) => iso === lang1)[1];
 
     let results = "(...venter på valg...)";
     // Timer used while waiting for server
     let waiting_timer = null;
+    let abort_controller = null;
 
     // file data set when choosing a file
     let file_data = null;
 
     const fetch_opts = {
         method: "POST",
+        mode: "cors",
         headers: {
             "Content-Type": "application/json",
-        }
+        },
     };
 
     function on_textarea_input() {
@@ -62,6 +85,12 @@
         }
     }
 
+    function abort_query() {
+        if (abort_controller) {
+            abort_controller.abort();
+        }
+    }
+
     function reset() {
         stop_waiting_timer();
         results = "(...venter på valg...)";
@@ -69,6 +98,7 @@
         datafile.value = null;
         textarea_value = "";
         file_data = null;
+        results_big_warn = false;
     }
 
     async function do_query() {
@@ -79,20 +109,28 @@
             body = JSON.stringify({ lang1, lang2, typ: "text", data: textarea_value });
         }
 
-        const opts = { body, ...fetch_opts };
+        abort_controller = new AbortController();
+        const signal = abort_controller.signal;
+        const opts = { body, signal, ...fetch_opts };
 
         start_waiting_timer();
         let response;
         try {
             response = await fetch(upload_url, opts);
         } catch (e) {
-            // TODO check if aborted (abortcontroller etc)
+            const err_name = e.name;
             if (e instanceof TypeError) {
                 // there are a number of things that can cause this, but
                 // we assume it's a network error
                 stop_waiting_timer();
                 results = "<Feil: Ingen kontakt med serveren. Serveren kan " +
                     "være nede, eller det kan være at du ikke har internett.>";
+            } else if (err_name === "AbortError") {
+                // aborted
+                stop_waiting_timer();
+                results = "<Du avbrøyt prosesseringa.>";
+            } else {
+                results = `<Feil: Uhåndtert feil: ${e.name}: ${e.message}>`;
             }
             return;
         }
@@ -128,6 +166,7 @@
         const base64_s = await blob_to_base64(blob);
         const data_index = base64_s.indexOf("base64,") + 7;
         const base64_data = base64_s.slice(data_index);
+        results_big_warn = base64_data.length > 100;
         file_data = { data: base64_data, typ: type };
     }
 </script>
@@ -148,14 +187,16 @@
         <div class="inner">
             <div>
                 <div class="title">Fra..</div>
-                <label><input bind:group={lang1} type="radio" name="lang1" value="nob">Norsk</label>
-                <br>
-                <label><input bind:group={lang1} type="radio" name="lang1" value="fin">Finsk</label>
+                {#each LANG_PAIRS as langpair}
+                    {@const iso = langpair[0]}
+                    {@const human_name = LANGS[iso]["nob"]}
+                    <label><input bind:group={lang1} type="radio" name="lang1" value={iso}>{human_name}</label>
+                {/each}
             </div>
             <div>
                 <div class="title">Til..</div>
-                {#each to_langs as { iso, value }}
-                    <label><input bind:group={lang2} type="radio" name="lang2" value={iso}>{value}</label>
+                {#each to_langs as iso}
+                    <label><input bind:group={lang2} type="radio" name="lang2" value={iso}>{LANGS[iso]["nob"]}</label>
                     <br>
                 {/each}
             </div>
@@ -176,6 +217,11 @@
         Merk: Fila må være ei tekstfil (<span class="italic">.txt/.text</span>)
         lagra i utf-8, eller et Word-dokument (<span class="italic">.docx</span>).
     </p>
+    {#if results_big_warn}
+        <p class="results_big_warn">
+            Fila du har valgt er ganske stor, så det kan ta noe tid før resultatene kommer.
+        </p>
+    {/if}
     <textarea bind:value={textarea_value} on:input={on_textarea_input} disabled={textarea_disabled} rows="10"></textarea>
     <div class="buttons">
         <button type="submit" on:click={do_query}>Send</button>
@@ -185,6 +231,9 @@
 
 <div id="results-area">
     <h2>Resultater:</h2>
+    {#if waiting_timer}
+        <button on:click={abort_query}>Avbryt prosessen</button>
+    {/if}
     <pre>{results}</pre>
 </div>
 
@@ -199,7 +248,13 @@
 
     p.filetype {
         margin-top: 0.2em;
-        color: rgb(200, 50, 50);
+        color: rgb(31, 40, 176);
+        font-size: 0.9em;
+    }
+
+    p.results_big_warn {
+        margin-top: 0.2em;
+        color: rgb(242, 6, 6);
         font-size: 0.9em;
     }
 
@@ -217,6 +272,15 @@
         width: 60%;
         display: flex;
         justify-content: space-evenly;
+    }
+
+    div.x > div.inner > div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    div.x > div.inner > div > label {
+        padding: 0.1em;
     }
 
     div.title {

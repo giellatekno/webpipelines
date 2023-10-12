@@ -7,16 +7,17 @@
     let textarea_disabled = false;
     let datafile;
     const LANGS = [
-        { iso: "smn", value: "Enaresamisk" },
         { iso: "fin", value: "Finsk" },
+        { iso: "fit", value: "Meänkieli" },
         { iso: "fkv", value: "Kvensk" },
-        { iso: "smj", value: "Lulesamisk" },
-        { iso: "sme", value: "Nordsamisk" },
         { iso: "nob", value: "Norsk bokmål" },
-        { iso: "sms", value: "Skoltesamisk" },
         { iso: "sma", value: "Sørsamisk" },
+        { iso: "sme", value: "Nordsamisk" },
+        { iso: "smj", value: "Lulesamisk" },
+        { iso: "smn", value: "Enaresamisk" },
+        { iso: "sms", value: "Skoltesamisk" },
     ];
-    let lang = "smn";
+    let lang = "fin";
 
     let results = "(...venter på valg...)";
 
@@ -28,6 +29,7 @@
 
     const fetch_opts = {
         method: "POST",
+        mode: "cors",
         headers: {
             "Content-Type": "application/json",
         }
@@ -83,13 +85,17 @@
         try {
             response = await fetch(upload_url, opts);
         } catch (e) {
-            // TODO check if aborted (abortcontroller etc)
             if (e instanceof TypeError) {
                 // there are a number of things that can cause this, but
                 // we assume it's a network error
                 stop_waiting_timer();
                 results = "<Feil: Ingen kontakt med serveren. Serveren kan " +
                     "være nede, eller det kan være at du ikke har internett.>";
+            } else if (e.name === "AbortError") {
+                stop_waiting_timer();
+                results = "<Du avbrøyt prosesseringa.>";
+            } else {
+                results = `<Feil: Uhåndtert feil: ${e.name}: ${e.message}>`;
             }
             return;
         }

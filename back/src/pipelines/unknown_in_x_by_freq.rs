@@ -118,7 +118,7 @@ pub fn unknown_in_x_by_freq(input: String, lang1: String, lang2: String) -> Resu
     lookup_results.lines()
         // only interested in words that were not found in the dictionary
         // those lines are "<word>\t<word>\t?" - so filter out lines that
-        // ends with ?, and extract the first word
+        // does not end with ?, and extract the first word
         .filter(|line| line.ends_with('?'))
         .map(|line| line.split('\t').next().unwrap())
         .for_each(|word| {

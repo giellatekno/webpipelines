@@ -35,6 +35,7 @@ pub fn lemma_count(input: String, lang: String) -> Result<String, String> {
 
     let cut_delim = "-d\"";
     let sed_trim_starting_whitespace = "s/^ *//";
+
     run_fun!(
         cat $path |
         hfst-tokenise -cg $tokdisamb |
@@ -47,9 +48,8 @@ pub fn lemma_count(input: String, lang: String) -> Result<String, String> {
         uniq -c |
         sed $sed_trim_starting_whitespace |
         grep "[a-zæøåA-ZÆØÅ]" |
-        sort -nr
+        sort -k1,nr -k2,2
     )
-
     .map_err(|e| e.to_string())
 }
 

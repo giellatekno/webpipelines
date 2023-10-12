@@ -116,8 +116,8 @@ async fn main() {
         // does NOT have load_shed, so will queue requests (requests are
         // technically blocked on an async semaphore, so I guess there's
         // no strict queue in the "first-come-first-serve" sense)
-        .layer(CatchPanicLayer::custom(handle_panic))
         .layer(ConcurrencyLimitLayer::new(10))
+        .layer(CatchPanicLayer::custom(handle_panic))
         .layer(TraceLayer::new_for_http()
                    .make_span_with(
                        DefaultMakeSpan::new().include_headers(false)
