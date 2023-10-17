@@ -1,6 +1,8 @@
 mod pipelines;
 mod util;
 
+use std::time::Duration;
+
 use dotenv;
 use tokio::{self, net::TcpListener};
 use listenfd::ListenFd;
@@ -41,7 +43,7 @@ use crate::util::WP_LANGFOLDER;
 
 async fn handle_error(err: BoxError) -> Response {
     if err.is::<tower::timeout::error::Elapsed>() {
-        (http::StatusCode::REQUEST_TIMEOUT, "request took too long").into_response()
+        (http::StatusCode::REQUEST_TIMEOUT, "Handling the request took too long").into_response()
     } else if err.is::<tower::load_shed::error::Overloaded>() {
         (http::StatusCode::SERVICE_UNAVAILABLE, "service is busy").into_response()
     } else {
@@ -105,6 +107,10 @@ async fn main() {
                 //.timeout(Duration::from_secs(2))
         )
         .route("/lemma-count", post(lemma_count_endpoint))
+        .layer(
+            ServiceBuilder::new()
+                .layer(HandleErrorLayer::new(handle_error))
+                .timeout(Duration::from_secs(60)))
         .route("/analyze/:lang/:string", get(analyze_endpoint))
         .route("/dependency/:lang/:string", get(dependency_endpoint))
         .route("/generate/:lang/:string", get(generate_endpoint))
@@ -128,10 +134,7 @@ async fn main() {
                             .latency_unit(LatencyUnit::Millis)
                     )
         )
-        .layer(
-            ServiceBuilder::new()
-               .layer(CorsLayer::very_permissive())
-        )
+        .layer(ServiceBuilder::new().layer(CorsLayer::very_permissive()))
         // We'll just let the revproxy decide when request bodies are too big
         .layer(DefaultBodyLimit::disable())
         .nest_service("/", ServeDir::new("assets"));
