@@ -1,18 +1,16 @@
-use std::{
-    path::{Path, PathBuf},
-    collections::{HashMap, hash_map::Entry},
-    sync::Mutex,
-    io::Read,
-};
 use dotenv;
-use once_cell::sync::Lazy;
 use flate2::bufread::GzDecoder;
+use once_cell::sync::Lazy;
+use std::{
+    collections::{hash_map::Entry, HashMap},
+    io::Read,
+    path::{Path, PathBuf},
+    sync::Mutex,
+};
 
 // for read_docx_text()
 use docx_rs::read_docx;
 use newline_converter::dos2unix;
-
-
 
 // static (only one instance in the running program)
 // initialized when first accessed
@@ -34,7 +32,11 @@ pub static WP_LANGFOLDER: Lazy<String> = Lazy::new(|| {
 /// Get a language model artifact file for some language. The results
 /// are cached in a HashMap.
 pub fn get_langfile<'a>(lang: &str, file: &str) -> Option<PathBuf> {
-    match LANGFILES.lock().unwrap().entry((lang.to_string(), file.to_owned())) {
+    match LANGFILES
+        .lock()
+        .unwrap()
+        .entry((lang.to_string(), file.to_owned()))
+    {
         Entry::Occupied(entry) => entry.get().clone(),
         Entry::Vacant(entry) => {
             let mut file_path = PathBuf::from(&*WP_LANGFOLDER);
@@ -65,7 +67,6 @@ pub fn get_langfile<'a>(lang: &str, file: &str) -> Option<PathBuf> {
     }
 }
 
-
 /// Read out all paragraphs in a .docx Word document
 pub fn read_docx_text(data: Vec<u8>) -> Option<String> {
     let Ok(docx) = read_docx(&data) else {
@@ -91,7 +92,6 @@ pub fn read_docx_text(data: Vec<u8>) -> Option<String> {
 
     Some(text)
 }
-
 
 /// decompress gzipped data
 pub fn gunzip(data: Vec<u8>) -> Option<Vec<u8>> {

@@ -1,14 +1,14 @@
-use std::collections::{HashMap, hash_map::Entry};
-use once_cell::sync::Lazy;
 use itertools::Itertools;
+use once_cell::sync::Lazy;
+use std::collections::{hash_map::Entry, HashMap};
 
 use axum::{
     extract::{Path, Query},
-    response::{Response, IntoResponse},
+    response::{IntoResponse, Response},
 };
 use cmd_lib::run_fun;
-use serde::Deserialize;
 use http::StatusCode;
+use serde::Deserialize;
 use tokio::sync::RwLock;
 use tokio::{fs::File, io::AsyncReadExt};
 
@@ -86,13 +86,6 @@ impl std::fmt::Display for Pos {
     }
 }
 
-// (lang, size, pos) => Either Ok with paradigm_file (string), or Err with
-// error message string
-static PARADIGM_FILES: Lazy<RwLock<HashMap<(String, ParadigmSize, Pos), Result<String, String>>>> = Lazy::new(|| {
-    let m = HashMap::with_capacity(16);
-    RwLock::new(m)
-});
-
 #[derive(Deserialize)]
 pub struct QueryParams {
     size: Option<ParadigmSize>,
@@ -106,23 +99,14 @@ pub async fn paradigm_endpoint(
     let pos = query_params.pos.unwrap_or(Pos::Any);
     let size = query_params.size.unwrap_or(ParadigmSize::Standard);
 
-    let vars = format!("lang={lang}, string={string}, pos={pos}, size={size}");
-    let msg = format!("paradigm not yet implemented ({vars})");
-
     match get_paradigmfile(lang.as_str(), size, pos).await {
-        Ok(paradigm_file) => {
-            let response = paradigm(paradigm_file, lang, string, pos, size).await;
-            (StatusCode::OK, response).into_response()
+        Ok(paradigm_file) => match paradigm(paradigm_file, lang, string, pos).await {
+            Ok(result) => (StatusCode::OK, result),
+            Err(err) => (StatusCode::INTERNAL_SERVER_ERROR, err.to_string()),
         },
-        Err(err_message) => {
-            (StatusCode::NOT_FOUND, err_message).into_response()
-        }
+        Err(err_message) => (StatusCode::NOT_FOUND, err_message),
     }
-    //match run_pipeline_single_lang(paradigm, string, lang).await {
-    //    Ok(text) => (StatusCode::OK, text),
-    //    Err(errmsg) => (StatusCode::UNPROCESSABLE_ENTITY, errmsg),
-    //}.into_response()
-    //
+    .into_response()
 }
 
 #[cached]
@@ -131,17 +115,30 @@ async fn paradigm(
     lang: String,
     input: String,
     pos: Pos,
-    size: ParadigmSize,
 ) -> Result<String, String> {
-    let tokdisamb = get_langfile(&lang, "tokeniser-disamb-gt-desc.pmhfst")
-        .ok_or_else(|| format!("language not supported \
-            (tokeniser-disamb-gt-desc.pmhfst doesn't exist for language {}", lang))?;
-    let analyzer_gt_desc_hfstol = get_langfile(&lang, "analyser-gt-desc.hfstol")
-        .ok_or_else(|| format!("language not supported \
-            (analyser-gt-desc.hfstol doesn't exist for language {}", lang))?;
-    let generator_gt_norm_hfstol = get_langfile(&lang, "generator-gt-norm.hfstol")
-        .ok_or_else(|| format!("language not supported \
-            (generator-gt-norm.hfstol doesn't exist for language {}", lang))?;
+    let tokdisamb = get_langfile(&lang, "tokeniser-disamb-gt-desc.pmhfst").ok_or_else(|| {
+        format!(
+            "language not supported \
+            (tokeniser-disamb-gt-desc.pmhfst doesn't exist for language {}",
+            lang
+        )
+    })?;
+    let analyzer_gt_desc_hfstol =
+        get_langfile(&lang, "analyser-gt-desc.hfstol").ok_or_else(|| {
+            format!(
+                "language not supported \
+            (analyser-gt-desc.hfstol doesn't exist for language {}",
+                lang
+            )
+        })?;
+    let generator_gt_norm_hfstol =
+        get_langfile(&lang, "generator-gt-norm.hfstol").ok_or_else(|| {
+            format!(
+                "language not supported \
+            (generator-gt-norm.hfstol doesn't exist for language {}",
+                lang
+            )
+        })?;
 
     let analyses = tokio::task::spawn_blocking(move || {
         run_fun!(
@@ -150,7 +147,9 @@ async fn paradigm(
             hfst-lookup -q --beam=0 $analyzer_gt_desc_hfstol
         )
         .map_err(|e| e.to_string())
-    }).await.map_err(|e| e.to_string())??;
+    })
+    .await
+    .map_err(|e| e.to_string())??;
 
     // Fast path: specific Pos requested
     if pos.is_specific() {
@@ -177,8 +176,11 @@ async fn paradigm(
             run_fun!(
                 echo $generator_input |
                 hfst-lookup -q $generator_gt_norm_hfstol
-            ).map_err(|e| e.to_string())
-        }).await.map_err(|e| e.to_string())??;
+            )
+            .map_err(|e| e.to_string())
+        })
+        .await
+        .map_err(|e| e.to_string())??;
 
         let results = generate_results
             .split('\n')
@@ -196,19 +198,12 @@ async fn paradigm(
     }
 }
 
-async fn generate_paradigm(
-    analyses: Vec<String>,
-    lang: String,
-    pos: Pos,
-    size: ParadigmSize,
-) -> Result<String, String> {
-    Ok("hmmm...".into())
-}
-
 async fn read_gramfile(gramfile: std::path::PathBuf) -> Result<Vec<String>, String> {
     let mut file = File::open(gramfile).await.map_err(|e| e.to_string())?;
     let mut contents = String::new();
-    file.read_to_string(&mut contents).await.map_err(|e| e.to_string())?;
+    file.read_to_string(&mut contents)
+        .await
+        .map_err(|e| e.to_string())?;
 
     Ok(contents
         .lines()
@@ -226,12 +221,12 @@ async fn read_gramfile(gramfile: std::path::PathBuf) -> Result<Vec<String>, Stri
 ///   "Person-Number" => ["Sg1", "Sg2", "Sg3", "Du1", ...]
 ///   "Transitivity" => ["TV", "IV"]
 ///   "Infinite" => ["Inf", "PrfPrc", "PrsPrc", "Sup", "VGen", ...]
-async fn read_tagfile(tagfile: std::path::PathBuf)
-    -> Result<HashMap<String, Vec<String>>, String>
-{
+async fn read_tagfile(tagfile: std::path::PathBuf) -> Result<HashMap<String, Vec<String>>, String> {
     let mut file = File::open(tagfile).await.map_err(|e| e.to_string())?;
     let mut contents = String::new();
-    file.read_to_string(&mut contents).await.map_err(|e| e.to_string())?;
+    file.read_to_string(&mut contents)
+        .await
+        .map_err(|e| e.to_string())?;
 
     let mut m: HashMap<String, Vec<String>> = HashMap::new();
     let mut current_vec = vec![];
@@ -282,16 +277,19 @@ fn _find_poses_from_analyses(analyses: Vec<String>) {
     //}
 }
 
+// (lang, size, pos) => Either Ok with paradigm_file (string), or Err with
+// error message string
+static PARADIGM_FILES: Lazy<RwLock<HashMap<(String, ParadigmSize, Pos), Result<String, String>>>> =
+    Lazy::new(|| {
+        let m = HashMap::with_capacity(16);
+        RwLock::new(m)
+    });
 
 /// Get the paradigm file for a 3-tuple of (lang, size, pos)
 /// From a cache
-async fn get_paradigmfile(
-    lang: &str,
-    size: ParadigmSize,
-    pos: Pos
-) -> Result<String, String> {
+async fn get_paradigmfile(lang: &str, size: ParadigmSize, pos: Pos) -> Result<String, String> {
     let key = (lang.to_owned(), size, pos);
-    
+
     // TODO I should be able to just do read() here, so that more tasks can
     // read from the HashMap at the same time. Ideally, if it tries to read,
     // but finds a vacant spot, then it needs to re-aquire the lock with write
@@ -302,12 +300,10 @@ async fn get_paradigmfile(
         Entry::Occupied(entry) => entry.get().clone(),
         Entry::Vacant(vacant_entry) => {
             let paradigm_file = generate_paradigm_file(lang, size).await;
-            println!("Generated paradigm file:");
             let s = match &paradigm_file {
                 Ok(s) => s.to_string(),
                 Err(s) => s.to_owned(),
             };
-            println!("{s}");
             vacant_entry.insert(paradigm_file.clone());
             paradigm_file
         }
@@ -317,20 +313,17 @@ async fn get_paradigmfile(
 /// Generate the file of all paradigms
 async fn generate_paradigm_file(lang: &str, size: ParadigmSize) -> Result<String, String> {
     let paradigm_text_file = format!("paradigm_{size}.txt");
-    let gramfile = get_langfile(&lang, &paradigm_text_file)
-         .ok_or_else(|| format!("language not supported \
-             ({} doesn't exist for language {}", &paradigm_text_file, lang))?;
-    let tagfile = get_langfile(&lang, "korpustags.txt")
-         .ok_or_else(|| format!("language not supported \
-             (korpustags.txt doesn't exist for language {}", lang))?;
+    let gramfile = get_langfile(&lang, &paradigm_text_file).ok_or_else(|| {
+        format!("language not supported ({paradigm_text_file} doesn't exist for language {lang}")
+    })?;
+    let tagfile = get_langfile(&lang, "korpustags.txt").ok_or_else(|| {
+        format!("language not supported (korpustags.txt doesn't exist for language {lang}")
+    })?;
 
-    println!("{gramfile:?}");
-    println!("{tagfile:?}");
     let gram_entries = read_gramfile(gramfile).await?;
     let tagmap = read_tagfile(tagfile).await?;
 
-    let full_taglist = expand_gram_entries(gram_entries, tagmap);
-    Ok(full_taglist.into_iter().collect::<Vec<_>>().join("\n"))
+    Ok(expand_gram_entries(gram_entries, tagmap).join("\n"))
 }
 
 fn _determine_is_derivation(tags: &str) -> bool {
@@ -340,7 +333,6 @@ fn _determine_is_derivation(tags: &str) -> bool {
 fn _determine_is_compound(tags: &str) -> bool {
     tags.contains('#') && !tags.starts_with(&['+', '#'])
 }
-
 
 fn expand_gram_entries(
     // N+Stemtype?+Case+...
@@ -374,12 +366,9 @@ fn expand_gram_entries(
                 .into_iter()
                 .multi_cartesian_product()
                 .map(|tags_vec| {
-                    let tags_s = tags_vec
-                        .iter()
-                        .filter(|s| s.len() > 0)
-                        .join("+");
+                    let tags_s = tags_vec.iter().filter(|s| s.len() > 0).join("+");
                     format!("{pos}+{tags_s}")
-                })
+                }),
         );
     }
 

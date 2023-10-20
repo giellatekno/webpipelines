@@ -1,39 +1,35 @@
-use std::io::Write;
+use crate::util::{get_langfile, gunzip, read_docx_text};
 use axum::{
     extract::Json,
-    response::{Response, IntoResponse},
+    response::{IntoResponse, Response},
 };
 use base64::{engine::general_purpose, Engine as _};
 use cmd_lib::spawn_with_output;
 use http::StatusCode;
-use nix::{unistd::Pid, sys::signal::{kill, Signal}};
+use nix::{
+    sys::signal::{kill, Signal},
+    unistd::Pid,
+};
 use serde::Deserialize;
+use std::io::Write;
 use tempfile::NamedTempFile;
 use tracing::info;
-use crate::util::{
-    get_langfile,
-    gunzip,
-    read_docx_text,
-};
 
 const UE: StatusCode = StatusCode::UNPROCESSABLE_ENTITY;
 const ISE: StatusCode = StatusCode::INTERNAL_SERVER_ERROR;
 
 #[derive(Deserialize)]
 pub struct InputBody {
-    // text
     typ: String,
     lang: String,
     data: String,
 }
 
 pub async fn lemma_count_endpoint(
-    Json(InputBody{ typ, lang, data }): Json<InputBody>) -> Response
-{
+    Json(InputBody { typ, lang, data }): Json<InputBody>,
+) -> Response {
     let text: String = match typ.as_str() {
-        "text" => {
-            data
-        },
+        "text" => data,
         "text+gz+b64" => {
             let Ok(data) = general_purpose::STANDARD.decode(data) else {
                 return (UE, "could not base64 decode data").into_response();
@@ -45,7 +41,7 @@ pub async fn lemma_count_endpoint(
                 return (UE, "text not valid utf-8").into_response();
             };
             text
-        },
+        }
         "docx" => {
             let Ok(data) = general_purpose::STANDARD.decode(data) else {
                 return (UE, "could not base64 decode data").into_response();
@@ -59,11 +55,15 @@ pub async fn lemma_count_endpoint(
     };
 
     let Some(tokdisamb) = get_langfile(&lang, "tokeniser-disamb-gt-desc.pmhfst") else {
-        return (UE, format!("no tokeniser-disamb-gt-desc.pmhfst for lang {lang}")).into_response();
+        return (
+            UE,
+            format!("no tokeniser-disamb-gt-desc.pmhfst for lang {lang}"),
+        )
+            .into_response();
     };
     let Some(disambcg) = get_langfile(&lang, "disambiguator.cg3")
-        .or_else(|| get_langfile(&lang, "disambiguator.bin")) else
-    {
+        .or_else(|| get_langfile(&lang, "disambiguator.bin"))
+    else {
         return (UE, format!("no disambiguator.(cg3|bin) for lang {lang}")).into_response();
     };
 
@@ -71,7 +71,7 @@ pub async fn lemma_count_endpoint(
         return (ISE, "can't create tempfile").into_response();
     };
     let Ok(_) = temp_file.as_file().write_all(text.as_bytes()) else {
-        return (ISE, "can't write to tempfile").into_response()
+        return (ISE, "can't write to tempfile").into_response();
     };
     let path = temp_file.path().to_path_buf();
 
@@ -98,9 +98,8 @@ pub async fn lemma_count_endpoint(
         Err(e) => return (ISE, format!("failed to spawn pipeline: {e}")).into_response(),
     };
     let pids: Vec<i32> = children.pids().iter().map(|&pid| pid as i32).collect();
-    let pipeline_handle = tokio::task::spawn_blocking(move || {
-        children.wait_with_output().map_err(|e| e.to_string())
-    });
+    let pipeline_handle =
+        tokio::task::spawn_blocking(move || children.wait_with_output().map_err(|e| e.to_string()));
 
     let (tx, mut rx) = tokio::sync::oneshot::channel();
     let _x = tokio::spawn(async move {
@@ -114,9 +113,6 @@ pub async fn lemma_count_endpoint(
             }
             info!("connection dropped");
         }
-        // release the lock - but what happens with the waiting?
-        //let mut children = rx.blocking_recv().unwrap().take().unwrap();
-        //children.kill();
     });
 
     let result = match pipeline_handle.await {

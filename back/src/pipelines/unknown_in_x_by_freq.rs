@@ -1,27 +1,24 @@
+use crate::pipelines::run_pipeline_two_langs;
+use crate::util::{get_langfile, gunzip, read_docx_text};
+use axum::{
+    extract::Json,
+    response::{IntoResponse, Response},
+};
+use base64::{engine::general_purpose, Engine as _};
+use cmd_lib::run_fun;
+use http::StatusCode;
+use serde::Deserialize;
 use std::collections::HashMap;
 use std::io::Write;
 use tempfile::NamedTempFile;
-use cmd_lib::run_fun;
-use crate::util::{
-    get_langfile,
-    gunzip,
-    read_docx_text,
-};
-use crate::pipelines::run_pipeline_two_langs;
-use axum::{
-    response::{Response, IntoResponse},
-    extract::Json,
-};
-use serde::Deserialize;
-use http::StatusCode;
-use base64::{engine::general_purpose, Engine as _};
 
 const NOB_ALPHABET: &[char] = &[
-    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
-    'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'æ', 'ø', 'å',
-    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
-    'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Æ', 'Ø', 'Å'];
-    
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+    't', 'u', 'v', 'w', 'x', 'y', 'z', 'æ', 'ø', 'å', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+    'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Æ', 'Ø',
+    'Å',
+];
+
 // extracts lines like
 //   "liten" A Pos Fem Sg Indef <W:0.0>
 //   "setning" N Fem Sg Indef <W:0.0>
@@ -58,13 +55,22 @@ fn unwanted_words((word, _analysis): &(&str, &str)) -> bool {
 }
 
 pub fn unknown_in_x_by_freq(input: String, lang1: String, lang2: String) -> Result<String, String> {
-    let tokdisamb = get_langfile(&lang1, "tokeniser-disamb-gt-desc.pmhfst")
-        .ok_or_else(|| format!("cannot find tokeniser-disamb-gt-desc.pmhfst \
-            for language {}", lang1))?;
+    let tokdisamb = get_langfile(&lang1, "tokeniser-disamb-gt-desc.pmhfst").ok_or_else(|| {
+        format!(
+            "cannot find tokeniser-disamb-gt-desc.pmhfst \
+            for language {}",
+            lang1
+        )
+    })?;
     let disambcg = get_langfile(&lang1, "disambiguator.cg3")
         .or_else(|| get_langfile(&lang1, "disambiguator.bin"))
-        .ok_or_else(|| format!("cannot find disambiguator.cg3 \
-            for language {}", lang1))?;
+        .ok_or_else(|| {
+            format!(
+                "cannot find disambiguator.cg3 \
+            for language {}",
+                lang1
+            )
+        })?;
     let dict = get_langfile(&lang1, format!("{}{}-all.fst", lang1, lang2).as_str())
         .ok_or_else(|| format!("cannot find {}{}-all.fst", lang1, lang2))?;
 
@@ -93,7 +99,8 @@ pub fn unknown_in_x_by_freq(input: String, lang1: String, lang2: String) -> Resu
     )
     .map_err(|e| e.to_string())?;
 
-    let recognized_words = results.lines()
+    let recognized_words = results
+        .lines()
         .map(|line| line.trim())
         .filter(|line| line.len() > 0)
         .map(extract_word_and_analysis)
@@ -105,7 +112,10 @@ pub fn unknown_in_x_by_freq(input: String, lang1: String, lang2: String) -> Resu
 
     let temp_file2 = NamedTempFile::new().map_err(|e| e.to_string())?;
     let path = temp_file2.path();
-    let _ = temp_file2.as_file().write_all(recognized_words.as_bytes()).map_err(|e| e.to_string())?;
+    let _ = temp_file2
+        .as_file()
+        .write_all(recognized_words.as_bytes())
+        .map_err(|e| e.to_string())?;
     let lookup_results = run_fun!(
         cat $path |
         lookup $dict
@@ -115,20 +125,23 @@ pub fn unknown_in_x_by_freq(input: String, lang1: String, lang2: String) -> Resu
     // counts of how many times unrecognized word appears
     let mut counts: HashMap<&str, usize> = HashMap::new();
 
-    lookup_results.lines()
+    lookup_results
+        .lines()
         // only interested in words that were not found in the dictionary
         // those lines are "<word>\t<word>\t?" - so filter out lines that
         // does not end with ?, and extract the first word
         .filter(|line| line.ends_with('?'))
         .map(|line| line.split('\t').next().unwrap())
         .for_each(|word| {
-            counts.entry(word).and_modify(|count| *count += 1).or_insert(1);
+            counts
+                .entry(word)
+                .and_modify(|count| *count += 1)
+                .or_insert(1);
         });
 
     // collect the pairs into a vec
-    let mut counts: Vec<(&str, usize)> = counts.iter()
-        .map(|(&word, &count)| (word, count))
-        .collect();
+    let mut counts: Vec<(&str, usize)> =
+        counts.iter().map(|(&word, &count)| (word, count)).collect();
 
     // ...so that we can sort them by the count..
     counts.sort_by_cached_key(|(_word, count)| *count);
@@ -136,14 +149,14 @@ pub fn unknown_in_x_by_freq(input: String, lang1: String, lang2: String) -> Resu
     counts.reverse();
 
     // finally output them as <count>\t<word>  one per line
-    let final_results = counts.iter()
+    let final_results = counts
+        .iter()
         .map(|(word, count)| format!("{}\t{}", count, word))
         .collect::<Vec<_>>()
         .join("\n");
 
     Ok(final_results)
 }
-
 
 // The endpoint
 
@@ -161,9 +174,7 @@ pub struct InputBody {
     data: String,
 }
 
-pub async fn unknown_in_x_by_freq_endpoint(
-    Json(body): Json<InputBody>) -> Response
-{
+pub async fn unknown_in_x_by_freq_endpoint(Json(body): Json<InputBody>) -> Response {
     let lang1 = body.lang1;
     let lang2 = body.lang2;
 
@@ -182,7 +193,7 @@ pub async fn unknown_in_x_by_freq_endpoint(
                 return (UE, "text not valid utf-8").into_response();
             };
             text
-        },
+        }
         "docx" => {
             let Ok(decoded) = general_purpose::STANDARD.decode(body.data) else {
                 return (UE, "could not base64 decode data").into_response();
@@ -192,12 +203,13 @@ pub async fn unknown_in_x_by_freq_endpoint(
                 return (UE, "could not read docx file").into_response();
             };
             text
-        },
+        }
         _ => return (UE, "'typ' field must be text, text+gz+b64 or docx").into_response(),
     };
 
     match run_pipeline_two_langs(unknown_in_x_by_freq, text, lang1, lang2).await {
         Ok(text) => (StatusCode::OK, text),
         Err(errmsg) => (StatusCode::INTERNAL_SERVER_ERROR, errmsg),
-    }.into_response()
+    }
+    .into_response()
 }
