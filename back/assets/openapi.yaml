@@ -162,6 +162,33 @@ paths:
           description: Could not understand the query
         500:
           description: Something went wrong on the server
+  /prefix-search/{lang}/{string}:
+    get:
+      tags:
+        - pipeline
+      summary: Prefix search
+      description:
+        "Prefix search"
+      parameters:
+        - name: lang
+          type: string
+          example: nob
+          in: path
+          required: true
+          description: The target language, a 3-letter iso 6-393 code
+        - name: string
+          type: string
+          example: bil
+          in: path
+          required: true
+          description: The prefix
+      responses:
+        200:
+          description: A succesful query, with results returned as text
+        422:
+          description: Could not understand the query
+        500:
+          description: Something went wrong on the server
   /transcribe/{lang}/{string}:
     get:
       tags:

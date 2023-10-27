@@ -7,9 +7,6 @@ authors = [
 ]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-[build]
-rustflags = ["--cfg", "tokio_unstable"]
-
 [dependencies]
 # the web framework (built on top of tower, uses 
 axum = { version = "0.6.20", features = ["multipart"] }
@@ -23,8 +20,8 @@ cached = { version = "0.46.0", features = ["async"] }
 #cmd_lib = "1.3.0"
 cmd_lib = { path = "../../rust_cmd_lib" }
 
-# A tracing subscriber that ...
-console_subscriber = "0.2"
+# A tracing-subscriber Layer that can talk with tokio-console...
+console-subscriber = "0.2"
 
 # for parsing .docx Word files
 docx-rs = "0.4.7"
@@ -72,7 +69,7 @@ tower = { version = "0.4.13", features = ["limit", "load-shed", "timeout", "buff
 # http services that works with tower
 tower-http = { version = "0.4.4", features = ["cors", "fs", "trace", "catch-panic"] }
 
-# logging, but better? this is the basic framework
+# a logging framework which works great in async settings
 tracing = "0.1"
 
 # logging, this can listen to log events and do something with them

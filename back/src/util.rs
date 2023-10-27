@@ -8,7 +8,6 @@ use std::{
     sync::Mutex,
 };
 
-// for read_docx_text()
 use docx_rs::read_docx;
 use newline_converter::dos2unix;
 

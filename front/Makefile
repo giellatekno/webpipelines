@@ -15,14 +15,14 @@ run:
 
 .PHONY: buildlocal
 buildlocal:
-	ORIGIN=http://127.0.0.1/webpipeline pnpm run build
+	ORIGIN=127.0.0.1/webpipeline pnpm run build
 	podman build -f Dockerfile -t webpipeline-front
 
 .PHONY: runlocal
 runlocal:
 	podman run --init --rm --detach --stop-signal=SIGINT \
 		--name=webpipelinefront \
-		--env PUBLIC_BACKEND_URL=http://127.0.0.1:3000 \
+		--env PUBLIC_BACKEND_URL=127.0.0.1:3000 \
 		-p 8080:3000 \
 		webpipeline-front
 
