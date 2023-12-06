@@ -1,8 +1,10 @@
 mod pipelines;
 mod util;
+mod timing;
 
 use std::time::Duration;
 
+use timing::timing_middleware;
 use crate::util::WP_LANGFOLDER;
 use axum::{
     error_handling::HandleErrorLayer,
@@ -46,6 +48,7 @@ async fn handle_error(err: BoxError) -> Response {
 
 fn handle_panic(err: Box<dyn std::any::Any + Send + 'static>) -> Response<hyper::Body> {
     println!("handle_panic() !!");
+
     let details = if let Some(s) = err.downcast_ref::<String>() {
         s.clone()
     } else if let Some(s) = err.downcast_ref::<&str>() {
@@ -122,6 +125,7 @@ async fn main() {
         // does NOT have load_shed, so will queue requests (requests are
         // technically blocked on an async semaphore, so I guess there's
         // no strict queue in the "first-come-first-serve" sense)
+        .layer(axum::middleware::from_fn(timing_middleware))
         .layer(ConcurrencyLimitLayer::new(10))
         .layer(CatchPanicLayer::custom(handle_panic))
         .layer(
