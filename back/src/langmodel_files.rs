@@ -127,13 +127,10 @@ pub async fn endpoint_info_all(
     //   "analyze": ["nob", "sme", "sma"],
     //   "dependency": ["nob"],
     // }
-    let s = include_str!("langmodel_files.yaml");
-    let files = serde_yaml::from_str::<LangmodelFiles>(s).unwrap();
-
     // method => list of files
     let mut methods: HashMap<String, HashSet<String>> = HashMap::new();
 
-    for file in files.files.iter() {
+    for file in LANGMODEL_DEFS.files.iter() {
         for method in file.methods.iter() {
             let set = methods.entry(method.clone()).or_default();
             set.insert(file.filename.to_string());
@@ -154,14 +151,8 @@ pub async fn endpoint_info_all(
             });
 
             if have_all_files {
-               simple 
-                    .entry(lang)
-                    .and_modify(|vec| { vec.insert(method.to_string()); })
-                    .or_insert_with(|| {
-                        let mut s = HashSet::new();
-                        s.insert(method.to_string());
-                        s
-                    });
+                let set = simple.entry(lang).or_default();
+                set.insert(method.clone());
             }
 
             for file in files.iter() {
