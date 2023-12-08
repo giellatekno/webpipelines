@@ -43,7 +43,7 @@ files:
   - filename: "tokeniser-disamb-gt-desc.pmhfst"
     repo_path: "tools/tokenisers/tokeniser-disamb-gt-desc.pmhfst"
     build_flags: ["enable-tokenisers"]
-    methods: ["analyze", "dependency", "paradigm"]
+    methods: ["analyze", "dependency", "disambiguate", "paradigm"]
 
   - filename: "analyser-gt-desc.hfstol"
     repo_path: "src/analyser-gt-desc.hfstol"
@@ -61,7 +61,7 @@ files:
   - filename: "disambiguator.cg3"
     repo_path: "src/cg3/disambiguator.cg3"
     requires_build: False
-    methods: ["dependency"]
+    methods: ["dependency", "disambiguate"]
 
   # The dependency.cg3 is located in shared-smi, and is shared among
   # all sami languages
@@ -84,7 +84,7 @@ files:
     requires_build: False
     methods: ["dependency"]
 
-  - filename: "txt2ipa.compose.hfst",
+  - filename: "txt2ipa.compose.hfst"
     repo_path: "src/phonetics/txt2ipa.compose.hfst"
     build_flags: ["enable-phonetic", "enable-tts", "enable-tokenisers"]
     methods: ["transcribe"]

@@ -1,11 +1,12 @@
 mod pipelines;
 mod util;
 mod timing;
+mod langmodel_files;
 
 use std::time::Duration;
 
 use timing::timing_middleware;
-use crate::util::WP_LANGFOLDER;
+use crate::langmodel_files::WP_LANGFOLDER;
 use axum::{
     error_handling::HandleErrorLayer,
     extract::DefaultBodyLimit,
@@ -16,9 +17,15 @@ use axum::{
 use dotenv;
 use listenfd::ListenFd;
 use pipelines::{
-    analyze::analyze_endpoint, dependency::dependency_endpoint, generate::generate_endpoint,
-    hyphenate::hyphenate_endpoint, lemma_count::lemma_count_endpoint, paradigm::paradigm_endpoint,
-    transcribe::transcribe_endpoint, unknown_in_x_by_freq::unknown_in_x_by_freq_endpoint,
+    analyze::analyze_endpoint,
+    dependency::dependency_endpoint,
+    disambiguate::disambiguate_endpoint,
+    generate::generate_endpoint,
+    hyphenate::hyphenate_endpoint,
+    lemma_count::lemma_count_endpoint,
+    paradigm::paradigm_endpoint,
+    transcribe::transcribe_endpoint,
+    unknown_in_x_by_freq::unknown_in_x_by_freq_endpoint,
 };
 use tokio::{self, net::TcpListener};
 use tower::{limit::ConcurrencyLimitLayer, ServiceBuilder};
@@ -29,7 +36,7 @@ use tower_http::{
     trace::{DefaultMakeSpan, DefaultOnResponse, TraceLayer},
     LatencyUnit,
 };
-use tracing::Level;
+use tracing::{info, Level};
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 
 async fn handle_error(err: BoxError) -> Response {
@@ -98,6 +105,10 @@ async fn main() {
     // if it was not found..probably a better way to do this)
     println!("language folder: {}", &*WP_LANGFOLDER);
 
+    // populate the hashmap of known files by reading the file system
+    let num_files_total = langmodel_files::load_langfiles();
+    info!("Found {} language files in total", num_files_total);
+
     let app = Router::new()
         .route(
             "/unknown-lemmas-in-dict",
@@ -117,10 +128,12 @@ async fn main() {
         )
         .route("/analyze/:lang/:string", get(analyze_endpoint))
         .route("/dependency/:lang/:string", get(dependency_endpoint))
+        .route("/disambiguate/:lang/:string", get(disambiguate_endpoint))
         .route("/generate/:lang/:string", get(generate_endpoint))
         .route("/hyphenate/:lang/:string", get(hyphenate_endpoint))
         .route("/transcribe/:lang/:string", get(transcribe_endpoint))
         .route("/paradigm/:lang/:string", get(paradigm_endpoint))
+        .route("/info", get(langmodel_files::endpoint_info_all))
         // global concurrency limit (applies to all paths)
         // does NOT have load_shed, so will queue requests (requests are
         // technically blocked on an async semaphore, so I guess there's

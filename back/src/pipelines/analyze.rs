@@ -7,20 +7,22 @@ use http::StatusCode;
 use serde::Deserialize;
 
 use crate::pipelines::run_pipeline_single_lang;
-use crate::util::get_langfile;
 use cached::proc_macro::cached;
+
+use crate::langmodel_files::get_langfile;
 
 #[cached]
 pub fn analyze(input: String, lang: String) -> Result<String, String> {
-    let tokdisamb = get_langfile(&lang, "tokeniser-disamb-gt-desc.pmhfst").ok_or_else(|| {
-        format!(
-            "language not supported \
-            (tokeniser-disamb-gt-desc.pmhfst doesn't exist for language {}",
-            lang
-        )
-    })?;
-    let analyzer_gt_desc_hfstol =
-        get_langfile(&lang, "analyser-gt-desc.hfstol").ok_or_else(|| {
+    let tokdisamb = get_langfile(&lang, "tokeniser-disamb-gt-desc.pmhfst")
+        .ok_or_else(|| {
+            format!(
+                "language not supported \
+                (tokeniser-disamb-gt-desc.pmhfst doesn't exist for language {}",
+                lang
+            )
+        })?;
+    let analyzer_gt_desc_hfstol = get_langfile(&lang, "analyser-gt-desc.hfstol")
+        .ok_or_else(|| {
             format!(
                 "language not supported \
             (analyser-gt-desc.hfstol doesn't exist for language {}",

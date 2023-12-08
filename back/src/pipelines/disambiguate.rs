@@ -10,7 +10,7 @@ use http::StatusCode;
 use serde::Deserialize;
 
 #[cached]
-pub fn dependency(input: String, lang: String) -> Result<String, String> {
+pub fn disambiguate(input: String, lang: String) -> Result<String, String> {
     let tokdisamb = get_langfile(&lang, "tokeniser-disamb-gt-desc.pmhfst").ok_or_else(|| {
         format!(
             "language not supported \
@@ -27,31 +27,11 @@ pub fn dependency(input: String, lang: String) -> Result<String, String> {
                 lang
             )
         })?;
-    let korp_cg3 = get_langfile(&lang, "korp.cg3")
-        .or_else(|| get_langfile(&lang, "functions.bin"))
-        .ok_or_else(|| {
-            format!(
-                "language not supported \
-            (korp.cg3 AND functions.bin not found for language {})",
-                lang
-            )
-        })?;
-    let dependency_cg3 = get_langfile(&lang, "dependency.cg3")
-        .or_else(|| get_langfile(&lang, "dependency.bin"))
-        .ok_or_else(|| {
-            format!(
-                "language not supported \
-            (dependency.cg3 not found for language {})",
-                lang
-            )
-        })?;
 
     run_fun!(
         echo $input |
         hfst-tokenize -cg $tokdisamb |
-        vislcg3 -g $disambiguator_cg3 |
-        vislcg3 -g $korp_cg3 |
-        vislcg3 -g $dependency_cg3
+        vislcg3 -g $disambiguator_cg3
     )
     .map_err(|e| e.to_string())
 }
@@ -62,12 +42,13 @@ pub struct LangAndStringParams {
     string: String,
 }
 
-pub async fn dependency_endpoint(
+pub async fn disambiguate_endpoint(
     Path(LangAndStringParams { lang, string }): Path<LangAndStringParams>,
 ) -> Response {
-    match run_pipeline_single_lang(dependency, string, lang).await {
+    match run_pipeline_single_lang(disambiguate, string, lang).await {
         Ok(text) => (StatusCode::OK, text),
         Err(errmsg) => (StatusCode::UNPROCESSABLE_ENTITY, errmsg),
     }
     .into_response()
 }
+

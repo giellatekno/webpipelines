@@ -1,5 +1,6 @@
 use crate::pipelines::run_pipeline_two_langs;
-use crate::util::{get_langfile, gunzip, read_docx_text};
+use crate::util::{gunzip, read_docx_text};
+use crate::langmodel_files::get_langfile;
 use axum::{
     extract::Json,
     response::{IntoResponse, Response},

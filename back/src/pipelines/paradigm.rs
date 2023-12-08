@@ -12,7 +12,7 @@ use serde::Deserialize;
 use tokio::sync::RwLock;
 use tokio::{fs::File, io::AsyncReadExt};
 
-use crate::util::get_langfile;
+use crate::langmodel_files::get_langfile;
 //use crate::pipelines::run_pipeline_single_lang;
 use cached::proc_macro::cached;
 
@@ -221,7 +221,9 @@ async fn read_gramfile(gramfile: std::path::PathBuf) -> Result<Vec<String>, Stri
 ///   "Person-Number" => ["Sg1", "Sg2", "Sg3", "Du1", ...]
 ///   "Transitivity" => ["TV", "IV"]
 ///   "Infinite" => ["Inf", "PrfPrc", "PrsPrc", "Sup", "VGen", ...]
-async fn read_tagfile(tagfile: std::path::PathBuf) -> Result<HashMap<String, Vec<String>>, String> {
+async fn read_tagfile(tagfile: std::path::PathBuf)
+    -> Result<HashMap<String, Vec<String>>, String>
+{
     let mut file = File::open(tagfile).await.map_err(|e| e.to_string())?;
     let mut contents = String::new();
     file.read_to_string(&mut contents)

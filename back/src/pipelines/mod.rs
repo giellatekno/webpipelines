@@ -1,5 +1,6 @@
 pub mod analyze;
 pub mod dependency;
+pub mod disambiguate;
 pub mod generate;
 pub mod hyphenate;
 pub mod lemma_count;
