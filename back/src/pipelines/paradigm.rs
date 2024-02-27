@@ -109,7 +109,14 @@ pub async fn paradigm_endpoint(
     .into_response()
 }
 
-#[cached]
+/// Generate the paradigm for (input, pos, lang)
+/// also cache the results for 10 seconds (refresh on hit),
+/// but max 15 different paradigms at a time
+#[cached(
+    size = 15,
+    time = 10,
+    time_refresh = true,
+)]
 async fn paradigm(
     paradigm_file: String,
     lang: String,
@@ -187,6 +194,7 @@ async fn paradigm(
             .filter(|line| line.len() > 0)
             .filter(|line| !line.ends_with("inf"))
             .join("\n");
+        let results = format!("{results}\n");
 
         Ok(results)
     } else {
@@ -314,12 +322,13 @@ async fn get_paradigmfile(lang: &str, size: ParadigmSize, pos: Pos) -> Result<St
 
 /// Generate the file of all paradigms
 async fn generate_paradigm_file(lang: &str, size: ParadigmSize) -> Result<String, String> {
-    let paradigm_text_file = format!("paradigm_{size}.txt");
+    let paradigm_text_file = format!("paradigm_{size}.{lang}.txt");
     let gramfile = get_langfile(&lang, &paradigm_text_file).ok_or_else(|| {
-        format!("language not supported ({paradigm_text_file} doesn't exist for language {lang}")
+        format!("language not supported ({paradigm_text_file} doesn't exist for language {lang})\n")
     })?;
-    let tagfile = get_langfile(&lang, "korpustags.txt").ok_or_else(|| {
-        format!("language not supported (korpustags.txt doesn't exist for language {lang}")
+    let korpustags_file = format!("korpustags.{lang}.txt");
+    let tagfile = get_langfile(&lang, &korpustags_file).ok_or_else(|| {
+        format!("language not supported ({korpustags_file} doesn't exist for language {lang})\n")
     })?;
 
     let gram_entries = read_gramfile(gramfile).await?;

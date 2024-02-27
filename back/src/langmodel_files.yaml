@@ -10,6 +10,11 @@
 #     indicates that the name of the file will be replaced by the same language
 #     as the repository. For example, "paradigm_standard.{lang}.txt" would
 #     be named "paradigm_standard.sme.txt" in the "lang-sme" repository.
+# - alt_filename: string   (optional)
+#     name of the alternative file. Sometimes, a command can accept both a
+#     pre-compiled binary file, or the source version of the file. If this
+#     field is specified, it indicates an alternative such file that will also
+#     be searched for.
 # - repo_path: string   (required)
 #     full path to where the file is located. it may or may not need to
 #     be built before it is available. The same replacement string "{lang}"
@@ -53,13 +58,22 @@ files:
     repo_path: "src/generator-gt-norm.hfstol"
     methods: ["generate", "paradigm"]
 
+  - filename: "functions.cg3"
+    alt_filename: "functions.bin"
+    # TODO don't know if these paths are correct
+    repo_path: "src/functions.cg3"
+    alt_repo_path: "src/functions.bin"
+    methods: ["dependency"]
+
   - filename: "hyphenator-gt-desc.hfstol"
     repo_path: "tools/hyphenators/hyphenator-gt-desc.hfstol"
     build_flags: ["enable-fst-hyphenator"]
     methods: ["hypenate"]
 
   - filename: "disambiguator.cg3"
+    alt_filename: "disambiguator.bin"
     repo_path: "src/cg3/disambiguator.cg3"
+    alt_repo_path: "src/cg3/disambiguator.bin"
     requires_build: False
     methods: ["dependency", "disambiguate"]
 
@@ -67,6 +81,8 @@ files:
   # all sami languages
   - filename: "dependency.cg3"
     repo_path: "src/cg3/dependency.cg3"
+    alt_filename: "dependency.bin"
+    alt_repo_path: "src/cg3/dependency.bin"
     shared_by: ["sma", "sme", "smj", "sms", "sjd"]
     repo: "shared-smi"
     requires_build: False
@@ -79,7 +95,9 @@ files:
     methods: ["dependency"]
 
   - filename: "korp.cg3"
+    alt_filename: "korp.bin"
     repo_path: "src/cg3/korp.cg3"
+    alt_repo_path: "src/cg3/korp.bin"
     repo: "shared-smi"
     requires_build: False
     methods: ["dependency"]

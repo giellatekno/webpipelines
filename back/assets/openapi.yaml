@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.1.0
 info:
   title: Giellatekno Webpipeline
   version: 0.0.1
@@ -17,6 +17,19 @@ tags:
   - name: pipeline
     description: "All the pipelines available on this api"
 paths:
+  /info:
+    get:
+      tags:
+        - pipeline
+      summary: Information of capabilities
+      description:
+        "Returns an object which describes which methods will work for which
+        languages"
+      responses:
+        200:
+          description: A succesful query, with results returned as json
+        500:
+          description: Something went wrong on the server
   /analyze/{lang}/{string}:
     get:
       tags:
@@ -223,7 +236,7 @@ paths:
         - pipeline
       summary: Paradigm generation
       description:
-        "...some description..."
+        "Generate paradigm for an input word"
       parameters:
         - name: lang
           type: string
@@ -233,7 +246,7 @@ paths:
           description: The target language, a 3-letter iso 6-393 code
         - name: string
           type: string
-          example: Dette er ei lita setning.
+          example: viessu
           in: path
           required: true
           description: The sentence to run analysis on

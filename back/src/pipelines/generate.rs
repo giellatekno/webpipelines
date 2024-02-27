@@ -11,10 +11,10 @@ use serde::Deserialize;
 
 #[cached]
 pub fn generate(input: String, lang: String) -> Result<String, String> {
-    let langfile = get_langfile(&lang, "generator-gt-desc.hfstol").ok_or_else(|| {
+    let langfile = get_langfile(&lang, "generator-gt-norm.hfstol").ok_or_else(|| {
         format!(
             "language not supported \
-            (generator-gt-desc.hfstol) doesn't exist for language {}",
+            (generator-gt-norm.hfstol doesn't exist for language {})",
             lang
         )
     })?;

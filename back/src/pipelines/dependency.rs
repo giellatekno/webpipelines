@@ -23,7 +23,7 @@ pub fn dependency(input: String, lang: String) -> Result<String, String> {
         .ok_or_else(|| {
             format!(
                 "language not supported \
-            (disambiguator.cg3 not found for language {})",
+            (disambiguator.[cg3|bin] not found for language {})",
                 lang
             )
         })?;

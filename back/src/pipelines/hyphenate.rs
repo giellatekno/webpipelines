@@ -22,7 +22,7 @@ pub fn hyphenate(input: String, lang: String) -> Result<String, String> {
 
     run_fun!(
         echo $input |
-        hfst-tokenize -q $hyphenate_hfstol
+        hfst-lookup -q $hyphenate_hfstol
     )
     .map_err(|e| e.to_string())
 }
