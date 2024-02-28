@@ -4,7 +4,7 @@
 import argparse
 import pathlib
 import datetime
-import json
+from json import dumps as to_json
 import sys
 
 import urllib
@@ -73,13 +73,73 @@ def human_readable_timespan(seconds):
         return f"{round(t)}{unit}"
 
 
+def response_line(response):
+    ver = float(int(response.version) / 10)
+    return f"HTTP/{ver} {response.status} {response.reason}"
+
+
+def do_query(
+    url,
+    verbose=False,
+    method="GET",
+    data=None,
+    json=None,
+    headers=None,
+    **opts,
+):
+    if verbose:
+        print("* sending request to", url)
+
+    if headers is None:
+        headers = {}
+
+    if not data and json:
+        data = to_json(json).encode("utf-8")
+
+    request = Request(
+        url=url,
+        method=method,
+        data=data,
+        headers=headers,
+    )
+
+    if verbose:
+        print(
+            f"> {request.get_method()} {request.selector} "
+            f"{request.type.upper()}/1.1"
+        )
+
+    try:
+        response = urlopen(request)
+    except Exception as e:
+        if verbose:
+            print("* error: server failure")
+            print("<", response_line(e))
+            for header, value in e.headers.items():
+                print(f"< {header}: {value}")
+            print("< ")
+
+        data = e.fp.read().decode("utf-8")
+        data = data if data else "* server sent no data"
+        return data
+    else:
+        data = response.fp.read().decode("utf-8")
+        if verbose:
+            print("<", response_line(response))
+            for header, value in response.headers.items():
+                print(f"< {header}: {value}")
+            print("< ")
+
+        return data
+
+
 def run_info(
     verbose=False,
     detailed=False,
     pretty=False,
     api=LOCAL_API,
 ):
-    url = f"{api}/info"
+    url = f"{api}/infoTODO"
     if detailed or pretty:
         detailed = "yes" if detailed else "no"
         detailed = f"detailed={detailed}"
@@ -89,26 +149,15 @@ def run_info(
 
     if verbose:
         print("url =", url)
-    request = Request(url=url)
-    try:
-        response = urlopen(request)
-    except Exception as e:
-        print(e)
-    else:
-        data = response.fp.read().decode("utf-8")
-        print(data)
+
+    result = do_query(url, verbose=verbose)
+    print(result)
 
 
-def analyze(word=None, lang=None, verbose=False, api=LOCAL_API):
+def run_analyze(word=None, lang=None, verbose=False, api=LOCAL_API):
     url = f"{api}/analyze/{lang}/{word}"
-    request = Request(url=url)
-    try:
-        response = urlopen(request)
-    except Exception as e:
-        print(e)
-    else:
-        data = response.fp.read().decode("utf-8")
-        print(data)
+    result = do_query(url, verbose=verbose)
+    print(result)
 
 
 def run_freq_pipeline(
@@ -126,27 +175,23 @@ def run_freq_pipeline(
     if not text:
         fatal("Text on stdin was blank.")
 
-    url = f"{LOCAL_API}/unknown-lemmas-in-dict"
-    data = json.dumps({
+    data = {
         "lang1": lang1,
         "lang2": lang2,
         "data": text,
         "typ": "text",
-    }).encode("utf-8")
+    }
     headers = {
         "content-type": "application/json",
     }
-    request = Request(url=url, method="POST", headers=headers, data=data)
-    try:
-        response = urlopen(request)
-    except urllib.error.HTTPError as e:
-        data = e.fp.read()
-        print(e)
-        print("--")
-        print(data)
-    else:
-        print("x", response)
-        print("y", response.body)
+    result = do_query(
+        url=f"{LOCAL_API}/unknown-lemmas-in-dict",
+        method="POST",
+        json=data,
+        headers=headers,
+        verbose=verbose,
+    )
+    print(result)
 
 
 def run_paradigm(
@@ -178,13 +223,9 @@ def add_analyze_args_parser(subparsers):
         help="analyze a word",
         description="analyze a word",
     )
-    analyze_parser.add_argument(
-        "lang",
-    )
-    analyze_parser.add_argument(
-        "word"
-    )
-    analyze_parser.set_defaults(func=analyze)
+    analyze_parser.add_argument("lang")
+    analyze_parser.add_argument("word")
+    analyze_parser.set_defaults(func=run_analyze)
 
 
 def add_freq_args_parser(subparsers):
@@ -198,12 +239,8 @@ def add_freq_args_parser(subparsers):
             "run the frequency pipeline"
         ),
     )
-    freq_parser.add_argument(
-        "lang1",
-    )
-    freq_parser.add_argument(
-        "lang2",
-    )
+    freq_parser.add_argument("lang1")
+    freq_parser.add_argument("lang2")
     freq_parser.set_defaults(func=run_freq_pipeline)
 
 
@@ -291,7 +328,11 @@ def parse_args():
     )
 
     group = parser.add_mutually_exclusive_group()
-    group.add_argument("--api", help="set a custom url to the api", default=LOCAL_API)
+    group.add_argument(
+        "--api",
+        help="set a custom url to the api",
+        default=LOCAL_API
+    )
     group.add_argument(
         "--local",
         action="store_const",
