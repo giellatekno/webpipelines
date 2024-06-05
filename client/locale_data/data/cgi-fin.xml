@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//UIT//DTD CGI TRANSLATIONS V1.0//EN" "https://giellatekno.uit.no/dtd/cgi-translations.dtd">
+<content>
+
+
+<title tool="analyze" lang="bxr" >Buriatin kielen analyysiohjelmat</title>
+<title tool="analyze" lang="ciw" >Ojibwen kielen analyysiohjelmat</title>
+<title tool="analyze" lang="cor" >Kornin kielen kielen analyysiohjelmat</title>
+<title tool="analyze" lang="crk" >Plains cree-kielen kielen analyysiohjelmat</title>
+<title tool="analyze" lang="est" >Viron kielen analyysiohjelmat</title>
+<title tool="analyze" lang="evn" >Evenkin kielen analyysiohjelmat</title>
+<title tool="analyze" lang="fao" >Fäärin kielen analyysiohjelmat</title>
+<title tool="analyze" lang="fin" >Suomen kielen analyysiohjelmat</title>
+<title tool="analyze" lang="fit" >Meänkielen analyysiohjelmat</title>
+<title tool="analyze" lang="fkv" >Kveenin kielen analyysiohjelmat</title>
+<title tool="analyze" lang="gle" >Iirin kielen analyysiohjelmat</title>
+<title tool="analyze" lang="hdn" >Pohjoishaidan kielen analyysiohjelmat</title>
+<title tool="analyze" lang="ipk" >Inupiakin kielen analyysiohjelmat</title>
+<title tool="analyze" lang="izh" >Inkerin kielen analyysiohjelmat</title>
+<title tool="analyze" lang="kal" >Grönlannin kielen analyysiohjelmat</title>
+<title tool="analyze" lang="kca" >Hantin kielen analyysiohjelmat</title>
+<title tool="analyze" lang="kpv" >Komin kielen analyysiohjelmat</title>
+<title tool="analyze" lang="liv" >Liivin kielen analyysiohjelmat</title>
+<title tool="analyze" lang="mdf" >Mokšan kielen analyysiohjelmat</title>
+<title tool="analyze" lang="mhr" >Niitymarin kielen analyysiohjelmat</title>
+<title tool="analyze" lang="mns" >Mansin kielen analyysiohjelmat</title>
+<title tool="analyze" lang="mrj" >Vuorimarin kielen analyysiohjelmat</title>
+<title tool="analyze" lang="myv" >Ersän kielen analyysiohjelmat</title>
+<title tool="analyze" lang="nio" >Nganasanin kielen analyysiohjelmat</title>
+<title tool="analyze" lang="olo" >Livvin kielen analyysiohjelmat</title>
+<title tool="analyze" lang="rmf" >Suomen romanikielen analyysiohjelmat</title>
+<title tool="analyze" lang="rus" >Venäjän kielen analyysiohjelmat</title>
+<title tool="analyze" lang="sje" >Piiitimen kielen analyysiohjelmat</title>
+<title tool="analyze" lang="sma" >Eteläsaamen kielen analyysiohjelmat</title>
+<title tool="analyze" lang="sme" >Pohjoissaamen kielen analyysiohjelmat</title>
+<title tool="analyze" lang="smj" >Luulajansaamen kielen analyysiohjelmat</title>
+<title tool="analyze" lang="smn" >Inarinsaamen kielen analyysiohjelmat</title>
+<title tool="analyze" lang="sms" >Koltansaamen kielen analyysiohjelmat</title>
+<title tool="analyze" lang="som" >Somalin kielen analyysiohjelmat</title>
+<title tool="analyze" lang="udm" >Udmurtin kielen analyysiohjelmat</title>
+<title tool="analyze" lang="vep" >Vepsän kielen analyysiohjelmat</title>
+<title tool="analyze" lang="vro" >Võron kielen analyysiohjelmat</title>
+<title tool="analyze" lang="vot" >Vatjan kielen analyysiohjelmat</title>
+<title tool="analyze" lang="yrk" >Nenetsin kielen analyysiohjelmat</title>
+
+
+<title tool="generate" lang="bxr" >Luo buriatin kielen sanamuotoja</title>
+<title tool="generate" lang="ciw" >Luo ojibwen kielen sanamuotoja</title>
+<title tool="generate" lang="cor" >Luo kornin kielen kielen sanamuotoja</title>
+<title tool="generate" lang="crk" >Luo plains cree-kielen kielen sanamuotoja</title>
+<title tool="generate" lang="est" >Luo viron kielen sanamuotoja</title>
+<title tool="generate" lang="evn" >Luo evenkin kielen sanamuotoja</title>
+<title tool="generate" lang="fao" >Luo fäärin kielen sanamuotoja</title>
+<title tool="generate" lang="fin" >Luo suomen kielen sanamuotoja</title>
+<title tool="generate" lang="fit" >Luo meänkielen sanamuotoja</title>
+<title tool="generate" lang="fkv" >Luo kveenin kielen sanamuotoja</title>
+<title tool="generate" lang="gle" >Luo iirin kielen sanamuotoja</title>
+<title tool="generate" lang="hdn" >Luo pohjoishaidan kielen sanamuotoja</title>
+<title tool="generate" lang="ipk" >Luo inupiakin kielen sanamuotoja</title>
+<title tool="generate" lang="izh" >Luo inkerin kielen sanamuotoja</title>
+<title tool="generate" lang="kal" >Luo grönlannin kielen sanamuotoja</title>
+<title tool="generate" lang="kca" >Luo hantin kielen sanamuotoja</title>
+<title tool="generate" lang="kpv" >Luo komin kielen sanamuotoja</title>
+<title tool="generate" lang="liv" >Luo liivin kielen sanamuotoja</title>
+<title tool="generate" lang="mdf" >Luo mokšan kielen sanamuotoja</title>
+<title tool="generate" lang="mhr" >Luo niitymarin kielen sanamuotoja</title>
+<title tool="generate" lang="mns" >Luo mansin kielen sanamuotoja</title>
+<title tool="generate" lang="mrj" >Luo vuorimarin kielen sanamuotoja</title>
+<title tool="generate" lang="myv" >Luo ersän kielen sanamuotoja</title>
+<title tool="generate" lang="nio" >Luo nganasanin kielen sanamuotoja</title>
+<title tool="generate" lang="olo" >Luo livvin kielen sanamuotoja</title>
+<title tool="generate" lang="rus" >Luo venäjän kielen sanamuotoja</title>
+<title tool="generate" lang="sje" >Luo piiitimen kielen sanamuotoja</title>
+<title tool="generate" lang="sma" >Luo eteläsaamen kielen sanamuotoja</title>
+<title tool="generate" lang="sme" >Luo pohjoissaamen kielen sanamuotoja</title>
+<title tool="generate" lang="smj" >Luo luulajansaamen kielen sanamuotoja</title>
+<title tool="generate" lang="smn" >Luo inarinsaamen kielen sanamuotoja</title>
+<title tool="generate" lang="sms" >Luo koltansaamen kielen sanamuotoja</title>
+<title tool="generate" lang="som" >Luo somalin kielen sanamuotoja</title>
+<title tool="generate" lang="udm" >Luo udmurtin kielen sanamuotoja</title>
+<title tool="generate" lang="vep" >Luo vepsän kielen sanamuotoja</title>
+<title tool="generate" lang="vro" >Luo võron kielen sanamuotoja</title>
+<title tool="generate" lang="vot" >Luo vatjan kielen sanamuotoja</title>
+<title tool="generate" lang="yrk" >Luo nenetsin kielen sanamuotoja</title>
+
+
+<title tool="paradigm" lang="bxr" >Buriatin kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="ciw" >Ojibwen kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="cor" >Kornin kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="crk" >Plains cree-kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="est" >Viron kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="evn" >Evenkinin kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="fao" >Fäärin kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="fin" >Suomen kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="fit" >Meänkielen taivutusparadigmat</title>
+<title tool="paradigm" lang="ipk" >Inupiakin kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="izh" >Inkerin kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="kal" >Grönlannin kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="kca" >Hantin kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="kpv" >Komin kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="liv" >Liivin kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="mdf" >Mokšan kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="mhr" >Niitymarin kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="mns" >Mansin kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="mrj" >Vuorimarin kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="myv" >Ersän kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="nio" >Nganasanin kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="olo" >Livvin kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="rus" >Venäjän kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="sje" >Piiitimen kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="sma" >Eteläsaamen kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="sme" >Pohjoissaamen kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="smj" >Luulajansaamen kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="smn" >Inarinsaamen kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="sms" >Koltansaamen kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="udm" >Udmurtin kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="vep" >Vepsän kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="vro" >Võron kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="vot" >Vatjan kielen taivutusparadigmat</title>
+<title tool="paradigm" lang="yrk" >Nenetsin kielen taivutusparadigmat</title>
+
+
+<title tool="placenames">Käännä paikannimet</title>
+
+
+
+<!-- H1 -->
+
+
+
+<place>Saame, Tromssan yliopisto</place>
+
+<copyright lang="bxr">Copyright © Saami language technology project ja Jargal Badagarov</copyright>
+<copyright lang="ciw">Copyright © Saami language technology project</copyright>
+<copyright lang="crk">Copyright © Saami language technology project ja Albertan yliopisto</copyright>
+<copyright lang="fao">Copyright © Saami language technology project</copyright>
+<copyright lang="fin">Copyright © Saami language technology project ja Tommi Pirinen</copyright>
+<copyright lang="fit">Copyright © Saami language technology project</copyright>
+<copyright lang="fkv">Copyright © Saami language technology project</copyright>
+<copyright lang="ipk">Copyright © Saami language technology project ja Oqaasileriffik</copyright>
+<copyright lang="kal">Copyright © Saami language technology project ja Oqaasileriffik</copyright>
+<copyright lang="kpv">Copyright © Saami language technology project ja Jack Rueter</copyright>
+<copyright lang="mhr">Copyright © Saami language technology project ja Jorma Luutonen ja Arto Moisio</copyright>
+<copyright lang="mns">Copyright © Saami language technology project</copyright>
+<copyright lang="myv">Copyright © Saami language technology project ja Jack Rueter</copyright>
+<copyright lang="rus">Copyright © Saami language technology project</copyright>
+<copyright lang="sjd">Copyright © Saami language technology project</copyright>
+<copyright lang="sje">Copyright © Saami language technology project</copyright>
+<copyright lang="sjt">Copyright © Saami language technology project</copyright>
+<copyright lang="sma">Copyright © Saami language technology project</copyright>
+<copyright lang="sme">Copyright © Saami language technology project</copyright>
+<copyright lang="smj">Copyright © Saami language technology project</copyright>
+<copyright lang="smn">Copyright © Saami language technology project</copyright>
+<copyright lang="sms">Copyright © Saami language technology project</copyright>
+<copyright lang="udm">Copyright © Saami language technology project</copyright>
+<copyright lang="izh">Copyright © Saami language technology project ja Jack Rueter</copyright>
+<copyright lang="kca">Copyright © Saami language technology project ja Jack Rueter</copyright>
+<copyright lang="liv">Copyright © Saami language technology project ja Jack Rueter</copyright>
+<copyright lang="mdf">Copyright © Saami language technology project ja Jack Rueter</copyright>
+<copyright lang="mrj">Copyright © Saami language technology project ja Jack Rueter</copyright>
+<copyright lang="nio">Copyright © Saami language technology project ja Jack Rueter</copyright>
+<copyright lang="olo">Copyright © Saami language technology project ja Jack Rueter</copyright>
+<copyright lang="vep">Copyright © Saami language technology project ja Jack Rueter</copyright>
+<copyright lang="vro">Copyright © Saami language technology project ja Jack Rueter</copyright>
+<copyright lang="vot">Copyright © Saami language technology project ja Jack Rueter</copyright>
+<copyright lang="yrk">Copyright © Saami language technology project ja Jack Rueter</copyright>
+
+
+<!-- Introduction analyze -->
+
+<introduction tool="analyze">
+Kirjoita tai liitä sanoja ikkunaan ja paina "Analysoi" tai
+"Nollaa"-painiketta.
+Vaihtoehto "Analysoi" antaa kaikki mahdolliset analyysit, kun taas
+(Oletus)-vaihtoehto "Disambiguoi" antaa vain analyysit, jotka sopivat
+annettuun lauseeseen. Ohjelma voi myös tavuttaa tekstin,
+tai lisätä tavurajoja. Siinä tapauksessa se ei anna
+kieliopillisia analyyseja. Valitse "Tavuta".
+</introduction>
+
+<introduction tool="analyze" type="nodependency">
+Kirjoita tai liitä sanoja ikkunaan ja paina "Analysoi" tai
+"Nollaa"-painiketta.
+Vaihtoehto "Analysoi" antaa kaikki mahdolliset analyysit, kun taas
+(Oletus)-vaihtoehto "Disambiguoi" antaa vain analyysit, jotka sopivat
+annettuun lauseeseen. Ohjelma voi myös tavuttaa tekstin,
+tai lisätä tavurajoja. Siinä tapauksessa se ei anna
+kieliopillisia analyyseja. Valitse "Tavuta".
+</introduction>
+
+
+<introduction tool="placenames">
+Kirjoita paikannimi saameksi, norjaksi, ruotsi tai suomeksi. Suluissa oleva nimi on kunta, missä paikka sijaitsee. Lähteemme ovat Statens Kartverk (SK),  Ruotsin Saamelaiskäräjät (SvSt), Pekka Sammallahden "Sami-Suoma sátnegirji" (PS) ja  H.R. Mathisenin Saamen Atlas by (SA).
+</introduction>
+
+<introduction tool="analyze" type="nohyph" lang="ciw">
+Kirjoita tai liitä sanoja ikkunaan ja paina "Lähetä lomake"-painiketta.
+Huomaa, että analysaattorissa on vielä vain kourallinen verbejä.
+</introduction>
+
+<introduction tool="analyze" type="nohyph">
+Kopioi tekstiä alla olevaan ikkunaan, niin ohjelma antaa sinulle
+kyseisen sananmuodon kaikki mahdolliset morfologiset analyysit. Jos
+valitset "Disambiguoi", ohjelma yritttää löytää kontekstiin sopivaan
+analyysin (varoitus: disambiguoimistyö ei ole vielä alkanut).
+</introduction>
+
+<introduction tool="analyze" type="nodisamb">
+Kopioi tekstiä alla olevaan ikkunaan, niin ohjelma antaa sinulle
+kyseisen sananmuodon kaikki mahdolliset morfologiset analyysit.
+</introduction>
+
+<introduction tool="analyze" lang="fin">
+</introduction>
+
+<introduction tool="analyze" lang="kal">
+Kirjoita tai liitä sanoja ikkunaan ja paina "Lähetä lomake"-painiketta.
+Vaihtoehdot "Analysoi" antaa kaikki mahdolliset analyysit, kun taas
+(oletus)-vaihtoehto "Disambiguoi" antaa vain analyysit, jotka sopivat
+annettuun lauseeseen. Ohjelma voi myös tavuttaa tekstin,
+tai lisätä tavurajoja. Siinä tapauksessa se ei anna
+kieliopillisia analyyseja. Valitse "Tavuta".
+</introduction>
+
+
+
+
+<!-- Introduction p2 analyze -->
+
+<introduction_p2 tool="analyze" lang="ciw">
+Tässä pari tähän mennessä lisätyt verbit: anwebi, aadizooke, bangishino, biindige, bimaadizi, gaasikanaabaagawe, gashkendamo, giigoonyike, giiwe, izhaa, jiibaakwe, maajaa, minikwe, wiisini, minomaagwad, gozigwan. Jotkut sanat ovat: inini, ikwe, makwa, mitig, aanakwad, zaaga'igan, miikana, ziibi, makak, abwi, baabaa, maamaa, gosis, daanis, mishoomis.
+</introduction_p2>
+
+<introduction_p2 tool="analyze" lang="crk">
+Du kan også konvertere tekst frå latinske bokstavar til stavingsalfabet eller omvendt. Vel "Latinske bokstavar til stavingsalfabet" eller Stavingsalfabet til latinske bokstavar".
+</introduction_p2>
+
+<introduction_p2 tool="analyze" lang="ipk">
+Voit myös muuntaa inupiak tekstiä 8-bittisestä inupiak-sanakirjasta Unicodeen (jos inupiak-tekstistä löytyy joitakin kirjaimia e, f, x, b, sinun täytyy tehdä tämä). Valitse "Muunna".
+</introduction_p2>
+
+<introduction_p2 tool="analyze" lang="kal">
+Voit myös translitteroida Grönlannin tekstejä
+IPA-transkriptioon, lisätä tavurajoja ja sanasävelmerkkejä
+Stig Bjørnumin kieliopin esityksen mukaan (Bjørnum itse nojautuu Kleinschmidtiin).
+Valitse "Translitteroi".
+Lisäksi voit muuntaa sanoja Kleinschmidt oikeinkirjoituksesta
+nykyiseen (1973-) oikeinkirjoitusjärjestelmään. Käännösohjelma tunnistaa kra-kirjaimen
+eli "ĸ" (Unicode U +0138), mutta koska kra voi olla vaikea kirjoittaa,
+käännösohjelma kääntää ison K-kirjaimen kra-iksi. Valitse "Muunna".
+</introduction_p2>
+
+
+
+<!-- Introduction generate -->
+
+<introduction tool="generate">
+Kirjoita sana ja kieliopillinen analyysi ikkunaan, ja paina "Generoi"-painiketta.
+</introduction>
+
+<!-- Introduction paradigm -->
+
+
+<introduction tool="paradigm" lang="bxr">
+Kirjoita buriatinkielinen sana ja valitse sanaluokka, ja ohjelma luo koko paradigman. Ohjelmassa ei ole kuin pari substantiivia.
+</introduction>
+
+<introduction tool="paradigm" lang="ciw">
+Kirjoita ojibwen sana ja valitse sanaluokka, ja ohjelma luo koko paradigman. Ohjelmassa ei ole kuin pari verbejä.
+</introduction>
+
+<introduction tool="paradigm" lang="cor">
+Kirjoita kornin kielen sana  ja valitse sanaluokka, ja ohjelma luo koko paradigman.
+</introduction>
+
+<introduction tool="paradigm" lang="fao">
+Kirjoita fäärin kielen sana  ja valitse sanaluokka, ja ohjelma luo koko paradigman.
+</introduction>
+
+<introduction tool="paradigm" lang="fin">
+Kirjoita suomen kielen sana  ja valitse sanaluokka, ja ohjelma luo koko paradigman.
+</introduction>
+
+<introduction tool="paradigm" lang="fit">
+Kirjoita meänkielen sana  ja valitse sanaluokka, ja ohjelma luo koko paradigman.
+</introduction>
+
+<introduction tool="paradigm" lang="fkv">
+Kirjoita kveenin kielen sana  ja valitse sanaluokka, ja ohjelma luo koko paradigman.
+</introduction>
+
+<introduction tool="paradigm" lang="ipk">
+Kirjoita inupiaqin sana  ja valitse sanaluokka, ja ohjelma luo koko paradigman.
+</introduction>
+
+<introduction tool="paradigm" lang="kal">
+Kirjoita grönlannin kielen sana  ja valitse sanaluokka, ja ohjelma luo koko paradigman.
+</introduction>
+
+<introduction tool="paradigm" lang="mhr">
+Kirjoita niittymarin kielen sana  ja valitse sanaluokka, ja ohjelma luo koko paradigman.
+</introduction>
+
+<introduction tool="paradigm" lang="mns">
+Kirjoita mansin kielen sana  ja valitse sanaluokka, ja ohjelma luo koko paradigman.
+</introduction>
+
+<introduction tool="paradigm" lang="myv">
+Kirjoita ersän kielen sana  ja valitse sanaluokka, ja ohjelma luo koko paradigman.
+</introduction>
+
+<introduction tool="paradigm" lang="rus">
+Paradigmaohjelma ei vielä toimi venäjän kielelle.
+</introduction>
+
+<introduction tool="paradigm" lang="sjd">
+Kirjoita kilttinänsaamen sana  ja valitse sanaluokka, ja ohjelma luo koko paradigman.
+Ohjelma sisältää Kurutshin sanakirjan liiteosassa mainitut sanat.
+</introduction>
+
+<introduction tool="paradigm" lang="sje">
+Kirjoita piitimensaamen sana  ja valitse sanaluokka, ja ohjelma luo koko paradigman.
+The program only contains some hundred words.
+</introduction>
+
+<introduction tool="paradigm" lang="sma">
+Kirjoita eteläsaamen sana  ja valitse sanaluokka, ja ohjelma luo koko paradigman.
+</introduction>
+
+<introduction tool="paradigm" lang="sme">
+Kirjoita pohjoissaamen sana  ja valitse sanaluokka, ja ohjelma luo koko paradigman.
+</introduction>
+
+<introduction tool="paradigm" lang="smj">
+Kirjoita luulajansaamen sana ja valitse sanaluokka, ja ohjelma luo koko paradigman.
+</introduction>
+
+<introduction tool="paradigm" lang="smn">
+Kirjoita inarinsaamen sana  ja valitse sanaluokka, ja ohjelma luo koko paradigman.
+Ohjelma sisältää ainoastaan Morottajan ja Sammallahden sanakirjan liiteosassa mainitut sanat,
+on edelleen työn alla.
+</introduction>
+
+<introduction tool="paradigm" lang="sms">
+Kirjoita Koltansaamen sana  ja valitse sanaluokka, ja ohjelma luo koko paradigman.
+Ohjelma sisältää tuhansia sanoja Itkoselta, Moshnikoffilta, Sammallahdelta ja nykyisestä sosiaalimediasta.
+Jos huomaat virheitä, ole hyvä ja kerro meille siitä.
+</introduction>
+
+<introduction tool="paradigm" lang="udm">
+Kirjoita Udmurtin kielen sana  ja valitse sanaluokka, ja ohjelma luo koko paradigman.
+Ohjelma sisältää tuhansia sanoja, muun muassa Saarisen et al -sanakirjoista.
+</introduction>
+
+
+<!-- usage -->
+
+<usage lang="ciw">
+Analysaattori käyttää kaksoisvokaalijärjestelmää (Fierojärjestelmää).
+</usage>
+
+<usage lang="fin">
+</usage>
+
+<usage lang="fit">
+</usage>
+
+<usage lang="fkv">
+</usage>
+
+<usage lang="sma">
+Ohjelma hyväksyy sekä <code>i</code> ja eteläsaamen kirjain <code>ï</code> ja sekä norjan <code>æ, ø</code> ja ruotsin <code>ä, ö</code>
+</usage>
+
+<usage lang="sme">
+Kirjoita pohjoissaamen erikoismerkkejä, kuten tavallista (Unicode).
+Jos sinulla ei ole saamelainen näppäimistö voit kirjoittaa "á, č, đ, ŋ, š, ŧ, ž"
+kuten <code>a1, c1, d1, n1, s1, t1, z1</code>.
+</usage>
+
+<usage lang="smj">
+Voit käyttää luulajansaamen tavallisia merkkejä, joko (virallinen) ŋ, tai ń tai ñ. Ohjelma ymmärtää sekä
+äö ja æø.
+</usage>
+
+<usage lang="smn">
+Kirjoita sana tavallisen inarinsaamen ortografian mukaan.
+</usage>
+
+<usage lang="sms">
+Kirjoita sana tavallisen koltansaamen ortografian mukaan.
+</usage>
+
+<usage lang="sjd">
+Kirjoita sana tavallisen kilttinänsaamen ortografian mukaan. Ohjelma käyttää
+Kurutshin 1985-ortografiaa.
+</usage>
+
+
+<!-- example -->
+
+<example tool="generate" lang="cor">
+Jos haluat generoida kornin kielen sanamuodon, kirjoita perusmuoto+tagijono.
+</example>
+<!--Jos haluat generoida esim. <em></em>, kirjoita <code>hús+N+Neu+Sg+Dat+Def</code>-->
+
+<example tool="generate" lang="fin">
+Jos haluat generoida esim. <em>joella</em>, kirjoita <code>joki+N+Sg+Ade</code>
+</example>
+
+<example tool="generate" lang="fit">
+Jos haluat generoida esim. <em>joela</em>, kirjoita <code>joki+N+Sg+Ade</code>
+</example>
+
+<example tool="generate" lang="fkv">
+Jos haluat generoida esim. <em>jovella</em>, kirjoita <code>joki+N+Sg+Ade</code>
+</example>
+
+<example tool="generate" lang="fao">
+Jos haluat generoida esim. <em>húsinum</em>, kirjoita <code>hús+N+Neu+Sg+Dat+Def</code>
+</example>
+
+<example tool="generate" lang="ipk">
+Jos haluat generoida esim. <em>iglum</em>, kirjoita <code>iglu+N+Rel+Sg</code>
+</example>
+
+<example tool="generate" lang="kal">
+Jos haluat generoida esim. <em>illup</em>, kirjoita <code>illu+N+Rel+Sg</code>
+</example>
+
+<example tool="generate" lang="kpv">
+Jos haluat generoida esim. <em>кывлы</em>, kirjoita <code>кыв+N+Sg+Dat</code>
+</example>
+
+<example tool="generate" lang="mhr">
+Jos haluat generoida esim. <em>олмам</em>, kirjoita <code>олма+N+Acc</code>
+</example>
+
+<example tool="generate" lang="mns">
+Jos haluat generoida esim. <em>улят</em>, kirjoita <code>уля+N+Sg+Loc</code>
+</example>
+
+<example tool="generate" lang="myv">
+Jos haluat generoida esim. <em>пангсто</em>, kirjoita <code>панго+N+Sg+Ela+Indef</code>
+</example>
+
+<example tool="generate" lang="rus">
+Jos haluat generoida esim. <em>тигров</em>, kirjoita <code>тигр+N+Msc+Pl+Acc</code>
+</example>
+
+<example tool="generate" lang="sma">
+In order to get <em>gåatan</em>, kirjoita <code>gåetie+N+Sg+Ill</code>
+</example>
+
+<example tool="generate" lang="sme">
+Jos haluat generoida esim. <em>viesus</em>, kirjoita <code>viessu+N+Sg+Loc</code>.
+</example>
+
+<example tool="generate" lang="smj">
+Jos haluat generoida esim. <em>gádov</em>,
+kirjoita <code>gáhtot+V+Ind+Prs+Sg1</code>. Sanoille <em>elluj</em> ja <em>muv</em>,
+kirjoita <code>ællo+N+Sg+Ill</code> ja <code>mån+Pron+Pers+Sg1+Acc</code>.
+</example>
+
+<example tool="generate" lang="sms">
+Jos haluat generoida esim. <em>kuäʹđest</em>, kirjoita <code>kueʹtt+N+Sg+Loc</code>.
+</example>
+
+<example tool="generate" lang="yrk">
+Jos haluat generoida esim. <em>тэхэна</em>, kirjoita <code>ты+N+Sg+Loc</code>
+</example>
+
+
+<!-- instruction -->
+
+<instruction tool="paradigm" />
+<instruction tool="analyze">Kirjoita sanamuodot:</instruction>
+<instruction tool="generate">Kirjoita sanamuoto ja kieliopillinen koodi:</instruction>
+<instruction tool="placenames">Kirjoita paikannimi:</instruction>
+
+
+<!-- selection -->
+
+<selection tool="paradigm">
+<select type="minimal">Minimiparadigma</select>
+<select type="standard">Standardiparadigma</select>
+<select type="full">Kokonainen paradigma</select>
+<select type="test">Paradigma kokeilua varten (työn alla)</select>
+<!-- select type="dialect">Kokonainen paradigma murrevaihteluineen</select -->
+</selection>
+
+<selection tool="analyze">
+<select tool="analyze">Kirjoita kaikki sanamuodot</select>
+<select tool="disamb">Disambiguointi</select>
+<select tool="dependency">Dependenssirakenne</select>
+<select tool="hyphenate">Tavuta</select>
+<select tool="transcribe">Translitteroi</select>
+<select tool="complextranscribe">Translitteroi</select>
+<select tool="convert">Muunna</select>
+<select tool="lat2syll">Latinalaiset kirjaimet tavuaakkosiin</select>
+<select tool="syll2lat">Tavuaakkoset latinalaisiin kirjaimiin</select>
+</selection>
+
+<selection tool="translate">
+<select lang="none">Ei käännöstä</select>
+<select lang="dan">Sanakääntäminen tanskaksi</select>
+<select lang="nob">Sanakääntäminen norjaksi</select>
+<select lang="smj">Luulajansaamen sanakäännös</select>
+<select lang="sme">Pohjoissaamen sanakäännös</select>
+</selection>
+
+<charset>Merkkikoodaus:</charset>
+
+<input type="submit">Lähetä</input>
+<input type="reset">Nollaa</input>
+
+<noresult tool="paradigm">Paradigma ei löydy</noresult>
+<otherforms tool="paradigm">Muut muodot</otherforms>
+
+<endtext>
+Ohjelma on rakenteilla. Mikäli huomaat virheitä,
+ilmoita niistä osoitteeseen giellatekno@uit.no.
+</endtext>
+
+
+
+<!-- end -->
+
+<end lang="sma">
+Ohjelma on rakenteilla. Mikäli huomaat virheitä,
+ilmoita niistä osoitteeseen giellatekno@uit.no.
+</end>
+
+<end lang="smj">
+Luulajansaamen analyysiohjelma sisältää lähes 20000 perusmuotoa
+(Spiikin kieliopista, Nystø / Johnsenin oppikirjasta "Sámásta" ja
+ennen kaikkea Kintelin ja Korhosen sanakirjoista).
+Jos huomaat virheitä tai puutteita,
+ilmoita niistä osoitteeseen giellatekno@uit.no.
+</end>
+
+<end lang="smn">
+Ohjelma on testausvaiheessa ja se sisältää vain joitakin sanoja
+Sammallahti - Morottaja sanakirjan kielioppiosasta. Mikäli huomaat virheitä,
+ilmoita niistä osoitteeseen giellatekno@uit.no.
+</end>
+
+<end lang="sms">
+Ohjelma sisältää tuhansia sanoja Itkoselta, Moshnikoffilta,
+Sammallahdelta ja nykyisestä sotsiaalimediasta.
+Mikäli huomaat virheitä,
+ilmoita niistä osoitteeseen giellatekno@uit.no.
+</end>
+
+<end tool="analyze">Ohjelma on rakenteilla. Mikäli huomaat virheitä,
+ilmoita niistä osoitteeseen <a mailto="giellatekno@uit.no">giellatekno@uit.no</a></end>
+
+
+
+<noresult tool="paradigm">Emme löydä yhtään paradigmaa</noresult>
+<otherforms tool="paradigm">Muut muodot</otherforms>
+
+<!-- link -->
+
+<link type="grammartags">Morfologiset tagit</link>
+<link type="syntaxtags">Kieliopilliset tagit</link>
+<link type="deptags">Dependenssitagit</link>
+
+<!-- grammar -->
+
+<grammar>
+<pos type="Any">Kaikki</pos>
+<pos type="N">Substantiivi</pos>
+<pos type="V">Verbi</pos>
+<pos type="Pron">Pronomini</pos>
+<pos type="A">Adjektiiivi</pos>
+<pos type="Adv">Adverbi</pos>
+<pos type="Num">Lukusana</pos>
+</grammar>
+
+</content>

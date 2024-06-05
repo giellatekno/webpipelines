@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+  <!ENTITY % corpusDTD SYSTEM "https://giellatekno.uit.no/dtd/corpus.dtd">
+  %corpusDTD;
+  <!ENTITY % canengDTD SYSTEM "https://giellatekno.uit.no/dtd/caneng.dtd">
+  %canengDTD;
+  <!ENTITY % canfinDTD SYSTEM "https://giellatekno.uit.no/dtd/canfin.dtd">
+  %canfinDTD;
+  <!ENTITY % cannobDTD SYSTEM "https://giellatekno.uit.no/dtd/cannob.dtd">
+  %cannobDTD;
+  <!ENTITY % canrusDTD SYSTEM "https://giellatekno.uit.no/dtd/canrus.dtd">
+  %canrusDTD;
+  <!ENTITY % cansmaDTD SYSTEM "https://giellatekno.uit.no/dtd/cansma.dtd">
+  %cansmaDTD;
+  <!ENTITY % cansmeDTD SYSTEM "https://giellatekno.uit.no/dtd/cansme.dtd">
+  %cansmeDTD;
+  <!ENTITY % cansmjDTD SYSTEM "https://giellatekno.uit.no/dtd/cansmj.dtd">
+  %cansmjDTD;
+]>
+<content>
+  <!-- Title: lang + language tools -->
+  <lt>&ltfin;</lt>
+  <lname lang="bxr">&bxrfin;</lname>
+  <lname lang="ciw">&ciwfin;</lname>
+  <lname lang="cor">&corfin;</lname>
+  <lname lang="crk">&crkfin;</lname>
+  <lname lang="est">&estfin;</lname>
+  <lname lang="fao">&faofin;</lname>
+  <lname lang="fin">&finfin;</lname>
+  <lname lang="fit">&fitfin;</lname>
+  <lname lang="fkv">&fkvfin;</lname>
+  <lname lang="gle">&glefin;</lname>
+  <lname lang="hdn">&hdnfin;</lname>
+  <lname lang="ipk">&ipkfin;</lname>
+  <lname lang="izh">&izhfin;</lname>
+  <lname lang="kal">&kalfin;</lname>
+  <lname lang="kca">&kcafin;</lname>
+  <lname lang="koi">&koifin;</lname>
+  <lname lang="kpv">&kpvfin;</lname>
+  <lname lang="liv">&livfin;</lname>
+  <lname lang="mdf">&mdffin;</lname>
+  <lname lang="mhr">&mhrfin;</lname>
+  <lname lang="mns">&mnsfin;</lname>
+  <lname lang="mrj">&mrjfin;</lname>
+  <lname lang="myv">&myvfin;</lname>
+  <lname lang="nio">&niofin;</lname>
+  <lname lang="nob">&nobfin;</lname>
+  <lname lang="olo">&olofin;</lname>
+  <lname lang="rmf">&rmffin;</lname>
+  <lname lang="rus">&rusfin;</lname>
+  <lname lang="sjd">&sjdfin;</lname>
+  <lname lang="sje">&sjefin;</lname>
+  <lname lang="sma">&smafin;</lname>
+  <lname lang="sme">&smefin;</lname>
+  <lname lang="smj">&smjfin;</lname>
+  <lname lang="smn">&smnfin;</lname>
+  <lname lang="sms">&smsfin;</lname>
+  <lname lang="udm">&udmfin;</lname>
+  <lname lang="vep">&vepfin;</lname>
+  <lname lang="vro">&vrofin;</lname>
+  <lname lang="vot">&votfin;</lname>
+  <lname lang="yrk">&yrkfin;</lname>
+
+  <!-- anders: conflict: using the one in cgi-fin.xml -->
+  <!--<place>Saamen logo, Tromssan yliopisto</place>-->
+  <copyright>Copyright © Saamen kieliteknologian projekti</copyright>
+
+<!-- Introduction -->
+
+<introduction />
+
+<introduction lang="bxr">Buriatin analysaattori on juuri tekeillä.</introduction>
+<introduction lang="ciw">Ojibwen analysaattori on juuri tekeillä.</introduction>
+<introduction lang="cor">
+Tämä on kornin kielen jäsentimen projektisivu. Hanke on vielä alkuvaiheessa. Voit analysoida kourallinen sanoja. Jäsennin perustuu Single Written Form
+-standardiin.
+</introduction>
+<introduction lang="crk">Plains cree-kielen analysaattori on juuri tekeillä</introduction>
+<introduction lang="est">Viron kielen analysaattori on juuri tekeillä</introduction>
+<introduction lang="fao">
+Fäärin kielen työkalut yhdistävät morfologisen ja morfofonologisen
+transduuserin ja <em>Føroysk orðabók</em>-sanakirjan sanat kieliopilliseen
+analyysiohjelmaan. Morfologinen kattavuus on melko hyvä (vahvoja verbejä
+ja adjektiivien aukkoja lukuun ottamatta), mutta syntaktinen analysaattori
+on alkutekijöissään.
+</introduction>
+
+<introduction lang="fin">
+Suomen analysaattori perustuu omorfi-ohjelmaan ja Suomen perussanakirjan lemmalistaan.
+</introduction>
+
+<introduction lang="fit">
+Meänkielen analysaattori on vasta aluvaiheessa. Analyysiohjelman leksikko on Meän Akateemin sanakirja
+</introduction>
+
+<introduction lang="gle">Iirin kielen analysaattori on testausvaiheessa</introduction>
+
+<introduction lang="ipk">
+Tämän on inupiakin jäsentimen projektin kotisivu. Hanke on vielä
+alkuvaiheessa. Meidän inupiak-analysaattori kattaa kieliopin perustaivutusmuotoja,
+ja keskeinen sanasto (mutta vain pienen osan sanajohtimesta). Tarjoamme myös
+muunnosta <em>Interactive Inupiaq Dictionary</em>-sanakirjan koodauksesta Unicodeen.
+</introduction>
+<introduction lang="izh">Inkeroiskielen analysaattori on juuri tekeillä</introduction>
+<introduction lang="kal">
+  Tämä on toinen Grönlannin jäsentimen projektin kotisivuista. Käytä
+  tätä sivua, jos haluat analysoida grönlanninkielisiä tekstejä,
+  muuntaa Kleinschmidtin oikeinkirjoitus modernille
+  oikeinkirjoitukselle (tunnettu bugi: û ei muunneta oikein, muuten
+  muuntimen pitäisi toimia), translitteroida tekstiä, tai jos vain
+  haluat lukea jäsentimesta. Projektin toinen kotisivu löytyy
+  Oqaasileriffikin kotisivulta, jossa voit luoda taivutusparadigmoja.
+
+  <p>
+    Infrastruktuuri, kielestä riippumattomat komponentit ja menetelmät
+    grönlannin jäsentimen takana ovat sama kuin saamen kielten
+    vastaavissa ohjelmissa, joita on kuvattu muualla näillä
+    sivustoilla. Kielestä riippumaton tieto annettu <a
+    href="https://giellalt.uit.no/index.html"> Saamelaisten jäsentimien sivuilla</a>pätee
+    siis myös grönlantiin.
+  </p>
+
+  <p>
+    <strong>uusi versio</strong> Grönlannin oikoluku- ja
+    tavutusohjelmasta Windows MS Office:lle (KUKKUNIIAAT versio. 2,0)
+    on nyt <strong>valmis ladattavaksi</strong>. Se on maksuton ja sen
+    voi ladata <a
+    href="https://www.oqaasileriffik.gl/content/dk/tryk_her_for_at_fa_den_nye_stavekontrol">täältä</a>.
+  </p>
+</introduction>
+
+<introduction lang="kca">Hantin kielen analysaattori on juuri tekeillä</introduction>
+
+<introduction lang="koi">Komipermjakin kielen sanojen analyysiohjelmat toimivat melko hyvin.</introduction>
+<introduction lang="kpv">Komin kielen sanojen analyysiohjelmat toimivat melko hyvin.</introduction>
+<introduction lang="liv">Liivin kielen sanojen analyysiohjelmat toimivat melko hyvin. </introduction>
+<introduction lang="mdf">Mokšan kielen sanojen analyysiohjelmat toimivat melko hyvin. </introduction>
+<introduction lang="mhr">Niittymarin kielen sanojen analyysiohjelmat toimivat melko hyvin. </introduction>
+<introduction lang="mns">Mansin analysaattori on juuri tekeillä.</introduction>
+<introduction lang="mrj">Vuorimarin sanojen analyysiohjelmat toimivat melko hyvin.</introduction>
+<introduction lang="nio">Nganasanin kielen analysaattori on juuri tekeillä</introduction>
+<introduction lang="olo">Aunuksenkarjalan kielen sanojen analyysiohjelmat toimivat melko hyvin. </introduction>
+<introduction lang="rmf">Suomen romanikielen analysaattori on juuri aloitettu, siinä on noin 700 lemmaa.</introduction>
+<introduction lang="rus">Venäjän analysaattori toimii melko hyvin.</introduction>
+<introduction lang="sjd">Kilttinän saamelaisten analysaattori sisältää vain kourallinen sanoja.</introduction>
+<introduction lang="sje">Piitimen analysaattori sisältää vain kourallinen sanoja.</introduction>
+<introduction lang="udm">Udmurtin sanojen analyysiohjelmat toimivat melko hyvin.</introduction>
+<introduction lang="vep">Vepsän kielen analysaattori on juuri tekeillä</introduction>
+<introduction lang="vot">Vatjan kielen analysaattori on juuri tekeillä</introduction>
+<introduction lang="vro">Võron kielen analysaattori on juuri tekeillä</introduction>
+<introduction lang="yrk">Nenetsin kielen sanojen analyysiohjelmat toimivat kohtuullisen hyvin.</introduction>
+
+<introduction lang="smj">Luulajansaamen sanojen analyysiohjelmat toimivat melko hyvin. Syntaktinen analyysi on vielä alkuvaiheessa.</introduction>
+<introduction lang="smn">Inarisaamen sanojen analyysiohjelmat toimivat melko hyvin. Syntaktinen analyysi on vielä alkuvaiheessa.</introduction>
+<introduction lang="sms">Koltansaamen sanojen analyysiohjelmat toimivat kohtuullisesti.</introduction>
+
+<!-- Analysis section -->
+<analysis>
+Tekstin analysointi
+</analysis>
+
+<analysis lang="sms" />
+
+<!-- Analysis text section -->
+
+<analysis_text>
+Analysoi, disambiguoi ja tavuttaa tekstiä.
+</analysis_text>
+
+<analysis_text lang="bxr">Analysoi tekstiä.</analysis_text>
+<analysis_text lang="ciw">Analysoi tekstiä.</analysis_text>
+<analysis_text lang="cor">Analysoi ja disambiguoi tekstiä.</analysis_text>
+<analysis_text lang="est">Analysoi tekstiä.</analysis_text>
+<analysis_text lang="fao">Analysoi, disambiguoi ja tavuttaa tekstiä.</analysis_text>
+<analysis_text lang="fin">Analysoi, disambiguoi ja tavuttaa tekstiä.</analysis_text>
+<analysis_text lang="fit">Analysoi, tavuttaa ja translitteroi tekstiä.</analysis_text>
+<analysis_text lang="fkv">Analysoi tekstiä.</analysis_text>
+<analysis_text lang="hdn">Analysoi tekstiä.</analysis_text>
+
+<analysis_text lang="ipk">
+Analysoi sanoja (ei syntaktista analyysia). Voit liittää tekstiä, ja ohjelma antaa kaikki mahdolliset analyysit jokaisesta sanamuodosta. Voit myös muuntaa tekstin <em>Interactive inupiak Dictionary</em>-sanakirjan koodauksen Unicode-muotoon.
+</analysis_text>
+
+<analysis_text lang="kal">
+Analysoi, disambiguoi ja tavuttaa tekstiä. Ohjelma kääntää myös tekstin IPA-tarkekirjoitukselle, ja se kääntää Kleinschmidt-ortografian (pre-1973) nykyaikaiselle ortografialle.
+</analysis_text>
+
+<analysis_text lang="mhr">Analysoi tekstiä.</analysis_text>
+<analysis_text lang="mns">Analysoi tekstiä.</analysis_text>
+<analysis_text lang="myv">Analysoi tekstiä.</analysis_text>
+<analysis_text lang="rmf">Analysoi tekstiä. Ohjelman teko on alkuvaiheessa</analysis_text>
+<analysis_text lang="rus">Analysoi tekstiä.</analysis_text>
+<analysis_text lang="udm">Analysoi tekstiä.</analysis_text>
+<analysis_text lang="sjd">Analysoi vain tiettyjä sanoja.</analysis_text>
+<analysis_text lang="sje">Analysoi sanoja ja tekstiä.</analysis_text>
+<analysis_text lang="sma">Analysoi, disambiguoi ja tavuttaa tekstiä.</analysis_text>
+
+<analysis_text lang="sme">
+Analysoi, disambiguoi ja tavuttaa tekstiä ja antaa dependenssianalyysin. Kääntää tekstiä IPA-tarkekirjoitukselle.
+</analysis_text>
+
+<analysis_text lang="smj">Analysoi, disambiguoi ja tavuttaa tekstiä.</analysis_text>
+<analysis_text lang="smn">Analysoi, disambiguoi ja tavuttaa tekstiä.</analysis_text>
+<analysis_text lang="sms">Analysoi sanoja ja tekstiä.</analysis_text>
+<analysis_text lang="yrk">Analysoi sanoja ja tekstiä.</analysis_text>
+
+
+<!-- paradigm section -->
+
+<paradigm>Taivutusparadigmojen tuottaminen</paradigm>
+
+<paradigm lang="fkv" />
+<paradigm lang="hdn" />
+
+<!-- paradigm text section -->
+
+<paradigm_text>
+Erikokoisten taivutusparadigmojen tuottaminen mille sanalle tahansa.
+</paradigm_text>
+
+<paradigm_text lang="ipk">
+Erikokoisten taivutusparadigmojen tuottaminen perussanastolle.
+</paradigm_text>
+
+<paradigm_text lang="mns">
+Erikokoisten taivutusparadigmojen tuottaminen perussanastolle.
+</paradigm_text>
+
+<paradigm_text lang="sjd">
+Taivutusparadigmojen tuottaminen toimii periaatteessä, mutta paradigmat
+sisältävät enemmän virheitä kuin oikeita muotoja. Tällä hetkellä
+ohjelma toimii internetissä lähinnä sisäistä kehitystyötä varten.
+</paradigm_text>
+
+<paradigm_text lang="sje">
+Erikokoisten taivutusparadigmojen tuottaminen perussanastolle.
+</paradigm_text>
+
+
+<!-- generator section -->
+
+<generator>Sanantaivutus</generator>
+
+<generator_text>
+Tuottaa sanamuotoja käyttäen perusmuotoa ja kieliopillisia tunnisteita.
+</generator_text>
+
+
+<!-- numerals section -->
+
+<numerals>
+Lukusanat
+</numerals>
+
+<numerals lang="fkv" />
+
+<!-- numerals text section -->
+
+
+<numerals_text>
+Haetaessa numerolla (1, 23, jne.) ohjelma tuottaa vastaavan lukusanan.
+</numerals_text>
+
+
+<numerals_text lang="bxr">
+Vieläkään ei ole lukusanageneraattori burjaattin kielelle.
+</numerals_text>
+
+<numerals_text lang="ciw">
+Vieläkään ei ole lukusanageneraattori ojibwen kielelle.
+</numerals_text>
+
+<numerals_text lang="cor">
+Vieläkään ei ole lukusanageneraattori kornin kielelle.
+</numerals_text>
+
+<numerals_text lang="fao">
+Vieläkään ei ole lukusanageneraattori fäärin kielelle.
+</numerals_text>
+
+<numerals_text lang="fkv" />
+
+
+
+<numerals_text lang="ipk">
+Vieläkään ei ole lukusanageneraattori inupiakin kielelle.
+</numerals_text>
+
+<numerals_text lang="kal">
+Vieläkään ei ole lukusanageneraattori grönlannin kielelle.
+</numerals_text>
+
+<numerals_text lang="rus">
+Anna numero (23, ja 10:15 jne), ja ohjelma tuottaa vastaavan lukusanan,  tai kellonajan.
+</numerals_text>
+
+<numerals_text lang="sma">
+Anna numero (23, 10:15 ja 25.2. jne), ja ohjelma tuottaa vastaavan lukusanan, kellonajan tai päivämäärän.
+</numerals_text>
+
+<numerals_text lang="sme">
+Anna numero (23, 10:15 ja 25.2. jne), ja ohjelma tuottaa vastaavan lukusanan, kellonajan tai päivämäärän.
+</numerals_text>
+
+<numerals_text lang="smj">
+Anna numero (23, 10:15 ja 25.2. jne), ja ohjelma tuottaa vastaavan lukusanan, kellonajan tai päivämäärän.
+</numerals_text>
+
+<numerals_text lang="sjd">
+Anna numero (23, 25.2. jne), ja ohjelma tuottaa vastaavan lukusanan tai päivämäärän.
+</numerals_text>
+
+<numerals_text lang="udm">
+Vieläkään ei ole lukusanageneraattori udmurtin kielelle.
+</numerals_text>
+
+
+
+  <!-- Dictionary page -->
+
+<dicts>Dictionaries</dicts>
+<dicts_text>Lexical resources</dicts_text>
+
+
+<!-- Dictionaries -->
+
+<nds>NDS / NDB</nds>
+
+<nds_text>
+Interaktiivinen sanakirja, sanataivutus ja esimerkit suoraan tekstikokoelmasta
+</nds_text>
+
+
+<!-- Web Dictionaries -->
+
+
+<webdictionaries>
+Webdict Verkkosanakirja
+</webdictionaries>
+
+<webdictionaries_text>Look up words in an online web dictionary. The words are presented as a list, which can be useful if you don't know how to spell the word.</webdictionaries_text>
+
+<webdictionaries_text lang="sjd">
+Hae sanoja verkkosanakirjasta. Sanakirja perustuu Rimma Kuručin Saamskij slovar-sanakirjaan
+</webdictionaries_text>
+
+<webdictionaries_text lang="myv">
+Hae sanoja yksikielisestä ersä - ersä verkkosanakirjsta.
+</webdictionaries_text>
+
+<!-- VD Dictionaries -->
+
+<VDdictionaries>
+VD: Ladattavissa olevat sähköiset sanakirjat
+</VDdictionaries>
+
+<VDdictionaries_text />
+
+<!-- Grammar -->
+
+<grammar>Kielioppi</grammar>
+
+
+
+
+<!-- Korp -->
+<korp>Korp - tekstikokoelma</korp>
+
+<!-- Korp text -->
+<korp_text>Etsi sanoja ja kieliopillisiä ilmiöitä tekstikokoelmasta (ei toimi Internet Explorerissa).</korp_text>
+
+
+<!-- Placenames -->
+
+<placenames>GEO - Kääntää paikannimet</placenames>
+
+
+<placenames_text>
+Kirjoita paikannimi norjaksi tai suomeksi, ja saat vastaavan paikannimen saameksi tai päinvastoin.
+</placenames_text>
+
+
+
+<!-- Risten -->
+
+<risten lang="smj">báhko.org - Terminologinen tietokanta</risten>
+<risten lang="sma">baakoe.org - Terminologinen tietokanta</risten>
+<risten lang="sme">sátni.org - Terminologinen tietokanta</risten>
+
+<risten_text>Tämä on risten.no-sivun uusi versio</risten_text>
+
+
+<!-- Divvun -->
+<divvun>Divvun - oikeinkirjoitusohjelma</divvun>
+<divvun_text />
+
+<!-- keyboard -->
+
+<keyboard>Saamen näppäimistö</keyboard>
+
+<!-- Keyboard text -->
+<keyboard_text />
+
+
+
+<!-- Oahpa -->
+
+<oahpa>Oahpa! ohjelmat kieltenoppimiselle</oahpa>
+<oahpa_text lang="sme">
+Interaktiiviset ohjelmat sanaston, sanataivotuksen ja vuoropuhelun harjoittelua varten.
+</oahpa_text>
+<oahpa_text lang="sma">
+Interaktiiviset ohjelmat sanaston ja sanataivotuksen harjoittelua varten.
+</oahpa_text>
+<oahpa_text lang="sjd">
+Interaktiiviset ohjelmat sanaston harjoittelua varten.
+</oahpa_text>
+<oahpa_text lang="smn">
+Interaktiiviset ohjelmat sanaston harjoittelua varten.
+</oahpa_text>
+<oahpa_text lang="sms">
+Interaktiiviset ohjelmat sanaston harjoittelua varten.
+</oahpa_text>
+
+<!-- crkoahpa -->
+<crkoahpa>nêhiyawêtân ohjelmat kieltenoppimiselle</crkoahpa>
+<!-- nêhiyawêtân text -->
+<crkoahpa_text lang="crk">
+Interaktiiviset ohjelmat sanaston harjoittelua varten. Demo.
+</crkoahpa_text>
+
+<tts>Puheentuotto</tts>
+<tts_text>Tietokone lukee tekstin ääneen.</tts_text>
+
+
+<!-- kursa -->
+<kursa>Kielikurssi</kursa>
+<kursa_text />
+<!-- Gïelese -->
+<gielese>Gïelese</gielese>
+<gielese_text>Opi sanoja - sisältää audiotiedostoja ja valokuvia</gielese_text>
+
+<!-- VISL -->
+<visl>VISL</visl>
+<visl_text>Interaktiivinen ohjelma kieliopin oppimista varten.</visl_text>
+
+<!-- MT -->
+<mt>Konekääntäminen pohjoissaamesta norjaksi</mt>
+<mt_text>Liimaa sisään tekstia, tai käännä nettisivuja.</mt_text>
+
+<!-- MT -->
+<mt2>Konekääntäminen saamen kielten välissä</mt2>
+<mt2_text>Liimaa sisään tekstia, tai käännä nettisivuja. Ohjelma on beta-tasolla.</mt2_text>
+
+
+<!-- Muut -->
+<other lang="izh" >Inkeroiskielen työkalut edustavat Jack Rueterin työpanosta yhteistyössä Giellateknon kanssa. Työtä ovat rahoittaneet Koneen Säätiö ja Tromssan yliopisto</other>
+
+<other lang="ipk">
+Hanke on
+<a href="https://www.oqaasileriffik.gl/">Grönlannin kielineuvoston (Oqaasileriffik)</a> ja Tromssan yliopiston yhteistyöprojekti.
+</other>
+
+<other lang="kal">
+Hanke on
+<a href="https://www.oqaasileriffik.gl/">Grönlannin kielineuvoston (Oqaasileriffik)</a> ja Tromssan yliopiston yhteistyöprojekti.
+</other>
+
+<other lang="kca" >Pohjoishantin työkalut edustavat Jack Rueterin työpanosta yhteistyössä Giellateknon kanssa. Työtä ovat rahoittaneet Koneen Säätiö ja Tromssan yliopisto</other>
+
+<other lang="koi">
+Komipermjakin kielen työkalut ovat tekeillä. Ne luodaan FU-labin, Giellateknon ja Jack Rueterin yhteistyönä.
+</other>
+
+
+<other lang="kpv">
+Komin kielen työkalut ovat tekeillä. Ne luodaan Giellateknon ja Jack Rueterin yhteistyönä. Analyysiohjelmat perustuvat Jack Rueterin Komi-suomi-englanti sanakirjaan.
+</other>
+
+<other lang="liv" >Liivin työkalut edustavat Renate Blumbergin Jack Rueterin työpanosta yhteistyössä Giellateknon kanssa. Työtä ovat rahoittaneet Koneen Säätiö ja Tromssan yliopisto</other>
+<other lang="mdf" >Mokšan työkalut edustavat Eeva Herralan, Aleksandr Feoktistovin, Merja Salon ja Jack Rueterin työpanosta yhteistyössä Giellateknon kanssa. Työtä ovat rahoittaneet Koneen Säätiö ja Tromssan yliopisto</other>
+
+<other lang="mhr">
+Niitymarin työkalut ovat tekeillä. Ne luodaan Giellateknon ja Jorma Luutosen yhteistyönä. Analyysiohjelmat perustuvat Arto Moision mari-suomi sanakirjaan.
+</other>
+
+<other lang="mrj" >Vuorimarin työkalut edustavat Julia Kuprinan ja Jack Rueterin työpanosta yhteistyössä Giellateknon kanssa. Työtä ovat rahoittaneet Koneen Säätiö ja Tromssan yliopisto</other>
+
+<other lang="myv">
+Ersän kielen työkalut ovat tekeillä. Ne luodaan Giellateknon ja Jack Rueterin yhteistyönä. Analyysiohjelmat perustuvat useamman sanakirjan työhön.
+</other>
+
+<other lang="nio" >Nganasaanin työkalut edustavat Jack Rueterin työpanosta yhteistyössä Giellateknon kanssa. Työtä ovat rahoittaneet Koneen Säätiö ja Tromssan yliopisto</other>
+<other lang="olo" >Aunuksenkarjalan työkalut edustavat Timo Rantakaulion ja Jack Rueterin työpanosta yhteistyössä Giellateknon kanssa. Työtä ovat rahoittaneet Koneen Säätiö ja Tromssan yliopisto</other>
+
+<other lang="rmf">Suomen romanikielen työkalujen luominen on juuri alkamassa. Analyysiohjelmat  ovat käytettävissä koekäyttöä varten.</other>
+
+
+<other lang="sjd">
+Kilttinänsaamen työkalujen luominen on juuri alkamassa. Analyysiohjelmat  ovat käytettävissä koekäyttöä varten.
+</other>
+
+<other lang="sje">
+Piitimensaamen työkalujen luominen on juuri alkamassa. Analyysiohjelmat  ovat käytettävissä koekäyttöä varten.
+</other>
+
+<other lang="vep" >Vepsän työkalut edustavat Jack Rueterin työpanosta yhteistyössä Giellateknon kanssa. Työtä ovat rahoittaneet Koneen Säätiö ja Tromssan yliopisto</other>
+<other lang="yrk" >Tundranenetsin työkalut edustavat Tapani Salmisen, Sven-Erik Soosaaren ja Jack Rueterin työpanosta yhteistyössä Giellateknon kanssa. Työtä ovat rahoittaneet Koneen Säätiö ja Tromssan yliopisto</other>
+
+
+</content>
+
+<!--
+Template for new tag:
+
+<tag lang="cor">
+</tag>
+
+<tag lang="fao">
+</tag>
+
+<tag lang="ipk">
+</tag>
+
+<tag lang="kal">
+</tag>
+
+<tag lang="sjd">
+</tag>
+
+<tag lang="sma">
+</tag>
+
+<tag lang="sme">
+</tag>
+
+<tag lang="smj">
+</tag>
+
+<tag lang="smn">
+</tag>
+
+<tag lang="sms">
+</tag>
+-->

@@ -1,0 +1,51 @@
+<!-- =============================================================== -->
+<!-- fin canned text -->
+<!-- =============================================================== -->
+<!ENTITY ltfin "työkalut">
+
+<!-- lang names: concat(lang_code,local_lang_code) -->
+<!ENTITY rmffin "[fin] rmffin">
+
+<!ENTITY bxrfin "Buriatin kielen">
+<!ENTITY ciwfin "Ojibwen kielen">
+<!ENTITY corfin "Kornin kielen">
+<!ENTITY crkfin "Plains cree-kielen">
+<!ENTITY estfin "Viron kielen">
+<!ENTITY evnfin "Evenkin kielen">
+<!ENTITY faofin "Fäärin kielen">
+<!ENTITY finfin "Suomen kielen">
+<!ENTITY fitfin "Meänkielen">
+<!ENTITY fkvfin "Kveenin kielen">
+<!ENTITY glefin "Iirin kielen">
+<!ENTITY hdnfin "Pohjoishaidan kielen">
+<!ENTITY ipkfin "Inupiakin kielen">
+<!ENTITY izhfin "Inkeroiskielen">
+<!ENTITY kalfin "Grönlannin kielen">
+<!ENTITY kcafin "Hantin kielen">
+<!ENTITY koifin "Komipermjakn kielen">
+<!ENTITY kpvfin "Komin kielen">
+<!ENTITY livfin "Liivin kielen">
+<!ENTITY mdffin "Mokšan kielen">
+<!ENTITY mhrfin "Niittymarin kielen">
+<!ENTITY mnsfin "Mansin kielen">
+<!ENTITY mrjfin "Vuorimarin kielen">
+<!ENTITY myvfin "Ersän kielen">
+<!ENTITY niofin "Nganasanin kielen">
+<!ENTITY nobfin "Norjan (bokmålin) kielen">
+<!ENTITY olofin "Livvin kielen">
+<!ENTITY rusfin "Suomen romanikielen">
+<!ENTITY rusfin "Venäjän kielen">
+<!ENTITY sjdfin "Kildininsaamen">
+<!ENTITY sjefin "Piitimensaamen">
+<!ENTITY smafin "Eteläsaamen">
+<!ENTITY smefin "Pohjoissaamen">
+<!ENTITY smjfin "Luulajansaamen">
+<!ENTITY smnfin "Inarinsaameksi">
+<!ENTITY smsfin "Koltansaamen">
+<!ENTITY somfin "Somalin kielen">
+<!ENTITY udmfin "Udmurtin kielen">
+<!ENTITY vepfin "Vepsän kielen">
+<!ENTITY vrofin "Võron kielen">
+<!ENTITY votfin "Vatjan kielen">
+<!ENTITY yrkfin "Nenetsin kielen">
+

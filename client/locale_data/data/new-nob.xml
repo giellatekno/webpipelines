@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+    <interfacelanguage>Grensesnittspråk</interfacelanguage>
+    <search>Søk</search>
+    <languagetools>Språkverktøy</languagetools>
+    <generate>Generer</generate>
+    <analyze>Analyser</analyze>
+    <analyze.description>Analyser ett eller flere ord hver for seg</analyze.description>
+    <spellcheck>Stavekontroll</spellcheck>
+    <spellcheck.description>Utfør stavekontroll for ett eller flere ord</spellcheck.description>
+    <disambiguate>Disambiguer</disambiguate>
+    <dependency>Dependensstruktur</dependency>
+    <hyphenation>Orddeling</hyphenation>
+    <transcription>IPA transkribsjon</transcription>
+    <nowexploring>Du utforsker nå</nowexploring>
+    <filters>filtre</filters>
+    <samilanguages>samiske språk</samilanguages>
+    <nonsamiuralic>ikke-samiske uralske</nonsamiuralic>
+    <otherlanguages>andre språk</otherlanguages>
+    <exploreanotherlang>Utforsk et annet språk</exploreanotherlang>
+    <index.showtoolsfordotdotdot>Vis verktøy for...</index.showtoolsfordotdotdot>
+    <langmodellastupdated>Språkmodellen ble sist oppdatert</langmodellastupdated>
+</content>

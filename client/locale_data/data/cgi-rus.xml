@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//UIT//DTD CGI TRANSLATIONS V1.0//EN" "https://giellatekno.uit.no/dtd/cgi-translations.dtd">
+<content>
+
+
+<title tool="analyze" lang="bxr" >Программы для анализа бурятского языка</title>
+<title tool="analyze" lang="ciw" >Программы для анализа оджибве языка</title>
+<title tool="analyze" lang="cor" >Программы для анализа корнского языка</title>
+<title tool="analyze" lang="crk" >Программы для анализа языка равнинный кри</title>
+<title tool="analyze" lang="est" >Программы для анализа эстонкского языка</title>
+<title tool="analyze" lang="evn" >Программы для анализа эвенкского языка</title>
+<title tool="analyze" lang="fao" >Программы для анализа фарерского языка</title>
+<title tool="analyze" lang="fin" >Программы для анализа финского языка</title>
+<title tool="analyze" lang="fit" >Программы для анализа меянкиелского языка</title>
+<title tool="analyze" lang="fkv" >Программы для анализа квенского языка</title>
+<title tool="analyze" lang="gle" >Программы для анализа ирландского языка</title>
+<title tool="analyze" lang="hdn" >Программы для анализа северохайдского языка</title>
+<title tool="analyze" lang="ipk" >Программы для анализа языка инупиак</title>
+<title tool="analyze" lang="kal" >Программы для анализа гренландского языка</title>
+<title tool="analyze" lang="kpv" >Программы для анализа коми языка</title>
+<title tool="analyze" lang="mhr" >Программы для анализа марийского языка</title>
+<title tool="analyze" lang="mns" >Программы для анализа мансийского языка</title>
+<title tool="analyze" lang="myv" >Программы для анализа эрзянского языка</title>
+<title tool="analyze" lang="nob" >Программы для анализа норвежского языка</title>
+<title tool="analyze" lang="rrm" >Программы для анализа финского калского языка</title>
+<title tool="analyze" lang="rus" >Программы для анализа русского языка</title>
+<title tool="analyze" lang="sje" >Программы для анализа пите-саамского языка</title>
+<title tool="analyze" lang="sma" >Программы для анализа южносаамского языка</title>
+<title tool="analyze" lang="sme" >Программы для анализа северосаамского языка</title>
+<title tool="analyze" lang="smj" >Программы для анализа луле-саамского языка</title>
+<title tool="analyze" lang="smn" >Программы для анализа инари-саамского языка</title>
+<title tool="analyze" lang="sms" >Программы для анализа колтта-саамского языка</title>
+<title tool="analyze" lang="som" >Программы для анализа сомалийского языка</title>
+<title tool="analyze" lang="udm" >Программы для анализа удмуртского языка</title>
+<title tool="analyze" lang="izh" >Программы для анализа ижорского языка</title>
+<title tool="analyze" lang="kca" >Программы для анализа хантыйского языка</title>
+<title tool="analyze" lang="liv" >Программы для анализа ливского языка</title>
+<title tool="analyze" lang="mdf" >Программы для анализа мокшанского языка</title>
+<title tool="analyze" lang="mhr" >Программы для анализа лугово-восточного марийского языка</title>
+<title tool="analyze" lang="mns" >Программы для анализа мансийского языка</title>
+<title tool="analyze" lang="mrj" >Программы для анализа горномарийского языка</title>
+<title tool="analyze" lang="nio" >Программы для анализа нганасанского языка</title>
+<title tool="analyze" lang="olo" >Программы для анализа ливвиковсого языка</title>
+<title tool="analyze" lang="vep" >Программы для анализа вепсского языка</title>
+<title tool="analyze" lang="vro" >Программы для анализа выруского языка</title>
+<title tool="analyze" lang="vot" >Программы для анализа водкого языка</title>
+<title tool="analyze" lang="yrk" >Программы для анализа ненецкого языка</title>
+
+<title tool="generate" lang="bxr" >Программы для генерирования бурятского языка</title>
+<title tool="generate" lang="ciw" >Программы для генерирования оджибве языка</title>
+<title tool="generate" lang="cor" >Программы для генерирования корнского языка</title>
+<title tool="generate" lang="crk" >Программы для генерирования языка равнинный кри</title>
+<title tool="generate" lang="est" >Программы для генерирования эстонкского языка</title>
+<title tool="generate" lang="evn" >Программы для генерирования эвенкского языка</title>
+<title tool="generate" lang="fao" >Программы для генерирования фарерского языка</title>
+<title tool="generate" lang="fin" >Программы для генерирования финского языка</title>
+<title tool="generate" lang="fit" >Программы для генерирования меянкиелского языка</title>
+<title tool="generate" lang="fkv" >Программы для генерирования квенского языка</title>
+<title tool="generate" lang="gle" >Программы для генерирования ирландского языка</title>
+<title tool="generate" lang="hdn" >Программы для генерирования северохайдского языка</title>
+<title tool="generate" lang="ipk" >Программы для генерирования языка инупиак</title>
+<title tool="generate" lang="izh" >Программы для генерирования ижорского языка</title>
+<title tool="generate" lang="kal" >Программы для генерирования гренландского языка</title>
+<title tool="generate" lang="kca" >Программы для генерирования хантыйского языка</title>
+<title tool="generate" lang="kpv" >Программы для генерирования коми языка</title>
+<title tool="generate" lang="liv" >Программы для генерирования ливского языка</title>
+<title tool="generate" lang="mdf" >Программы для генерирования мокшанского языка</title>
+<title tool="generate" lang="mhr" >Программы для генерирования лугово-восточного марийского языка</title>
+<title tool="generate" lang="mns" >Программы для генерирования мансийского языка</title>
+<title tool="generate" lang="mrj" >Программы для генерирования горномарийского языка</title>
+<title tool="generate" lang="myv" >Программы для генерирования эрзянского языка</title>
+<title tool="generate" lang="nio" >Программы для генерирования нганасанского языка</title>
+<title tool="generate" lang="nob" >Программы для генерирования норвежского языка</title>
+<title tool="generate" lang="olo" >Программы для генерирования ливвиковсого языка</title>
+<title tool="generate" lang="rus" >Программы для генерирования русского языка</title>
+<title tool="generate" lang="sje" >Программы для генерирования пите-саамского языка</title>
+<title tool="generate" lang="sma" >Программы для генерирования южносаамского языка</title>
+<title tool="generate" lang="sme" >Программы для генерирования северосаамского языка</title>
+<title tool="generate" lang="smj" >Программы для генерирования луле-саамского языка</title>
+<title tool="generate" lang="smn" >Программы для генерирования инари-саамского языка</title>
+<title tool="generate" lang="sms" >Программы для генерирования колтта-саамского языка</title>
+<title tool="generate" lang="som" >Программы для генерирования сомалийского языка</title>
+<title tool="generate" lang="udm" >Программы для генерирования удмуртского языка</title>
+<title tool="generate" lang="vep" >Программы для генерирования вепсского языка</title>
+<title tool="generate" lang="vro" >Программы для генерирования выруского языка</title>
+<title tool="generate" lang="vot" >Программы для генерирования водкого языка</title>
+<title tool="generate" lang="yrk" >Программы для генерирования ненецкого языка</title>
+
+<title tool="paradigm" lang="bxr" >Создание словоизменительных парадигм для бурятского языка</title>
+<title tool="paradigm" lang="ciw" >Создание словоизменительных парадигм для оджибше языка</title>
+<title tool="paradigm" lang="cor" >Создание словоизменительных парадигм для корнского языка</title>
+<title tool="paradigm" lang="crk" >Создание словоизменительных парадигм для языка равнинный кри</title>
+<title tool="paradigm" lang="est" >Создание словоизменительных парадигм для эстонкского языка</title>
+<title tool="paradigm" lang="evn" >Создание словоизменительных парадигм для эвенкского языка</title>
+<title tool="paradigm" lang="fao" >Создание словоизменительных парадигм для фарерского языка</title>
+<title tool="paradigm" lang="fin" >Создание словоизменительных парадигм для финского языка</title>
+<title tool="paradigm" lang="fit" >Создание словоизменительных парадигм для меянкиелского языка</title>
+<title tool="paradigm" lang="fkv" >Создание словоизменительных парадигм для квенского языка</title>
+<title tool="paradigm" lang="hdn" >Создание словоизменительных парадигм для северохайдского языка</title>
+<title tool="paradigm" lang="ipk" >Создание словоизменительных парадигм для языка инупиак</title>
+<title tool="paradigm" lang="izh" >Создание словоизменительных парадигм для ижорского языка</title>
+<title tool="paradigm" lang="kal" >Создание словоизменительных парадигм для гренландского языка</title>
+<title tool="paradigm" lang="kca" >Создание словоизменительных парадигм для хантыйского языка</title>
+<title tool="paradigm" lang="kpv" >Создание словоизменительных парадигм для коми языка</title>
+<title tool="paradigm" lang="liv" >Создание словоизменительных парадигм для ливского языка</title>
+<title tool="paradigm" lang="mdf" >Создание словоизменительных парадигм для мокшанского языка</title>
+<title tool="paradigm" lang="mhr" >Создание словоизменительных парадигм для марийского языка</title>
+<title tool="paradigm" lang="mns" >Создание словоизменительных парадигм для мансийского языка</title>
+<title tool="paradigm" lang="mrj" >Создание словоизменительных парадигм для горномарийского языка</title>
+<title tool="paradigm" lang="myv" >Создание словоизменительных парадигм для эрзянского языка</title>
+<title tool="paradigm" lang="nio" >Создание словоизменительных парадигм для нганасанского языка</title>
+<title tool="paradigm" lang="nob" >Создание словоизменительных парадигм для норвежского языка</title>
+<title tool="paradigm" lang="olo" >Создание словоизменительных парадигм для ливвиковсого языка</title>
+<title tool="paradigm" lang="rus" >Создание словоизменительных парадигм для русского языка</title>
+<title tool="paradigm" lang="sje" >Создание словоизменительных парадигм для пите-саамского языка</title>
+<title tool="paradigm" lang="sma" >Создание словоизменительных парадигм для южносаамского языка</title>
+<title tool="paradigm" lang="sme" >Создание словоизменительных парадигм для северосаамского языка</title>
+<title tool="paradigm" lang="smj" >Создание словоизменительных парадигм для луле-саамского языка</title>
+<title tool="paradigm" lang="smn" >Создание словоизменительных парадигм для инари-саамского языка</title>
+<title tool="paradigm" lang="sms" >Создание словоизменительных парадигм для колтта-саамского языка</title>
+<title tool="paradigm" lang="udm" >Создание словоизменительных парадигм для удмуртского языка</title>
+<title tool="paradigm" lang="vep" >Создание словоизменительных парадигм для вепсского языка</title>
+<title tool="paradigm" lang="vro" >Создание словоизменительных парадигм для быруского языка</title>
+<title tool="paradigm" lang="vot" >Создание словоизменительных парадигм для водкого языка</title>
+<title tool="paradigm" lang="yrk" >Создание словоизменительных парадигм для ненецского языка</title>
+
+
+
+<title tool="placenames">Перевод топонимов</title>
+
+<!-- H1 -->
+
+
+<!-- anders: conflict, using the one in index-rus.xml -->
+<!-- <place>Saami, University of Tromsø</place>-->
+
+
+<copyright lang="bxr">Copyright © Гиеллатекно и Жаргал Бадагаров</copyright>
+<copyright lang="crk">Copyright © Гиеллатекно и Университет Алберта</copyright>
+<copyright lang="est">Copyright © Гиеллатекно и Университет Тарту</copyright>
+<copyright lang="fin">Copyright © Гиеллатекно и Томми Пиринен</copyright>
+<copyright lang="fit">Copyright © Гиеллатекно</copyright>
+<copyright lang="fkv">Copyright © Гиеллатекно и Квенский институт</copyright>
+<copyright lang="hdn">Copyright © Гиеллатекно и CILLDI</copyright>
+<copyright lang="ipk">Copyright © Гиеллатекно и Oqaasileriffik</copyright>
+<copyright lang="izh">Copyright © Гиеллатекно и Джек Рютер</copyright>
+<copyright lang="kal">Copyright © Гиеллатекно и Oqaasileriffik</copyright>
+<copyright lang="kca">Copyright © Гиеллатекно и Джек Рютер</copyright>
+<copyright lang="kpv">Copyright © Гиеллатекно и Джек Рютер</copyright>
+<copyright lang="liv">Copyright © Гиеллатекно и Джек Рютер</copyright>
+<copyright lang="mdf">Copyright © Гиеллатекно и Джек Рютер</copyright>
+<copyright lang="mhr">Copyright © Гиеллатекно и Йорма Луутонен, Арто Моисио</copyright>
+<copyright lang="mns">Copyright © Гиеллатекно</copyright>
+<copyright lang="mrj">Copyright © Гиеллатекно и Джек Рютер</copyright>
+<copyright lang="myv">Copyright © Гиеллатекно и Джек Рютер</copyright>
+<copyright lang="nio">Copyright © Гиеллатекно и Джек Рютер</copyright>
+<copyright lang="nob">Copyright © Гиеллатекно</copyright>
+<copyright lang="olo">Copyright © Гиеллатекно и Джек Рютер</copyright>
+<copyright lang="vep">Copyright © Гиеллатекно и Джек Рютер</copyright>
+<copyright lang="vro">Copyright © Гиеллатекно и Джек Рютер</copyright>
+<copyright lang="vot">Copyright © Гиеллатекно и Джек Рютер</copyright>
+<copyright lang="yrk">Copyright © Гиеллатекно и Джек Рютер</copyright>
+
+<!-- anders: conflict, using the one in index-rus.xml -->
+<!-- (I am unable to make a judgement on which translation is/fits better... -->
+<!--<copyright>Copyright © Саамские языковые технологии</copyright>-->
+
+<!-- Introduction analyze -->
+
+<introduction tool="analyze" lang="kal">
+Впишите или вставьте (скопируйте) слова в окно и нажмите кнопку "Отправить форму".
+Опция "Отправить форму" дает все возможные варианты анализа, а опция "Снять неоднозначность" (задана по умолчанию) делает анализ, исходя только из заданного контекста. Программа также может делать автоматическую расстановку переносов в тексте или добавлять границы слогов, но в последнем случае она не делает грамматический анализ. Выберите "Проставить дефисы".
+</introduction>
+
+<introduction tool="analyze" type="nodependency">
+Впишите или вставьте (скопируйте) слова в окно и нажмите на кнопку "Анализ" или на Кнопку "Сброс".
+Опция "Анализ" дает все возможные варианты анализа. Опция "Снять неоднозначность" даст анализ слова, исходя только из контекста.
+Программа также может автоматически расставлять переносы в тексте или добавлять границы слогов. В последнем случае (при расстановке границ слогов), программа делает грамматический анализ. Выберите опцию "Сбросить форму".
+</introduction>
+
+<introduction tool="analyze" type="nodisamb">
+Скопируйте текст в окне ниже и программа выдаст вам все возможные варианты морфологического анализа и формы слов, о которых идет речь.
+</introduction>
+
+<introduction tool="analyze" type="nohyph" lang="ciw">
+Write or paste the words in the window, and press the "Send form" button.
+Note that the analyser still contains a handful of verbs.
+</introduction>
+
+<introduction tool="analyze" type="nohyph">
+Скопируйте текст в окне ниже и программа выдаст вам все возможные варианты морфологического анализа форм слов, о которых идет речь. Если вы включите опцию "Снять неоднозначность", он будет делать попытки анализировать слова, исходя из данного контекста.
+</introduction>
+
+<introduction tool="analyze">
+Впишите или вставьте (скопируйте) слова в окно и нажмите на кнопку "Дать все формы слов", или на
+кнопку "Устранить неоднозначность".
+Опция "Дать все формы слов" выдаст все возможные варианты анализа. Опция " Снять неоднозначность" (задана по умолчанию), выдаст анализ слова, исходя только из контекста.
+Программа может также автоматически расставлять переносы в тексте или добавлять границы слогов. В последнем случае (при расстановке границ слогов), программа не делает грамматический анализ. Выберите опцию "Сбросить форму".
+</introduction>
+
+
+
+
+<!-- Introduction p2 analyze -->
+
+<introduction_p2 tool="analyze" lang="ciw">
+Some of the verbs included so far are: anwebi, aadizooke, bangishino, biindige, bimaadizi, gaasikanaabaagawe, gashkendamo, giigoonyike, giiwe, izhaa, jiibaakwe, maajaa, minikwe, wiisini, minomaagwad, gozigwan. Some of the nouns are: inini, ikwe, makwa, mitig, aanakwad, zaaga'igan, miikana, ziibi, makak, abwi, baabaa, maamaa, gosis, daanis, mishoomis.
+</introduction_p2>
+
+<introduction_p2 tool="analyze" lang="crk">
+You may also convert text from the Latin alphabet to syllabics or vice versa. Choose "Latin letters to syllabics" or "Syllabics to Latin letters"
+</introduction_p2>
+
+<introduction_p2 tool="analyze" lang="ipk">
+Вы также можете конвертировать текст на языке инупиак из 8-байтного словаря языка инупиак в кодировку Unicode (если Ваш текст содержит некоторые из букв E, F, X, B, то Вам необходимо это сделать), для этого выберите опцию "Convert".
+</introduction_p2>
+
+
+<introduction_p2 tool="analyze" lang="kal">
+Вы также можете транскрибировать тексты на гренландском языке (используя текущую орфографию), в транскримции МФА (Международный фонетический алфавит/ International Phonetic Alphabet), которая снабжена обозначениями границ слогов (границы слогов обозначены запятыми), и тонами марок, в соответствии с грамматикой Стига Бъёрнумса (Stig Bjørnum), а именно, грамматики Самуэля Кляйншмидта (Samuel Kleinschmidt).
+Для того, чтобы транскрибировать текст, выберите опцию "Tранскрибировать".
+Tаким образом, вы можете конвертировать слова, написанные с помощью орфографии Самуэля Кляйншмидта (Samuel Kleinschmidt), (которая использовалась до 1973 года) в современную орфографию. Инструмент преобразования распознают также букву Кра (буква, использовавшаяся в гренландском языке до последней реформы ("к" Unicode U+0138)).
+Так как некоторые пользователи могут не иметь поддержки этого знака, инструмент преобразования будет записывать заглавную букву "К", как если бы это была буква Кра.
+Для конвертации выберите опцию "Convert".
+</introduction_p2>
+
+
+
+<!-- Introduction generate -->
+
+<introduction tool="generate">
+Впишите слово и грамматическую спецификацию в окно, и выберите опцию "Создать" или опцию "Сбросить".
+</introduction>
+
+
+<!-- Introduction placenames -->
+
+<introduction tool="placenames">
+Впишите топонимы на саамском, норвежском, шведском или финском языках. Если в ответе появится название в скобках, то это  название муниципалитета, о котором идет речь. Наши источники: Statens Kartverk (SK), Саамский парламент в Швеции (SVST), Пекка Саммаллахти "саамско-финский-словарь" (PS) и саамский "Атлас" HR Матисен (SA).
+</introduction>
+
+
+<!-- Introduction paradigm -->
+
+
+<introduction tool="paradigm" lang="bxr">
+Впишите слова бурятского языка, и программа производит флективную парадигму. Пожалуйста, обратите внимание на то, что наша программа пока еще находится в процессе разработки, поэтому процесс может занять некоторое время, а полученная парадигма может содержать ошибки.
+</introduction>
+
+<introduction tool="paradigm" lang="ciw">
+Впишите слова оджибше языка, и программа производит флективную парадигму. Пожалуйста, обратите внимание на то, что наша программа пока еще находится в процессе разработки, поэтому процесс может занять некоторое время, а полученная парадигма может содержать ошибки.
+</introduction>
+
+<introduction tool="paradigm" lang="cor">Впишите слова корнского языка, и программа производит флективную парадигму. Пожалуйста, обратите внимание на то, что наша программа пока еще находится в процессе разработки, поэтому процесс может занять некоторое время, а полученная парадигма может содержать ошибки. </introduction>
+
+<introduction tool="paradigm" lang="fao">Впишите слова фарерского языка, и программа производит флективную парадигму</introduction>
+
+<introduction tool="paradigm" lang="fin">
+Впишите слова финского языка, и программа производит флективную парадигму.
+</introduction>
+
+<introduction tool="paradigm" lang="fit">
+Впишите слова меянкиелского языка, и программа производит флективную парадигму.
+</introduction>
+
+<introduction tool="paradigm" lang="fkv">
+Впишите слова квенского языка, и программа производит флективную парадигму.
+</introduction>
+
+<introduction tool="paradigm" lang="ipk">Впишите слова языка инупиак, и программа производит флективную парадигму инупиак. Пожалуйста, обратите внимание на то, что наша программа пока еще находится в процессе разработки, поэтому процесс может занять некоторое время, а полученная парадигма может содержать ошибки. </introduction>
+
+<introduction tool="paradigm" lang="kal">Впишите слова гренландского языка, и программа производит флективную парадигму</introduction>
+
+<introduction tool="paradigm" lang="kpv">Впишите слова коми языка, и программа производит флективную парадигму</introduction>
+
+<introduction tool="paradigm" lang="mhr">Впишите слова марийского языка, и программа производит флективную парадигму. Пожалуйста, обратите внимание на то, что наша программа пока еще находится в процессе разработки, поэтому процесс может занять некоторое время, а полученная парадигма может содержать ошибки. </introduction>
+
+<introduction tool="paradigm" lang="myv">Впишите слова эрзянского языка, и программа производит флективную парадигму. Пожалуйста, обратите внимание на то, что наша программа пока еще находится в процессе разработки, поэтому процесс может занять некоторое время, а полученная парадигма может содержать ошибки. </introduction>
+
+<introduction tool="paradigm" lang="rus">Программа для русского языка нет работает.</introduction>
+
+<introduction tool="paradigm" lang="sjd">Впишите слова кильдин-саамских языка, и программа производит флективную парадигму. Пожалуйста, обратите внимание на то, что наша программа пока еще находится в процессе разработки, поэтому процесс может занять некоторое время, а полученная парадигма может содержать ошибки. </introduction>
+
+<introduction tool="paradigm" lang="sje">Впишите слов пите-саамского языка, и программа производит флективную парадигму. Пожалуйста, обратите внимание на то, что наша программа пока еще находится в процессе разработки, поэтому процесс может занять некоторое время, а полученная парадигма может содержать ошибки. </introduction>
+
+<introduction tool="paradigm" lang="sma">Впишите слов южносаамского языка, и программа производит флективную парадигму</introduction>
+
+<introduction tool="paradigm" lang="sme">Впишите слов северосаамского языка, и программа производит флективную парадигму</introduction>
+
+<introduction tool="paradigm" lang="smj">Впишите слов луле-саамского языка, и программа производит флективную парадигму</introduction>
+
+<introduction tool="paradigm" lang="smn">Впишите слов инари-саамского языка, и программа производит флективную парадигму. Пожалуйста, обратите внимание на то, что наша программа пока еще находится в процессе разработки, поэтому процесс может занять некоторое время, а полученная парадигма может содержать ошибки. </introduction>
+
+<introduction tool="paradigm" lang="sms">Впишите слов колтта-саамского языка, и программа производит флективную парадигму. Пожалуйста, обратите внимание на то, что наша программа пока еще находится в процессе разработки, поэтому процесс может занять некоторое время, а полученная парадигма может содержать ошибки. </introduction>
+
+<introduction tool="paradigm" lang="udm">Впишите слов удмуртского языка, и программа производит флективную парадигму. Пожалуйста, обратите внимание на то, что наша программа пока еще находится в процессе разработки, поэтому процесс может занять некоторое время, а полученная парадигма может содержать ошибки. </introduction>
+
+<introduction tool="paradigm">
+Skriv basisforma av ordet og vel ordklasse, og programmet vil generere heile paradigmet
+for ordet.
+</introduction>
+
+<!--
+<introduction tool="paradigm">
+Впишите основную форму слова, затем выберите часть речи (в списке справа) и инструмент сгенерирует всю парадигму заданного слова. Пожалуйста, обратите внимание на то, что наша программа пока еще находится в процессе разработки, поэтому процесс может занять некоторое время, а полученная парадигма может содержать ошибки.
+</introduction>
+
+<introduction tool="paradigm" lang="cor">
+Впишите основную форму слова, затем выберите часть речи (в списке справа) и инструмент сгенерирует всю парадигму для заданного слова. Пожалуйста, обратите внимание на то, что наша программа пока еще находится в процессе разработки, поэтому процесс может занять некоторое время, а полученная парадигма может содержать ошибки.</introduction>
+
+<introduction tool="paradigm" lang="fao">
+Впишите основную форму слова, затем выберите часть речи (в списке справа) и инструмент сгенерирует всю парадигму для заданного слова. Пожалуйста, обратите внимание на то, что наша программа пока еще находится в в процессе разработки, поэтому процесс может занять некоторое время, а полученная парадигма может содержать ошибки.
+</introduction>
+
+<introduction tool="paradigm" lang="kal">
+Впишите основную форму слова, затем выберите часть речи (в списке справа) и инструмент сгенерирует всю парадигму для заданного слова. Пожалуйста, обратите внимание на то, что наша программа пока еще находится в в процессе разработки, поэтому процесс может занять некоторое время, а полученная парадигма может содержать ошибки.
+</introduction>
+-->
+
+
+<!-- usage -->
+
+<usage lang="ciw">
+The analyser uses the Double Vowel (Fiero) system.
+</usage>
+
+<usage lang="crk">
+You may use both circumflex (â) and macron (ā) in order to mark long vowel.
+</usage>
+
+
+<usage lang="sjd">
+Программа использует Unicode, поэтому можно использовать обычные кильдинские саамские буквы. Обратите внимание, что мы используем кириллицу для букв, которые похожи на латинские буквы. Программа использует орфографию 1985 года.
+</usage>
+
+<usage lang="sje">
+The program accepts both Norwegian <em>æ, ø</em> and Swedish <em>ä, ö</em>.
+</usage>
+
+<usage lang="sma">
+Вы можете использовать южносаамскую букву <code>ï</code> и норвежскую <code>æ, ø</code> и <code>ä, ö.</code>
+</usage>
+
+<usage lang="sme">
+Вписывайте спецефические саамские буквы как обычно (в Unicode).
+Если у вас нет раскладки клавиатуры для саамского языка для систем Linux, Mac OS X и Windos XP,
+буква "á" может быть вставлена с помощью клавиатуры. Специальные символы
+"č, đ, ŋ, š, ŧ, ž" можно записать так: <code>c1, d1, n1</code>, и т.д.
+</usage>
+
+<usage lang="smj">
+Вы можете использовать обычные луле-саамские символы (официально признанные) <code>ŋ</code>, или более старые: <code>ń, ñ</code>, также программа понимает такие символы как <code>äö</code> и <code>æø</code>.
+</usage>
+
+<usage lang="smn">
+Программа использует Unicode, поэтому Вы можете использовать обычные инари-саамские буквы.
+</usage>
+
+<usage lang="sms">
+Программа использует Unicode, поэтому можно использовать обычные колтта-саамские буквы.
+</usage>
+
+
+
+<!-- Example -->
+
+<example tool="generate" lang="cor">
+Для того, чтобы получить, например, <em>húsinum</em>, напишите <code>hús+N+Neu+Sg+Dat+Def</code>
+</example>
+
+<example tool="generate" lang="crk">
+In order to get e.g. <em>atimwak</em>, write <em>atim+N+AN+Pl</em>, and in order to get <em>kiwicihikonaw</em>, write <code>wicih+V+TA+Ind+Prs+3Sg+12PlO</code>
+</example>
+
+<example tool="generate" lang="fao">
+Для того, чтобы получить, например, <em>húsinum</em>, напишите <code>hús+N+Neu+Sg+Dat+Def</code>
+</example>
+
+<example tool="generate"  lang="fin">
+Для того, чтобы получить, например, <em>joella</em>, напишите <code>joki+N+Sg+Ade</code>
+</example>
+
+<example tool="generate"  lang="fit">
+Для того, чтобы получить, например, <em>joela</em>, напишите <code>joki+N+Sg+Ade</code>
+</example>
+
+<example tool="generate"  lang="fkv">
+Для того, чтобы получить, например, <em>jovela</em>, напишите <code>joki+N+Sg+Ade</code>
+</example>
+
+<example tool="generate" lang="ipk">
+Для того, чтобы получить, например, <em>iglum</em>, напишите <code>iglu+N+Rel+Sg</code>
+</example>
+
+<example tool="generate" lang="kal">
+Для того, чтобы получить, например, <em>illup</em>, напишите <code>illu+N+Rel+Sg</code>
+</example>
+
+<example tool="generate" lang="kpv">
+Для того, чтобы получить, например, <em>кывлы</em>, напишите <code>кыв+N+Sg+Dat</code>
+</example>
+
+<example tool="generate" lang="mhr">
+Для того, чтобы получить, например, <em>олмам</em>, напишите <code>олма+N+Acc</code>
+</example>
+
+<example tool="generate" lang="mns">
+Для того, чтобы получить, например, <em>улят</em>, напишите <code>уля+N+Sg+Loc</code>
+</example>
+
+<example tool="generate" lang="myv">
+Для того, чтобы получить, например, <em>пангсто</em>, напишите <code>панго+N+Sg+Ela</code>
+</example>
+
+<example tool="generate" lang="rus">
+Для того, чтобы получить, например, <em>тигров</em>, напишите <code>тигр+N+Msc+Anim+Pl+Acc</code>
+</example>
+
+<example tool="generate" lang="sma">
+Для того, чтобы получить, например, <em>gåatan</em>, напишите <code>gåetie+N+Sg+Ill</code>
+</example>
+
+<example tool="generate" lang="sme">
+Для того, чтобы получить, например, <em>viesus</em>, напишите <code>viessu+N+Sg+Loc</code>.
+</example>
+
+<example tool="generate" lang="smj">
+Для того, чтобы получить, например, <em>gádov</em>,
+напишите <code>gáhtot+V+Ind+Prs+Sg1</code>. Для <em>elluj</em> и <em>muv</em>, написать <code>ællo+N+Sg+Ill</code> и
+<code>mån+Pron+Pers+Sg1+Acc</code>.
+</example>
+
+<example tool="generate" lang="yrk">
+Для того, чтобы получить, например, <em>тэхэна</em>, напишите <code>ты+N+Sg+Loc</code>.
+</example>
+
+<example tool="generate">Write lemma + grammatical analysis in order to get the wordform.</example>
+
+
+<!-- Instruction -->
+
+<instruction tool="paradigm" />
+<!-- <instruction tool="paradigm">Введите слово и выберите класс слова (часть речи).</instruction> -->
+<instruction tool="analyze">Введите слово:</instruction>
+<instruction tool="generate">Введите слово и грамматический код:</instruction>
+<instruction tool="placenames">Введите топоним:</instruction>
+
+
+<!-- Selection.-->
+
+<selection tool="paradigm">
+<select type="minimal">Дать минимальные парадигмы</select>
+<select type="standard">Стандарт</select>
+<select type="full">Полные парадигмы</select>
+<select type="test">Парадигмы для тестов</select>
+<!-- select type="dialect">Полные парадигмы с диалектными изменениями</select -->
+</selection>
+
+<selection tool="analyze">
+<select tool="analyze">Дать все формы слов</select>
+<select tool="disamb">Устранить неоднозначность</select>
+<select tool="dependency">Зависимость</select>
+<select tool="hyphenate">Написанный через дефис</select>
+<select tool="transcribe">Транскрибировать</select>
+<select tool="complextranscribe">Транскрибировать</select>
+<select tool="convert">Конвертировать</select>
+<select tool="lat2syll">Latin letters to syllabics</select>
+<select tool="syll2lat">Syllabics to latin letters</select>
+</selection>
+
+<selection tool="translate">
+<select lang="none">Нет перевода</select>
+<select lang="dan">Датский перевод слова</select>
+<select lang="nob">Норвежский (букмол) перевод слова</select>
+<select lang="smj">Луле-саамский перевод слова</select>
+<select lang="sme">Северосаамский перевод слова</select>
+</selection>
+
+<charset>Характер кодирования:</charset>
+
+<input type="submit">Пошлите</input>
+<input type="reset">Сбросить форму</input>
+
+<noresult tool="paradigm">Парадигмы не найдены</noresult>
+<otherforms tool="paradigm">Другие формы</otherforms>
+
+
+<!-- endtext -->
+
+<endtext>
+Программа находится в стадии разработки. Если вы заметили какие-либо ошибки, пожалуйста, сообщите о них на giellatekno@uit.no.
+</endtext>
+
+
+
+<!-- end -->
+
+<end lang="sma">
+Программа находится в стадии разработки. Если вы заметили какие-либо ошибки, пожалуйста, сообщите о них в Гиеллатекно.
+</end>
+
+<end lang="smj">
+Программа анализа луле-саамского языка содержит около 20000 базовых форм (основ) (грамматики Спиика, Нюстэ / Йохансен, учебник Sámásta ипрежде всего, словари Кинтела и Корчонена), но многое еще предстоит сделать. Если Вы нашли ошибки или упущения, пожалуйста, сообщите нам - рабочей группе по саамским языковым технологиям.
+</end>
+
+<end lang="smn">
+Программа находится в стадии развития, и содержит только несколко слов из грамматичиской части словаря Саммаллахти - Мороттая.
+Если вы заметили какие-либо ошибки, пожалуйста, сообщите о них в Гиеллатекно.
+</end>
+
+<end lang="sms">
+Программа содержит много тыщат слов от Итконена, Мошникоффа, Саммаллахти и из современного соцмедии.
+Если вы заметили какие-либо ошибки, пожалуйста, сообщите о них в Гиеллатекно.
+</end>
+
+
+<!-- link -->
+
+<link type="grammartags">Морфологические теги</link>
+<link type="syntaxtags">Грамматические теги</link>
+<link type="deptags">Зависимостные теги</link>
+
+
+<!-- grammar -->
+<grammar>
+<pos type="Any">Любой</pos>
+<pos type="N">Существительное</pos>
+<pos type="V">Глагол</pos>
+<pos type="Pron">Местоимение</pos>
+<pos type="A">Прилагательное</pos>
+<pos type="Adv">Наречие</pos>
+<pos type="Num">Цифра</pos>
+</grammar>
+
+</content>

@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//UIT//DTD CGI TRANSLATIONS V1.0//EN" "https://giellatekno.uit.no/dtd/cgi-translations.dtd">
+<content>
+
+<!--
+This file gives the text for the cgi-bin pages in Bokmål  
+
+Editing principles:
+- All language versions of this file should be similar.
+- If a text for a given language is missing, add a fallback language (e.g. nob, eng, rus)
+- Order nodes in blocks marked with an outcommented title
+- Within each block, add the default node (the one without subspecification) last
+- Use the default option, rather than copying identical strings for each new language
+-->
+
+
+<!-- TITLES -->
+
+
+
+<title tool="analyze" lang="bxr" >Analyseprogram for burjatisk</title>
+<title tool="analyze" lang="ciw" >Analyseprogram for ojibwe</title>
+<title tool="analyze" lang="cor" >Kornisk analyseprogram</title>
+<title tool="analyze" lang="crk" >Analyseprogram for præriecree</title>
+<title tool="analyze" lang="est" >Estisk analyseprogram</title>
+<title tool="analyze" lang="evn" >Evenkisk analyseprogram</title>
+<title tool="analyze" lang="fao" >Færøysk analyseprogram</title>
+<title tool="analyze" lang="fin" >Analyseprogram for finsk</title>
+<title tool="analyze" lang="fit" >Analyseprogram for meänkieli</title>
+<title tool="analyze" lang="fkv" >Analyseprogram for kvensk</title>
+<title tool="analyze" lang="gle" >Analyseprogram for irsk</title>
+<title tool="analyze" lang="hdn" >Analyseprogram for nordhaida</title>
+<title tool="analyze" lang="ipk" >Iñupiaq-analyseprogram</title>
+<title tool="analyze" lang="izh" >Analyseprogram for ingrisk</title>
+<title tool="analyze" lang="kal" >Grønlandsk analyseprogram</title>
+<title tool="analyze" lang="kca" >Analyseprogram for khantisk</title>
+<title tool="analyze" lang="kpv" >Analyseprogram for komi</title>
+<title tool="analyze" lang="liv" >Analyseprogram for liivisk</title>
+<title tool="analyze" lang="mdf" >Analyseprogram for moksjamordvinsk</title>
+<title tool="analyze" lang="mhr" >Analyseprogram for østmarisk</title>
+<title tool="analyze" lang="mns" >Analyseprogram for mansisk</title>
+<title tool="analyze" lang="mrj" >Analyseprogram for vestmarisk</title>
+<title tool="analyze" lang="myv" >Analyseprogram for ersjamordvinsk</title>
+<title tool="analyze" lang="nio" >Analyseprogram for nganasansk</title>
+<title tool="analyze" lang="nob" >Analyseprogram for norsk bokmål</title>
+<title tool="analyze" lang="olo" >Analyseprogram for livvikarelsk</title>
+<title tool="analyze" lang="rmf" >Analyseprogram for finsk romani</title>
+<title tool="analyze" lang="rus" >Analyseprogram for russisk</title>
+<title tool="analyze" lang="sjd" >Analyseprogram for kildinsamisk</title>
+<title tool="analyze" lang="sje" >Pitesamisk analyseprogram</title>
+<title tool="analyze" lang="sma" >Sørsamisk analyseprogram</title>
+<title tool="analyze" lang="sme" >Nordsamisk analyseprogram</title>
+<title tool="analyze" lang="smj" >Lulesamisk analyseprogram</title>
+<title tool="analyze" lang="smn" >Enaresamisk analyseprogram</title>
+<title tool="analyze" lang="sms" >Skoltesamisk analyseprogram</title>
+<title tool="analyze" lang="som" >Analyseprogram for somalisk</title>
+<title tool="analyze" lang="udm" >Analyseprogram for udmurtisk</title>
+<title tool="analyze" lang="vep" >Analyseprogram for vepsisk</title>
+<title tool="analyze" lang="vot" >Analyseprogram for votisk</title>
+<title tool="analyze" lang="vro" >Analyseprogram for võro</title>
+<title tool="analyze" lang="yrk" >Analyseprogram for nenetsisk</title>
+
+
+<title tool="generate" lang="bxr" >Genereringsprogram for burjatisk</title>
+<title tool="generate" lang="ciw" >Genereringsprogram for ojibwe</title>
+<title tool="generate" lang="cor" >Kornisk genereringsprogram</title>
+<title tool="generate" lang="crk" >Genereringsprogram for præriecree</title>
+<title tool="generate" lang="est" >Estisk genereringsprogram</title>
+<title tool="generate" lang="evn" >Evenkisk genereringsprogram</title>
+<title tool="generate" lang="fao" >Færøysk genereringsprogram</title>
+<title tool="generate" lang="fin" >Genereringsprogram for finsk</title>
+<title tool="generate" lang="fit" >Genereringsprogram for meänkieli</title>
+<title tool="generate" lang="fkv" >Genereringsprogram for kvensk</title>
+<title tool="generate" lang="gle" >Genereringsprogram for irsk</title>
+<title tool="generate" lang="hdn" >Genereringsprogram for nordhaida</title>
+<title tool="generate" lang="ipk" >Iñupiaq-genereringsprogram</title>
+<title tool="generate" lang="izh" >Ingrisk genereringsprogram</title>
+<title tool="generate" lang="kal" >Grønlandsk genereringsprogram</title>
+<title tool="generate" lang="kca" >Khantisk genereringsprogram</title>
+<title tool="generate" lang="kpv" >Genereringsprogram for komi</title>
+<title tool="generate" lang="liv" >Liivisk genereringsprogram</title>
+<title tool="generate" lang="mdf" >Moksjamordvinsk genereringsprogram</title>
+<title tool="generate" lang="mhr" >Genereringsprogram for østmarisk</title>
+<title tool="generate" lang="mns" >Genereringsprogram for mansisk</title>
+<title tool="generate" lang="mrj" >Vestmarisk genereringsprogram</title>
+<title tool="generate" lang="myv" >Genereringsprogram for ersjamorvinsk</title>
+<title tool="generate" lang="nio" >Nganasansk genereringsprogram</title>
+<title tool="generate" lang="nob" >Genereringsprogram for norsk bokmål</title>
+<title tool="generate" lang="olo" >Livvikarelsk genereringsprogram</title>
+<title tool="generate" lang="rus" >Genereringsprogram for russisk</title>
+<title tool="generate" lang="sjd" >Kildinsamisk genereringsprogram</title>
+<title tool="generate" lang="sjd" >Programs for generating Kildin Saami</title>
+<title tool="generate" lang="sje" >Pitesamisk genereringsprogram</title>
+<title tool="generate" lang="sma" >Sørsamisk genereringsprogram</title>
+<title tool="generate" lang="sme" >Nordsamisk genereringsprogram</title>
+<title tool="generate" lang="smj" >Lulesamisk genereringsprogram</title>
+<title tool="generate" lang="smn" >Enaresamisk genereringsprogram</title>
+<title tool="generate" lang="sms" >Skoltesamisk genereringsprogram</title>
+<title tool="generate" lang="som" >Genereringsprogram for somalisk</title>
+<title tool="generate" lang="udm" >Genereringsprogram for udmurtisk</title>
+<title tool="generate" lang="vep" >Vepsisk genereringsprogram</title>
+<title tool="generate" lang="vot" >Genereringsprogram for votisk</title>
+<title tool="generate" lang="vro" >Genereringsprogram for võro</title>
+<title tool="generate" lang="yrk" >Nenetsisk genereringsprogram</title>
+
+
+<title tool="paradigm" lang="bxr" >Bøyingsparadigmer for burjatisk</title>
+<title tool="paradigm" lang="ciw" >Bøyingsparadigmer for ojibwe</title>
+<title tool="paradigm" lang="cor" >Korniske bøyingsparadigmer</title>
+<title tool="paradigm" lang="crk" >Bøyingsparadigmer for præriecree</title>
+<title tool="paradigm" lang="est" >Estiske bøyingsparadigmer</title>
+<title tool="paradigm" lang="evn" >Evenkiske bøyingsparadigmer</title>
+<title tool="paradigm" lang="fao" >Færøyske bøyingsparadigmer</title>
+<title tool="paradigm" lang="fin" >Finske bøyingsparadigmer</title>
+<title tool="paradigm" lang="fit" >Meänkieli-bøyingsparadigmer</title>
+<title tool="paradigm" lang="fkv" >Kvenske bøyingsparadigmer</title>
+<title tool="paradigm" lang="hdn" >Bøyingsparadigmer for nordhaida</title>
+<title tool="paradigm" lang="ipk" >Iñupiaq-bøyingsparadigmer</title>
+<title tool="paradigm" lang="izh" >Bøyingsparadigmer for ingrisk</title>
+<title tool="paradigm" lang="kal" >Grønlandske bøyingsparadigmer</title>
+<title tool="paradigm" lang="kca" >Bøyingsparadigmer for khantisk</title>
+<title tool="paradigm" lang="kpv" >Bøyingsparadigmer for komi</title>
+<title tool="paradigm" lang="liv" >Bøyingsparadigmer for liivisk</title>
+<title tool="paradigm" lang="mdf" >Bøyingsparadigmer for moksjamordvinsk</title>
+<title tool="paradigm" lang="mhr" >Bøyingsparadigmer for østmarisk</title>
+<title tool="paradigm" lang="mns" >Bøyingsparadigmer for mansisk</title>
+<title tool="paradigm" lang="mrj" >Bøyingsparadigmer for vestmarisk</title>
+<title tool="paradigm" lang="myv" >Bøyingsparadigmer for ersjamordvinsk</title>
+<title tool="paradigm" lang="nio" >Bøyingsparadigmer for nganasansk</title>
+<title tool="paradigm" lang="nob" >Bøyingsparadigmer for norsk bokmål</title>
+<title tool="paradigm" lang="olo" >Bøyingsparadigmer for livvikarelsk</title>
+<title tool="paradigm" lang="rus" >Bøyingsparadigmer for russisk</title>
+<title tool="paradigm" lang="sje" >Pitesamiske bøyingsparadigmer</title>
+<title tool="paradigm" lang="sma" >Sørsamiske bøyingsparadigmer</title>
+<title tool="paradigm" lang="sme" >Nordsamiske bøyingsparadigmer</title>
+<title tool="paradigm" lang="smj" >Lulesamiske bøyingsparadigmer</title>
+<title tool="paradigm" lang="smn" >Enaresamiske bøyingsparadigmer</title>
+<title tool="paradigm" lang="sms" >Skoltesamiske bøyingsparadigmer</title>
+<title tool="paradigm" lang="udm" >Bøyingsparadigmer for udmurtisk</title>
+<title tool="paradigm" lang="vep" >Bøyingsparadigmer for vepsisk</title>
+<title tool="paradigm" lang="vot" >Bøyingsparadigmer for votisk</title>
+<title tool="paradigm" lang="vro" >Bøyingsparadigmer for võro</title>
+<title tool="paradigm" lang="yrk" >Bøyingsparadigmer for nenetsisk</title>
+
+
+
+<title tool="placenames">Finn stedsnavn</title>
+
+<!-- H1 -->
+
+<place>Giellatekno, UiT Norges arktiske universitet</place>
+
+
+<copyright lang="bxr">Copyright © Giellatekno og Jargal Badagarov</copyright>
+<copyright lang="crk">Copyright © Giellatekno og AltLab v/ Universitetet i Alberta</copyright>
+<copyright lang="est">Copyright © Giellatekno og Tartu universitet</copyright>
+<copyright lang="fin">Copyright © Giellatekno og Tommi Pirinen</copyright>
+<copyright lang="fit">Copyright © Giellatekno</copyright>
+<copyright lang="fkv">Copyright © Giellatekno og Kvensk institutt</copyright>
+<copyright lang="hdn">Copyright © Giellatekno og CILLDI</copyright>
+<copyright lang="ipk">Copyright © Giellatekno og Oqaasileriffik</copyright>
+<copyright lang="izh">Copyright © Giellatekno og Jack Rueter</copyright>
+<copyright lang="kal">Copyright © Giellatekno og Oqaasileriffik</copyright>
+<copyright lang="kca">Copyright © Giellatekno og Jack Rueter</copyright>
+<copyright lang="kpv">Copyright © Giellatekno og Jack Rueter</copyright>
+<copyright lang="liv">Copyright © Giellatekno og Jack Rueter</copyright>
+<copyright lang="mdf">Copyright © Giellatekno og Jack Rueter</copyright>
+<copyright lang="mhr">Copyright © Giellatekno og Jorma Luutonen og Arto Moisio</copyright>
+<copyright lang="mns">Copyright © Giellatekno</copyright>
+<copyright lang="mrj">Copyright © Giellatekno og Jack Rueter</copyright>
+<copyright lang="myv">Copyright © Giellatekno og Jack Rueter</copyright>
+<copyright lang="nio">Copyright © Giellatekno og Jack Rueter</copyright>
+<copyright lang="nob">Copyright © Giellatekno</copyright>
+<copyright lang="olo">Copyright © Giellatekno og Jack Rueter</copyright>
+<copyright lang="vep">Copyright © Giellatekno og Jack Rueter</copyright>
+<copyright lang="vro">Copyright © Giellatekno og Jack Rueter</copyright>
+<copyright lang="vot">Copyright © Giellatekno og Jack Rueter</copyright>
+<copyright lang="yrk">Copyright © Giellatekno og Jack Rueter</copyright>
+
+<copyright>Copyright © Senter for samisk språkteknologi</copyright>
+
+
+
+<!-- Introduction analyze -->
+
+<introduction tool="analyze" >
+Skriv eller lim inn ord eller setninger i vinduet, og trykk på "Enkeltord" (for å få alle
+mulige analyser) eller "Setninger" (for å få bare de analysene
+som passer i denne sammenhengen). Programmet kan også sette inn mulige
+orddelingsgrenser (stavingsgrenser), velg "Orddeling". Slett teksten
+ved å velge "Nullstill".
+</introduction>
+
+<introduction tool="analyze" type="nodependency">
+Skriv eller lim inn ord eller setninger i vinduet, og trykk på "Enkeltord" (for å få alle
+mulige analyser) eller "Setninger" (for å få bare de analysene
+som passer i denne sammenhengen). Programmet kan også sette inn mulige
+orddelingsgrenser (stavingsgrenser), velg "Orddeling". Slett teksten
+ved å velge "Nullstill".
+</introduction>
+
+<introduction tool="analyze" type="nodisamb">
+Skriv ord eller setninger inn i vinduet, og trykk på "Analyse" (for å få alle
+mulige analyser). Advarsel: Dette arbeidet er ikke ferdig.
+</introduction>
+
+<introduction tool="analyze" type="nohyph">
+Skriv ord eller setninger inn i vinduet, og trykk på "Analyse" (for å få alle
+mulige analyser) eller "Disambiguering" (for å få bare de analysene
+som passer i denne sammenhengen). Advarsel: Dette arbeidet er ikke ferdig.
+</introduction>
+
+
+<!-- Introduction p2 analyze -->
+
+<introduction_p2 tool="analyze" lang="ciw">
+Noem av verba i analysatoren er: anwebi, aadizooke, bangishino, biindige, bimaadizi, gaasikanaabaagawe, gashkendamo, giigoonyike, giiwe, izhaa, jiibaakwe, maajaa, minikwe, wiisini, minomaagwad, gozigwan. Noen av substantiva er: inini, ikwe, makwa, mitig, aanakwad, zaaga'igan, miikana, ziibi, makak, abwi, baabaa, maamaa, gosis, daanis, mishoomis.
+</introduction_p2>
+
+<introduction_p2 tool="analyze" lang="crk">
+Du kan også konvertere tekst fra latinske bokstavar til stavingsalfabet eller omvendt. Velg "Latinske bokstaver til stavingsalfabet" eller Stavingsalfabet til latinske bokstaver".
+</introduction_p2>
+
+<introduction_p2 tool="analyze" lang="ipk">
+Du kan også konvertere tekst fra formatet i IñupiaQ Dictionary til Unicode. Velg "Konverter".
+</introduction_p2>
+
+<introduction_p2 tool="analyze" lang="kal">
+Du kan konvertere tekst fra Kleinschmidts ortografi (dvs. den i bruk mellom 1857 og 1973)
+og til nå gjeldende ortografi. Særlig på kart er Kleinschmidts ortografi fremdeles i bruk.
+Konvertereren kjenner igjen bokstaven <emph>kra</emph>, dvs. "ĸ" (Unicode U+0138), men
+konverteringsverktyet vil også konvertere stor K som ikke står først i ordet til kra.
+Velg "Konverter". Programmet konverterer ikke û korrekt, men elles fungerer det godt.)
+Du kan også transkribere grønlandsk tekst, dvs. overføre den fra gjeldende
+ortografi til IPA-transkripsjon, med stavingsgrense (markert med punktum) og
+relativ tonehøyde (etter Stig Bjørnums grammatikk, egentlig etter Kleinschmidt).
+Velg "Transkriber".
+</introduction_p2>
+
+
+
+<!--  introduction generate -->
+<introduction tool="generate">
+Skriv ord i grunnform, deretter de grammatiske kodene for den bøyingsforma du
+vil ha. Trykk på "Send" eller "Nullstill".
+</introduction>
+
+
+
+<!--  introduction placenames -->
+
+<introduction tool="placenames">
+Skriv stedsnavnet på samisk, norsk, svensk eller finsk og få oversettelse til eller fra samisk. Der svaret inneholder et navn i parantes er dette kommunenavnet. Basen inneholder ca. 15000 navnepar, av dem omtrent 11000 med nordsamiske, 3000 med sørsamiske og 1000 med lulesamiske navn. Kildene våre er Statens Kartverk (SK), Sametinget i Sverige (SvSt), Pekka Sammallahtis "Saami-suoma sátnegirji" (PS) og Saami Atlas av H.R. Mathisen (SA). Merk at i Statens Kartverk er mange norske navn i bestemt form, slik at man ikke finner f.eks. Reinfjord men Reinfjorden.
+</introduction>
+
+<!--
+Navnedatabasen inneholder omtrent 15000 navnepar, av dem 11381 nordsamiske, 2637 sørsamiske og 988 lulesamiske navn. Navnene er merket med kilde, og (for navn fra statens Kartverk) med kommune. (SA = Sámi Atlas, SK = Statens kartverk, PS = Pekka Sammallahti 1989: Sámi-suoma sátnegirji).
+-->
+<!--  introduction paradigm -->
+
+
+
+<introduction tool="paradigm" lang="bxr">Skriv inn et burjatisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet. Programmet kan bare nokre vanlege substantiv.</introduction>
+<introduction tool="paradigm" lang="ciw">Skriv inn et ord på ojibwe og velg ordklasse, og programmet vil generere hele paradigmet for ordet. Programmet kan bare nokre vanlege verb.</introduction>
+<introduction tool="paradigm" lang="cor">Skriv inn et kornisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet. </introduction>
+<introduction tool="paradigm" lang="fao">Skriv inn et færøysk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet.</introduction>
+<introduction tool="paradigm" lang="fin">Skriv inn et finsk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet.</introduction>
+<introduction tool="paradigm" lang="fit">Skriv inn et ord på meänkieli og velg ordklasse, og programmet vil generere hele paradigmet for ordet.</introduction>
+<introduction tool="paradigm" lang="ipk">Skriv inn et sørsamisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet.</introduction>
+<introduction tool="paradigm" lang="kal">Skriv inn et grønlandsk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet.</introduction>
+<introduction tool="paradigm" lang="kpv">Skriv inn et ord på komi og velg ordklasse, og programmet vil generere hele paradigmet for ordet.</introduction>
+<introduction tool="paradigm" lang="mhr">Skriv inn et østmarisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet.</introduction>
+<introduction tool="paradigm" lang="mns">Skriv inn et mansisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet.</introduction>
+<introduction tool="paradigm" lang="myv">Skriv inn et ersjamordvinsk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet.</introduction>
+<introduction tool="paradigm" lang="rus">Paradigmegenerering fungerer ikke for russisk.</introduction>
+<introduction tool="paradigm" lang="sjd">Skriv inn et kildinsamisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet. Programmet inneholder orda i Kurutsj sitt grammatikk-vedlegg.</introduction>
+<introduction tool="paradigm" lang="sje">Skriv inn et pitesamisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet. Programmet inneholder bare et par hundre ord.</introduction>
+<introduction tool="paradigm" lang="sma">Skriv inn et sørsamisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet.</introduction>
+<introduction tool="paradigm" lang="sme">Skriv inn et nordsamisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet.</introduction>
+<introduction tool="paradigm" lang="smj">Skriv inn et lulesamisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet.</introduction>
+<introduction tool="paradigm" lang="smn">Skriv inn et enaresamisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet. Programmet inneholder bare orda i Morottaja og Sammallahti sitt grammatikkvedlegg.</introduction>
+<introduction tool="paradigm" lang="sms">Skriv inn et enaresamisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet. Programmet inneholder bare orda i Moshnikoff og Sammallahti sitt grammatikkvedlegg, og litt til.</introduction>
+<introduction tool="paradigm" lang="udm">Skriv inn et udmurtisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet. Programmet inneholder bare en handfull ord.</introduction>
+
+<introduction tool="paradigm">
+Skriv basisforma av ordet og velg ordklasse, og programmet vil generere hele paradigmet
+for ordet.
+</introduction>
+
+
+<!-- usage -->
+
+<usage lang="ciw">
+Programmet bruker dobbeltvokalsystemet, det såkalla Fiero-systemet.
+</usage>
+
+<usage lang="crk">
+Du kan bruke både sirkumfleks (â) og makron (ā) for å markere lang vokal.
+</usage>
+
+<usage lang="sjd">
+Write the word in Kildin Saami orthography. Note that we use Cyrillic Characters also for the Latin-looking ones. The program uses the 1985 orthography.
+</usage>
+
+<usage lang="sje">
+Programmet godtek både norsk <em>æ, ø</em> og svensk <em>ä, ö</em>.
+</usage>
+
+<usage lang="sma">
+Programmet godtek bruk av <em>i</em> for sørsamisk <em>ï</em>, og både norsk <em>æ, ø</em> og
+svensk <em>ä, ö</em>.
+</usage>
+
+<usage lang="sme">
+Du kan bruke de vanlige nordsamiske bokstavene.
+Hvis du ikke har samisk tastatur kan du i staden for "á, č, đ, ŋ, š, ŧ, ž" skrive  "a1, c1, d1, n1, s1, t1, z1".
+</usage>
+
+<usage lang="smj">
+Du kan bruke de vanlege lulesamiske bokstavene, systemet forstår både
+(offisiell) <em>ŋ</em>, og eldre <em>ń, ñ</em>, og det forstår både <em>äö</em> og <em>æø</em>.
+</usage>
+
+
+<usage lang="smn">
+Write the word in ordinary Inari Saami orthography.
+</usage>
+
+<usage lang="sms">
+Write the word in ordinary Skolt Saami orthography.
+</usage>
+
+<usage />
+
+<!-- example -->
+
+<example tool="generate" lang="cor">
+In order to get a Cornish wordform, write baseform+tags.
+</example>
+
+<example tool="generate" lang="crk">
+For å få t.d. <em>atimwak</em>, skriv <em>atim+N+AN+Pl</em>, og for å få <em>kiwicihikonaw</em>, skriv <code>wicih+V+TA+Ind+Prs+3Sg+12PlO</code>
+</example>
+
+<example tool="generate" lang="fao">
+For å få t.d.  <em>húsinum</em>, skriv <code>hús+N+Neu+Sg+Dat+Def</code>
+</example>
+
+<example tool="generate" lang="fin">
+For å få t.d.  <em>joella</em>, skriv <code>joki+N+Sg+Ade</code>
+</example>
+
+<example tool="generate" lang="fit">
+For å få t.d.  <em>joela</em>, skriv <code>joki+N+Sg+Ade</code>
+</example>
+
+
+<example tool="generate" lang="fkv">
+For å få t.d. <em>jovela</em>, skriv <code>joki+N+Sg+Ade</code>
+</example>
+
+<example tool="generate" lang="ipk">
+For å få t.d.  <em>iglum</em>, skriv <code>iglu+N+Rel+Sg</code>
+</example>
+
+<example tool="generate" lang="kal">
+For å få t.d.  <em>illup</em>, skriv <code>illu+N+Rel+Sg</code>
+</example>
+
+<example tool="generate" lang="kpv">
+For å få t.d. <em>кывлы</em>, skriv <code>кыв+N+Sg+Dat</code>
+</example>
+
+<example tool="generate" lang="mhr">
+For å få t.d. <em>олмам</em>, skriv <code>олма+N+Acc</code>
+</example>
+
+<example tool="generate" lang="mns">
+For å få t.d. <em>улят</em>, skriv <code>уля+N+Sg+Loc</code>
+</example>
+
+<example tool="generate" lang="myv">
+For å få t.d. <em>пангсто</em>, skriv <code>панго+N+Sg+Ela</code>
+</example>
+
+<example tool="generate" lang="rus">
+For å få t.d. <em>тигров</em>, skriv <code>тигр+N+Msc+Pl+Acc</code>
+</example>
+
+<example tool="generate" lang="sje">
+For å få t.d. <em>árben</em>, skriv du <code>árbbe+N+Sg+Ine</code>, i eitt,
+utan mellomrom. Skiljet mellom store og små bokstavar er viktig, det
+må vere <code>+N+Sg</code>, ikke <code>+n+sg</code>.
+</example>
+
+<example tool="generate" lang="sme">
+Eit par eksempel: For å få <em>viesus</em>, skriv <code>viessu+N+Sg+Loc</code>.
+</example>
+
+<example tool="generate" lang="smj">
+Eit par eksempel: For å få <em>gádov</em>,
+skriv <code>gáhtot+V+Ind+Prs+Sg1</code>. For <em>elluj</em> og <em>muv</em>, skriv <code>ællo+N+Sg+Ill</code> og <code>mån+Pron+Pers+Sg1+Acc</code>.
+</example>
+
+<example tool="generate" lang="sma">
+For å få t.d. <em>gåatan</em>, skriv du <code>gåetie+N+Sg+Ill</code>, i eitt,
+utan mellomrom. Skiljet mellom store og små bokstavar er viktig, det
+må vere <code>+N+Sg</code>, ikke <code>+n+sg</code>.
+</example>
+
+<example tool="generate" lang="yrk">
+For å få t.d.  <em>тэхэна</em>, skriv <code>ты+N+Sg+Loc</code>
+</example>
+
+<example tool="generate">Skriv lemma + grammatisk analyse for å få ordform</example>
+
+<!-- instruction -->
+
+<instruction tool="paradigm" />
+
+<instruction tool="analyze">Skriv inn ordform:</instruction>
+<instruction tool="generate">Skriv inn ordform:</instruction>
+<instruction tool="placenames">Skriv inn stedsnavn:</instruction>
+
+
+<!-- selection  -->
+
+<selection tool="paradigm">
+<select type="minimal">Gje minimalt paradigme</select>
+<select type="standard">Standardparadigme</select>
+<select type="full">Fullt paradigme, med alle bøyningsformer</select>
+<select type="test">Paradigme for testing</select>
+<!-- select type="dialect">Fullt paradigme, også med dialektformer</select -->
+</selection>
+
+
+<selection tool="analyze">
+<select tool="analyze">Enkeltord</select>
+<select tool="disamb">Setninger (analyse som passer til konteksten)</select>
+<select tool="dependency">Dependensstruktur</select>
+<select tool="hyphenate">Orddeling</select>
+<select tool="transcribe">Transkriber</select>
+<select tool="complextranscribe">Transkriber</select>
+<select tool="convert">Konverter</select>
+<select tool="lat2syll">Latinske bokstavar til stavingsalfabet</select>
+<select tool="syll2lat">Stavingsalfabet til latinske bokstavar </select>
+</selection>
+
+
+<selection tool="translate">
+<select lang="none">Inga omsetjing</select>
+<select lang="dan">Omsetjing til dansk</select>
+<select lang="nob">Grunnformomsetjing til bokmål</select>
+</selection>
+
+
+<!-- add "character coding" -->
+
+<charset>Tegnsett:</charset>
+
+<input type="submit">Send</input>
+<input type="reset">Nullstill</input>
+
+
+<noresult tool="paradigm">Vi finner ingen paradigmer</noresult>
+<otherforms tool="paradigm">Andre former</otherforms>
+
+
+<!-- endtext -->
+
+<endtext>
+Programmet er under arbeid. Meld fra til giellatekno@uit.no hvis du finner feil.
+</endtext>
+
+<!-- end -->
+
+<end lang="sma">
+Programmet er under arbeid. Meld fra til giellatekno@uit.no
+hvis du finner feil.
+</end>
+
+<end lang="smj">
+Det lulesamiske analyseprogrammet inneholder oppunder 20000 grunnformer
+(frå Spiik sin grammatikk, Nystø/Johnsen si lærebok, og framforalt
+frå Kintel og Korhonen sine ordbøker), men det er framleis mykje arbeid som står
+att. Hvis du finner feil eller manglar ved programmet ber vi deg melde i
+frå, til giellatekno@uit.no.
+</end>
+
+<end lang="smn">
+Programmet er i en utviklingsfase, og inneholder bare nokre av orda fra grammatikkdelen
+av Sammallahti - Morottaja si ordbok. Meld fra til giellatekno@uit.no
+hvis du finner feil.
+</end>
+
+<end lang="sms">
+Programmet er i en utviklingsfase, og inneholder bare noen av orda fra grammatikkdelen
+av Sammallahti - Moshnikoff si ordbok. Meld fra til giellatekno@uit.no
+hvis du finner feil.
+</end>
+
+
+<end tool="analyze">Programmet er ikke ferdig enda. Hvis du finner feil eller feilanalyser
+kan du melde i fra til <a href="mailto:giellatekno@uit.no">Giellatekno, Senter for samisk språkteknologi.</a></end>
+
+<!-- link -->
+
+
+<grammar>
+<pos type="Any">Uspesifisert</pos>
+<pos type="N">Substantiv</pos>
+<pos type="V">Verb</pos>
+<pos type="Pron">Pronomen</pos>
+<pos type="A">Adjektiv</pos>
+<pos type="Adv">Adverb</pos>
+<pos type="Num">Tallord</pos>
+</grammar>
+
+</content>

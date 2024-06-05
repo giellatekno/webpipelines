@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//UIT//DTD CGI TRANSLATIONS V1.0//EN" "https://giellatekno.uit.no/dtd/cgi-translations.dtd">
+<content>
+
+<!--
+This file gives the text for the cgi-bin pages in English
+
+Editing principles:
+- All language versions of this file should be similar.
+- If a text for a given language is missing, add a fallback language (e.g. nob, eng, rus)
+- Order nodes in blocks marked with an outcommented title
+- Within each block, add the default node (the one without subspecification) last
+- Use the default option, rather than copying identical strings for each new language
+-->
+
+
+<title tool="analyze" lang="bxr" >Programs for analysing Buriat</title>
+<title tool="analyze" lang="ciw" >Programs for analysing Ojibwe</title>
+<title tool="analyze" lang="cor" >Programs for analysing Cornish</title>
+<title tool="analyze" lang="crk" >Programs for analysing Plains Cree</title>
+<title tool="analyze" lang="est" >Programs for analysing Estonian</title>
+<title tool="analyze" lang="evn" >Programs for analysing Evenki</title>
+<title tool="analyze" lang="fao" >Programs for analysing Faroese</title>
+<title tool="analyze" lang="fin" >Programs for analysing Finnish</title>
+<title tool="analyze" lang="fit" >Programs for analysing Meänkieli</title>
+<title tool="analyze" lang="fkv" >Programs for analysing Kven</title>
+<title tool="analyze" lang="gle" >Programs for analysing Irish</title>
+<title tool="analyze" lang="hdn" >Programs for analysing Northern Haida</title>
+<title tool="analyze" lang="ipk" >Programs for analysing Iñupiaq</title>
+<title tool="analyze" lang="izh" >Programs for analysing Ingrian</title>
+<title tool="analyze" lang="kal" >Programs for analysing Greenlandic</title>
+<title tool="analyze" lang="kca" >Programs for analysing Khanty</title>
+<title tool="analyze" lang="kpv" >Programs for analysing Komi</title>
+<title tool="analyze" lang="liv" >Programs for analysing Livonian</title>
+<title tool="analyze" lang="mdf" >Programs for analysing Moksha</title>
+<title tool="analyze" lang="mhr" >Programs for analysing Meadow Mari</title>
+<title tool="analyze" lang="mns" >Programs for analysing Mansi</title>
+<title tool="analyze" lang="mrj" >Programs for analysing Hill Mari</title>
+<title tool="analyze" lang="myv" >Programs for analysing Erzya</title>
+<title tool="analyze" lang="nio" >Programs for analysing Nganasan</title>
+<title tool="analyze" lang="olo" >Programs for analysing Olonetsian</title>
+<title tool="analyze" lang="rmf" >Programs for analysing Finnish Kalo</title>
+<title tool="analyze" lang="rus" >Programs for analysing Russian</title>
+<title tool="analyze" lang="sjd" >Programs for analysing Kildin Saami</title>
+<title tool="analyze" lang="sje" >Programs for analysing Pite Saami</title>
+<title tool="analyze" lang="sma" >Programs for analysing South Saami</title>
+<title tool="analyze" lang="sme" >Programs for analysing North Saami</title>
+<title tool="analyze" lang="smj" >Programs for analysing Lule Saami</title>
+<title tool="analyze" lang="smn" >Programs for analysing Inari Saami</title>
+<title tool="analyze" lang="sms" >Programs for analysing Skolt Saami</title>
+<title tool="analyze" lang="som" >Programs for analysing Somali</title>
+<title tool="analyze" lang="udm" >Programs for analysing Udmurt</title>
+<title tool="analyze" lang="vep" >Programs for analysing Veps</title>
+<title tool="analyze" lang="vot" >Programs for analysing Votic</title>
+<title tool="analyze" lang="vro" >Programs for analysing Võro</title>
+<title tool="analyze" lang="yrk" >Programs for analysing Nenets</title>
+
+<title tool="generate" lang="bxr" >Programs for generating Buriat</title>
+<title tool="generate" lang="ciw" >Programs for generating Ojibwe</title>
+<title tool="generate" lang="cor" >Programs for generating Cornish</title>
+<title tool="generate" lang="crk" >Programs for generating Plains Cree</title>
+<title tool="generate" lang="est" >Programs for generating Estonian</title>
+<title tool="generate" lang="evn" >Programs for generating Evenki</title>
+<title tool="generate" lang="fao" >Programs for generating Faroese</title>
+<title tool="generate" lang="fin" >Programs for generating Finnish</title>
+<title tool="generate" lang="fit" >Programs for generating Meänkieli</title>
+<title tool="generate" lang="fkv" >Programs for generating Kven</title>
+<title tool="generate" lang="gle" >Programs for generating Irish</title>
+<title tool="generate" lang="hdn" >Programs for generating Northern Haida</title>
+<title tool="generate" lang="ipk" >Programs for generating Iñupiaq</title>
+<title tool="generate" lang="izh" >Programs for generating Ingrian</title>
+<title tool="generate" lang="kal" >Programs for generating Greenlandic</title>
+<title tool="generate" lang="kca" >Programs for generating Khanty</title>
+<title tool="generate" lang="kpv" >Programs for generating Komi</title>
+<title tool="generate" lang="liv" >Programs for generating Livonian</title>
+<title tool="generate" lang="mdf" >Programs for generating Moksha</title>
+<title tool="generate" lang="mhr" >Programs for generating Meadow Mari</title>
+<title tool="generate" lang="mns" >Programs for generating Mansi</title>
+<title tool="generate" lang="mrj" >Programs for generating Hill Mari</title>
+<title tool="generate" lang="myv" >Programs for generating Erzya</title>
+<title tool="generate" lang="nio" >Programs for generating Nganasan</title>
+<title tool="generate" lang="olo" >Programs for generating Olonetsian</title>
+<title tool="generate" lang="rus" >Programs for generating Russian</title>
+<title tool="generate" lang="sjd" >Programs for generating Kildin Saami</title>
+<title tool="generate" lang="sje" >Programs for generating Pite Saami</title>
+<title tool="generate" lang="sma" >Programs for generating South Saami</title>
+<title tool="generate" lang="sme" >Programs for generating North Saami</title>
+<title tool="generate" lang="smj" >Programs for generating Lule Saami</title>
+<title tool="generate" lang="smn" >Programs for generating Inari Saami</title>
+<title tool="generate" lang="sms" >Programs for generating Skolt Saami</title>
+<title tool="generate" lang="som" >Programs for generating Somali</title>
+<title tool="generate" lang="udm" >Programs for generating Udmurt</title>
+<title tool="generate" lang="vep" >Programs for generating Veps</title>
+<title tool="generate" lang="vot" >Programs for generating Votic</title>
+<title tool="generate" lang="vro" >Programs for generating Võro</title>
+<title tool="generate" lang="yrk" >Programs for generating Nenets</title>
+
+<title tool="paradigm" lang="bxr" >Generating Buriat inflectional paradigms</title>
+<title tool="paradigm" lang="ciw" >Generating Ojibwe inflectional paradigms</title>
+<title tool="paradigm" lang="cor" >Generating Cornish inflectional paradigms</title>
+<title tool="paradigm" lang="crk" >Generating inflectional paradigms for Plains Cree</title>
+<title tool="paradigm" lang="est" >Generating Estonian inflectional paradigms</title>
+<title tool="paradigm" lang="evn" >Generating Evenki inflectional paradigms</title>
+<title tool="paradigm" lang="fao" >Generating Faroese inflectional paradigms</title>
+<title tool="paradigm" lang="fin" >Generating Finnish inflectional paradigms</title>
+<title tool="paradigm" lang="fit" >Generating Meänkieli inflectional paradigms</title>
+<title tool="paradigm" lang="fkv" >Generating Kven inflectional paradigms</title>
+<title tool="paradigm" lang="hdn" >Generating Northern Haida inflectional paradigms</title>
+<title tool="paradigm" lang="ipk" >Generating Iñupiaq inflectional paradigms</title>
+<title tool="paradigm" lang="izh" >Generating Ingrian inflectional paradigms</title>
+<title tool="paradigm" lang="kal" >Generating Greenlandic inflectional paradigms</title>
+<title tool="paradigm" lang="kca" >Generating Khanty inflectional paradigms</title>
+<title tool="paradigm" lang="kpv" >Generating Komi inflectional paradigms</title>
+<title tool="paradigm" lang="liv" >Generating Livonian inflectional paradigms</title>
+<title tool="paradigm" lang="mdf" >Generating Moksha inflectional paradigms</title>
+<title tool="paradigm" lang="mhr" >Generating Meadow Mari inflectional paradigms</title>
+<title tool="paradigm" lang="mns" >Generating Mansi inflectional paradigms</title>
+<title tool="paradigm" lang="mrj" >Generating Hill Mari inflectional paradigms</title>
+<title tool="paradigm" lang="myv" >Generating Erzya inflectional paradigms</title>
+<title tool="paradigm" lang="nio" >Generating Nganasan inflectional paradigms</title>
+<title tool="paradigm" lang="olo" >Generating Olonetsian inflectional paradigms</title>
+<title tool="paradigm" lang="rus" >Generating Russian inflectional paradigms</title>
+<title tool="paradigm" lang="sjd" >Generating Kildin Saami inflectional paradigms</title>
+<title tool="paradigm" lang="sje" >Generating Pite Saami inflectional paradigms</title>
+<title tool="paradigm" lang="sma" >Generating South Saami inflectional paradigms</title>
+<title tool="paradigm" lang="sme" >Generating North Saami inflectional paradigms</title>
+<title tool="paradigm" lang="smj" >Generating Lule Saami inflectional paradigms</title>
+<title tool="paradigm" lang="smn" >Generating Inari Saami inflectional paradigms</title>
+<title tool="paradigm" lang="sms" >Generating Skolt Saami inflectional paradigms</title>
+<title tool="paradigm" lang="udm" >Generating Udmurt inflectional paradigms</title>
+<title tool="paradigm" lang="vep" >Generating Veps inflectional paradigms</title>
+<title tool="paradigm" lang="vot" >Generating Votic inflectional paradigms</title>
+<title tool="paradigm" lang="vro" >Generating Võro inflectional paradigms</title>
+<title tool="paradigm" lang="yrk" >Generating Nenets inflectional paradigms</title>
+
+
+<title tool="placenames">Translate place names</title>
+
+<!-- H1 -->
+
+
+<place>Giellatekno, UiT The Arctic University of Norway</place>
+
+<copyright lang="bxr">Copyright © Centre for Saami language technology and Jargal Badagarov</copyright>
+<copyright lang="crk">Copyright © Centre for Saami language technology and AltLab at U Alberta</copyright>
+<copyright lang="fin">Copyright © Centre for Saami language technology and Tommi Pirinen</copyright>
+<copyright lang="fit">Copyright © Centre for Saami language technology</copyright>
+<copyright lang="fkv">Copyright © Centre for Saami language technology and Kvensk institutt</copyright>
+<copyright lang="hdn">Copyright © Centre for Saami language technology and CILLDI</copyright>
+<copyright lang="ipk">Copyright © Centre for Saami language technology and Oqaasileriffik</copyright>
+<copyright lang="kal">Copyright © Centre for Saami language technology and Oqaasileriffik</copyright>
+<copyright lang="kpv">Copyright © Centre for Saami language technology and Jack Rueter</copyright>
+<copyright lang="myv">Copyright © Centre for Saami language technology and Jack Rueter</copyright>
+<copyright lang="mhr">Copyright © Centre for Saami language technology and Jorma Luutonen and Arto Moisio</copyright>
+<copyright lang="mns">Copyright © Centre for Saami language technology</copyright>
+<copyright lang="izh">Copyright © Centre for Saami language technology and Jack Rueter</copyright>
+<copyright lang="kca">Copyright © Centre for Saami language technology and Jack Rueter</copyright>
+<copyright lang="liv">Copyright © Centre for Saami language technology and Jack Rueter</copyright>
+<copyright lang="mdf">Copyright © Centre for Saami language technology and Jack Rueter</copyright>
+<copyright lang="mrj">Copyright © Centre for Saami language technology and Jack Rueter</copyright>
+<copyright lang="nio">Copyright © Centre for Saami language technology and Jack Rueter</copyright>
+<copyright lang="olo">Copyright © Centre for Saami language technology and Jack Rueter</copyright>
+<copyright lang="vep">Copyright © Centre for Saami language technology and Jack Rueter</copyright>
+<copyright lang="vro">Copyright © Centre for Saami language technology and Jack Rueter</copyright>
+<copyright lang="vot">Copyright © Centre for Saami language technology and Jack Rueter</copyright>
+<copyright lang="yrk">Copyright © Centre for Saami language technology and Jack Rueter</copyright>
+
+<copyright>Copyright © Centre for Saami language technology</copyright>
+
+
+<!-- Introduction analyze -->
+
+<introduction tool="analyze" lang="kal">
+Write or paste the words in the window, and press the "Send form" button.
+The options "Analyze" gives all possible analyses, whereas the
+(default) option "Disambiguate" gives only the analyses appropriate
+for the given sentence. The program may also hyphenate the text for
+you, or add syllable boundaries, in which case it will not give a
+grammatical analysis. Choose "Hyphenate".
+</introduction>
+
+<introduction tool="analyze" type="nodependency">
+Write or paste the words in the window, and press the "Analyze" or
+"Reset" button.
+The options "Analyze" gives all possible analyses, whereas the
+(default) option "Disambiguate" gives only the analyses appropriate
+for the given sentence. The program may also hyphenate the text for
+you, or add syllable boundaries, in which case it will not give a
+grammatical analysis. Choose "Hyphenate".
+</introduction>
+
+<introduction tool="analyze" type="nodisamb">
+Copy text into the window below, and the program will give you all
+possible morphological analyses of the wordforms in question.
+</introduction>
+
+<introduction tool="analyze" type="nohyph" lang="ciw">
+Write or paste the words in the window, and press the "Send form" button.
+Note that the analyser still contains a handful of verbs.
+</introduction>
+
+<introduction tool="analyze" type="nohyph">
+Copy text into the window below, and the program will give you all
+possible morphological analyses of the wordforms in question. If you
+choose Disambiguate, it will make an attempt at choosing the analysis
+which suits the given context (warning: the development of the
+disambiguation program hasn't really started yet).
+</introduction>
+
+
+<introduction tool="analyze">
+Write or paste the words in the window, and press the "Analyze" or
+"Reset" button.
+The options "Analyze" gives all possible analyses, whereas the
+(default) option "Disambiguate" gives only the analyses appropriate
+for the given sentence. The program may also hyphenate the text for
+you, or add syllable boundaries, in which case it will not give a
+grammatical analysis. Choose "Hyphenate".
+</introduction>
+
+
+
+
+
+<!-- Introduction p2 (paragraph 2) analyze -->
+
+
+<introduction_p2 tool="analyze" lang="ciw">
+Some of the verbs included so far are: anwebi, aadizooke, bangishino, biindige, bimaadizi, gaasikanaabaagawe, gashkendamo, giigoonyike, giiwe, izhaa, jiibaakwe, maajaa, minikwe, wiisini, minomaagwad, gozigwan. Some of the nouns are: inini, ikwe, makwa, mitig, aanakwad, zaaga'igan, miikana, ziibi, makak, abwi, baabaa, maamaa, gosis, daanis, mishoomis.
+</introduction_p2>
+
+<introduction_p2 tool="analyze" lang="crk">
+You may also convert text from the Latin alphabet to syllabics or vice versa. Choose "Latin letters to syllabics" or "Syllabics to Latin letters"
+</introduction_p2>
+
+<introduction_p2 tool="analyze" lang="ipk">
+You may also convert Iñupiaq text from the 8-bit IñupiaQ Dictionary encoding to Unicode (if your Iñupiaq text contains some of the letters <em>e, f, x, b</em>, you need to do this). Choose "Convert".
+</introduction_p2>
+
+<introduction_p2 tool="analyze" lang="kal">
+You may also transcribe Greenlandic text (of the current orthography) to
+an IPA transcription, enriched with syllable boundaries (marked with period)
+and tone marks, according to the presentation in Stig Bjørnums grammar (ulti-
+mately in Kleinschmidts grammar). Choose "Transcribe".
+Finally, you may convert words from the (pre-1973) Kleinschmidt orthography
+to the present orthography. The conversion tool recognises the letter <emph>kra</emph>,
+i.e. "ĸ" (Unicode U+0138), but since some users may not have support for it, the
+conversion tool will translate non-initially written capital K as if it was kra. Choose "Convert".
+</introduction_p2>
+
+
+<!-- Introduction generate -->
+
+<introduction tool="generate">
+Write the word and grammatical specification
+in the window, and press the "Generate" or "Reset"
+button.
+</introduction>
+
+
+<!-- Introduction placenames -->
+
+<introduction tool="placenames">
+Write the place name in Saami, Norwegian, Swedish or Finnish. If the answer contains a name in parentheses, then this name is the name of the municipality in question.  Our sources are Statens Kartverk (SK), Saami Parliament in Sweden (SvSt), Pekka Sammallahti "Saami-suoma sátnegirji" (PS) and Saami Atlas by H.R. Mathisen (SA).
+</introduction>
+
+
+
+<!-- Introduction paradigm -->
+
+
+<introduction tool="paradigm" lang="bxr">
+Write a Buriat word and choose part of speech, and the program will generate the whole paradigm. The program only works for a couple of nouns.
+</introduction>
+
+<introduction tool="paradigm" lang="ciw">
+Write an Ojibwe word and choose part of speech, and the program will generate the whole paradigm. The program only works for a couple of verbs.
+</introduction>
+
+<introduction tool="paradigm" lang="cor">
+Write a Cornish word and choose part of speech, and the program will generate the whole paradigm.
+</introduction>
+
+<introduction tool="paradigm" lang="fao">
+Write a Faroese word and choose part of speech, and the program will generate the whole paradigm.
+</introduction>
+
+<introduction tool="paradigm" lang="fin">
+The Finnish paradigm generator does not work yet.
+</introduction>
+
+<introduction tool="paradigm" lang="fit">
+The Finnish paradigm generator does not work yet.
+</introduction>
+
+<introduction tool="paradigm" lang="fkv">
+The Kven paradigm generator does not work yet.
+</introduction>
+
+<introduction tool="paradigm" lang="ipk">
+Write a Inupiaq word and choose part of speech, and the program will generate the whole paradigm.
+</introduction>
+
+<introduction tool="paradigm" lang="kal">
+Write a Greenlandic word and choose part of speech, and the program will generate the whole paradigm.
+</introduction>
+
+<introduction tool="paradigm" lang="kpv">Впишите слова коми языка, и программа производит флективную парадигму</introduction>
+
+<introduction tool="paradigm" lang="mhr">
+Write a Meadow Mari word and choose part of speech, and the program will generate the whole paradigm.
+</introduction>
+
+<introduction tool="paradigm" lang="mns">
+Write a Mansi word and choose part of speech, and the program will generate the whole paradigm.
+</introduction>
+
+<introduction tool="paradigm" lang="myv">
+Write a Erzya word and choose part of speech, and the program will generate the whole paradigm.
+</introduction>
+
+<introduction tool="paradigm" lang="rus">
+The Russian paradigm generator does not work yet.
+</introduction>
+
+<introduction tool="paradigm" lang="sjd">
+Write a Kildin Saami word and choose part of speech, and the program will generate the whole paradigm.
+The program contains the words listed in the grammar appendix of Kuruch's dictionary.
+</introduction>
+
+<introduction tool="paradigm" lang="sje">
+Write a Pite Saami word and choose the part of speech, and the program will generate the whole paradigm. Currently, the program contains most of the nouns and verbs found in the lexical database for Pite Saami (<a href="https://saami.uni-freiburg.de/psdp/pite-lex/">saami.uni-freiburg.de/psdp/pite-lex</a>), which is regularly corrected, expanded and improved. This database is based on the <strong>Pitesamisk ordbok samt stavningsregler</strong> (<a href="https://saami.uni-freiburg.de/samica/">Samica 2</a>, 2016, edited by J. Wilbur), but also includes a few other words added by Ann-Charlotte Sjaggo. It is still under development.
+</introduction>
+
+<introduction tool="paradigm" lang="sma">
+Write a South Saami word and choose part of speech, and the program will generate the whole paradigm.
+</introduction>
+
+<introduction tool="paradigm" lang="sme">
+Write a North Saami word and choose part of speech, and the program will generate the whole paradigm.
+</introduction>
+
+<introduction tool="paradigm" lang="smj">
+Write a Lule Saami word and choose part of speech, and the program will generate the whole paradigm.
+</introduction>
+
+<introduction tool="paradigm" lang="smn">
+Write a Inari Saami word and choose part of speech, and the program will generate the whole paradigm.
+The program only contains the words in the appendix of Morottaja and Sammallahti, and it is still under
+development.
+</introduction>
+
+<introduction tool="paradigm" lang="sms">
+Write a Skolt Saami word and choose part of speech, and the program will generate the whole paradigm.
+The program contains several thousand words from Itkonen, Moshnikoff, Sammallahti and modern social media.
+If you notice mistakes, please contact us at Giellatekno.
+</introduction>
+
+<introduction tool="paradigm" lang="udm">
+Write a Udmurt word and choose part of speech, and the program will generate the whole paradigm.
+The program contains thousands of words from the dictionaries by Saarinen et al, for instance.
+</introduction>
+
+<introduction tool="paradigm">
+Skriv basisforma av ordet og vel ordklasse, og programmet vil generere heile paradigmet
+for ordet.
+</introduction>
+
+<!-- usage -->
+
+<usage lang="ciw">
+The analyser uses the Double Vowel (Fiero) system.
+</usage>
+
+<usage lang="crk">
+You may use both circumflex (â) and macron (ā) in order to mark long vowel.
+</usage>
+
+<usage lang="mns">
+Write the word in ordinary Mansi orthography. You may also write the words without length marks.
+</usage>
+
+<usage lang="sjd">
+Write the word in Kildin Saami orthography. Note that we use Cyrillic Characters also for the Latin-looking ones. The program uses the 1985 orthography.
+</usage>
+
+<usage lang="sje">
+The program accepts both Norwegian <code>æ</code> and <code>ø</code> and Swedish <code>ä</code> and <code>ö</code>.
+</usage>
+
+<usage lang="sma">
+The program accepts both <code>i</code> and the South Saami character <code>ï</code> and both Norwegian <code>æ, ø</code> and Swedish <code>ä, ö</code>
+</usage>
+
+<usage lang="sme">
+Write The Saami special letters as usual.
+If you don't have a Saami keyboard, you may write
+"á, č, đ, ŋ, š, ŧ, ž" as <code>a1, c1, d1, n1, s1, t1, z1</code>.
+</usage>
+
+<usage lang="smj">
+You may use the ordinary Lule Saami characters, the (official) ŋ, or older ń, ñ, and the program
+understands both äö and æø.
+</usage>
+
+<usage lang="smn">
+Write the word in ordinary Inari Saami orthography.
+</usage>
+
+<usage lang="sms">
+Write the word in ordinary Skolt Saami orthography.
+</usage>
+
+<usage />
+
+<!-- example -->
+
+
+<example tool="generate" lang="cor">
+In order to get a Cornish wordform, write baseform+tags.
+</example>
+<!--In order to get e.g. <em></em>, write <code>hús+N+Neu+Sg+Dat+Def</code>-->
+
+<example tool="generate" lang="crk">
+In order to get e.g. <em>atimwak</em>, write <em>atim+N+AN+Pl</em>, and in order to get <em>kiwicihikonaw</em>, write <code>wicih+V+TA+Ind+Prs+3Sg+12PlO</code>
+</example>
+
+<example tool="generate" lang="fao">
+In order to get e.g. <em>húsinum</em>, write <code>hús+N+Neu+Sg+Dat+Def</code>
+</example>
+
+<example tool="generate" lang="fin">
+In order to get e.g. <em>joella</em>, write <code>joki+N+Sg+Ade</code>
+</example>
+
+<example tool="generate" lang="fit">
+In order to get e.g. <em>joela</em>, write <code>joki+N+Sg+Ade</code>
+</example>
+
+<example tool="generate" lang="fkv">
+In order to get e.g. <em>jovella</em>, write <code>joki+N+Sg+Ade</code>
+</example>
+
+<example tool="generate" lang="ipk">
+In order to get e.g. <em>iglum</em>, write <code>iglu+N+Rel+Sg</code>
+</example>
+
+<example tool="generate" lang="kal">
+In order to get e.g. <em>illup</em>, write <code>illu+N+Rel+Sg</code>
+</example>
+
+<example tool="generate" lang="kpv">
+In order to get e.g. <em>кывлы</em>, write <code>кыв+N+Sg+Dat</code>
+</example>
+
+<example tool="generate" lang="kpv">
+In order to get e.g. <em>кывлы</em>, write <code>кыв+N+Sg+Dat</code>
+</example>
+
+<example tool="generate" lang="mhr">
+In order to get e.g. <em>олмам</em>, write <code>олма+N+Acc</code>
+</example>
+
+<example tool="generate" lang="mns">
+In order to get e.g. <em>улят</em>, write <code>уля+N+Sg+Loc</code>
+</example>
+
+<example tool="generate" lang="myv">
+In order to get e.g. <em>пангсто</em>, write <code>панго+N+Sg+Ela+Indef</code>
+</example>
+
+<example tool="generate" lang="rus">
+In order to get e.g. <em>тигров</em>, write <code>тигр+N+Msc+Pl+Acc</code>
+</example>
+
+<example tool="generate" lang="sma">
+In order to get <em>gåatan</em>, write <code>gåetie+N+Sg+Ill</code>
+</example>
+
+<example tool="generate" lang="sme">
+In order to get e.g. <em>viesus</em>, write <code>viessu+N+Sg+Loc</code>.
+</example>
+
+<example tool="generate" lang="smj">
+In order to get e.g. <em>gádov</em>,
+write <code>gáhtot+V+Ind+Prs+Sg1</code>. For <em>elluj</em> and <em>muv</em>, write <code>ællo+N+Sg+Ill</code> and
+<code>mån+Pron+Pers+Sg1+Acc</code>.
+</example>
+
+<example tool="generate" lang="sms">
+In order to get e.g. <em>kuäʹđest</em>, write <code>kueʹtt+N+Sg+Loc</code>.
+</example>
+
+<example tool="generate" lang="yrk">
+In order to get e.g. <em>тэхэна</em>, write <code>ты+N+Sg+Loc</code>
+</example>
+
+<example tool="generate">Write lemma + grammatical analysis in order to get the wordform.</example>
+
+
+<!-- instruction -->
+
+<instruction tool="paradigm" />
+<instruction tool="analyze">Type the word forms:</instruction>
+<instruction tool="generate">Type the word form and grammatical code:</instruction>
+<instruction tool="placenames">Type the place name:</instruction>
+
+
+<!-- selection -->
+
+<selection tool="paradigm">
+<select type="minimal">Give minimal paradigm</select>
+<select type="standard">Standard</select>
+<select type="full">Full paradigm</select>
+<select type="test">Paradigm for testing (under construction)</select>
+<!-- select type="dialect">Full paradigm with dialectal variation</select -->
+</selection>
+
+<selection tool="analyze">
+<select tool="analyze">Give all word forms</select>
+<select tool="disamb">Disambiguate</select>
+<select tool="dependency">Dependency structure</select>
+<select tool="valency">Valency structure</select>
+<select tool="hyphenate">Hyphenate</select>
+<select tool="transcribe">Transcribe</select>
+<select tool="complextranscribe">Transcribe</select>
+<select tool="convert">Convert</select>
+<select tool="lat2syll">Latin letters to syllabics</select>
+<select tool="syll2lat">Syllabics to latin letters</select>
+</selection>
+
+<selection tool="translate">
+<select lang="none">No translation</select>
+<select lang="dan">Danish word translation</select>
+<select lang="nob">Bokmål Norwegian word translation</select>
+</selection>
+
+<charset>Character coding:</charset>
+
+<input type="submit">Send form</input>
+<input type="reset">Reset form</input>
+
+<noresult tool="paradigm">No paradigm found</noresult>
+<otherforms tool="paradigm">Other forms</otherforms>
+
+
+<!-- endtext -->
+
+<endtext>
+The program is under construction. If you notice errors of
+any kind, please report them to giellatekno@uit.no.
+</endtext>
+
+
+
+<!-- end -->
+
+<end lang="sma">
+The program is under construction. If you notice errors of
+any kind, please report them to
+The Centre for Saami language technology.
+</end>
+
+<end lang="smj">
+The Lule Saami analysis program contains close to 20000 base forms
+(from Spiiks grammar, Nystø/Johnsens textbook <em>Sámásta</em>, and
+above all from Kintels and also Korhonens dictionaries), but much work
+still remains to be done. If you find errors or omissions, please report
+back to us in the Saami language technology team.
+</end>
+
+<end lang="smn">
+The program is in a test phase and it, contains only some words from the grammar
+section of the Sammallahti - Morottaja dictionary. If you notice errors of
+any kind, please report them to The Centre for Saami language technology.
+</end>
+
+<end lang="sms">
+The program contains several thousand words from Itkonen,
+ Moshnikoff, Sammallahti and modern social media.
+ If you notice errors of
+any kind, please report them to The Centre for Saami language technology.
+</end>
+
+
+<end tool="analyze">The program is not finished. If you notice errouneous forms or analyses, please contact <a mailto="giellatekno@uit.no">Giellatekno.</a></end>
+
+
+<!-- link -->
+
+<link type="grammartags">Morphological tags</link>
+<link type="syntaxtags">Grammatical tags</link>
+<link type="deptags">Dependency tags</link>
+
+
+<!-- grammar -->
+
+<grammar>
+<pos type="Any">Any</pos>
+<pos type="N">Noun</pos>
+<pos type="V">Verb</pos>
+<pos type="Pron">Pronoun</pos>
+<pos type="A">Adjective</pos>
+<pos type="Adv">Adverb</pos>
+<pos type="Num">Numeral</pos>
+</grammar>
+
+</content>

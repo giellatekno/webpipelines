@@ -1,0 +1,132 @@
+# Files that the fst api needs - or more precisely: wants.
+# Files that do not exist will disable features for the languages that
+# does not have it.
+#
+# Structure:
+# The root is a list called "files", each element is an object with
+# the following properties:
+# - filename: string   (required)
+#     name of the file. If it contains the specific substring "{lang}", that
+#     indicates that the name of the file will be replaced by the same language
+#     as the repository. For example, "paradigm_standard.{lang}.txt" would
+#     be named "paradigm_standard.sme.txt" in the "lang-sme" repository.
+# - alt_filename: string   (optional)
+#     name of the alternative file. Sometimes, a command can accept both a
+#     pre-compiled binary file, or the source version of the file. If this
+#     field is specified, it indicates an alternative such file that will also
+#     be searched for.
+# - repo_path: string   (required)
+#     full path to where the file is located. it may or may not need to
+#     be built before it is available. The same replacement string "{lang}"
+#     may be present here.
+# - shared_by: list of string    (?)
+#     Some files are the same for many languages, and they therefore only
+#     exist in a shared repository. For example, the "dependency.cg3" file is
+#     shared for all sami languages.
+# - repo: string
+#     If shared_by (above) is given, this property specifies the repository
+#     the file resides in. For now this is literally just shared-smi to
+#     my knowledge, but potentially it could have been other shared folders.
+# - needs_build: boolean  (defaults to True)
+#     If False, it indicates that the file specified by repo_path is
+#     available without needing to build the models
+# - build_flags: list of string   (defaults to [])
+#     If the file needs to be built, this list specifices any additional
+#     flags that must be passed to --configure for the build to make this
+#     file
+# - needed_by_langs: list of string   (?)
+#     In general, all files are needed by all languages, but there are
+#     files that only exist for some languages, so that some functionality
+#     is only available for some languages. This is by design - there just
+#     has not been any linguistic work put into making it work for all
+#     languages. An example is paradigms: They do not exist for all languages.
+# - methods: list of string   (?)
+#     The API endpoints this file is used in
+
+
+files:
+  - filename: "tokeniser-disamb-gt-desc.pmhfst"
+    repo_path: "tools/tokenisers/tokeniser-disamb-gt-desc.pmhfst"
+    build_flags: ["enable-tokenisers"]
+    methods: ["analyze", "dependency", "disambiguate", "paradigm"]
+
+  - filename: "analyser-gt-desc.hfstol"
+    repo_path: "src/analyser-gt-desc.hfstol"
+    methods: ["analyze", "paradigm"]
+
+  - filename: "generator-gt-norm.hfstol"
+    repo_path: "src/generator-gt-norm.hfstol"
+    methods: ["generate", "paradigm"]
+
+  - filename: "functions.cg3"
+    alt_filename: "functions.bin"
+    # TODO don't know if these paths are correct
+    repo_path: "src/functions.cg3"
+    alt_repo_path: "src/functions.bin"
+    methods: ["dependency"]
+
+  - filename: "hyphenator-gt-desc.hfstol"
+    repo_path: "tools/hyphenators/hyphenator-gt-desc.hfstol"
+    build_flags: ["enable-fst-hyphenator"]
+    methods: ["hypenate"]
+
+  - filename: "disambiguator.cg3"
+    alt_filename: "disambiguator.bin"
+    repo_path: "src/cg3/disambiguator.cg3"
+    alt_repo_path: "src/cg3/disambiguator.bin"
+    requires_build: False
+    methods: ["dependency", "disambiguate"]
+
+  # The dependency.cg3 is located in shared-smi, and is shared among
+  # all sami languages
+  - filename: "dependency.cg3"
+    repo_path: "src/cg3/dependency.cg3"
+    alt_filename: "dependency.bin"
+    alt_repo_path: "src/cg3/dependency.bin"
+    shared_by: ["sma", "sme", "smj", "sms", "sjd"]
+    repo: "shared-smi"
+    requires_build: False
+    methods: ["dependency"]
+
+  # dependency.cg3 for all other langs are in their individual repos
+  - filename: "dependency.cg3"
+    repo_path: "src/cg3/dependency.cg3"
+    requires_build: False
+    methods: ["dependency"]
+
+  - filename: "korp.cg3"
+    alt_filename: "korp.bin"
+    repo_path: "src/cg3/korp.cg3"
+    alt_repo_path: "src/cg3/korp.bin"
+    repo: "shared-smi"
+    requires_build: False
+    methods: ["dependency"]
+
+  - filename: "txt2ipa.compose.hfst"
+    repo_path: "src/phonetics/txt2ipa.compose.hfst"
+    build_flags: ["enable-phonetic", "enable-tts", "enable-tokenisers"]
+    methods: ["transcribe"]
+
+  - filename: "transcriptor-numbers-digit2text.filtered.lookup.hfstol"
+    repo_path: "src/transcriptions/transcriptor-numbers-digit2text.filtered.lookup.hfstol"
+    methods: ["transcribe"]
+
+  - filename: "korpustags.{lang}.txt"
+    repo_path: "test/data/korpustags.{lang}.txt"
+    requires_build: False
+    methods: ["paradigm"]
+
+  - filename: "paradigm_min.{lang}.txt"
+    repo_path: "test/data/paradigm_min.{lang}.txt"
+    requires_build: False
+    methods: ["paradigm"]
+
+  - filename: "paradigm_standard.{lang}.txt"
+    repo_path: "test/data/paradigm_standard.{lang}.txt"
+    requires_build: False
+    methods: ["paradigm"]
+
+  - filename: "paradigm_full.{lang}.txt"
+    repo_path: "test/data/paradigm_full.{lang}.txt"
+    requires_build: False
+    methods: ["paradigm"]

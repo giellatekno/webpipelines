@@ -1,0 +1,60 @@
+<!-- Translation xml files for the cgi-bin programs -->
+<!ELEMENT content (title|place|copyright|introduction|introduction_p2|usage|example|instruction|selection|charset|input|noresult|otherforms|endtext|end|grammar)*>
+
+<!ELEMENT title (#PCDATA)>
+<!ATTLIST title tool CDATA #IMPLIED>
+<!ATTLIST title lang CDATA #IMPLIED>
+
+<!ELEMENT place (#PCDATA)>
+
+<!ELEMENT copyright (#PCDATA)>
+<!ATTLIST copyright lang CDATA #IMPLIED>
+
+<!ELEMENT introduction (#PCDATA)>
+<!ATTLIST introduction tool CDATA #IMPLIED>
+<!ATTLIST introduction lang CDATA #IMPLIED>
+<!ATTLIST introduction type CDATA #IMPLIED>
+
+<!ELEMENT introduction_p2 (#PCDATA)>
+<!ATTLIST introduction_p2 tool CDATA #IMPLIED>
+<!ATTLIST introduction_p2 lang CDATA #IMPLIED>
+
+<!ELEMENT usage (#PCDATA)>
+<!ATTLIST usage lang CDATA #IMPLIED>
+
+<!ELEMENT example (#PCDATA)>
+<!ATTLIST example lang CDATA #IMPLIED>
+<!ATTLIST example tool CDATA #IMPLIED>
+
+<!ELEMENT instruction (#PCDATA)*>
+<!ATTLIST instruction tool CDATA #IMPLIED>
+
+<!ELEMENT selection (select+)>
+<!ATTLIST selection tool CDATA #IMPLIED>
+
+    <!ELEMENT select (#PCDATA)>
+    <!ATTLIST select type CDATA #IMPLIED>
+    <!ATTLIST select tool CDATA #IMPLIED>
+    <!ATTLIST select lang CDATA #IMPLIED>
+
+<!ELEMENT charset (#PCDATA)>
+
+<!ELEMENT input (#PCDATA)>
+<!ATTLIST input type CDATA #IMPLIED>
+
+<!ELEMENT noresult (#PCDATA)>
+<!ATTLIST noresult tool CDATA #IMPLIED>
+
+<!ELEMENT otherforms (#PCDATA)>
+<!ATTLIST otherforms tool CDATA #IMPLIED>
+
+<!ELEMENT endtext (#PCDATA)>
+
+<!ELEMENT end (#PCDATA)>
+<!ATTLIST end lang CDATA #IMPLIED>
+<!ATTLIST end tool CDATA #IMPLIED>
+
+<!ELEMENT grammar (pos+)>
+
+    <!ELEMENT pos (#PCDATA)>
+    <!ATTLIST pos type CDATA #IMPLIED>

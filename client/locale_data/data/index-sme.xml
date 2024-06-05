@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+  <!ENTITY % corpusDTD SYSTEM "https://giellatekno.uit.no/dtd/corpus.dtd">
+  %corpusDTD;
+  <!ENTITY % canengDTD SYSTEM "https://giellatekno.uit.no/dtd/caneng.dtd">
+  %canengDTD;
+  <!ENTITY % canfinDTD SYSTEM "https://giellatekno.uit.no/dtd/canfin.dtd">
+  %canfinDTD;
+  <!ENTITY % cannobDTD SYSTEM "https://giellatekno.uit.no/dtd/cannob.dtd">
+  %cannobDTD;
+  <!ENTITY % canrusDTD SYSTEM "https://giellatekno.uit.no/dtd/canrus.dtd">
+  %canrusDTD;
+  <!ENTITY % cansmaDTD SYSTEM "https://giellatekno.uit.no/dtd/cansma.dtd">
+  %cansmaDTD;
+  <!ENTITY % cansmeDTD SYSTEM "https://giellatekno.uit.no/dtd/cansme.dtd">
+  %cansmeDTD;
+  <!ENTITY % cansmjDTD SYSTEM "https://giellatekno.uit.no/dtd/cansmj.dtd">
+  %cansmjDTD;
+]>
+<content>
+  <!-- Title: lang + language tools -->
+  <lt>&ltsme;</lt>
+
+  <lname lang="bxr">&bxrsme;</lname>
+  <lname lang="chr">&chrsme;</lname>
+  <lname lang="ciw">&ciwsme;</lname>
+  <lname lang="cor">&corsme;</lname>
+  <lname lang="crk">&crksme;</lname>
+  <lname lang="deu">&deusme;</lname>
+  <lname lang="est">&estsme;</lname>
+  <lname lang="evn">&evnsme;</lname>
+  <lname lang="fao">&faosme;</lname>
+  <lname lang="fin">&finsme;</lname>
+  <lname lang="fit">&fitsme;</lname>
+  <lname lang="fkv">&fkvsme;</lname>
+  <lname lang="gle">&glesme;</lname>
+  <lname lang="hdn">&hdnsme;</lname>
+  <lname lang="hun">&hunsme;</lname>
+  <lname lang="ipk">&ipksme;</lname>
+  <lname lang="izh">&izhsme;</lname>
+  <lname lang="kal">&kalsme;</lname>
+  <lname lang="kca">&kcasme;</lname>
+  <lname lang="koi">&koisme;</lname>
+  <lname lang="kom">&komsme;</lname>
+  <lname lang="kpv">&kpvsme;</lname>
+  <lname lang="lav">&lavsme;</lname>
+  <lname lang="liv">&livsme;</lname>
+  <lname lang="lut">&lutsme;</lname>
+  <lname lang="mdf">&mdfsme;</lname>
+  <lname lang="mhr">&mhrsme;</lname>
+  <lname lang="mns">&mnssme;</lname>
+  <lname lang="mrj">&mrjsme;</lname>
+  <lname lang="myv">&myvsme;</lname>
+  <lname lang="nio">&niosme;</lname>
+  <lname lang="nno">&nnosme;</lname>
+  <lname lang="nob">&nobsme;</lname>
+  <lname lang="olo">&olosme;</lname>
+  <lname lang="rmf">&rmfsme;</lname>
+  <lname lang="rup">&rupsme;</lname>
+  <lname lang="rus">&russme;</lname>
+  <lname lang="sjd">&sjdsme;</lname>
+  <lname lang="sje">&sjesme;</lname>
+  <lname lang="sma">&smasme;</lname>
+  <lname lang="sme">&smesme;</lname>
+  <lname lang="smj">&smjsme;</lname>
+  <lname lang="smn">&smnsme;</lname>
+  <lname lang="sms">&smssme;</lname>
+  <lname lang="som">&somsme;</lname>
+  <lname lang="swe">&swesme;</lname>
+  <lname lang="udm">&udmsme;</lname>
+  <lname lang="vep">&vepsme;</lname>
+  <lname lang="vot">&votsme;</lname>
+  <lname lang="vro">&vrosme;</lname>
+  <lname lang="yrk">&yrksme;</lname>
+
+  <!-- anders: conflict. using the ones in cgi-sme.xml -->
+  <!--<place>Giellatekno, UiT Norgga árktalaš universitehta</place>-->
+  <!--<copyright>Copyright © Saami giellateknologiija guovddáš</copyright>-->
+
+
+<!-- Introduction -->
+
+
+<introduction />
+
+<introduction lang="bxr">
+Burjátagillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit sániid.
+</introduction>
+
+<introduction lang="ciw">
+Ojibwegillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit moadde vearbba.
+</introduction>
+
+<introduction lang="cor">
+Dette er heimesida til ein grammatisk analysator for kornisk. Analysatoren bruker den nye standarden for kornisk, den såkalla Single Written Form.
+</introduction>
+
+<introduction lang="crk" >Plains cree-gillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit sániid.</introduction>
+
+<introduction lang="fao">
+Dette er heimesida til dei færøyske grammatiske analysatorane. Vi kombinerer ein morfologisk og morfofonologisk analysator med leksema i Føroysk orðabók til ein grammatisk analysator og generator for færøysk. Den morfologiske dekningsgraden er relativt god, svake punkt er visse sterke verb, og delar av adjektivparadigma, men den syntaktiske analysatoren trør framleis barneskoa sine.
+</introduction>
+
+<introduction lang="fin">
+Suomagillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit sániid.
+</introduction>
+
+<introduction lang="fit">
+Meänkieli-gillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit sániid.
+</introduction>
+
+<introduction lang="fkv">
+Kvenagillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit moadde sáni.
+</introduction>
+
+<introduction lang="gle">
+Iragillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit sániid.
+</introduction>
+
+<introduction lang="hdn">
+Davvihaidagillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit moadde sáni.
+</introduction>
+
+<introduction lang="ipk">
+Dette er heimesida til den grammatiske analysatoren for iñupiaq. Analysatoren dekkar den grunnleggjande bøyingsmorfologien (ikkje avleiing!) og basisordforrådet. Det er også mogleg å konvertere tekst skrive i kodetabellen i <em>Interactive Iñupiaq Dictionary</em> over til Unicode.
+</introduction>
+
+<introduction lang="izh" >Inkeroisgillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit sániid.</introduction>
+
+<introduction lang="kal">
+Dette er ein av heimesidene til det grønlandske analyseprosjektet. Bruk denne sida viss du vil analysere grønlandsk tekst, konvertere Kleinschmidts ortografi til moderne ortografi. Den andre heimesida til prosjektet er hos Oqaasileriffik, der du også vil finne eit grensesnitt for korpussøk i uanalysert tekst, og eit flott grensesnitt for ordanalyse og paradigmegenerering.
+</introduction>
+
+<introduction lang="kca">Hantigillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit sániid.</introduction>
+
+<introduction lang="kpv">Komigillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit sániid.</introduction>
+
+<introduction lang="koi">Komipermjakgillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit sániid.</introduction>
+
+<introduction lang="liv">Liivigillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit sániid.</introduction>
+
+<introduction lang="mdf">Mokšagillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit sániid.</introduction>
+
+<introduction lang="mhr">Marigillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit sániid.</introduction>
+
+<introduction lang="mns">Mansigillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit sániid.</introduction>
+
+<introduction lang="mrj">Várremarigillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit sániid.</introduction>
+
+<introduction lang="myv">Ersagillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit sániid.</introduction>
+
+<introduction lang="nio" >Nganasanagillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit sániid.</introduction>
+
+<introduction lang="nob" >Dárogillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit sániid.</introduction>
+
+<introduction lang="olo" >Aunusgárjilgillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit sániid.</introduction>
+
+
+<introduction lang="fit">
+Suoma romanigillii mis leat testenprográmmat maiguin sáhttá analyseret sániid.
+</introduction>
+
+<introduction lang="rus">Ruoššagillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit sániid.</introduction>
+
+<introduction lang="sjd">Eat leat bargame gielddasámegielain. Lea dattetge vejolaš analyseret loguid.</introduction>
+
+<introduction lang="sje">Bihtánsámegillii mis leat prográmmat maiguin sáhttá analyseret ja sojahit moadde sáni.</introduction>
+
+<introduction lang="udm">Udmurtagillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit sániid.</introduction>
+
+<introduction lang="vep" >Vepsagillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit sániid.</introduction>
+
+<introduction lang="vro" >Võrogillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit sániid.</introduction>
+
+<introduction lang="vot" >Vatjagillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit sániid.</introduction>
+
+<introduction lang="yrk" >Nenetsagillii mis leat testenprográmmat maiguin sáhttá analyseret ja sojahit sániid.</introduction>
+
+<!-- analysis -->
+
+<analysis>
+Teaksta- ja sátneanalysa
+</analysis>
+
+<analysis lang="sms" />
+
+
+<!-- Analysis text section -->
+
+<analysis_text lang="bxr">Analysere teavsttaid.</analysis_text>
+
+<analysis_text lang="ciw">Analysere teavsttaid.</analysis_text>
+
+<analysis_text lang="cor">Analysere ja disambiguere teavsttaid.</analysis_text>
+
+<analysis_text lang="fao">Analysere ja disambiguere teavsttaid, ja bokte sániid.</analysis_text>
+
+<analysis_text lang="fin">Analysere teavsttaid.</analysis_text>
+
+<analysis_text lang="fit">Analysere teavsttaid.</analysis_text>
+
+<analysis_text lang="fkv">Analysere teavsttaid.</analysis_text>
+
+<analysis_text lang="gle">Analysere teavsttaid.</analysis_text>
+
+<analysis_text lang="hdn">Analysere dušše moadde sáni.</analysis_text>
+
+<analysis_text lang="ipk">Analysere teavsttaid. Prográmma konvertere maid <em>Interactive Iñupiaq Dictionary</em> -sátnegirjjis Unicodii.</analysis_text>
+
+<analysis_text lang="kal">
+Analysere ja disambiguere teavsttaid, ja bokte sániid. Prográmma konvertere maid IPA:i, ja Kleinschmidta (pre-1973) čállinvuogis ođđa čállinvuohkái.
+</analysis_text>
+
+<analysis_text lang="kpv">Analysere teavsttaid.</analysis_text>
+
+<analysis_text lang="koi">Analysere teavsttaid.</analysis_text>
+
+<analysis_text lang="mhr">Analysere teavsttaid.</analysis_text>
+
+<analysis_text lang="mns">Analysere teavsttaid.</analysis_text>
+
+<analysis_text lang="myv">Analysere teavsttaid.</analysis_text>
+
+<analysis_text lang="nob">Analysere teavsttaid.</analysis_text>
+
+<analysis_text lang="rmf">Analysere teavsttaid.</analysis_text>
+
+<analysis_text lang="rus">Analysere teavsttaid.</analysis_text>
+
+<analysis_text lang="udm">Analysere teavsttaid.</analysis_text>
+
+<analysis_text lang="sma">Morfologalaš ja syntávssalaš analysa, ja sátnebotken.</analysis_text>
+
+<analysis_text lang="sme">Morfologalaš ja syntávssalaš analysa, ja sátnebotken. Prográmma konvertere maid IPA:i.</analysis_text>
+
+<analysis_text lang="smj">Morfologalaš ja syntávssalaš analysa, ja sátnebotken.</analysis_text>
+
+<analysis_text>Prográmma analysere dušše moadde sáni.</analysis_text>
+
+
+
+<!-- paradigm -->
+
+<paradigm>Sániid sojahanminsttar – vállje dihto sáni.</paradigm>
+
+
+<!-- paradigm text section -->
+
+<paradigm_text lang="ipk">Generere vuođđosániid sojahanparadigmaid.</paradigm_text>
+
+<paradigm_text lang="sjd">
+Paradigmageneráhtor doaibmá formálalaččat, muhto muhto paradigmain
+leat eanet meattáhusat go rivttes hámit. Generáhtor lea dás min testema várás.
+</paradigm_text>
+
+<paradigm_text lang="sje">
+Generere moatti sáni sojahanparadigmaid. Paradigmageneráhtor doaibmá
+formálalaččat, muhto muhto paradigmain leat eanet meattáhusat go rivttes hámit.
+Generáhtor lea dás min testema várás.
+</paradigm_text>
+
+<paradigm_text lang="smn">Generere moatti sáni sojahanparadigmaid.</paradigm_text>
+
+<paradigm_text lang="sms">Generere moatti sáni sojahanparadigmaid.</paradigm_text>
+
+<paradigm_text />
+
+<!-- Ordformgenerering -->
+
+<generator>
+Sániid sojaheapmi – vállje dihto sáni ja sojaheami.
+</generator>
+
+<generator_text />
+
+
+<!-- numerals section -->
+
+<numerals>
+Lohkosánit
+</numerals>
+
+<numerals lang="bxr" />
+<numerals lang="ciw" />
+<numerals lang="cor" />
+<numerals lang="fao" />
+<numerals lang="ipk" />
+<numerals lang="kal" />
+<numerals lang="kpv" />
+<numerals lang="mhr" />
+<numerals lang="mns" />
+<numerals lang="myv" />
+<numerals lang="rus" />
+<numerals lang="sje" />
+<numerals lang="sms" />
+<numerals lang="udm" />
+<numerals lang="yrk" />
+
+<!-- numerals text section -->
+
+<numerals_text>
+Čále logu (omd. 123), ja de oaččut lohkosáni.
+</numerals_text>
+
+<numerals_text lang="bxr">
+Mis ii velge leat lohkosátnegeneráhtor burjátagillii.
+</numerals_text>
+
+<numerals_text lang="ciw">
+Mis ii velge leat lohkosátnegeneráhtor ojibwegillii.
+</numerals_text>
+
+<numerals_text lang="cor">
+Mis ii velge leat lohkosátnegeneráhtor kornigillii.
+</numerals_text>
+
+<numerals_text lang="fao">
+Mis ii velge leat lohkosátnegeneráhtor fearagillii.
+</numerals_text>
+
+<numerals_text lang="ipk">
+Mis ii velge leat lohkosátnegeneráhtor inupiakgillii.
+</numerals_text>
+
+<numerals_text lang="kal">
+Mis ii velge leat lohkosátnegeneráhtor ruonáeatnangillii.
+</numerals_text>
+
+<numerals_text lang="rus">
+Čále logu (omd. 123, 10:15, 6.2.), ja de oaččut lohkosáni, diibmomeriid dahje beaivemeari.
+</numerals_text>
+
+<numerals_text lang="sje">
+Mis ii velge leat lohkosátnegeneráhtor bihtánsámegillii.
+</numerals_text>
+
+<numerals_text lang="sma">
+Čále logu (omd. 123, 10:15, 6.2.), ja de oaččut lohkosáni, diibmomeriid dahje beaivemeari.
+</numerals_text>
+
+<numerals_text lang="sme">
+Čále logu (omd. 123, 10:15, 6.2.), ja de oaččut lohkosáni, diibmomeriid dahje beaivemeari.
+</numerals_text>
+
+<numerals_text lang="udm">
+Mis ii velge leat lohkosátnegeneráhtor udmurtagillii.
+</numerals_text>
+
+<!-- @cip: this has been removed: put this another place
+<programtitle>
+Sátnegirjjitt
+</programtitle>
+
+<dictionariestitle lang="sme" />-->
+  <dicts>Sátnegirjjit</dicts>
+
+
+  <!-- Dictionary page -->
+  <dicts_text>Sánit ja báikenamat</dicts_text>
+
+<!-- Dictionaries -->
+
+<nds>NDS / NDB</nds>
+<nds_text>Interaktiivvalaš neahttasátnegirji: Ipmirda sojahuvvon sániid ja čájeha mo sátni galgá sojahuvvot. Korpusohcan (ii Internet Explorerii).</nds_text>
+
+<nds_text lang="sma">
+Interaktiivvalaš neahttasátnegirji ja korpusohcan.
+</nds_text>
+
+<nds_text lang="sme">
+Interaktiivvalaš neahttasátnegirji ja korpusohcan.
+</nds_text>
+
+
+<nds_text>
+Interaktiivvalaš neahttasátnegirji.
+</nds_text>
+
+
+<webdictionaries>Webdict neahttasátnegirji</webdictionaries>
+<webdictionaries_text>Čájeha sániid listun. Buorre jus it dieđe mo sátni čállojuvvo. Dušše vuođđohámit.</webdictionaries_text>
+
+<webdictionaries_text />
+
+<webdictionaries_text lang="sjd">
+Oza sániid neahttasátnegirjjis.
+</webdictionaries_text>
+
+<VDdictionaries>
+VD: Digitála sátnegirji viežžan láhkai
+</VDdictionaries>
+
+<VDdictionaries_text />
+
+
+
+
+
+
+
+<!-- Grammar -->
+
+<grammar>
+Grammatihkka
+</grammar>
+
+
+<!-- Korp -->
+<korp>Korp – teakstačoakkáldat</korp>
+
+<!-- Korp text -->
+<korp_text>oza sániid ja minstariid teakstačoakkáldagas. (ii Internet Explorerii)</korp_text>
+
+
+<!-- Placenames -->
+
+<placenames>
+GEO – Oza báikenamaid
+</placenames>
+
+
+<!-- Placenames text -->
+
+<placenames_text>
+Čále báikenama dárogillii (maid suomagiel ja ruoŧagiel namaid), ja de oaččut seamma báikki nama sámegilli. Sáhtát maiddái bargat nuppi guvlui.
+</placenames_text>
+
+
+
+<!-- Risten -->
+
+<risten lang="smj">báhko.org - Oza tearpmaid</risten>
+<risten lang="sma">baakoe.org - Oza tearpmaid</risten>
+<risten lang="sme">sátni.org - Oza tearpmaid</risten>
+
+<risten_text>Dat lea boares risten.no-siiddu ođđa veršuvdna</risten_text>
+
+
+<!-- Divvun -->
+<divvun>Divvunprográmma Microsoft Wordii</divvun>
+<divvun_text />
+
+
+
+<!-- keyboard -->
+<keyboard>
+Sámegiel boallobeavdi
+</keyboard>
+<!-- Keyboard text -->
+<keyboard_text />
+
+
+<!-- Oahpa -->
+<oahpa>Oahpa! giellaoahppanprográmmat</oahpa>
+<oahpa_text lang="sme">
+Interaktiivvalaš prográmmat maiguin sáhttá hárjehallat sániid, sojahemiid ja cealkagiid čállit.
+</oahpa_text>
+<oahpa_text lang="sma">
+Interaktiivvalaš prográmmat maiguin sáhttá hárjehallat sániid, sojahemiid ja cealkagiid čállit.
+</oahpa_text>
+<oahpa_text lang="sjd">
+Interaktiivvalaš prográmmat maiguin sáhttá hárjehallat sániid ja loguid. Prográmma lea dušše demo-veršuvdna.
+</oahpa_text>
+<oahpa_text lang="smn">
+Interaktiivvalaš prográmmat maiguin sáhttá hárjehallat sániid ja loguid. Prográmma lea dušše demo-veršuvdna.
+</oahpa_text>
+<oahpa_text lang="sms">
+Interaktiivvalaš prográmmat maiguin sáhttá hárjehallat sániid ja loguid. Prográmma lea dušše demo-veršuvdna.
+</oahpa_text>
+
+<!-- crkoahpa -->
+<crkoahpa>nêhiyawêtân giellaoahppanprográmmat</crkoahpa>
+<!-- nêhiyawêtân text -->
+<crkoahpa_text lang="crk">
+Interaktiivvalaš prográmmat maiguin sáhttá hárjehallat sániid, sojahemiid ja loguid. Demo-veršuvdna.
+</crkoahpa_text>
+
+<!-- tts -->
+<tts>Hállansyntesa</tts>
+<tts_text>Dihtor lohká teavstta jitnosit dutnje.</tts_text>
+
+
+<!-- kursa -->
+<kursa>Giellakursa</kursa>
+<kursa_text />
+
+<!-- Gïelese -->
+<gielese>Gïelese</gielese>
+<gielese_text>Oahpa sániid – prográmma sisttisdoallá jiena ja govaid</gielese_text>
+<!-- Korp text -->
+<korp_text>oza sániid ja minstariid teakstačoakkáldagas.</korp_text>
+
+
+<!-- VISL -->
+<visl>VISL – oahpa grammatihka</visl>
+<visl_text>Prográmmačoakkáldat grammatihkkaoahppama várás.</visl_text>
+
+<!-- MT jorgal.uit.no -->
+<mt>Dihtorjorgaleapmi davvisámegielas darogillii</mt>
+<mt_text>Sáhtat liibmet sisa teavstta, dahje jorgalit dokumeanttaid ja neahttasiidduid</mt_text>
+
+<!-- MT gtšeb.uit.no/mt -->
+<mt2>Dihtorjorgaleapmi sámegielaid gaskkas</mt2>
+<mt2_text>Sáhtat liibmet sisa teavstta, dahje jorgalit dokumeanttaid ja neahttasiidduid. Prográmmat leat velá beta-dásis.</mt2_text>
+
+<!-- other -->
+<other lang="kpv">
+Analysatorane for komi er eit samarbeidsprosjekt mellom FU-lab, Giellatekno og Jack Rueter. Ordboka som ligg til grunn for leksikondelen er Jack Rueters Komi-suomi-englanti sanakirja.
+</other>
+
+<other lang="koi">
+Analysatorane for komipermjakisk er eit samarbeidsprosjekt mellom FU-lab, Giellatekno og Jack Rueter. Ordboka som ligg til grunn for leksikondelen er Jack Rueters Komi-suomi-englanti sanakirja.
+</other>
+
+<other lang="mhr">
+Analysatorane for marisk er eit samarbeidsprosjekt mellom Giellatekno og Jorma Luutonen. Ordboka som ligg til grunn for leksikondelen er Arto Moisios Mari-suomi sanakirja.
+</other>
+
+</content>

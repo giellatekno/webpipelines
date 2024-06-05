@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//UIT//DTD CGI TRANSLATIONS V1.0//EN" "https://giellatekno.uit.no/dtd/cgi-translations.dtd">
+<content>
+
+<title tool="analyze" lang="bxr" >Burjátagiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="ciw" >Ojibwegiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="cor" >Kornigiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="crk" >Plains cree-giela sátneanalysaprográmma</title>
+<title tool="analyze" lang="est" >Esttegiela sátneanalysaprográmma</title>
+<title tool="analyze" lang="evn" >Evenkagiela sátneanalysaprográmma</title>
+<title tool="analyze" lang="fao" >Fearagiela sátneanalysaprográmma</title>
+<title tool="analyze" lang="fin" >Suomagiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="fit" >Meänkieli sátneanalysaprográmma</title>
+<title tool="analyze" lang="fkv" >Kvenagiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="hdn" >Davvihaidagiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="ipk" >Iñupiaqa sátneanalysaprográmma</title>
+<title tool="analyze" lang="izh" >Inkeroisgiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="gle" >Iragiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="kal" >Ruonáeatnanlaš sátneanalysaprográmma</title>
+<title tool="analyze" lang="kca" >Hantigiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="kpv" >Komigiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="liv" >Liivigiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="mdf" >Mokšagiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="mhr" >Nuortamarigiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="mns" >Mansigiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="mrj" >Várremarigiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="myv" >Ersagiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="nio" >Nganasanagiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="olo" >Aunusgárjilgiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="rmf" >Suoma romanigiela sátneanalysaprográmma</title>
+<title tool="analyze" lang="rus" >Ruoššagiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="sjd" >Gielddasámegiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="sje" >Bihtánsámegiel sátne- ja teakstaanalysaprográmma</title>
+<title tool="analyze" lang="sma" >Lullisámegiel sátne- ja teakstaanalysaprográmma</title>
+<title tool="analyze" lang="sme" >Davvisámegiel sátne- ja teakstaanalysaprográmma</title>
+<title tool="analyze" lang="smj" >Julevsámegiel sátne- ja teakstaanalysaprográmma</title>
+<title tool="analyze" lang="smn" >Anársámegiel sátne- ja teakstaanalysaprográmma</title>
+<title tool="analyze" lang="sms" >Nuortalašgiel sátne- ja teakstaanalysaprográmma</title>
+<title tool="analyze" lang="som" >Somaligiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="udm" >Udmurtagiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="vep" >Vepsagiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="vro" >Võrogiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="vot" >Vatjagiel sátneanalysaprográmma</title>
+<title tool="analyze" lang="yrk" >Nenetsagiel sátneanalysaprográmma</title>
+
+<title tool="generate" lang="bxr" >Burjátagiel genererenprográmma  </title>
+<title tool="generate" lang="ciw" >Ojibwegiel genererenprográmma  </title>
+<title tool="generate" lang="cor" >Kornigiel genererenprográmma  </title>
+<title tool="generate" lang="crk" >Plains cree-giela genererenprográmma  </title>
+<title tool="generate" lang="est" >Esttegiel genererenprográmma  </title>
+<title tool="generate" lang="evn" >Evenkagiel genererenprográmma  </title>
+<title tool="generate" lang="fao" >Fearagiel genererenprográmma  </title>
+<title tool="generate" lang="fin" >Suomagiel genererenprográmma  </title>
+<title tool="generate" lang="fit" >Meänkieli genererenprográmma  </title>
+<title tool="generate" lang="fkv" >Kvenagiel genererenprográmma  </title>
+<title tool="generate" lang="gle" >Iragiel genererenprográmma  </title>
+<title tool="generate" lang="hdn" >Davvihaidagiel genererenprográmma  </title>
+<title tool="generate" lang="ipk" >Iñupiaqa genererenprográmma  </title>
+<title tool="generate" lang="izh" >Inkeroisgiel genererenprográmma</title>
+<title tool="generate" lang="kal" >Ruonáeatnanlaš genererenprográmma  </title>
+<title tool="generate" lang="kca" >Hantigiel genererenprográmma</title>
+<title tool="generate" lang="kpv" >Komigiel genererenprográmma  </title>
+<title tool="generate" lang="liv" >Liivigiel genererenprográmma</title>
+<title tool="generate" lang="mdf" >Mokšagiel genererenprográmma</title>
+<title tool="generate" lang="mhr" >Nuortamárigiel genererenprográmma  </title>
+<title tool="generate" lang="mns" >Mansigiel genererenprográmma  </title>
+<title tool="generate" lang="mrj" >Várremarigiel genererenprográmma</title>
+<title tool="generate" lang="myv" >Ersagiel genererenprográmma  </title>
+<title tool="generate" lang="nio" >Nganasanagiel genererenprográmma</title>
+<title tool="generate" lang="olo" >Aunusgárjilgiel genererenprográmma</title>
+<title tool="generate" lang="rus" >Ruoššagiel genererenprográmma  </title>
+<title tool="generate" lang="sjd" >Generere gielddasámegiel sáni</title>
+<title tool="generate" lang="sje" >Generere bihtánsámegiel sáni</title>
+<title tool="generate" lang="sma" >Generere lullisámegiel sáni</title>
+<title tool="generate" lang="sme" >Generere davvisámegiel sáni</title>
+<title tool="generate" lang="smj" >Generere julevsámegiel sáni</title>
+<title tool="generate" lang="smn" >Generere anársámegiel sáni</title>
+<title tool="generate" lang="sms" >Generere nuortalašgiel sáni</title>
+<title tool="generate" lang="som" >Somaligiel genererenprográmma  </title>
+<title tool="generate" lang="udm" >Udmurtagiel genererenprográmma  </title>
+<title tool="generate" lang="vep" >Vepsagiel genererenprográmma</title>
+<title tool="generate" lang="vro" >Võrogiel genererenprográmma</title>
+<title tool="generate" lang="vot" >Vatjagiel genererenprográmma</title>
+<title tool="generate" lang="yrk" >Nenetsagiel genererenprográmma</title>
+
+<title tool="paradigm" lang="bxr" >Burjátagiel sojahanparadigmat</title>
+<title tool="paradigm" lang="ciw" >Ojibwegiel sojahanparadigmat</title>
+<title tool="paradigm" lang="cor" >Kornigiel sojahanparadigmat</title>
+<title tool="paradigm" lang="crk" >Plains cree-giela sojahanparadigmat</title>
+<title tool="paradigm" lang="est" >Esttegiel sojahanparadigmat</title>
+<title tool="paradigm" lang="evn" >Evenkagiel sojahanparadigmat</title>
+<title tool="paradigm" lang="fao" >Fearagiel sojahanparadigmat</title>
+<title tool="paradigm" lang="fin" >Suomagiel sojahanparadigmat</title>
+<title tool="paradigm" lang="fit" >Meänkieli sojahanparadigmat</title>
+<title tool="paradigm" lang="fkv" >Kvenagiel sojahanparadigmat</title>
+<title tool="paradigm" lang="hdn" >Davvihaidagiel sojahanparadigmat</title>
+<title tool="paradigm" lang="ipk" >Iñupiaqa sojahanparadigmat</title>
+<title tool="paradigm" lang="izh" >Inkeroisgiel sojahanparadigmat</title>
+<title tool="paradigm" lang="kal" >Ruonáeatnanlaš sojahanparadigmat</title>
+<title tool="paradigm" lang="kca" >Hantigiel sojahanparadigmat</title>
+<title tool="paradigm" lang="kpv" >Komigiel sojahanparadigmat</title>
+<title tool="paradigm" lang="liv" >Liivigiel sojahanparadigmat</title>
+<title tool="paradigm" lang="mdf" >Mokšagiel sojahanparadigmat</title>
+<title tool="paradigm" lang="mns" >Mansigiel sojahanparadigmat</title>
+<title tool="paradigm" lang="mhr" >Niitomarigiel sojahanparadigmat</title>
+<title tool="paradigm" lang="mrj" >Várremarigiel sojahanparadigmat</title>
+<title tool="paradigm" lang="myv" >Ersagiel sojahanparadigmat</title>
+<title tool="paradigm" lang="nio" >Nganasanagiel sojahanparadigmat</title>
+<title tool="paradigm" lang="olo" >Aunusgárjilgiel sojahanparadigmat</title>
+<title tool="paradigm" lang="rus" >Ruoššagiel sojahanparadigmat</title>
+<title tool="paradigm" lang="sjd" >Generere gielddasámegiela sojahanparadigmaid</title>
+<title tool="paradigm" lang="sje" >Generere bihtánsámegiel sojahanparadigmaid</title>
+<title tool="paradigm" lang="sma" >Generere lullisámegiel sojahanparadigmaid</title>
+<title tool="paradigm" lang="sme" >Generere davvisámegiel sojahanparadigmaid</title>
+<title tool="paradigm" lang="smj" >Generere julevsámegiel sojahanparadigmaid</title>
+<title tool="paradigm" lang="smn">Generere anársámegiel sojahanparadigmaid</title>
+<title tool="paradigm" lang="sms">Generere nuortalašgiel sojahanparadigmaid</title>
+<title tool="paradigm" lang="udm" >Udmurtagiel sojahanparadigmat</title>
+<title tool="paradigm" lang="vep" >Vepsagiel sojahanparadigmat</title>
+<title tool="paradigm" lang="vro" >Võrogiel sojahanparadigmat</title>
+<title tool="paradigm" lang="vot" >Vatjagiel sojahanparadigmat</title>
+<title tool="paradigm" lang="yrk" >Nencagiel sojahanparadigmat</title>
+
+
+
+<title tool="placenames">Oza báikenamaid</title>
+
+<!-- H1 -->
+
+
+<place>Sámi giellateknologiija guovddaš, UiT Norgga árktalaš universitehta</place>
+
+<copyright lang="bxr">Copyright © Senter for samisk språkteknologi og Jargal Badagarov</copyright>
+<copyright lang="crk">Copyright © Senter for samisk språkteknologi og AltLab v/ Universitetet i Alberta</copyright>
+<copyright lang="fin">Copyright © Senter for samisk språkteknologi og Tommi Pirinen</copyright>
+<copyright lang="fit">Copyright © Senter for samisk språkteknologi</copyright>
+<copyright lang="fkv">Copyright © Senter for samisk språkteknologi Kvensk institutt</copyright>
+<copyright lang="hdn">Copyright © Senter for samisk språkteknologi og CILLDI</copyright>
+<copyright lang="ipk">Copyright © Senter for samisk språkteknologi og Oqaasileriffik</copyright>
+<copyright lang="izh">Copyright © Senter for samisk språkteknologi og Jack Rueter</copyright>
+<copyright lang="kal">Copyright © Senter for samisk språkteknologi og Oqaasileriffik</copyright>
+<copyright lang="kca">Copyright © Senter for samisk språkteknologi og Jack Rueter</copyright>
+<copyright lang="kpv">Copyright © Senter for samisk språkteknologi og Jack Rueter</copyright>
+<copyright lang="liv">Copyright © Senter for samisk språkteknologi og Jack Rueter</copyright>
+<copyright lang="mdf">Copyright © Senter for samisk språkteknologi og Jack Rueter</copyright>
+<copyright lang="mhr">Copyright © Senter for samisk språkteknologi og Jorma Luutonen og Arto Moisio</copyright>
+<copyright lang="mns">Copyright © Senter for samisk språkteknologi</copyright>
+<copyright lang="mrj">Copyright © Senter for samisk språkteknologi og Jack Rueter</copyright>
+<copyright lang="myv">Copyright © Senter for samisk språkteknologi og Jack Rueter</copyright>
+<copyright lang="nio">Copyright © Senter for samisk språkteknologi og Jack Rueter</copyright>
+<copyright lang="olo">Copyright © Senter for samisk språkteknologi og Jack Rueter</copyright>
+<copyright lang="vep">Copyright © Senter for samisk språkteknologi og Jack Rueter</copyright>
+<copyright lang="vro">Copyright © Senter for samisk språkteknologi og Jack Rueter</copyright>
+<copyright lang="vot">Copyright © Senter for samisk språkteknologi og Jack Rueter</copyright>
+<copyright lang="yrk">Copyright © Senter for samisk språkteknologi og Jack Rueter</copyright>
+
+<copyright>Copyright © Sámi giellateknologiija guovddaš</copyright>
+
+
+
+<!-- Introduction analyze -->
+
+<introduction tool="analyze">
+Čále dahje kopiere sániid lásii, ja deatte "Sádde skovi". Čilgehusaid
+morfologalaš ja syntávssalaš oanádusaide gávnnat vuolábealde.
+Jos válljet "Eaŋkilsániid", de prográmma addá buot vejolaš
+analysaid, muhto jos válljet "Cealkagiid", de prográmma geahččala
+addit dušše analysa mii heive dan cealkagii. Prográmma sáhttá maid
+botket sániid, dahje addit stávvalsázu - deatte "Botke".
+</introduction>
+
+<introduction tool="analyze" lang="kal">
+Write or paste the words in the window, and press the "Send form" button.
+The options "Analyze" gives all possible analyses, whereas the
+(default) option "Disambiguate" gives only the analyses appropriate
+for the given sentence. The program may also hyphenate the text for
+you, or add syllable boundaries, in which case it will not give a
+grammatical analysis. Choose "Hyphenate".
+</introduction>
+
+<introduction tool="analyze" type="nodependency">
+
+Čále dahje kopiere sániid lásii, ja deatte "Sádde skovi".
+Jos válljet "Eaŋkilsániid", de prográmma addá buot vejolaš
+analysaid, muhto jos válljet "Cealkagiid", de prográmma geahččala
+addit dušše analysa mii heive dan cealkagii.
+Prográmma sáhttá maid botket sániid, dahje addit stávvalsázu - deatte "Botke".
+</introduction>
+
+<introduction tool="analyze" type="nodisamb">
+Čále dahje kopiere sániid lásii, ja deatte  "Analyse" (buot vejolaš
+analysaid).
+</introduction>
+
+<introduction tool="analyze" type="nohyph">
+Čále dahje kopiere sániid lásii, ja deatte "Sádde". Čilgehusaid
+morfologalaš ja syntávssalaš oanádusaide gávnnat vuolábealde.
+Jos válljet "Eaŋkilsániid", de prográmma addá buot vejolaš
+analysaid, muhto jos válljet "Cealkagiid", de prográmma geahččala
+addit dušše analysa mii heive dan cealkagii.
+</introduction>
+
+
+
+
+<!-- Introduction p2 analyze -->
+
+<introduction_p2 tool="analyze" lang="ciw">
+Nokre av verba i analysatoren er: anwebi, aadizooke, bangishino, biindige, bimaadizi, gaasikanaabaagawe, gashkendamo, giigoonyike, giiwe, izhaa, jiibaakwe, maajaa, minikwe, wiisini, minomaagwad, gozigwan. Some of the nouns are: inini, ikwe, makwa, mitig, aanakwad, zaaga'igan, miikana, ziibi, makak, abwi, baabaa, maamaa, gosis, daanis, mishoomis.
+</introduction_p2>
+
+<introduction_p2 tool="analyze" lang="crk">
+Du kan også konvertere tekst frå latinske bokstavar til stavingsalfabet eller omvendt. Vel "Latinske bokstavar til stavingsalfabet" eller Stavingsalfabet til latinske bokstavar".
+</introduction_p2>
+
+<introduction_p2 tool="analyze" lang="ipk">
+Du kan også konvertere tekst frå formatet i IñupiaQ Dictionary til Unicode. Vel "Konverter".
+</introduction_p2>
+
+<introduction_p2 tool="analyze" lang="kal">
+Du kan konvertere tekst frå Kleinschmidts ortografi (dvs. den i bruk mellom 1857 og 1973)
+og til no gjeldande ortografi. Særleg på kart er Kleinschmidts ortografi framleis i bruk.
+Konverteraren kjenner att bokstaven <emph>kra</emph>, dvs. "ĸ" (Unicode U+0138), men i og
+med at mange brukarar ikkje veit korleis dei skal skrive kra, vil konverteringsverktyet
+konvertere stor K som ikkje står først i ordet til kra. Vel "Konverter". Programmet konverterer ikkje û korrekt, men elles fungerer det godt.)
+Du kan også transkribere grønlandsk tekst, dvs. overføre den frå gjeldande
+ortografi til IPA-transkripsjon, med stavingsgrense (markert med punktum) og
+relativ tonehøgde (etter Stig Bjørnums grammatikk, eigentleg etter Kleinschmidt).
+Vel "Transkriber".
+</introduction_p2>
+
+
+<!--  introduction generate -->
+
+<introduction tool="generate">
+Prográmma addá sátnehámi morfologalaš analysa. Čilgehusa grammatihkalaš oanádusaide gávnnat vuolábealde.
+</introduction>
+
+
+
+
+<!--  introduction placenames -->
+
+
+<introduction tool="placenames">
+Čále báikenama sámegillii dahje dárogillii (muhtun namat leat ruoŧagillii dahje suomagillii). Jus vástádusas lea namma ruođuid siste, de lea suohkan gos báiki lea. Dás leat 8900 nammabára, ja gáldut leat Statens Kartverk (SK), Ruoŧa Sámedikki neahttasiidu (SvSt), Pekka Sammallahti "Sámi-suoma sátnegirji" (PS) ja Sámi Atlas maid H.R. Mathisen lea ráhkadan (SA). Fuobmá ahte Statens Kartverka listtus leat máŋga dáru nama definihtta hámis, nu ahte it gávnna omd. <code>Reinfjord</code>, muhto <code>Reinfjorden</code>.
+</introduction>
+
+
+
+
+
+
+<!--  introduction paradigm -->
+
+
+
+
+<introduction tool="paradigm" lang="bxr">Čále burjátagiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="ciw">Čále ojibwegiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="cor">Čále kornigiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="crk">Čále plains cree-giela sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="fao">Čále fearagiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="fin">Čále suomagiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="fit">Čále meänieli-sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="fkv">Čále kvenagiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="hdn">Čále davvihaidagiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="ipk">Čále iñupiaqa sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="izh" >Čále inkeroisgiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="kal">Čále ruonáeatnanlaš sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="kca" >Čále hantigiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="kpv">Čále komigiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="liv" >Čále liivigiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="mdf" >Čále mokšagiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="mhr">Čále nuortamarigiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="mns">Čále mansigiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="mrj" >Čále várremarigiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="myv">Čále ersagiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="nio" >Čále nganasanagiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="olo" >Čále aunusgárjilgiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="rus">Čále ruoššagiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="sjd">Čále gielddasámegiela sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="sje">Čále bihtánsámegiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="sma">Čále lullisámegiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="sme">Čále davvisámegiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="smj">Čále julevsámegiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="smn">Čále generere anársámegiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="sms">Čále nuortalašgiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="udm">Čále udmurtagiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="vep" >Čále vepsagiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="vro" >Čále võrogiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+<introduction tool="paradigm" lang="vot" >Čále vatjagiel sáni, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.</introduction>
+
+<introduction tool="paradigm">
+Čále sáni vuođđohámi, vállje sátneluohká, ja prográmma generere olles sojahanparadigma.
+</introduction>
+
+
+<!-- usage -->
+
+<usage lang="ciw">
+Prográmma geavaha dubbálvokálasystema, ng. Fiero-systema.
+</usage>
+
+<usage lang="crk">
+Sáhtát geavahit sihke sirkumfleksa (â) ja makron (ā) jos háliidat čállit guhkes vokála.
+</usage>
+
+<usage lang="sjd">
+Write the word in Kildin Saami orthography. Note that we use Cyrillic Characters also for the Latin-looking ones. The program uses the 1985 orthography.
+</usage>
+
+<usage lang="sje">
+Prográmma dohkkeha sihke dárogiela <em>æ, ø</em> ja ruoŧagiela <em>ä, ö</em>.
+</usage>
+
+<usage lang="sma">
+Prográmma dohkkeha <em>i</em> lullisámegiel <em>ï</em> ovddas, ja
+sihke dáru <em>æ, ø</em> ja ruoŧa <em>ä, ö</em>
+</usage>
+
+<usage lang="sme">
+Jos dus ii leat sámegiel boallobeavdi, de sáhtát "á, č, đ, ŋ, š, ŧ, ž" sajis čállit "a1, c1, d1, n1, s1, t1, z1".
+</usage>
+
+<usage lang="smj">
+Don sáhtát geavahit dábálaš julevsámegiel bustávaid. Prográmma ipmirda
+sihke (virggálaš) ja boarráseabbo <em>ń, ñ</em>, ja maid sihke
+<em>äö</em> ja <em>æø</em>.
+</usage>
+
+<usage lang="smn">
+Write the word in ordinary Inari Saami orthography.
+</usage>
+
+<usage lang="sms">
+Write the word in ordinary Skolt Saami orthography.
+</usage>
+
+
+<usage lang="mns">
+Čále sáni dábálaš mansiortografiija mielde. Prográmma ipmirda maid sániid guhkkodatmearkka haga.
+</usage>
+
+<usage />
+
+
+<!-- example -->
+
+<example tool="generate" lang="cor">
+Jos háliidat omd. <em>bownderyow</em>, de čálát <code>bownder+N+Fem+Pl</code>
+</example>
+
+<example tool="generate" lang="crk">
+Jos háliidat omd. <em>atimwak</em>, de čálát <em>atim+N+AN+Pl</em>, ja jos háliidat  <em>kiwicihikonaw</em>,  de čálát <code>wicih+V+TA+Ind+Prs+3Sg+12PlO</code>
+</example>
+
+
+<example tool="generate" lang="fao">
+Jos háliidat omd. <em>húsinum</em>, de čálát <code>hús+N+Neu+Sg+Dat+Def</code>
+</example>
+
+<example tool="generate" lang="fin">
+Jos háliidat omd. <em>joella</em>, de čálát <code>joki+N+Sg+Ade</code>
+</example>
+
+<example tool="generate" lang="fit">
+Jos háliidat omd. <em>joela</em>, de čálát <code>joki+N+Sg+Ade</code>
+</example>
+
+<example tool="generate" lang="fkv">
+Jos háliidat omd. <em>jovela</em>, de čálát <code>joki+N+Sg+Ade</code>
+</example>
+
+<example tool="generate" lang="gle">
+Jos háliidat omd. <em>jovela</em>, de čálát <code>joki+N+Sg+Ade</code> (FIXME)
+</example>
+
+<example tool="generate" lang="ipk">
+Jos háliidat omd. <em>iglum</em>, de čálát <code>iglu+N+Rel+Sg</code>
+</example>
+
+<example tool="generate" lang="kal">
+Jos háliidat omd. <em>illup</em>, de čálát <code>illu+N+Rel+Sg</code>
+</example>
+
+<example tool="generate" lang="kpv">
+Jos háliidat omd. <em>кывлы</em>, de čálát <code>кыв+N+Sg+Dat</code>
+</example>
+
+<example tool="generate" lang="mhr">
+Jos háliidat omd. <em>олмам</em>, de čálát <code>олма+N+Acc</code>
+</example>
+
+<example tool="generate" lang="mns">
+Jos háliidat omd. <em>улят</em>, de čálát <code>уля+N+Sg+Loc</code>
+</example>
+
+<example tool="generate" lang="myv">
+Jos háliidat omd. <em>пангсто</em>, de čálát <code>панго+N+Sg+Ela+Indef</code>
+</example>
+
+<example tool="generate" lang="rus">
+Jos háliidat omd. <em>тигров</em>, de čálát <code>тигр+N+Msc+Pl+Acc</code>
+</example>
+
+<example tool="generate" lang="sje">
+Čále omd. <code>árbbe+N+Sg+Ine</code>, ja vástádus lea <em>árben</em>.
+</example>
+
+<example tool="generate" lang="sma">
+Čále omd. <code>gåetie+N+Sg+Ill</code>, ja vástádus lea <em>gåatan</em>.
+</example>
+
+<example tool="generate" lang="sme">
+Čále omd. <code>viessu+N+Sg+Loc</code>, ja vástádus lea <em>viesus</em>.
+</example>
+
+<example tool="generate" lang="smj">
+Čále omd. <code>gáhtot+V+Ind+Prs+Sg1</code>, ja vástádus lea <em>gádov</em>.
+Čále <code>ællo+N+Sg+Ill</code> dahje <code>mån+Pron+Pers+Sg1+Acc</code>, vástádus lea <em>elluj</em> ja <em>muv</em>.
+</example>
+
+<example tool="generate" lang="sms">
+Čále omd. <code>kueʹtt+N+Sg+Loc</code>, ja vástádus lea <em>kuäʹđest</em>.
+</example>
+
+<example tool="generate" lang="yrk">
+Čále omd. <code>ты+N+Sg+Loc</code>, ja vástádus lea <em>тэхэна</em>.
+</example>
+
+<example tool="generate">Skriv lemma + grammatisk analyse for å få ordform</example>
+
+
+<!-- instruction -->
+
+<instruction tool="paradigm"></instruction>
+<instruction tool="analyze">Čále sátnehámi:</instruction>
+<instruction tool="generate">Čále sátnehámi:</instruction>
+<instruction tool="placenames">Čále báikenama:</instruction>
+
+<!-- selection  -->
+
+<selection tool="paradigm">
+<select type="minimal">Atte minimála paradigma</select>
+<select type="standard">Atte standárdaparadigma</select>
+<select type="full">Atte buot sojahanhámiid</select>
+<select type="test">Atte testenparadigma (ii válmmas)</select>
+<!-- select type="dialect">Atte buot sojahanhámiid, maid suopmanhámiid</select -->
+</selection>
+
+<selection tool="analyze">
+<select tool="analyze">Eaŋkilsánit</select>
+<select tool="disamb">Cealkagat (analysa mii heive kontekstii)</select>
+<select tool="dependency">Dependeansastruktuvra</select>
+<select tool="hyphenate">Botke sániid</select>
+<select tool="transcribe">Transkribere</select>
+<select tool="complextranscribe">Transkribere</select>
+<select tool="convert">Konvertere</select>
+<select tool="lat2syll">Latinske bokstavar til stavingsalfabet</select>
+<select tool="syll2lat">Stavingsalfabet til latinske bokstavar </select>
+</selection>
+
+
+
+<selection tool="translate">
+<select lang="none">Ii jorgalus</select>
+<select lang="dan">Sátnejorgalus dánskagillii</select>
+<select lang="nob">Sátnejorgalus dárogillii (girjedárogillii)</select>
+</selection>
+
+<!-- add "character coding" -->
+
+<charset>Kodatabealla:</charset>
+
+<input type="submit">Sádde</input>
+<input type="reset">Sihko</input>
+
+
+<noresult tool="paradigm">Paradigma ii gávdnon.</noresult>
+<otherforms tool="paradigm">Eará hámit</otherforms>
+
+<!-- endtext -->
+
+<endtext>="analyze">Prográmma ii leat vel gárvvis. Jos fuomášat
+meattáhusaid dahje boasttuanalysaid, de sáhtát čállit dieđu <a
+href="mailto:giellatekno@uit.no">Giellateknoi.</a></endtext>
+
+<!-- end -->
+
+<end lang="sma">
+Prográmma ii leat vel gárvvis. Jos fuomášat
+meattáhusaid dahje boasttuanalysaid, de sáhtát čállit dieđu <a
+href="mailto:giellatekno@uit.no">Giellateknoi.</a>
+</end>
+
+<end lang="smj">
+Julevsámegiel analysaprográmmas leat meastá 20000 sátnehámi (Spiika
+grammatihkas, Nystø/Johnsena oahppogirjjis, ja earenomážit Kintela ja
+Korhosa sátnegirjjiin), muhto vel váilu olu. Jos fuomášat meattáhusaid
+dahje boasttuanalysaid, de sáhtát čállit dieđu <a
+href="mailto:giellatekno@uit.no">Giellateknoi.</a>
+</end>
+
+<end lang="smn">
+Prográmma leat ráhkadeamin easkka ja siskkilda dušše moadde sáni
+Sammallahti - Morottaja sátnegirjji giellaoahpa-oasis. Jos fuomášat
+meattáhusaid dahje boasttuanalysaid, de sáhtát čállit dieđu <a
+href="mailto:giellatekno@uit.no">Giellateknoi.</a>
+</end>
+
+<end lang="sms">
+Prográmmas leat máŋga duhát sáni mat bohtet
+Itkonena, Moshnikoffa ja Sammallahti barggus. Jos fuomášat
+meattáhusaid dahje boasttuanalysaid, de sáhtát čállit dieđu <a
+href="mailto:giellatekno@uit.no">Giellateknoi.</a>
+</end>
+
+
+<end tool="analyze">Prográmma ii leat vel gárvvis. Jos fuomášat
+meattáhusaid dahje boasttuanalysaid, de sáhtát čállit dieđu <a href="mailto:giellatekno@uit.no">Giellateknoi.</a></end>
+
+
+<!-- link -->
+
+<grammar>
+<pos type="Any">Vaikko makkár</pos>
+<pos type="N">Substantiiva</pos>
+<pos type="V">Vearba</pos>
+<pos type="A">Adjektiiva</pos>
+<pos type="Adv">Advearba</pos>
+<pos type="Pron">Pronomena</pos>
+<pos type="Num">Lohkosátni</pos>
+</grammar>
+
+</content>

@@ -1,0 +1,15 @@
+these are the files we use (path in original site -> path in this project (root/locales/...)
+
+cgi/cgi-{lang}.xml                               -> data/cgi-{lang}.xml
+cgi/index-{lang}.xml                             -> data/index-{lang}.xml
+dtd/can{lang}.dtd                                -> data/can{lang}.dtd
+(definition file, unused?) corpus.dtd            -> data/corpus.dtd
+(definition file, unused?) cgi-translations.dtd  -> data/cgi-translations.dtd
+
+
+after making modifications to data files, run
+
+   ./make_final.py {lang}.json
+
+to regenerate the {lang}.json file
+

@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+  <!ENTITY % corpusDTD SYSTEM "https://giellatekno.uit.no/dtd/corpus.dtd">
+  %corpusDTD;
+  <!ENTITY % canengDTD SYSTEM "https://giellatekno.uit.no/dtd/caneng.dtd">
+  %canengDTD;
+  <!ENTITY % canfinDTD SYSTEM "https://giellatekno.uit.no/dtd/canfin.dtd">
+  %canfinDTD;
+  <!ENTITY % cannobDTD SYSTEM "https://giellatekno.uit.no/dtd/cannob.dtd">
+  %cannobDTD;
+  <!ENTITY % canrusDTD SYSTEM "https://giellatekno.uit.no/dtd/canrus.dtd">
+  %canrusDTD;
+  <!ENTITY % cansmaDTD SYSTEM "https://giellatekno.uit.no/dtd/cansma.dtd">
+  %cansmaDTD;
+  <!ENTITY % cansmeDTD SYSTEM "https://giellatekno.uit.no/dtd/cansme.dtd">
+  %cansmeDTD;
+  <!ENTITY % cansmjDTD SYSTEM "https://giellatekno.uit.no/dtd/cansmj.dtd">
+  %cansmjDTD;
+]>
+<content>
+  <!-- Title: ltnob + lang (Språkverktøy for + lang) -->
+  <!-- Variables defined in ../dtd/cannob.dtd -->
+  <lt>&ltnob;</lt>
+  <lname lang="bxr">&bxrnob;</lname>
+  <lname lang="ciw">&ciwnob;</lname>
+  <lname lang="cor">&cornob;</lname>
+  <lname lang="crk">&crknob;</lname>
+  <lname lang="est">&estnob;</lname>
+  <lname lang="evn">&evnnob;</lname>
+  <lname lang="fao">&faonob;</lname>
+  <lname lang="fin">&finnob;</lname>
+  <lname lang="fit">&fitnob;</lname>
+  <lname lang="fkv">&fkvnob;</lname>
+  <lname lang="gle">&glenob;</lname>
+  <lname lang="hdn">&hdnnob;</lname>
+  <lname lang="ipk">&ipknob;</lname>
+  <lname lang="izh">&izhnob;</lname>
+  <lname lang="kal">&kalnob;</lname>
+  <lname lang="kca">&kcanob;</lname>
+  <lname lang="koi">&koinob;</lname>
+  <lname lang="kpv">&kpvnob;</lname>
+  <lname lang="liv">&livnob;</lname>
+  <lname lang="mdf">&mdfnob;</lname>
+  <lname lang="mhr">&mhrnob;</lname>
+  <lname lang="mns">&mnsnob;</lname>
+  <lname lang="mrj">&mrjnob;</lname>
+  <lname lang="myv">&myvnob;</lname>
+  <lname lang="nio">&nionob;</lname>
+  <lname lang="nno">&nnonob;</lname>
+  <lname lang="nob">&nobnob;</lname>
+  <lname lang="olo">&olonob;</lname>
+  <lname lang="rmf">&rmfnob;</lname>
+  <lname lang="rus">&rusnob;</lname>
+  <lname lang="sjd">&sjdnob;</lname>
+  <lname lang="sje">&sjenob;</lname>
+  <lname lang="sma">&smanob;</lname>
+  <lname lang="sme">&smenob;</lname>
+  <lname lang="smj">&smjnob;</lname>
+  <lname lang="smn">&smnnob;</lname>
+  <lname lang="sms">&smsnob;</lname>
+  <lname lang="som">&somnob;</lname>
+  <lname lang="swe">&swenob;</lname>
+  <lname lang="udm">&udmnob;</lname>
+  <lname lang="vep">&vepnob;</lname>
+  <lname lang="vot">&votnob;</lname>
+  <lname lang="vro">&vronob;</lname>
+  <lname lang="yrk">&yrknob;</lname>
+
+  <!-- anders: conflict: men de er de samme i begge filer (her og cgi-nob.xml) -->
+  <!--<place>Giellatekno, UiT Norges arktiske universitet</place>-->
+  <!--<copyright>Copyright © Senter for samisk språkteknologi</copyright>-->
+
+  <!-- Introduction -->
+
+<!--  <introduction /> -->
+<introduction lang="bxr">Her finner du grammatiske analyseprogram for burjatisk.</introduction>
+<introduction lang="ciw">Her finner du grammatiske analyseprogram for ojibwe.</introduction>
+
+<introduction lang="cor">
+Dette er heimesida til en grammatisk analysator for kornisk. Analysatoren bruker den nye standarden for kornisk, den såkalte Single Written Form.
+</introduction>
+
+  <introduction lang="crk">Her finner du grammatiske analyseprogram for præriecree</introduction>
+  <introduction lang="est">Her finner du grammatiske analyseprogram for estisk</introduction>
+
+<introduction lang="fao">
+Dette er heimesida til de færøyske grammatiske analysatorene. Vi kombinerer en morfologisk og morfofonologisk analysator med leksema i Føroysk orðabók til en grammatisk analysator og generator for færøysk. Den morfologiske dekningsgraden er relativt god, svake punkt er visse sterke verb, og deler av adjektivparadigma, men den syntaktiske analysatoren trør framdeles barneskoa sine.
+</introduction>
+
+<introduction lang="fin">Her finner du grammatiske analyseprogram for finsk.</introduction>
+<introduction lang="fit">Her finner du grammatiske analyseprogram for meänkieli.</introduction>
+<introduction lang="fkv">Her finner du grammatiske analyseprogram for kvensk.</introduction>
+<introduction lang="gle">Her finner du grammatiske analyseprogram for irsk.</introduction>
+<introduction lang="hdn">Her finner du grammatiske analyseprogram for nordhaida.</introduction>
+
+<introduction lang="ipk">
+Dette er heimesida til den grammatiske analysatoren for iñupiaq. Ananlysatoren dekker den grunnleggende bøyingsmorfologien (ikke avledning!) og basisordforrådet. Det er også mulig å konvertere tekst skrevet i kodetabellen i <em>Interactive IñupiaQ Dictionary</em> over til Unicode.
+</introduction>
+
+<introduction lang="izh">Her finner du grammatiske analyseprogram for ingrisk</introduction>
+
+<introduction lang="kal">
+Dette er ei av heimesidene til det grønlandske analyseprosjektet. Bruk denne sida viss du vil analysere grønlandsk tekst, konvertere Kleinschmidts ortografi til moderne ortografi. Den andre heimesida til prosjektet er hos Oqaasileriffik, der du også vil finne eit grensesnitt for korpussøk i uanalysert tekst, og et flott grensesnitt for ordanalyse og paradigmegenerering.</introduction>
+
+<introduction lang="kca">Her finner du grammatiske analyseprogram for khantisk</introduction>
+<introduction lang="koi">Her finner du grammatiske analyseprogram for komipermjakisk.</introduction>
+<introduction lang="kpv">Her finner du grammatiske analyseprogram for komi.</introduction>
+<introduction lang="liv">Her finner du grammatiske analyseprogram for liivisk</introduction>
+<introduction lang="mdf">Her finner du grammatiske analyseprogram for moksjamordvinsk</introduction>
+<introduction lang="mhr">Her finner du grammatiske analyseprogram for austmarisk.</introduction>
+<introduction lang="mns">Her finner du grammatiske analyseprogram for mansisk.</introduction>
+<introduction lang="mrj">Her finner du grammatiske analyseprogram for fjellmarisk</introduction>
+<introduction lang="myv">Her finner du grammatiske analyseprogram for ersjamordvinsk.</introduction>
+<introduction lang="nio">Her finner du grammatiske analyseprogram for nganasansk.</introduction>
+<introduction lang="nob">Her finner du grammatiske analyseprogram for norsk bokmål.</introduction>
+<introduction lang="olo">Her finner du grammatiske analyseprogram for livvikarelsk.</introduction>
+<introduction lang="rmf">Her finner du grammatiske analyseprogram for kalo finsk romani.</introduction>
+<introduction lang="rus">Her finner du grammatiske analyseprogram for russisk.</introduction>
+<introduction lang="sjd">Her finner du grammatiske analyseprogram for kildinsamisk. </introduction>
+<introduction lang="sje">Her finner du grammatiske analyseprogram for pitesamisk.</introduction>
+<introduction lang="smj">Her finner du grammatiske analyseprogram for lulesamisk.</introduction>
+<introduction lang="smn">Her finner du grammatiske analyseprogram for enaresamisk. </introduction>
+<introduction lang="sms">Her finner du grammatiske analyseprogram for skoltesamisk. </introduction>
+<introduction lang="udm">Her finner du grammatiske analyseprogram for udmurtisk.</introduction>
+<introduction lang="vep">Her finner du grammatiske analyseprogram for vepsisk</introduction>
+<introduction lang="vro">Her finner du grammatiske analyseprogram for võro</introduction>
+<introduction lang="vot">Her finner du grammatiske analyseprogram for votisk</introduction>
+<introduction lang="yrk">Her finner du grammatiske analyseprogram for nenetsisk</introduction>
+
+<!-- programtitle -->
+
+<programtitle />
+
+<!-- <programtitle>		 -->
+<!-- Interaktive program -->
+<!-- </programtitle>	 -->
+
+
+
+<!-- programs -->
+
+<programs />
+
+<!-- <programs>											    -->
+<!-- Her er det lenkjer til analyse- og genereringsprogram. -->
+<!-- </programs>										    -->
+
+
+<programs lang="bxr">Programma er fremdeles på eksperimentstadiet.</programs>
+<programs lang="ciw">Programma er fremdeles på eksperimentstadiet.</programs>
+<programs lang="cor">Programma er fremdeles på eksperimentstadiet.</programs>
+<programs lang="crk">Programma er fremdeles på eksperimentstadiet.</programs>
+<programs lang="est">Programma er fremdeles på eksperimentstadiet.</programs>
+
+<programs lang="fao">
+Prosjektet kombinerer en morfologisk og morfofonologisk transduser med settet av leksem i Føroysk orðabók til en grammatisk parsar for færøysk.
+</programs>
+
+<programs lang="fin">
+Prosjektet kombinerer en morfologisk og morfofonologisk transduser med settet av leksem i Suomen perussanakirja til en grammatisk parsar for finsk.
+</programs>
+
+<programs lang="fit">Programma er på teststadiet enda.</programs>
+<programs lang="fkv">Programma er på teststadiet enda.</programs>
+<programs lang="hdn">Programma er på teststadiet enda.</programs>
+<programs lang="izh">Programmet er fremdeles på eksperimentstadiet</programs>
+<programs lang="kca">Programmet er fremdeles på eksperimentstadiet</programs>
+<programs lang="koi">Programma er på teststadiet enda.</programs>
+<programs lang="kpv">Programma er på teststadiet enda.</programs>
+<programs lang="liv">Programmet er fremdeles på eksperimentstadiet</programs>
+<programs lang="mdf">Programmet er fremdeles på eksperimentstadiet</programs>
+<programs lang="mhr">Programma er fremdeles på eksperimentstadiet.</programs>
+<programs lang="mns">Programma er fremdeles på eksperimentstadiet.</programs>
+<programs lang="mrj">Programmet er fremdeles på eksperimentstadiet</programs>
+<programs lang="myv">Programma er fremdeles på eksperimentstadiet.</programs>
+<programs lang="nio">Programmet er fremdeles på eksperimentstadiet</programs>
+<programs lang="olo">Programmet er fremdeles på eksperimentstadiet</programs>
+<programs lang="rmf">Programma er fremdeles på eksperimentstadiet.</programs>
+<programs lang="rus">Programma er fremdeles på eksperimentstadiet.</programs>
+<programs lang="sjd">Programma er fremdeles på eksperimentstadiet.</programs>
+<programs lang="sje">Programma er fremdeles på eksperimentstadiet.</programs>
+<programs lang="smn">Programma er fremdeles på eksperimentstadiet.</programs>
+<programs lang="sms">Programma er fremdeles på eksperimentstadiet.</programs>
+<programs lang="udm">Programma er fremdeles på eksperimentstadiet.</programs>
+<programs lang="vep">Programmet er fremdeles på eksperimentstadiet</programs>
+<programs lang="vro">Programmet er fremdeles på eksperimentstadiet</programs>
+<programs lang="vot">Programmet er fremdeles på eksperimentstadiet</programs>
+<programs lang="yrk">Programmet er fremdeles på eksperimentstadiet</programs>
+
+
+
+
+<!-- analysis -->
+
+<analysis>Analyser tekst.</analysis>
+
+<!--
+<analysis>&atnob;</analysis>-->
+<!-- the variable &atnob;  is found in the ../dtd/cannob.dtd entity declaration! -->
+
+
+<!-- Analysis text section -->
+
+<analysis_text />
+
+<analysis_text lang="cor">Analyse og disambiguering.</analysis_text>
+<analysis_text lang="est">Analyse og disambiguering.</analysis_text>
+<analysis_text lang="fao">Analyse og disambiguering, stavelsesgrenser.</analysis_text>
+<analysis_text lang="ipk">Programmet konverterer også tekst skrevet i kodetabellen til <em>Interactive Iñupiaq Dictionary</em> over til Unicode.</analysis_text>
+<analysis_text lang="kal">Analyse og disambiguering, stavelsesgrenser. Programmet konverterer til IPA, og fra Kleinschmidt (før 1973) til moderne ortografi.</analysis_text>
+<analysis_text lang="nob">Analyse og disambiguering.</analysis_text>
+<analysis_text lang="rmf">Analyse og disambiguering.</analysis_text>
+<analysis_text lang="sjd">Programmet analyserer bare en handfull ord.</analysis_text>
+<analysis_text lang="sma">Morfologisk og syntaktisk analyse, orddeling. Konvertering av tekst til IPA.</analysis_text>
+<analysis_text lang="sme">Morfologisk og syntaktisk analyse, dependensanalyse og orddeling. Konvertering av tekst til IPA.</analysis_text>
+<analysis_text lang="smj">Morfologisk og syntaktisk analyse, orddeling.</analysis_text>
+<analysis_text lang="smn">Morfologisk og syntaktisk analyse, orddeling.</analysis_text>
+<analysis_text lang="sms">Morfologisk analyse.</analysis_text>
+
+
+<!-- Paradigm -->
+
+<paradigm>Paradigmegenerering.</paradigm>
+
+<!-- paradigm text section -->
+
+<paradigm_text>Genererer bøyingsparadigmer av ulik størrelse for det ordet du vil.</paradigm_text>
+
+<paradigm_text lang="ipk">Genererer paradigme for basisordforrådet.</paradigm_text>
+
+<paradigm_text lang="sjd">
+Paradigmegeneratoren fungerer formelt, men paradigma inneholder vel så
+mange feilaktige som korrekte former. Den kildinsamiske paradigmegeneratoren
+er for tida på nett for å være til hjelp i utviklingsarbeidet.
+</paradigm_text>
+
+<paradigm_text lang="sje">Genererer bøyingsparadigmer av ulik størrelse for dei vanligste orda.</paradigm_text>
+
+
+<!-- Ordformgenerering -->
+
+<generator>Generer ordformer</generator>
+
+<generator_text>Generer ordformer fra lemma og grammatiske taggar.</generator_text>
+
+
+
+<!-- numerals section -->
+
+<numerals>Tallordsgenerator</numerals>
+
+<numerals lang="sms" />
+
+<!-- numerals text section -->
+
+<numerals_text>Skriv inn tall (f.eks. 123), og få ut talord.</numerals_text>
+
+<numerals_text lang="rus">Skriv inn tall (f.eks. 123, 10:15 eller 6.2.), og få ut talord, klokkeslett eller dato.
+</numerals_text>
+
+<numerals_text lang="sma">
+Skriv inn tall (f.eks. 123, 10:15 eller 6.2.), og få ut tallord, klokkeslett eller dato.
+</numerals_text>
+
+<numerals_text lang="sme">
+Skriv inn tall (f.eks. 123, 10:15 eller 6.2.), og få ut tallord, klokkeslett eller dato.
+</numerals_text>
+
+<numerals_text lang="smj">
+Skriv inn tall (f.eks. 123, 10:15 eller 6.2.), og få ut tallord, klokkeslett eller dato.
+</numerals_text>
+
+<numerals_text lang="sjd">
+Skriv inn tall (f.eks. 123) eller dato (f.eks. 6.2.), og få ut tallord eller dato.
+</numerals_text>
+
+
+  <!-- Dictionary page -->
+  <dicts>Ordbøker</dicts>
+  <dicts_text>Ord og stedsnavn</dicts_text>
+
+
+<!-- Dictionaries -->
+
+<nds>NDS / NDB</nds>
+<nds_text>Interaktiv ordbok: Forstår bøyde ord og viser hvordan ordet skal bøyes. Link til korpussøk (ikke for Internet Explorer).</nds_text>
+
+<!-- Webdictionaries -->
+
+<webdictionaries>Webdict nettordbok</webdictionaries>
+<webdictionaries_text>Presenterer ordene i listeform. En fordel hvis du ikke vet hvordan ordet skrives. Bare grunnformer.</webdictionaries_text>
+
+<webdictionaries_text lang="sjd">
+Slå opp ord i ei nettordbok. Ordboka er basert på  Saamskij slovar' av Rimma Kuruč.
+</webdictionaries_text>
+
+
+<!-- mdict dictionaries -->
+
+<VDdictionaries>VD: Nedlastbar digital ordbok</VDdictionaries>
+<VDdictionaries_text />
+
+
+<!-- grammar -->
+<grammar>Grammatikk</grammar>
+
+
+<!-- Korp -->
+<korp>Korp – tekstkorpus</korp>
+<korp_text>Søk etter ord og grammatiske mønster i tekstsamlinger (ikke for Internet Explorer).</korp_text>
+
+
+<!-- Placenames -->
+<placenames>GEO – samiske stedsnavn</placenames>
+<!-- Placenames text -->
+<placenames_text>
+Skriv stedsnavn på norsk eller finsk, og få det tilsvarende stedsnavnet på samisk, eller omvendt.
+</placenames_text>
+
+
+<!-- Risten -->
+
+<risten lang="smj">báhko.org terminologidatabase</risten>
+<risten lang="sma">baakoe.org terminologidatabase</risten>
+<risten lang="sme">sátni.org terminologidatabase</risten>
+
+<risten_text>Dette er ei videreutvikling av den tidligere risten.no</risten_text>
+
+<!-- Divvun -->
+<divvun>Divvun ordretting</divvun>
+<divvun_text>Last ned ordretteprogram til bruk i Microsoft Word og LibreOffice</divvun_text>
+
+<!-- keyboard -->
+<keyboard>Samisk tastatur</keyboard>
+<keyboard_text />
+
+
+<!-- Oahpa -->
+<oahpa>Oahpa! språklæringsprogram</oahpa>
+
+<oahpa_text lang="sme">
+Interaktive program for å øve gloser, ordbøying og dialoger.
+</oahpa_text>
+
+<oahpa_text lang="sma">
+Interaktive program for å øve gloser, ordbøying og tall, dato og klokkeslett.
+</oahpa_text>
+
+<oahpa_text>
+Interaktive program for å øve gloser, tall og dato. Programmet er fremdeles på demostadiet.
+</oahpa_text>
+
+<!-- crkoahpa -->
+<crkoahpa>nêhiyawêtân språklæringsprogram</crkoahpa>
+<!-- nêhiyawêtân text -->
+<crkoahpa_text lang="crk">
+Interaktive program for å øve gloser, grammatikk, tall og dato. Demoversjon.</crkoahpa_text>
+
+<!-- tts -->
+<tts>Tekst-til-tale</tts>
+<tts_text>Datamaskinen leser teksten høyt for deg.</tts_text>
+
+
+<!-- kursa -->
+<kursa>Språkkurs</kursa>
+<kursa_text />
+<!-- Gïelese -->
+<gielese>Gïelese</gielese>
+<gielese_text>Lær ord – med lyd og bilder</gielese_text>
+
+<!-- VISL -->
+<visl>VISL – lær grammatikk</visl>
+<visl_text>Interaktive programmer for grammatikklæring.</visl_text>
+
+<!-- MT jorgal.uit.no -->
+<mt>Maskinoversetting fra nordsamisk til norsk</mt>
+<mt_text>Skriv inn tekst eller oversett nettsider eller dokumenter.</mt_text>
+
+<!-- MT2 gtweb.uit.no/mt -->
+<mt2>Maskinoversetting mellom samiske språk</mt2>
+<mt2_text>Skriv inn tekst eller oversett nettsider eller dokumenter. Disse
+oversettingsprogramma er framdeles på betastadiet.</mt2_text>
+
+<!-- other -->
+<other lang="bxr"/>
+<other lang="ciw"/>
+<other lang="cor"/>
+<other lang="crk"/>
+
+<other lang="fao">
+De færøyske analysatorene drar nytte av Foroysk orðabók.
+</other>
+
+<other lang="fin"/>
+<other lang="fit"/>
+<other lang="fkv"/>
+<other lang="hdn"/>
+<other lang="ipk"/>
+<other lang="izh"/>
+<other lang="kal">
+Prosjektet er et samarbeidsprosjekt mellom <a
+      href="https://www.oqaasileriffik.gl/">Grønlands Sprognævn
+      (Oqaasileriffik)</a> og UiT Norges arktiske universitet.
+</other>
+<other lang="kca"/>
+
+<other lang="koi">
+Analysatorane for komipermjakisk er eit samarbeidsprosjekt mellom FU-lab, Giellatekno og Jack Rueter. Ordboka som ligg til grunn for leksikondelen er Jack Rueters Komi-suomi-englanti sanakirja.
+</other>
+
+
+<other lang="kpv">
+Analysatorene for komi er et samarbeidsprosjekt mellom Giellatekno og Jack Rueter. Ordboka som ligger til grunn for leksikondelen er Jack Rueters Komi-suomo-englanti sanakirja.
+</other>
+<other lang="liv"/>
+<other lang="mdf"/>
+
+<other lang="mhr">
+Analysatorene for østmarisk er et samarbeidsprosjekt mellom Giellatekno og Jorma Luutonen. Ordboka som ligger til grunn for leksikondelen er Arto Moisios Mari-suomi sanakirja.
+</other>
+
+<other lang="mrj"/>
+
+<other lang="myv">
+Analysatorene for ersjamordvinsk er et samarbeidsprosjekt mellom Giellatekno og Jack Rueter.
+</other>
+
+<other lang="nio"/>
+<other lang="olo"/>
+<other lang="rmf"/>
+<other lang="rus"/>
+<other lang="sjd"/>
+<other lang="sje"/>
+<other lang="sma"/>
+<other lang="sme"/>
+<other lang="smj"/>
+<other lang="smn"/>
+<other lang="sms"/>
+<other lang="udm"/>
+<other lang="vep"/>
+<other lang="vro"/>
+<other lang="vot"/>
+<other lang="yrk"/>
+
+</content>
+
+

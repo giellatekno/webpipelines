@@ -1,0 +1,344 @@
+openapi: 3.0.0
+info:
+  title: Giellatekno Webpipeline
+  version: 0.0.1
+  summary: A web API for executing pre-defined pipelines
+  description:
+    "A web API to execute language related pipelines. Used by various Giellatekno
+    pages.<br><br>The app runs in a container which has cg3 and hfst-* tools installed,
+    as well as compiled language model files mapped into it.<br>If you have the tools and models
+    installed locally, you can run the execute the same pipelines and get the same results.
+    (remember to adjust the paths of the language model files)."
+  contact:
+    name: Giellatekno
+    url: https://giellatekno.uit.no
+    email: giellatekno@uit.no
+tags:
+  - name: pipeline
+    description: "All the pipelines available on this api"
+paths:
+  /info:
+    get:
+      tags:
+        - pipeline
+      summary: Information of capabilities
+      description:
+        "Returns an object which describes which methods will work for which
+        languages"
+      responses:
+        200:
+          description: A succesful query, with results returned as json
+        500:
+          description: Something went wrong on the server
+  /analyze/{lang}/{string}:
+    get:
+      tags:
+        - pipeline
+      summary: Sentence analysis
+      description:
+        "All word forms in the sentence.<br><b>Pipeline:</b><pre>echo \"$string\" |<br>
+        hfst-tokenize -q [...]$lang/tokeniser-disamb-gt-desc.pmhfst |<br>
+        hfst-lookup -q $lang/analyser-gt-desc-hfstol</pre>"
+      parameters:
+        - name: lang
+          type: string
+          example: nob
+          in: path
+          required: true
+          description: The target language, a 3-letter iso 6-393 code
+        - name: string
+          type: string
+          example: Dette er ei lita setning.
+          in: path
+          required: true
+          description: The sentence to run analysis on
+      responses:
+        200:
+          description: A succesful query, with results returned as text
+        422:
+          description: Could not understand the query
+        500:
+          description: Something went wrong on the server
+  /dependency/{lang}/{string}:
+    get:
+      tags:
+        - pipeline
+      summary: Dependency analysis
+      description:
+        "Gives the relevant morphological analysis of each word in context, <br>
+        as well as syntactic function and dependency structure<br>
+        <b>Pipeline:</b><pre>echo \"$string\" |<br>
+        hfst-tokenize -q [...]$lang/tokeniser-disamb-gt-desc.pmhfst |<br>
+        hfst-lookup -q [...]$lang/analyser-gt-desc-hfstol</pre>"
+      parameters:
+        - name: lang
+          type: string
+          example: nob
+          in: path
+          required: true
+          description: The target language, a 3-letter iso 6-393 code
+        - name: string
+          type: string
+          example: Dette er ei lita setning.
+          in: path
+          required: true
+          description: The sentence to run dependency analysis on
+      responses:
+        200:
+          description: A succesful query, with results returned as text
+        422:
+          description: Could not understand the query
+        500:
+          description: Something went wrong on the server
+  /disambiguate/{lang}/{string}:
+    get:
+      tags:
+        - pipeline
+      summary: Gives the relevant morphological analysis of each word in context.
+      description:
+        "<b>Pipeline</p><pre>echo $string |<br>
+        hfst-tokenize -cg $lang/tokeniser-disamb-gt-desc.pmhfst |<br>
+        vislcg3 -g $lang/disambiguator.cg3</pre>"
+      parameters:
+        - name: lang
+          type: string
+          example: nob
+          in: path
+          required: true
+          description: The target language, a 3-letter iso 6-393 code
+        - name: string
+          type: string
+          example: Dette er ei lita setning.
+          in: path
+          required: true
+          description: The sentence to run dependency analysis on
+      responses:
+        200:
+          description: A succesful query, with results returned as text
+        422:
+          description: Could not understand the query
+        500:
+          description: Something went wrong on the server
+  /generate/{lang}/{string}:
+    get:
+      tags:
+        - pipeline
+      summary: Generative normative word forms
+      description:
+        "Generate normative word forms from a lemma + morphological tags<br>
+        <br><b>Pipeline:</b><pre>echo \"$string\" | hfst-lookup $lang/generator-gt-norm.hfstol</pre>"
+      parameters:
+        - name: lang
+          type: string
+          example: nob
+          in: path
+          required: true
+          description: The target language, a 3-letter iso 6-393 code
+        - name: string
+          type: string
+          example: fjell+N+Neu+Sg+Def
+          in: path
+          required: true
+          description: The lemma + morphological tags to generate the word form for
+      responses:
+        200:
+          description: A succesful query, with results returned as text
+        422:
+          description: Could not understand the query
+        500:
+          description: Something went wrong on the server
+  /hyphenate/{lang}/{string}:
+    get:
+      tags:
+        - pipeline
+      summary: Hyphenate
+      description:
+        "Add hypenation markers to a word<br>
+        <br><b>Pipeline:</b><pre>echo $string | hfst-lookup $lang/hyphenator-gt-desc.hfstol</pre>"
+      parameters:
+        - name: lang
+          type: string
+          example: nob
+          in: path
+          required: true
+          description: The target language, a 3-letter iso 6-393 code
+        - name: string
+          type: string
+          example: konspirasjonsteori
+          in: path
+          required: true
+          description: The word to hyphenate
+      responses:
+        200:
+          description: A succesful query, with results returned as text
+        422:
+          description: Could not understand the query
+        500:
+          description: Something went wrong on the server
+  /prefix-search/{lang}/{string}:
+    get:
+      tags:
+        - pipeline
+      summary: Prefix search
+      description:
+        "Prefix search"
+      parameters:
+        - name: lang
+          type: string
+          example: nob
+          in: path
+          required: true
+          description: The target language, a 3-letter iso 6-393 code
+        - name: string
+          type: string
+          example: bil
+          in: path
+          required: true
+          description: The prefix
+      responses:
+        200:
+          description: A succesful query, with results returned as text
+        422:
+          description: Could not understand the query
+        500:
+          description: Something went wrong on the server
+  /transcribe/{lang}/{string}:
+    get:
+      tags:
+        - pipeline
+      summary: Converts orthography into IPA (single word or sentence?)
+      description:
+        "<b>Pipeline:</b><pre>echo \"$string\" |<br>
+        hfst-lookup -q [...]$lang/txt2ipa.lookup.hfstol</pre>"
+      parameters:
+        - name: lang
+          type: string
+          example: nob
+          in: path
+          required: true
+          description: The target language, a 3-letter iso 6-393 code
+        - name: string
+          type: string
+          example: Dette er ei lita setning.
+          in: path
+          required: true
+          description: The sentence to transcribe
+      responses:
+        200:
+          description: A succesful query, with results returned as text
+        422:
+          description: Could not understand the query
+        500:
+          description: Something went wrong on the server
+  /paradigm/{lang}/{string}:
+    get:
+      tags:
+        - pipeline
+      summary: Paradigm generation
+      description:
+        "Generate paradigm for an input word"
+      parameters:
+        - name: lang
+          type: string
+          example: nob
+          in: path
+          required: true
+          description: The target language, a 3-letter iso 6-393 code
+        - name: string
+          type: string
+          example: viessu
+          in: path
+          required: true
+          description: The sentence to run analysis on
+        - name: size
+          type: string
+          in: query
+          required: false
+          description: Minimal, standard or full paradigm. Defaults to standard.
+        - name: pos
+          type: string
+          in: query
+          required: false
+          description:
+            "Part-of-Speech. Any, A, N, V, Adv, Num or Pron. If any (or not
+            given, will show all paradigms, with the most relevant first."
+      responses:
+        200:
+          description: A succesful query, with results returned as text
+        400:
+          description: Could not understand the request
+        500:
+          description: Something went wrong on the server
+        501:
+          description: Functionality is not yet implemented
+  /lemmacount:
+    post:
+      tags:
+        - pipeline
+      summary: Count lemmas in a text, output ordered by frequency
+      description: "...description..."
+      requestBody:
+        description:
+          "The encoding of the 'data' field varies by type:<br>
+          If typ is 'text', data is just a literal text string, as is<br>
+          If typ is 'text+gz+b64', data it is a base64-encoded gzipped string of the text data.<br>
+          If typ is 'docx', data is a base64-encoded string of the docx document"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/UploadBody"
+      responses:
+        200:
+          description: A succesful query, with results returned
+        422:
+          description: Could not understand the query
+        500:
+          description: Something went wrong on the server
+  /unknown-lemmas-in-dict:
+    post:
+      tags:
+        - pipeline
+      summary: List of unknown words in X - Y dictionary
+      description:
+        "Takes an input document, lemmatises all words, and looks up all
+        words in the nob - X dictionary.<br>
+        The words that were found in the dictionariy are filtered out, and
+        the words that were not found is left.<br>
+        The list of remaining words that where not found in the dictionary is
+        then returned,<br>
+        sorted by how many times they appeared in the document, with the
+        most often used ones first in the list"
+      requestBody:
+        description:
+          "The encoding of the 'data' field varies by type:<br>
+          If typ is 'text', data is just a literal text string, as is<br>
+          If typ is 'text+gz+b64', data it is a base64-encoded gzipped string of the text data.<br>
+          If typ is 'docx', data is a base64-encoded string of the docx document"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/UploadBody"
+      responses:
+        200:
+          description: A succesful query, with results returned
+        422:
+          description: Could not understand the query
+        500:
+          description: Something went wrong on the server
+definitions:
+  UploadBody:
+    type: object
+    properties:
+      typ:
+        summary: "The type of document. Can be \"text\", \"text+gz+b64\" or \"docx\"."
+        example: text
+        type: string
+      lang:
+        summary: Language, a 3-letter iso-6-391-3 code. E.g nob, sme
+        example: nob
+        type: string
+      data:
+        summary: The document data
+        type: string

@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+  <!ENTITY % corpusDTD SYSTEM "https://giellatekno.uit.no/dtd/corpus.dtd">
+  %corpusDTD;
+  <!ENTITY % canengDTD SYSTEM "https://giellatekno.uit.no/dtd/caneng.dtd">
+  %canengDTD;
+  <!ENTITY % canfinDTD SYSTEM "https://giellatekno.uit.no/dtd/canfin.dtd">
+  %canfinDTD;
+  <!ENTITY % cannobDTD SYSTEM "https://giellatekno.uit.no/dtd/cannob.dtd">
+  %cannobDTD;
+  <!ENTITY % canrusDTD SYSTEM "https://giellatekno.uit.no/dtd/canrus.dtd">
+  %canrusDTD;
+  <!ENTITY % cansmaDTD SYSTEM "https://giellatekno.uit.no/dtd/cansma.dtd">
+  %cansmaDTD;
+  <!ENTITY % cansmeDTD SYSTEM "https://giellatekno.uit.no/dtd/cansme.dtd">
+  %cansmeDTD;
+  <!ENTITY % cansmjDTD SYSTEM "https://giellatekno.uit.no/dtd/cansmj.dtd">
+  %cansmjDTD;
+]>
+<content>
+  <!-- Title: lang + language tools -->
+  <lt>&lteng;</lt>
+  <lname lang="bxr">&bxreng;</lname>
+  <lname lang="chr">&chreng;</lname>
+  <lname lang="ciw">&ciweng;</lname>
+  <lname lang="cor">&coreng;</lname>
+  <lname lang="crk">&crkeng;</lname>
+  <lname lang="deu">&deueng;</lname>
+  <lname lang="est">&esteng;</lname>
+  <lname lang="evn">&evneng;</lname>
+  <lname lang="fao">&faoeng;</lname>
+  <lname lang="fin">&fineng;</lname>
+  <lname lang="fit">&fiteng;</lname>
+  <lname lang="fkv">&fkveng;</lname>
+  <lname lang="gle">&gleeng;</lname>
+  <lname lang="hdn">&hdneng;</lname>
+  <lname lang="hun">&huneng;</lname>
+  <lname lang="ipk">&ipkeng;</lname>
+  <lname lang="izh">&izheng;</lname>
+  <lname lang="kal">&kaleng;</lname>
+  <lname lang="kca">&kcaeng;</lname>
+  <lname lang="koi">&koieng;</lname>
+  <lname lang="kom">&komeng;</lname>
+  <lname lang="kpv">&kpveng;</lname>
+  <lname lang="lav">&laveng;</lname>
+  <lname lang="liv">&liveng;</lname>
+  <lname lang="lut">&luteng;</lname>
+  <lname lang="mdf">&mdfeng;</lname>
+  <lname lang="mhr">&mhreng;</lname>
+  <lname lang="mns">&mnseng;</lname>
+  <lname lang="mrj">&mrjeng;</lname>
+  <lname lang="myv">&myveng;</lname>
+  <lname lang="nio">&nioeng;</lname>
+  <lname lang="nno">&nnoeng;</lname>
+  <lname lang="nob">&nobeng;</lname>
+  <lname lang="olo">&oloeng;</lname>
+  <lname lang="rmf">&ruseng;</lname>
+  <lname lang="rup">&rupeng;</lname>
+  <lname lang="rus">&ruseng;</lname>
+  <lname lang="sjd">&sjdeng;</lname>
+  <lname lang="sje">&sjeeng;</lname>
+  <lname lang="sma">&smaeng;</lname>
+  <lname lang="sme">&smeeng;</lname>
+  <lname lang="smj">&smjeng;</lname>
+  <lname lang="smn">&smneng;</lname>
+  <lname lang="sms">&smseng;</lname>
+  <lname lang="som">&someng;</lname>
+  <lname lang="swe">&sweeng;</lname>
+  <lname lang="udm">&udmeng;</lname>
+  <lname lang="vep">&vepeng;</lname>
+  <lname lang="vot">&voteng;</lname>
+  <lname lang="vro">&vroeng;</lname>
+  <lname lang="yrk">&yrkeng;</lname>
+
+  <!-- anders: conflict: <place> also in cgi-eng. using that one -->
+  <!--<place>Saami logo, UiT The Arctic University of Norway</place>-->
+
+  <!-- anders: conflict: <copyright> also in cg-eng. using that one-->
+  <!--<copyright>Copyright © Saami language technology project</copyright>-->
+
+  <!-- Introduction -->
+  <introduction lang="crk">The &crkeng; tools represent work by AltLab at U of Alberta and &gte; at UiT.</introduction>
+  <introduction lang="est">The &esteng; &aimeng;</introduction>
+  <introduction lang="gle">The &gleeng; &aimeng;</introduction>
+  <introduction lang="izh">The &izheng; &aimeng;</introduction>
+  <introduction lang="kca">The &kcaeng; &aimeng;</introduction>
+  <introduction lang="liv">The &liveng; &aimeng;</introduction>
+  <introduction lang="mdf">The &mdfeng; &aimeng;</introduction>
+  <introduction lang="mrj">The &mrjeng; &aimeng;</introduction>
+  <introduction lang="nio">The &nioeng; &aimeng;</introduction>
+  <introduction lang="nob">The &nobeng; &aimeng;</introduction>
+  <introduction lang="olo">The &oloeng; &aimeng;</introduction>
+  <introduction lang="vep">The &vepeng; &aimeng;</introduction>
+  <introduction lang="vro">The &vroeng; &aimeng;</introduction>
+  <introduction lang="vot">The &voteng; &aimeng;</introduction>
+  <introduction lang="yrk">The &yrkeng; &aimeng;</introduction>
+  <introduction lang="bxr">The &bxreng; &aimeng;</introduction>
+  <introduction lang="ciw">The &ciweng; &aimeng;</introduction>
+
+  <introduction lang="cor">
+    This is the home page of the &coreng; parser project. The project
+    is still in its embryonic phase. You will be able to analyse a
+    handful of words only, but we will enlarge the base
+    eventually. The parser is based upon the Single Written Form.
+  </introduction>
+
+  <introduction lang="fao">
+    The &faoeng; tools combine a morphological and morphophonological
+    transducer with the set of lexemes found in <em>Føroysk
+    orðabók</em> into a grammatical parser for &faoeng;. The
+    morphological coverage is quite good (with some lacunas for strong
+    verbs and adjectives), but the syntactic analyser is in its
+    infancy.
+  </introduction>
+
+  <introduction lang="fin">The &fineng; &aimeng;</introduction>
+  <introduction lang="fit">The &fiteng; &aimeng;</introduction>
+
+  <introduction lang="ipk">
+    This is the home page of the &ipkeng; parser project. The project
+    is still in its embryonic phase. Our &ipkeng; analysers covers the
+    basic inflectional grammar, and the central vocabulary (but very
+    few derivational affixes!). We will enlarge the base
+    eventually. We also offer a convertion from the <em>Interactive
+    IñupiaQ Dictionary</em> encoding to Unicode.
+  </introduction>
+
+  <introduction lang="kal">
+    This is one of the home pages of the &kaleng; parser project. Use
+    this page if you want to analyse &kaleng; text, convert the
+    Kleinschmidt orthography to modern orthography (known bug: û is
+    not converted correctly, otherwise the converter should work),
+    look at a translitteration of text, or if you just would like to
+    read about the parser. The other homepage of this project is at
+    Oqaasileriffik, where you will find a search interface for
+    (unanalysed) text, and a very nice interface for word analysis and
+    paradigm generation.
+
+    <p>The infrastructure, language independent components and
+    methodology behind the &kaleng; parser is the same as the one
+    behind the Saami parsers documented elsewhere on these
+    pages. Whatever language-independent information given on <a
+    href="https://giellalt.uit.no/index.html">the Saami parsers</a> should thus also hold
+    for &kaleng;.</p>
+
+    <p>A <strong>new version</strong> of the &kaleng; spell checker
+    and hyphenation tools for the Windows version of the MSOffice
+    suite (KUKKUNIIAAT ver. 2.0) is now <strong>ready for
+    download</strong>. It is free of charge and can be downloaded <a
+    href="https://www.oqaasileriffik.gl/content/dk/tryk_her_for_at_fa_den_nye_stavekontrol">here</a>.
+    </p>
+  </introduction>
+  <!-- &aimeng; means "analyser ist just in the making" -->
+  <introduction lang="koi">The &koieng; analyser gives a morphological and syntactical analysis of most words in running text.</introduction>
+
+  <introduction lang="kpv">The &kpveng; analyser gives a morphological and syntactical analysis of most words in running text.</introduction>
+
+  <introduction lang="mhr">The &mhreng; analyser gives a morphological and syntactical analysis of most words in running text.</introduction>
+
+  <introduction lang="mns">The &mnseng; analyser gives a morphological and syntactical analysis of most words in running text.</introduction>
+
+  <introduction lang="myv">The &myveng; analyser gives a morphological and syntactical analysis of most words in running text.</introduction>
+
+  <introduction lang="rus">The &rmfeng; analyser gives a morphological analysis of words in running text.</introduction>
+
+  <introduction lang="rus">The &ruseng; analyser gives a morphological and syntactical analysis of most words in running text.</introduction>
+
+  <introduction lang="udm">The &udmeng; analyser gives a morphological and syntactical analysis of most words in running text.</introduction>
+
+  <introduction lang="sjd">
+    The &sjdeng; analyser only contains a handful of words yet. The
+    number generator works, though.
+  </introduction>
+
+  <introduction lang="sje">
+    The &sjeeng; analyser and generator currently work for most of the nouns and verbs found in the lexical database for Pite Saami (<a href="https://saami.uni-freiburg.de/psdp/pite-lex/">saami.uni-freiburg.de/psdp/pite-lex</a>), which is regularly corrected, expanded and improved. This database is based on the <strong>Pitesamisk ordbok samt stavningsregler</strong> (<a href="https://saami.uni-freiburg.de/samica/">Samica 2</a>, 2016, edited by J. Wilbur), but also includes a few other words added by Ann-Charlotte Sjaggo. The orthography used is based on the orthography presented at <a href="https://saami.uni-freiburg.de/psdp/stavningsregler/">saami.uni-freiburg.de/psdp/stavningsregler/</a>. This is still a preliminary, test version, and is under on-going development.
+  </introduction>
+
+  <introduction lang="smj">
+    For &smjeng;, our morphological tools are quite robust. Analysing
+    words in context (disambiguation and syntax), however, is still in
+    the beginning.
+  </introduction>
+
+  <introduction lang="smn">
+    The &smneng; analyser gives the morphological analysis of
+    over 92 % of the words in running text,
+    and gives a rough syntactic analysis of sentences.
+  </introduction>
+
+  <introduction lang="sms">
+    The &smseng; analyser gives the morphological analysis of
+    over 70 % of the words in running text, but work has not yet
+    started on syntactic analysis of sentences.
+  </introduction>
+
+  <!-- Analysis section -->
+  <analysis>Text analysis</analysis>
+
+  <!-- Analysis text section -->
+  <analysis_text lang="izh">&ahweng;</analysis_text>
+  <analysis_text lang="kca">&ahweng;</analysis_text>
+  <analysis_text lang="liv">&ahweng;</analysis_text>
+  <analysis_text lang="mdf">&ahweng;</analysis_text>
+  <analysis_text lang="mrj">&ahweng;</analysis_text>
+  <analysis_text lang="nio">&ahweng;</analysis_text>
+  <analysis_text lang="olo">&ahweng;</analysis_text>
+  <analysis_text lang="vep">&ahweng;</analysis_text>
+  <analysis_text lang="yrk">&ahweng;</analysis_text>
+
+  <analysis_text lang="bxr">Analyse text.</analysis_text>
+  <analysis_text lang="ciw">Analyse text.</analysis_text>
+  <analysis_text lang="cor">Analyse and disambiguate text.</analysis_text>
+  <analysis_text lang="est">Analyse and disambiguate text.</analysis_text>
+  <analysis_text lang="fao">&adheng;</analysis_text>
+  <analysis_text lang="fin">Analyse text.</analysis_text>
+  <analysis_text lang="fit">Analyse text.</analysis_text>
+  <analysis_text lang="fkv">Analyse text.</analysis_text>
+  <analysis_text lang="hdn">Analyse text.</analysis_text>
+
+  <analysis_text lang="ipk">
+    Analyse words (no syntactic analysis). You may paste in text, and
+    the program gives all possible analyses for each wordform. You may
+    also convert text from <em>Interactive IñupiaQ Dictionary</em>
+    encoding to Unicode.
+  </analysis_text>
+
+  <analysis_text lang="kal">
+    &adheng; The program also gives
+    IPA representation, and it converts from Kleinschmidt (pre-1973)
+    to modern orthography.
+  </analysis_text>
+
+  <analysis_text lang="mhr">Analyse text.</analysis_text>
+  <analysis_text lang="mns">Analyse text.</analysis_text>
+  <analysis_text lang="myv">Analyse text.</analysis_text>
+  <analysis_text lang="rmf">Analyse text.</analysis_text>
+  <analysis_text lang="rus">Analyse text.</analysis_text>
+  <analysis_text lang="udm">Analyse text.</analysis_text>
+  <analysis_text lang="sjd">&ahweng;</analysis_text>
+  <analysis_text lang="sje">Analyse text.</analysis_text>
+  <analysis_text lang="sma">&adheng;</analysis_text>
+
+  <analysis_text lang="sme">
+    Analyse, disambiguate and hyphenate text, and give dependency
+    analysis. Convert text into IPA.
+  </analysis_text>
+
+  <analysis_text lang="smj">&adheng;</analysis_text>
+  <analysis_text lang="smn">&adheng;</analysis_text>
+  <analysis_text lang="sms">Analyse text.</analysis_text>
+
+  <analysis_text lang="crk">
+    Analyses text. Converts text between latin letters and syllabics.
+  </analysis_text>
+
+
+  <!-- paradigm section -->
+  <paradigm>Paradigm generation</paradigm>
+
+  <!-- paradigm text section -->
+  <paradigm_text>Generates paradigms of different sizes for any word.</paradigm_text>
+
+
+  <paradigm_text lang="ipk">
+    Generates paradigms of different sizes for the core vocabulary.
+  </paradigm_text>
+
+  <paradigm_text lang="mns">
+    Generates paradigms of different sizes for the core vocabulary.
+  </paradigm_text>
+
+  <paradigm_text lang="sjd">
+    The paradigm generator works formally, but the paradigms given often contain
+    more errors than correct forms. At the moment, the generator is on the
+    net for internal delvelopment purposes.
+  </paradigm_text>
+
+  <paradigm_text lang="sje">
+    Generates paradigms of different sizes for the core vocabulary.
+  </paradigm_text>
+
+  <paradigm_text lang="smn">
+    Generates paradigms of different sizes for adjectives, nouns and verbs.
+  </paradigm_text>
+
+  <paradigm_text lang="sms">
+    Generates paradigms of different sizes for adjectives, nouns and verbs.
+  </paradigm_text>
+
+  <!-- generator section -->
+  <generator>Word generation</generator>
+
+  <generator_text>
+    Generates wordforms using lemma and grammatical tags.
+  </generator_text>
+
+  <!-- numerals section -->
+  <numerals>Number word generation</numerals>
+
+  <!-- numerals text section -->
+<numerals_text>
+Write a number (ex. 123), and get a number word.
+</numerals_text>
+
+<numerals_text lang="hdn">
+Write a number (ex. 74), and get a number word.
+</numerals_text>
+
+  <numerals_text lang="bxr">&nngeng; &bxreng;.</numerals_text>
+  <numerals_text lang="ciw">&nngeng; &ciweng;.</numerals_text>
+  <numerals_text lang="cor">&nngeng; &coreng;.</numerals_text>
+  <numerals_text lang="fao">&nngeng; &faoeng;.</numerals_text>
+  <numerals_text lang="ipk">&nngeng; &ipkeng;.</numerals_text>
+  <numerals_text lang="kal">&nngeng; &kaleng;.</numerals_text>
+  <numerals_text lang="rus">&nngeng;</numerals_text>
+  <numerals_text lang="sma">&nngeng;</numerals_text>
+  <numerals_text lang="sme">&nngeng;</numerals_text>
+  <numerals_text lang="smj">&nngeng;</numerals_text>
+  <numerals_text lang="sjd">&nngeng;</numerals_text>
+  <numerals_text lang="udm">&nngeng; &udmeng;.</numerals_text>
+
+  <!-- Dictionary page -->
+  <dicts>Dictionaries</dicts>
+  <dicts_text>Words and place names</dicts_text>
+
+
+  <!-- Dictionaries -->
+  <nds>NDS / NDB</nds>
+  <nds_text>Interactive online dictionary. Understands inflected words and offers inflection paradigms. With corpus search.</nds_text>
+
+  <!-- Web Dictionaries -->
+  <webdictionaries>Web dictionary</webdictionaries>
+  <webdictionaries_text>Look up words in an online web dictionary. The words are presented as a list, which can be useful if you don't know how to spell the word.</webdictionaries_text>
+
+  <!-- VD Dictionaries -->
+  <VDdictionaries>VD: Downloadable electronic dictionary</VDdictionaries>
+  <VDdictionaries_text />
+
+  <!-- Grammar -->
+  <grammar>Grammar</grammar>
+
+  <!-- Korp -->
+  <korp>Korp - text corpus</korp>
+  <!-- Korp text -->
+  <korp_text>Search for words and grammatical patterns in text collections (does not work in Internet Explorer).</korp_text>
+
+  <!-- Placenames -->
+  <placenames>GEO - Generate placenames</placenames>
+  <placenames_text>
+    Write placenames in Norwegian or Finnish, and get the corresponding place name in Saami, or vice versa.
+  </placenames_text>
+
+  <!-- Risten -->
+
+
+<risten lang="smj">The terminological database báhko.org</risten>
+<risten lang="sma">The terminological database baakoe.org</risten>
+<risten lang="sme">The terminological database sátni.org</risten>
+
+<risten_text>This is a development of the old risten.no</risten_text>
+
+
+  <!-- Divvun -->
+  <divvun>Divvun spellchecker</divvun>
+  <divvun_text />
+
+  <!-- keyboard -->
+  <keyboard>Saami keyboard</keyboard>
+  <!-- Keyboard text -->
+  <keyboard_text />
+
+  <!-- Oahpa -->
+  <oahpa>Oahpa! language learning programs</oahpa>
+  <!-- Oahpa text -->
+  <oahpa_text lang="sme">
+    Interactive programs for glossary and vocabulary training, and for practicing dialogues.
+  </oahpa_text>
+  <oahpa_text lang="sma">
+    Interactive programs for glossary and vocabulary training, and for practicing number date and time expressions.
+  </oahpa_text>
+  <oahpa_text lang="sjd">
+    Interactive programs for glossary training, and for practicing number date and time expressions. The program is still just a demo version.
+  </oahpa_text>
+  <oahpa_text lang="smn">
+    Interactive programs for glossary training, and for practicing number date and time expressions. The program is still just a demo version.
+  </oahpa_text>
+  <oahpa_text lang="sms">
+    Interactive programs for glossary training, and for practicing number date and time expressions, with extensive morphology in verbs and nouns. The contextual practice is still much of a demo version.
+  </oahpa_text>
+
+  <!-- crkoahpa -->
+  <crkoahpa>nêhiyawêtân language learning programs</crkoahpa>
+  <!-- nêhiyawêtân text -->
+  <crkoahpa_text lang="crk">
+    Interactive programs for glossary and vocabulary training, and for practicing number date and time expressions. This is a very restricted demo version.
+  </crkoahpa_text>
+
+<!-- tts -->
+<tts>Text-to-speech</tts>
+<tts_text>The computer reads the text to you.</tts_text>
+
+  <!-- kursa -->
+  <kursa>Language course</kursa>
+  <kursa_text />
+<!-- Gïelese -->
+<gielese>Gïelese</gielese>
+<gielese_text>Learn words – the program contains audio files and photos</gielese_text>
+
+  <!-- VISL -->
+  <visl>VISL</visl>
+  <visl_text>Interactive programs for training grammar skills.</visl_text>
+
+  <!-- MT -->
+  <mt>Machine Translation from North Saami to Norwegian</mt>
+  <mt_text>Paste text or translate web pages.</mt_text>
+
+  <!-- MT -->
+  <mt2>Machine Translation between different Saami languages</mt2>
+  <mt2_text>Paste text or translate web pages. These programs are still on a beta stadium.</mt2_text>
+
+  <!-- other -->
+  <other lang="crk" >AltLab at U of Alberta and Giellatekno at UiT. AltLab work is financed by SSHRC Canada</other>
+
+  <other lang="ipk">
+    The project is a joint project between <a
+    href="https://www.oqaasileriffik.gl/">Grønlands Sprognævn
+    (Oqaasileriffik)</a> and the University of Tromsø.
+  </other>
+
+  <other lang="izh" >The Ingrian tools represent work by Jack Rueter, in cooperation with Giellatekno. The work is financed by the Kone Foundation and the University of Tromsø</other>
+
+
+  <other lang="kal">
+    The project is a joint project between <a
+    href="https://www.oqaasileriffik.gl/">Grønlands Sprognævn
+    (Oqaasileriffik)</a> and the University of Tromsø.
+  </other>
+
+  <other lang="kca" >The Khanty tools represent work by Jack Rueter, in cooperation with Giellatekno. The work is financed by the Kone Foundation and the University of Tromsø</other>
+
+  <other lang="koi">
+    The Komi Permyak tools are in the making. They represent a joint project between FU-lab, Giellatekno and Jack Rueter.
+  </other>
+
+  <other lang="kpv">
+    The Komi tools are in the making. They represent a joint project between Giellatekno and Jack Rueter. The lexicon of the analysers are based upon Jack Rueter's Komi-Finnish-English dicionary.
+  </other>
+
+  <other lang="liv" >The Livonian tools represent work by Renate Blumberga and Jack Rueter, in cooperation with Giellatekno. The work is financed by the Kone Foundation and the University of Tromsø</other>
+  <other lang="mdf" >The Moksha tools represent work by Eeva Herrala, Aleksandr Feoktistov, Merja Salo and Jack Rueter, in cooperation with Giellatekno. The present work is financed by the Kone Foundation and the University of Tromsø</other>
+
+  <other lang="mhr">
+    The Meadow Mari tools are in the making. They represent a joint project between Giellatekno and Jorma Luutonen. The lexicon of the analysers are based upon Arto Moisios Mari-Finnish dicionary.
+  </other>
+
+  <other lang="mrj" >The Hill Mari tools represent work by Julia Kuprina and Jack Rueter, in cooperation with Giellatekno. The work is financed by the Kone Foundation and the University of Tromsø</other>
+
+  <other lang="myv">
+    The Erzya tools are in the making. They represent a joint project between Giellatekno and Jack Rueter. The lexicon of the analysers are based on dictionary work on Erzya by many authors.
+  </other>
+
+  <other lang="nio" >The Nganasan tools represent work by Jack Rueter, in cooperation with Giellatekno. The work is financed by the Kone Foundation and the University of Tromsø</other>
+
+  <other lang="olo" >The Olonetsian tools represent work by Timo Rantakaulio and Jack Rueter, in cooperation with Giellatekno. The work is financed by the Kone Foundation and the University of Tromsø</other>
+
+
+  <other lang="rmf">The work on the Finnish Romani tools has just started. The analysers are put here for testing purposes. </other>
+  <other lang="sjd">The work on the Kildin Saami tools has just started. The analysers are put here for testing purposes. </other>
+
+  <other lang="sje">
+    The Pite Saami tools are available here for testing purposes, and without any guarantee for accuracy. These are currently under development by Joshua Wilbur (with significant technical support from Giellatekno) as part of a <a hrefs="http://saami.uni-freiburg.de/psdp/syntax/">project on Pite Saami syntactic structures</a> at the <a href="">Freiburg Research Group in Saami Studies</a>. Thanks to Ann-Charlotte Sjaggo and Trond Trosterud for setting up the initial framework.
+  </other>
+
+  <other lang="vep" >The Veps tools represent work by Jack Rueter, in cooperation with Giellatekno. The work is financed by the Kone Foundation and the University of Tromsø</other>
+
+  <other lang="yrk" >The Nenets tools represent work by Tapani Salminen, Sven-Erik Soosaar and Jack Rueter, in cooperation with Giellatekno. The present work is financed by the Kone Foundation and the University of Tromsø</other>
+
+</content>
+
+<!--
+    Template for new tag:
+
+<tag lang="cor">
+</tag>
+
+<tag lang="fao">
+</tag>
+
+<tag lang="ipk">
+</tag>
+
+<tag lang="kal">
+</tag>
+
+<tag lang="sjd">
+</tag>
+
+<tag lang="sma">
+</tag>
+
+<tag lang="sme">
+</tag>
+
+<tag lang="smj">
+</tag>
+
+<tag lang="smn">
+</tag>
+
+<tag lang="sms">
+</tag>
+-->

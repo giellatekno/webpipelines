@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+  <!ENTITY % corpusDTD SYSTEM "https://giellatekno.uit.no/dtd/corpus.dtd">
+  %corpusDTD;
+  <!ENTITY % canengDTD SYSTEM "https://giellatekno.uit.no/dtd/caneng.dtd">
+  %canengDTD;
+  <!ENTITY % canfinDTD SYSTEM "https://giellatekno.uit.no/dtd/canfin.dtd">
+  %canfinDTD;
+  <!ENTITY % cannobDTD SYSTEM "https://giellatekno.uit.no/dtd/cannob.dtd">
+  %cannobDTD;
+  <!ENTITY % canrusDTD SYSTEM "https://giellatekno.uit.no/dtd/canrus.dtd">
+  %canrusDTD;
+  <!ENTITY % cansmaDTD SYSTEM "https://giellatekno.uit.no/dtd/cansma.dtd">
+  %cansmaDTD;
+  <!ENTITY % cansmeDTD SYSTEM "https://giellatekno.uit.no/dtd/cansme.dtd">
+  %cansmeDTD;
+  <!ENTITY % cansmjDTD SYSTEM "https://giellatekno.uit.no/dtd/cansmj.dtd">
+  %cansmjDTD;
+]>
+<content>
+  <!-- Title: lang + language tools -->
+  <lt>&ltrus;</lt>
+  <lname lang="bxr">&bxrrus;</lname>
+  <lname lang="ciw">&ciwrus;</lname>
+  <lname lang="cor">&corrus;</lname>
+  <lname lang="crk">&crkrus;</lname>
+  <lname lang="est">&estrus;</lname>
+  <lname lang="evn">&evnrus;</lname>
+  <lname lang="fao">&faorus;</lname>
+  <lname lang="fin">&finrus;</lname>
+  <lname lang="fit">&fitrus;</lname>
+  <lname lang="fkv">&fkvrus;</lname>
+  <lname lang="gle">&glerus;</lname>
+  <lname lang="hdn">&hdnrus;</lname>
+  <lname lang="ipk">&ipkrus;</lname>
+  <lname lang="izh">&izhrus;</lname>
+  <lname lang="kal">&kalrus;</lname>
+  <lname lang="kca">&kcarus;</lname>
+  <lname lang="koi">&koirus;</lname>
+  <lname lang="kpv">&kpvrus;</lname>
+  <lname lang="liv">&livrus;</lname>
+  <lname lang="mdf">&mdfrus;</lname>
+  <lname lang="mns">&mnsrus;</lname>
+  <lname lang="mhr">&mhrrus;</lname>
+  <lname lang="mrj">&mrjrus;</lname>
+  <lname lang="myv">&myvrus;</lname>
+  <lname lang="nio">&niorus;</lname>
+  <lname lang="nob">&nobrus;</lname>
+  <lname lang="olo">&olorus;</lname>
+  <lname lang="rmf">&rmfrus;</lname>
+  <lname lang="rus">&rusrus;</lname>
+  <lname lang="sjd">&sjdrus;</lname>
+  <lname lang="sje">&sjerus;</lname>
+  <lname lang="sma">&smarus;</lname>
+  <lname lang="sme">&smerus;</lname>
+  <lname lang="smj">&smjrus;</lname>
+  <lname lang="smn">&smnrus;</lname>
+  <lname lang="sms">&smsrus;</lname>
+  <lname lang="udm">&udmrus;</lname>
+  <lname lang="vep">&veprus;</lname>
+  <lname lang="vro">&vrorus;</lname>
+  <lname lang="vot">&votrus;</lname>
+  <lname lang="yrk">&yrkrus;</lname>
+
+<place>Saami logo, Университет г. Тромсё</place>
+<copyright>Copyright © Проект по саамской языковой технологии</copyright>
+
+
+<!-- Introduction -->
+
+<introduction />
+
+
+<introduction lang="cor">
+Это главная страница проекта по созданию анализатора для корнуоллского языка. Проект пока еще находится в начальной стадии. Вы сможете проанализировать только несколько слов, но база слов со временем будет увеличиваться. Анализатор использует единую письменную форму.
+</introduction>
+
+
+<introduction lang="crk">
+Анализатор для языка равнинный кри пока еще находится в процессе разработки.
+</introduction>
+
+<introduction lang="fao">
+Инструменты для фарерского языка комбинируют морфологический и морфофонологический датчик с набором лексем, найденных в <em>Føroysk orðabók</em> с помощью грамматического анализатора для фарерского языка. Морфологический охват неплохой (с некоторыми лакунами для сильных глаголов и прилагательных), но синтаксический анализатор пока еще находится в стадии разработки.
+</introduction>
+
+
+<introduction lang="fin">
+Анализатор для финского языка пока еще находится в стадии разработки.
+</introduction>
+
+<introduction lang="fit">
+Анализатор для меянкиелского языка пока еще находится в стадии разработки.
+</introduction>
+
+<introduction lang="fkv">
+Анализатор для финского языка пока еще находится в стадии разработки.
+</introduction>
+
+<introduction lang="hdn">
+Анализатор для северохайдского языка пока еще находится в стадии разработки.
+</introduction>
+
+<introduction lang="ipk">
+Это главная страница проекта по созданию анализатора для инуитского языка. Проект все еще находится в начальной стадии. Наш анализатор для инуитского языка охватывает основные грамматики словообразования, а центральный лексики (но очень мало деривационных аффиксов!). База слов со временем будет увеличиваться. Мы также предлагаем переход от интерактивных инупиак словарей к кодировке Unicode.
+</introduction>
+
+
+<introduction lang="izh">Анализатор для ижорского языка пока еще находится в стадии разработки.</introduction>
+
+<introduction lang="kal">
+Это одна из страниц проекта по созданию анализатора для гренланского языка. Если Вы хотите анализировать тексты на гренландском языке, Вы можете использовать данную страницу, чтобы преобразовать орфографию Кленnшмидтa в современную орфографию (известная ошибка: U не конвертируется правильно, в противном случае преобразователь должен работать), посмотрите на translitteration текста, если Вы просто хотите прочитать про анализатор. Другой сайт этого проекта находится на Oqaasileriffik, где Вы найдете поисковый интерфейс для (неанализированного) текста, и очень приятно интерфейс для анализа слов и парадигмы поколения.
+</introduction>
+
+<introduction lang="kca">Анализатор для хантыйского языка пока еще находится в стадии разработки.</introduction>
+
+<introduction lang="koi">
+Анализатор для коми-пермякского языка пока еще находится в стадии разработки.
+</introduction>
+
+<introduction lang="kpv">
+Анализатор для коми языка пока еще находится в стадии разработки.
+</introduction>
+
+<introduction lang="liv">Анализатор для ливского языка пока еще находится в стадии разработки.</introduction>
+<introduction lang="mdf">Анализатор для мокшанского языка пока еще находится в стадии разработки.</introduction>
+
+<introduction lang="mhr">
+Анализатор для марийского языка пока еще находится в процессе разработки.
+</introduction>
+
+<introduction lang="mns">
+Анализатор для мансийского языка пока еще находится в процессе разработки.
+</introduction>
+
+<introduction lang="mrj">Анализатор для горномарийского языка пока еще находится в стадии разработки.</introduction>
+
+
+<introduction lang="nio">Анализатор для нганасанского языка пока еще находится в стадии разработки.</introduction>
+<introduction lang="nob">Анализатор для норвежского языка пока еще находится в стадии разработки.</introduction>
+<introduction lang="olo">Анализатор для ливвиковско-карельского языка пока еще находится в стадии разработки.</introduction>
+
+<introduction lang="rmf">Анализатор для финского калского языка пока еще находится в стадии разработки.</introduction>
+
+<introduction lang="sjd">
+Анализатор для кильдин-саамского языка пока еще содержит только несколько слов. Но генератор для числительных работает полностью.
+</introduction>
+
+<introduction lang="sma">
+Бот программы для южносаамского языка.
+</introduction>
+
+<introduction lang="sme">
+Для северосаамского языка у нас уже есть большое количество готовых программ для анализа и генерации.
+</introduction>
+
+<introduction lang="smj">
+Для люлесаамского языка, наши морфологические инструменты стабильны. Но программа для анализа слов в контексте (значения и синтаксис), все еще находится в самой начальной стадии разработки.
+</introduction>
+
+<introduction lang="smn">
+Работа над анализатором для инарисаамского языка пока еще не начата. Приведенные ниже ссылки ведут к анализаторам для лишь маленького количества слов.
+</introduction>
+
+<introduction lang="sms">
+Работа над анализатором для колтта-саамского языка пока еще не начата. Приведенные ниже ссылки ведут к анализаторам для лишь маленького количества слов.
+</introduction>
+
+<introduction lang="udm">
+Анализатор для удмуртского языка пока еще находится в процессе разработки.
+</introduction>
+
+<introduction lang="vep">Анализатор для вепсского языка пока еще находится в стадии разработки.</introduction>
+<introduction lang="vro">Анализатор для выруского языка пока еще находится в стадии разработки.</introduction>
+<introduction lang="vot">Анализатор для водкого языка пока еще находится в стадии разработки.</introduction>
+<introduction lang="yrk">Анализатор для вепсского языка пока еще находится в стадии разработки.</introduction>
+
+
+<!-- Program title section -->
+
+<programtitle />
+
+
+<!-- Program intro section -->
+
+<programs />
+
+<programs lang="kal">
+    <p> Инфраструктура, т.е. независима от компонентов языка и от методологии за гренландский парсер, является таким же, как парсер за саамским языком, которые документируются в разных местах на этих страницах. Любая, от языка независимая, информация дается на <a href="https://giellalt.uit.no/index.html">Саами парсеры</a> также работает для гренландского языка.</p>
+
+      <p><strong> Новая версия гренландской программы проверки орфографии и расстановки переносов
+      инструменты для версии Windows в комплект MSOffice (KUKKUNIIAAT вер. 2,0)
+      В настоящее время готовы для скачивания. Эту версию можно загрузить бесплатно.       <a href="https://www.oqaasileriffik.gl/content/dk/tryk_her_for_at_fa_den_nye_stavekontrol">здесь</a>.
+      </strong></p>
+</programs>
+
+<programs lang="smn">
+Вот ссылки на различные анализы и программы для генерирования:
+</programs>
+
+<programs lang="sms">
+Вот ссылки на различные анализы и программы для генерирования:
+</programs>
+
+
+<!-- Analysis section -->
+
+<analysis>
+Анализ текста
+</analysis>
+
+<analysis lang="sms" />
+
+<!-- Analysis text section -->
+
+<analysis_text>
+Анализ, неоднозначность и расстановка переносов текста.
+</analysis_text>
+
+<analysis_text lang="cor">
+Анализ и неоднозначности текста.
+</analysis_text>
+
+<analysis_text lang="fao">
+Анализ, неоднозначность и расстановка переносов текста.
+</analysis_text>
+
+<analysis_text lang="gle">
+Анализ текста.
+</analysis_text>
+
+<analysis_text lang="ipk">
+Анализируете слова (не синтаксический анализ). Вы можете вставить текст, и программа даст все возможные анализы для каждой формы слов. Вы также можете конвертировать текст из Интерактивного инупиак словаря в кодировку Unicode.
+</analysis_text>
+
+<analysis_text lang="kal">
+Анализ, неоднозначность и расстановка переносов текста. Программа также дает представление МПА, и он переходит из Кляйншмидт (до 1973) до современной орфографии.
+</analysis_text>
+
+<analysis_text lang="mhr">
+Анализ текста.
+</analysis_text>
+
+<analysis_text lang="mns">
+Анализ текста.
+</analysis_text>
+
+<analysis_text lang="myv">
+Анализ текста.
+</analysis_text>
+
+<analysis_text lang="rmf">
+Анализ текста.
+</analysis_text>
+
+<analysis_text lang="rus">
+Анализ текста.
+</analysis_text>
+
+<analysis_text lang="udm">
+Анализ текста.
+</analysis_text>
+
+<analysis_text lang="bxr">
+Анализ текста.
+</analysis_text>
+
+<analysis_text lang="ciw">
+Анализ текста.
+</analysis_text>
+
+<analysis_text lang="fin">
+Анализ текста.
+</analysis_text>
+
+<analysis_text lang="fit">
+Анализ текста.
+</analysis_text>
+
+<analysis_text lang="fkv">
+Анализ текста.
+</analysis_text>
+
+<analysis_text lang="hdn">
+Анализ текста.
+</analysis_text>
+
+<analysis_text lang="sjd">
+Анализ нескольких слов.
+</analysis_text>
+
+<analysis_text lang="sma">
+Анализ, неоднозначность и расстановка переносов текста.
+</analysis_text>
+
+<analysis_text lang="sme">
+Анализ, неоднозначность и расстановка переносов текста и дать анализ зависимостей. Преобразование текста в АПИ.
+</analysis_text>
+
+<analysis_text lang="smj">
+Анализ, неоднозначность и расстановка переносов текста.
+</analysis_text>
+
+<analysis_text lang="smn">
+Анализ нескольких слов.
+</analysis_text>
+
+<analysis_text lang="sms">
+Анализ нескольких слов.
+</analysis_text>
+
+<analysis_text lang="yrk">
+Анализ нескольких слов.
+</analysis_text>
+
+
+<!-- paradigm section -->
+
+<paradigm>
+Генерирование парадигм
+</paradigm>
+
+<!-- paradigm text section -->
+
+<paradigm_text>
+Создает парадигмы разных размеров для любого слова.
+</paradigm_text>
+
+<paradigm_text lang="ipk">
+Создает парадигмы разных размеров для основного словарного запаса.
+</paradigm_text>
+
+<paradigm_text lang="koi">
+Создает парадигмы разных размеров для любого слова коми-пермяксого языка.
+</paradigm_text>
+
+<paradigm_text lang="kpv">
+Создает парадигмы разных размеров для любого слова коми языка.
+</paradigm_text>
+
+<paradigm_text lang="mhr">
+Создает парадигмы разных размеров для любого слова марийского языка.
+</paradigm_text>
+
+<paradigm_text lang="mns">
+Создает парадигмы разных размеров для любого слова мансийского языка.
+</paradigm_text>
+
+<paradigm_text lang="myv">
+Создает парадигмы разных размеров для любого слова эрзянского языка.
+</paradigm_text>
+
+<paradigm_text lang="rus">
+Создает парадигмы разных размеров для любого слова русского языка.
+</paradigm_text>
+
+<paradigm_text lang="udm">
+Создает парадигмы разных размеров для любого слова удмуртского языка.
+</paradigm_text>
+
+<paradigm_text lang="bxr">
+Создает парадигмы разных размеров для любого слова бурятского языка.
+</paradigm_text>
+
+<paradigm_text lang="ciw">
+Создает парадигмы разных размеров для любого слова оджибве языка.
+</paradigm_text>
+
+<paradigm_text lang="sjd">
+Генератор парадигмы в принципе работает, но парадигмы часто содержат
+больше ошибок чем правильные формы. В настоящее время генератор
+ доступeн онлайн, чтобы помочь нашим сотрудникaм развивать системy.
+</paradigm_text>
+
+<paradigm_text lang="sje">
+Генератор парадигмы в принципе работает, но парадигмы часто содержат
+больше ошибок чем правильные формы. В настоящее время генератор
+ доступeн онлайн, чтобы помочь нашим сотрудникaм развивать системy.
+</paradigm_text>
+
+<paradigm_text lang="smn">
+Создает парадигмы разных размеров для небольшого числа слов.
+Генератор парадигмы в принципе работает, но парадигмы часто содержат
+больше ошибок чем правильные формы. В настоящее время генератор
+ доступeн онлайн, чтобы помочь нашим сотрудникaм развивать системy.
+</paradigm_text>
+
+<paradigm_text lang="sms">
+Создает парадигмы разных размеров для небольшого числа слов.
+Генератор парадигмы в принципе работает, но парадигмы часто содержат
+больше ошибок чем правильные формы. В настоящее время генератор
+ доступeн онлайн, чтобы помочь нашим сотрудникaм развивать системy.
+</paradigm_text>
+
+
+<!-- generator section -->
+
+<generator>
+Генерирование слов
+</generator>
+
+<generator_text>
+Формирует формы слов с помощью лемм и грамматических меток.
+</generator_text>
+
+
+<!-- numerals section -->
+
+<numerals>
+Генерирование количества слов
+</numerals>
+
+
+<!-- numerals text section -->
+
+<!-- default value -->
+
+<numerals_text>
+С номерами (1, 23 и т.д.) программа генерирует соответствующее числительное.
+</numerals_text>
+
+
+<!-- non default values-->
+
+<numerals_text lang="bxr">
+Пока еще нет цифрового генератора для бурятского языка.
+</numerals_text>
+
+<numerals_text lang="ciw">
+Пока еще нет цифрового генератора для языка оджиббе.
+</numerals_text>
+
+<numerals_text lang="cor">
+ Пока еще нет цифрового генератора для корнуоллского языка.
+</numerals_text>
+
+<numerals_text lang="fao">
+Пока еще нет цифрового генератора для фарерского языка.
+</numerals_text>
+
+<numerals_text lang="ipk">
+Пока еще нет цифрового генератора для инуитского языка.
+</numerals_text>
+
+<numerals_text lang="kal">
+Пока еще нет цифрового генератора для гренландского языка.
+</numerals_text>
+
+<numerals_text lang="rus">
+С номерами (23, 10:15, 6.2. и т.д.) программа генерирует соответствующее числительное, выражение времени или дату.
+</numerals_text>
+
+<numerals_text lang="sma">
+С номерами (23, 10:15, 6.2. и т.д.) программа генерирует соответствующее числительное, выражение времени или дату.
+</numerals_text>
+
+<numerals_text lang="sme">
+С номерами (23, 10:15, 6.2. и т.д.) программа генерирует соответствующее числительное, выражение времени или дату.
+</numerals_text>
+
+<numerals_text lang="smj">
+С номерами (23, 10:15, 6.2. и т.д.) программа генерирует соответствующее числительное, выражение времени или дату.
+</numerals_text>
+
+<numerals_text lang="udm">
+Пока еще нет цифрового генератора для удмуртского языка.
+</numerals_text>
+
+
+  <!-- Dictionary page -->
+  <dicts>Dictionaries</dicts>
+  <dicts_text>Lexical resources</dicts_text>
+
+
+<!-- Dictionaries -->
+<nds>
+Neahttadigisánit
+</nds>
+
+<nds_text>
+Интерактивный словарь со сгибанием слова и корпусным поиском.
+</nds_text>
+
+
+<!-- Dictionaries -->
+
+<webdictionaries>
+Онлайн-словари
+</webdictionaries>
+
+<webdictionaries_text>
+Поиск слов в словаре Сети.
+</webdictionaries_text>
+
+<webdictionaries_text lang="sjd">
+Поиск слов в словаре Сети. Справочник основан на Саамском словаре Римма Куруча
+</webdictionaries_text>
+
+<VDdictionaries>
+Интерактивные словари
+</VDdictionaries>
+
+<VDdictionaries_text />
+
+<!-- Grammar -->
+
+<grammar>
+Грамматика
+</grammar>
+
+
+
+<!-- Korp -->
+<korp>Korp - Текстовый корпус.</korp>
+
+<!-- Korp text -->
+<korp_text>Поиск слов и грамматических образцов в текстовых коллекциях (нет для Internet Explorer).</korp_text>
+
+
+.
+<!-- Placenames -->
+
+<placenames>
+GEO - генерирование названий мест
+</placenames>
+
+<placenames_text>
+Напишите названия мест на норвежском или финском языках и получите соответствующее название места на саамском языке, и наоборот.
+</placenames_text>
+
+
+
+<!-- Risten -->
+
+<risten lang="smj">Терминологическая база báhko.org</risten>
+<risten lang="sma">Терминологическая база baakoe.org</risten>
+<risten lang="sme">Терминологическая база sátni.org</risten>
+
+
+<risten_text>Это старий risten.no</risten_text>
+
+
+<!-- Divvun-->
+<divvun>Спелчекер Divvun</divvun>
+<divvun_text>Загрузка спелчекера для использования в Microsoft Word</divvun_text>
+
+
+
+<!-- keyboard -->
+<keyboard>
+Саамская клавиатура
+</keyboard>
+<!-- Keyboard text -->
+<keyboard_text />
+
+<!-- Oahpa-->
+<oahpa>Oahpa! языковая программа изучения</oahpa>
+<oahpa_text lang="sme">
+Интерактивная программа для обучения глоссария и словаря, и для того, чтобы практиковать диалоги.
+</oahpa_text>
+<oahpa_text lang="sma">
+Интерактивная программа для обучения глоссария и словаря.
+</oahpa_text>
+<oahpa_text lang="sjd">
+Интерактивная программа для обучения слова, числа и выражения даты. Программа - все еще только демо-версия.
+</oahpa_text>
+<oahpa_text lang="smn">
+Интерактивная программа для обучения слова, числа и выражения даты. Программа - все еще только демо-версия.
+</oahpa_text>
+<oahpa_text lang="sms">
+Интерактивная программа для обучения слова, числа и выражения даты. Программа - все еще только демо-версия.
+</oahpa_text>
+
+<!-- crkoahpa -->
+<crkoahpa>nêhiyawêtân языковая программа изучения</crkoahpa>
+<!-- nêhiyawêtân text -->
+<crkoahpa_text lang="crk">
+Интерактивная программа для обучения слова, числа и выражения даты. Программа - все еще только демо-версия.
+</crkoahpa_text>
+
+<!-- tts -->
+<tts>Текст к речи</tts>
+<tts_text>Компьютер читает текст вслух для Вас</tts_text>
+
+
+
+<!-- kursa -->
+<kursa>Языковой курс</kursa>
+<kursa_text />
+
+<!-- VISL-->
+<visl>VISL!</visl>
+<visl_text>Интерактивная программа для учебных навыков по грамматике</visl_text>
+
+<!-- MT jorgal.uit.no-->
+<mt>Программа машинного перевода, от северного саамсского языка до норвежского языка</mt>
+<mt_text>Вставить текст или перевести веб-страницы.</mt_text>
+
+<!-- MT2 gtweb.uit.no/mt -->
+<mt2>Программа машинного перевода между различными саамскими языками</mt2>
+<mt2_text>Вставить текст или перевести веб-страницы. Эти программы перевода все еще находятся на стадии бета-тестирования.</mt2_text>
+
+<!-- other -->
+<other lang="ipk">
+Проект является совместным проектом между <a
+      href="https://www.oqaasileriffik.gl/">Grønlands Sprognævn
+      (Oqaasileriffik)</a> и Университетом Тромсе.
+</other>
+
+<other lang="kal">
+Проект является совместным проектом между <a
+      href="https://www.oqaasileriffik.gl/">Grønlands Sprognævn
+      (Oqaasileriffik)</a> и Университетом Тромсе.
+      </other>
+
+
+<other lang="koi">
+Инструменты для коми-пермякского языка находятся в процессе разработки. Они являются совместным проектом между саамской языковой технологией (Giellatekno) и Джеком Рютером. Лексика анализаторов взята из коми-финско-английского словаря Джека Рютера.
+</other>
+
+<other lang="kpv">
+Инструменты для коми языка находятся в процессе разработки. Они являются совместным проектом между саамской языковой технологией (Giellatekno) и Джеком Рютером. Лексика анализаторов взята из коми-финско-английского словаря Джека Рютера.
+</other>
+
+<other lang="liv">
+Инструменты для ливского языка находятся в процессе разработки. Они являются совместным проектом между саамской языковой технологией (Giellatekno), Ренате Блумберги и Джека Рютера. Лексика анализаторов взята из ливско-эстонско-латышского словаря Тиит-Рейна Вийтсоо и Валтса Эрнштрейтса. Финансирования Фонда «Коне» в Хельсинки и Университета Тромсё.
+</other>
+
+<other lang="mdf">
+Инструменты для мокшанского языка находятся в процессе разработки. Они являются совместным проектом между саамской языковой технологией (Giellatekno), Мерьи Сало и Джека Рютера. Лексика анализаторов взята из мокшанско-финского словаря Эвы Херралы, Александра Феоктистова. Финансирования Фонда «Коне» в Хельсинки и Университета Тромсё.
+</other>
+
+<other lang="mhr">
+Инструменты для марийского языка находятся в процессе разработки. Они являются совместным проектом между саамской языковой технологией (Giellatekno) и Йорма Луутонен. Лексика анализаторов взята из марийско-финского словаря Арто Моисиоса.
+</other>
+
+<other lang="mrj">
+Инструменты для горномарийского языка находятся в процессе разработки. Они являются совместным проектом между саамской языковой технологией (Giellatekno), Юлии Куприны и Джека Рютера. Финансирования Фонда «Коне» в Хельсинки и Университета Тромсё.
+</other>
+
+<other lang="olo">
+Инструменты для ливвиковско-карельского языка находятся в процессе разработки. Они являются совместным проектом между саамской языковой технологией (Giellatekno), Тимо Рантакавлио и Джека Рютера. Финансирования Фонда «Коне» в Хельсинки и Университета Тромсё.
+</other>
+
+<other lang="sjd">
+Работа по созданию инструментов для саамско-килдинского языка еще не начата. Саамско-кильдинские анализаторы здесь выложены в целях тестирования.
+</other>
+
+<other lang="yrk">
+Инструменты для ненецкого языка находятся в процессе разработки. Они являются совместным проектом между саамской языковой технологией (Giellatekno), Тапани Салминена, Свен-Эрик Соосаара и Джека Рютера. Финансирования Фонда «Коне» в Хельсинки и Университета Тромсё.
+</other>
+
+
+
+</content>
+
+<!--
+Template for new tag:
+
+<tag lang="cor">
+</tag>
+
+<tag lang="fao">
+</tag>
+
+<tag lang="ipk">
+</tag>
+
+<tag lang="kal">
+</tag>
+
+<tag lang="sjd">
+</tag>
+
+<tag lang="sma">
+</tag>
+
+<tag lang="sme">
+</tag>
+
+<tag lang="smj">
+</tag>
+
+<tag lang="smn">
+</tag>
+
+<tag lang="sms">
+</tag>
+-->

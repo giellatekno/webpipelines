@@ -1,0 +1,8 @@
+target/
+
+# just various queries to test the endpoints
+testfiles/
+
+.cargo
+
+.env*

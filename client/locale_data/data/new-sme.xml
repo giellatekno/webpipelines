@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+    <interfacelanguage>[sme] Interface language</interfacelanguage>
+    <search>[sme] Search</search>
+    <languagetools>Giellareaiddut</languagetools>
+    <generate>[sme] Generate</generate>
+    <analyze>[sme] Analyze</analyze>
+    <analyze.description>[sme] Analyze one or more words in isolation</analyze.description>
+    <spellcheck>[sme] Spellcheck</spellcheck>
+    <spellcheck.description>[sme] Run a spell check for one or multiple words</spellcheck.description>
+    <disambiguate>[sme] Disambiguate</disambiguate>
+    <dependency>[sme] Dependency structure</dependency>
+    <hyphenation>[sme] Hyphenation</hyphenation>
+    <transcription>[sme] IPA Transcription</transcription>
+    <nowexploring>[sme] You are now exploring</nowexploring>
+    <filters>[sme] filters</filters>
+    <samilanguages>[sme] sami languages</samilanguages>
+    <nonsamiuralic>[sme] non-sami uralic</nonsamiuralic>
+    <otherlanguages>[sme] other languages</otherlanguages>
+    <exploreanotherlang>[sme] Explore another language</exploreanotherlang>
+    <index.showtoolsfordotdotdot>[sme] Show tools for...</index.showtoolsfordotdotdot>
+    <langmodellastupdated>[sme] The language model was last updated</langmodellastupdated>
+</content>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+    <interfacelanguage>[fin] Interface language</interfacelanguage>
+    <search>[fin] Search</search>
+    <languagetools>[fin] Language tools</languagetools>
+    <generate>[fin] Generate</generate>
+    <analyze>[fin] Analyze</analyze>
+    <analyze.description>[fin] Analyze one or more words in isolation</analyze.description>
+    <spellcheck>[fin] Spellcheck</spellcheck>
+    <spellcheck.description>[fin] Run a spell check for one or multiple words</spellcheck.description>
+    <disambiguate>[fin] Disambiguate</disambiguate>
+    <dependency>[fin] Dependency structure</dependency>
+    <hyphenation>[fin] Hyphenation</hyphenation>
+    <transcription>[fin] IPA Transcription</transcription>
+    <nowexploring>[fin] You are now exploring</nowexploring>
+    <filters>[fin] filters</filters>
+    <samilanguages>[fin] sami languages</samilanguages>
+    <nonsamiuralic>[fin] non-sami uralic</nonsamiuralic>
+    <otherlanguages>[fin] other languages</otherlanguages>
+    <exploreanotherlang>[fin] Explore another language</exploreanotherlang>
+    <index.showtoolsfordotdotdot>[fin] Show tools for...</index.showtoolsfordotdotdot>
+    <langmodellastupdated>[fin] The language model was last updated</langmodellastupdated>
+</content>

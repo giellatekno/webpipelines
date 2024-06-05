@@ -1,0 +1,54 @@
+<!-- =============================================================== -->
+<!-- nob canned text -->
+<!-- =============================================================== -->
+<!ENTITY ltnob "Språkverktøy for">
+<!ENTITY atnob "Analyser tekst.">
+
+<!ENTITY ntilde  "&#241;">
+
+<!-- lang names: concat(lang_code,local_lang_code) -->
+<!ENTITY bxrnob "burjatisk">
+<!ENTITY ciwnob "ojibwe">
+<!ENTITY cornob "kornisk">
+<!ENTITY crknob "præriecree">
+<!ENTITY estnob "estisk">
+<!ENTITY evnnob "evenkisk">
+<!ENTITY faonob "færøysk">
+<!ENTITY finnob "finsk">
+<!ENTITY fitnob "meänkieli">
+<!ENTITY fkvnob "kvensk">
+<!ENTITY glenob "irsk">
+<!ENTITY hdnnob "nordhaida">
+<!ENTITY ipknob "i&ntilde;upiaq">
+<!ENTITY izhnob "ingrisk">
+<!ENTITY kalnob "grønlandsk">
+<!ENTITY kcanob "khantisk">
+<!ENTITY koinob "komipermjakisk">
+<!ENTITY kpvnob "komi">
+<!ENTITY livnob "liivisk">
+<!ENTITY mdfnob "moksjamordvinsk">
+<!ENTITY mhrnob "austmarisk">
+<!ENTITY mnsnob "mansisk">
+<!ENTITY mrjnob "fjellmarisk">
+<!ENTITY myvnob "ersjamordvinsk">
+<!ENTITY nionob "nganasansk">
+<!ENTITY nnonob "norsk nynorsk">
+<!ENTITY nobnob "norsk bokmål">
+<!ENTITY olonob "livvikarelsk">
+<!ENTITY rmfnob "kalo finsk romani">
+<!ENTITY rusnob "russisk">
+<!ENTITY sjdnob "kildinsamisk">
+<!ENTITY sjenob "pitesamisk">
+<!ENTITY smanob "sørsamisk">
+<!ENTITY smenob "nordsamisk">
+<!ENTITY smjnob "lulesamisk">
+<!ENTITY smnnob "enaresamisk">
+<!ENTITY smsnob "skoltesamisk">
+<!ENTITY somnob "somalisk">
+<!ENTITY swenob "svensk">
+<!ENTITY udmnob "udmurtisk">
+<!ENTITY vepnob "vepsisk">
+<!ENTITY votnob "votisk">
+<!ENTITY vronob "võro">
+<!ENTITY yrknob "nenetsisk">
+

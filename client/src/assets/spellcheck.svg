@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="300" width="300">
+    <style>
+        text {
+            font: 118px sans-serif;
+            fill: "#fff";
+        }
+    </style>
+    <text x="8" y="160">Lorem</text>
+    <text x="18" y="280">ipsam</text>
+    <path stroke-width="5" fill="transparent" stroke="red" d="
+    M 20,310
+    q 10,-10 20,0
+    t 20,0
+    t 20,0
+    t 20,0
+    t 20,0
+    t 20,0
+    t 20,0
+    t 20,0
+    t 20,0
+    t 20,0
+    t 20,0
+    t 20,0
+    t 20,0
+    t 20,0
+    t 20,0
+    t 20,0
+    t 20,0
+    " />
+</svg>

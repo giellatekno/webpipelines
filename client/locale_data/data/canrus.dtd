@@ -1,0 +1,49 @@
+<!-- =============================================================== -->
+<!-- rus canned text -->
+<!-- =============================================================== -->
+<!ENTITY ltrus "Программы для">
+
+<!-- lang names: concat(lang_code,local_lang_code) -->
+<!ENTITY bxrrus "бурятского языка">
+<!ENTITY ciwrus "оджибве языка">
+<!ENTITY corrus "корнуоллского языка">
+<!ENTITY crkrus "языка равнинный кри">
+<!ENTITY estrus "эстонкского языка">
+<!ENTITY evnrus "эвенкского языка">
+<!ENTITY faorus "фарерского языка">
+<!ENTITY finrus "финского языка">
+<!ENTITY fitrus "Меянкиели языка">
+<!ENTITY fkvrus "квенского языка">
+<!ENTITY glerus "ирландского языка">
+<!ENTITY hdnrus "северохайдского языка">
+<!ENTITY ipkrus "инупиакского языка">
+<!ENTITY izhrus "ижорского языка">
+<!ENTITY kalrus "гренландского языка">
+<!ENTITY kcarus "хантыйского языка">
+<!ENTITY koirus "коми-пермякского языка">
+<!ENTITY kpvrus "коми языка">
+<!ENTITY livrus "ливского языка">
+<!ENTITY mdfrus "мокшанского языка">
+<!ENTITY mhrrus "марийского языка">
+<!ENTITY mnsrus "мансийского языка">
+<!ENTITY mrjrus "горномарийского языка">
+<!ENTITY myvrus "эрзянского языка">
+<!ENTITY niorus "нганасанского языка">
+<!ENTITY nobrus "норвежского языка">
+<!ENTITY olorus "ливвиковсого языка">
+<!ENTITY rmfrus "финский калского языка">
+<!ENTITY rusrus "русского языка">
+<!ENTITY sjdrus "кильдин-саамского языка">
+<!ENTITY sjerus "питесаамского языка">
+<!ENTITY smarus "южносаамского языка">
+<!ENTITY smerus "северосаамского языка">
+<!ENTITY smjrus "люлесаамского языка">
+<!ENTITY smnrus "инарисаамского языка">
+<!ENTITY smsrus "колтта-саамского языка">
+<!ENTITY smsrus "сомалийский языка">
+<!ENTITY udmrus "удмуртского языка">
+<!ENTITY veprus "вепсского языка">
+<!ENTITY vrorus "выруского языка">
+<!ENTITY votrus "водского языка">
+<!ENTITY yrkrus "ненецкого языка">
+
