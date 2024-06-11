@@ -5,8 +5,6 @@ mod pipelines;
 mod timing;
 mod util;
 
-use std::{path::Path, time::Duration};
-
 use crate::async_watcher::make_async_watcher;
 use crate::langmodel_files::WP_LANGFOLDER;
 use axum::{
@@ -25,6 +23,7 @@ use pipelines::{
     hyphenate::hyphenate_endpoint, lemma_count::lemma_count_endpoint, paradigm::paradigm_endpoint,
     transcribe::transcribe_endpoint, unknown_in_x_by_freq::unknown_in_x_by_freq_endpoint,
 };
+use std::time::Duration;
 use timing::timing_middleware;
 use tokio::{self, net::TcpListener};
 use tower::{limit::ConcurrencyLimitLayer, ServiceBuilder};
@@ -52,9 +51,9 @@ async fn handle_error(err: BoxError) -> Response {
     }
 }
 
-fn handle_panic(err: Box<dyn std::any::Any + Send + 'static>) -> Response<hyper::Body> {
-    println!("handle_panic() !!");
-
+fn handle_panic(
+    err: Box<dyn std::any::Any + Send + 'static>,
+) -> http::Response<http_body_util::Full<bytes::Bytes>> {
     let details = if let Some(s) = err.downcast_ref::<String>() {
         s.clone()
     } else if let Some(s) = err.downcast_ref::<&str>() {
@@ -74,7 +73,7 @@ fn handle_panic(err: Box<dyn std::any::Any + Send + 'static>) -> Response<hyper:
     Response::builder()
         .status(http::StatusCode::INTERNAL_SERVER_ERROR)
         .header(http::header::CONTENT_TYPE, "application/json")
-        .body(hyper::Body::from(body))
+        .body(http_body_util::Full::from(body))
         .unwrap()
 }
 
@@ -263,15 +262,5 @@ async fn main() {
         None => TcpListener::bind("0.0.0.0:3000").await.unwrap(),
     };
 
-    // anders: axum::Server::from_tcp() takes a std::net::TcpListener,
-    // not a tokio::net::TcpListener..
-    let listener = listener
-        .into_std()
-        .expect("tokio tcp listener to std listener ok");
-
-    axum::Server::from_tcp(listener)
-        .unwrap()
-        .serve(app.into_make_service())
-        .await
-        .unwrap();
+    axum::serve(listener, app).await.unwrap();
 }

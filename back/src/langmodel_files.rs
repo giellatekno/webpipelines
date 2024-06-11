@@ -235,17 +235,16 @@ pub fn load_langfiles() -> usize {
 
     for (l1, l2) in lemmalist_pairs.iter() {
         let fst = format!("{}{}-all.fst", l1, l2);
-        let path_server = std::path::PathBuf::from(
-            format!("{}/{}/bin/{}{}-all.fst", *WP_LANGFOLDER, l1, l1, l2)
-        );
+        let path_server = std::path::PathBuf::from(format!(
+            "{}/{}/bin/{}{}-all.fst",
+            *WP_LANGFOLDER, l1, l1, l2
+        ));
         debug!(?path_server, "looking for file");
         let path = if path_server.exists() {
             debug!(?path_server, "found file on server");
             path_server
         } else {
-            let path = std::path::PathBuf::from(
-                format!("/usr/share/giella/{l1}/{l1}{l2}-all.fst")
-            );
+            let path = std::path::PathBuf::from(format!("/usr/share/giella/{l1}/{l1}{l2}-all.fst"));
             debug!(?path, "found file locally");
             path
         };

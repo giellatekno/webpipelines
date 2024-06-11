@@ -14,9 +14,9 @@ help:
 dev:
 	PUBLIC_API_ROOT=http://localhost:3000 pnpm run dev
 
-.PHONY: build
-build:
-	pnpm run build
+.PHONY: build-gtweb
+build-gtweb:
+	SK_BASE=/webpipeline pnpm run build
 
 .PHONY: image
 image:

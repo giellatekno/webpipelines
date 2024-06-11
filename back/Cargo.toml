@@ -9,7 +9,7 @@ authors = [
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [dependencies]
 # the web framework (built on top of tower, uses 
-axum = { version = "0.6.20", features = ["multipart"] }
+axum = { version = "0.7.5", features = ["multipart"] }
 
 # base64.. does it need explaining?
 base64 = "0.21.4"
@@ -33,7 +33,7 @@ dotenv = "0.15.0"
 flate2 = "1.0.27"
 
 # standard http definitions
-http = "0.2.9"
+http = "1.1"
 
 # http server, works with tokio (and hence axum, etc)
 hyper = { version = "0.14", features = ["full"] }
@@ -73,17 +73,26 @@ serde_yaml = "0.9.27"
 tempfile = "3.8.0"
 
 # The async runtime
-tokio = { version = "1.33", features = ["full", "tracing"] }
+tokio = { version = "1.38", features = ["full", "tracing"] }
 
 # Async services
 tower = { version = "0.4.13", features = ["limit", "load-shed", "timeout", "buffer", "util"] }
 
 # http services that works with tower
-tower-http = { version = "0.4.4", features = ["cors", "fs", "trace", "catch-panic"] }
+tower-http = { version = "0.5.2", features = ["cors", "fs", "trace", "catch-panic"] }
 
 # a logging framework which works great in async settings
 tracing = "0.1"
 
 # logging, this can listen to log events and do something with them
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# for panic handler in axum (via tower-http)
+http-body-util = "0.1.2"
+
+# Provides abstractions for working with bytes.
+# used by the panic handler
+# MIT
+bytes = "1.6.0"
+
 #validator = { version = "0.16.1", features = ["derive"] }

@@ -1,11 +1,11 @@
-use notify::{RecommendedWatcher, Result};
+use notify::RecommendedWatcher;
 use notify_debouncer_full::new_debouncer;
 use notify_debouncer_full::DebounceEventHandler;
 use notify_debouncer_full::DebounceEventResult;
 use notify_debouncer_full::Debouncer;
 use notify_debouncer_full::FileIdMap;
 use std::time::Duration;
-use tokio::sync::mpsc::{channel, Receiver, Sender};
+use tokio::sync::mpsc::{Receiver, Sender};
 
 /// Wraps a tokio mpsc sender channel, so we can implement the notify event
 /// handler for it (we can't implement a trait we don't own on a struct or

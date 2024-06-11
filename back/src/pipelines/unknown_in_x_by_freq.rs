@@ -117,8 +117,7 @@ pub fn unknown_in_x_by_freq(input: String, lang1: String, lang2: String) -> Resu
         .as_file()
         .write_all(recognized_words.as_bytes())
         .map_err(|e| e.to_string())?;
-    let lookup_binary = std::env::var("LOOKUP_BINARY")
-        .unwrap_or_else(|_| String::from("lookup"));
+    let lookup_binary = std::env::var("LOOKUP_BINARY").unwrap_or_else(|_| String::from("lookup"));
     let lookup_results = run_fun!(
         cat $path |
         $lookup_binary $dict

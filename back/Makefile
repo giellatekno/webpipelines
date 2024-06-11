@@ -49,6 +49,6 @@ export:
 	podman save -o webpipelineapi.tar webpipelineapi
 	gzip -f webpipelineapi.tar
 
-.PHONY: upload
-upload:
+.PHONY: push-gtweb
+push-gtweb:
 	scp webpipelineapi.tar.gz gtweb.uit.no:/home/anders/webpipelineapi.tar.gz
