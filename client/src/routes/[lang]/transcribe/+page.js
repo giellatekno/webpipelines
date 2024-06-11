@@ -19,6 +19,10 @@ export async function load({ url, params, fetch }) {
     }
 
     const text = await response.text();
+    if (response.status !== 200) {
+        return { error: `non-200 from api: ${text}` };
+    }
+
     const analyses = text
         .split("\n")
         .filter(line => line.length > 0)

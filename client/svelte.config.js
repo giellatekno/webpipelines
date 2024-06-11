@@ -3,16 +3,10 @@ import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 
 const dev = process.env.NODE_ENV == "development";
 const prod = process.env.NODE_ENV == "production";
-let base;
-if (prod) {
-    base = "/webpipeline";
-} else {
-    if (process.env.XX_BASE) {
-        base = process.env.XX_BASE;
-    } else {
-        base = "";
-    }
-}
+
+// If the app should live under a subpath on the domain, such as
+// e.g. some.domain.com/subdir - then set this to "/subdir"
+const base = process.env.SK_BASE || "";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -27,7 +21,6 @@ const config = {
         },
         paths: {
             base,
-            //base: dev ? "" : "/webpipeline",
         },
 
 		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.

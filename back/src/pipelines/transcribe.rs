@@ -14,14 +14,14 @@ pub fn transcribe(input: &str, lang: &str) -> Result<String, String> {
     let txt2ipa = get_langfile(&lang, "txt2ipa.lookup.hfstol").ok_or_else(|| {
         format!(
             "language not supported \
-            (txt2ipa.lookup.hfstol doesn't exist for language {}",
+            (txt2ipa.lookup.hfstol doesn't exist for language {})",
             lang
         )
     })?;
 
     run_fun!(
-        echo $input |
-        hfst-tokenize -q $txt2ipa
+        echo -e "$input" |
+        hfst-lookup -q $txt2ipa
     )
     .map_err(|e| e.to_string())
 }

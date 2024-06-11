@@ -3,23 +3,16 @@
     import { t } from "svelte-intl-precompile";
     import type { PageData } from "./$types";
     import { page } from "$app/stores";
-
-    // this isn't used
-    import WordInput from "$components/WordInput.svelte";
-    import { only_on_enter } from "$lib/utils.js";
+    import { goto } from "$app/navigation";
 
     export let data: PageData;
 
-    console.log("page");
-    console.log($page);
-
-    // the search text
     let value = "";
 
     $: usage = get_usage($page.params.lang, $t);
     $: instruction = $t(`instruction.tool.analyze`);
 
-    function get_usage(lang, $t) {
+    function get_usage(lang: string, $t: (_: string) => string) {
         const lang_specific = $t(`usage.lang.${lang}`);
         if (lang_specific !== `usage.lang.${lang}`) {
             return lang_specific;
@@ -29,18 +22,17 @@
         }
     }
 
-    function reset() {
-        value = "";
+    async function on_textarea_keydown(ev: KeyboardEvent) {
+        if (ev.key === "Enter" && ev.shiftKey) {
+            ev.preventDefault();
+            await goto(`?q=${value}`, { keepFocus: true });
+        }
     }
-    //function on_new_value({ detail: value }) {
-    //    results.unshift(analyze($lang, value));
-    //    results = results;
-    //}
 </script>
 
 <main>
     <span>
-        <h1>{$t("analyze")}</h1>
+        <h1>{$t("transcribe")}</h1>
         <a href="{base}/{$page.params.lang}">[l6e] Tilbake til verktøy</a>
     </span>
 
@@ -51,17 +43,10 @@
         data-sveltekit-replacestate
         data-sveltekit-keepfocus
     >
-        <div class="searchinput">
-            <input name="q" type="text" bind:value>
-            <span
-                class:active={value.length > 0}
-                class="cross"
-                on:click={reset}
-                on:keydown={only_on_enter(reset)}
-                tabindex="0"
-                role="button"
-            >&#x2718;</span>
-        </div>
+        <textarea rows="6" cols="50" name="q" bind:value on:keydown={on_textarea_keydown}></textarea>
+        <br>
+        <br>
+        <button type="submit">{$t("Send")}</button>
     </form>
 
     <div class="results">
@@ -110,46 +95,28 @@
         margin-top: 1.5em;
     }
 
-    div.searchinput {
-        box-sizing: border-box;
-        display: inline-flex;
-        align-items: center;
-        min-height: 3em;
-        border-radius: 8px;
-        border: 2px solid #9d9db0;
-        transition:
-            width ease-out 0.18s,
-            border-radius ease-out 0.18s,
-            border-color ease-out 0.18s;
+    div.results {
+        margin-top: 1.5em;
     }
 
-    div.searchinput:focus-within {
-        border-radius: 14px;
-        border: 2px solid #7777ee;
-        box-shadow: 0px 2px 8px 0px rgba(200, 200, 255, 0.9);
+    form button[type=submit] {
+        background-color: #acc1ef;
+        border-radius: 2px;
+        border: 1px solid #9d9db0;
+        padding: 8px 16px;
+
     }
 
-    div.searchinput > input {
-        margin-left: 6px;
-        font-size: 16px;
+    textarea {
         font-family: Roboto, sans-serif;
-        border: 0;
-        outline: 0;
-        padding: 8px;
+        font-size: 14px;
+        border: 1px solid #9d9db0;
+        border-radius: 6px;
+        padding: 4px;
     }
-    div.searchinput > input:focus {
-        border: 0;
-        outline: 0;
-    }
-    div.searchinput > span.cross {
-        color: #9d9db0;
-        /*color: gray;*/
-        cursor: pointer;
-        font-size: 1.5em;
-        margin-right: 0.4em;
-        transition: color ease-out 0.18s;
-    }
-    div.searchinput > div:focus-within > span.cross.active {
-        color: #f05555;
+
+    textarea:focus-within {
+        border: 1px solid #7777ee;
+        box-shadow: 0px 2px 8px 0px rgba(200, 200, 255, 0.9);
     }
 </style>

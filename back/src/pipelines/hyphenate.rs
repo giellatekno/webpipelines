@@ -20,8 +20,10 @@ pub fn hyphenate(input: &str, lang: &str) -> Result<String, String> {
         )
     })?;
 
+    let input = input.replace(" ", "\n");
+
     run_fun!(
-        echo $input |
+        echo -e "$input" |
         hfst-lookup -q $hyphenate_hfstol
     )
     .map_err(|e| e.to_string())

@@ -10,7 +10,7 @@
     {#if $page.data.lang}
         <span class="separator">&#xB7;</span>
         {$t("nowexploring")} {langname($page.data.lang, $locale)}&nbsp;
-        <a href="{base}">{$t("exploreanotherlang")}</a>
+        <a href="{base}/">{$t("exploreanotherlang")}</a>
     {/if}
 </main>
 

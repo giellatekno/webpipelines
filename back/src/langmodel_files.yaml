@@ -102,7 +102,7 @@ files:
     requires_build: False
     methods: ["dependency"]
 
-  - filename: "txt2ipa.compose.hfst"
+  - filename: "txt2ipa.lookup.hfstol"
     repo_path: "src/phonetics/txt2ipa.compose.hfst"
     build_flags: ["enable-phonetic", "enable-tts", "enable-tokenisers"]
     methods: ["transcribe"]
