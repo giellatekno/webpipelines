@@ -9,6 +9,8 @@ fn eat_until(s: &str, start: usize, ch: char) -> Result<Range<usize>, ()> {
     Ok(start..start + s[start..].find(ch).ok_or(())?)
 }
 
+// std::str::pattern::Pattern isn't stable, so eat_until() above can't take
+// a Pattern.
 // Ideally I'd be able to tell the compiler that the output char must be
 // one of the chars given in `chars`, for pattern matching to not consider
 // the match non-exhaustive if we don't capture the _
@@ -105,6 +107,15 @@ impl Analysis {
         line.parse()
     }
 
+    pub fn to_json(&self) -> serde_json::Value {
+        serde_json::json!({
+            "lemma": self.lemma(),
+            "wordform": self.wordform(),
+            "pos": self.pos(),
+            "tags": self.tags_vec(),
+        })
+    }
+
     pub fn wordform(&self) -> &str {
         // SAFETY range is in bounds, and does not lie on a utf-8 boundary,
         // because we made it in from_line() by using str.find() on specific
@@ -127,26 +138,37 @@ impl Analysis {
         unsafe { &self.line.as_str().get_unchecked(self.pos_range.clone()) }
     }
 
-    pub fn tags(&self) -> &str {
+    pub fn tags_str(&self) -> &str {
         // SAFETY see wordform() safety note
         unsafe { &self.line.as_str().get_unchecked(self.tags_range.clone()) }
     }
 
+    pub fn tags_vec(&self) -> Vec<&str> {
+        self.tags_str().split('+').collect()
+    }
+
     /// Is the analysis a derivation
     pub fn is_derivation(&self) -> bool {
-        self.tags().contains("Der")
+        self.tags_str().contains("Der")
     }
 
     /// Is the analysis a compound
     pub fn is_compund(&self) -> bool {
-        self.tags().contains('#') && !self.tags().starts_with(&['+', '#'])
+        self.tags_str().contains('#') && !self.tags_str().starts_with(&['+', '#'])
     }
+}
+
+pub fn analyses_raw_to_vec(raw: &str) -> Vec<Analysis> {
+    raw
+        .split('\n')
+        .filter_map(|line| line.parse::<crate::analysis::Analysis>().ok())
+        .collect::<Vec<_>>()
 }
 
 /// Try to analyze an `input` string with the analyzer for language `lang`.
 /// `tokenize` determines if the input is run through the tokenizer before
 /// analysis, or not.
-pub fn analyze<'a>(input: &str, lang: &str, tokenize: bool) -> Result<Vec<Analysis>, String> {
+pub fn analyze<'a>(input: &str, lang: &str, tokenize: bool) -> Result<String, String> {
     let analyzer_gt_desc_hfstol =
         get_langfile(lang, "analyser-gt-desc.hfstol").ok_or_else(|| {
             format!(
@@ -177,18 +199,14 @@ pub fn analyze<'a>(input: &str, lang: &str, tokenize: bool) -> Result<Vec<Analys
         )
     };
     let analyses_string = results.map_err(|e| e.to_string())?;
-    let analyses = analyses_string
-        .split('\n')
-        .filter_map(|line| line.parse::<Analysis>().ok())
-        .collect::<Vec<Analysis>>();
-    Ok(analyses)
+    Ok(analyses_string)
 }
 
 pub async fn analyze_async<'a>(
     input: &str,
     lang: &str,
     tokenize: bool,
-) -> Result<Vec<Analysis>, String> {
+) -> Result<String, String> {
     let input = input.to_owned();
     let lang = lang.to_owned();
     let t0 = std::time::Instant::now();

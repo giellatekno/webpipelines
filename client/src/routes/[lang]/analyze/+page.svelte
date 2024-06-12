@@ -4,12 +4,54 @@
     import { page } from "$app/stores";
     import { base } from "$app/paths";
     import { goto } from "$app/navigation";
+    import Switch from "$components/Switch.svelte";
 
     export let data: PageData;
-    let form: HTMLFormElement;
 
-    // the search text
+    let form: HTMLFormElement;
     let value = "";
+    let result_format = "text";
+    let results: any;
+    $: results = set_results(data, result_format);
+
+    function set_results(data: PageData, result_format: string) {
+        if (!data.results) return;
+
+        if (result_format === "text") {
+            // Somewhat confusing: if user asks for text, we must parse the json
+            const analyses = [];
+            let last = null;
+            let curr = [];
+            for (let obj of data.results.parsed) {
+                if (obj.wordform != last) {
+                    if (curr.length > 0) {
+                        analyses.push(curr);
+                    }
+                    curr = [obj];
+                    last = obj.wordform;
+                } else {
+                    curr.push(obj);
+                }
+            }
+
+            // remember the last one
+            if (curr.length > 0) {
+                analyses.push(curr);
+            }
+            return analyses;
+        } else if (result_format === "json") {
+            // and if they ask for json, we just show stringified json
+            return JSON.stringify(data.results.parsed);
+            const analyses = data.results.raw
+                .split("\n")
+                .filter((line: string) => line.length > 0)
+                .map((line: string) => line.split("\t"))
+                .filter((splits: Array<string>) => splits[2] !== "inf")
+                .map((splits: Array<string>) => splits[1])
+                .join("<br>");
+            return analyses;
+        }
+    };
 
     $: usage = get_usage($page.params.lang, $t);
     $: instruction = $t(`instruction.tool.analyze`);
@@ -57,36 +99,30 @@
             Error: {data.error}
         {/if}
 
-        {#if data.results?.analyses}
-            <div>
-                {#each data.results.analyses as result}
-                    {result}<br>
-                {:else}
-                    No analyses
-                {/each}
-            </div>
-        {/if}
-    </div>
-        <!--
-        <table>
-            {#each data.results as result}
-                    <tr>
-                        <td colspan="4">
-                            <Pulse color="#FF0000" size="28" unit="px" duration="1s" />
-                            [spinner]
-                        </td>
-                    </tr>
-                        {#each res as { word, root, cls, props }}
+        {#if results}
+            <Switch bind:value={result_format} label="" options={["text", "json"]} fontSize={16} />
+
+            {#if result_format == "text"}
+                <table>
+                    {#each results as word_analyses}
+                        {@const plus = "<span style='color: gray;'>+</span>"}
+                        {#each word_analyses as {wordform, lemma, pos, tags}}
+                            {@const tags_s = tags.join(plus)}
                             <tr>
-                                <td class="input-word">{word}</td>
-                                <td class="root-word">{root}</td>
-                                <td class="word-cls">{cls}</td>
-                                <td class="word-props">{props}</td>
+                                <td><span style="color: rgb(40, 125, 9);">{wordform}</span></td>
+                                <td><span style="color: #a80909;">{lemma}</span>{@html plus}<span style="font-weight: bold;">{pos}</span>{@html plus}{@html tags_s}</td>
                             </tr>
                         {/each}
-            {/each}
-        </table>
-        -->
+                        <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+                    {/each}
+                </table>
+            {:else if result_format == "json"}
+                {@html results}
+            {/if}
+        {:else}
+            No analyses
+        {/if}
+    </div>
 </main>
 
 <style>

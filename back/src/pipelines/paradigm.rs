@@ -112,11 +112,12 @@ pub async fn paradigm_endpoint(
     let size = query_params.size.unwrap_or(ParadigmSize::Standard);
     let format = query_params.format.unwrap_or(Format::Text);
 
-    let analyses = match analyze_async(&string, &lang, false).await {
+    let analyses_raw = match analyze_async(&string, &lang, false).await {
         Ok(analyses) => analyses,
         Err(e) => return format!("{}", e).into_response(),
     };
 
+    let analyses = crate::analysis::analyses_raw_to_vec(&analyses_raw);
     let (mut direct, mut other) = find_poses_from_analyses(&analyses, string);
 
     if pos != Pos::Any {

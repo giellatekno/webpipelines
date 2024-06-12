@@ -14,7 +14,7 @@ export async function load(event) {
     }
 
     let response;
-    const backend_route = `${env.PUBLIC_API_ROOT}/analyze/${lang}/${q}`;
+    const backend_route = `${env.PUBLIC_API_ROOT}/analyze/${lang}/${q}?format=json`;
     try {
         response = await fetch(backend_route);
     } catch (e) {
@@ -23,13 +23,5 @@ export async function load(event) {
         return { error: "fetch() from api failed" };
     }
 
-    const text = await response.text();
-    const analyses = text
-        .split("\n")
-        .filter(line => line.length > 0)
-        .map(line => line.split("\t"))
-        .filter(splits => splits[2] !== "inf")
-        .map(splits => splits[1]);
-
-    return { results: { analyses } };
+    return { results: { ...await response.json() } };
 }
