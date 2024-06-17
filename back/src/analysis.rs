@@ -178,26 +178,31 @@ pub fn analyze<'a>(input: &str, lang: &str, tokenize: bool) -> Result<String, St
             )
         })?;
 
-    let results = if !tokenize {
-        run_fun!(
-            echo "$input" |
-            hfst-lookup -q --beam=0 $analyzer_gt_desc_hfstol
-        )
-    } else {
-        let tokdisamb =
-            get_langfile(&lang, "tokeniser-disamb-gt-desc.pmhfst").ok_or_else(|| {
-                format!(
-                    "language not supported \
-                    (tokeniser-disamb-gt-desc.pmhfst doesn't exist for language {}",
-                    lang
+    let results = if tokenize {
+        // Asked for tokenized analysis, try to do it, but if we don't
+        // have the tokeniser file, fall back to non-tokenised analysis
+        match get_langfile(&lang, "tokeniser-disamb-gt-desc.pmhfst"){
+            Some(tokdisamb_file) => {
+                run_fun!(
+                    echo "$input" |
+                    hfst-tokenize -q $tokdisamb_file |
+                    hfst-lookup -q --beam=0 $analyzer_gt_desc_hfstol
                 )
-            })?;
+            }
+            None => {
+                run_fun!(
+                    echo "$input" |
+                    hfst-lookup -q --beam=0 $analyzer_gt_desc_hfstol
+                )
+            }
+        }
+    } else {
         run_fun!(
             echo "$input" |
-            hfst-tokenize -q $tokdisamb |
             hfst-lookup -q --beam=0 $analyzer_gt_desc_hfstol
         )
     };
+
     let analyses_string = results.map_err(|e| e.to_string())?;
     Ok(analyses_string)
 }

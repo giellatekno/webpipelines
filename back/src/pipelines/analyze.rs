@@ -24,7 +24,7 @@ pub async fn analyze_endpoint(
     let raw = match analyze_async(&string, &lang, true).await {
         Ok(raw) => raw,
         Err(e) => {
-            return (StatusCode::UNPROCESSABLE_ENTITY, e).into_response();
+            return (StatusCode::INTERNAL_SERVER_ERROR, e).into_response();
         }
     };
 

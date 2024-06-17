@@ -8,7 +8,7 @@ help:
 	@echo "runlocal - run the built image, using local settings"
 	@echo "stop - stop the locally running container"
 	@echo "export - export the built image to webpipelineapi.tar.gz"
-	@echo "upload - upload webpipelineapi.tar.gz to gtweb (read docs there on how to import and run)"
+	@echo "push-gtweb - upload webpipelineapi.tar.gz to gtweb (read docs there on how to import and run)"
 
 .PHONY: dev
 dev:
