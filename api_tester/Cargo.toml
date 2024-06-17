@@ -1,0 +1,11 @@
+[package]
+name = "api_tester"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+crossterm = "0.27.0"
+ratatui = "0.26.3"
+reqwest = "0.12.4"
+strum = { version = "0.26.2", features = ["derive"] }
+tokio = { version = "1.38.0", features = ["rt", "rt-multi-thread"] }
