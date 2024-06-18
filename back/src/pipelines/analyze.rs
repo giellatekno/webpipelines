@@ -3,9 +3,7 @@ use axum::{
     extract::{Path, Query},
     response::{IntoResponse, Response, Json},
 };
-use flate2::Status;
 use http::StatusCode;
-use itertools::Itertools;
 use serde::Deserialize;
 
 use crate::analysis::analyze_async;
