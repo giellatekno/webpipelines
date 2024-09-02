@@ -103,7 +103,7 @@
         />
         <RadioGroup
             name="pos"
-            header="Part of speech"
+            header={$t("partofspeech")}
             bind:selected={pos}
             choices={Object.entries(poses)}
         />
@@ -113,10 +113,12 @@
                 class:active={value && value.length > 0}
                 class="cross"
                 on:click={() => value = ""}
+                on:keypress={ev => ev.key == "Enter" ? value = "" : null}
                 tabindex="0"
                 role="button"
             >&#x2718;</span>
         </div>
+        <button type="submit">Send</button>
         <!--
         <WordInput
             debounce={1000}

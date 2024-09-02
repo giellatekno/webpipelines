@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <content>
+    <developers>Utviklere</developers>
+    <fordevelopers>For utviklere</fordevelopers>
+    <sourcecode>Kildekode</sourcecode>
+    <api.paragraph>APIet for denne siden er fritt, og åpent tilgjengelig. Det ligger på {apilink}</api.paragraph>
+    <developers.code.paragraph>Kildekoden for både frontenden og backenden er åpen. Den finnes på {repolink}</developers.code.paragraph>
+    <developers.code.paragraph2>Legg gjerne inn Issues om du skulle oppdage tekniske feil på siden, eller på APIet.</developers.code.paragraph2>
     <interfacelanguage>Grensesnittspråk</interfacelanguage>
     <search>Søk</search>
     <languagetools>Språkverktøy</languagetools>

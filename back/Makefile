@@ -4,11 +4,12 @@ help:
 	@echo "dev - run development build locally"
 	@echo "build - just cargo build --release"
 	@echo "image - use podman to build the image"
-	@echo "push-gtlab - push the built image to the azure lab subscription (gtlab)"
-	@echo "runlocal - run the built image, using local settings"
+	@echo "runlocal - run the container locally"
 	@echo "stop - stop the locally running container"
-	@echo "export - export the built image to webpipelineapi.tar.gz"
-	@echo "push-gtweb - upload webpipelineapi.tar.gz to gtweb (read docs there on how to import and run)"
+	@echo "push-labacr - push the built image to the azure lab subscription (gtlab)"
+	@echo "runlocal - run the built image, using local settings"
+	@echo "export - export the built image to webpipeline-api.tar.gz"
+	@echo "push-gtweb - upload webpipeline-api.tar.gz to gtweb (read docs there on how to import and run)"
 
 .PHONY: dev
 dev:
@@ -20,12 +21,12 @@ build:
 
 .PHONY: image
 image: target/release/webpipeline
-	podman build -t webpipelineapi -f Dockerfile .
+	podman build -t webpipeline-api -f Dockerfile .
 
 .PHONY: runlocal
 runlocal:
 	podman run \
-		--name webpipelineapi \
+		--name webpipeline-api \
 		--detach \
 		--init \
 		--stop-signal=SIGINT \
@@ -33,22 +34,22 @@ runlocal:
 		-p 3001:3000 \
 		--env WP_LANGFOLDER=/langs \
 		-v /usr/share/giella:/langs \
-		webpipelineapi
+		webpipeline-api
 
 .PHONY: stoplocal
 stoplocal:
-	podman stop webpipelineapi
+	podman stop webpipeline-api
 
-.PHONY: push-gtlab
-push-gtlab:
-	podman tag webpipelineapi gtlabcontainerregistry.azurecr.io/webpipelineapi
-	podman push gtlabcontainerregistry.azurecr.io/webpipelineapi
+.PHONY: push-labacr
+push-labacr:
+	podman tag webpipeline-api gtlabcontainerregistry.azurecr.io/webpipeline-api
+	podman push gtlabcontainerregistry.azurecr.io/webpipeline-api
 
 .PHONY: export
 export:
-	podman save -o webpipelineapi.tar webpipelineapi
-	gzip -f webpipelineapi.tar
+	podman save -o webpipeline-api.tar webpipeline-api
+	gzip -f webpipeline-api.tar
 
 .PHONY: push-gtweb
 push-gtweb:
-	scp webpipelineapi.tar.gz gtweb.uit.no:/home/anders/webpipelineapi.tar.gz
+	scp webpipeline-api.tar.gz gtweb.uit.no:/home/anders/webpipeline-api.tar.gz

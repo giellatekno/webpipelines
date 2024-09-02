@@ -1,4 +1,5 @@
 <script>
+    import { base } from "$app/paths";
     import { t } from "svelte-intl-precompile";
     import LocaleSelector from "$components/LangSelector.svelte";
     import LangSelector from "$components/LocaleSelector.svelte";
@@ -7,8 +8,14 @@
 
 <div class="app">
     <header>
-        <LangSelector />
-        <LocaleSelector />
+        <div>
+            <LangSelector />
+            <LocaleSelector />
+        </div>
+        <div style="margin-left: auto">
+            <a href="/{base}about">Om</a>&nbsp;&#183;&nbsp;
+            <a href="/{base}developers">Developers</a>
+        </div>
     </header>
 
     <main>
@@ -26,8 +33,15 @@
     header {
         display: flex;
         align-items: center;
-        margin-top: 6px;
-        margin-left: 6px;
+        margin: 6px 6px 0 6px;
+        width: calc(100vw - 12px);
+    }
+
+    header > div {
+        padding: 0;
+        margin: 0;
+        display: inline-flex;
+        align-items: center;
     }
 
 	main {

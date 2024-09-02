@@ -9,7 +9,7 @@
     export let data: PageData;
 
     let form: HTMLFormElement;
-    let value = "";
+    let value = data.q || "";
     let result_format = "text";
     let results: any;
     $: results = set_results(data, result_format);

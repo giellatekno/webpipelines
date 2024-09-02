@@ -1,8 +1,8 @@
-use std::future::Future;
 use std::io;
 use std::sync::{Arc, RwLock};
 use std::time::Duration;
 
+use clap::Parser;
 use crossterm::{
     event::{self, Event, KeyCode},
     style::Color,
@@ -12,11 +12,19 @@ use ratatui::{prelude::*, widgets::*};
 
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
-const ROOT: &str = "http://gtweb.uit.no/webpipelineapi";
+const ROOT: &str = "https://gtweb-02.uit.no/webpipeline-api";
+const MAX_CONCURRENT_REQUESTS: usize = 2;
 
-struct Request {
-    start_time: std::time::Instant,
-    fut: Box<dyn Future<Output = std::result::Result<reqwest::Response, reqwest::Error>>>,
+//struct Request {
+//    start_time: std::time::Instant,
+//    fut: Box<dyn Future<Output = std::result::Result<reqwest::Response, reqwest::Error>>>,
+//}
+
+#[derive(Debug, Clone)]
+struct CompletedRequest {
+    time_spent: Duration,
+    status: u16,
+    body: String,
 }
 
 #[derive(Default, Debug, Clone)]
@@ -28,11 +36,11 @@ enum EndpointState {
     NotStarted,
     /// Call in progress
     Waiting(std::time::Instant),
-    Ok(Duration),
-    Failed(u16, Duration),
+    Ok(CompletedRequest),
+    Failed(CompletedRequest),
 }
 
-#[derive(Copy, Clone, PartialEq, Eq, Display)]
+#[derive(Copy, Clone, Debug, PartialEq, Eq, Display)]
 enum EndpointMethod {
     #[strum(to_string = "analyze")]
     Analyze,
@@ -50,27 +58,7 @@ enum EndpointMethod {
     Transcribe,
 }
 
-/*
-impl std::fmt::Display for EndpointMethod {
-    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::result::Result<(), std::fmt::Error> {
-        use EndpointMethod::*;
-        write!(
-            f,
-            "{}",
-            match self {
-                Analyze => "analyze",
-                Dependency => "dependency",
-                Disambiguate => "disambiguate",
-                Generate => "generate",
-                Hyphenate => "hyphenate",
-                Paradigm => "paradigm",
-                Transcribe => "transcribe",
-            }
-        )
-    }
-}
-*/
-
+#[derive(Debug)]
 struct Method {
     method: EndpointMethod,
     state: EndpointState,
@@ -87,18 +75,18 @@ impl Method {
 
 impl From<&Method> for Text<'_> {
     fn from(method: &Method) -> Self {
-        Text::from(method.method.to_string()).fg(match method.state {
+        Text::from(method.method.to_string()).fg(match &method.state {
             EndpointState::Initial => Color::White,
             EndpointState::Disabled => Color::DarkGrey,
             EndpointState::NotStarted => Color::Grey,
             EndpointState::Waiting(_t0) => Color::Yellow,
-            EndpointState::Ok(_dur) => Color::Green,
-            EndpointState::Failed(_code, _dur) => Color::Red,
+            EndpointState::Ok(_completed_request) => Color::Green,
+            EndpointState::Failed(_completed_request) => Color::Red,
         })
     }
 }
 
-#[derive(Default)]
+#[derive(Default, Debug)]
 struct Endpoint {
     /// "sme", "sma", ...
     lang: &'static str,
@@ -120,6 +108,7 @@ struct App {
     hook_enabled: bool,
     tokio_runtime_done: bool,
     endpoints: Vec<Endpoint>,
+    enabled_endpoints: Vec<Endpoint>,
 }
 
 impl App {
@@ -128,6 +117,16 @@ impl App {
         inst.endpoints.extend(endpoints());
         inst.install_panic_hook();
         inst
+    }
+
+    fn disable_endpoints(&mut self, disabled_endpoints: &[String]) {
+        self.endpoints.iter_mut().for_each(|endpoint| {
+            if !disabled_endpoints.contains(&endpoint.lang.to_string()) {
+                endpoint.methods.iter_mut().for_each(|method| {
+                    method.state = EndpointState::Disabled;
+                });
+            }
+        });
     }
 
     fn install_panic_hook(&mut self) {
@@ -145,22 +144,38 @@ impl App {
 async fn call_endpoint(
     lang: &'static str,
     method: EndpointMethod,
-) -> (&'static str, EndpointMethod, EndpointState) {
+    tx: tokio::sync::mpsc::UnboundedSender<(&str, EndpointMethod, EndpointState)>,
+    permit: tokio::sync::OwnedSemaphorePermit,
+) -> () {
     let t0 = std::time::Instant::now();
 
     let fut = reqwest::get(format!("{ROOT}/{method}/{lang}/sometext"));
     match fut.await {
         Ok(response) => {
-            let t = std::time::Instant::now().duration_since(t0);
-            if response.status() == 200 {
-                (lang, method, EndpointState::Ok(t))
+            let status = response.status().as_u16();
+            let body = match response.text().await {
+                Ok(text) => text,
+                Err(e) => panic!("got invalid response from server: {}", e),
+            };
+            let time_spent = std::time::Instant::now().duration_since(t0);
+
+            let completed_request = CompletedRequest {
+                time_spent,
+                status,
+                body,
+            };
+
+            let new_state = if status == 200 {
+                EndpointState::Ok(completed_request)
             } else {
-                (
-                    lang,
-                    method,
-                    EndpointState::Failed(response.status().as_u16(), t),
-                )
+                EndpointState::Failed(completed_request)
+            };
+
+            if let Err(e) = tx.send((lang, method, new_state)) {
+                panic!("failed to send on channel: {}", e);
             }
+
+            drop(permit);
         }
         Err(err) => {
             panic!("request to gtweb failed ({err})")
@@ -168,27 +183,11 @@ async fn call_endpoint(
     }
 }
 
-async fn async_main(app: Arc<RwLock<App>>) -> () {
-    let mut js = tokio::task::JoinSet::new();
-    {
-        let mut app = app.write().unwrap();
-        app.endpoints
-            .iter_mut()
-            .for_each(|Endpoint { lang, methods }| {
-                methods.iter_mut().for_each(|method| {
-                    if let EndpointState::Disabled = method.state {
-                        return;
-                    }
-                    let _aborthandle = js.spawn(call_endpoint(lang, method.method));
-                    let t0 = std::time::Instant::now();
-                    method.state = EndpointState::Waiting(t0);
-                })
-            });
-    }
-
-    while let Some(result) = js.join_next().await {
-        let (lang, method, new_state) = result.unwrap();
-        let saved = new_state.clone();
+async fn result_handler(
+    app: Arc<RwLock<App>>,
+    mut rx: tokio::sync::mpsc::UnboundedReceiver<(&str, EndpointMethod, EndpointState)>,
+) {
+    while let Some((lang, method, new_state)) = rx.recv().await {
         app.write()
             .unwrap()
             .endpoints
@@ -199,8 +198,81 @@ async fn async_main(app: Arc<RwLock<App>>) -> () {
             .iter_mut()
             .find(|m| m.method == method)
             .expect("method exists")
-            .state = saved;
+            .state = new_state;
     }
+}
+
+/// Find an endpoint that is waiting to start, or None if there is none.
+fn find_next_pipeline_to_call(app: Arc<RwLock<App>>) -> Option<(&'static str, EndpointMethod)> {
+    let mut app = app.write().unwrap();
+    for endpoint in app.endpoints.iter_mut() {
+        for method in endpoint.methods.iter_mut() {
+            if let EndpointState::Initial = method.state {
+                let t0 = std::time::Instant::now();
+                method.state = EndpointState::Waiting(t0);
+                return Some((endpoint.lang, method.method));
+            }
+        }
+    }
+    None
+}
+
+async fn async_main(app: Arc<RwLock<App>>) -> () {
+    //let mut js = tokio::task::JoinSet::new();
+    let (tx, rx) = tokio::sync::mpsc::unbounded_channel();
+
+    let sem = Arc::new(tokio::sync::Semaphore::new(MAX_CONCURRENT_REQUESTS));
+    let result_handler_task = tokio::task::spawn(result_handler(Arc::clone(&app), rx));
+
+    let main_sem = Arc::clone(&sem);
+
+    while !main_sem.is_closed() {
+        while let Ok(permit) = Arc::clone(&sem).acquire_owned().await {
+            let app = Arc::clone(&app);
+            let Some((lang, method)) = find_next_pipeline_to_call(app) else {
+                sem.close();
+                break;
+            };
+            let tx = tx.clone();
+            tokio::task::spawn(call_endpoint(lang, method, tx, permit));
+        }
+    }
+
+
+    // ignoring failure on awaiting the task
+    let _ = result_handler_task.await;
+    //{
+    //    let mut app = app.write().unwrap();
+    //    app.endpoints
+    //        .iter_mut()
+    //        .for_each(|Endpoint { lang, methods }| {
+    //            methods.iter_mut().for_each(|method| {
+    //                if let EndpointState::Disabled = method.state {
+    //                    return;
+    //                }
+    //                let Ok(permit) = sem.acquire().await else {
+    //                    panic!("Semaphore has been closed");
+    //                };
+    //                let _aborthandle = js.spawn(call_endpoint(lang, method.method));
+    //            })
+    //        });
+    //}
+
+    //while let Some(result) = js.join_next().await {
+    //    let (lang, method, new_state) = result.unwrap();
+    //    let saved = new_state.clone();
+    //    app.write()
+    //        .unwrap()
+    //        .endpoints
+    //        .iter_mut()
+    //        .find(|endpoint| endpoint.lang == lang)
+    //        .expect("lang exists")
+    //        .methods
+    //        .iter_mut()
+    //        .find(|m| m.method == method)
+    //        .expect("method exists")
+    //        .state = saved;
+    //}
     app.write().unwrap().tokio_runtime_done = true;
 }
 
@@ -208,17 +280,6 @@ fn async_runtime_thread(app: Arc<RwLock<App>>) -> () {
     let runtime = tokio::runtime::Runtime::new().unwrap();
     runtime.block_on(async_main(app));
     ()
-}
-
-fn main() -> Result<()> {
-    let app = App::new();
-    let app = Arc::new(RwLock::new(app));
-    let ac = Arc::clone(&app);
-    std::thread::spawn(|| async_runtime_thread(ac));
-    let mut terminal = init_terminal()?;
-    run_tui(&mut terminal, app)?;
-    reset_terminal()?;
-    Ok(())
 }
 
 fn handle_events() -> io::Result<bool> {
@@ -305,6 +366,36 @@ fn init_terminal() -> Result<Terminal<CrosstermBackend<io::Stdout>>> {
 fn reset_terminal() -> Result<()> {
     crossterm::terminal::disable_raw_mode()?;
     crossterm::execute!(std::io::stdout(), crossterm::terminal::LeaveAlternateScreen)?;
+    Ok(())
+}
+
+#[derive(Parser, Debug)]
+#[command(version, about, long_about = None)]
+struct Args {
+    /// Only run with these langs
+    #[arg(short, long)]
+    lang: Vec<String>,
+
+    /// Number of times to greet
+    #[arg(short, long, default_value_t = 1)]
+    count: u8,
+}
+
+fn main() -> Result<()> {
+    let mut app = App::new();
+    let args = Args::parse();
+    if !args.lang.is_empty() {
+        app.disable_endpoints(args.lang.as_slice());
+    }
+    //println!("{args:?}");
+    //println!("{:?}", app.endpoints);
+    //return Ok(());
+    let app = Arc::new(RwLock::new(app));
+    let ac = Arc::clone(&app);
+    std::thread::spawn(|| async_runtime_thread(ac));
+    let mut terminal = init_terminal()?;
+    run_tui(&mut terminal, app)?;
+    reset_terminal()?;
     Ok(())
 }
 

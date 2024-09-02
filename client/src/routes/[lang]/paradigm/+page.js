@@ -13,8 +13,6 @@ export async function load({ url, params, fetch }) {
     const api_path = `paradigm/${lang}/${word}`;
     const api_url = `${env.PUBLIC_API_ROOT}/${api_path}?size=${size}&pos=${pos}`;
 
-    console.log(api_url);
-
     let response;
     try {
         response = await fetch(api_url);

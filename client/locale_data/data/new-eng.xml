@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <content>
+    <developers>Developers</developers>
+    <fordevelopers>For developers</fordevelopers>
+    <sourcecode>Source code</sourcecode>
+    <api.paragraph>The API for this site is open and freely available, and is found at {apilink}</api.paragraph>
+    <developers.code.paragraph>The code for both the frontend and the API is open. Find it at {repolink}.</developers.code.paragraph>
+    <developers.code.paragraph2>Feel free to open Issues if you find any technical issues on the site, or on the API.</developers.code.paragraph2>
     <interfacelanguage>Interface language</interfacelanguage>
     <search>Search</search>
     <languagetools>Language tools</languagetools>

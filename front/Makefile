@@ -7,7 +7,8 @@ help:
 	@echo "buildprod - build image with prod settings"
 	@echo "stop - stop the locally running container"
 	@echo "export - export the built image to webpipeline-front.tar.gz"
-	@echo "upload - upload webpipeline-front.tar.gz to gtweb (read docs there on how to import and run)"
+	@echo "push-gtlab - upload webpipeline-front.tar.gz to gtweb (read docs there on how to import and run)"
+	@echo "push-labacr - push image to gtlabcontainerregistry.azurecr.io"
 
 .PHONY: dev
 dev:
@@ -43,6 +44,11 @@ export:
 .PHONY: upload
 upload:
 	scp webpipeline-front.tar.gz gtweb.uit.no:/home/anders/webpipeline-front.tar.gz
+
+.PHNY: push-labacr
+push-labacr:
+	podman tag webpipeline-front gtlabcontainerregistry.azurecr.io/webpipeline-front
+	podman push gtlabcontainerregistry.azurecr.io/webpipeline-front
 
 
 # Update #1: (Originally part of build, but this takes a long time...)

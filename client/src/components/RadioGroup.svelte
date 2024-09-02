@@ -29,6 +29,11 @@
     <header>{header}</header>
 
     {#each choices as [label, value], i}
+        <label for={value}>
+            <input type="radio" id={value} bind:group={selected} {value}>
+            <span>{label}</span>
+        </label>
+        <!--
         <button
             {name}
             id="button{i}"
@@ -44,6 +49,7 @@
                 value={value}
             >
         </button>
+        -->
     {/each}
 </div>
 
@@ -63,6 +69,36 @@
         color: #000;
     }
 
+    /*
+    label {
+        cursor: pointer;
+        font-size: 16px;
+        border: none;
+        margin-left: 16px;
+        padding: 5px 14px;
+        border-radius: 5px;
+        background-color: var(--color-bg-1, #d9d9d9);
+        color: #292929;
+        font-weight: bold;
+        transition:
+            background-color 0.2s ease-out,
+            color 0.2s ease-out;
+    }
+    */
+
+    /*
+    input[type=radio]:checked+label {
+        background-color: var(--color-sami-blue, #4651ea);
+        color: white;
+    */
+        /*
+        outline: 2px solid orange;
+        */
+    /*
+    }
+    */
+
+    /*
     div > button {
         font-size: 16px;
         border: none;
@@ -95,6 +131,7 @@
         appearance: none;
         display: none;
     }
+    */
 
     @media screen and (max-width: 880px) {
         div {

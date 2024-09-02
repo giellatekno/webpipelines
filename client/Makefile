@@ -7,12 +7,16 @@ help:
 	@echo "push-gtlab - push the built image to the azure lab subscription (gtlab)"
 	@echo "runlocal - run the built image, using local settings"
 	@echo "stoplocal - stop the locally running container"
-	@echo "export - export the built image to webpipelineapi.tar.gz"
-	@echo "push-gtweb - upload webpipelineapi.tar.gz to gtweb (read docs there on how to import and run)"
+	@echo "export - export the built image to webpipeline-client.tar.gz"
+	@echo "push-gtweb - upload webpipeline-client.tar.gz to gtweb (read docs there on how to import and run)"
 
 .PHONY: dev
 dev:
 	PUBLIC_API_ROOT=http://localhost:3000 pnpm run dev
+
+.PHONY: build
+build:
+	pnpm run build
 
 .PHONY: build-gtweb
 build-gtweb:
@@ -20,12 +24,12 @@ build-gtweb:
 
 .PHONY: image
 image:
-	podman build -t webpipelineclient -f Dockerfile .
+	podman build -t webpipeline-client -f Dockerfile .
 
 .PHONY: runlocal
 runlocal:
 	podman run \
-		--name webpipelineclient \
+		--name webpipeline-client \
 		--detach \
 		--init \
 		--stop-signal=SIGINT \
@@ -33,22 +37,22 @@ runlocal:
 		-p 5173:3000 \
 		--env PUBLIC_API_ROOT=http://localhost:3000 \
 		--env ORIGIN=http://localhost:5173 \
-		webpipelineclient
+		webpipeline-client
 
 .PHONY: stoplocal
 stoplocal:
-	podman stop webpipelineclient
+	podman stop webpipeline-client
 
-.PHONY: push-gtlab
-push-gtlab:
-	podman tag webpipelineclient gtlabcontainerregistry.azurecr.io/webpipelineclient
-	podman push gtlabcontainerregistry.azurecr.io/webpipelineclient
+.PHONY: push-labacr
+push-labacr:
+	podman tag webpipeline-client gtlabcontainerregistry.azurecr.io/webpipeline-client
+	podman push gtlabcontainerregistry.azurecr.io/webpipeline-client
 
 .PHONY: export
 export:
-	podman save -o webpipelineclient.tar webpipelineclient
-	gzip -f webpipelineclient.tar
+	podman save -o webpipeline-client.tar webpipeline-client
+	gzip -f webpipeline-client.tar
 
 .PHONY: push-gtweb
-push-gtweb: webpipelineclient.tar.gz
-	scp webpipelineclient.tar.gz gtweb.uit.no:/home/anders/webpipelineclient.tar.gz
+push-gtweb: webpipeline-client.tar.gz
+	scp webpipeline-client.tar.gz gtweb.uit.no:/home/anders/webpipeline-client.tar.gz

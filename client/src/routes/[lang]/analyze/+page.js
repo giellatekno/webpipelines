@@ -9,8 +9,10 @@ export async function load(event) {
     const query_params = url.searchParams;
     const q = query_params.get("q");
 
+    const output = { q };
+
     if (q === null || q === "") {
-        return {};
+        return output;
     }
 
     let response;
@@ -20,8 +22,10 @@ export async function load(event) {
     } catch (e) {
         console.error(`tried backend url: ${backend_route}`);
         console.error(e);
-        return { error: "fetch() from api failed" };
+        output.error = "fetch() from api failed";
+        return output;
     }
 
-    return { results: { ...await response.json() } };
+    output.results = { ...await response.json() };
+    return output;
 }
