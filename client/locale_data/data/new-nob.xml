@@ -9,6 +9,7 @@
     <interfacelanguage>Grensesnittspråk</interfacelanguage>
     <search>Søk</search>
     <languagetools>Språkverktøy</languagetools>
+    <partofspeech>Ordklasse</partofspeech>
     <generate>Generer</generate>
     <analyze>Analyser</analyze>
     <analyze.description>Analyser ett eller flere ord hver for seg</analyze.description>

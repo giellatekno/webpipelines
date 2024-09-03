@@ -9,6 +9,7 @@
     <interfacelanguage>Interface language</interfacelanguage>
     <search>Search</search>
     <languagetools>Language tools</languagetools>
+    <partofspeech>Part of speech</partofspeech>
     <generate>Generate</generate>
     <analyze>Analyze</analyze>
     <analyze.description>Analyze one or more words in isolation</analyze.description>
