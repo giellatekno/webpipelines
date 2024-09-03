@@ -2,9 +2,10 @@
 help:
 	@echo "Available commands:"
 	@echo "dev - run development build locally"
-	@echo "build - just cargo build --release"
+	@echo "build - just pnpm run build"
 	@echo "image - use podman to build the image"
 	@echo "push-gtlab - push the built image to the azure lab subscription (gtlab)"
+	@echo "bap - build and push"
 	@echo "runlocal - run the built image, using local settings"
 	@echo "stoplocal - stop the locally running container"
 	@echo "export - export the built image to webpipeline-client.tar.gz"
@@ -45,6 +46,13 @@ stoplocal:
 
 .PHONY: push-labacr
 push-labacr:
+	podman tag webpipeline-client gtlabcontainerregistry.azurecr.io/webpipeline-client
+	podman push gtlabcontainerregistry.azurecr.io/webpipeline-client
+
+.PHONY: bap
+bap:
+	pnpm run build
+	podman build -t webpipeline-client -f Dockerfile .
 	podman tag webpipeline-client gtlabcontainerregistry.azurecr.io/webpipeline-client
 	podman push gtlabcontainerregistry.azurecr.io/webpipeline-client
 
