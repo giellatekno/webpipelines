@@ -13,8 +13,8 @@
             <LocaleSelector />
         </div>
         <div style="margin-left: auto">
-            <a href="/{base}about">Om</a>&nbsp;&#183;&nbsp;
-            <a href="/{base}developers">Developers</a>
+            <a href="{base}/about">{$t("about")}</a>&nbsp;&#183;&nbsp;
+            <a href="{base}/developers">{$t("developers")}</a>
         </div>
     </header>
 

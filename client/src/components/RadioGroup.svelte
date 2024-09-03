@@ -29,7 +29,7 @@
     <header>{header}</header>
 
     {#each choices as [label, value], i}
-        <label for={value}>
+        <label for={value} on:click={() => select_choice(value)}>
             <input type="radio" id={value} bind:group={selected} {value}>
             <span>{label}</span>
         </label>
