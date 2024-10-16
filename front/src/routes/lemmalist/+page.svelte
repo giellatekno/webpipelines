@@ -83,7 +83,7 @@
         start_waiting_timer();
         let response;
         try {
-            response = await fetch(`${location.protocol}//${upload_url}`, opts);
+            response = await fetch(`${upload_url}`, opts);
         } catch (e) {
             if (e instanceof TypeError) {
                 // there are a number of things that can cause this, but
