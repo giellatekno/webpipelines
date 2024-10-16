@@ -117,7 +117,7 @@
         start_waiting_timer();
         let response;
         try {
-            response = await fetch(`${location.protocol}//${upload_url}`, opts);
+            response = await fetch(`${upload_url}`, opts);
         } catch (e) {
             const err_name = e.name;
             if (e instanceof TypeError) {
