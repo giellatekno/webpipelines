@@ -6,10 +6,15 @@ authors = [
     "Anders Lorentsen <anders.lorentsen@uit.no>"
 ]
 
+[build]
+target = "target"
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [dependencies]
+hfst-rs = { path = "/home/anders/projects/cpp_library_to_rust_demo/hfst-rs/" }
+
 # the web framework (built on top of tower, uses 
-axum = { version = "0.7.5", features = ["multipart"] }
+axum = { version = "0.7.5", features = ["multipart", "macros"] }
 
 # base64.. does it need explaining?
 base64 = "0.21.4"
