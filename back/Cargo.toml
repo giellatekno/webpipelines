@@ -11,7 +11,9 @@ target = "target"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [dependencies]
-hfst-rs = { path = "/home/anders/projects/cpp_library_to_rust_demo/hfst-rs/" }
+# TODO this should be out, but ideally libhfst itself should also be updated
+# to support it
+#hfst-rs = { path = "/home/anders/projects/cpp_library_to_rust_demo/hfst-rs/" }
 
 # the web framework (built on top of tower, uses 
 axum = { version = "0.7.5", features = ["multipart", "macros"] }
