@@ -14,6 +14,7 @@ help:
 .PHONY: dev
 dev:
 	RUST_BACKTRACE=1 systemfd --no-pid -s http::3000 -- cargo watch -x run
+#	LD_LIBRARY_PATH=/home/anders/projects/cpp_library_to_rust_demo/some_cpplib/ RUST_BACKTRACE=1 systemfd --no-pid -s http::3000 -- cargo watch -x run
 
 .PHONY: build
 build:

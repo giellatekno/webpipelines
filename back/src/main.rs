@@ -18,12 +18,16 @@ use dotenv;
 use listenfd::ListenFd;
 use notify::Watcher;
 use pipelines::{
-    analyze::analyze_endpoint, dependency::dependency_endpoint,
+    analyze::{analyze_endpoint, analyze2_endpoint}, dependency::dependency_endpoint,
     disambiguate::disambiguate_endpoint, generate::generate_endpoint,
     hyphenate::hyphenate_endpoint, lemma_count::lemma_count_endpoint, paradigm::paradigm_endpoint,
     transcribe::transcribe_endpoint, unknown_in_x_by_freq::unknown_in_x_by_freq_endpoint,
 };
-use std::time::Duration;
+use std::{
+    time::Duration,
+    collections::HashMap,
+    sync::{Arc, Mutex},
+};
 use timing::timing_middleware;
 use tokio::{self, net::TcpListener};
 use tower::{limit::ConcurrencyLimitLayer, ServiceBuilder};
@@ -36,6 +40,25 @@ use tower_http::{
 };
 use tracing::{error, info, Level};
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
+
+use crate::langmodel_files::LANGFILES;
+
+/*
+use hfst_rs::{HfstInputStream, HfstTransducer};
+
+#[derive(Default)]
+struct AppState {
+    analysis_files: Arc<Mutex<HashMap<String, HfstTransducer>>>,
+}
+
+impl Clone for AppState {
+    fn clone(&self) -> Self {
+        Self {
+            analysis_files: Arc::clone(&self.analysis_files),
+        }
+    }
+}
+*/
 
 async fn handle_error(err: BoxError) -> Response {
     if err.is::<tower::timeout::error::Elapsed>() {
@@ -205,6 +228,34 @@ async fn main() {
         }
     });
 
+    /*
+    let langfiles = LANGFILES.read().unwrap();
+    let analyzers = langfiles.iter()
+        .filter(|((_lang, file), _path)| file == "analyser-gt-desc.hfstol")
+        .map(|((lang, _filename), path)| (lang, HfstInputStream::new(&path)))
+        .filter_map(|(lang, input_stream_result)| match input_stream_result {
+            Ok(input_stream) => Some((lang, input_stream)),
+            Err(_) => None,
+        })
+        .map(|(lang, input_stream)| {
+            (lang, input_stream.read_transducers())
+        })
+        .filter(|(_lang, transducers)| transducers.len() > 0)
+        .map(|(lang, transducers)| {
+            (
+                lang.clone(),
+                transducers.into_iter().nth(0).unwrap()
+            )
+        });
+    let analysis_files = HashMap::from_iter(analyzers);
+
+    info!("loaded {} analyzers", analysis_files.len());
+
+    let shared_state = AppState {
+        analysis_files: Arc::new(Mutex::new(analysis_files)),
+    };
+    */
+
     let app = Router::new()
         .route(
             "/unknown-lemmas-in-dict",
@@ -223,6 +274,8 @@ async fn main() {
                 .timeout(Duration::from_secs(60)),
         )
         .route("/analyze/:lang/:string", get(analyze_endpoint))
+        .route("/analyze2/:lang/:string", get(analyze2_endpoint))
+        .with_state(shared_state)
         .route("/dependency/:lang/:string", get(dependency_endpoint))
         .route("/disambiguate/:lang/:string", get(disambiguate_endpoint))
         .route("/generate/:lang/:string", get(generate_endpoint))

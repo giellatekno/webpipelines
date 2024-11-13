@@ -13,13 +13,15 @@ use tracing::{debug, error, info, span, trace, Level};
 use crate::util::query_param_is_trueish;
 
 /// Total number of languages we have. Change this if we add or remove any.
-const NUM_LANGS: usize = 51;
+const NUM_LANGS: usize = 52;
 
 const LANGS: [&str; NUM_LANGS] = [
-    "bxr", "chr", "ciw", "cor", "crk", "deu", "est", "evn", "fao", "fin", "fit", "fkv", "gle",
-    "hdn", "hun", "ipk", "izh", "kal", "kca", "koi", "kom", "kpv", "lav", "liv", "lut", "mdf",
-    "mhr", "mns", "mrj", "myv", "nio", "nno", "nob", "olo", "rmf", "rup", "rus", "sjd", "sje",
-    "sma", "sme", "smj", "smn", "sms", "som", "swe", "udm", "vep", "vot", "vro", "yrk",
+    "bxr", "chr", "ciw", "cor", "crk", "deu", "est", "evn", "fao", "fin",
+    "fit", "fkv", "gle", "hdn", "hun", "ipk", "izh", "kal", "kca", "koi",
+    "kom", "kpv", "lav", "liv", "lut", "mdf", "mhr", "mns", "mrj", "myv",
+    "nio", "nno", "nob", "olo", "rmf", "rup", "rus", "sjd", "sje", "sma",
+    "sme", "smj", "smn", "sms", "som", "swe", "tkl", "udm", "vep", "vot",
+    "vro", "yrk",
 ];
 
 // A static hashmap to find where a file for a given language is located
@@ -354,7 +356,7 @@ pub fn remove_langfile(path: &std::path::Path) {
             let key =
             info!("entire language folder deleted");
             */
-            return;
+            ()
         }
     }
 }

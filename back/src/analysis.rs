@@ -1,4 +1,5 @@
-use std::ops::Range;
+use std::{collections::HashMap, ops::Range};
+use std::time::Instant;
 
 use crate::langmodel_files::get_langfile;
 use cmd_lib::run_fun;
@@ -205,6 +206,16 @@ pub fn analyze<'a>(input: &str, lang: &str, tokenize: bool) -> Result<String, St
 
     let analyses_string = results.map_err(|e| e.to_string())?;
     Ok(analyses_string)
+}
+
+
+fn analyze2(input: &str, lang: &str) -> Result<Vec<(String, f32)>, ()> {
+    let t0 = Instant::now();
+    //let analyses = transducer.lookup(input);
+    let analyses = vec![];
+    let t = Instant::now().duration_since(t0);
+    trace!("analysis(using hfst) took: {t:?}");
+    Ok(analyses)
 }
 
 pub async fn analyze_async<'a>(

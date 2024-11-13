@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 use axum::{
-    extract::{Path, Query},
+    extract::{Path, Query, State},
     response::{IntoResponse, Response, Json},
 };
 use http::StatusCode;
@@ -50,4 +50,29 @@ pub async fn analyze_endpoint(
             (status, msg).into_response()
         }
     }
+}
+
+use crate::AppState;
+use axum::debug_handler;
+
+#[debug_handler]
+pub async fn analyze2_endpoint(
+    Path(LangAndStringParams { lang, string }): Path<LangAndStringParams>,
+    Query(params): Query<HashMap<String, String>>,
+    //State(state): State<AppState>,
+) -> Response {
+    /*
+    let analysis_files = state.analysis_files.lock().unwrap();
+    let Some(tr) = analysis_files.get(&lang) else {
+        return "no analyzer for that lang".into_response();
+    };
+    let lookups = tr.lookup(&string);
+
+    let s = lookups
+        .iter()
+        .map(|(s, w)| format!("{s} {w:?}\n"))
+        .collect::<String>();
+    s.into_response()
+    */
+    "not implemented".into_response()
 }
