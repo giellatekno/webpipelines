@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <content>
-    <interfacelanguage>[fin] Interface language</interfacelanguage>
-    <search>[fin] Search</search>
-    <languagetools>[fin] Language tools</languagetools>
+    <interfacelanguage>Käyttöliittymän kieli</interfacelanguage>
+    <search>Etsi</search>
+    <languagetools>Kielityökalu</languagetools>
     <generate>[fin] Generate</generate>
     <analyze>[fin] Analyze</analyze>
     <analyze.description>[fin] Analyze one or more words in isolation</analyze.description>
