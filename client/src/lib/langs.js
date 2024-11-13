@@ -1,15 +1,10 @@
 const all_langs = [
-    "bxr", "chr", "ciw", "cor", "crk",
-    "deu", "est", "evn", "fao", "fin",
-    "fit", "fkv", "gle", "hdn", "hun",
-    "ipk", "izh", "kal", "kca", "koi",
-    "kom", "kpv", "lav", "liv", "lut",
-    "mdf", "mhr", "mns", "mrj", "myv",
-    "nio", "nno", "nob", "olo", "rmf",
-    "rup", "rus", "sjd", "sje", "sma",
-    "sme", "smj", "smn", "sms", "som",
-    "swe", "udm", "vep", "vot", "vro",
-    "yrk",
+    "bxr", "chr", "ciw", "cor", "crk", "deu", "est", "evn", "fao", "fin",
+    "fit", "fkv", "gle", "hdn", "hun", "ipk", "izh", "kal", "kca", "koi",
+    "kom", "kpv", "lav", "liv", "lut", "mdf", "mhr", "mns", "mrj", "myv",
+    "nio", "nno", "nob", "olo", "rmf", "tkl", "rup", "rus", "sjd", "sje",
+    "sma", "sme", "smj", "smn", "sms", "som", "swe", "udm", "vep", "vot",
+    "vro", "yrk",
 ];
 
 export const langs = [
@@ -18,10 +13,10 @@ export const langs = [
     "hdn", "ipk", "izh", "kal", "kca",
     "koi", "kpv", "liv", "mdf", "mhr",
     "mns", "mrj", "myv", "nio", "nob",
-    "olo", "rmf", "rus", "sjd", "sje",
-    "sma", "sme", "smj", "smn", "sms",
-    "som", "udm", "vep", "vot", "vro",
-    "yrk",
+    "olo", "rmf", "tkl", "rus", "sjd",
+    "sje", "sma", "sme", "smj", "smn",
+    "sms", "som", "udm", "vep", "vot",
+    "vro", "yrk",
 ];
 
 
@@ -39,6 +34,7 @@ export const nonsamiuralic_langs = new Set([
 export const other_langs = new Set([
     "bxr", "evn", "fao", "kal", "gle", "ipk", "cor",
     "hdn", "nno", "nob", "ciw", "crk", "rus", "som",
+    "tkl",
 ]);
 
 
@@ -70,7 +66,7 @@ export const generation_langs = new Set([
     "fao", "fin", "gle", "hdn", "ipk",
     "izh", "kal", "kca", "koi", "kpv",
     "liv", "mdf", "mhr", "mns", "mrj",
-    "myv", "nio", "nob", "olo", "rus",
+    "myv", "nio", "nob", "olo", "rus", "tkl",
     "sjd", "sje", "sma", "sme", "smj",
     "smn", "sms", "som", "udm", "vep",
     "vot", "vro", "yrk",
@@ -78,7 +74,7 @@ export const generation_langs = new Set([
 
 export const num_langs = new Set([
     "fin", "hdn", "liv", "mdf", "mhr",
-    "myv", "olo", "rus", "sjd", "sma",
+    "myv", "olo", "rus", "sjd", "sma", "tkl",
     "sme", "smj", "smn", "sms", "yrk",
 ]);
 

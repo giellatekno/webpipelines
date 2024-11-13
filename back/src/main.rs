@@ -275,7 +275,7 @@ async fn main() {
         )
         .route("/analyze/:lang/:string", get(analyze_endpoint))
         .route("/analyze2/:lang/:string", get(analyze2_endpoint))
-        .with_state(shared_state)
+        //.with_state(shared_state)
         .route("/dependency/:lang/:string", get(dependency_endpoint))
         .route("/disambiguate/:lang/:string", get(disambiguate_endpoint))
         .route("/generate/:lang/:string", get(generate_endpoint))
