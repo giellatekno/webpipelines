@@ -3,21 +3,21 @@
     <interfacelanguage>Käyttöliittymän kieli</interfacelanguage>
     <search>Etsi</search>
     <languagetools>Kielityökalu</languagetools>
-    <generate>[fin] Generate</generate>
-    <analyze>[fin] Analyze</analyze>
-    <analyze.description>[fin] Analyze one or more words in isolation</analyze.description>
-    <spellcheck>[fin] Spellcheck</spellcheck>
-    <spellcheck.description>[fin] Run a spell check for one or multiple words</spellcheck.description>
-    <disambiguate>[fin] Disambiguate</disambiguate>
-    <dependency>[fin] Dependency structure</dependency>
-    <hyphenation>[fin] Hyphenation</hyphenation>
-    <transcription>[fin] IPA Transcription</transcription>
-    <nowexploring>[fin] You are now exploring</nowexploring>
-    <filters>[fin] filters</filters>
-    <samilanguages>[fin] sami languages</samilanguages>
-    <nonsamiuralic>[fin] non-sami uralic</nonsamiuralic>
-    <otherlanguages>[fin] other languages</otherlanguages>
-    <exploreanotherlang>[fin] Explore another language</exploreanotherlang>
-    <index.showtoolsfordotdotdot>[fin] Show tools for...</index.showtoolsfordotdotdot>
-    <langmodellastupdated>[fin] The language model was last updated</langmodellastupdated>
+    <generate>Generoi</generate>
+    <analyze>Analysoi</analyze>
+    <analyze.description>Analysoi erillisiä sanoja</analyze.description>
+    <spellcheck>Oikeinkirjoitus</spellcheck>
+    <spellcheck.description>Korjaa sanojen oikeinkirjoitusta</spellcheck.description>
+    <disambiguate>Disambiguoi</disambiguate>
+    <dependency>Dependenssirakenne</dependency>
+    <hyphenation>Tavuviivat</hyphenation>
+    <transcription>IPA:n tarkekirjoitus</transcription>
+    <nowexploring>Nyt tutkit</nowexploring>
+    <filters>suodattimet</filters>
+    <samilanguages>saamen kielet</samilanguages>
+    <nonsamiuralic>muut uralisaiskielet</nonsamiuralic>
+    <otherlanguages>muut kielet</otherlanguages>
+    <exploreanotherlang>Käytä toista kieltä</exploreanotherlang>
+    <index.showtoolsfordotdotdot>Näytä työkalut näille kielille: </index.showtoolsfordotdotdot>
+    <langmodellastupdated>Kielimalli</langmodellastupdated>
 </content>
