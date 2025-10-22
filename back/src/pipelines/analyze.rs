@@ -1,10 +1,10 @@
-use std::collections::HashMap;
 use axum::{
     extract::{Path, Query, State},
-    response::{IntoResponse, Response, Json},
+    response::{IntoResponse, Json, Response},
 };
 use http::StatusCode;
 use serde::Deserialize;
+use std::collections::HashMap;
 
 use crate::analysis::analyze_async;
 //use cached::proc_macro::cached;
@@ -29,9 +29,7 @@ pub async fn analyze_endpoint(
     let fmt: &str = params.get("format").map(|s| s.as_str()).unwrap_or("text");
 
     match fmt {
-        "text" => {
-            (StatusCode::OK, raw).into_response()
-        }
+        "text" => (StatusCode::OK, raw).into_response(),
         "json" => {
             // asking for json also gives the raw (it's not a lot of data anyway)
             Json(serde_json::json!({
@@ -42,7 +40,8 @@ pub async fn analyze_endpoint(
                     .map(|analysis| analysis.to_json())
                     .collect::<Vec<_>>(),
                 "raw": raw,
-            })).into_response()
+            }))
+            .into_response()
         }
         _ => {
             let status = StatusCode::BAD_REQUEST;

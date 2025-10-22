@@ -46,9 +46,17 @@ pub fn dependency(input: &str, lang: &str) -> Result<String, String> {
             )
         })?;
 
+    let use_weight = match lang {
+        "rus" => true,
+        //"nob" => true,
+        _ => false,
+    };
+
+    let tokenize_params = if use_weight { "-cg" } else { "-cgW" };
+
     run_fun!(
         echo $input |
-        hfst-tokenize -cg $tokdisamb |
+        hfst-tokenize $tokenize_params $tokdisamb |
         vislcg3 -g $disambiguator_cg3 |
         vislcg3 -g $korp_cg3 |
         vislcg3 -g $dependency_cg3

@@ -6,6 +6,7 @@ help:
 	@echo "image - use podman to build the image"
 	@echo "runlocal - run the container locally"
 	@echo "stop - stop the locally running container"
+	@echo "bap - build and push (to labacr)"
 	@echo "push-labacr - push the built image to the azure lab subscription (gtlab)"
 	@echo "runlocal - run the built image, using local settings"
 	@echo "export - export the built image to webpipeline-api.tar.gz"
@@ -36,6 +37,13 @@ runlocal:
 		--env WP_LANGFOLDER=/langs \
 		-v /usr/share/giella:/langs \
 		webpipeline-api
+
+.PHONY: bap
+bap:
+	cargo build --release --target-dir target
+	podman build -t webpipeline-api -f Dockerfile .
+	podman tag webpipeline-api gtlabcontainerregistry.azurecr.io/webpipeline-api
+	podman push gtlabcontainerregistry.azurecr.io/webpipeline-api
 
 .PHONY: stoplocal
 stoplocal:

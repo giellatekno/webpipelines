@@ -36,9 +36,14 @@ where
     F: Fn(String, String, String) -> Result<String, String>,
     F: Send + Sync + 'static,
 {
+    tracing::trace!("run_pipeline_two_langs");
     tokio::task::spawn_blocking(move || {
         func(input, lang, lang2).map_err(|e| format!("Error running pipeline: {}", e))
     })
     .await
-    .map_err(|e| e.to_string())?
+    .map_err(|e| {
+        let x = e.to_string();
+        tracing::error!("abcdef {x}");
+        x
+    })?
 }

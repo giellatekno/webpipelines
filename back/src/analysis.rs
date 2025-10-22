@@ -1,5 +1,5 @@
-use std::{collections::HashMap, ops::Range};
 use std::time::Instant;
+use std::{collections::HashMap, ops::Range};
 
 use crate::langmodel_files::get_langfile;
 use cmd_lib::run_fun;
@@ -160,8 +160,7 @@ impl Analysis {
 }
 
 pub fn analyses_raw_to_vec(raw: &str) -> Vec<Analysis> {
-    raw
-        .split('\n')
+    raw.split('\n')
         .filter_map(|line| line.parse::<crate::analysis::Analysis>().ok())
         .collect::<Vec<_>>()
 }
@@ -182,7 +181,7 @@ pub fn analyze<'a>(input: &str, lang: &str, tokenize: bool) -> Result<String, St
     let results = if tokenize {
         // Asked for tokenized analysis, try to do it, but if we don't
         // have the tokeniser file, fall back to non-tokenised analysis
-        match get_langfile(&lang, "tokeniser-disamb-gt-desc.pmhfst"){
+        match get_langfile(&lang, "tokeniser-disamb-gt-desc.pmhfst") {
             Some(tokdisamb_file) => {
                 run_fun!(
                     echo "$input" |
@@ -208,7 +207,6 @@ pub fn analyze<'a>(input: &str, lang: &str, tokenize: bool) -> Result<String, St
     Ok(analyses_string)
 }
 
-
 fn analyze2(input: &str, lang: &str) -> Result<Vec<(String, f32)>, ()> {
     let t0 = Instant::now();
     //let analyses = transducer.lookup(input);
@@ -218,11 +216,7 @@ fn analyze2(input: &str, lang: &str) -> Result<Vec<(String, f32)>, ()> {
     Ok(analyses)
 }
 
-pub async fn analyze_async<'a>(
-    input: &str,
-    lang: &str,
-    tokenize: bool,
-) -> Result<String, String> {
+pub async fn analyze_async<'a>(input: &str, lang: &str, tokenize: bool) -> Result<String, String> {
     let input = input.to_owned();
     let lang = lang.to_owned();
     let t0 = std::time::Instant::now();

@@ -1,5 +1,6 @@
 mod analysis;
 mod async_watcher;
+mod file_watcher;
 mod langmodel_files;
 mod pipelines;
 mod timing;
@@ -18,15 +19,21 @@ use dotenv;
 use listenfd::ListenFd;
 use notify::Watcher;
 use pipelines::{
-    analyze::{analyze_endpoint, analyze2_endpoint}, dependency::dependency_endpoint,
-    disambiguate::disambiguate_endpoint, generate::generate_endpoint,
-    hyphenate::hyphenate_endpoint, lemma_count::lemma_count_endpoint, paradigm::paradigm_endpoint,
-    transcribe::transcribe_endpoint, unknown_in_x_by_freq::unknown_in_x_by_freq_endpoint,
+    analyze::{analyze2_endpoint, analyze_endpoint},
+    dependency::dependency_endpoint,
+    disambiguate::disambiguate_endpoint,
+    generate::generate_endpoint,
+    hyphenate::hyphenate_endpoint,
+    lemma_count::lemma_count_endpoint,
+    paradigm::paradigm_endpoint,
+    transcribe::transcribe_endpoint,
+    unknown_in_x_by_freq::unknown_in_x_by_freq_endpoint,
 };
 use std::{
-    time::Duration,
     collections::HashMap,
+    path::{Path, PathBuf},
     sync::{Arc, Mutex},
+    time::Duration,
 };
 use timing::timing_middleware;
 use tokio::{self, net::TcpListener};
@@ -132,7 +139,8 @@ async fn main() {
     let num_files_total = langmodel_files::load_langfiles();
     info!("Found {} language files in total", num_files_total);
 
-    let (mut debouncer, mut rx) = make_async_watcher(Duration::from_secs(2)).unwrap();
+    // Set up the file watcher that watches the WP_LANGFOLDER for changes
+    let (mut debouncer, rx) = make_async_watcher(Duration::from_secs(1)).unwrap();
     let path = std::path::Path::new(&*WP_LANGFOLDER);
     debouncer
         .watcher()
@@ -142,6 +150,19 @@ async fn main() {
         .cache()
         .add_root(path, notify::RecursiveMode::Recursive);
 
+    // Set up the handlers that react to the file watcher events
+    let _filewatcher_jh = file_watcher::file_watcher()
+        .create_fn(Box::new(|path: &Path| {
+            langmodel_files::add_langfile(path);
+        }))
+        .remove_fn(Box::new(|path| {
+            langmodel_files::remove_langfile(path);
+        }))
+        .build()
+        .spawn(rx)
+        .await;
+
+    /*
     let _filewatcher_jh = tokio::spawn(async move {
         while let Some(res) = rx.recv().await {
             match res {
@@ -227,6 +248,7 @@ async fn main() {
             }
         }
     });
+    */
 
     /*
     let langfiles = LANGFILES.read().unwrap();

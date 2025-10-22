@@ -8,10 +8,12 @@ use axum::{
 use base64::{engine::general_purpose, Engine as _};
 use cmd_lib::run_fun;
 use http::StatusCode;
+use itertools::Itertools;
 use serde::Deserialize;
 use std::collections::HashMap;
 use std::io::Write;
 use tempfile::NamedTempFile;
+use tracing::trace;
 
 const NOB_ALPHABET: &[char] = &[
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
@@ -72,8 +74,9 @@ pub fn unknown_in_x_by_freq(input: String, lang1: String, lang2: String) -> Resu
                 lang1
             )
         })?;
-    let dict = get_langfile(&lang1, format!("{}{}-all.fst", lang1, lang2).as_str())
-        .ok_or_else(|| format!("cannot find {}{}-all.fst", lang1, lang2))?;
+
+    let dict = get_langfile(&lang1, format!("{}{}-all.hfst", lang1, lang2).as_str())
+        .ok_or_else(|| format!("cannot find {}{}-all.hfst", lang1, lang2))?;
 
     let temp_file = NamedTempFile::new().map_err(|e| e.to_string())?;
     let path = temp_file.path();
@@ -99,7 +102,7 @@ pub fn unknown_in_x_by_freq(input: String, lang1: String, lang2: String) -> Resu
         //lookup $dict
     )
     .map_err(|e| e.to_string())?;
-
+    
     let recognized_words = results
         .lines()
         .map(|line| line.trim())
@@ -117,12 +120,28 @@ pub fn unknown_in_x_by_freq(input: String, lang1: String, lang2: String) -> Resu
         .as_file()
         .write_all(recognized_words.as_bytes())
         .map_err(|e| e.to_string())?;
+    trace!(recognized_words);
+
+    /* 
     let lookup_binary = std::env::var("LOOKUP_BINARY").unwrap_or_else(|_| String::from("lookup"));
     let lookup_results = run_fun!(
         cat $path |
         $lookup_binary $dict
     )
     .map_err(|e| e.to_string())?;
+    */
+    let result = run_fun!(cat $path | hfst-lookup $dict);
+    let lookup_results = match result {
+        Ok(results) => {
+            trace!(results, "lookup results");
+            results
+        }
+        Err(err) => {
+            let err = err.to_string();
+            trace!(err);
+            return Err(err);
+        }
+    };
 
     // counts of how many times unrecognized word appears
     let mut counts: HashMap<&str, usize> = HashMap::new();
@@ -132,9 +151,9 @@ pub fn unknown_in_x_by_freq(input: String, lang1: String, lang2: String) -> Resu
         // only interested in words that were not found in the dictionary
         // those lines are "<word>\t<word>\t?" - so filter out lines that
         // does not end with ?, and extract the first word
-        .filter(|line| line.ends_with('?'))
-        .map(|line| line.split('\t').next().unwrap())
-        .for_each(|word| {
+        .filter_map(|line| line.split('\t').collect_tuple())
+        .filter(|(_input, output, _weight)| output.ends_with("+?"))
+        .for_each(|(word, _output, _weight)| {
             counts
                 .entry(word)
                 .and_modify(|count| *count += 1)
@@ -150,12 +169,17 @@ pub fn unknown_in_x_by_freq(input: String, lang1: String, lang2: String) -> Resu
     // biggest first
     counts.reverse();
 
+    let some_counts = counts.iter().map(|(k, v)| format!("k={k}, v={v}")).join("; ");
+    trace!(some_counts, "after sorting the counts");
+
     // finally output them as <count>\t<word>  one per line
     let final_results = counts
         .iter()
         .map(|(word, count)| format!("{}\t{}", count, word))
         .collect::<Vec<_>>()
         .join("\n");
+
+    trace!(final_results, "final results to be sent");
 
     Ok(final_results)
 }

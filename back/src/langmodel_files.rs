@@ -16,12 +16,10 @@ use crate::util::query_param_is_trueish;
 const NUM_LANGS: usize = 52;
 
 const LANGS: [&str; NUM_LANGS] = [
-    "bxr", "chr", "ciw", "cor", "crk", "deu", "est", "evn", "fao", "fin",
-    "fit", "fkv", "gle", "hdn", "hun", "ipk", "izh", "kal", "kca", "koi",
-    "kom", "kpv", "lav", "liv", "lut", "mdf", "mhr", "mns", "mrj", "myv",
-    "nio", "nno", "nob", "olo", "rmf", "rup", "rus", "sjd", "sje", "sma",
-    "sme", "smj", "smn", "sms", "som", "swe", "tkl", "udm", "vep", "vot",
-    "vro", "yrk",
+    "bxr", "chr", "ciw", "cor", "crk", "deu", "est", "evn", "fao", "fin", "fit", "fkv", "gle",
+    "hdn", "hun", "ipk", "izh", "kal", "kca", "koi", "kom", "kpv", "lav", "liv", "lut", "mdf",
+    "mhr", "mns", "mrj", "myv", "nio", "nno", "nob", "olo", "rmf", "rup", "rus", "sjd", "sje",
+    "sma", "sme", "smj", "smn", "sms", "som", "swe", "tkl", "udm", "vep", "vot", "vro", "yrk",
 ];
 
 // A static hashmap to find where a file for a given language is located
@@ -236,9 +234,9 @@ pub fn load_langfiles() -> usize {
     ];
 
     for (l1, l2) in lemmalist_pairs.iter() {
-        let fst = format!("{}{}-all.fst", l1, l2);
+        let fst = format!("{}{}-all.hfst", l1, l2);
         let path_server = std::path::PathBuf::from(format!(
-            "{}/{}/bin/{}{}-all.fst",
+            "{}/{}/bin/{}{}-all.hfst",
             *WP_LANGFOLDER, l1, l1, l2
         ));
         debug!(?path_server, "looking for file");
@@ -246,7 +244,7 @@ pub fn load_langfiles() -> usize {
             debug!(?path_server, "found file on server");
             path_server
         } else {
-            let path = std::path::PathBuf::from(format!("/usr/share/giella/{l1}/{l1}{l2}-all.fst"));
+            let path = std::path::PathBuf::from(format!("/usr/share/giella/{l1}/{l1}{l2}-all.hfst"));
             debug!(?path, "found file locally");
             path
         };
