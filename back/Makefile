@@ -19,7 +19,7 @@ dev:
 
 .PHONY: build
 build:
-	cargo build --release --target-dir target
+	RUSTFLAGS="--cfg tokio_unstable" cargo build --release --target-dir target
 
 .PHONY: image
 image: target/release/webpipeline
@@ -53,12 +53,3 @@ stoplocal:
 push-labacr:
 	podman tag webpipeline-api gtlabcontainerregistry.azurecr.io/webpipeline-api
 	podman push gtlabcontainerregistry.azurecr.io/webpipeline-api
-
-.PHONY: export
-export:
-	podman save -o webpipeline-api.tar webpipeline-api
-	gzip -f webpipeline-api.tar
-
-.PHONY: push-gtweb
-push-gtweb:
-	scp webpipeline-api.tar.gz gtweb.uit.no:/home/anders/webpipeline-api.tar.gz
