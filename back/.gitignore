@@ -5,4 +5,4 @@ testfiles/
 
 .cargo
 
-.env*
+.env
