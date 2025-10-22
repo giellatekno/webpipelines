@@ -3,7 +3,7 @@ use notify_debouncer_full::new_debouncer;
 use notify_debouncer_full::DebounceEventHandler;
 use notify_debouncer_full::DebounceEventResult;
 use notify_debouncer_full::Debouncer;
-use notify_debouncer_full::FileIdMap;
+use notify_debouncer_full::NoCache;
 use std::time::Duration;
 use tokio::sync::mpsc::{Receiver, Sender};
 
@@ -25,7 +25,7 @@ impl DebounceEventHandler for MySender<DebounceEventResult> {
 pub fn make_async_watcher(
     timeout: Duration,
 ) -> notify::Result<(
-    Debouncer<RecommendedWatcher, FileIdMap>,
+    Debouncer<RecommendedWatcher, NoCache>,
     Receiver<DebounceEventResult>,
 )> {
     // number of buffered events. 10 is good? yes? no?

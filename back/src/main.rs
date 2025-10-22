@@ -143,12 +143,8 @@ async fn main() {
     let (mut debouncer, rx) = make_async_watcher(Duration::from_secs(1)).unwrap();
     let path = std::path::Path::new(&*WP_LANGFOLDER);
     debouncer
-        .watcher()
         .watch(path, notify::RecursiveMode::Recursive)
         .unwrap();
-    debouncer
-        .cache()
-        .add_root(path, notify::RecursiveMode::Recursive);
 
     // Set up the handlers that react to the file watcher events
     let _filewatcher_jh = file_watcher::file_watcher()
@@ -295,15 +291,15 @@ async fn main() {
                 .layer(HandleErrorLayer::new(handle_error))
                 .timeout(Duration::from_secs(60)),
         )
-        .route("/analyze/:lang/:string", get(analyze_endpoint))
-        .route("/analyze2/:lang/:string", get(analyze2_endpoint))
+        .route("/analyze/{lang}/{string}", get(analyze_endpoint))
+        .route("/analyze2/{lang}/{string}", get(analyze2_endpoint))
         //.with_state(shared_state)
-        .route("/dependency/:lang/:string", get(dependency_endpoint))
-        .route("/disambiguate/:lang/:string", get(disambiguate_endpoint))
-        .route("/generate/:lang/:string", get(generate_endpoint))
-        .route("/hyphenate/:lang/:string", get(hyphenate_endpoint))
-        .route("/transcribe/:lang/:string", get(transcribe_endpoint))
-        .route("/paradigm/:lang/:string", get(paradigm_endpoint))
+        .route("/dependency/{lang}/{string}", get(dependency_endpoint))
+        .route("/disambiguate/{lang}/{string}", get(disambiguate_endpoint))
+        .route("/generate/{lang}/{string}", get(generate_endpoint))
+        .route("/hyphenate/{lang}/{string}", get(hyphenate_endpoint))
+        .route("/transcribe/{lang}/{string}", get(transcribe_endpoint))
+        .route("/paradigm/{lang}/{string}", get(paradigm_endpoint))
         .route("/info", get(langmodel_files::endpoint_info_all))
         // global concurrency limit (applies to all paths)
         // does NOT have load_shed, so will queue requests (requests are
@@ -324,7 +320,7 @@ async fn main() {
         .layer(ServiceBuilder::new().layer(CorsLayer::very_permissive()))
         // We'll just let the revproxy decide when request bodies are too big
         .layer(DefaultBodyLimit::disable())
-        .nest_service("/", ServeDir::new("assets"));
+        .fallback_service(ServeDir::new("assets"));
 
     info!("binding and listening");
 
@@ -332,7 +328,10 @@ async fn main() {
 
     let listener = match listenfd.take_tcp_listener(0).unwrap() {
         // if we are given a tcp listener on listen fd 0, we use that one
-        Some(listener) => TcpListener::from_std(listener).unwrap(),
+        Some(listener) => {
+            listener.set_nonblocking(true).unwrap();
+            TcpListener::from_std(listener).unwrap()
+        }
         // otherwise fall back to local listening
         None => TcpListener::bind("0.0.0.0:3000").await.unwrap(),
     };
