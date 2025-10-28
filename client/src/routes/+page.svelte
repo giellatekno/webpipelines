@@ -1,19 +1,20 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
-    import { base } from "$app/paths";
-    import { t, locale } from "svelte-intl-precompile";
-    import Search from "$components/Search.svelte";
-    import { langs, sami_langs, nonsamiuralic_langs, other_langs } from "$lib/langs.js";
+    import { resolve } from "$app/paths";
+    import { t, locale } from "svelte-intl-precompile";
+    import {
+        langs,
+        sami_langs,
+        nonsamiuralic_langs,
+        other_langs,
+    } from "$lib/langs.js";
     import { langname } from "$lib/langnames.js";
-    import { only_on_enter } from "$lib/utils.js";
+    import { CheckIcon, SearchIcon } from "@lucide/svelte";
 
-    let show_sami = false;
-    let show_uralic = false;
-    let filter_others = false;
-    let search = "";
-
-    $: visible_langs = filter_langs(search, show_sami, show_uralic, filter_others);
-    $: console.log(visible_langs);
+    let show_sami = $state(false);
+    let show_uralic = $state(false);
+    let filter_others = $state(false);
+    let search = $state("");
 
     function filter_langs(
         search: string,
@@ -31,149 +32,92 @@
         }
 
         if (search === "") {
-            return rootset;
+            return rootset.sort();
         } else {
+            // TODO: Search in interface language? or any interface language?
             return rootset
-                .map(iso => [iso, langname(iso, "nob")])
+                .map((iso) => [iso, langname(iso, "nob")])
                 .filter(([iso, name]) => {
                     const lower = search.toLowerCase();
-                    return iso.includes(lower) || name.toLowerCase().includes(lower);
+                    return (
+                        iso.includes(lower) ||
+                        name.toLowerCase().includes(lower)
+                    );
                 })
-                .map(([iso, _name]) => iso);
+                .map(([iso, _name]) => iso)
+                .sort();
         }
     }
 
     async function onenter() {
         if (visible_langs.length === 1) {
             const lang = visible_langs[0];
-            await goto(`${base}/${lang}`);
+            await goto(resolve(`/${lang}`));
         }
     }
+    let visible_langs = $derived(
+        filter_langs(search, show_sami, show_uralic, filter_others),
+    );
 </script>
 
-<svelte:head>
-	<title>Giellatekno Webpipeline</title>
-	<meta name="description" content="Run Giellatekno Pipelines" />
-</svelte:head>
+<div>
+    <label class="label">
+        <span class="label-text">{$t("index.showtoolsfordotdotdot")}</span>
+        <div class="flex flex-row gap-2 items-center justify-start">
+            <SearchIcon class="size-5" />
+            <input
+                class="input w-50"
+                type="text"
+                onsubmit={() => onenter()}
+                bind:value={search}
+            />
+        </div>
+    </label>
 
-<main>
-    <h1>{$t("languagetools")}</h1>
-    <div>
-        <h2>{$t("index.showtoolsfordotdotdot")}</h2>
-
-        <Search on:enter={onenter} bind:value={search} />
+    <div class="flex items-center gap-4 my-2">
+        <span class="uppercase font-bold">{$t("filters")}:</span>
+        <button
+            type="button"
+            class="chip preset-filled-primary-500"
+            onclick={() => (show_sami = !show_sami)}
+        >
+            <span>{$t("samilanguages")}</span>
+            {#if show_sami}
+                <CheckIcon class="size-4" />
+            {/if}
+        </button>
+        <button
+            type="button"
+            class="chip preset-filled-primary-500"
+            onclick={() => (show_uralic = !show_uralic)}
+        >
+            <span>{$t("nonsamiuralic")}</span>
+            {#if show_uralic}
+                <CheckIcon class="size-4" />
+            {/if}
+        </button>
+        <button
+            type="button"
+            class="chip preset-filled-primary-500"
+            onclick={() => (filter_others = !filter_others)}
+        >
+            <span>{$t("otherlanguages")}</span>
+            {#if filter_others}
+                <CheckIcon class="size-4" />
+            {/if}
+        </button>
     </div>
 
-    <div class="filters">
-        <span class="header">{$t("filters")}:</span>
-        <span
-            class="label"
-            role="button"
-            tabindex="0"
-            class:on={show_sami}
-            on:click={() => show_sami = !show_sami}
-            on:keydown={only_on_enter(() => show_sami = !show_sami)}
-        >
-            <label for="sami">{$t("samilanguages")}</label>
-            <input name="sami" type="radio" checked={show_sami} />
-        </span>
-
-        <span
-            class="label"
-            role="button"
-            tabindex="0"
-            class:on={show_uralic}
-            on:click={() => show_uralic = !show_uralic}
-            on:keydown={only_on_enter(() => show_uralic = !show_uralic)}
-        >
-            <label for="uralicnonsami">{$t("nonsamiuralic")}</label>
-            <input name="uralicnonsami" type="radio" checked={show_uralic} />
-        </span>
-
-        <span
-            class="label"
-            role="button"
-            tabindex="0"
-            class:on={filter_others}
-            on:click={() => filter_others = !filter_others}
-            on:keydown={only_on_enter(() => filter_others = !filter_others)}
-        >
-            <label for="others">{$t("otherlanguages")}</label>
-            <input name="others" type="radio" checked={filter_others} />
-        </span>
-    </div>
-
-    <!--<div class="langs" bind:this={langs_container_el}>-->
-    <div class="langs">
+    <div
+        class="grid grid-cols-3 p-4 gap-4 w-fit card bg-surface-100-900 border border-surface-200-800"
+    >
         {#each visible_langs as lng}
-            <!--<span class="language" class:grayed={!langs_in_api.includes(lng)}>-->
-            <span class="language">
-                <a href="{base}/{lng}">{langname(lng, $locale)}</a>
-            </span>
+            <a
+                class="btn hover:preset-tonal justify-start"
+                href={resolve(`/${lng}`)}>{langname(lng, $locale)}</a
+            >
         {:else}
             [l6e] Ingen treff på søkeordet...
         {/each}
     </div>
-</main>
-
-<style>
-    div.filters {
-        display: flex;
-        font-variant: small-caps;
-        margin-top: 8px;
-    }
-
-    div.filters > span.header {
-        user-select: none;
-        padding: 2px 0px;
-        border-radius: 5px;
-        color: #000;
-        font-weight: bold;
-    }
-
-    span.label {
-        margin-left: 16px;
-        padding: 3px 8px;
-        border-radius: 5px;
-        /* brighter sami-blue */
-        background-color: #6c8ed8;
-        color: #292929;
-        font-weight: bold;
-        transition:
-            background-color 0.2s ease-out,
-            color 0.2s ease-out;
-    }
-
-    span.label:hover,
-    span.label > label:hover {
-        cursor: pointer;
-    }
-
-    span.label.on {
-        background-color: #4651ea;
-        /* sami blue */
-        background-color: #0035aa;
-        color: white;
-    }
-
-    span.label > input {
-        appearance: none;
-        display: none;
-    }
-
-    span.label > label {
-        user-select: none;
-    }
-
-    div.langs {
-        margin-top: 1em;
-        display: grid;
-        width: 800px;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-
-    span.language {
-        font-size: 20px;
-        padding: 6px;
-    }
-</style>
+</div>

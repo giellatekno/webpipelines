@@ -1,15 +1,18 @@
-import { env } from "$env/dynamic/public";
+import { env } from "$env/dynamic/public";
+import type { PageLoad } from "./$types";
 
-export async function load(event) {
-    const url = event.url;
-    const params = event.params;
-    const fetch = event.fetch;
-
+export const load: PageLoad = async ({ params, url, fetch }) => {
     const lang = params.lang;
     const query_params = url.searchParams;
     const q = query_params.get("q");
 
-    const output = { q };
+    interface Output {
+        q: string | null;
+        results?: object;
+        error?: string;
+    }
+
+    const output: Output = { q, results: undefined, error: undefined };
 
     if (q === null || q === "") {
         return output;
@@ -26,6 +29,6 @@ export async function load(event) {
         return output;
     }
 
-    output.results = { ...await response.json() };
+    output.results = { ...(await response.json()) };
     return output;
-}
+};

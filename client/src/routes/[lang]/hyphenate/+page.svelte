@@ -1,18 +1,22 @@
 <script lang="ts">
-    import { t } from "svelte-intl-precompile";
+    import { t } from "svelte-intl-precompile";
     import type { PageData } from "./$types";
-    import { page } from "$app/stores";
-    import { base } from "$app/paths";
-    import { goto } from "$app/navigation";
+    import { page } from "$app/state";
+    import { resolve } from "$app/paths";
+    import { goto } from "$app/navigation";
+    import { MoveLeft } from "@lucide/svelte";
 
-    export let data: PageData;
+    interface Props {
+        data: PageData;
+    }
 
-    let value = "";
+    let { data }: Props = $props();
 
-    $: usage = get_usage($page.params.lang, $t);
-    $: instruction = $t(`instruction.tool.hyphenate`);
+    let value = $state(data.q || "");
 
-    function get_usage(lang: string, $t: (_: string) => string) {
+    let hyphenate_data = $derived(data.results?.hyphenated);
+
+    function get_usage(lang: string | undefined, $t: (_: string) => string) {
         const lang_specific = $t(`usage.lang.${lang}`);
         if (lang_specific !== `usage.lang.${lang}`) {
             return lang_specific;
@@ -25,98 +29,94 @@
     async function on_textarea_keydown(ev: KeyboardEvent) {
         if (ev.key === "Enter" && ev.shiftKey) {
             ev.preventDefault();
-            await goto(`?q=${value}`, { keepFocus: true });
+            await goto(`?q=${value}`);
         }
     }
+
+    async function on_submit() {
+        await goto(`?q=${value}`, { keepFocus: true });
+    }
+
+    let usage = $derived(get_usage(page.params.lang, $t));
+    let instruction = $derived($t(`instruction.tool.hyphenate`));
 </script>
 
-<main>
-    <span>
-        <h1>{$t("hyphenate")}</h1>
-        <a href="{base}/{$page.params.lang}">[l6e] Tilbake til verktøy</a>
+<div>
+    <span class="flex flex-col gap-2 my-2">
+        <a
+            class="btn btn-sm preset-outlined-primary-500 w-fit"
+            href={resolve(`/${page.params.lang}`)}
+        >
+            <MoveLeft />
+            [l6e] Tilbake til verktøy
+        </a>
+        <h4 class="h4">{$t("hyphenate")}</h4>
     </span>
 
-    <p>{@html usage}</p>
-    <p>{@html instruction}</p>
+    <p>{usage}</p>
 
-    <form
-        data-sveltekit-replacestate
-        data-sveltekit-keepfocus
-    >
-        <textarea rows="6" cols="50" name="q" bind:value on:keydown={on_textarea_keydown}></textarea>
-        <br>
-        <br>
-        <button type="submit">{$t("Send")}</button>
+    <form class="flex flex-col w-fit gap-2 my-2" onsubmit={on_submit}>
+        <label class="label">
+            <span class="label-text text-sm">{instruction}</span>
+            <textarea
+                class="rounded-sm"
+                name="q"
+                rows="6"
+                cols="50"
+                bind:value
+                onkeydown={on_textarea_keydown}
+            ></textarea>
+            <div class="flex flex-row gap-2 items-center">
+                <button
+                    class="btn btn-lg preset-filled-primary-500 w-fit"
+                    type="submit"
+                >
+                    {$t("Send")}
+                </button>
+                <span>[l6e] Or press Shift+Enter to send.</span>
+            </div>
+        </label>
     </form>
 
     <div class="results">
         {#if data.error}
             Error: {data.error}
         {/if}
-
-        {#if data.results?.lines}
-            <div>
-                {#each data.results.lines as line}
-                    {line}<br>
-                {:else}
-                    No analyses
-                {/each}
+        {#if hyphenate_data}
+            <div
+                class="card p-2 preset-filled-surface-100-900 border border-surface-200-800 w-fit"
+            >
+                <table class="table w-fit">
+                    <thead>
+                        <tr>
+                            <th>Lemma</th>
+                            <th>Hyphenated</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    {#each hyphenate_data as { input_word, variations }}
+                        <tbody class="border-t mt-2">
+                            {#each variations as { hyphenated_word, score }}
+                                <tr>
+                                    <td>{input_word}</td>
+                                    <td>
+                                        {#each hyphenated_word.split("") as char}
+                                            {#if char === "^" || char === "#"}
+                                                <span class="text-error-500">
+                                                    {char}
+                                                </span>
+                                            {:else}
+                                                {char}
+                                            {/if}
+                                        {/each}
+                                    </td>
+                                    <td>{score}</td>
+                                </tr>
+                            {/each}
+                        </tbody>
+                    {/each}
+                </table>
             </div>
         {/if}
     </div>
-        <!--
-        <table>
-            {#each data.results as result}
-                    <tr>
-                        <td colspan="4">
-                            <Pulse color="#FF0000" size="28" unit="px" duration="1s" />
-                            [spinner]
-                        </td>
-                    </tr>
-                        {#each res as { word, root, cls, props }}
-                            <tr>
-                                <td class="input-word">{word}</td>
-                                <td class="root-word">{root}</td>
-                                <td class="word-cls">{cls}</td>
-                                <td class="word-props">{props}</td>
-                            </tr>
-                        {/each}
-            {/each}
-        </table>
-        -->
-</main>
-
-<style>
-    main {
-        margin-left: 34px;
-    }
-
-    div.results {
-        margin-top: 1.5em;
-    }
-
-    div.results {
-        margin-top: 1.5em;
-    }
-
-    form button[type=submit] {
-        background-color: #acc1ef;
-        border-radius: 2px;
-        border: 1px solid #9d9db0;
-        padding: 8px 16px;
-
-    }
-
-    textarea {
-        font-family: Roboto, sans-serif;
-        font-size: 14px;
-        border: 1px solid #9d9db0;
-        border-radius: 6px;
-        padding: 4px;
-    }
-
-    textarea:focus-within {
-        border: 1px solid #7777ee;
-        box-shadow: 0px 2px 8px 0px rgba(200, 200, 255, 0.9);
-    }
-</style>
+</div>

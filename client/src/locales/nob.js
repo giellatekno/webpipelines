@@ -1,0 +1,642 @@
+export default {
+    "developers": "Utviklere",
+    "fordevelopers": "For utviklere",
+    "sourcecode": "Kildekode",
+    "api.paragraph":
+        "APIet for denne siden er fritt, og \u00e5pent tilgjengelig. Det ligger p\u00e5 {apilink}",
+    "developers.code.paragraph":
+        "Kildekoden for b\u00e5de frontenden og backenden er \u00e5pen. Den finnes p\u00e5 {repolink}",
+    "developers.code.paragraph2":
+        "Legg gjerne inn Issues om du skulle oppdage tekniske feil p\u00e5 siden, eller p\u00e5 APIet.",
+    "interfacelanguage": "Grensesnittspr\u00e5k",
+    "search": "S\u00f8k",
+    "languagetools": "Spr\u00e5kverkt\u00f8y",
+    "partofspeech": "Ordklasse",
+    "generate": "Generer",
+    "analyze": "Analyser",
+    "analyze.description": "Analyser ett eller flere ord hver for seg",
+    "spellcheck": "Stavekontroll",
+    "spellcheck.description":
+        "Utf\u00f8r stavekontroll for ett eller flere ord",
+    "disambiguate": "Disambiguer",
+    "dependency": "Dependensstruktur",
+    "hyphenation": "Orddeling",
+    "transcription": "IPA transkribsjon",
+    "nowexploring": "Du utforsker n\u00e5",
+    "filters": "filtre",
+    "samilanguages": "samiske spr\u00e5k",
+    "nonsamiuralic": "ikke-samiske uralske",
+    "otherlanguages": "andre spr\u00e5k",
+    "exploreanotherlang": "Utforsk et annet spr\u00e5k",
+    "index.showtoolsfordotdotdot": "Vis verkt\u00f8y for...",
+    "langmodellastupdated": "Spr\u00e5kmodellen ble sist oppdatert",
+    "title.tool.analyze.lang.bxr": "Analyseprogram for burjatisk",
+    "title.tool.analyze.lang.ciw": "Analyseprogram for ojibwe",
+    "title.tool.analyze.lang.cor": "Kornisk analyseprogram",
+    "title.tool.analyze.lang.crk": "Analyseprogram for pr\u00e6riecree",
+    "title.tool.analyze.lang.est": "Estisk analyseprogram",
+    "title.tool.analyze.lang.evn": "Evenkisk analyseprogram",
+    "title.tool.analyze.lang.fao": "F\u00e6r\u00f8ysk analyseprogram",
+    "title.tool.analyze.lang.fin": "Analyseprogram for finsk",
+    "title.tool.analyze.lang.fit": "Analyseprogram for me\u00e4nkieli",
+    "title.tool.analyze.lang.fkv": "Analyseprogram for kvensk",
+    "title.tool.analyze.lang.gle": "Analyseprogram for irsk",
+    "title.tool.analyze.lang.hdn": "Analyseprogram for nordhaida",
+    "title.tool.analyze.lang.ipk": "I\u00f1upiaq-analyseprogram",
+    "title.tool.analyze.lang.izh": "Analyseprogram for ingrisk",
+    "title.tool.analyze.lang.kal": "Gr\u00f8nlandsk analyseprogram",
+    "title.tool.analyze.lang.kca": "Analyseprogram for khantisk",
+    "title.tool.analyze.lang.kpv": "Analyseprogram for komi",
+    "title.tool.analyze.lang.liv": "Analyseprogram for liivisk",
+    "title.tool.analyze.lang.mdf": "Analyseprogram for moksjamordvinsk",
+    "title.tool.analyze.lang.mhr": "Analyseprogram for \u00f8stmarisk",
+    "title.tool.analyze.lang.mns": "Analyseprogram for mansisk",
+    "title.tool.analyze.lang.mrj": "Analyseprogram for vestmarisk",
+    "title.tool.analyze.lang.myv": "Analyseprogram for ersjamordvinsk",
+    "title.tool.analyze.lang.nio": "Analyseprogram for nganasansk",
+    "title.tool.analyze.lang.nob": "Analyseprogram for norsk bokm\u00e5l",
+    "title.tool.analyze.lang.olo": "Analyseprogram for livvikarelsk",
+    "title.tool.analyze.lang.rmf": "Analyseprogram for finsk romani",
+    "title.tool.analyze.lang.rus": "Analyseprogram for russisk",
+    "title.tool.analyze.lang.sjd": "Analyseprogram for kildinsamisk",
+    "title.tool.analyze.lang.sje": "Pitesamisk analyseprogram",
+    "title.tool.analyze.lang.sma": "S\u00f8rsamisk analyseprogram",
+    "title.tool.analyze.lang.sme": "Nordsamisk analyseprogram",
+    "title.tool.analyze.lang.smj": "Lulesamisk analyseprogram",
+    "title.tool.analyze.lang.smn": "Enaresamisk analyseprogram",
+    "title.tool.analyze.lang.sms": "Skoltesamisk analyseprogram",
+    "title.tool.analyze.lang.som": "Analyseprogram for somalisk",
+    "title.tool.analyze.lang.udm": "Analyseprogram for udmurtisk",
+    "title.tool.analyze.lang.vep": "Analyseprogram for vepsisk",
+    "title.tool.analyze.lang.vot": "Analyseprogram for votisk",
+    "title.tool.analyze.lang.vro": "Analyseprogram for v\u00f5ro",
+    "title.tool.analyze.lang.yrk": "Analyseprogram for nenetsisk",
+    "title.tool.generate.lang.bxr": "Genereringsprogram for burjatisk",
+    "title.tool.generate.lang.ciw": "Genereringsprogram for ojibwe",
+    "title.tool.generate.lang.cor": "Kornisk genereringsprogram",
+    "title.tool.generate.lang.crk": "Genereringsprogram for pr\u00e6riecree",
+    "title.tool.generate.lang.est": "Estisk genereringsprogram",
+    "title.tool.generate.lang.evn": "Evenkisk genereringsprogram",
+    "title.tool.generate.lang.fao": "F\u00e6r\u00f8ysk genereringsprogram",
+    "title.tool.generate.lang.fin": "Genereringsprogram for finsk",
+    "title.tool.generate.lang.fit": "Genereringsprogram for me\u00e4nkieli",
+    "title.tool.generate.lang.fkv": "Genereringsprogram for kvensk",
+    "title.tool.generate.lang.gle": "Genereringsprogram for irsk",
+    "title.tool.generate.lang.hdn": "Genereringsprogram for nordhaida",
+    "title.tool.generate.lang.ipk": "I\u00f1upiaq-genereringsprogram",
+    "title.tool.generate.lang.izh": "Ingrisk genereringsprogram",
+    "title.tool.generate.lang.kal": "Gr\u00f8nlandsk genereringsprogram",
+    "title.tool.generate.lang.kca": "Khantisk genereringsprogram",
+    "title.tool.generate.lang.kpv": "Genereringsprogram for komi",
+    "title.tool.generate.lang.liv": "Liivisk genereringsprogram",
+    "title.tool.generate.lang.mdf": "Moksjamordvinsk genereringsprogram",
+    "title.tool.generate.lang.mhr": "Genereringsprogram for \u00f8stmarisk",
+    "title.tool.generate.lang.mns": "Genereringsprogram for mansisk",
+    "title.tool.generate.lang.mrj": "Vestmarisk genereringsprogram",
+    "title.tool.generate.lang.myv": "Genereringsprogram for ersjamorvinsk",
+    "title.tool.generate.lang.nio": "Nganasansk genereringsprogram",
+    "title.tool.generate.lang.nob": "Genereringsprogram for norsk bokm\u00e5l",
+    "title.tool.generate.lang.olo": "Livvikarelsk genereringsprogram",
+    "title.tool.generate.lang.rus": "Genereringsprogram for russisk",
+    "title.tool.generate.lang.sjd": "Programs for generating Kildin Saami",
+    "title.tool.generate.lang.sje": "Pitesamisk genereringsprogram",
+    "title.tool.generate.lang.sma": "S\u00f8rsamisk genereringsprogram",
+    "title.tool.generate.lang.sme": "Nordsamisk genereringsprogram",
+    "title.tool.generate.lang.smj": "Lulesamisk genereringsprogram",
+    "title.tool.generate.lang.smn": "Enaresamisk genereringsprogram",
+    "title.tool.generate.lang.sms": "Skoltesamisk genereringsprogram",
+    "title.tool.generate.lang.som": "Genereringsprogram for somalisk",
+    "title.tool.generate.lang.udm": "Genereringsprogram for udmurtisk",
+    "title.tool.generate.lang.vep": "Vepsisk genereringsprogram",
+    "title.tool.generate.lang.vot": "Genereringsprogram for votisk",
+    "title.tool.generate.lang.vro": "Genereringsprogram for v\u00f5ro",
+    "title.tool.generate.lang.yrk": "Nenetsisk genereringsprogram",
+    "title.tool.paradigm.lang.bxr": "B\u00f8yingsparadigmer for burjatisk",
+    "title.tool.paradigm.lang.ciw": "B\u00f8yingsparadigmer for ojibwe",
+    "title.tool.paradigm.lang.cor": "Korniske b\u00f8yingsparadigmer",
+    "title.tool.paradigm.lang.crk":
+        "B\u00f8yingsparadigmer for pr\u00e6riecree",
+    "title.tool.paradigm.lang.est": "Estiske b\u00f8yingsparadigmer",
+    "title.tool.paradigm.lang.evn": "Evenkiske b\u00f8yingsparadigmer",
+    "title.tool.paradigm.lang.fao": "F\u00e6r\u00f8yske b\u00f8yingsparadigmer",
+    "title.tool.paradigm.lang.fin": "Finske b\u00f8yingsparadigmer",
+    "title.tool.paradigm.lang.fit": "Me\u00e4nkieli-b\u00f8yingsparadigmer",
+    "title.tool.paradigm.lang.fkv": "Kvenske b\u00f8yingsparadigmer",
+    "title.tool.paradigm.lang.hdn": "B\u00f8yingsparadigmer for nordhaida",
+    "title.tool.paradigm.lang.ipk": "I\u00f1upiaq-b\u00f8yingsparadigmer",
+    "title.tool.paradigm.lang.izh": "B\u00f8yingsparadigmer for ingrisk",
+    "title.tool.paradigm.lang.kal": "Gr\u00f8nlandske b\u00f8yingsparadigmer",
+    "title.tool.paradigm.lang.kca": "B\u00f8yingsparadigmer for khantisk",
+    "title.tool.paradigm.lang.kpv": "B\u00f8yingsparadigmer for komi",
+    "title.tool.paradigm.lang.liv": "B\u00f8yingsparadigmer for liivisk",
+    "title.tool.paradigm.lang.mdf":
+        "B\u00f8yingsparadigmer for moksjamordvinsk",
+    "title.tool.paradigm.lang.mhr": "B\u00f8yingsparadigmer for \u00f8stmarisk",
+    "title.tool.paradigm.lang.mns": "B\u00f8yingsparadigmer for mansisk",
+    "title.tool.paradigm.lang.mrj": "B\u00f8yingsparadigmer for vestmarisk",
+    "title.tool.paradigm.lang.myv": "B\u00f8yingsparadigmer for ersjamordvinsk",
+    "title.tool.paradigm.lang.nio": "B\u00f8yingsparadigmer for nganasansk",
+    "title.tool.paradigm.lang.nob":
+        "B\u00f8yingsparadigmer for norsk bokm\u00e5l",
+    "title.tool.paradigm.lang.olo": "B\u00f8yingsparadigmer for livvikarelsk",
+    "title.tool.paradigm.lang.rus": "B\u00f8yingsparadigmer for russisk",
+    "title.tool.paradigm.lang.sje": "Pitesamiske b\u00f8yingsparadigmer",
+    "title.tool.paradigm.lang.sma": "S\u00f8rsamiske b\u00f8yingsparadigmer",
+    "title.tool.paradigm.lang.sme": "Nordsamiske b\u00f8yingsparadigmer",
+    "title.tool.paradigm.lang.smj": "Lulesamiske b\u00f8yingsparadigmer",
+    "title.tool.paradigm.lang.smn": "Enaresamiske b\u00f8yingsparadigmer",
+    "title.tool.paradigm.lang.sms": "Skoltesamiske b\u00f8yingsparadigmer",
+    "title.tool.paradigm.lang.udm": "B\u00f8yingsparadigmer for udmurtisk",
+    "title.tool.paradigm.lang.vep": "B\u00f8yingsparadigmer for vepsisk",
+    "title.tool.paradigm.lang.vot": "B\u00f8yingsparadigmer for votisk",
+    "title.tool.paradigm.lang.vro": "B\u00f8yingsparadigmer for v\u00f5ro",
+    "title.tool.paradigm.lang.yrk": "B\u00f8yingsparadigmer for nenetsisk",
+    "title.tool.placenames": "Finn stedsnavn",
+    "place": "Giellatekno, UiT Norges arktiske universitet",
+    "copyright.lang.bxr": "Copyright \u00a9 Giellatekno og Jargal Badagarov",
+    "copyright.lang.crk":
+        "Copyright \u00a9 Giellatekno og AltLab v/ Universitetet i Alberta",
+    "copyright.lang.est": "Copyright \u00a9 Giellatekno og Tartu universitet",
+    "copyright.lang.fin": "Copyright \u00a9 Giellatekno og Tommi Pirinen",
+    "copyright.lang.fit": "Copyright \u00a9 Giellatekno",
+    "copyright.lang.fkv": "Copyright \u00a9 Giellatekno og Kvensk institutt",
+    "copyright.lang.hdn": "Copyright \u00a9 Giellatekno og CILLDI",
+    "copyright.lang.ipk": "Copyright \u00a9 Giellatekno og Oqaasileriffik",
+    "copyright.lang.izh": "Copyright \u00a9 Giellatekno og Jack Rueter",
+    "copyright.lang.kal": "Copyright \u00a9 Giellatekno og Oqaasileriffik",
+    "copyright.lang.kca": "Copyright \u00a9 Giellatekno og Jack Rueter",
+    "copyright.lang.kpv": "Copyright \u00a9 Giellatekno og Jack Rueter",
+    "copyright.lang.liv": "Copyright \u00a9 Giellatekno og Jack Rueter",
+    "copyright.lang.mdf": "Copyright \u00a9 Giellatekno og Jack Rueter",
+    "copyright.lang.mhr":
+        "Copyright \u00a9 Giellatekno og Jorma Luutonen og Arto Moisio",
+    "copyright.lang.mns": "Copyright \u00a9 Giellatekno",
+    "copyright.lang.mrj": "Copyright \u00a9 Giellatekno og Jack Rueter",
+    "copyright.lang.myv": "Copyright \u00a9 Giellatekno og Jack Rueter",
+    "copyright.lang.nio": "Copyright \u00a9 Giellatekno og Jack Rueter",
+    "copyright.lang.nob": "Copyright \u00a9 Giellatekno",
+    "copyright.lang.olo": "Copyright \u00a9 Giellatekno og Jack Rueter",
+    "copyright.lang.vep": "Copyright \u00a9 Giellatekno og Jack Rueter",
+    "copyright.lang.vro": "Copyright \u00a9 Giellatekno og Jack Rueter",
+    "copyright.lang.vot": "Copyright \u00a9 Giellatekno og Jack Rueter",
+    "copyright.lang.yrk": "Copyright \u00a9 Giellatekno og Jack Rueter",
+    "copyright": "Copyright \u00a9 Senter for samisk spr\u00e5kteknologi",
+    "introduction.tool.analyze":
+        'Skriv eller lim inn ord eller setninger i vinduet, og trykk p\u00e5 "Enkeltord" (for \u00e5 f\u00e5 alle\nmulige analyser) eller "Setninger" (for \u00e5 f\u00e5 bare de analysene\nsom passer i denne sammenhengen). Programmet kan ogs\u00e5 sette inn mulige\norddelingsgrenser (stavingsgrenser), velg "Orddeling". Slett teksten\nved \u00e5 velge "Nullstill".',
+    "introduction.tool.analyze.type.nodependency":
+        'Skriv eller lim inn ord eller setninger i vinduet, og trykk p\u00e5 "Enkeltord" (for \u00e5 f\u00e5 alle\nmulige analyser) eller "Setninger" (for \u00e5 f\u00e5 bare de analysene\nsom passer i denne sammenhengen). Programmet kan ogs\u00e5 sette inn mulige\norddelingsgrenser (stavingsgrenser), velg "Orddeling". Slett teksten\nved \u00e5 velge "Nullstill".',
+    "introduction.tool.analyze.type.nodisamb":
+        'Skriv ord eller setninger inn i vinduet, og trykk p\u00e5 "Analyse" (for \u00e5 f\u00e5 alle\nmulige analyser). Advarsel: Dette arbeidet er ikke ferdig.',
+    "introduction.tool.analyze.type.nohyph":
+        'Skriv ord eller setninger inn i vinduet, og trykk p\u00e5 "Analyse" (for \u00e5 f\u00e5 alle\nmulige analyser) eller "Disambiguering" (for \u00e5 f\u00e5 bare de analysene\nsom passer i denne sammenhengen). Advarsel: Dette arbeidet er ikke ferdig.',
+    "introduction_p2.tool.analyze.lang.ciw":
+        "Noem av verba i analysatoren er: anwebi, aadizooke, bangishino, biindige, bimaadizi, gaasikanaabaagawe, gashkendamo, giigoonyike, giiwe, izhaa, jiibaakwe, maajaa, minikwe, wiisini, minomaagwad, gozigwan. Noen av substantiva er: inini, ikwe, makwa, mitig, aanakwad, zaaga'igan, miikana, ziibi, makak, abwi, baabaa, maamaa, gosis, daanis, mishoomis.",
+    "introduction_p2.tool.analyze.lang.crk":
+        'Du kan ogs\u00e5 konvertere tekst fra latinske bokstavar til stavingsalfabet eller omvendt. Velg "Latinske bokstaver til stavingsalfabet" eller Stavingsalfabet til latinske bokstaver".',
+    "introduction_p2.tool.analyze.lang.ipk":
+        'Du kan ogs\u00e5 konvertere tekst fra formatet i I\u00f1upiaQ Dictionary til Unicode. Velg "Konverter".',
+    "introduction_p2.emph":
+        'kra, dvs. "\u0138" (Unicode U+0138), men\nkonverteringsverktyet vil ogs\u00e5 konvertere stor K som ikke st\u00e5r f\u00f8rst i ordet til kra.\nVelg "Konverter". Programmet konverterer ikke \u00fb korrekt, men elles fungerer det godt.)\nDu kan ogs\u00e5 transkribere gr\u00f8nlandsk tekst, dvs. overf\u00f8re den fra gjeldende\nortografi til IPA-transkripsjon, med stavingsgrense (markert med punktum) og\nrelativ toneh\u00f8yde (etter Stig Bj\u00f8rnums grammatikk, egentlig etter Kleinschmidt).\nVelg "Transkriber".',
+    "introduction.tool.generate":
+        'Skriv ord i grunnform, deretter de grammatiske kodene for den b\u00f8yingsforma du\nvil ha. Trykk p\u00e5 "Send" eller "Nullstill".',
+    "introduction.tool.placenames":
+        'Skriv stedsnavnet p\u00e5 samisk, norsk, svensk eller finsk og f\u00e5 oversettelse til eller fra samisk. Der svaret inneholder et navn i parantes er dette kommunenavnet. Basen inneholder ca. 15000 navnepar, av dem omtrent 11000 med nordsamiske, 3000 med s\u00f8rsamiske og 1000 med lulesamiske navn. Kildene v\u00e5re er Statens Kartverk (SK), Sametinget i Sverige (SvSt), Pekka Sammallahtis "Saami-suoma s\u00e1tnegirji" (PS) og Saami Atlas av H.R. Mathisen (SA). Merk at i Statens Kartverk er mange norske navn i bestemt form, slik at man ikke finner f.eks. Reinfjord men Reinfjorden.',
+    "introduction.tool.paradigm.lang.bxr":
+        "Skriv inn et burjatisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet. Programmet kan bare nokre vanlege substantiv.",
+    "introduction.tool.paradigm.lang.ciw":
+        "Skriv inn et ord p\u00e5 ojibwe og velg ordklasse, og programmet vil generere hele paradigmet for ordet. Programmet kan bare nokre vanlege verb.",
+    "introduction.tool.paradigm.lang.cor":
+        "Skriv inn et kornisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet.",
+    "introduction.tool.paradigm.lang.fao":
+        "Skriv inn et f\u00e6r\u00f8ysk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet.",
+    "introduction.tool.paradigm.lang.fin":
+        "Skriv inn et finsk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet.",
+    "introduction.tool.paradigm.lang.fit":
+        "Skriv inn et ord p\u00e5 me\u00e4nkieli og velg ordklasse, og programmet vil generere hele paradigmet for ordet.",
+    "introduction.tool.paradigm.lang.ipk":
+        "Skriv inn et s\u00f8rsamisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet.",
+    "introduction.tool.paradigm.lang.kal":
+        "Skriv inn et gr\u00f8nlandsk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet.",
+    "introduction.tool.paradigm.lang.kpv":
+        "Skriv inn et ord p\u00e5 komi og velg ordklasse, og programmet vil generere hele paradigmet for ordet.",
+    "introduction.tool.paradigm.lang.mhr":
+        "Skriv inn et \u00f8stmarisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet.",
+    "introduction.tool.paradigm.lang.mns":
+        "Skriv inn et mansisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet.",
+    "introduction.tool.paradigm.lang.myv":
+        "Skriv inn et ersjamordvinsk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet.",
+    "introduction.tool.paradigm.lang.rus":
+        "Paradigmegenerering fungerer ikke for russisk.",
+    "introduction.tool.paradigm.lang.sjd":
+        "Skriv inn et kildinsamisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet. Programmet inneholder orda i Kurutsj sitt grammatikk-vedlegg.",
+    "introduction.tool.paradigm.lang.sje":
+        "Skriv inn et pitesamisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet. Programmet inneholder bare et par hundre ord.",
+    "introduction.tool.paradigm.lang.sma":
+        "Skriv inn et s\u00f8rsamisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet.",
+    "introduction.tool.paradigm.lang.sme":
+        "Skriv inn et nordsamisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet.",
+    "introduction.tool.paradigm.lang.smj":
+        "Skriv inn et lulesamisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet.",
+    "introduction.tool.paradigm.lang.smn":
+        "Skriv inn et enaresamisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet. Programmet inneholder bare orda i Morottaja og Sammallahti sitt grammatikkvedlegg.",
+    "introduction.tool.paradigm.lang.sms":
+        "Skriv inn et enaresamisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet. Programmet inneholder bare orda i Moshnikoff og Sammallahti sitt grammatikkvedlegg, og litt til.",
+    "introduction.tool.paradigm.lang.udm":
+        "Skriv inn et udmurtisk ord og velg ordklasse, og programmet vil generere hele paradigmet for ordet. Programmet inneholder bare en handfull ord.",
+    "introduction.tool.paradigm":
+        "Skriv basisforma av ordet og velg ordklasse, og programmet vil generere hele paradigmet\nfor ordet.",
+    "usage.lang.ciw":
+        "Programmet bruker dobbeltvokalsystemet, det s\u00e5kalla Fiero-systemet.",
+    "usage.lang.crk":
+        "Du kan bruke b\u00e5de sirkumfleks (\u00e2) og makron (\u0101) for \u00e5 markere lang vokal.",
+    "usage.lang.sjd":
+        "Write the word in Kildin Saami orthography. Note that we use Cyrillic Characters also for the Latin-looking ones. The program uses the 1985 orthography.",
+    "usage.lang.sje":
+        "Programmet godtek b\u00e5de norsk <em>\u00e6, \u00f8 og svensk</em><em>\u00e4, \u00f6.</em>",
+    "usage.lang.sma":
+        "Programmet godtek bruk av <em>i for s\u00f8rsamisk</em><em>\u00ef, og b\u00e5de norsk</em><em>\u00e6, \u00f8 og\nsvensk</em><em>\u00e4, \u00f6.</em>",
+    "usage.lang.sme":
+        'Du kan bruke de vanlige nordsamiske bokstavene.\nHvis du ikke har samisk tastatur kan du i staden for "\u00e1, \u010d, \u0111, \u014b, \u0161, \u0167, \u017e" skrive  "a1, c1, d1, n1, s1, t1, z1".',
+    "usage.lang.smj":
+        "Du kan bruke de vanlege lulesamiske bokstavene, systemet forst\u00e5r b\u00e5de\n(offisiell) <em>\u014b, og eldre</em><em>\u0144, \u00f1, og det forst\u00e5r b\u00e5de</em><em>\u00e4\u00f6 og</em><em>\u00e6\u00f8.</em>",
+    "usage.lang.smn": "Write the word in ordinary Inari Saami orthography.",
+    "usage.lang.sms": "Write the word in ordinary Skolt Saami orthography.",
+    "usage": "",
+    "example.tool.generate.lang.cor":
+        "In order to get a Cornish wordform, write baseform+tags.",
+    "example.tool.generate.lang.crk":
+        "For \u00e5 f\u00e5 t.d. <em>atimwak, skriv</em><em>atim+N+AN+Pl, og for \u00e5 f\u00e5</em><em>kiwicihikonaw, skriv</em><code>wicih+V+TA+Ind+Prs+3Sg+12PlO</code>",
+    "example.tool.generate.lang.fao":
+        "For \u00e5 f\u00e5 t.d.  <em>h\u00fasinum, skriv</em><code>h\u00fas+N+Neu+Sg+Dat+Def</code>",
+    "example.tool.generate.lang.fin":
+        "For \u00e5 f\u00e5 t.d.  <em>joella, skriv</em><code>joki+N+Sg+Ade</code>",
+    "example.tool.generate.lang.fit":
+        "For \u00e5 f\u00e5 t.d.  <em>joela, skriv</em><code>joki+N+Sg+Ade</code>",
+    "example.tool.generate.lang.fkv":
+        "For \u00e5 f\u00e5 t.d. <em>jovela, skriv</em><code>joki+N+Sg+Ade</code>",
+    "example.tool.generate.lang.ipk":
+        "For \u00e5 f\u00e5 t.d.  <em>iglum, skriv</em><code>iglu+N+Rel+Sg</code>",
+    "example.tool.generate.lang.kal":
+        "For \u00e5 f\u00e5 t.d.  <em>illup, skriv</em><code>illu+N+Rel+Sg</code>",
+    "example.tool.generate.lang.kpv":
+        "For \u00e5 f\u00e5 t.d. <em>\u043a\u044b\u0432\u043b\u044b, skriv</em><code>\u043a\u044b\u0432+N+Sg+Dat</code>",
+    "example.tool.generate.lang.mhr":
+        "For \u00e5 f\u00e5 t.d. <em>\u043e\u043b\u043c\u0430\u043c, skriv</em><code>\u043e\u043b\u043c\u0430+N+Acc</code>",
+    "example.tool.generate.lang.mns":
+        "For \u00e5 f\u00e5 t.d. <em>\u0443\u043b\u044f\u0442, skriv</em><code>\u0443\u043b\u044f+N+Sg+Loc</code>",
+    "example.tool.generate.lang.myv":
+        "For \u00e5 f\u00e5 t.d. <em>\u043f\u0430\u043d\u0433\u0441\u0442\u043e, skriv</em><code>\u043f\u0430\u043d\u0433\u043e+N+Sg+Ela</code>",
+    "example.tool.generate.lang.rus":
+        "For \u00e5 f\u00e5 t.d. <em>\u0442\u0438\u0433\u0440\u043e\u0432, skriv</em><code>\u0442\u0438\u0433\u0440+N+Msc+Pl+Acc</code>",
+    "example.tool.generate.lang.sje":
+        "For \u00e5 f\u00e5 t.d. <em>\u00e1rben, skriv du</em><code>\u00e1rbbe+N+Sg+Ine, i eitt,\nutan mellomrom. Skiljet mellom store og sm\u00e5 bokstavar er viktig, det\nm\u00e5 vere</code><code>+N+Sg, ikke</code><code>+n+sg.</code>",
+    "example.tool.generate.lang.sme":
+        "Eit par eksempel: For \u00e5 f\u00e5 <em>viesus, skriv</em><code>viessu+N+Sg+Loc.</code>",
+    "example.tool.generate.lang.smj":
+        "Eit par eksempel: For \u00e5 f\u00e5 <em>g\u00e1dov,\nskriv</em><code>g\u00e1htot+V+Ind+Prs+Sg1. For</code><em>elluj og</em><em>muv, skriv</em><code>\u00e6llo+N+Sg+Ill og</code><code>m\u00e5n+Pron+Pers+Sg1+Acc.</code>",
+    "example.tool.generate.lang.sma":
+        "For \u00e5 f\u00e5 t.d. <em>g\u00e5atan, skriv du</em><code>g\u00e5etie+N+Sg+Ill, i eitt,\nutan mellomrom. Skiljet mellom store og sm\u00e5 bokstavar er viktig, det\nm\u00e5 vere</code><code>+N+Sg, ikke</code><code>+n+sg.</code>",
+    "example.tool.generate.lang.yrk":
+        "For \u00e5 f\u00e5 t.d.  <em>\u0442\u044d\u0445\u044d\u043d\u0430, skriv</em><code>\u0442\u044b+N+Sg+Loc</code>",
+    "example.tool.generate":
+        "Skriv lemma + grammatisk analyse for \u00e5 f\u00e5 ordform",
+    "instruction.tool.paradigm": "",
+    "instruction.tool.analyze": "Skriv inn ordform:",
+    "instruction.tool.generate": "Skriv inn ordform:",
+    "instruction.tool.placenames": "Skriv inn stedsnavn:",
+    "selection.select.type.minimal": "Gje minimalt paradigme",
+    "selection.select.type.standard": "Standardparadigme",
+    "selection.select.type.full":
+        "Fullt paradigme, med alle b\u00f8yningsformer",
+    "selection.select.type.test": "Paradigme for testing",
+    "selection.select.tool.analyze": "Enkeltord",
+    "selection.select.tool.disamb":
+        "Setninger (analyse som passer til konteksten)",
+    "selection.select.tool.dependency": "Dependensstruktur",
+    "selection.select.tool.hyphenate": "Orddeling",
+    "selection.select.tool.transcribe": "Transkriber",
+    "selection.select.tool.complextranscribe": "Transkriber",
+    "selection.select.tool.convert": "Konverter",
+    "selection.select.tool.lat2syll": "Latinske bokstavar til stavingsalfabet",
+    "selection.select.tool.syll2lat": "Stavingsalfabet til latinske bokstavar",
+    "selection.select.lang.none": "Inga omsetjing",
+    "selection.select.lang.dan": "Omsetjing til dansk",
+    "selection.select.lang.nob": "Grunnformomsetjing til bokm\u00e5l",
+    "charset": "Tegnsett:",
+    "input.type.submit": "Send",
+    "input.type.reset": "Nullstill",
+    "noresult.tool.paradigm": "Vi finner ingen paradigmer",
+    "otherforms.tool.paradigm": "Andre former",
+    "endtext":
+        "Programmet er under arbeid. Meld fra til giellatekno@uit.no hvis du finner feil.",
+    "end.lang.sma":
+        "Programmet er under arbeid. Meld fra til giellatekno@uit.no\nhvis du finner feil.",
+    "end.lang.smj":
+        "Det lulesamiske analyseprogrammet inneholder oppunder 20000 grunnformer\n(fr\u00e5 Spiik sin grammatikk, Nyst\u00f8/Johnsen si l\u00e6rebok, og framforalt\nfr\u00e5 Kintel og Korhonen sine ordb\u00f8ker), men det er framleis mykje arbeid som st\u00e5r\natt. Hvis du finner feil eller manglar ved programmet ber vi deg melde i\nfr\u00e5, til giellatekno@uit.no.",
+    "end.lang.smn":
+        "Programmet er i en utviklingsfase, og inneholder bare nokre av orda fra grammatikkdelen\nav Sammallahti - Morottaja si ordbok. Meld fra til giellatekno@uit.no\nhvis du finner feil.",
+    "end.lang.sms":
+        "Programmet er i en utviklingsfase, og inneholder bare noen av orda fra grammatikkdelen\nav Sammallahti - Moshnikoff si ordbok. Meld fra til giellatekno@uit.no\nhvis du finner feil.",
+    "end.tool.analyze":
+        'Programmet er ikke ferdig enda. Hvis du finner feil eller feilanalyser\nkan du melde i fra til <a "href"="mailto:giellatekno@uit.no">Giellatekno, Senter for samisk spr\u00e5kteknologi.</a>',
+    "grammar.pos.type.Any": "Uspesifisert",
+    "grammar.pos.type.N": "Substantiv",
+    "grammar.pos.type.V": "Verb",
+    "grammar.pos.type.Pron": "Pronomen",
+    "grammar.pos.type.A": "Adjektiv",
+    "grammar.pos.type.Adv": "Adverb",
+    "grammar.pos.type.Num": "Tallord",
+    "lt": "Spr\u00e5kverkt\u00f8y for",
+    "lname.lang.bxr": "burjatisk",
+    "lname.lang.ciw": "ojibwe",
+    "lname.lang.cor": "kornisk",
+    "lname.lang.crk": "pr\u00e6riecree",
+    "lname.lang.est": "estisk",
+    "lname.lang.evn": "evenkisk",
+    "lname.lang.fao": "f\u00e6r\u00f8ysk",
+    "lname.lang.fin": "finsk",
+    "lname.lang.fit": "me\u00e4nkieli",
+    "lname.lang.fkv": "kvensk",
+    "lname.lang.gle": "irsk",
+    "lname.lang.hdn": "nordhaida",
+    "lname.lang.ipk": "i\u00f1upiaq",
+    "lname.lang.izh": "ingrisk",
+    "lname.lang.kal": "gr\u00f8nlandsk",
+    "lname.lang.kca": "khantisk",
+    "lname.lang.koi": "komipermjakisk",
+    "lname.lang.kpv": "komi",
+    "lname.lang.liv": "liivisk",
+    "lname.lang.mdf": "moksjamordvinsk",
+    "lname.lang.mhr": "austmarisk",
+    "lname.lang.mns": "mansisk",
+    "lname.lang.mrj": "fjellmarisk",
+    "lname.lang.myv": "ersjamordvinsk",
+    "lname.lang.nio": "nganasansk",
+    "lname.lang.nno": "norsk nynorsk",
+    "lname.lang.nob": "norsk bokm\u00e5l",
+    "lname.lang.olo": "livvikarelsk",
+    "lname.lang.rmf": "kalo finsk romani",
+    "lname.lang.rus": "russisk",
+    "lname.lang.sjd": "kildinsamisk",
+    "lname.lang.sje": "pitesamisk",
+    "lname.lang.sma": "s\u00f8rsamisk",
+    "lname.lang.sme": "nordsamisk",
+    "lname.lang.smj": "lulesamisk",
+    "lname.lang.smn": "enaresamisk",
+    "lname.lang.sms": "skoltesamisk",
+    "lname.lang.som": "somalisk",
+    "lname.lang.swe": "svensk",
+    "lname.lang.udm": "udmurtisk",
+    "lname.lang.vep": "vepsisk",
+    "lname.lang.vot": "votisk",
+    "lname.lang.vro": "v\u00f5ro",
+    "lname.lang.yrk": "nenetsisk",
+    "introduction.lang.bxr":
+        "Her finner du grammatiske analyseprogram for burjatisk.",
+    "introduction.lang.ciw":
+        "Her finner du grammatiske analyseprogram for ojibwe.",
+    "introduction.lang.cor":
+        "Dette er heimesida til en grammatisk analysator for kornisk. Analysatoren bruker den nye standarden for kornisk, den s\u00e5kalte Single Written Form.",
+    "introduction.lang.crk":
+        "Her finner du grammatiske analyseprogram for pr\u00e6riecree",
+    "introduction.lang.est":
+        "Her finner du grammatiske analyseprogram for estisk",
+    "introduction.lang.fao":
+        "Dette er heimesida til de f\u00e6r\u00f8yske grammatiske analysatorene. Vi kombinerer en morfologisk og morfofonologisk analysator med leksema i F\u00f8roysk or\u00f0ab\u00f3k til en grammatisk analysator og generator for f\u00e6r\u00f8ysk. Den morfologiske dekningsgraden er relativt god, svake punkt er visse sterke verb, og deler av adjektivparadigma, men den syntaktiske analysatoren tr\u00f8r framdeles barneskoa sine.",
+    "introduction.lang.fin":
+        "Her finner du grammatiske analyseprogram for finsk.",
+    "introduction.lang.fit":
+        "Her finner du grammatiske analyseprogram for me\u00e4nkieli.",
+    "introduction.lang.fkv":
+        "Her finner du grammatiske analyseprogram for kvensk.",
+    "introduction.lang.gle":
+        "Her finner du grammatiske analyseprogram for irsk.",
+    "introduction.lang.hdn":
+        "Her finner du grammatiske analyseprogram for nordhaida.",
+    "introduction.lang.ipk":
+        "Dette er heimesida til den grammatiske analysatoren for i\u00f1upiaq. Ananlysatoren dekker den grunnleggende b\u00f8yingsmorfologien (ikke avledning!) og basisordforr\u00e5det. Det er ogs\u00e5 mulig \u00e5 konvertere tekst skrevet i kodetabellen i <em>Interactive I\u00f1upiaQ Dictionary over til Unicode.</em>",
+    "introduction.lang.izh":
+        "Her finner du grammatiske analyseprogram for ingrisk",
+    "introduction.lang.kal":
+        "Dette er ei av heimesidene til det gr\u00f8nlandske analyseprosjektet. Bruk denne sida viss du vil analysere gr\u00f8nlandsk tekst, konvertere Kleinschmidts ortografi til moderne ortografi. Den andre heimesida til prosjektet er hos Oqaasileriffik, der du ogs\u00e5 vil finne eit grensesnitt for korpuss\u00f8k i uanalysert tekst, og et flott grensesnitt for ordanalyse og paradigmegenerering.",
+    "introduction.lang.kca":
+        "Her finner du grammatiske analyseprogram for khantisk",
+    "introduction.lang.koi":
+        "Her finner du grammatiske analyseprogram for komipermjakisk.",
+    "introduction.lang.kpv":
+        "Her finner du grammatiske analyseprogram for komi.",
+    "introduction.lang.liv":
+        "Her finner du grammatiske analyseprogram for liivisk",
+    "introduction.lang.mdf":
+        "Her finner du grammatiske analyseprogram for moksjamordvinsk",
+    "introduction.lang.mhr":
+        "Her finner du grammatiske analyseprogram for austmarisk.",
+    "introduction.lang.mns":
+        "Her finner du grammatiske analyseprogram for mansisk.",
+    "introduction.lang.mrj":
+        "Her finner du grammatiske analyseprogram for fjellmarisk",
+    "introduction.lang.myv":
+        "Her finner du grammatiske analyseprogram for ersjamordvinsk.",
+    "introduction.lang.nio":
+        "Her finner du grammatiske analyseprogram for nganasansk.",
+    "introduction.lang.nob":
+        "Her finner du grammatiske analyseprogram for norsk bokm\u00e5l.",
+    "introduction.lang.olo":
+        "Her finner du grammatiske analyseprogram for livvikarelsk.",
+    "introduction.lang.rmf":
+        "Her finner du grammatiske analyseprogram for kalo finsk romani.",
+    "introduction.lang.rus":
+        "Her finner du grammatiske analyseprogram for russisk.",
+    "introduction.lang.sjd":
+        "Her finner du grammatiske analyseprogram for kildinsamisk.",
+    "introduction.lang.sje":
+        "Her finner du grammatiske analyseprogram for pitesamisk.",
+    "introduction.lang.smj":
+        "Her finner du grammatiske analyseprogram for lulesamisk.",
+    "introduction.lang.smn":
+        "Her finner du grammatiske analyseprogram for enaresamisk.",
+    "introduction.lang.sms":
+        "Her finner du grammatiske analyseprogram for skoltesamisk.",
+    "introduction.lang.udm":
+        "Her finner du grammatiske analyseprogram for udmurtisk.",
+    "introduction.lang.vep":
+        "Her finner du grammatiske analyseprogram for vepsisk",
+    "introduction.lang.vro":
+        "Her finner du grammatiske analyseprogram for v\u00f5ro",
+    "introduction.lang.vot":
+        "Her finner du grammatiske analyseprogram for votisk",
+    "introduction.lang.yrk":
+        "Her finner du grammatiske analyseprogram for nenetsisk",
+    "programtitle": "",
+    "programs": "",
+    "programs.lang.bxr": "Programma er fremdeles p\u00e5 eksperimentstadiet.",
+    "programs.lang.ciw": "Programma er fremdeles p\u00e5 eksperimentstadiet.",
+    "programs.lang.cor": "Programma er fremdeles p\u00e5 eksperimentstadiet.",
+    "programs.lang.crk": "Programma er fremdeles p\u00e5 eksperimentstadiet.",
+    "programs.lang.est": "Programma er fremdeles p\u00e5 eksperimentstadiet.",
+    "programs.lang.fao":
+        "Prosjektet kombinerer en morfologisk og morfofonologisk transduser med settet av leksem i F\u00f8roysk or\u00f0ab\u00f3k til en grammatisk parsar for f\u00e6r\u00f8ysk.",
+    "programs.lang.fin":
+        "Prosjektet kombinerer en morfologisk og morfofonologisk transduser med settet av leksem i Suomen perussanakirja til en grammatisk parsar for finsk.",
+    "programs.lang.fit": "Programma er p\u00e5 teststadiet enda.",
+    "programs.lang.fkv": "Programma er p\u00e5 teststadiet enda.",
+    "programs.lang.hdn": "Programma er p\u00e5 teststadiet enda.",
+    "programs.lang.izh": "Programmet er fremdeles p\u00e5 eksperimentstadiet",
+    "programs.lang.kca": "Programmet er fremdeles p\u00e5 eksperimentstadiet",
+    "programs.lang.koi": "Programma er p\u00e5 teststadiet enda.",
+    "programs.lang.kpv": "Programma er p\u00e5 teststadiet enda.",
+    "programs.lang.liv": "Programmet er fremdeles p\u00e5 eksperimentstadiet",
+    "programs.lang.mdf": "Programmet er fremdeles p\u00e5 eksperimentstadiet",
+    "programs.lang.mhr": "Programma er fremdeles p\u00e5 eksperimentstadiet.",
+    "programs.lang.mns": "Programma er fremdeles p\u00e5 eksperimentstadiet.",
+    "programs.lang.mrj": "Programmet er fremdeles p\u00e5 eksperimentstadiet",
+    "programs.lang.myv": "Programma er fremdeles p\u00e5 eksperimentstadiet.",
+    "programs.lang.nio": "Programmet er fremdeles p\u00e5 eksperimentstadiet",
+    "programs.lang.olo": "Programmet er fremdeles p\u00e5 eksperimentstadiet",
+    "programs.lang.rmf": "Programma er fremdeles p\u00e5 eksperimentstadiet.",
+    "programs.lang.rus": "Programma er fremdeles p\u00e5 eksperimentstadiet.",
+    "programs.lang.sjd": "Programma er fremdeles p\u00e5 eksperimentstadiet.",
+    "programs.lang.sje": "Programma er fremdeles p\u00e5 eksperimentstadiet.",
+    "programs.lang.smn": "Programma er fremdeles p\u00e5 eksperimentstadiet.",
+    "programs.lang.sms": "Programma er fremdeles p\u00e5 eksperimentstadiet.",
+    "programs.lang.udm": "Programma er fremdeles p\u00e5 eksperimentstadiet.",
+    "programs.lang.vep": "Programmet er fremdeles p\u00e5 eksperimentstadiet",
+    "programs.lang.vro": "Programmet er fremdeles p\u00e5 eksperimentstadiet",
+    "programs.lang.vot": "Programmet er fremdeles p\u00e5 eksperimentstadiet",
+    "programs.lang.yrk": "Programmet er fremdeles p\u00e5 eksperimentstadiet",
+    "analysis": "Analyser tekst.",
+    "analysis_text": "",
+    "analysis_text.lang.cor": "Analyse og disambiguering.",
+    "analysis_text.lang.est": "Analyse og disambiguering.",
+    "analysis_text.lang.fao": "Analyse og disambiguering, stavelsesgrenser.",
+    "analysis_text.lang.ipk":
+        "Programmet konverterer ogs\u00e5 tekst skrevet i kodetabellen til <em>Interactive I\u00f1upiaq Dictionary over til Unicode.</em>",
+    "analysis_text.lang.kal":
+        "Analyse og disambiguering, stavelsesgrenser. Programmet konverterer til IPA, og fra Kleinschmidt (f\u00f8r 1973) til moderne ortografi.",
+    "analysis_text.lang.nob": "Analyse og disambiguering.",
+    "analysis_text.lang.rmf": "Analyse og disambiguering.",
+    "analysis_text.lang.sjd": "Programmet analyserer bare en handfull ord.",
+    "analysis_text.lang.sma":
+        "Morfologisk og syntaktisk analyse, orddeling. Konvertering av tekst til IPA.",
+    "analysis_text.lang.sme":
+        "Morfologisk og syntaktisk analyse, dependensanalyse og orddeling. Konvertering av tekst til IPA.",
+    "analysis_text.lang.smj": "Morfologisk og syntaktisk analyse, orddeling.",
+    "analysis_text.lang.smn": "Morfologisk og syntaktisk analyse, orddeling.",
+    "analysis_text.lang.sms": "Morfologisk analyse.",
+    "paradigm": "Paradigmegenerering.",
+    "paradigm_text":
+        "Genererer b\u00f8yingsparadigmer av ulik st\u00f8rrelse for det ordet du vil.",
+    "paradigm_text.lang.ipk": "Genererer paradigme for basisordforr\u00e5det.",
+    "paradigm_text.lang.sjd":
+        "Paradigmegeneratoren fungerer formelt, men paradigma inneholder vel s\u00e5\nmange feilaktige som korrekte former. Den kildinsamiske paradigmegeneratoren\ner for tida p\u00e5 nett for \u00e5 v\u00e6re til hjelp i utviklingsarbeidet.",
+    "paradigm_text.lang.sje":
+        "Genererer b\u00f8yingsparadigmer av ulik st\u00f8rrelse for dei vanligste orda.",
+    "generator": "Generer ordformer",
+    "generator_text": "Generer ordformer fra lemma og grammatiske taggar.",
+    "numerals": "Tallordsgenerator",
+    "numerals.lang.sms": "",
+    "numerals_text": "Skriv inn tall (f.eks. 123), og f\u00e5 ut talord.",
+    "numerals_text.lang.rus":
+        "Skriv inn tall (f.eks. 123, 10:15 eller 6.2.), og f\u00e5 ut talord, klokkeslett eller dato.",
+    "numerals_text.lang.sma":
+        "Skriv inn tall (f.eks. 123, 10:15 eller 6.2.), og f\u00e5 ut tallord, klokkeslett eller dato.",
+    "numerals_text.lang.sme":
+        "Skriv inn tall (f.eks. 123, 10:15 eller 6.2.), og f\u00e5 ut tallord, klokkeslett eller dato.",
+    "numerals_text.lang.smj":
+        "Skriv inn tall (f.eks. 123, 10:15 eller 6.2.), og f\u00e5 ut tallord, klokkeslett eller dato.",
+    "numerals_text.lang.sjd":
+        "Skriv inn tall (f.eks. 123) eller dato (f.eks. 6.2.), og f\u00e5 ut tallord eller dato.",
+    "dicts": "Ordb\u00f8ker",
+    "dicts_text": "Ord og stedsnavn",
+    "nds": "NDS / NDB",
+    "nds_text":
+        "Interaktiv ordbok: Forst\u00e5r b\u00f8yde ord og viser hvordan ordet skal b\u00f8yes. Link til korpuss\u00f8k (ikke for Internet Explorer).",
+    "webdictionaries": "Webdict nettordbok",
+    "webdictionaries_text":
+        "Presenterer ordene i listeform. En fordel hvis du ikke vet hvordan ordet skrives. Bare grunnformer.",
+    "webdictionaries_text.lang.sjd":
+        "Sl\u00e5 opp ord i ei nettordbok. Ordboka er basert p\u00e5  Saamskij slovar' av Rimma Kuru\u010d.",
+    "VDdictionaries": "VD: Nedlastbar digital ordbok",
+    "VDdictionaries_text": "",
+    "grammar": "Grammatikk",
+    "korp": "Korp \u2013 tekstkorpus",
+    "korp_text":
+        "S\u00f8k etter ord og grammatiske m\u00f8nster i tekstsamlinger (ikke for Internet Explorer).",
+    "placenames": "GEO \u2013 samiske stedsnavn",
+    "placenames_text":
+        "Skriv stedsnavn p\u00e5 norsk eller finsk, og f\u00e5 det tilsvarende stedsnavnet p\u00e5 samisk, eller omvendt.",
+    "risten.lang.smj": "b\u00e1hko.org terminologidatabase",
+    "risten.lang.sma": "baakoe.org terminologidatabase",
+    "risten.lang.sme": "s\u00e1tni.org terminologidatabase",
+    "risten_text": "Dette er ei videreutvikling av den tidligere risten.no",
+    "divvun": "Divvun ordretting",
+    "divvun_text":
+        "Last ned ordretteprogram til bruk i Microsoft Word og LibreOffice",
+    "keyboard": "Samisk tastatur",
+    "keyboard_text": "",
+    "oahpa": "Oahpa! spr\u00e5kl\u00e6ringsprogram",
+    "oahpa_text.lang.sme":
+        "Interaktive program for \u00e5 \u00f8ve gloser, ordb\u00f8ying og dialoger.",
+    "oahpa_text.lang.sma":
+        "Interaktive program for \u00e5 \u00f8ve gloser, ordb\u00f8ying og tall, dato og klokkeslett.",
+    "oahpa_text":
+        "Interaktive program for \u00e5 \u00f8ve gloser, tall og dato. Programmet er fremdeles p\u00e5 demostadiet.",
+    "crkoahpa": "n\u00eahiyaw\u00eat\u00e2n spr\u00e5kl\u00e6ringsprogram",
+    "crkoahpa_text.lang.crk":
+        "Interaktive program for \u00e5 \u00f8ve gloser, grammatikk, tall og dato. Demoversjon.",
+    "tts": "Tekst-til-tale",
+    "tts_text": "Datamaskinen leser teksten h\u00f8yt for deg.",
+    "kursa": "Spr\u00e5kkurs",
+    "kursa_text": "",
+    "gielese": "G\u00efelese",
+    "gielese_text": "L\u00e6r ord \u2013 med lyd og bilder",
+    "visl": "VISL \u2013 l\u00e6r grammatikk",
+    "visl_text": "Interaktive programmer for grammatikkl\u00e6ring.",
+    "mt": "Maskinoversetting fra nordsamisk til norsk",
+    "mt_text": "Skriv inn tekst eller oversett nettsider eller dokumenter.",
+    "mt2": "Maskinoversetting mellom samiske spr\u00e5k",
+    "mt2_text":
+        "Skriv inn tekst eller oversett nettsider eller dokumenter. Disse\noversettingsprogramma er framdeles p\u00e5 betastadiet.",
+    "other.lang.bxr": "",
+    "other.lang.ciw": "",
+    "other.lang.cor": "",
+    "other.lang.crk": "",
+    "other.lang.fao":
+        "De f\u00e6r\u00f8yske analysatorene drar nytte av Foroysk or\u00f0ab\u00f3k.",
+    "other.lang.fin": "",
+    "other.lang.fit": "",
+    "other.lang.fkv": "",
+    "other.lang.hdn": "",
+    "other.lang.ipk": "",
+    "other.lang.izh": "",
+    "other.lang.kal":
+        'Prosjektet er et samarbeidsprosjekt mellom <a "href"="https://www.oqaasileriffik.gl/">Gr\u00f8nlands Sprogn\u00e6vn\n      (Oqaasileriffik) og UiT Norges arktiske universitet.</a>',
+    "other.lang.kca": "",
+    "other.lang.koi":
+        "Analysatorane for komipermjakisk er eit samarbeidsprosjekt mellom FU-lab, Giellatekno og Jack Rueter. Ordboka som ligg til grunn for leksikondelen er Jack Rueters Komi-suomi-englanti sanakirja.",
+    "other.lang.kpv":
+        "Analysatorene for komi er et samarbeidsprosjekt mellom Giellatekno og Jack Rueter. Ordboka som ligger til grunn for leksikondelen er Jack Rueters Komi-suomo-englanti sanakirja.",
+    "other.lang.liv": "",
+    "other.lang.mdf": "",
+    "other.lang.mhr":
+        "Analysatorene for \u00f8stmarisk er et samarbeidsprosjekt mellom Giellatekno og Jorma Luutonen. Ordboka som ligger til grunn for leksikondelen er Arto Moisios Mari-suomi sanakirja.",
+    "other.lang.mrj": "",
+    "other.lang.myv":
+        "Analysatorene for ersjamordvinsk er et samarbeidsprosjekt mellom Giellatekno og Jack Rueter.",
+    "other.lang.nio": "",
+    "other.lang.olo": "",
+    "other.lang.rmf": "",
+    "other.lang.rus": "",
+    "other.lang.sjd": "",
+    "other.lang.sje": "",
+    "other.lang.sma": "",
+    "other.lang.sme": "",
+    "other.lang.smj": "",
+    "other.lang.smn": "",
+    "other.lang.sms": "",
+    "other.lang.udm": "",
+    "other.lang.vep": "",
+    "other.lang.vro": "",
+    "other.lang.vot": "",
+    "other.lang.yrk": "",
+};

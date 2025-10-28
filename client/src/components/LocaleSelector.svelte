@@ -5,14 +5,14 @@
     import { t } from "svelte-intl-precompile";
     import { locales } from "svelte-intl-precompile";
 
-    import { page } from "$app/stores";
+    import { page } from "$app/state";
 
     import {
         locale,
         locales_in_locale,
     } from "../lib/locales.js";
 
-    let open = false;
+    let open = $state(false);
 
     function set_locale(loc: string) {
         return function () {
@@ -68,10 +68,10 @@
     }
 </script>
 
-<svelte:window on:keydown={globalkeydown} />
+<svelte:window onkeydown={globalkeydown} />
 
 <main>
-    <header role="button" tabindex="0" on:keydown={onkeydown} on:click={() => open = !open}>
+    <header role="button" tabindex="0" {onkeydown} onclick={() => open = !open}>
         <img alt="Language icon" src={languageIcon} height="22" />
         <span class="lang-text">{locales_in_locale[$locale]}</span>
     </header>
@@ -90,8 +90,8 @@
                     <div class="lang" role="button"
                          class:selected={loc == $locale}
                          tabindex="0"
-                         on:click={set_locale(loc)}
-                         on:keydown={ev => on_locale_keydown(ev, loc)}
+                         onclick={set_locale(loc)}
+                         onkeydown={ev => on_locale_keydown(ev, loc)}
                          >{locales_in_locale[loc]}</div>
                 {/each}
             </div>

@@ -3,10 +3,19 @@
     const dispatch = createEventDispatcher();
     import { only_on } from "$lib/utils.js";
 
-    export let name: string = "group";
-    export let header: string;
-    export let choices: Array<[string, string]>;
-    export let selected: string;
+    interface Props {
+        name?: string;
+        header: string;
+        choices: Array<[string, string]>;
+        selected: string;
+    }
+
+    let {
+        name = "group",
+        header,
+        choices,
+        selected = $bindable()
+    }: Props = $props();
 
     function select_choice(choice: string) {
         dispatch("new-select", choice);
@@ -29,7 +38,7 @@
     <header>{header}</header>
 
     {#each choices as [label, value], i}
-        <label for={value} on:click={() => select_choice(value)}>
+        <label for={value} onclick={() => select_choice(value)}>
             <input type="radio" id={value} bind:group={selected} {value}>
             <span>{label}</span>
         </label>

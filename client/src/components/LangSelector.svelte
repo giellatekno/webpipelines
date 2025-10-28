@@ -3,13 +3,13 @@
     import { t } from "svelte-intl-precompile";
     import { locale } from "$lib/locales.js";
     import { langname } from "$lib/langnames.js";
-    import { page } from "$app/stores";
+    import { page } from "$app/state";
 </script>
 
 <main>
-    {#if $page.data.lang}
+    {#if page.data.lang}
         <span class="separator">&#xB7;</span>
-        {$t("nowexploring")} {langname($page.data.lang, $locale)}&nbsp;
+        {$t("nowexploring")} {langname(page.data.lang, $locale)}&nbsp;
         <a href="{base}/">{$t("exploreanotherlang")}</a>
     {/if}
 </main>

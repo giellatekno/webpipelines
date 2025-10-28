@@ -4,7 +4,11 @@
     import icon from "$lib/images/search.svg";
     import { t } from "svelte-intl-precompile";
 
-    export let value: string;
+    interface Props {
+        value: string;
+    }
+
+    let { value = $bindable() }: Props = $props();
 
     function onkeydown(ev: KeyboardEvent) {
         if (ev.key === "Enter") {
@@ -17,7 +21,7 @@
 
 <div>
     <img alt="" src={icon} width="20" height="20">
-    <input bind:value on:keydown={onkeydown} placeholder="{$t("search")}...">
+    <input bind:value {onkeydown} placeholder="{$t("search")}...">
 </div>
 
 <style>

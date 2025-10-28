@@ -1,6 +1,7 @@
-import { env } from "$env/dynamic/public";
+import { env } from "$env/dynamic/public";
+import type { PageLoad } from "./$types";
 
-export async function load({ url, params, fetch }) {
+export const load: PageLoad = async ({ url, params, fetch }) => {
     const lang = params.lang;
     const query_params = url.searchParams;
     const q = query_params.get("q");
@@ -21,5 +22,5 @@ export async function load({ url, params, fetch }) {
     let text = await response.text();
     const lines = text.split("\n");
 
-    return { results: { lines } };
-}
+    return { q: q, results: { lines } };
+};

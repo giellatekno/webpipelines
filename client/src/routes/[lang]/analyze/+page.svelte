@@ -1,18 +1,30 @@
 <script lang="ts">
-    import { t } from "svelte-intl-precompile";
+    import { t } from "svelte-intl-precompile";
     import type { PageData } from "./$types";
-    import { page } from "$app/stores";
-    import { base } from "$app/paths";
-    import { goto } from "$app/navigation";
-    import Switch from "$components/Switch.svelte";
+    import { page } from "$app/state";
+    import { resolve } from "$app/paths";
+    import { goto } from "$app/navigation";
+    import { Switch } from "@skeletonlabs/skeleton-svelte";
+    import { MoveLeft } from "@lucide/svelte";
 
-    export let data: PageData;
+    interface Props {
+        data: PageData;
+    }
 
-    let form: HTMLFormElement;
-    let value = data.q || "";
-    let result_format = "text";
-    let results: any;
-    $: results = set_results(data, result_format);
+    let { data }: Props = $props();
+
+    let format_switch_checked = $state(false);
+    let result_format = $state("text");
+
+    let value = $state(data.q || "");
+    let results: any = $derived(set_results(data, result_format));
+
+    let lang = $derived(page.params.lang || "");
+
+    function onCheckedChange(event: { checked: boolean }) {
+        format_switch_checked = !format_switch_checked;
+        result_format = format_switch_checked ? "json" : "text";
+    }
 
     function set_results(data: PageData, result_format: string) {
         if (!data.results) return;
@@ -21,7 +33,7 @@
             // Somewhat confusing: if user asks for text, we must parse the json
             const analyses = [];
             let last = null;
-            let curr = [];
+            let curr: string[] = [];
             for (let obj of data.results.parsed) {
                 if (obj.wordform != last) {
                     if (curr.length > 0) {
@@ -51,10 +63,7 @@
                 .join("<br>");
             return analyses;
         }
-    };
-
-    $: usage = get_usage($page.params.lang, $t);
-    $: instruction = $t(`instruction.tool.analyze`);
+    }
 
     function get_usage(lang: string, $t: (_: string) => string) {
         const lang_specific = $t(`usage.lang.${lang}`);
@@ -69,53 +78,100 @@
     async function on_textarea_keydown(ev: KeyboardEvent) {
         if (ev.key === "Enter" && ev.shiftKey) {
             ev.preventDefault();
-            await goto(`?q=${value}`, { keepFocus: true });
+            await goto(`?q=${value}`, { keepFocus: true });
         }
     }
+    async function on_submit() {
+        await goto(`?q=${value}`, { keepFocus: true });
+    }
+
+    let usage = $derived(get_usage(lang, $t));
+    let instruction = $derived($t(`instruction.tool.analyze`));
 </script>
 
-<main>
-    <span>
-        <h1>{$t("analyze")}</h1>
-        <a href="{base}/{$page.params.lang}">[l6e] Tilbake til verktøy</a>
+<div>
+    <span class="flex flex-col gap-2 mb-4">
+        <a
+            class="btn btn-sm preset-outlined-primary-500 w-fit"
+            href={resolve(`/${lang}`)}
+        >
+            <MoveLeft />
+            [l6e] Back to tool selection</a
+        >
+        <h1 class="h4">{$t("analyze")}</h1>
     </span>
 
-    <p>{@html usage}</p>
-    <p>{@html instruction}</p>
+    <p class="my-2">{usage}</p>
 
-    <form
-        bind:this={form}
-        data-sveltekit-replacestate
-        data-sveltekit-keepfocus
-    >
-        <textarea rows="6" cols="50" name="q" bind:value on:keydown={on_textarea_keydown}></textarea>
-        <br>
-        <br>
-        <button type="submit">{$t("Send")}</button>
+    <form onsubmit={on_submit}>
+        <label class="label">
+            <span class="label-text text-sm">{instruction}</span>
+            <textarea
+                class="textarea w-fit"
+                rows="6"
+                cols="50"
+                name="q"
+                bind:value
+                onkeydown={on_textarea_keydown}
+            ></textarea>
+            <div class="flex flex-row gap-2 items-center">
+                <button
+                    class="btn btn-lg preset-filled-primary-500"
+                    type="submit">{$t("[l6e] submit")}</button
+                >
+                <span>[l6e] Or press Shift+Enter to submit.</span>
+            </div>
+        </label>
     </form>
 
-    <div class="results">
+    <div class="flex flex-col mt-6 gap-2">
         {#if data.error}
             Error: {data.error}
         {/if}
 
         {#if results}
-            <Switch bind:value={result_format} label="" options={["text", "json"]} fontSize={16} />
-
+            <Switch checked={format_switch_checked} {onCheckedChange}>
+                <Switch.Label class="text-base">Text</Switch.Label>
+                <Switch.Control>
+                    <Switch.Thumb />
+                </Switch.Control>
+                <Switch.Label class="text-base">JSON</Switch.Label>
+                <Switch.HiddenInput />
+            </Switch>
             {#if result_format == "text"}
-                <table>
-                    {#each results as word_analyses}
-                        {@const plus = "<span style='color: gray;'>+</span>"}
-                        {#each word_analyses as {wordform, lemma, pos, tags}}
-                            {@const tags_s = tags.join(plus)}
-                            <tr>
-                                <td><span style="color: rgb(40, 125, 9);">{wordform}</span></td>
-                                <td><span style="color: #a80909;">{lemma}</span>{@html plus}<span style="font-weight: bold;">{pos}</span>{@html plus}{@html tags_s}</td>
-                            </tr>
-                        {/each}
-                        <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
-                    {/each}
-                </table>
+                <div
+                    class="table-wrap card w-fit p-2 bg-surface-100-900 border border-surface-200-800"
+                >
+                    <table class="table text-lg">
+                        <tbody>
+                            {#each results as word_analyses}
+                                {@const plus =
+                                    "<span class='text-gray-500'>+</span>"}
+                                {#each word_analyses as { wordform, lemma, pos, tags }}
+                                    {@const tags_s = tags.join(plus)}
+                                    <tr>
+                                        <td>
+                                            <span class="text-green-700">
+                                                {wordform}
+                                            </span>
+                                        </td>
+                                        <td class="flex">
+                                            <span class="text-red-800">
+                                                {lemma}
+                                            </span>
+                                            {@html plus}
+                                            <span class="font-bold">
+                                                {pos}
+                                            </span>
+                                            {@html plus}
+                                            {@html tags_s}
+                                        </td>
+                                    </tr>
+                                {/each}
+                            {/each}
+                        </tbody>
+                    </table>
+                </div>
             {:else if result_format == "json"}
                 {@html results}
             {/if}
@@ -123,35 +179,4 @@
             No analyses
         {/if}
     </div>
-</main>
-
-<style>
-    main {
-        margin-left: 34px;
-    }
-
-    div.results {
-        margin-top: 1.5em;
-    }
-
-    form button[type=submit] {
-        background-color: #acc1ef;
-        border-radius: 2px;
-        border: 1px solid #9d9db0;
-        padding: 8px 16px;
-
-    }
-
-    textarea {
-        font-family: Roboto, sans-serif;
-        font-size: 14px;
-        border: 1px solid #9d9db0;
-        border-radius: 6px;
-        padding: 4px;
-    }
-
-    textarea:focus-within {
-        border: 1px solid #7777ee;
-        box-shadow: 0px 2px 8px 0px rgba(200, 200, 255, 0.9);
-    }
-</style>
+</div>

@@ -1,24 +1,23 @@
 <script lang="ts">
-    import { t } from "svelte-intl-precompile";
+    import { t } from "svelte-intl-precompile";
     import type { PageData } from "./$types";
-    import { page } from "$app/stores";
-    import { base } from "$app/paths";
+    import { page } from "$app/state";
+    import { resolve } from "$app/paths";
+    import { MoveLeft } from "@lucide/svelte";
+    import { goto } from "$app/navigation";
 
-    // this isn't used
-    import WordInput from "$components/WordInput.svelte";
-    import { only_on_enter } from "$lib/utils.js";
+    interface Props {
+        data: PageData;
+    }
 
-    export let data: PageData;
+    let lang = page.params.lang;
 
-    $: console.log("new data", data);
+    let { data }: Props = $props();
 
     // the search text
-    let value = "";
+    let value = $state(data.q || "");
 
-    $: usage = get_usage($page.params.lang, $t);
-    $: instruction = $t(`instruction.tool.generate`);
-
-    function get_usage(lang: string, $t) {
+    function get_usage(lang: string | undefined, $t: (_: string) => string) {
         const lang_specific = $t(`usage.lang.${lang}`);
         if (lang_specific !== `usage.lang.${lang}`) {
             return lang_specific;
@@ -28,35 +27,44 @@
         }
     }
 
-    function reset() {
-        value = "";
-    }
+    // async function on_submit() {
+    //     await goto(`?q=${value}`, { keepFocus: true });
+    // }
+
+    let usage = $derived(get_usage(page.params.lang, $t));
+    let instruction = $derived($t(`instruction.tool.generate`));
 </script>
 
-<main>
-    <span>
-        <h1>{$t("generate")}</h1>
-        <a href="{base}/{$page.params.lang}">[l6e] Tilbake til verktøy</a>
+<div>
+    <span class="flex flex-col gap-2 mb-4">
+        <a
+            class="btn btn-sm preset-outlined-primary-500 w-fit"
+            href={resolve(`/${lang}`)}
+        >
+            <MoveLeft />
+            [l6e] Back to tool selection
+        </a>
+        <h1 class="h4">{$t("generate")}</h1>
     </span>
 
-    <p>{@html usage}</p>
-    <p>{@html instruction}</p>
+    <p class="my-2">{usage}</p>
 
-    <form
-        data-sveltekit-replacestate
-        data-sveltekit-keepfocus
-    >
-        <div class="searchinput">
-            <input name="q" type="text" bind:value>
-            <span
-                class:active={value.length > 0}
-                class="cross"
-                on:click={reset}
-                on:keydown={only_on_enter(reset)}
-                tabindex="0"
-                role="button"
-            >&#x2718;</span>
-        </div>
+    <form>
+        <label class="label">
+            <span class="label-text text-sm">{instruction}</span>
+            <span class="flex flex-row gap-2 mt-2">
+                <input
+                    class="input w-80 h-12"
+                    type="text"
+                    placeholder="[l6e] Søk"
+                    name="q"
+                    bind:value
+                />
+                <button class="btn preset-filled-primary-500" type="submit">
+                    [l6e] Send
+                </button>
+            </span>
+        </label>
     </form>
 
     <div class="results">
@@ -67,64 +75,11 @@
         {#if data.results?.generated}
             <div>
                 {#each data.results.generated as result}
-                    {result}<br>
+                    {result}<br />
                 {:else}
                     No analyses
                 {/each}
             </div>
         {/if}
     </div>
-</main>
-
-<style>
-    main {
-        margin-left: 34px;
-    }
-
-    div.results {
-        margin-top: 1.5em;
-    }
-
-    div.searchinput {
-        box-sizing: border-box;
-        display: inline-flex;
-        align-items: center;
-        min-height: 3em;
-        border-radius: 8px;
-        border: 2px solid #9d9db0;
-        transition:
-            width ease-out 0.18s,
-            border-radius ease-out 0.18s,
-            border-color ease-out 0.18s;
-    }
-
-    div.searchinput:focus-within {
-        border-radius: 14px;
-        border: 2px solid #7777ee;
-        box-shadow: 0px 2px 8px 0px rgba(200, 200, 255, 0.9);
-    }
-
-    div.searchinput > input {
-        margin-left: 6px;
-        font-size: 16px;
-        font-family: Roboto, sans-serif;
-        border: 0;
-        outline: 0;
-        padding: 8px;
-    }
-    div.searchinput > input:focus {
-        border: 0;
-        outline: 0;
-    }
-    div.searchinput > span.cross {
-        color: #9d9db0;
-        /*color: gray;*/
-        cursor: pointer;
-        font-size: 1.5em;
-        margin-right: 0.4em;
-        transition: color ease-out 0.18s;
-    }
-    div.searchinput > div:focus-within > span.cross.active {
-        color: #f05555;
-    }
-</style>
+</div>

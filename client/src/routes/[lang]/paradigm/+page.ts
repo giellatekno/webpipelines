@@ -1,15 +1,25 @@
-import { env } from "$env/dynamic/public";
-import { error } from "@sveltejs/kit";
+import { env } from "$env/dynamic/public";
+import { error } from "@sveltejs/kit";
+import type { PageLoad } from "./$types";
 
-export async function load({ url, params, fetch }) {
+export const load: PageLoad = async ({ url, params, fetch }) => {
     console.log("routes/[lang]/paradigm/+page.js :: load()");
-    const { lang } = params;
-    const { searchParams: search_params } = url;
+    const lang = params.lang;
+    const search_params = url.searchParams;
     const word = search_params.get("word") || "";
     const size = search_params.get("size") || "standard";
     const pos = search_params.get("pos") || "any";
 
-    let load_response = { size, pos, word };
+    interface LoadResponse {
+        size: string;
+        pos: string;
+        word: string;
+        error?: string;
+        results?: {
+            text: string;
+        };
+    }
+    let load_response: LoadResponse = { size, pos, word };
 
     console.assert(typeof word === "string");
 
@@ -22,6 +32,7 @@ export async function load({ url, params, fetch }) {
 
     let response;
     try {
+        console.log("Fetching from API:", api_url);
         response = await fetch(api_url);
     } catch (e) {
         console.error(e);
@@ -30,9 +41,10 @@ export async function load({ url, params, fetch }) {
     }
 
     let text = await response.text();
-    text = text.replaceAll("\n", "<br>");
+    // text = text.replaceAll("\n", "<br>");
 
-    load_response.results = { text };
+    // console.log(text);
+    load_response.results = { text };
     return load_response;
-    //return { results: { text } };
-}
+    //return { results: { text } };
+};

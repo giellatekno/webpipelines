@@ -6,14 +6,24 @@
     import { only_on_enter } from "$lib/utils";
     const dispatch = createEventDispatcher();
 
-    // name attribute of <input>
-    export let name = "unnamed";
+    
 
-    export let value = "";
-    export let placeholder = "";
-    export let debounce: null | number = null;
+    interface Props {
+        // name attribute of <input>
+        name?: string;
+        value?: string;
+        placeholder?: string;
+        debounce?: null | number;
+    }
 
-    let input: HTMLInputElement;
+    let {
+        name = "unnamed",
+        value = $bindable(""),
+        placeholder = "",
+        debounce = null
+    }: Props = $props();
+
+    let input: HTMLInputElement = $state();
     let timer: undefined | number = undefined;
 
     export function focus() {
@@ -65,8 +75,8 @@
 <div>
     <input
         bind:this={input}
-        on:input={on_input}
-        on:keydown={only_on_enter(on_enter_keydown)}
+        oninput={on_input}
+        onkeydown={only_on_enter(on_enter_keydown)}
         {name}
         bind:value
         placeholder={placeholder}
@@ -74,8 +84,8 @@
     <span
         class:active={value.length > 0}
         class="cross"
-        on:click={reset}
-        on:keydown={only_on_enter(reset)}
+        onclick={reset}
+        onkeydown={only_on_enter(reset)}
         tabindex="0"
         role="button"
     >&#x2718;</span>
