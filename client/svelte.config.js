@@ -18,6 +18,7 @@ const config = {
         alias: {
             $components: "src/components",
             $assets: "src/assets",
+            $locales: "src/locales",
         },
         paths: {
             base,

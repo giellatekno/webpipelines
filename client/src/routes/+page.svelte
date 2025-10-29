@@ -7,8 +7,8 @@
         sami_langs,
         nonsamiuralic_langs,
         other_langs,
-    } from "$lib/langs.js";
-    import { langname } from "$lib/langnames.js";
+    } from "$lib/langs";
+    import { langname } from "$lib/langnames";
     import { CheckIcon, SearchIcon } from "@lucide/svelte";
 
     let show_sami = $state(false);
@@ -34,7 +34,7 @@
         if (search === "") {
             return rootset.sort();
         } else {
-            // TODO: Search in interface language? or any interface language?
+            // TODO: Brede: Search in interface language? or any interface language?
             return rootset
                 .map((iso) => [iso, langname(iso, "nob")])
                 .filter(([iso, name]) => {
@@ -62,7 +62,7 @@
 
 <div>
     <label class="label">
-        <span class="label-text">{$t("index.showtoolsfordotdotdot")}</span>
+        <span class="label-text">{$t("showtoolsfor")}</span>
         <div class="flex flex-row gap-2 items-center justify-start">
             <SearchIcon class="size-5" />
             <input
@@ -117,7 +117,9 @@
                 href={resolve(`/${lng}`)}>{langname(lng, $locale)}</a
             >
         {:else}
-            [l6e] Ingen treff på søkeordet...
+            <span>
+                {$t("noresults")}
+            </span>
         {/each}
     </div>
 </div>

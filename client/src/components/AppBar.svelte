@@ -3,24 +3,32 @@
     import { t } from "svelte-intl-precompile";
     import SelectLocale from "./SelectLocale.svelte";
     import { resolve } from "$app/paths";
-    import { page } from "$app/state";
-    import { MoveLeft } from "@lucide/svelte";
+    import giellatekno_logo from "$assets/giellatekno_logo_official.png";
 </script>
 
 <AppBar>
     <AppBar.Toolbar class="grid-cols-[auto_auto]">
         <AppBar.Headline>
-            <p class="text-4xl font-bold">{$t("languagetools")}</p>
+            <a
+                href={resolve("/")}
+                class="text-4xl font-bold flex flex-row gap-4"
+            >
+                <img src={giellatekno_logo} alt="Giellatekno logo" />
+
+                {$t("languagetools")}
+            </a>
         </AppBar.Headline>
 
         <AppBar.Trail class="flex flex-row gap-2">
-            <a class="btn hover:preset-tonal w-fit" href={resolve("/about")}
-                >[l6e] About</a
-            >
+            <a class="btn hover:preset-tonal w-fit" href={resolve("/about")}>
+                {$t("about")}
+            </a>
             <a
                 class="btn hover:preset-tonal w-fit"
-                href={resolve("/developers")}>[l6e] Developers</a
+                href={resolve("/developers")}
             >
+                {$t("developers")}
+            </a>
             <SelectLocale />
         </AppBar.Trail>
     </AppBar.Toolbar>

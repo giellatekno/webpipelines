@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { locale, locales_in_locale } from "$lib/locales.js";
+    import { locale, locales_in_locale } from "$lib/locales";
     import { Popover, Portal } from "@skeletonlabs/skeleton-svelte";
     import { LanguagesIcon } from "@lucide/svelte";
     import { t } from "svelte-intl-precompile";
