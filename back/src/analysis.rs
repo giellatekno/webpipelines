@@ -127,6 +127,12 @@ impl Analysis {
                 .as_str()
                 .get_unchecked(self.wordform_range.clone())
         }
+        //let std::ops::Range { start, end } = self.wordform_range;
+        //unsafe {
+        //    let ptr = self.line.as_ptr().add(start);
+        //    let slice = core::slice::from_raw_parts(ptr, end - start);
+        //    core::str::from_utf8_unchecked(slice)
+        //}
     }
 
     pub fn lemma(&self) -> &str {

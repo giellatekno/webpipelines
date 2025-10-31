@@ -27,14 +27,11 @@ pub fn read_docx_text(data: Vec<u8>) -> Option<String> {
 }
 
 /// decompress gzipped data
-pub fn gunzip(data: Vec<u8>) -> Option<Vec<u8>> {
+pub fn gunzip(data: Vec<u8>) -> std::io::Result<Vec<u8>> {
     let mut gz = flate2::bufread::GzDecoder::new(&data[..]);
     let mut buf = Vec::new();
-    match gz.read_to_end(&mut buf) {
-        Ok(_) => {}
-        Err(_) => return None,
-    }
-    Some(buf)
+    let _n = gz.read_to_end(&mut buf);
+    Ok(buf)
 }
 
 /// Used to check if a query param is present, and equal to some string

@@ -1,6 +1,6 @@
 use itertools::Itertools;
 use once_cell::sync::Lazy;
-use std::collections::{HashMap, HashSet};
+use std::{collections::{HashMap, HashSet}};
 
 use axum::{
     extract::{Path, Query},
@@ -16,7 +16,9 @@ use tracing::trace;
 use crate::analysis::{analyze_async, Analysis};
 use crate::langmodel_files::get_langfile;
 //use crate::pipelines::run_pipeline_single_lang;
+
 //use cached::proc_macro::cached;
+//use cached::TimedSizedCache;
 
 use crate::pipelines::generate::generate_async;
 
@@ -127,16 +129,12 @@ pub async fn paradigm_endpoint(
 
     let mut results = vec![];
     let mut errors = vec![];
-    // TODO this is just for debugging
-    results.push(String::from("DIRECT HITS"));
     for (lemma, pos) in direct {
         match all_paradigms(lemma, &lang, pos, size).await {
             Ok(result) => results.push(result),
             Err(e) => errors.push(e),
         };
     }
-    // TODO this is just for debugging
-    results.push(String::from("OTHER HITS"));
     for (lemma, pos) in other {
         match all_paradigms(lemma, &lang, pos, size).await {
             Ok(result) => results.push(result),
@@ -145,19 +143,28 @@ pub async fn paradigm_endpoint(
     }
 
     if results.len() > 0 {
-        (StatusCode::OK, results.join("\n")).into_response()
+        match format {
+            Format::Json => (StatusCode::OK, axum::Json(results)).into_response(),
+            Format::Text => (StatusCode::OK, results.iter().map(|inner| inner.iter().join("\n")).join("\n\n")).into_response()
+        }
     } else {
         (StatusCode::INTERNAL_SERVER_ERROR, errors.join("\n")).into_response()
     }
 }
 
-//#[cached(size = 15, time = 10, time_refresh = true)]
+
+// This takes it from 500ms -> 130ms. Analysis usually takes 130ms.
+//#[cached(
+//    ty = r"TimedSizedCache<(String, String, Pos, ParadigmSize), Result<String, String>>",
+//    create = "{ TimedSizedCache::with_size_and_lifespan_and_refresh(15, std::time::Duration::from_secs(10), true) }",
+//    convert = "{ (String::from(input_lemma), String::from(lang), pos, size) }",
+//)]
 async fn all_paradigms(
     input_lemma: &str,
     lang: &str,
     pos: Pos,
     size: ParadigmSize,
-) -> Result<String, String> {
+) -> Result<Vec<ParadigmResultLine>, String> {
     let paradigm_file = get_paradigmfile(lang, size, pos).await?;
     let pos = &pos.to_string();
 
@@ -172,11 +179,77 @@ async fn all_paradigms(
     trace!("generating took: {}ms", t0.elapsed().as_millis());
     let output_lines = output_lines
         .split('\n')
-        .filter(|line| line.len() > 0)
-        .filter(|line| !line.ends_with("inf"))
-        .map(|line| line.to_string())
-        .join("\n");
+        .flat_map(<ParadigmResultLine as std::str::FromStr>::from_str)
+        .filter(|paradigm| paradigm.weight.is_none_or(|w| w.is_finite()))
+        .collect();
     Ok(output_lines)
+}
+
+enum ParseParadigmResultLineError {
+    Empty,
+    MissingFirst,
+    MissingLemma,
+    MissingPos,
+    MissingTags,
+    MissingWordform,
+}
+
+#[derive(Serialize)]
+struct ParadigmResultLine {
+    lemma: String,
+    pos: Pos,
+    tags: Vec<String>,
+    wordform: String,
+    weight: Option<f64>,
+}
+
+impl std::str::FromStr for ParadigmResultLine {
+    type Err = ParseParadigmResultLineError;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        use ParseParadigmResultLineError::*;
+        if s.is_empty() {
+            return Err(Empty);
+        }
+        let mut splits = s.split('\t');
+        let Some(first) = splits.next() else {
+            return Err(MissingFirst);
+        };
+        let mut first_splits = first.split('+');
+        let Some(lemma) = first_splits.next() else {
+            return Err(MissingLemma);
+        };
+        let lemma = lemma.to_string();
+        let Some(pos) = first_splits.next() else {
+            return Err(MissingPos);
+        };
+        let pos = Pos::from(pos);
+        let tags = first_splits.map(|tag| tag.to_string()).collect_vec();
+        if tags.is_empty() {
+            return Err(MissingTags);
+        }
+        let Some(wordform) = splits.next() else {
+            return Err(MissingWordform);
+        };
+        let wordform = wordform.to_string();
+        let weight = splits.next().and_then(|w| w.parse::<f64>().ok());
+
+        Ok(Self { lemma, pos, tags, wordform, weight })
+    }
+}
+
+impl std::fmt::Display for ParadigmResultLine {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}+{}", self.lemma, self.pos)?;
+        for tag in self.tags.iter() {
+            write!(f, "+{tag}")?;
+        }
+        write!(f, "\t{}", self.lemma)?;
+        if let Some(weight) = self.weight {
+            write!(f, "\t{weight}")?;
+        }
+        Ok(())
+    }
 }
 
 fn is_derivation(tags: &str) -> bool {

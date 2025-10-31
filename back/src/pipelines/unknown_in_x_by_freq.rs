@@ -211,7 +211,7 @@ pub async fn unknown_in_x_by_freq_endpoint(Json(body): Json<InputBody>) -> Respo
                 return (UE, "could not base64 decode data").into_response();
             };
 
-            let Some(text_data) = gunzip(gz_data) else {
+            let Ok(text_data) = gunzip(gz_data) else {
                 return (UE, "failed to gunzip data").into_response();
             };
 

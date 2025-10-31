@@ -35,7 +35,7 @@ pub async fn lemma_count_endpoint(
             let Ok(data) = general_purpose::STANDARD.decode(data) else {
                 return (UE, "could not base64 decode data").into_response();
             };
-            let Some(data) = gunzip(data) else {
+            let Ok(data) = gunzip(data) else {
                 return (UE, "failed to gunzip data").into_response();
             };
             let Ok(text) = String::from_utf8(data) else {

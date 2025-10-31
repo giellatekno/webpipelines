@@ -201,13 +201,13 @@ def run_paradigm(
     lang=None,
     word=None,
     verbose=False,
+    format="json",
     pos="Any",
-    # TODO what are the others?
     size="standard",
     api=LOCAL_API
 ):
     word = urllib.parse.quote(word)
-    url = f"{api}/paradigm/{lang}/{word}?pos={pos}&size={size}"
+    url = f"{api}/paradigm/{lang}/{word}?pos={pos}&size={size}&format={format}"
     if result := do_query(url, verbose=verbose):
         print(result)
 
@@ -403,6 +403,35 @@ def parse_args():
         dest="api",
         const=LAB_API,
         help=f"query the azure lab subscription api ({LAB_API})",
+    )
+
+    format_group = parser.add_argument_group(
+        title="output format",
+        description=(
+            "Ask the API to return the results in this format. Notice that "
+            "this is only a request, the API may or may not support it"
+        ),
+    )
+    exclusive = format_group.add_mutually_exclusive_group()
+    exclusive.add_argument(
+        "--text",
+        action="store_const",
+        dest="format",
+        const="text",
+        help="shorthand for --format text",
+    )
+    exclusive.add_argument(
+        "--json",
+        action="store_const",
+        dest="format",
+        const="json",
+        help="shorthand for --format json",
+    )
+    exclusive.add_argument(
+        "--format",
+        default="text",
+        choices=["json", "text"],
+        help="the desired format. defaults to text",
     )
 
     subparsers = parser.add_subparsers(
