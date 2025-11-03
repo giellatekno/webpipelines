@@ -102,6 +102,20 @@ impl std::str::FromStr for Analysis {
     }
 }
 
+impl std::fmt::Display for Analysis {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.line)
+    }
+}
+
+impl serde::Serialize for Analysis {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: serde::Serializer {
+        serializer.serialize_str(&self.line)
+    }
+}
+
 impl Analysis {
     fn from_line(line: &str) -> Result<Self, ()> {
         // uses the std::str::FromStr implementation above

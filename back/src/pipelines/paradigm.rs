@@ -13,7 +13,7 @@ use tokio::{fs::File, io::AsyncReadExt};
 
 use tracing::trace;
 
-use crate::analysis::{analyze_async, Analysis};
+use crate::analysis::{self, analyses_raw_to_vec, analyze_async, Analysis};
 use crate::langmodel_files::get_langfile;
 //use crate::pipelines::run_pipeline_single_lang;
 
@@ -120,35 +120,41 @@ pub async fn paradigm_endpoint(
     };
 
     let analyses = crate::analysis::analyses_raw_to_vec(&analyses_raw);
-    let (mut direct, mut other) = find_poses_from_analyses(&analyses, string);
-
-    if pos != Pos::Any {
-        direct.retain(|(_lemma, found_pos)| *found_pos == pos);
-        other.retain(|(_lemma, found_pos)| *found_pos == pos);
-    }
 
     let mut results = vec![];
+    let mut other_forms = vec![];
     let mut errors = vec![];
-    for (lemma, pos) in direct {
-        match all_paradigms(lemma, &lang, pos, size).await {
-            Ok(result) => results.push(result),
-            Err(e) => errors.push(e),
-        };
-    }
-    for (lemma, pos) in other {
-        match all_paradigms(lemma, &lang, pos, size).await {
-            Ok(result) => results.push(result),
-            Err(e) => errors.push(e),
-        };
+
+    for analysis in analyses.iter() {
+        if analysis.lemma() == string {
+            match all_paradigms(analysis.lemma(), &lang, analysis.pos().into(), size).await {
+                Ok(result) => results.push(result),
+                Err(e) => errors.push(e),
+            };
+        } else {
+            other_forms.push((string.clone(), analysis));
+        }
     }
 
-    if results.len() > 0 {
-        match format {
-            Format::Json => (StatusCode::OK, axum::Json(results)).into_response(),
-            Format::Text => (StatusCode::OK, results.iter().map(|inner| inner.iter().join("\n")).join("\n\n")).into_response()
+    match format {
+        Format::Json => {
+            let obj = serde_json::json!({
+                "results": results,
+                "other_forms": other_forms,
+            });
+            (StatusCode::OK, axum::Json(obj)).into_response()
         }
-    } else {
-        (StatusCode::INTERNAL_SERVER_ERROR, errors.join("\n")).into_response()
+        Format::Text => {
+            let text = results
+                .iter()
+                .map(|result| result.iter().join("\n"))
+                .join("\n");
+            let other = other_forms
+                .iter()
+                .map(|form| format!("- {}", form.1.lemma()))
+                .join("\n");
+            (StatusCode::OK, format!("{text}\n\n{string} is also a form of:\n{other}")).into_response()
+        }
     }
 }
 
