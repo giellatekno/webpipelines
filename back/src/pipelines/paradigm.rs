@@ -244,7 +244,7 @@ impl std::fmt::Display for ParadigmResultLine {
         for tag in self.tags.iter() {
             write!(f, "+{tag}")?;
         }
-        write!(f, "\t{}", self.lemma)?;
+        write!(f, "\t{}", self.wordform)?;
         if let Some(weight) = self.weight {
             write!(f, "\t{weight}")?;
         }
