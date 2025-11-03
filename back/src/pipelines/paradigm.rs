@@ -125,7 +125,16 @@ pub async fn paradigm_endpoint(
     let mut other_forms = vec![];
     let mut errors = vec![];
 
+    let mut seen = HashSet::new();
+
     for analysis in analyses.iter() {
+        let lemma = analysis.lemma();
+        let pos = analysis.pos();
+        if seen.contains(&(lemma, pos)) {
+            continue;
+        }
+        seen.insert((lemma, pos));
+
         if analysis.lemma() == string {
             match all_paradigms(analysis.lemma(), &lang, analysis.pos().into(), size).await {
                 Ok(result) => results.push(result),
