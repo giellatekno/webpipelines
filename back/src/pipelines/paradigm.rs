@@ -30,7 +30,7 @@ pub struct LangAndStringParams {
 
 #[derive(Deserialize, Serialize, Debug, PartialEq, Eq, Hash, Clone, Copy)]
 enum ParadigmSize {
-    #[serde(rename = "minimal")]
+    #[serde(rename(deserialize="minimal", serialize="min"))]
     Minimal,
     #[serde(rename = "standard")]
     Standard,
