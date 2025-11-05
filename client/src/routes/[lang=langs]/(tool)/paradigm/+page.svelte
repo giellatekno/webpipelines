@@ -1,16 +1,19 @@
 <script lang="ts">
-    import { resolve } from "$app/paths";
     import { page } from "$app/state";
     import { goto } from "$app/navigation";
     import { t } from "svelte-intl-precompile";
     import type { PageData } from "./$types";
-    import { MoveLeft } from "@lucide/svelte";
     import { onMount, type Component } from "svelte";
+    import { get_usage } from "$lib/utils";
+    import ToolDescription from "$components/ToolDescription.svelte";
+    import { Switch } from "@skeletonlabs/skeleton-svelte";
+    import ParadigmText from "$components/ParadigmText.svelte";
+
     interface Props {
         data: PageData;
     }
 
-    let ParadigmComponent: Component | null = $state(null);
+    let ParadigmTables: Component | null = $state(null);
     onMount(async () => {
         const lang = page.params.lang;
 
@@ -19,7 +22,7 @@
                 `$components/tables/${lang}_paradigm.svelte`
             );
 
-            ParadigmComponent = module.default;
+            ParadigmTables = module.default;
         } catch (error) {
             console.error(
                 `Could not load paradigm component for language: ${lang}`,
@@ -31,7 +34,6 @@
     let { data }: Props = $props();
 
     let { word, size, pos } = $state(data);
-    let form_element: undefined | HTMLFormElement = $state();
 
     const poses = {
         any: "any",
@@ -48,29 +50,38 @@
     };
     const paradigm_sizes = ["minimal", "standard", "full"];
 
-    function get_usage(lang: string | undefined, $t: (key: string) => string) {
-        const lang_specific = $t(`usage.lang.${lang}`);
-        if (lang_specific !== `usage.lang.${lang}`) {
-            return lang_specific;
-        } else {
-            const fallback = $t("usage");
-            return fallback;
-        }
-    }
-    let usage = $derived(get_usage(page.params.lang, $t));
-
-    async function handle_submit() {
+    async function on_submit(ev: SubmitEvent) {
+        ev.preventDefault();
         // console.log("Submitting:", word, size, pos);
         await goto(`paradigm?word=${word}&size=${size}&pos=${pos}`, {
             keepFocus: true,
+            replaceState: true,
         });
     }
+
+    async function on_radio_change() {
+        if (word) {
+            await goto(`paradigm?word=${word}&size=${size}&pos=${pos}`, {
+                keepFocus: true,
+                replaceState: true,
+            });
+        }
+    }
+
+    let format_switch_checked = $state(false);
+
+    let usage = $derived(get_usage(page.params.lang, $t));
+    let description = $t("paradigm.description");
+    let instruction = $t("paradigm.instruction");
 </script>
 
-<div>
-    <p class="my-2">{usage}</p>
+<div class="flex flex-col gap-4">
+    <ToolDescription {description} {usage} />
 
-    <form onsubmit={handle_submit} class="flex flex-col gap-2 my-2">
+    <label for="form" class="label">
+        {instruction}
+    </label>
+    <form onsubmit={on_submit} id="form" class="flex flex-col gap-2 my-2">
         <label class="flex flex-row gap-2 items-center">
             <p class="font-bold">{$t("paradigmsize")}:</p>
             {#each paradigm_sizes as value}
@@ -81,7 +92,7 @@
                         name="size"
                         {value}
                         bind:group={size}
-                        onchange={handle_submit}
+                        onchange={on_radio_change}
                     />
                     <p>{$t("paradigmsize." + value)}</p>
                 </label>
@@ -97,7 +108,7 @@
                         name="pos"
                         {value}
                         bind:group={pos}
-                        onchange={handle_submit}
+                        onchange={on_radio_change}
                     />
                     <p>{$t("partofspeech." + label)}</p>
                 </label>
@@ -116,9 +127,27 @@
         </span>
     </form>
 
-    {#if data?.results && ParadigmComponent}
-        <ParadigmComponent text={data.results.text} />
+    {#if data?.results && ParadigmTables}
+        <Switch
+            checked={format_switch_checked}
+            onCheckedChange={() => {
+                format_switch_checked = !format_switch_checked;
+            }}
+        >
+            <Switch.Label class="text-base">Tables</Switch.Label>
+            <Switch.Control>
+                <Switch.Thumb />
+            </Switch.Control>
+            <Switch.Label class="text-base">Text</Switch.Label>
+            <Switch.HiddenInput />
+        </Switch>
+
+        {#if !format_switch_checked}
+            <ParadigmTables data={data.results} {size} />
+        {:else}
+            <ParadigmText data={data.results} />
+        {/if}
     {:else if data?.results}
-        {@html data.results.text.replaceAll("\n", "<br/>")}
+        <ParadigmText data={data.results} />
     {/if}
 </div>

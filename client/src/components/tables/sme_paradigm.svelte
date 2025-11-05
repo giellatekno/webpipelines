@@ -1,109 +1,131 @@
 <script lang="ts">
-    let { text } = $props();
+    import { paradigm_parser } from "$lib/parsers";
+    import { t } from "svelte-intl-precompile";
+    import {
+        CASES,
+        PERSONS,
+        NUMBERS,
+        NUMBER_PERSONS,
+        CASE_NUMBERS,
+    } from "./sme_paradigm_options";
+    import ParadigmText from "$components/ParadigmText.svelte";
 
-    function parse_paradigm(text: string) {
-        // TODO: Better parsing
-        const lines = text.trim().split("\n");
-        const results = {
-            pos: "",
-            conj_words: new Map(),
-        };
-
-        for (const line of lines) {
-            const trimmed_line = line.trim();
-
-            if (trimmed_line === "DIRECT HITS") {
-                continue;
-            }
-            if (trimmed_line === "OTHER HITS") {
-                break;
-            }
-
-            if (trimmed_line.length > 0) {
-                const parts = trimmed_line.split("\t");
-
-                if (parts.length >= 3) {
-                    const full_tag = parts[0];
-                    const conj_word = parts[1];
-
-                    const tag_parts = full_tag.split("+");
-                    const pos = tag_parts[1] || "";
-                    const tags = tag_parts.slice(2).join("+");
-
-                    if (results.pos === "") {
-                        results.pos = pos;
-                    }
-
-                    results.conj_words.set(tags, conj_word);
-                }
-            }
-        }
-        return results;
+    interface ParadigmElem {
+        lemma: string;
+        pos: string;
+        subclass: string;
+        wordforms: Map<string, Set<string>>;
     }
+    let { data, size } = $props();
 
-    const paradigm = $derived(parse_paradigm(text));
+    const paradigms = $derived(paradigm_parser(data));
+
+    function get_word(tags: string, elem: ParadigmElem) {
+        const wordforms = elem.wordforms.get(tags);
+        return wordforms ? Array.from(wordforms).join(", ") : "--";
+    }
 </script>
 
-{#if paradigm.pos === "N"}
-    <table class="table w-fit">
-        <thead>
-            <tr>
-                <td>Kasus</td>
-                <td>Entall</td>
-                <td>Flertall</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Nominativ</td>
-                <td>{paradigm.conj_words.get("Sg+Nom")}</td>
-                <td>{paradigm.conj_words.get("Pl+Nom")}</td>
-            </tr>
-            <tr>
-                <td>Genitiv</td>
-                <td>{paradigm.conj_words.get("Sg+Gen")}</td>
-                <td>{paradigm.conj_words.get("Pl+Gen")}</td>
-            </tr>
-            <tr>
-                <td>Akkussativ</td>
-                <td>{paradigm.conj_words.get("Sg+Acc")}</td>
-                <td>{paradigm.conj_words.get("Pl+Acc")}</td>
-            </tr>
-            <tr>
-                <td>Illativ</td>
-                <td>{paradigm.conj_words.get("Sg+Ill")}</td>
-                <td>{paradigm.conj_words.get("Pl+Ill")}</td>
-            </tr>
-            <tr>
-                <td>Lokativ</td>
-                <td>{paradigm.conj_words.get("Sg+Loc")}</td>
-                <td>{paradigm.conj_words.get("Pl+Loc")}</td>
-            </tr>
-            <tr>
-                <td>Komitativ</td>
-                <td>{paradigm.conj_words.get("Sg+Com")}</td>
-                <td>{paradigm.conj_words.get("Pl+Com")}</td>
-            </tr>
-            <tr>
-                <td>Essiv</td>
-                <td colspan="2" class="text-center">
-                    {paradigm.conj_words.get("Ess")}
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <table class="table">
-        <!-- TODO: Possesive suffixes -->
-    </table>
-{:else if paradigm.pos === "V"}
-    <table class="table">
-        <thead>
-            <tr>
-                <td></td>
-            </tr>
-        </thead>
-    </table>
-{:else}
-    {@html text.replaceAll("\n", "<br />")}
-{/if}
+{#each Object.entries(paradigms) as [key, elem]}
+    {#if elem.pos === "N"}
+        <table class="table w-fit text-lg">
+            <thead>
+                <tr>
+                    <td>{$t("case")}</td>
+                    <td>{$t("singular")}</td>
+                    <td>{$t("plural")}</td>
+                </tr>
+            </thead>
+            <tbody>
+                {#each Object.entries(CASES) as [tag, name]}
+                    {#if !(tag === "Ess")}
+                        <tr>
+                            <td>{$t(name)}</td>
+                            <td>{get_word(`Sg+${tag}`, elem)}</td>
+                            <td>{get_word(`Pl+${tag}`, elem)}</td>
+                        </tr>
+                    {:else}
+                        <tr>
+                            <td>{$t(name)}</td>
+                            <td colspan="2" class="text-center">
+                                {get_word(tag, elem)}
+                            </td>
+                        </tr>
+                    {/if}
+                {/each}
+            </tbody>
+        </table>
+        {#if size === "full"}
+            <table class="table w-fit text-lg">
+                <thead>
+                    <tr>
+                        <td>{$t("case")}</td>
+                        <td>{$t("person")}</td>
+                        <td>{$t("singularis")}</td>
+                        <td>{$t("dualis")}</td>
+                        <td>{$t("pluralis")}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {#each Object.keys(CASES) as case_tag}
+                        {#if !(case_tag === "Ess")}
+                            {#each Object.keys(CASE_NUMBERS) as case_num_tag}
+                                {#each Object.keys(PERSONS) as pers_tag}
+                                    {#if !(case_tag === "Nom" && (case_num_tag === "Pl" || pers_tag === "3"))}
+                                        <tr>
+                                            {#if pers_tag === "1"}
+                                                <td
+                                                    rowspan={case_tag === "Nom"
+                                                        ? 2
+                                                        : 3}
+                                                >
+                                                    {case_num_tag}. {case_tag}.
+                                                </td>
+                                            {/if}
+                                            <td>{pers_tag}.</td>
+                                            {#each Object.keys(NUMBERS) as num_tag}
+                                                <td>
+                                                    {get_word(
+                                                        `${case_num_tag}+${case_tag}+Px${num_tag}${pers_tag}`,
+                                                        elem,
+                                                    )}
+                                                </td>
+                                            {/each}
+                                        </tr>
+                                    {/if}
+                                {/each}
+                            {/each}
+                        {:else}
+                            {#each Object.keys(PERSONS) as pers_tag}
+                                <tr>
+                                    {#if pers_tag === "1"}
+                                        <td rowspan="3">{case_tag}.</td>
+                                    {/if}
+                                    <td>{pers_tag}.</td>
+                                    {#each Object.keys(NUMBERS) as num_tag}
+                                        <td>
+                                            {get_word(
+                                                `${case_tag}+Px${num_tag}${pers_tag}`,
+                                                elem,
+                                            )}
+                                        </td>
+                                    {/each}
+                                </tr>
+                            {/each}
+                        {/if}
+                    {/each}
+                </tbody>
+            </table>
+        {/if}
+        <!-- {:else if paradigm_elem.pos === "V"} -->
+        <!--     <table class="table"> -->
+        <!--         <thead> -->
+        <!--             <tr> -->
+        <!--                 <td></td> -->
+        <!--             </tr> -->
+        <!--         </thead> -->
+        <!--     </table> -->
+    {:else}
+        <ParadigmText {data} />
+    {/if}
+{/each}

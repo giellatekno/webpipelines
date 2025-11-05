@@ -7,7 +7,7 @@ export const load: PageLoad = async ({ params, url, fetch }) => {
     const query_params = url.searchParams;
     const q = query_params.get("q");
 
-    interface Output {
+    interface Result {
         q: string | null;
         results?: {
             parsed: [
@@ -23,10 +23,10 @@ export const load: PageLoad = async ({ params, url, fetch }) => {
         error?: string;
     }
 
-    const output: Output = { q };
+    const result: Result = { q };
 
     if (q === null || q === "") {
-        return output;
+        return result;
     }
     let converted_q = convert_searchtext(q, lang);
 
@@ -37,11 +37,11 @@ export const load: PageLoad = async ({ params, url, fetch }) => {
     } catch (e) {
         console.error(`tried backend url: ${backend_route}`);
         console.error(e);
-        output.error = "fetch() from api failed";
-        return output;
+        result.error = "fetch() from api failed";
+        return result;
     }
 
-    output.results = { ...(await response.json()) };
-    console.log(output.results);
-    return output;
+    result.results = { ...(await response.json()) };
+    console.log(result.results);
+    return result;
 };

@@ -2,11 +2,11 @@
     import { t } from "svelte-intl-precompile";
     import type { PageData } from "./$types";
     import { page } from "$app/state";
-    import { resolve } from "$app/paths";
-    import { goto } from "$app/navigation";
     import { Switch } from "@skeletonlabs/skeleton-svelte";
-    import { MoveLeft } from "@lucide/svelte";
     import { analyze_parser } from "$lib/parsers";
+    import ToolDescription from "$components/ToolDescription.svelte";
+    import TextArea from "$components/TextArea.svelte";
+    import { get_usage } from "$lib/utils";
 
     interface Props {
         data: PageData;
@@ -20,8 +20,6 @@
     let value = $state(data.q || "");
     let results = $derived(analyze_parser(data.results?.parsed, result_format));
 
-    $effect(() => console.log(results));
-
     let lang = $derived(page.params.lang || "");
 
     function onCheckedChange() {
@@ -29,53 +27,14 @@
         result_format = format_switch_checked ? "json" : "text";
     }
 
-    function get_usage(lang: string, $t: (_: string) => string) {
-        const lang_specific = $t(`usage.lang.${lang}`);
-        if (lang_specific !== `usage.lang.${lang}`) {
-            return lang_specific;
-        } else {
-            const fallback = $t("usage");
-            return fallback;
-        }
-    }
-
-    async function on_textarea_keydown(ev: KeyboardEvent) {
-        if (ev.key === "Enter" && ev.shiftKey) {
-            ev.preventDefault();
-            await goto(`?q=${value}`, { keepFocus: true });
-        }
-    }
-    async function on_submit() {
-        await goto(`?q=${value}`, { keepFocus: true });
-    }
-
     let usage = $derived(get_usage(lang, $t));
-    let instruction = $derived($t(`instruction.tool.analyze`));
+    let instruction = $derived($t(`analyze.instruction`));
+    let description = $derived($t(`analyze.description`));
 </script>
 
-<div>
-    <p class="my-2">{@html usage}</p>
-
-    <form onsubmit={on_submit}>
-        <label class="label">
-            <span class="label-text text-sm">{instruction}</span>
-            <textarea
-                class="textarea w-fit"
-                rows="6"
-                cols="50"
-                name="q"
-                bind:value
-                onkeydown={on_textarea_keydown}
-            ></textarea>
-            <div class="flex flex-row gap-2 items-center">
-                <button
-                    class="btn btn-lg preset-filled-primary-500"
-                    type="submit">{$t("submit")}</button
-                >
-                <span>{$t("submit.keys")}</span>
-            </div>
-        </label>
-    </form>
+<div class="flex flex-col gap-4">
+    <ToolDescription {description} {usage} />
+    <TextArea {instruction} bind:value />
 
     <div class="flex flex-col mt-6 gap-2">
         {#if data.error}

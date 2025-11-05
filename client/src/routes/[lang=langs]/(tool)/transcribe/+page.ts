@@ -1,5 +1,6 @@
 import { env } from "$env/dynamic/public";
-import type { PageLoad } from "../$types";
+import { convert_searchtext } from "$lib/utils";
+import type { PageLoad } from "./$types";
 
 export const load: PageLoad = async ({ url, params, fetch }) => {
     const lang = params.lang;
@@ -10,7 +11,9 @@ export const load: PageLoad = async ({ url, params, fetch }) => {
         return {};
     }
 
-    const backend_url = `${env.PUBLIC_API_ROOT}/transcribe/${lang}/${q}`;
+    let converted_q = convert_searchtext(q, lang);
+
+    const backend_url = `${env.PUBLIC_API_ROOT}/transcribe/${lang}/${converted_q}`;
     let response;
     try {
         response = await fetch(backend_url);
@@ -23,7 +26,9 @@ export const load: PageLoad = async ({ url, params, fetch }) => {
     if (response.status !== 200) {
         return { error: `non-200 from api: ${text}` };
     }
+    console.log(text);
 
+    // Move parsing to parse.ts?
     const analyses = text
         .split("\n")
         .filter((line) => line.length > 0)

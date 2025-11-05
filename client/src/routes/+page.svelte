@@ -34,7 +34,7 @@
         if (search === "") {
             return rootset.sort();
         } else {
-            // TODO: Brede: Search in interface language? or any interface language?
+            // TODO: Brede - Search in interface language? or any interface language?
             return rootset
                 .map((iso) => [iso, langname(iso, "nob")])
                 .filter(([iso, name]) => {

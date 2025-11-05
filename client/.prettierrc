@@ -1,8 +1,9 @@
 {
-  "plugins": ["prettier-plugin-svelte"],
-  "pluginSearchDirs": ["."],
-  "overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }],
-  "tabWidth": 4,
-  "useTabs": false,
-  "quoteProps": "consistent"
+    "plugins": ["prettier-plugin-svelte"],
+    "pluginSearchDirs": ["."],
+    "overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }],
+    "tabWidth": 4,
+    "useTabs": false,
+    "quoteProps": "consistent",
+    "htmlWhitespaceSensitivity": "ignore"
 }

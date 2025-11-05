@@ -1,0 +1,48 @@
+<script lang="ts">
+    import { paradigm_parser } from "$lib/parsers";
+    import { Tabs } from "@skeletonlabs/skeleton-svelte";
+
+    let { data } = $props();
+
+    let paradigm = $derived(paradigm_parser(data));
+    let keys = $derived(Object.keys(paradigm));
+    let value = $derived(keys[0]);
+</script>
+
+<div class="flex flex-col w-fit gap-4">
+    <Tabs {value} onValueChange={(details) => (value = details.value)}>
+        <Tabs.List>
+            {#each keys as key}
+                <Tabs.Trigger value={key}>{key}</Tabs.Trigger>
+            {/each}
+            <Tabs.Indicator />
+        </Tabs.List>
+        {#each keys as key}
+            <Tabs.Content value={key}>
+                <div
+                    class="card p-4 preset-filled-surface-100-900 border border-surface-200-800 w-full flex flex-col gap-2"
+                >
+                    <table class="text-lg border">
+                        <tbody>
+                            {#each paradigm[key].wordforms.entries() as [tags, wordforms]}
+                                {@const obj = paradigm[key]}
+                                <tr
+                                    class="even:bg-primary-50-950 odd:bg-surface-50-950 [&>td]:px-4 [&>td]:py-1"
+                                >
+                                    <td class="font-bold">
+                                        {obj.pos}
+                                        {obj.subclass ? obj.subclass + " " : ""}
+                                        {tags.replaceAll("+", " ")}
+                                    </td>
+                                    <td>
+                                        {Array.from(wordforms).join(", ")}
+                                    </td>
+                                </tr>
+                            {/each}
+                        </tbody>
+                    </table>
+                </div>
+            </Tabs.Content>
+        {/each}
+    </Tabs>
+</div>

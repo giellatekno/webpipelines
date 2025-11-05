@@ -1,4 +1,5 @@
 import { env } from "$env/dynamic/public";
+import { convert_searchtext } from "$lib/utils";
 import type { PageLoad } from "./$types";
 
 export const load: PageLoad = async ({ url, params, fetch }) => {
@@ -9,8 +10,9 @@ export const load: PageLoad = async ({ url, params, fetch }) => {
     if (q === null || q === "") {
         return {};
     }
+    let converted_q = convert_searchtext(q, lang);
 
-    const backend_url = `${env.PUBLIC_API_ROOT}/generate/${lang}/${q}`;
+    const backend_url = `${env.PUBLIC_API_ROOT}/generate/${lang}/${converted_q}`;
     let response;
     try {
         response = await fetch(backend_url);

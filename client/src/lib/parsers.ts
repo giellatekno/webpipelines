@@ -23,42 +23,136 @@ export function analyze_parser(
     }
 }
 
-function parse_paradigm(text: string) {
-    // TODO: Better parsing
-    const lines = text.trim().split("\n");
-    const results = {
-        pos: "",
-        conj_words: new Map(),
-    };
+export function hyphenate_parser(data: string) {
+    const results = new Map();
+    const lines = data.trim().split("\n");
 
     for (const line of lines) {
         const trimmed_line = line.trim();
 
-        if (trimmed_line === "DIRECT HITS") {
-            continue;
-        }
-        if (trimmed_line === "OTHER HITS") {
-            break;
-        }
-
         if (trimmed_line.length > 0) {
             const parts = trimmed_line.split("\t");
 
-            if (parts.length >= 3) {
-                const full_tag = parts[0];
-                const conj_word = parts[1];
+            const input_word = parts[0];
+            const hyphenated_word = parts[1];
+            const score = parseFloat(parts[2]);
 
-                const tag_parts = full_tag.split("+");
-                const pos = tag_parts[1] || "";
-                const tags = tag_parts.slice(2).join("+");
+            const variation = {
+                hyphenated_word: hyphenated_word,
+                score: score,
+            };
 
-                if (results.pos === "") {
-                    results.pos = pos;
+            if (!results.has(input_word)) {
+                results.set(input_word, {
+                    input_word: input_word,
+                    variations: [],
+                });
+            }
+
+            const entry = results.get(input_word);
+
+            entry.variations.push(variation);
+        }
+    }
+    return Array.from(results.values());
+}
+
+interface ParadigmItem {
+    lemma: string;
+    pos: string;
+    tags: string[];
+    wordform: string;
+    weight: number;
+}
+
+interface ParadigmResults {
+    results: ParadigmItem[][];
+    other_forms?: string[];
+}
+
+interface Wordform {
+    form: string;
+    tags: string[];
+    tagString: string;
+}
+
+interface ParsedParadigm {
+    lemma: string;
+    pos: string;
+    subclass: string;
+    wordforms: Wordform[];
+    includedTags: {
+        numbers: Set<string>;
+        cases: Set<string>;
+        possessives: Set<string>;
+        persons: Set<string>;
+        modes: Set<string>;
+        tenses: Set<string>;
+        infinites: Set<string>;
+    };
+}
+
+export function paradigm_parser(objs: ParadigmResults) {
+    const subclasses = [
+        "Prop",
+        "G3",
+        "NomAg",
+        "Pers",
+        "Rel",
+        "Interr",
+        "Dem",
+        "Indef",
+        "Refl",
+        "Recipr",
+    ];
+
+    interface Result {
+        [key: string]: {
+            lemma: string;
+            pos: string;
+            subclass: string;
+            wordforms: Map<string, Set<string>>;
+        };
+    }
+
+    const result: Result = {};
+
+    for (const entry of objs.results) {
+        for (const obj of entry) {
+            const lemma = obj.lemma;
+            const wordform = obj.wordform;
+            const pos = obj.pos;
+            let subclass = "";
+            let tags;
+            if (subclasses.includes(obj.tags[0])) {
+                subclass = obj.tags[0];
+                tags = obj.tags.slice(1).join("+");
+            } else {
+                tags = obj.tags.join("+");
+            }
+
+            const identifier = subclass
+                ? `${lemma}+${pos}+${subclass}`
+                : `${lemma}+${pos}`;
+            if (!result[identifier]) {
+                result[identifier] = {
+                    lemma: lemma,
+                    pos: pos,
+                    subclass: subclass,
+                    wordforms: new Map([[tags, new Set()]]),
+                };
+            }
+
+            if (result[identifier].wordforms.has(tags)) {
+                const cur_set = result[identifier].wordforms.get(tags);
+                // NOTE: What happens if there is an error? Can it even happen?
+                if (cur_set) {
+                    cur_set.add(wordform);
                 }
-
-                results.conj_words.set(tags, conj_word);
+            } else {
+                result[identifier].wordforms.set(tags, new Set([wordform]));
             }
         }
     }
-    return results;
+    return result;
 }

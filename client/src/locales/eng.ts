@@ -6,16 +6,22 @@ export default {
     "interfacelanguage": "Interface language",
 
     // Developers
+    "backtolangs": "Back to language selection",
     "fordevelopers": "For developers",
     "sourcecode": "Source code",
     "api.paragraph":
-        "The API for this site is open and freely available, and is found at {apilink}",
+        "The API for this site is open and freely available, and is found at: ",
     "developers.code.paragraph":
-        "The code for both the frontend and the API is open. Find it at {repolink}.",
+        "The code for both the frontend and the API is open. Find it at: ",
     "developers.code.paragraph2":
-        "Feel free to open Issues if you find any technical issues on the site, or on the API.",
+        "Feel free to open Github Issues if you find any technical issues on the site, or on the API.",
 
     // TODO: About page
+    "about.title": "About Giellatekno Webpipelines",
+
+    // Footer
+    "copyright": "Copyright © Centre for Sámi language technology",
+    "feedback": "Send feedback about the webpage to",
 
     // Select Language
     "showtoolsfor": "Show tools for...",
@@ -25,43 +31,60 @@ export default {
     "otherlanguages": "Other languages",
     "noresults": "No resuts for search term...",
 
-    // Programs page
+    // General tool page options
     "exploreanotherlang": "Explore another language",
+    "backtotools": "Back to tool selection",
+    "submit": "Submit",
+    "clear": "Clear",
+    "submit.keys": "Or press Shift+Enter to submit.",
+    "description.title": "Tool description",
+    "usage.title": "Language specific usage",
+    "instruction.title": "Tool instruction",
+
+    // Language specific usage
+    "usage.ciw": "The analyser uses the Double Vowel (Fiero) system.",
+    "usage.crk":
+        "You may use both circumflex <b>â</b> and macron <b>ā</b> in order to mark long vowel.",
+    "usage.mns":
+        "Write the word in ordinary Mansi orthography. You may also write the words without length marks.",
+    "usage.sjd":
+        "Write the word in Kildin Sámi orthography. Note that we use Cyrillic Characters also for the Latin-looking ones. The program uses the 1985 orthography.",
+    "usage.sje":
+        "The program accepts both Norwegian <b>æ</b> and <b>ø</b> and Swedish <b>ä</b> and <b>ö</b>.",
+    "usage.sma":
+        "The program accepts both <b>i</b> and the South Sámi character <b>ï</b> and both Norwegian <b>æ</b>, <b>ø</b> and Swedish <b>ä</b>, <b>ö</b>",
+    "usage.sme":
+        'Write The Sámi special letters as usual. If you don\'t have a Sámi keyboard, you may write "<b>á</b>, <b>č</b>, <b>đ</b>, <b>ŋ</b>, <b>š</b>, <b>ŧ</b>, <b>ž</b>" as "<b>a1</b>, <b>c1</b>, <b>d1</b>, <b>n1</b>, <b>s1</b>, <b>t1</b>, <b>z1</b>".',
+    "usage.smj":
+        "You may use the ordinary Lule Sámi characters, the (official) <b>ŋ</b>, or older <b>ń</b>, <b>ñ</b>. The program accepts both Norwegian <b>æ</b>, <b>ø</b> and Swedish <b>ä</b>, <b>ö</b>.",
+    "usage.smn": "Write the word in ordinary Inari Sámi orthography.",
+    "usage.sms": "Write the word in ordinary Skolt Sámi orthography.",
+
+    // Analyze
     "analyze": "Analyze",
     "analyze.description": "Analyze one or more words in isolation.",
+
+    // Dependency
     "dependency": "Dependency structure",
     "dependency.description": "Show dependancies between words in sentences.",
+
+    // Disambiguate
     "disambiguate": "Disambiguate",
     "disambiguate.description": " ", // TODO: description
+
+    // Generate
     "generate": "Word generation",
     "generate.description":
         "Generate words from from grammatical specifications.",
+
+    // Hyphenate
     "hyphenate": "Hyphenate",
     "hyphenate.description": " ", // TODO: description
+
+    // Paradigm
     "paradigm": "Paradigm generation",
     "paradigm.description":
         "Generate paradigms of different sizes for any word.",
-    "num": "Numerals",
-    "num.description": "Generate for numbers, times or dates.",
-    "transcribe": "Transcribe",
-    "transcribe.description": "Transcribe words to IPA.",
-
-    // General tool page options
-    "backtotools": "Back to tool selection",
-    "submit": "Submit",
-    "submit.keys": "Or press Shift+Enter to submit.",
-
-    // Analyze page
-
-    // Dependency page
-
-    // Disambiguate page
-
-    // Wordgeneration page
-
-    // Hyphenate page
-
-    // Paradigm page
     "paradigmsize": "Paradigm size",
     "paradigmsize.minimal": "Minimal",
     "paradigmsize.standard": "Standard",
@@ -75,58 +98,85 @@ export default {
     "partofspeech.adverb": "Adverb",
     "partofspeech.numeral": "Numeral",
 
-    // Numerals page
+    // Paradigm names
+    "case": "Case",
+    "person": "Person",
+    "number": "Number",
 
-    // Transcribe page
+    "nominative": "Nominative",
+    "genitive": "Genitive",
+    "accusative": "Accusative",
+    "illative": "Illative",
+    "locative": "Locative",
+    "comitative": "Comitative",
+    "essive": "Essive",
 
+    "possessivesuffixes": "Possessive suffixes",
+    "singular": "Singular",
+    "plural": "Plural",
+
+    "singularis": "Singularis",
+    "dualis": "Dualis",
+    "pluralis": "Pluralis",
+
+    // Numerals
+    "num": "Numerals",
+    "num.description": "Generate words from numbers, times or dates.",
+
+    // Transcribe
+    "transcribe": "Transcribe",
+    "transcribe.description": "Transcribe words to IPA.",
+    "transcribe.instruction":
+        "Write the words you want to transcribe below and submit.",
+
+    // Old stuff to clean up
     "search": "Search",
     "langmodellastupdated": "The language model was last updated",
     "place": "Giellatekno, UiT The Arctic University of Norway",
-    "copyright": "Copyright © Centre for Saami language technology",
     "copyright.lang.bxr":
-        "Copyright © Centre for Saami language technology and Jargal Badagarov",
+        "Copyright © Centre for Sámi language technology and Jargal Badagarov",
     "copyright.lang.crk":
-        "Copyright © Centre for Saami language technology and AltLab at U Alberta",
+        "Copyright © Centre for Sámi language technology and AltLab at U Alberta",
     "copyright.lang.fin":
-        "Copyright © Centre for Saami language technology and Tommi Pirinen",
-    "copyright.lang.fit": "Copyright © Centre for Saami language technology",
+        "Copyright © Centre for Sámi language technology and Tommi Pirinen",
+    "copyright.lang.fit": "Copyright © Centre for Sámi language technology",
     "copyright.lang.fkv":
-        "Copyright © Centre for Saami language technology and Kvensk institutt",
+        "Copyright © Centre for Sámi language technology and Kvensk institutt",
     "copyright.lang.hdn":
-        "Copyright © Centre for Saami language technology and CILLDI",
+        "Copyright © Centre for Sámi language technology and CILLDI",
     "copyright.lang.ipk":
-        "Copyright © Centre for Saami language technology and Oqaasileriffik",
+        "Copyright © Centre for Sámi language technology and Oqaasileriffik",
     "copyright.lang.kal":
-        "Copyright © Centre for Saami language technology and Oqaasileriffik",
+        "Copyright © Centre for Sámi language technology and Oqaasileriffik",
     "copyright.lang.kpv":
-        "Copyright © Centre for Saami language technology and Jack Rueter",
+        "Copyright © Centre for Sámi language technology and Jack Rueter",
     "copyright.lang.myv":
-        "Copyright © Centre for Saami language technology and Jack Rueter",
+        "Copyright © Centre for Sámi language technology and Jack Rueter",
     "copyright.lang.mhr":
-        "Copyright © Centre for Saami language technology and Jorma Luutonen and Arto Moisio",
-    "copyright.lang.mns": "Copyright © Centre for Saami language technology",
+        "Copyright © Centre for Sámi language technology and Jorma Luutonen and Arto Moisio",
+    "copyright.lang.mns": "Copyright © Centre for Sámi language technology",
     "copyright.lang.izh":
-        "Copyright © Centre for Saami language technology and Jack Rueter",
+        "Copyright © Centre for Sámi language technology and Jack Rueter",
     "copyright.lang.kca":
-        "Copyright © Centre for Saami language technology and Jack Rueter",
+        "Copyright © Centre for Sámi language technology and Jack Rueter",
     "copyright.lang.liv":
-        "Copyright © Centre for Saami language technology and Jack Rueter",
+        "Copyright © Centre for Sámi language technology and Jack Rueter",
     "copyright.lang.mdf":
-        "Copyright © Centre for Saami language technology and Jack Rueter",
+        "Copyright © Centre for Sámi language technology and Jack Rueter",
     "copyright.lang.mrj":
-        "Copyright © Centre for Saami language technology and Jack Rueter",
+        "Copyright © Centre for Sámi language technology and Jack Rueter",
     "copyright.lang.nio":
-        "Copyright © Centre for Saami language technology and Jack Rueter",
+        "Copyright © Centre for Sámi language technology and Jack Rueter",
     "copyright.lang.olo":
-        "Copyright © Centre for Saami language technology and Jack Rueter",
+        "Copyright © Centre for Sámi language technology and Jack Rueter",
     "copyright.lang.vep":
-        "Copyright © Centre for Saami language technology and Jack Rueter",
+        "Copyright © Centre for Sámi language technology and Jack Rueter",
     "copyright.lang.vro":
-        "Copyright © Centre for Saami language technology and Jack Rueter",
+        "Copyright © Centre for Sámi language technology and Jack Rueter",
     "copyright.lang.vot":
-        "Copyright © Centre for Saami language technology and Jack Rueter",
+        "Copyright © Centre for Sámi language technology and Jack Rueter",
     "copyright.lang.yrk":
-        "Copyright © Centre for Saami language technology and Jack Rueter",
+        "Copyright © Centre for Sámi language technology and Jack Rueter",
 
     "introduction.tool.analyze.lang.kal":
         'Write or paste the words in the window, and press the "Send form" button. The options "Analyze" gives all possible analyses, whereas the (default) option "Disambiguate" gives only the analyses appropriate for the given sentence. The program may also hyphenate the text for you, or add syllable boundaries, in which case it will not give a grammatical analysis. Choose "Hyphenate".',
@@ -151,7 +201,7 @@ export default {
     "introduction.tool.generate":
         'Write the word and grammatical specification in the window, and press the "Generate" or "Reset" button.',
     "introduction.tool.placenames":
-        'Write the place name in Saami, Norwegian, Swedish or Finnish. If the answer contains a name in parentheses, then this name is the name of the municipality in question.  Our sources are Statens Kartverk (SK), Saami Parliament in Sweden (SvSt), Pekka Sammallahti "Saami-suoma sátnegirji" (PS) and Saami Atlas by H.R. Mathisen (SA).',
+        'Write the place name in Sámi, Norwegian, Swedish or Finnish. If the answer contains a name in parentheses, then this name is the name of the municipality in question.  Our sources are Statens Kartverk (SK), Sámi Parliament in Sweden (SvSt), Pekka Sammallahti "Sámi-suoma sátnegirji" (PS) and Sámi Atlas by H.R. Mathisen (SA).',
     "introduction.tool.paradigm.lang.bxr":
         "Write a Buriat word and choose part of speech, and the program will generate the whole paradigm. The program only works for a couple of nouns.",
     "introduction.tool.paradigm.lang.ciw":
@@ -181,41 +231,23 @@ export default {
     "introduction.tool.paradigm.lang.rus":
         "The Russian paradigm generator does not work yet.",
     "introduction.tool.paradigm.lang.sjd":
-        "Write a Kildin Saami word and choose part of speech, and the program will generate the whole paradigm. The program contains the words listed in the grammar appendix of Kuruch's dictionary.",
+        "Write a Kildin Sámi word and choose part of speech, and the program will generate the whole paradigm. The program contains the words listed in the grammar appendix of Kuruch's dictionary.",
     "introduction.tool.paradigm.lang.sje":
-        'Write a Pite Saami word and choose the part of speech, and the program will generate the whole paradigm. Currently, the program contains most of the nouns and verbs found in the lexical database for Pite Saami (<a "href"="https://saami.uni-freiburg.de/psdp/pite-lex/">saami.uni-freiburg.de/psdp/pite-lex), which is regularly corrected, expanded and improved. This database is based on the</a><strong>Pitesamisk ordbok samt stavningsregler (</strong><a "href"="https://saami.uni-freiburg.de/samica/">Samica 2, 2016, edited by J. Wilbur), but also includes a few other words added by Ann-Charlotte Sjaggo. It is still under development.</a>',
+        'Write a Pite Sámi word and choose the part of speech, and the program will generate the whole paradigm. Currently, the program contains most of the nouns and verbs found in the lexical database for Pite Sámi (<a "href"="https://saami.uni-freiburg.de/psdp/pite-lex/">saami.uni-freiburg.de/psdp/pite-lex), which is regularly corrected, expanded and improved. This database is based on the</a><strong>Pitesamisk ordbok samt stavningsregler (</strong><a "href"="https://saami.uni-freiburg.de/samica/">Samica 2, 2016, edited by J. Wilbur), but also includes a few other words added by Ann-Charlotte Sjaggo. It is still under development.</a>',
     "introduction.tool.paradigm.lang.sma":
-        "Write a South Saami word and choose part of speech, and the program will generate the whole paradigm.",
+        "Write a South Sámi word and choose part of speech, and the program will generate the whole paradigm.",
     "introduction.tool.paradigm.lang.sme":
-        "Write a North Saami word and choose part of speech, and the program will generate the whole paradigm.",
+        "Write a North Sámi word and choose part of speech, and the program will generate the whole paradigm.",
     "introduction.tool.paradigm.lang.smj":
-        "Write a Lule Saami word and choose part of speech, and the program will generate the whole paradigm.",
+        "Write a Lule Sámi word and choose part of speech, and the program will generate the whole paradigm.",
     "introduction.tool.paradigm.lang.smn":
-        "Write a Inari Saami word and choose part of speech, and the program will generate the whole paradigm. The program only contains the words in the appendix of Morottaja and Sammallahti, and it is still under development.",
+        "Write a Inari Sámi word and choose part of speech, and the program will generate the whole paradigm. The program only contains the words in the appendix of Morottaja and Sammallahti, and it is still under development.",
     "introduction.tool.paradigm.lang.sms":
-        "Write a Skolt Saami word and choose part of speech, and the program will generate the whole paradigm. The program contains several thousand words from Itkonen, Moshnikoff, Sammallahti and modern social media. If you notice mistakes, please contact us at Giellatekno.",
+        "Write a Skolt Sámi word and choose part of speech, and the program will generate the whole paradigm. The program contains several thousand words from Itkonen, Moshnikoff, Sammallahti and modern social media. If you notice mistakes, please contact us at Giellatekno.",
     "introduction.tool.paradigm.lang.udm":
         "Write a Udmurt word and choose part of speech, and the program will generate the whole paradigm. The program contains thousands of words from the dictionaries by Saarinen et al, for instance.",
     "introduction.tool.paradigm":
         "Skriv basisforma av ordet og vel ordklasse, og programmet vil generere heile paradigmet for ordet.",
-    "usage.lang.ciw": "The analyser uses the Double Vowel (Fiero) system.",
-    "usage.lang.crk":
-        "You may use both circumflex (â) and macron (ā) in order to mark long vowel.",
-    "usage.lang.mns":
-        "Write the word in ordinary Mansi orthography. You may also write the words without length marks.",
-    "usage.lang.sjd":
-        "Write the word in Kildin Saami orthography. Note that we use Cyrillic Characters also for the Latin-looking ones. The program uses the 1985 orthography.",
-    "usage.lang.sje":
-        "The program accepts both Norwegian <code>æ and</code><code>ø and Swedish</code><code>ä and</code><code>ö.</code>",
-    "usage.lang.sma":
-        "The program accepts both <code>i and the South Saami character</code><code>ï and both Norwegian</code><code>æ, ø and Swedish</code><code>ä, ö</code>",
-    "usage.lang.sme":
-        'Write The Saami special letters as usual. If you don\'t have a Saami keyboard, you may write "á, č, đ, ŋ, š, ŧ, ž" as <code>a1, c1, d1, n1, s1, t1, z1.</code>',
-    "usage.lang.smj":
-        "You may use the ordinary Lule Saami characters, the (official) ŋ, or older ń, ñ, and the program understands both äö and æø.",
-    "usage.lang.smn": "Write the word in ordinary Inari Saami orthography.",
-    "usage.lang.sms": "Write the word in ordinary Skolt Saami orthography.",
-    "usage": "",
     "example.tool.generate.lang.cor":
         "In order to get a Cornish wordform, write baseform+tags.",
     "example.tool.generate.lang.crk":
@@ -263,13 +295,13 @@ export default {
     "endtext":
         "The program is under construction. If you notice errors of any kind, please report them to giellatekno@uit.no.",
     "end.lang.sma":
-        "The program is under construction. If you notice errors of any kind, please report them to The Centre for Saami language technology.",
+        "The program is under construction. If you notice errors of any kind, please report them to The Centre for Sámi language technology.",
     "end.lang.smj":
-        "The Lule Saami analysis program contains close to 20000 base forms (from Spiiks grammar, Nystø/Johnsens textbook <em>Sámásta, and above all from Kintels and also Korhonens dictionaries), but much work still remains to be done. If you find errors or omissions, please report back to us in the Saami language technology team.</em>",
+        "The Lule Sámi analysis program contains close to 20000 base forms (from Spiiks grammar, Nystø/Johnsens textbook <em>Sámásta, and above all from Kintels and also Korhonens dictionaries), but much work still remains to be done. If you find errors or omissions, please report back to us in the Sámi language technology team.</em>",
     "end.lang.smn":
-        "The program is in a test phase and it, contains only some words from the grammar section of the Sammallahti - Morottaja dictionary. If you notice errors of any kind, please report them to The Centre for Saami language technology.",
+        "The program is in a test phase and it, contains only some words from the grammar section of the Sammallahti - Morottaja dictionary. If you notice errors of any kind, please report them to The Centre for Sámi language technology.",
     "end.lang.sms":
-        "The program contains several thousand words from Itkonen,  Moshnikoff, Sammallahti and modern social media.  If you notice errors of any kind, please report them to The Centre for Saami language technology.",
+        "The program contains several thousand words from Itkonen,  Moshnikoff, Sammallahti and modern social media.  If you notice errors of any kind, please report them to The Centre for Sámi language technology.",
     "end.tool.analyze":
         'The program is not finished. If you notice errouneous forms or analyses, please contact <a "mailto"="giellatekno@uit.no">Giellatekno.</a>',
     "link.type.grammartags": "Morphological tags",
@@ -321,15 +353,15 @@ export default {
     "introduction.lang.udm":
         "The Udmurt analyser gives a morphological and syntactical analysis of most words in running text.",
     "introduction.lang.sjd":
-        "The Kildin Saami analyser only contains a handful of words yet. The     number generator works, though.",
+        "The Kildin Sámi analyser only contains a handful of words yet. The     number generator works, though.",
     "introduction.lang.sje":
-        'The Pite Saami analyser and generator currently work for most of the nouns and verbs found in the lexical database for Pite Saami (<a "href"="https://saami.uni-freiburg.de/psdp/pite-lex/">saami.uni-freiburg.de/psdp/pite-lex), which is regularly corrected, expanded and improved. This database is based on the</a><strong>Pitesamisk ordbok samt stavningsregler (</strong><a "href"="https://saami.uni-freiburg.de/samica/">Samica 2, 2016, edited by J. Wilbur), but also includes a few other words added by Ann-Charlotte Sjaggo. The orthography used is based on the orthography presented at</a><a "href"="https://saami.uni-freiburg.de/psdp/stavningsregler/">saami.uni-freiburg.de/psdp/stavningsregler/. This is still a preliminary, test version, and is under on-going development.</a>',
+        'The Pite Sámi analyser and generator currently work for most of the nouns and verbs found in the lexical database for Pite Sámi (<a "href"="https://saami.uni-freiburg.de/psdp/pite-lex/">saami.uni-freiburg.de/psdp/pite-lex), which is regularly corrected, expanded and improved. This database is based on the</a><strong>Pitesamisk ordbok samt stavningsregler (</strong><a "href"="https://saami.uni-freiburg.de/samica/">Samica 2, 2016, edited by J. Wilbur), but also includes a few other words added by Ann-Charlotte Sjaggo. The orthography used is based on the orthography presented at</a><a "href"="https://saami.uni-freiburg.de/psdp/stavningsregler/">saami.uni-freiburg.de/psdp/stavningsregler/. This is still a preliminary, test version, and is under on-going development.</a>',
     "introduction.lang.smj":
-        "For Lule Saami, our morphological tools are quite robust. Analysing     words in context (disambiguation and syntax), however, is still in     the beginning.",
+        "For Lule Sámi, our morphological tools are quite robust. Analysing     words in context (disambiguation and syntax), however, is still in     the beginning.",
     "introduction.lang.smn":
-        "The Inari Saami analyser gives the morphological analysis of     over 92 % of the words in running text,     and gives a rough syntactic analysis of sentences.",
+        "The Inari Sámi analyser gives the morphological analysis of     over 92 % of the words in running text,     and gives a rough syntactic analysis of sentences.",
     "introduction.lang.sms":
-        "The Skolt Saami analyser gives the morphological analysis of     over 70 % of the words in running text, but work has not yet     started on syntactic analysis of sentences.",
+        "The Skolt Sámi analyser gives the morphological analysis of     over 70 % of the words in running text, but work has not yet     started on syntactic analysis of sentences.",
     "analysis": "Text analysis",
     "analysis_text.lang.izh": "Analyse a handful of words only.",
     "analysis_text.lang.kca": "Analyse a handful of words only.",
@@ -435,9 +467,9 @@ export default {
     "other.lang.rmf":
         "The work on the Finnish Romani tools has just started. The analysers are put here for testing purposes.",
     "other.lang.sjd":
-        "The work on the Kildin Saami tools has just started. The analysers are put here for testing purposes.",
+        "The work on the Kildin Sámi tools has just started. The analysers are put here for testing purposes.",
     "other.lang.sje":
-        'The Pite Saami tools are available here for testing purposes, and without any guarantee for accuracy. These are currently under development by Joshua Wilbur (with significant technical support from Giellatekno) as part of a <a "hrefs"="http://saami.uni-freiburg.de/psdp/syntax/">project on Pite Saami syntactic structures at the</a><a "href"="">Freiburg Research Group in Saami Studies. Thanks to Ann-Charlotte Sjaggo and Trond Trosterud for setting up the initial framework.</a>',
+        'The Pite Sámi tools are available here for testing purposes, and without any guarantee for accuracy. These are currently under development by Joshua Wilbur (with significant technical support from Giellatekno) as part of a <a "hrefs"="http://saami.uni-freiburg.de/psdp/syntax/">project on Pite Sámi syntactic structures at the</a><a "href"="">Freiburg Research Group in Sámi Studies. Thanks to Ann-Charlotte Sjaggo and Trond Trosterud for setting up the initial framework.</a>',
     "other.lang.vep":
         "The Veps tools represent work by Jack Rueter, in cooperation with Giellatekno. The work is financed by the Kone Foundation and the University of Tromsø",
     "other.lang.yrk":

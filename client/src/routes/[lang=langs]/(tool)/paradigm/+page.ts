@@ -1,5 +1,5 @@
 import { env } from "$env/dynamic/public";
-import { error } from "@sveltejs/kit";
+import { convert_searchtext } from "$lib/utils";
 import type { PageLoad } from "./$types";
 
 export const load: PageLoad = async ({ url, params, fetch }) => {
@@ -15,9 +15,7 @@ export const load: PageLoad = async ({ url, params, fetch }) => {
         pos: string;
         word: string;
         error?: string;
-        results?: {
-            text: string;
-        };
+        results?: Object[];
     }
     let load_response: LoadResponse = { size, pos, word };
 
@@ -27,8 +25,10 @@ export const load: PageLoad = async ({ url, params, fetch }) => {
         return load_response;
     }
 
-    const api_path = `paradigm/${lang}/${word}`;
-    const api_url = `${env.PUBLIC_API_ROOT}/${api_path}?size=${size}&pos=${pos}`;
+    let converted_word = convert_searchtext(word, lang);
+
+    const api_path = `paradigm/${lang}/${converted_word}`;
+    const api_url = `${env.PUBLIC_API_ROOT}/${api_path}?size=${size}&pos=${pos}&format=json`;
 
     let response;
     try {
@@ -40,11 +40,8 @@ export const load: PageLoad = async ({ url, params, fetch }) => {
         return load_response;
     }
 
-    let text = await response.text();
-    // text = text.replaceAll("\n", "<br>");
+    load_response.results = { ...(await response.json()) };
 
-    // console.log(text);
-    load_response.results = { text };
+    console.log(load_response.results);
     return load_response;
-    //return { results: { text } };
 };

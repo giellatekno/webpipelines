@@ -2,9 +2,9 @@
     import { t } from "svelte-intl-precompile";
     import type { PageData } from "./$types";
     import { page } from "$app/state";
-    import { resolve } from "$app/paths";
-    import { goto } from "$app/navigation";
-    import { MoveLeft } from "@lucide/svelte";
+    import { get_usage } from "$lib/utils";
+    import ToolDescription from "$components/ToolDescription.svelte";
+    import TextArea from "$components/TextArea.svelte";
 
     interface Props {
         data: PageData;
@@ -14,53 +14,14 @@
 
     let value = $state(data.q || "");
 
-    function get_usage(lang: string | undefined, $t: (_: string) => string) {
-        const lang_specific = $t(`usage.lang.${lang}`);
-        if (lang_specific !== `usage.lang.${lang}`) {
-            return lang_specific;
-        } else {
-            const fallback = $t("usage");
-            return fallback;
-        }
-    }
-
-    async function on_submit() {
-        await goto(`?q=${value}`, { keepFocus: true });
-    }
-
-    async function on_textarea_keydown(ev: KeyboardEvent) {
-        if (ev.key === "Enter" && ev.shiftKey) {
-            ev.preventDefault();
-            await goto(`?q=${value}`, { keepFocus: true });
-        }
-    }
     let usage = $derived(get_usage(page.params.lang, $t));
-    let instruction = $derived($t(`instruction.tool.disambiguate`));
+    let instruction = $derived($t("disambiguate.instruction"));
+    let description = $derived($t("disambiguate.description"));
 </script>
 
-<div>
-    <p class="my-2">{usage}</p>
-
-    <form onsubmit={on_submit}>
-        <label class="label">
-            <span class="label-text text-sm">{instruction}</span>
-            <textarea
-                class="textarea w-fit"
-                rows="6"
-                cols="50"
-                name="q"
-                bind:value
-                onkeydown={on_textarea_keydown}
-            ></textarea>
-            <div class="flex flex-row gap-2 items-center">
-                <button
-                    class="btn btn-lg preset-filled-primary-500"
-                    type="submit">{$t("[l6e] submit")}</button
-                >
-                <span>[l6e] Or press Shift+Enter to submit.</span>
-            </div>
-        </label>
-    </form>
+<div class="flex flex-col gap-4">
+    <ToolDescription {description} {usage} />
+    <TextArea {instruction} bind:value />
 
     <div class="results">
         {#if data.error}

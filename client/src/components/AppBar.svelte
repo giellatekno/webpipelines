@@ -11,9 +11,13 @@
         <AppBar.Headline>
             <a
                 href={resolve("/")}
-                class="text-4xl font-bold flex flex-row gap-4"
+                class="text-4xl font-bold flex flex-row gap-4 items-center"
             >
-                <img src={giellatekno_logo} alt="Giellatekno logo" />
+                <img
+                    class="scale-100 h-10"
+                    src={giellatekno_logo}
+                    alt="Giellatekno logo"
+                />
 
                 {$t("languagetools")}
             </a>

@@ -6,6 +6,8 @@
     import { langname } from "$lib/langnames";
 
     let { children } = $props();
+
+    let lang = $derived(page.params.lang || "");
 </script>
 
 <div class="flex flex-col gap-4">
@@ -17,7 +19,7 @@
         <span> {$t("exploreanotherlang")}</span>
     </a>
     <!-- TODO: More descriptive title. eg "North Sami tools" -->
-    <h3 class="h3">{langname(page.params.lang, $locale)}</h3>
+    <h3 class="h3">{langname(lang, $locale)}</h3>
 </div>
 
 <hr class="hr my-4" />
