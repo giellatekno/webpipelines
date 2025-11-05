@@ -87,6 +87,12 @@ impl std::str::FromStr for Analysis {
                 i += pos_range.len() + 1;
                 pos_range
             }
+            // sme "fertet" has "v1" in front of the pos!
+            "v1" | "v2" => {
+                let pos_range = eat_until(&line, i, '+')?;
+                i += pos_range.len() + 1;
+                pos_range
+            }
             _ => pos_or_hom_range,
         };
 
