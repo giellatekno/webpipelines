@@ -116,6 +116,14 @@ def do_query(
         response = urlopen(request)
     except http.client.RemoteDisconnected:
         print("* fatal: remote disconnected")
+    except urllib.error.URLError as e:
+        if isinstance(e.reason, ConnectionRefusedError):
+            parsed_url = urllib.parse.urlparse(url)
+            hostname = parsed_url.hostname
+            port = parsed_url.port
+            print(f"* fatal: remote ({hostname}:{port}): connection refused")
+        else:
+            print(f"* fatal: other URLError: {e}")
     except Exception as e:
         if verbose:
             print("* error: server failure")
