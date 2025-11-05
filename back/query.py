@@ -14,7 +14,7 @@ from urllib.request import Request, urlopen
 thisfile = pathlib.Path(__file__).name
 LOCAL_API = "http://localhost:3000"
 PROD_API = "https://something.something"
-GTWEB_API = "https://gtweb.uit.no/webpipelineapi"
+GTWEB_API = "https://gtweb.uit.no/webpipeline-api"
 LAB_API = "https://dictapi.livelybeach-54ee1a2e.norwayeast.azurecontainerapps.io"
 HOUR = 60 * 60
 DAY = 60 * 60 * 24
@@ -116,6 +116,8 @@ def do_query(
         response = urlopen(request)
     except http.client.RemoteDisconnected:
         print("* fatal: remote disconnected")
+    except urllib.error.HTTPError as e:
+        print(f"* fatal: {e.code} {e.msg} ({url}")
     except urllib.error.URLError as e:
         if isinstance(e.reason, ConnectionRefusedError):
             parsed_url = urllib.parse.urlparse(url)
@@ -123,6 +125,7 @@ def do_query(
             port = parsed_url.port
             print(f"* fatal: remote ({hostname}:{port}): connection refused")
         else:
+            print(e.reason)
             print(f"* fatal: other URLError: {e}")
     except Exception as e:
         if verbose:
