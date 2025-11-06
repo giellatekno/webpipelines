@@ -9,7 +9,7 @@
         other_langs,
     } from "$lib/langs";
     import { langname } from "$lib/langnames";
-    import { CheckIcon, SearchIcon } from "@lucide/svelte";
+    import { SearchIcon } from "@lucide/svelte";
 
     let search = $state("");
 
@@ -36,10 +36,9 @@
         }
     }
 
-    async function onenter(ev: SubmitEvent) {
-        ev.preventDefault();
-        if (visible_langs.size === 1) {
-            const lang = visible_langs.entries().next();
+    async function onenter(ev: KeyboardEvent) {
+        if (ev.key === "Enter" && visible_langs.size === 1) {
+            const lang = Array.from(visible_langs)[0];
             await goto(resolve(`/${lang}`));
         }
     }
@@ -62,7 +61,7 @@
             <input
                 class="ig-input"
                 type="text"
-                onsubmit={onenter}
+                onkeydown={onenter}
                 bind:value={search}
                 placeholder=""
             />
