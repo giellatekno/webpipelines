@@ -11,9 +11,9 @@
     <meta name="description" content="Run Giellatekno Pipelines" />
 </svelte:head>
 
-<div class="app">
+<div class="app flex h-screen flex-col">
     <AppBar />
-    <main class="p-6">
+    <main class="flex-1 p-6">
         {@render children?.()}
     </main>
     <Footer />

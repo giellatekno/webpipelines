@@ -3,12 +3,12 @@
 </script>
 
 <footer
-    class="bg-surface-100-900 border-primary-500 fixed bottom-0 grid w-full grid-cols-2 border-t p-2"
+    class="bg-surface-100-900 border-primary-500 flex w-full justify-between border-t p-2"
 >
-    <span class="place-self-start">
+    <span>
         {$t("copyright")}
     </span>
-    <span class="place-self-end">
+    <span>
         {$t("feedback")}:
         <a href="mailto:giellatekno@uit.no" class="hover:underline">
             giellatekno@uit.no

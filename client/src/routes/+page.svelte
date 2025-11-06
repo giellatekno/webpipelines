@@ -11,117 +11,87 @@
     import { langname } from "$lib/langnames";
     import { CheckIcon, SearchIcon } from "@lucide/svelte";
 
-    let show_sami = $state(false);
-    let show_uralic = $state(false);
-    let filter_others = $state(false);
     let search = $state("");
 
-    function filter_langs(
-        search: string,
-        show_sami: boolean,
-        show_uralic: boolean,
-        filter_others: boolean,
-    ) {
-        const any_filters_on = show_sami || show_uralic || filter_others;
+    function filter_langs(search: string) {
         let rootset = langs;
-        if (any_filters_on) {
-            rootset = [];
-            if (show_sami) rootset.push(...sami_langs);
-            if (show_uralic) rootset.push(...nonsamiuralic_langs);
-            if (filter_others) rootset.push(...other_langs);
-        }
 
         if (search === "") {
-            return rootset.sort();
+            return new Set(rootset.sort());
         } else {
             // TODO: Brede - Search in interface language? or any interface language?
-            return rootset
-                .map((iso) => [iso, langname(iso, "nob")])
-                .filter(([iso, name]) => {
-                    const lower = search.toLowerCase();
-                    return (
-                        iso.includes(lower) ||
-                        name.toLowerCase().includes(lower)
-                    );
-                })
-                .map(([iso, _name]) => iso)
-                .sort();
+            return new Set(
+                rootset
+                    .map((iso) => [iso, langname(iso, $locale)])
+                    .filter(([iso, name]) => {
+                        const lower = search.toLowerCase();
+                        return (
+                            iso.includes(lower) ||
+                            name.toLowerCase().includes(lower)
+                        );
+                    })
+                    .map(([iso, _name]) => iso)
+                    .sort(),
+            );
         }
     }
 
-    async function onenter() {
-        if (visible_langs.length === 1) {
-            const lang = visible_langs[0];
+    async function onenter(ev: SubmitEvent) {
+        ev.preventDefault();
+        if (visible_langs.size === 1) {
+            const lang = visible_langs.entries().next();
             await goto(resolve(`/${lang}`));
         }
     }
-    let visible_langs = $derived(
-        filter_langs(search, show_sami, show_uralic, filter_others),
-    );
+    let visible_langs = $derived(filter_langs(search));
+
+    let groups = $derived({
+        samilanguages: sami_langs.intersection(visible_langs),
+        nonsamiuralic: nonsamiuralic_langs.intersection(visible_langs),
+        otherlanguages: other_langs.intersection(visible_langs),
+    });
 </script>
 
-<div>
+<div class="flex flex-col gap-4 p-4">
     <label class="label">
         <span class="label-text">{$t("showtoolsfor")}</span>
-        <div class="flex flex-row items-center justify-start gap-2">
-            <SearchIcon class="size-5" />
+        <div class="input-group w-3xs grid-cols-[auto_1fr]">
+            <div class="ig-cell preset-tonal">
+                <SearchIcon class="size-4" />
+            </div>
             <input
-                class="input w-50"
+                class="ig-input"
                 type="text"
-                onsubmit={() => onenter()}
+                onsubmit={onenter}
                 bind:value={search}
+                placeholder=""
             />
         </div>
     </label>
 
-    <div class="my-2 flex items-center gap-4">
-        <span class="font-bold uppercase">{$t("filters")}:</span>
-        <button
-            type="button"
-            class="chip preset-filled-primary-500"
-            onclick={() => (show_sami = !show_sami)}
-        >
-            <span>{$t("samilanguages")}</span>
-            {#if show_sami}
-                <CheckIcon class="size-4" />
-            {/if}
-        </button>
-        <button
-            type="button"
-            class="chip preset-filled-primary-500"
-            onclick={() => (show_uralic = !show_uralic)}
-        >
-            <span>{$t("nonsamiuralic")}</span>
-            {#if show_uralic}
-                <CheckIcon class="size-4" />
-            {/if}
-        </button>
-        <button
-            type="button"
-            class="chip preset-filled-primary-500"
-            onclick={() => (filter_others = !filter_others)}
-        >
-            <span>{$t("otherlanguages")}</span>
-            {#if filter_others}
-                <CheckIcon class="size-4" />
-            {/if}
-        </button>
-    </div>
-
-    <div
-        class="card bg-surface-100-900 border-surface-200-800 grid w-fit grid-cols-3 gap-4 border p-4"
-    >
-        {#each visible_langs as lng}
-            <a
-                class="btn hover:preset-tonal justify-start"
-                href={resolve(`/${lng}`)}
-            >
-                {langname(lng, $locale)}
-            </a>
+    <div class="flex flex-row flex-wrap gap-8">
+        {#if visible_langs.size}
+            {#each Object.entries(groups) as [name, lang_set]}
+                {#if lang_set.size}
+                    <div class="flex max-w-lg flex-col gap-2">
+                        <h4 class="h4">{$t(name)}</h4>
+                        <div class="flex flex-row flex-wrap gap-2">
+                            {#each lang_set as lng}
+                                <a
+                                    class="btn preset-outlined-primary-500 hover:preset-tonal justify-start"
+                                    href={resolve(`/${lng}`)}
+                                >
+                                    {langname(lng, $locale)}
+                                </a>
+                            {/each}
+                        </div>
+                    </div>
+                {/if}
+            {/each}
         {:else}
             <span>
                 {$t("noresults")}
             </span>
-        {/each}
+        {/if}
     </div>
 </div>
