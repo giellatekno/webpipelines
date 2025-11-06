@@ -11,10 +11,10 @@
         <AppBar.Headline>
             <a
                 href={resolve("/")}
-                class="text-4xl font-bold flex flex-row gap-4 items-center"
+                class="flex flex-row items-center gap-4 text-4xl font-bold"
             >
                 <img
-                    class="scale-100 h-10"
+                    class="h-10 scale-100"
                     src={giellatekno_logo}
                     alt="Giellatekno logo"
                 />

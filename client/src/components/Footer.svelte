@@ -3,7 +3,7 @@
 </script>
 
 <footer
-    class="grid grid-cols-2 fixed bottom-0 p-2 bg-surface-100-900 border-t border-primary-500 w-full"
+    class="bg-surface-100-900 border-primary-500 fixed bottom-0 grid w-full grid-cols-2 border-t p-2"
 >
     <span class="place-self-start">
         {$t("copyright")}

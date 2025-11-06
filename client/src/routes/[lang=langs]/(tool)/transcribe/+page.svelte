@@ -27,7 +27,7 @@
     <TextArea {instruction} bind:value bind:loading />
 
     {#if loading}
-        <Progress class="py-6 items-center w-lg" value={null}>
+        <Progress class="w-lg items-center py-6" value={null}>
             <Progress.Circle>
                 <Progress.CircleTrack />
                 <Progress.CircleRange />
@@ -36,7 +36,7 @@
         </Progress>
     {:else if data.error || data.results}
         <div
-            class="card preset-filled-surface-100-900 border border-surface-200-800 py-6 px-4 w-xl text-wrap"
+            class="card preset-filled-surface-100-900 border-surface-200-800 w-xl border px-4 py-6 text-wrap"
         >
             {#if data.error}
                 <span class="text-error-500 text-xl">

@@ -19,14 +19,14 @@
     let lang = $derived(page.params.lang || "");
 </script>
 
-<div class="grid grid-cols-2 gap-6 items-stretch w-fit max-w-4/5">
+<div class="grid w-fit max-w-4/5 grid-cols-2 items-stretch gap-6">
     {#each tools_for[lang] as tool}
         <a
             href={resolve(`/${lang}/${tool}`)}
-            class="btn text-wrap justify-start text-surface-950-50 preset-filled-primary-200-800 border-2 border-primary-500 shadow-xl"
+            class="btn text-surface-950-50 preset-filled-primary-200-800 border-primary-500 justify-start border-2 text-wrap shadow-xl"
         >
             <img
-                class="size-16 justify-start mr-2"
+                class="mr-2 size-16 justify-start"
                 src={IMAGES[tool] || example_img}
                 alt=""
             />

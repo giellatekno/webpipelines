@@ -36,7 +36,7 @@
     <ToolDescription {description} {usage} />
     <TextArea {instruction} bind:value />
 
-    <div class="flex flex-col mt-6 gap-2">
+    <div class="mt-6 flex flex-col gap-2">
         {#if data.error}
             Error: {data.error}
         {/if}
@@ -51,7 +51,7 @@
                 <Switch.HiddenInput />
             </Switch>
             <div
-                class="table-wrap card min-w-xl w-fit bg-surface-100-900 border border-surface-200-800"
+                class="table-wrap card bg-surface-100-900 border-surface-200-800 w-fit min-w-xl border"
             >
                 {#if result_format == "text" && typeof results === "object"}
                     <table class="table text-lg">

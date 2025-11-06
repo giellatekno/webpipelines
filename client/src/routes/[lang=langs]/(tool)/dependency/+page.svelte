@@ -32,7 +32,8 @@
         {#if data.results?.lines}
             <div>
                 {#each data.results.lines as line}
-                    {line}<br />
+                    {line}
+                    <br />
                 {/each}
             </div>
         {/if}

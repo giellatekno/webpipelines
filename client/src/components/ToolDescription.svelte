@@ -3,16 +3,16 @@
     let { description, usage } = $props();
 </script>
 
-<div class="flex flex-row gap-4 mb-2">
+<div class="mb-2 flex flex-row gap-4">
     <div
-        class="card p-4 w-sm shadow-md preset-filled-surface-100-900 border-2 border-secondary-500"
+        class="card preset-filled-surface-100-900 border-secondary-500 w-sm border-2 p-4 shadow-md"
     >
         <h6 class="h6">{$t("description.title")}</h6>
         <p class="mt-2">{@html description}</p>
     </div>
     {#if usage}
         <div
-            class="card p-4 w-sm shadow-md preset-filled-surface-100-900 border-2 border-secondary-500"
+            class="card preset-filled-surface-100-900 border-secondary-500 w-sm border-2 p-4 shadow-md"
         >
             <h6 class="h6">{$t("usage.title")}</h6>
             <p class="mt-2">{@html usage}</p>

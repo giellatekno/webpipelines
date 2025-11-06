@@ -16,7 +16,7 @@
         href={resolve("/")}
     >
         <Earth />
-        <span> {$t("exploreanotherlang")}</span>
+        <span>{$t("exploreanotherlang")}</span>
     </a>
     <!-- TODO: More descriptive title. eg "North Sami tools" -->
     <h3 class="h3">{langname(lang, $locale)}</h3>

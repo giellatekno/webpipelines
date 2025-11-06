@@ -31,20 +31,20 @@
 
 <form
     onsubmit={on_submit}
-    class="card w-xl p-2 flex flex-col gap-2 preset-filled-surface-100-900 border border-surface-200-800"
+    class="card preset-filled-surface-100-900 border-surface-200-800 flex w-xl flex-col gap-2 border p-2"
 >
     <label for="q" class="label">
         <span class="label-text text-sm">{instruction}</span>
     </label>
     <textarea
-        class="form-textarea rounded-sm w-full"
+        class="form-textarea w-full rounded-sm"
         rows="6"
         bind:this={textarea}
         bind:value
         name="q"
         onkeydown={on_textarea_keydown}
     ></textarea>
-    <div class="flex flex-row gap-2 items-center">
+    <div class="flex flex-row items-center gap-2">
         <button
             class="btn btn-lg preset-filled-secondary-500"
             type="button"

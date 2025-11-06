@@ -6,7 +6,7 @@
 
 <div class="flex flex-col gap-6">
     <a
-        class="btn w-fit preset-outlined-primary-500 hover:preset-tonal"
+        class="btn preset-outlined-primary-500 hover:preset-tonal w-fit"
         href={resolve("/")}
     >
         <EarthIcon />

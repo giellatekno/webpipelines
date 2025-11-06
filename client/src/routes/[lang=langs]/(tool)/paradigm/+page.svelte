@@ -81,11 +81,11 @@
     <label for="form" class="label">
         {instruction}
     </label>
-    <form onsubmit={on_submit} id="form" class="flex flex-col gap-2 my-2">
-        <label class="flex flex-row gap-2 items-center">
+    <form onsubmit={on_submit} id="form" class="my-2 flex flex-col gap-2">
+        <label class="flex flex-row items-center gap-2">
             <p class="font-bold">{$t("paradigmsize")}:</p>
             {#each paradigm_sizes as value}
-                <label class="flex flex-row gap-1 items-center">
+                <label class="flex flex-row items-center gap-1">
                     <input
                         type="radio"
                         class="radio"
@@ -98,10 +98,10 @@
                 </label>
             {/each}
         </label>
-        <label class="flex flex-row gap-2 items-center">
+        <label class="flex flex-row items-center gap-2">
             <p class="font-bold">{$t("partofspeech")}:</p>
             {#each Object.entries(poses) as [label, value]}
-                <label class="flex flex-row gap-1 items-center">
+                <label class="flex flex-row items-center gap-1">
                     <input
                         type="radio"
                         class="radio"
@@ -114,9 +114,9 @@
                 </label>
             {/each}
         </label>
-        <span class="flex flex-row gap-2 mt-2">
+        <span class="mt-2 flex flex-row gap-2">
             <input
-                class="input w-80 h-12"
+                class="input h-12 w-80"
                 type="text"
                 name="word"
                 bind:value={word}

@@ -31,7 +31,7 @@
         {/if}
         {#if hyphenate_data}
             <div
-                class="card p-2 preset-filled-surface-100-900 border border-surface-200-800 w-fit"
+                class="card preset-filled-surface-100-900 border-surface-200-800 w-fit border p-2"
             >
                 <table class="table w-fit">
                     <thead>
@@ -42,7 +42,7 @@
                         </tr>
                     </thead>
                     {#each hyphenate_data as { input_word, variations }}
-                        <tbody class="border-t mt-2">
+                        <tbody class="mt-2 border-t">
                             {#each variations as { hyphenated_word, score }}
                                 <tr>
                                     <td>{input_word}</td>

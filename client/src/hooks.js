@@ -3,7 +3,7 @@
 // so this doesn't make sense to have here.
 //
 // import { env } from "$env/dynamic/public";
-// 
+//
 // if (typeof env.PUBLIC_API_ROOT === "undefined") {
 //     console.error("WARNING: Environment variable PUBLIC_API_ROOT not set, all calls to API will result in errors!");
 // } else {

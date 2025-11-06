@@ -6,7 +6,7 @@
 
 <div class="flex flex-col gap-6">
     <a
-        class="btn w-fit preset-outlined-primary-500 hover:preset-tonal"
+        class="btn preset-outlined-primary-500 hover:preset-tonal w-fit"
         href={resolve("/")}
     >
         <EarthIcon />
@@ -16,7 +16,7 @@
 </div>
 
 <div
-    class="card w-xl mt-2 p-4 preset-filled-surface-100-900 border-2 border-secondary-500"
+    class="card preset-filled-surface-100-900 border-secondary-500 mt-2 w-xl border-2 p-4"
 >
     <h4 class="h4">API</h4>
 

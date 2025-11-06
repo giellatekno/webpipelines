@@ -22,9 +22,9 @@
         href={resolve("/")}
     >
         <Earth />
-        <span> {$t("exploreanotherlang")}</span>
+        <span>{$t("exploreanotherlang")}</span>
     </a>
-    <div class="flex flex-row gap-2 items-center">
+    <div class="flex flex-row items-center gap-2">
         <a href={resolve(`/${lang}`)} class="h3 hover:underline">
             {langname(lang, $locale)}
         </a>
@@ -33,9 +33,9 @@
         <h3 class="h3">{$t(tool)}</h3>
     </div>
     <hr class="hr" />
-    <span class="flex flex-col gap-2 mb-4">
+    <span class="mb-4 flex flex-col gap-2">
         <a
-            class="btn btn-sm preset-outlined-primary-500 w-fit hover:preset-tonal"
+            class="btn btn-sm preset-outlined-primary-500 hover:preset-tonal w-fit"
             href={resolve(`/${page.params.lang}`)}
         >
             <MoveLeft />

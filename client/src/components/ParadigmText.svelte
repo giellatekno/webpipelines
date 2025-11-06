@@ -9,7 +9,7 @@
     let value = $derived(keys[0]);
 </script>
 
-<div class="flex flex-col w-fit gap-4">
+<div class="flex w-fit flex-col gap-4">
     <Tabs {value} onValueChange={(details) => (value = details.value)}>
         <Tabs.List>
             {#each keys as key}
@@ -20,9 +20,9 @@
         {#each keys as key}
             <Tabs.Content value={key}>
                 <div
-                    class="card p-4 preset-filled-surface-100-900 border border-surface-200-800 w-full flex flex-col gap-2"
+                    class="card preset-filled-surface-100-900 border-surface-200-800 flex w-full flex-col gap-2 border p-4"
                 >
-                    <table class="text-lg border">
+                    <table class="border text-lg">
                         <tbody>
                             {#each paradigm[key].wordforms.entries() as [tags, wordforms]}
                                 {@const obj = paradigm[key]}

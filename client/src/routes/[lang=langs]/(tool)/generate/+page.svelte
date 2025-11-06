@@ -26,8 +26,8 @@
         <label for="q" class="label">
             <span class="label-text text-sm">{instruction}</span>
         </label>
-        <span class="flex flex-row gap-2 mt-2">
-            <input class="input w-80 h-12" type="text" name="q" bind:value />
+        <span class="mt-2 flex flex-row gap-2">
+            <input class="input h-12 w-80" type="text" name="q" bind:value />
             <button class="btn preset-filled-primary-500" type="submit">
                 {$t("submit")}
             </button>
@@ -42,7 +42,8 @@
         {#if data.results?.generated}
             <div>
                 {#each data.results.generated as result}
-                    {result}<br />
+                    {result}
+                    <br />
                 {:else}
                     No analyses
                 {/each}

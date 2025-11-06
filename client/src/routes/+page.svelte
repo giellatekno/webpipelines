@@ -63,7 +63,7 @@
 <div>
     <label class="label">
         <span class="label-text">{$t("showtoolsfor")}</span>
-        <div class="flex flex-row gap-2 items-center justify-start">
+        <div class="flex flex-row items-center justify-start gap-2">
             <SearchIcon class="size-5" />
             <input
                 class="input w-50"
@@ -74,8 +74,8 @@
         </div>
     </label>
 
-    <div class="flex items-center gap-4 my-2">
-        <span class="uppercase font-bold">{$t("filters")}:</span>
+    <div class="my-2 flex items-center gap-4">
+        <span class="font-bold uppercase">{$t("filters")}:</span>
         <button
             type="button"
             class="chip preset-filled-primary-500"
@@ -109,13 +109,15 @@
     </div>
 
     <div
-        class="grid grid-cols-3 p-4 gap-4 w-fit card bg-surface-100-900 border border-surface-200-800"
+        class="card bg-surface-100-900 border-surface-200-800 grid w-fit grid-cols-3 gap-4 border p-4"
     >
         {#each visible_langs as lng}
             <a
                 class="btn hover:preset-tonal justify-start"
-                href={resolve(`/${lng}`)}>{langname(lng, $locale)}</a
+                href={resolve(`/${lng}`)}
             >
+                {langname(lng, $locale)}
+            </a>
         {:else}
             <span>
                 {$t("noresults")}
