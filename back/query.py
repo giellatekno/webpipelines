@@ -422,6 +422,7 @@ def parse_args():
             "Ask the API to return the results in this format. Notice that "
             "this is only a request, the API may or may not support it"
         ),
+        argument_default="text",
     )
     exclusive = format_group.add_mutually_exclusive_group()
     exclusive.add_argument(
