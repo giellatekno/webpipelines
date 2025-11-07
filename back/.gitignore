@@ -6,3 +6,6 @@ testfiles/
 .cargo
 
 .env
+
+# default directory of get_nonapnightly_files.py
+non-apnightly-files
