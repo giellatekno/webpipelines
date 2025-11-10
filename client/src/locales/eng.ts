@@ -98,11 +98,40 @@ export default {
     "partofspeech.adverb": "Adverb",
     "partofspeech.numeral": "Numeral",
 
-    // Paradigm names
     "paradigm.case": "Case",
     "paradigm.person": "Person",
     "paradigm.number": "Number",
+    "paradigm.possessivesuffixes": "Possessive suffixes",
+    "paradigm.generalforms": "General forms",
 
+    // Adjectives
+    "paradigm.attribute": "Attribute",
+    "paradigm.positive": "Positive",
+    "paradigm.comparative": "Comparative",
+    "paradigm.superlative": "Superlative",
+    "paradigm.ordinal": "Ordinal number",
+
+    // Verbs
+    "paradigm.indicative": "Indicative",
+    "paradigm.imperative": "Imperative",
+    "paradigm.conditional": "Conditional",
+    "paradigm.potential": "Potential",
+    "paradigm.present": "Present",
+    "paradigm.preterite": "Preterite",
+    "paradigm.connegative": "Connegative",
+    "paradigm.perfectparticiple": "Perfect participle",
+    "paradigm.infinite": "Infinite",
+    "paradigm.supine": "Supine",
+    "paradigm.presentparticiple": "Present participle",
+    "paradigm.actionominative": "Actio nominative",
+    "paradigm.actiogenitive": "Actio genitive",
+    "paradigm.actiolocative": "Actio locative",
+    "paradigm.actiocomitative": "Actio comitative",
+    "paradigm.actioessive": "Actio essive",
+    "paradigm.gerund": "Gerund",
+    "paradigm.verbabessive": "Verb abessive",
+
+    // Cases
     "paradigm.nominative": "Nominative",
     "paradigm.genitive": "Genitive",
     "paradigm.accusative": "Accusative",
@@ -111,11 +140,9 @@ export default {
     "paradigm.comitative": "Comitative",
     "paradigm.essive": "Essive",
 
-    "paradigm.possessivesuffixes": "Possessive suffixes",
-    "paradigm.generalforms": "General forms",
+    // Numbers
     "paradigm.singular": "Singular",
     "paradigm.plural": "Plural",
-
     "paradigm.singularis": "Singularis",
     "paradigm.dualis": "Dualis",
     "paradigm.pluralis": "Pluralis",

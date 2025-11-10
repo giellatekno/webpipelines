@@ -1,4 +1,4 @@
-export const CASES: { [key: string]: string } = {
+export const CASES: Record<string, string> = {
     Nom: "nominative",
     Gen: "genitive",
     Acc: "accusative",
@@ -8,24 +8,42 @@ export const CASES: { [key: string]: string } = {
     Ess: "essive",
 };
 
-export const PERSONS: { [key: string]: string } = {
+export const PERSONS: Record<string, string> = {
     1: "1. Person",
     2: "2. Person",
     3: "3. Person",
 };
 
-export const NUMBERS: { [key: string]: string } = {
+export const NUMBERS: Record<string, string> = {
     Sg: "singularis",
     Du: "dualis",
     Pl: "pluralis",
 };
 
-export const CASE_NUMBERS: { [key: string]: string } = {
+export const CASE_NUMBERS: Record<string, string> = {
     Sg: "singular",
     Pl: "plural",
 };
 
-export const NUMBER_PERSONS: { [key: string]: { [key: string]: string } } = {
+export const ADJ_GRADES: Record<string, string> = {
+    "Posit": "positive",
+    "Der/Comp": "comparative",
+    "Der/Superl": "superlative",
+};
+
+export const MODES: Record<string, string> = {
+    Ind: "indicative",
+    Cond: "conditional",
+    Imprt: "imperative",
+    Pot: "potential",
+};
+
+export const TIMES: Record<string, string> = {
+    Prs: "present",
+    Prt: "preterite",
+};
+
+export const NUMBER_PERSONS: Record<string, Record<string, string>> = {
     Sg: {
         1: "Mun",
         2: "Don",

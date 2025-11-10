@@ -19,7 +19,6 @@
     let { data } = $props();
 
     const paradigms = $derived(paradigm_parser(data));
-    console.log(paradigms);
 
     let keys = $derived(Object.keys(paradigms));
     let value = $derived(keys[0]);
