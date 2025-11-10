@@ -230,12 +230,10 @@ async def main():
 
     workq, doneq = asyncio.Queue(), asyncio.Queue()
 
-    # anders: TEMP: just sma and sme while testing (TODO: REMOVE)
-    temp_langs = LANGS[39:40]  # [39:41]
-    for lang in temp_langs:
+    for lang in LANGS:
         workq.put_nowait(lang)
 
-    n_workers = min(len(temp_langs), n_workers)
+    n_workers = min(len(LANGS), n_workers)
 
     tasks = []
     for i in range(n_workers):
