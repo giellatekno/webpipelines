@@ -70,32 +70,18 @@ interface ParadigmResults {
     other_forms?: string[];
 }
 
-interface Wordform {
-    form: string;
-    tags: string[];
-    tagString: string;
-}
-
-interface ParsedParadigm {
+export interface ParsedParadigm {
     lemma: string;
     pos: string;
     subclass: string;
-    wordforms: Wordform[];
-    includedTags: {
-        numbers: Set<string>;
-        cases: Set<string>;
-        possessives: Set<string>;
-        persons: Set<string>;
-        modes: Set<string>;
-        tenses: Set<string>;
-        infinites: Set<string>;
-    };
+    wordforms: Map<string, Set<string>>;
 }
 
 export function paradigm_parser(objs: ParadigmResults) {
     const subclasses = [
         "Prop",
         "G3",
+        "G7",
         "NomAg",
         "Pers",
         "Rel",
@@ -106,16 +92,7 @@ export function paradigm_parser(objs: ParadigmResults) {
         "Recipr",
     ];
 
-    interface Result {
-        [key: string]: {
-            lemma: string;
-            pos: string;
-            subclass: string;
-            wordforms: Map<string, Set<string>>;
-        };
-    }
-
-    const result: Result = {};
+    const result: { [key: string]: ParsedParadigm } = {};
 
     for (const entry of objs.results) {
         for (const obj of entry) {

@@ -21,8 +21,8 @@ export const NUMBERS: { [key: string]: string } = {
 };
 
 export const CASE_NUMBERS: { [key: string]: string } = {
-    Sg: "singularis",
-    Pl: "pluralis",
+    Sg: "singular",
+    Pl: "plural",
 };
 
 export const NUMBER_PERSONS: { [key: string]: { [key: string]: string } } = {

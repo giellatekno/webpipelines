@@ -143,7 +143,7 @@
         </Switch>
 
         {#if !format_switch_checked}
-            <ParadigmTables data={data.results} {size} />
+            <ParadigmTables data={data.results} />
         {:else}
             <ParadigmText data={data.results} />
         {/if}

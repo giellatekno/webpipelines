@@ -42,6 +42,6 @@ export const load: PageLoad = async ({ url, params, fetch }) => {
 
     load_response.results = { ...(await response.json()) };
 
-    console.log(load_response.results);
+    // console.log(load_response.results);
     return load_response;
 };

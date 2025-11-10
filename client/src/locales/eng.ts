@@ -99,25 +99,26 @@ export default {
     "partofspeech.numeral": "Numeral",
 
     // Paradigm names
-    "case": "Case",
-    "person": "Person",
-    "number": "Number",
+    "paradigm.case": "Case",
+    "paradigm.person": "Person",
+    "paradigm.number": "Number",
 
-    "nominative": "Nominative",
-    "genitive": "Genitive",
-    "accusative": "Accusative",
-    "illative": "Illative",
-    "locative": "Locative",
-    "comitative": "Comitative",
-    "essive": "Essive",
+    "paradigm.nominative": "Nominative",
+    "paradigm.genitive": "Genitive",
+    "paradigm.accusative": "Accusative",
+    "paradigm.illative": "Illative",
+    "paradigm.locative": "Locative",
+    "paradigm.comitative": "Comitative",
+    "paradigm.essive": "Essive",
 
-    "possessivesuffixes": "Possessive suffixes",
-    "singular": "Singular",
-    "plural": "Plural",
+    "paradigm.possessivesuffixes": "Possessive suffixes",
+    "paradigm.generalforms": "General forms",
+    "paradigm.singular": "Singular",
+    "paradigm.plural": "Plural",
 
-    "singularis": "Singularis",
-    "dualis": "Dualis",
-    "pluralis": "Pluralis",
+    "paradigm.singularis": "Singularis",
+    "paradigm.dualis": "Dualis",
+    "paradigm.pluralis": "Pluralis",
 
     // Numerals
     "num": "Numerals",
