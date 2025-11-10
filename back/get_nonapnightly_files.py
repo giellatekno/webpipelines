@@ -27,14 +27,14 @@ import pathlib
 import shutil
 
 REPOS_URL = "https://github.com/giellalt/lang-"
-LANGS = (
-    "bxr,chr,ciw,cor,crk,deu,est,evn,fao,fin,fit,fkv,gle,hdn,hun,ipk,izh,"
-    "kal,kca,koi,kom,kpv,lav,liv,lut,mdf,mhr,mns,mrj,myv,nio,nno,nob,olo,"
-    "rmf,rup,rus,sjd,sje,sma,sme,smj,smn,sms,som,swe,udm,vep,vot,vro,yrk"
-).split(",")
+LANGS = [
+    "bxr", "ciw", "cor", "evn", "fao", "fin", "fit", "fkv", "gle", "ipk",
+    "izh", "kal", "kca", "koi", "kpv", "liv", "mdf", "mhr", "mns", "mrj",
+    "myv", "nio", "nob", "olo", "rus", "sjd", "sje", "sma", "sme", "smj",
+    "smn", "sms", "som", "udm", "vep", "vot", "vro", "yrk",
+]
 TARGET_DIR = "non-apnightly-files"
 SUCCESS = {"success": True}
-
 PARADIGM_FILES = [
     "devtools/testdata/korpustags.{lang}.txt",
     "src/fst/morphology/test/paradigm.{lang}.txt",

@@ -1,0 +1,42 @@
+# list of languages that has paradigm generation
+# NOTICE: This is the definitive list! When updating this list, make sure to also update
+# paradigm_langs in client/src/lib/langnames.ts, and LANGS in back/get_apnightly_files
+
+bxr
+ciw
+cor
+evn
+fao
+fin
+fit
+fkv
+gle
+ipk
+izh
+kal
+kca
+koi
+kpv
+liv
+mdf
+mhr
+mns
+mrj
+myv
+nio
+nob
+olo
+rus
+sjd
+sje
+sma
+sme
+smj
+smn
+sms
+som
+udm
+vep
+vot
+vro
+yrk
