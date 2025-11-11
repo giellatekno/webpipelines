@@ -19,15 +19,21 @@
         </Tabs.List>
         {#each keys as key}
             <Tabs.Content value={key}>
-                <div
-                    class="card preset-filled-surface-100-900 border-surface-200-800 flex w-full flex-col gap-2 border p-4"
-                >
-                    <table class="border text-lg">
+                <div class="flex flex-col gap-2">
+                    <table class="border text-lg shadow-lg">
+                        <thead class="border">
+                            <tr
+                                class="bg-primary-50-950 text-surface-950-50 border font-bold [&>td]:px-4 [&>td]:py-2"
+                            >
+                                <td>Tags</td>
+                                <td>Wordform(s)</td>
+                            </tr>
+                        </thead>
                         <tbody>
                             {#each paradigm[key].wordforms.entries() as [tags, wordforms]}
                                 {@const obj = paradigm[key]}
                                 <tr
-                                    class="even:bg-primary-50-950 odd:bg-surface-50-950 [&>td]:px-4 [&>td]:py-1"
+                                    class="even:bg-surface-100-900/50 odd:bg-surface-50-950 border [&>td]:px-4 [&>td]:py-1"
                                 >
                                     <td class="font-bold">
                                         {obj.pos}

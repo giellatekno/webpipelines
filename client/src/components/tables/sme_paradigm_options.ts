@@ -46,7 +46,6 @@ export const TIMES: Record<string, string> = {
 export const NONFINITE_FORMS: Record<string, string> = {
     "Inf": "infinite",
     "PrfPrc": "perfectparticiple",
-    "Sup": "supine",
     "PrsPrc": "presentparticiple",
     "VGen": "verbgenitive",
     "VAbess": "verbabessive",
@@ -55,6 +54,7 @@ export const NONFINITE_FORMS: Record<string, string> = {
     "Actio+Loc": "actiolocative",
     "Actio+Com": "actiocomitative",
     "Actio+Ess": "actioessive",
+    "Sup": "supine",
     "Ger": "gerund",
 };
 
@@ -62,7 +62,7 @@ export const NUMBER_PERSONS: Record<string, Record<string, string>> = {
     Sg: {
         1: "Mun",
         2: "Don",
-        3: "Son",
+        3: "Son/dat",
     },
     Du: {
         1: "Moai",
@@ -72,6 +72,6 @@ export const NUMBER_PERSONS: Record<string, Record<string, string>> = {
     Pl: {
         1: "Mii",
         2: "Dii",
-        3: "Sii",
+        3: "Sii/dat",
     },
 };

@@ -68,7 +68,7 @@
     {@const prefix = "Ord+"}
     <div class="flex flex-col gap-2">
         <h4 class="h4">{$t("paradigm.ordinal")}</h4>
-        <table class="table h-fit w-fit border text-lg">
+        <table class="table h-fit w-fit border text-lg shadow-lg">
             <thead>
                 <tr
                     class="bg-primary-50-950 text-surface-950-50 font-bold [&>td]:border"
@@ -118,7 +118,7 @@
         {#if grade_exists}
             <div class="flex flex-col gap-2">
                 <h4 class="h4">{$t(`paradigm.${grade_name}`)}</h4>
-                <table class="table h-fit w-fit border text-lg">
+                <table class="table h-fit w-fit border text-lg shadow-lg">
                     <tbody>
                         <tr class="[&>td]:border [&>td]:pr-4">
                             <td class="bg-primary-50-950 font-bold">

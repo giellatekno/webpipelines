@@ -11,9 +11,9 @@
 
     let { elem }: { elem: ParsedParadigm } = $props();
 
-    let has_possessive_suffixes = elem.wordforms
-        .keys()
-        .find((e) => e.includes("+Px"));
+    let has_possessive_suffixes = $derived(
+        elem.wordforms.keys().find((e) => e.includes("+Px")),
+    );
 
     function px_case_rows(
         elem: ParsedParadigm,
@@ -39,7 +39,7 @@
 <div class="flex flex-col gap-2">
     <h4 class="h4">{$t("paradigm.generalforms")}</h4>
 
-    <table class="table h-fit w-fit text-lg">
+    <table class="table h-fit w-fit text-lg shadow-lg">
         <thead>
             <tr
                 class="bg-primary-50-950 text-surface-950-50 font-bold [&>td]:border"
@@ -85,7 +85,7 @@
 {#if has_possessive_suffixes}
     <div class="flex flex-col gap-2">
         <h4 class="h4">{$t("paradigm.possessivesuffixes")}</h4>
-        <table class="table w-fit text-lg">
+        <table class="table w-fit text-lg shadow-lg">
             <thead>
                 <tr
                     class="bg-primary-50-950 text-surface-950-50 font-bold [&>td]:border"
@@ -137,26 +137,32 @@
                             {/if}
                         {/each}
                     {:else}
-                        {#each Object.keys(PERSONS) as pers_tag}
-                            <tr class="[&>td]:border">
-                                {#if pers_tag === "1"}
-                                    <td class="bg-surface-100-900" rowspan="3">
-                                        {$t(`paradigm.${case_name}`)}
+                        {@const rows = px_case_rows(elem, case_tag, "")}
+                        {#if rows}
+                            {#each rows as pers_tag}
+                                <tr class="[&>td]:border">
+                                    {#if pers_tag === rows[0]}
+                                        <td
+                                            class="bg-surface-100-900"
+                                            rowspan={rows.length}
+                                        >
+                                            {$t(`paradigm.${case_name}`)}
+                                        </td>
+                                    {/if}
+                                    <td class="bg-surface-100-900">
+                                        {pers_tag}.
                                     </td>
-                                {/if}
-                                <td class="bg-surface-100-900">
-                                    {pers_tag}.
-                                </td>
-                                {#each Object.keys(NUMBERS) as num_tag}
-                                    <td>
-                                        {get_word(
-                                            `${case_tag}+Px${num_tag}${pers_tag}`,
-                                            elem,
-                                        )}
-                                    </td>
-                                {/each}
-                            </tr>
-                        {/each}
+                                    {#each Object.keys(NUMBERS) as num_tag}
+                                        <td>
+                                            {get_word(
+                                                `${case_tag}+Px${num_tag}${pers_tag}`,
+                                                elem,
+                                            )}
+                                        </td>
+                                    {/each}
+                                </tr>
+                            {/each}
+                        {/if}
                     {/if}
                 {/each}
             </tbody>

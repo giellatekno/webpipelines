@@ -38,7 +38,7 @@
         noun: "N",
         verb: "V",
         adjective: "A",
-        adverb: "Adv",
+        // adverb: "Adv",
         pronoun: "Pron",
         numeral: "Num",
         // Pcle: "Pcle",
@@ -74,11 +74,8 @@
 </script>
 
 <div class="flex flex-col gap-4">
-    <ToolDescription {description} {usage} />
+    <!-- <ToolDescription {description} {usage} /> -->
 
-    <label for="form" class="label">
-        {instruction}
-    </label>
     <form onsubmit={on_submit} id="form" class="my-2 flex flex-col gap-2">
         <label class="flex flex-row items-center gap-2">
             <p class="font-bold">{$t("paradigmsize")}:</p>
@@ -112,16 +109,21 @@
                 </label>
             {/each}
         </label>
-        <span class="mt-2 flex flex-row gap-2">
-            <input
-                class="input h-12 w-80"
-                type="text"
-                name="word"
-                bind:value={word}
-            />
-            <button class="btn preset-filled-primary-500" type="submit">
-                {$t("submit")}
-            </button>
+        <span class="mt-2 flex flex-col gap-2">
+            <span class="label-text">
+                {instruction}:
+            </span>
+            <div class="flex flex-row gap-2">
+                <input
+                    class="input h-12 w-80"
+                    type="text"
+                    name="word"
+                    bind:value={word}
+                />
+                <button class="btn preset-filled-primary-500" type="submit">
+                    {$t("submit")}
+                </button>
+            </div>
         </span>
     </form>
 
@@ -136,7 +138,7 @@
             <Switch.Control>
                 <Switch.Thumb />
             </Switch.Control>
-            <Switch.Label class="text-base">Text</Switch.Label>
+            <Switch.Label class="text-base">List</Switch.Label>
             <Switch.HiddenInput />
         </Switch>
 

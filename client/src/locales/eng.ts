@@ -85,6 +85,7 @@ export default {
     "paradigm": "Paradigm generation",
     "paradigm.description":
         "Generate paradigms of different sizes for any word.",
+    "paradigm.instruction": "Search for words in their base form",
     "paradigmsize": "Paradigm size",
     "paradigmsize.minimal": "Minimal",
     "paradigmsize.standard": "Standard",

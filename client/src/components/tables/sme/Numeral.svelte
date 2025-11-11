@@ -7,7 +7,7 @@
     let { elem }: { elem: ParsedParadigm } = $props();
 </script>
 
-<table class="table h-fit w-fit border text-lg">
+<table class="table h-fit w-fit border text-lg shadow-lg">
     <thead>
         <tr
             class="bg-primary-50-950 text-surface-950-50 font-bold [&>td]:border"

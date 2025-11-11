@@ -26,11 +26,15 @@
 
     <div class="">
         {#if data.error}
-            Error: {data.error}
+            <p class="text-error-500 text-lg">
+                Error: {data.error}
+            </p>
         {/if}
 
         {#if data.results?.lines}
-            <div>
+            <div
+                class="card preset-filled-surface-100-900 border-surface-200-800 w-fit border p-4"
+            >
                 {#each data.results.lines as line}
                     {line}
                     <br />
