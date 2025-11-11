@@ -62,6 +62,16 @@ enum Pos {
     Pron,
 }
 
+impl Pos {
+    fn is_any(&self) -> bool {
+        matches!(self, Pos::Any)
+    }
+
+    fn is_specific(&self) -> bool {
+        !self.is_any()
+    }
+}
+
 // rustc: conflicting implementations of trait `TryFrom<&str>` for type `Pos`
 // conflicting implementation in crate `core`:
 // - impl<T, U> TryFrom<U> for T
@@ -128,6 +138,10 @@ pub async fn paradigm_endpoint(
     let mut seen = HashSet::new();
 
     for analysis in analyses.iter() {
+        if pos.is_specific() && pos != analysis.pos().into() {
+            continue;
+        }
+
         let lemma = analysis.lemma();
         let pos = analysis.pos();
         if seen.contains(&(lemma, pos)) {
