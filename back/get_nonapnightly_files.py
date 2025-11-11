@@ -21,9 +21,9 @@ The script does the following:
 import argparse
 import asyncio
 import builtins
-from asyncio.subprocess import DEVNULL, PIPE
 import os
 import pathlib
+import re
 import shutil
 
 REPOS_URL = "https://github.com/giellalt/lang-"
@@ -34,7 +34,6 @@ LANGS = [
     "smn", "sms", "som", "udm", "vep", "vot", "vro", "yrk",
 ]
 TARGET_DIR = "non-apnightly-files"
-SUCCESS = {"success": True}
 PARADIGM_FILES = [
     "devtools/testdata/korpustags.{lang}.txt",
     "src/fst/morphology/test/paradigm.{lang}.txt",
@@ -42,6 +41,10 @@ PARADIGM_FILES = [
     "src/fst/morphology/test/paradigm_standard.{lang}.txt",
     "src/fst/morphology/test/paradigm_full.{lang}.txt",
 ]
+PAT_UNKNOWN_IN_GIT = re.compile(
+    r"^error: pathspec '([^']*)' did not match any file\(s\) known to git$"
+)
+
 
 # A scripte to transfer the downloaded files to the apertium nightly
 # directories. Stored as TARGET_DIR/install.py, so that it can be done in
@@ -85,25 +88,26 @@ print("all done")
 """
 
 
-def success(data=None):
-    if data is None:
-        return SUCCESS
-    return {**SUCCESS, "data": data}
+def ok(**kwargs):
+    return {"success": True, **kwargs}
 
 
-def error(**kwargs):
+def err(**kwargs):
+    assert "reason" in kwargs
     return {"success": False, **kwargs}
 
 
-def is_success(d):
+def is_ok(d):
     return d["success"]
+
+
+def is_err(d):
+    return not d["success"]
 
 
 async def shell(
     cmd,
     stdin=None,
-    stdout=None,
-    stderr=None,
     cwd=None,
     timeout=None,
     print=builtins.print,
@@ -111,8 +115,8 @@ async def shell(
     print(f"running: {cmd}")
     proc = await asyncio.subprocess.create_subprocess_shell(
         cmd,
-        stdout=DEVNULL,
-        stderr=PIPE,
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
         cwd=cwd,
     )
 
@@ -121,69 +125,48 @@ async def shell(
             ret = await proc.wait()
     except TimeoutError:
         print(f"running timeout! {cmd}")
-        return error(msg="timeout ({timeout}s)")
+        return err(reason="timeout", timeout=timeout, cmd=cmd)
+
+    stderr = (await proc.stderr.read()).decode("utf-8")
+    stdout = (await proc.stdout.read()).decode("utf-8")
 
     if ret != 0:
-        if proc.stderr is not None:
-            stderr = await proc.stderr.read()
-            stderr = stderr.decode("utf-8")
-        else:
-            stderr = None
-        return error(msg=f"nonzero return code ({ret})", stderr=stderr)
+        return err(reason="retcode", retcode=ret, stdout=stdout, stderr=stderr)
 
-    return SUCCESS
-
-
-async def worker(n, workq, doneq):
-    def worker_print(*msg):
-        builtins.print(f"[worker {n}]:", *msg)
-
-    worker_print("start")
-
-    while True:
-        try:
-            lang = workq.get_nowait()
-        except asyncio.QueueEmpty:
-            worker_print("exit (no more work in queue)")
-            break
-
-        result = await do_lang(lang, print=worker_print)
-
-        doneq.put_nowait((lang, result))
-        workq.task_done()
+    return ok(stdout=stdout, stderr=stderr)
 
 
 async def do_lang(lang, print=builtins.print):
-    # this will clone the repo without downloading almost anything at all,
-    # and will pull from the repo only when needed
     def printer(*msg):
         print(f"lang {lang}:", *msg)
 
-    printer("start")
-
+    # this will clone the repo without downloading almost anything at all,
+    # and will pull from the repo only when needed
     cmd = (
         "git clone --no-checkout --depth 1 --filter=blob:none "
         f"{REPOS_URL}{lang}"
     )
-    result = await shell(cmd, print=printer)
-    if not is_success(result):
-        printer("NOT SUCCESS")
-        return result
+    result = await shell(cmd, print=printer, timeout=5)
+    if is_err(result):
+        return err(lang=lang, **result)
 
-    files_retrieved = []
+    files = [file.format(lang=lang) for file in PARADIGM_FILES]
+    cmd = f"git checkout main -- {' '.join(files)}"
+    result = await shell(cmd, cwd=f"lang-{lang}", timeout=10, print=printer)
+    stdout = result["stdout"]
+    stderr = result["stderr"]
 
-    for file in PARADIGM_FILES:
-        file_path = file.format(lang=lang)
-        cmd = f"git checkout main -- {file_path}"
-        result = await shell(cmd, cwd=f"lang-{lang}", timeout=4, print=printer)
+    if is_err(result):
+        missing = []
+        for line in stderr.splitlines():
+            if match := PAT_UNKNOWN_IN_GIT.match(line):
+                missing.append(match.group(1))
 
-        if is_success(result):
-            files_retrieved.append(file_path)
-        else:
-            printer(f"failure {result}")
+        if missing:
+            return ok(lang=lang, stdout=stdout, stderr=stderr, missing=missing)
+        return err(lang=lang, **result)
 
-    printer("done")
-    return success(data=files_retrieved)
+    return ok(lang=lang, stdout=stdout, stderr=stderr, missing=[])
 
 
 def parse_args():
@@ -200,11 +183,11 @@ def parse_args():
         ),
     )
     parser.add_argument(
-        "-n",
-        "--workers",
-        type=int,
-        default=4,
-        help="Use this many worker tasks. Default 4."
+        "-l",
+        "--langs",
+        nargs="+",
+        action="extend",
+        help="Only get files for the these languages. By default: all langs",
     )
     args = parser.parse_args()
     return args
@@ -214,7 +197,8 @@ async def main():
     args = parse_args()
 
     target_dir = args.target_dir
-    n_workers = args.workers
+    langs = args.langs or LANGS
+
     try:
         print(f"rm -rf {target_dir}")
         shutil.rmtree(target_dir)
@@ -228,21 +212,33 @@ async def main():
     with open("install.py", "w") as f:
         f.write(INSTALL_SCRIPT)
 
-    workq, doneq = asyncio.Queue(), asyncio.Queue()
+    tasks = [do_lang(lang) for lang in langs]
 
-    for lang in LANGS:
-        workq.put_nowait(lang)
+    try:
+        results = await asyncio.gather(*tasks, return_exceptions=True)
+    except asyncio.exceptions.CancelledError:
+        return
 
-    n_workers = min(len(LANGS), n_workers)
-
-    tasks = []
-    for i in range(n_workers):
-        worker_task = asyncio.create_task(worker(i + 1, workq, doneq))
-        tasks.append(worker_task)
-
-    await workq.join()
-    for task in tasks:
-        task.cancel()
+    for result in results:
+        if isinstance(result, Exception):
+            print(result)
+        elif is_ok(result):
+            #print(result["lang"], "ok")
+            if missing := result.get("missing"):
+                print(result["lang"], "missing:")
+                print("\n".join(missing))
+        else:
+            error = result["reason"]
+            if error == "timeout":
+                timeout = result["timeout"]
+                error += f" after {timeout}s"
+            elif error == "retcode":
+                retcode = result["retcode"]
+                stdout = result["stdout"]
+                stderr = result["stderr"]
+                error += f" return code {retcode}: \n== STDOUT ==\n{stdout}\n== STDERR == \n{stderr}\n"
+            print(result["lang"], "ERROR:", error)
+        #print(result)
 
 
 if __name__ == "__main__":
