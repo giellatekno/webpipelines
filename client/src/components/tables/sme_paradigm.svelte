@@ -1,14 +1,5 @@
 <script lang="ts">
     import { paradigm_parser } from "$lib/parsers";
-    import { t } from "svelte-intl-precompile";
-    import {
-        CASES,
-        PERSONS,
-        NUMBERS,
-        CASE_NUMBERS,
-    } from "./sme_paradigm_options";
-    import ParadigmText from "$components/ParadigmText.svelte";
-    import type { ParsedParadigm } from "$lib/parsers";
     import { Tabs } from "@skeletonlabs/skeleton-svelte";
     import Noun from "./sme/Noun.svelte";
     import Adjective from "./sme/Adjective.svelte";

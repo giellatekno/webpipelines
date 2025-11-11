@@ -43,6 +43,21 @@ export const TIMES: Record<string, string> = {
     Prt: "preterite",
 };
 
+export const NONFINITE_FORMS: Record<string, string> = {
+    "Inf": "infinite",
+    "PrfPrc": "perfectparticiple",
+    "Sup": "supine",
+    "PrsPrc": "presentparticiple",
+    "VGen": "verbgenitive",
+    "VAbess": "verbabessive",
+    "Actio+Nom": "actionominative",
+    "Actio+Gen": "actiogenitive",
+    "Actio+Loc": "actiolocative",
+    "Actio+Com": "actiocomitative",
+    "Actio+Ess": "actioessive",
+    "Ger": "gerund",
+};
+
 export const NUMBER_PERSONS: Record<string, Record<string, string>> = {
     Sg: {
         1: "Mun",

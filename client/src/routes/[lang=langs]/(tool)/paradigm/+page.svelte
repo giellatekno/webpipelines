@@ -16,17 +16,15 @@
     let ParadigmTables: Component | null = $state(null);
     onMount(async () => {
         const lang = page.params.lang;
-
         try {
             const module = await import(
                 `$components/tables/${lang}_paradigm.svelte`
             );
-
             ParadigmTables = module.default;
         } catch (error) {
-            console.error(
+            console.warn(
                 `Could not load paradigm component for language: ${lang}`,
-                error,
+                // error,
             );
         }
     });
@@ -149,5 +147,7 @@
         {/if}
     {:else if data?.results}
         <ParadigmText data={data.results} />
+    {:else if data?.error}
+        <span class="text-error-500 text-xl">{data.error}</span>
     {/if}
 </div>

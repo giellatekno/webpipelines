@@ -1,35 +1,139 @@
 <script lang="ts">
     import type { ParsedParadigm } from "$lib/parsers";
     import { t } from "svelte-intl-precompile";
-    import { NUMBER_PERSONS, NUMBERS, PERSONS } from "../sme_paradigm_options";
+    import {
+        MODES,
+        NONFINITE_FORMS,
+        NUMBER_PERSONS,
+        NUMBERS,
+        PERSONS,
+        TIMES,
+    } from "../sme_paradigm_options";
     import { get_word } from "$lib/utils";
 
     let { elem }: { elem: ParsedParadigm } = $props();
+
+    function has_preterite(mode_tag: string, elem: ParsedParadigm) {
+        switch (mode_tag) {
+            case "Ind":
+                return true;
+            case "Cond":
+                return false;
+            case "Imprt":
+                return false;
+            case "Pot":
+                return elem.wordforms
+                    .keys()
+                    .find((t) => t.startsWith("Pot+Prt"))
+                    ? true
+                    : false;
+        }
+    }
 </script>
 
-<div class="flex flex-col gap-2">
-    <h4 class="h4">[l6e] Indicative</h4>
-    <table class="table h-fit w-fit border text-lg">
-        <thead>
-            <tr class="bg-primary-50-950 font-bold [&>td]:border">
-                <td>Person</td>
-                <td>Present</td>
-                <td>Past</td>
-            </tr>
-        </thead>
-        <tbody>
-            {#each Object.entries(NUMBERS) as [num_tag, num_name]}
-                {#each Object.entries(PERSONS) as [pers_tag, pers_name]}
-                    <tr>
-                        <td>{num_name} {pers_name}</td>
+{#each Object.entries(MODES) as [mode_tag, mode_name]}
+    <div class="flex flex-col gap-2">
+        <h4 class="h4">{$t(`paradigm.${mode_name}`)}</h4>
+        <table class="table h-fit w-fit border text-lg shadow-lg">
+            <thead>
+                <tr
+                    class="bg-primary-50-950 text-surface-950-50 font-bold [&>td]:border"
+                >
+                    <td>
+                        {$t("paradigm.person")}
+                    </td>
+                    <td>
+                        {#if mode_tag !== "Imprt"}
+                            {$t("paradigm.present")}
+                        {/if}
+                    </td>
+                    {#if has_preterite(mode_tag, elem)}
                         <td>
-                            {get_word(`Ind+Prs+${num_tag}${pers_tag}`, elem)}
+                            {$t("paradigm.preterite")}
                         </td>
-                        <td>
-                            {get_word(`Ind+Prt+${num_tag}${pers_tag}`, elem)}
-                        </td>
-                    </tr>
+                    {/if}
+                </tr>
+            </thead>
+            <tbody>
+                {#each Object.entries(NUMBER_PERSONS) as [num_tag, persons]}
+                    {#each Object.entries(persons) as [pers_tag, pronoun]}
+                        <tr class="[&>td]:border [&>td]:pr-4">
+                            <td class="bg-surface-100-900">
+                                {pronoun}
+                            </td>
+                            {#if mode_tag === "Imprt"}
+                                <td>
+                                    {get_word(
+                                        `${mode_tag}+${num_tag}${pers_tag}`,
+                                        elem,
+                                    )}
+                                </td>
+                            {:else}
+                                {#each Object.entries(TIMES) as [time_tag, _]}
+                                    {#if time_tag === "Prs" || (time_tag === "Prt" && has_preterite(mode_tag, elem))}
+                                        <td>
+                                            {get_word(
+                                                `${mode_tag}+${time_tag}+${num_tag}${pers_tag}`,
+                                                elem,
+                                            )}
+                                        </td>
+                                    {/if}
+                                {/each}
+                            {/if}
+                        </tr>
+                    {/each}
                 {/each}
+                <tr class="[&>td]:border [&>td]:pr-4">
+                    <td class="bg-surface-100-900">
+                        {$t("paradigm.connegative")}
+                    </td>
+                    <td>
+                        {#if mode_tag === "Imprt"}
+                            {get_word(`${mode_tag}+ConNeg`, elem)}
+                        {:else}
+                            {get_word(`${mode_tag}+Prs+ConNeg`, elem)}
+                        {/if}
+                    </td>
+                    {#if has_preterite(mode_tag, elem)}
+                        <td>
+                            {get_word(`${mode_tag}+Prt+ConNeg`, elem)}
+                        </td>
+                    {/if}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{/each}
+<div class="flex flex-col gap-2">
+    <h4 class="h4">{$t("paradigm.nonfinite")}</h4>
+    <table class="table h-fit w-fit border text-lg shadow-lg">
+        <tbody>
+            {#each Object.entries(NONFINITE_FORMS) as [form_tag, form_name]}
+                <tr class="[&>td]:border [&>td]:pl-4">
+                    <td class="bg-primary-50-950 font-bold">
+                        {$t(`paradigm.${form_name}`)}
+                    </td>
+                    <td>{get_word(form_tag, elem)}</td>
+                </tr>
+                {#if form_tag === "Ger"}
+                    {#each Object.entries(NUMBERS) as [num_tag, num_name]}
+                        {#each Object.entries(PERSONS) as [pers_tag, pers_name]}
+                            <tr class="[&>td]:border [&>td]:pl-4">
+                                <td class="bg-primary-50-950 font-bold">
+                                    {$t("paradigm.gerund")}
+                                    {$t(`paradigm.${num_name}`)}
+                                    {pers_name}
+                                </td>
+                                <td>
+                                    {get_word(
+                                        `Ger+Px${num_tag}${pers_tag}`,
+                                        elem,
+                                    )}
+                                </td>
+                            </tr>
+                        {/each}
+                    {/each}
+                {/if}
             {/each}
         </tbody>
     </table>

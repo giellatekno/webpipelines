@@ -40,7 +40,13 @@ export const load: PageLoad = async ({ url, params, fetch }) => {
         return load_response;
     }
 
-    load_response.results = { ...(await response.json()) };
+    try {
+        load_response.results = { ...(await response.json()) };
+    } catch (e) {
+        console.error(e);
+        load_response.error = "fetch() from api failed.";
+        return load_response;
+    }
 
     // console.log(load_response.results);
     return load_response;

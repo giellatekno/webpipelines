@@ -29,5 +29,5 @@ export function get_usage(lang: string | undefined, $t: (_: string) => string) {
 
 export function get_word(tags: string, elem: ParsedParadigm) {
     const wordforms = elem.wordforms.get(tags);
-    return wordforms ? Array.from(wordforms).join(", ") : "--";
+    return wordforms ? Array.from(wordforms).join(", ") : "—";
 }
