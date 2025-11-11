@@ -141,12 +141,13 @@ pub async fn paradigm_endpoint(
                 Err(e) => errors.push(e),
             };
         } else {
-            other_forms.push((string.clone(), analysis));
+            other_forms.push(analysis);
         }
     }
 
     match format {
         Format::Json => {
+            let other_forms: Vec<_> = other_forms.iter().map(|form| form.to_json()).collect();
             let obj = serde_json::json!({
                 "results": results,
                 "other_forms": other_forms,
@@ -160,7 +161,7 @@ pub async fn paradigm_endpoint(
                 .join("\n");
             let other = other_forms
                 .iter()
-                .map(|form| format!("- {}", form.1.lemma()))
+                .map(|form| format!("- {}", form))
                 .join("\n");
             (StatusCode::OK, format!("{text}\n\n{string} is also a form of:\n{other}")).into_response()
         }
