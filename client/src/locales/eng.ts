@@ -27,7 +27,7 @@ export default {
     "showtoolsfor": "Show tools for...",
     "filters": "Filters",
     "samilanguages": "Sámi languages",
-    "nonsamiuralic": "Non-Sámi uralic",
+    "nonsamiuralic": "Non-Sámi Uralic",
     "otherlanguages": "Other languages",
     "noresults": "No resuts for search term...",
 
