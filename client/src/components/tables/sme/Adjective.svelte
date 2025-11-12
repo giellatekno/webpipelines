@@ -69,6 +69,16 @@
     <div class="flex flex-col gap-2">
         <h4 class="h4">{$t("paradigm.ordinal")}</h4>
         <table class="table h-fit w-fit border text-lg shadow-lg">
+            <tbody>
+                <tr class="[&>td]:border [&>td]:pr-4">
+                    <td class="bg-primary-50-950 font-bold">
+                        {$t("paradigm.attribute")}
+                    </td>
+                    <td>{get_word(prefix + "Attr", elem)}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table h-fit w-fit border text-lg shadow-lg">
             <thead>
                 <tr
                     class="bg-primary-50-950 text-surface-950-50 font-bold [&>td]:border"
