@@ -10,9 +10,9 @@ export default {
     "fordevelopers": "For developers",
     "sourcecode": "Source code",
     "api.paragraph":
-        "The API for this site is open and freely available, and is found at: ",
+        "The API for this site is open and freely available, and is found at:",
     "developers.code.paragraph":
-        "The code for both the frontend and the API is open. Find it at: ",
+        "The code for both the frontend and the API is open. Find it at:",
     "developers.code.paragraph2":
         "Feel free to open Github Issues if you find any technical issues on the site, or on the API.",
 
@@ -21,7 +21,7 @@ export default {
 
     // Footer
     "copyright": "Copyright © Centre for Sámi language technology",
-    "feedback": "Send feedback about the webpage to",
+    "feedback": "Send feedback about the webpage to:",
 
     // Select Language
     "showtoolsfor": "Show tools for...",
@@ -99,9 +99,11 @@ export default {
     "partofspeech.adverb": "Adverb",
     "partofspeech.numeral": "Numeral",
 
-    "paradigm.case": "Case",
+    "paradigm.tags": "Tags",
+    "paradigm.wordforms": "Wordforms",
     "paradigm.person": "Person",
-    "paradigm.number": "Number",
+
+    // Nouns
     "paradigm.possessivesuffixes": "Possessive suffixes",
     "paradigm.generalforms": "General forms",
 
@@ -134,7 +136,16 @@ export default {
     "paradigm.actioessive": "Actio essive",
     "paradigm.gerund": "Gerund",
 
+    // Pronouns
+    "paradigm.personal": "Personal pronoun",
+    "paradigm.demonstrative": "Demonstrative pronoun",
+    "paradigm.interrogative": "Interrogative pronoun",
+    "paradigm.relative": "Relative pronoun",
+    "paradigm.reflexive": "Reflexive pronoun",
+    "paradigm.indefinite": "Indefinite pronoun",
+
     // Cases
+    "paradigm.case": "Case",
     "paradigm.nominative": "Nominative",
     "paradigm.genitive": "Genitive",
     "paradigm.accusative": "Accusative",
@@ -144,6 +155,7 @@ export default {
     "paradigm.essive": "Essive",
 
     // Numbers
+    "paradigm.number": "Number",
     "paradigm.singular": "Singular",
     "paradigm.plural": "Plural",
     "paradigm.singularis": "Singularis",

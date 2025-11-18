@@ -11,7 +11,7 @@ import {
     // t,
 } from "svelte-intl-precompile";
 
-const DEFAULT_LOCALE = "sme";
+const DEFAULT_LOCALE = "eng";
 
 export const locale = wrap_precompile_locale();
 export const locales_in_locale = {

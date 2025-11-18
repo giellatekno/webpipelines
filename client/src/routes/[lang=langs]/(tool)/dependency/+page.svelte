@@ -31,14 +31,24 @@
             </p>
         {/if}
 
-        {#if data.results?.lines}
+        {#if data.results}
             <div
                 class="card preset-filled-surface-100-900 border-surface-200-800 w-fit border p-4"
             >
-                {#each data.results.lines as line}
-                    {line}
-                    <br />
-                {/each}
+                <div class="flex flex-col gap-2">
+                    {#each data.results as analysis}
+                        <span class="flex flex-row gap-2 text-lg">
+                            <p class="text-red-700">
+                                <b>{analysis.wordform}</b>
+                                [{analysis.lemma}]
+                            </p>
+                            <p>{analysis.verbtype}</p>
+                            <p class="text-blue-700">{analysis.tags}</p>
+                            <p class="text-green-700">{analysis.syntax}</p>
+                            <p>{analysis.relation}</p>
+                        </span>
+                    {/each}
+                </div>
             </div>
         {/if}
     </div>

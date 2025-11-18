@@ -5,22 +5,59 @@ interface AnalyzeItem {
     wordform: string;
 }
 
-export function analyze_parser(
-    data: AnalyzeItem[] | undefined,
-    result_format: string,
-) {
+export function analyze_parser(data: AnalyzeItem[] | undefined) {
     if (!data) return;
 
-    if (result_format === "text") {
-        // Groups results by wordform
-        let grouped = Object.groupBy(data, ({ wordform }) => wordform);
-        return Object.entries(grouped).map(([key, items]) => ({
-            key: key,
-            items: items as AnalyzeItem[],
-        }));
-    } else if (result_format === "json") {
-        return JSON.stringify(data, null, 2);
+    // Groups results by wordform
+    let grouped = Object.groupBy(data, ({ wordform }) => wordform);
+    return Object.entries(grouped).map(([key, items]) => ({
+        key: key,
+        items: items as AnalyzeItem[],
+    }));
+}
+
+export interface ParsedDependency {
+    wordform: string;
+    lemma: string;
+    verbtype: string;
+    tags: string;
+    syntax: string;
+    relation: string;
+}
+
+export function dependency_parser(data: string) {
+    const results: ParsedDependency[] = [];
+
+    console.log(data);
+    const lines = data
+        .trim()
+        .split("\n")
+        .map((l) => l.trim());
+
+    const analysis_re = new RegExp(
+        /"([^\s]+)" (<[^\s]+>)?(?: )?([^@]+) (@[^\s]+) (#[^\s]+)/,
+    );
+
+    for (const [i, line] of lines.entries()) {
+        if (!line.match(/"<[^\s]+>"/)) continue;
+
+        const word = line.slice(2, line.length - 2);
+
+        const analysis = analysis_re.exec(lines[i + 1]);
+
+        if (analysis !== null) {
+            results.push({
+                wordform: word,
+                lemma: analysis[1],
+                verbtype: analysis[2] ?? "",
+                tags: analysis[3],
+                syntax: analysis[4],
+                relation: analysis[5],
+            });
+        }
     }
+    // console.log(results);
+    return results;
 }
 
 export function hyphenate_parser(data: string) {
@@ -78,6 +115,7 @@ export interface ParsedParadigm {
 }
 
 export function paradigm_parser(objs: ParadigmResults) {
+    console.log(objs);
     const subclasses = [
         "Prop",
         "G3",

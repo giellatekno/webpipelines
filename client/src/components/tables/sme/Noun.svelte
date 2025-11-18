@@ -1,11 +1,6 @@
 <script lang="ts">
     import { t } from "svelte-intl-precompile";
-    import {
-        CASES,
-        CASE_NUMBERS,
-        PERSONS,
-        NUMBERS,
-    } from "../sme_paradigm_options";
+    import { CASES, CASE_NUMBERS, NUMBERS } from "../sme_paradigm_options";
     import type { ParsedParadigm } from "$lib/parsers";
     import { get_word } from "$lib/utils";
 

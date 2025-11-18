@@ -75,3 +75,12 @@ export const NUMBER_PERSONS: Record<string, Record<string, string>> = {
         3: "Sii/dat",
     },
 };
+
+export const PRONOUN_SUBCLASSES: Record<string, string> = {
+    Indef: "indefinite",
+    Rel: "relative",
+    Interr: "interrogative",
+    Pers: "personal",
+    Refl: "reflexive",
+    Dem: "demonstrative",
+};

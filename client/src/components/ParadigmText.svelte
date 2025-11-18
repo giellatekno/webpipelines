@@ -1,6 +1,7 @@
 <script lang="ts">
     import { paradigm_parser } from "$lib/parsers";
     import { Tabs } from "@skeletonlabs/skeleton-svelte";
+    import { t } from "svelte-intl-precompile";
 
     let { data } = $props();
 
@@ -25,8 +26,8 @@
                             <tr
                                 class="bg-primary-50-950 text-surface-950-50 border font-bold [&>td]:px-4 [&>td]:py-2"
                             >
-                                <td>Tags</td>
-                                <td>Wordform(s)</td>
+                                <td>{$t("paradigm.tags")}</td>
+                                <td>{$t("paradigm.wordforms")}</td>
                             </tr>
                         </thead>
                         <tbody>

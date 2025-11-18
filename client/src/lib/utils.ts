@@ -1,5 +1,31 @@
 import type { ParsedParadigm } from "./parsers";
 
+export const POS_TAGS: string[] = [
+    "A",
+    "Adv",
+    "CC",
+    "CS",
+    "Det",
+    "Interj",
+    "N",
+    "Num",
+    "Pcle",
+    "Phrase",
+    "Po",
+    "Pr",
+    "Pron",
+    "Prop",
+    "V",
+];
+
+export async function copy_text(text: string) {
+    try {
+        await navigator.clipboard.writeText(text);
+    } catch (err) {
+        console.error("Failed to copy: ", err);
+    }
+}
+
 export function convert_searchtext(text: string, lang: string) {
     let res;
     if (lang === "sme") {

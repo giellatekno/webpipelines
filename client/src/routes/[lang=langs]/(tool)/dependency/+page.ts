@@ -1,4 +1,5 @@
 import { env } from "$env/dynamic/public";
+import { dependency_parser } from "$lib/parsers";
 import { convert_searchtext } from "$lib/utils";
 import type { PageLoad } from "./$types";
 
@@ -23,7 +24,7 @@ export const load: PageLoad = async ({ url, params, fetch }) => {
     }
 
     const text = await response.text();
-    const lines = text.split("\n");
+    const data = dependency_parser(text);
 
-    return { q: q, results: { lines } };
+    return { q: q, results: data };
 };
