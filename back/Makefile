@@ -40,7 +40,7 @@ runlocal:
 
 .PHONY: bap
 bap:
-	cargo build --release --target-dir target
+	RUSTFLAGS="--cfg tokio_unstable" cargo build --release --target-dir target
 	podman build -t webpipeline-api -f Dockerfile .
 	podman tag webpipeline-api gtlabcontainerregistry.azurecr.io/webpipeline-api
 	podman push gtlabcontainerregistry.azurecr.io/webpipeline-api
