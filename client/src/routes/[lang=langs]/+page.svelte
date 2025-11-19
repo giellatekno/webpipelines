@@ -19,11 +19,11 @@
     let lang = $derived(page.params.lang || "");
 </script>
 
-<div class="grid w-fit max-w-4/5 grid-cols-2 items-stretch gap-6">
+<div class="mx-auto mt-8 grid max-w-max grid-cols-2 items-stretch gap-6">
     {#each tools_for[lang] as tool}
         <a
             href={resolve(`/${lang}/${tool}`)}
-            class="btn text-surface-950-50 preset-filled-primary-200-800 border-primary-500 justify-start border-2 text-wrap shadow-xl"
+            class="btn text-surface-950-50 preset-gradient-button border-surface-950-50 justify-start border-2 py-2 text-wrap shadow-md"
         >
             <img
                 class="mr-2 size-16 justify-start"
@@ -31,8 +31,8 @@
                 alt=""
             />
             <div class="flex flex-col">
-                <span class="text-2xl">{$t(tool)}</span>
-                <span class="text-xl italic">
+                <span class="text-2xl font-medium">{$t(tool)}</span>
+                <span class="text-xl font-normal italic">
                     {$t(tool + ".description")}
                 </span>
             </div>

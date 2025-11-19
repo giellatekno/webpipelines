@@ -19,8 +19,8 @@
     let description = $derived($t(`generate.description`));
 </script>
 
-<div class="flex flex-col gap-4">
-    <ToolDescription {description} {usage} />
+<div class="flex flex-col items-center gap-4">
+    <!-- <ToolDescription {description} {usage} /> -->
 
     <form class="my-2">
         <label for="q" class="label">

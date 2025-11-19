@@ -3,15 +3,20 @@
 </script>
 
 <footer
-    class="bg-surface-100-900 border-primary-500 flex w-full justify-between border-t p-2"
+    class="bg-surface-800-200 text-surface-100-900 flex w-full justify-center p-4"
 >
-    <span>
-        {$t("copyright")}
-    </span>
-    <span>
-        {$t("feedback")}:
-        <a href="mailto:giellatekno@uit.no" class="hover:underline">
-            giellatekno@uit.no
-        </a>
-    </span>
+    <div class="flex flex-col gap-4 text-center">
+        <div>
+            {$t("feedback")}
+            <a
+                href="mailto:giellatekno@uit.no"
+                class="text-primary-300-700 hover:underline"
+            >
+                giellatekno@uit.no
+            </a>
+        </div>
+        <div>
+            {$t("copyright")}
+        </div>
+    </div>
 </footer>

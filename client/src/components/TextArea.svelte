@@ -31,7 +31,7 @@
 
 <form
     onsubmit={on_submit}
-    class="card preset-filled-surface-100-900 border-surface-200-800 flex w-xl flex-col gap-2 border p-2"
+    class="card preset-filled-surface-100-900 border-surface-200-800 flex w-xl flex-col gap-2 border px-4 py-2 shadow-md"
 >
     <label for="q" class="label">
         <span class="label-text text-sm">{instruction}</span>

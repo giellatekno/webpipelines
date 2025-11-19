@@ -51,7 +51,7 @@
     });
 </script>
 
-<div class="flex flex-col gap-4 p-4">
+<div class="flex w-full flex-col gap-4">
     <label class="label">
         <span class="label-text">{$t("showtoolsfor")}</span>
         <div class="input-group w-3xs grid-cols-[auto_1fr]">

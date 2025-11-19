@@ -20,8 +20,8 @@
     let description = $derived($t("dependency.description"));
 </script>
 
-<div class="flex flex-col gap-4">
-    <ToolDescription {description} {usage} />
+<div class="flex flex-col items-center gap-4">
+    <!-- <ToolDescription {description} {usage} /> -->
     <TextArea {instruction} bind:value />
 
     <div class="">

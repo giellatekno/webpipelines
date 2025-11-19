@@ -2,7 +2,7 @@
     import { t } from "svelte-intl-precompile";
     import { page } from "$app/state";
     import { resolve } from "$app/paths";
-    import { ArrowRight, ChevronRight, Earth, MoveLeft } from "@lucide/svelte";
+    import { ChevronRight, Earth, MoveLeft } from "@lucide/svelte";
     import { langname } from "$lib/langnames";
     import { locale } from "$lib/locales";
 
@@ -16,7 +16,7 @@
     );
 </script>
 
-<div class="flex flex-col gap-4">
+<div class="mb-4 ml-2 flex flex-col gap-4">
     <a
         class="btn preset-outlined-primary-500 hover:preset-tonal w-fit"
         href={resolve("/")}
@@ -32,16 +32,16 @@
 
         <h3 class="h3">{$t(tool)}</h3>
     </div>
-    <hr class="hr" />
-    <span class="mb-4 flex flex-col gap-2">
-        <a
-            class="btn btn-sm preset-outlined-primary-500 hover:preset-tonal w-fit"
-            href={resolve(`/${page.params.lang}`)}
-        >
-            <MoveLeft />
-            {$t("backtotools")}
-        </a>
-    </span>
+</div>
+<hr class="hr" />
+<div class="my-4 ml-2">
+    <a
+        class="btn btn-sm preset-outlined-primary-500 hover:preset-tonal w-fit"
+        href={resolve(`/${page.params.lang}`)}
+    >
+        <MoveLeft />
+        {$t("backtotools")}
+    </a>
 </div>
 
 {@render children?.()}

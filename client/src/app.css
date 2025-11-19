@@ -6,3 +6,21 @@
 @import "@skeletonlabs/skeleton/themes/cerberus";
 
 @custom-variant dark (&:where([data-mode="dark"], [data-mode="dark"] *));
+
+.preset-gradient-bg {
+    background: linear-gradient(
+        90deg,
+        var(--color-secondary-300-700) 0%,
+        var(--color-primary-300-700) 20%,
+        var(--color-primary-300-700) 80%,
+        var(--color-secondary-300-700) 100%
+    );
+}
+.preset-gradient-button {
+    background-image: linear-gradient(
+        90deg,
+        var(--color-primary-300-700),
+        var(--color-primary-200-800)
+    );
+    color: var(--color-surface-950-50);
+}

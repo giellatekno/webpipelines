@@ -16,16 +16,25 @@
 </script>
 
 <Tabs {value} onValueChange={(details) => (value = details.value)}>
-    <Tabs.List>
-        {#each keys as key}
-            <Tabs.Trigger value={key}>{key}</Tabs.Trigger>
-        {/each}
+    {#if keys.length > 1}
+        <p class="my-2 self-center font-bold">
+            [l6e] Found {keys.length} homonyms:
+        </p>
+    {/if}
+    <Tabs.List class="justify-center">
+        {#if keys.length > 1}
+            {#each keys as key}
+                <Tabs.Trigger class="hover:preset-tonal" value={key}>
+                    {key}
+                </Tabs.Trigger>
+            {/each}
+        {/if}
         <Tabs.Indicator />
     </Tabs.List>
     {#each keys as key}
         {@const elem = paradigms[key]}
         <Tabs.Content value={key}>
-            <div class="flex flex-row flex-wrap gap-16">
+            <div class="flex flex-row flex-wrap justify-center gap-16">
                 {#if elem.pos === "N"}
                     <Noun {elem} />
                 {:else if elem.pos === "A"}

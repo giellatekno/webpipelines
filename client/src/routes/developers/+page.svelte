@@ -4,47 +4,47 @@
     import { t } from "svelte-intl-precompile";
 </script>
 
-<div class="flex flex-col gap-6">
-    <a
-        class="btn preset-outlined-primary-500 hover:preset-tonal w-fit"
-        href={resolve("/")}
-    >
-        <EarthIcon />
-        {$t("backtolangs")}
-    </a>
-    <h3 class="h3">{$t("fordevelopers")}</h3>
-</div>
-
-<div
-    class="card preset-filled-surface-100-900 border-secondary-500 mt-2 w-xl border-2 p-4"
->
-    <h4 class="h4">API</h4>
-
-    <p>
-        {$t("api.paragraph")}
+<div class="flex flex-col">
+    <div class="mb-4 ml-2">
         <a
-            class="text-primary-700-300 hover:underline"
-            rel="external"
-            href="https://gtweb-02.uit.no/webpipeline-api/"
-            target="_blank"
+            class="btn preset-outlined-primary-500 hover:preset-tonal w-fit"
+            href={resolve("/")}
         >
-            gtweb-02.uit.no/webpipeline-api/
+            <EarthIcon />
+            {$t("backtolangs")}
         </a>
-    </p>
+    </div>
 
-    <h4 class="h4 mt-2">{$t("sourcecode")}</h4>
-
-    <p>
-        {$t("developers.code.paragraph")}
-        <a
-            class="text-primary-700-300 hover:underline"
-            rel="external"
-            href="https://github.com/giellatekno/webpipelines"
-            target="_blank"
+    <div class="mx-auto w-1/3">
+        <h3 class="h3">{$t("fordevelopers")}</h3>
+        <div
+            class="card bg-surface-100-900/70 border-secondary-500 mt-2 flex w-xl flex-col gap-2 border-2 p-4 shadow-md"
         >
-            github.com/giellatekno/webpipelines
-        </a>
-    </p>
-
-    <p>{$t("developers.code.paragraph2")}</p>
+            <h4 class="h4">API</h4>
+            <p>
+                {$t("api.paragraph")}
+                <a
+                    class="text-primary-700-300 hover:underline"
+                    rel="external"
+                    href="https://gtweb-02.uit.no/webpipeline-api/"
+                    target="_blank"
+                >
+                    gtweb-02.uit.no/webpipeline-api/
+                </a>
+            </p>
+            <h4 class="h4 mt-2">{$t("sourcecode")}</h4>
+            <p>
+                {$t("developers.code.paragraph")}
+                <a
+                    class="text-primary-700-300 hover:underline"
+                    rel="external"
+                    href="https://github.com/giellatekno/webpipelines"
+                    target="_blank"
+                >
+                    github.com/giellatekno/webpipelines
+                </a>
+            </p>
+            <p>{$t("developers.code.paragraph2")}</p>
+        </div>
+    </div>
 </div>

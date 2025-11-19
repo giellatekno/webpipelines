@@ -7,7 +7,7 @@
     import { get_usage } from "$lib/utils";
     import ToolDescription from "$components/ToolDescription.svelte";
     import { Switch } from "@skeletonlabs/skeleton-svelte";
-    import ParadigmText from "$components/ParadigmText.svelte";
+    import ParadigmList from "$components/ParadigmList.svelte";
 
     interface Props {
         data: PageData;
@@ -73,59 +73,68 @@
     let instruction = $t("paradigm.instruction");
 </script>
 
-<div class="flex flex-col gap-4">
+<div class="flex flex-col items-center gap-4">
     <!-- <ToolDescription {description} {usage} /> -->
 
-    <form onsubmit={on_submit} id="form" class="my-2 flex flex-col gap-2">
-        <label class="flex flex-row items-center gap-2">
-            <p class="font-bold">{$t("paradigmsize")}:</p>
-            {#each paradigm_sizes as value}
-                <label class="flex flex-row items-center gap-1">
-                    <input
-                        type="radio"
-                        class="radio"
-                        name="size"
-                        {value}
-                        bind:group={size}
-                        onchange={on_radio_change}
-                    />
-                    <p>{$t("paradigmsize." + value)}</p>
-                </label>
-            {/each}
-        </label>
-        <label class="flex flex-row items-center gap-2">
-            <p class="font-bold">{$t("partofspeech")}:</p>
-            {#each Object.entries(poses) as [label, value]}
-                <label class="flex flex-row items-center gap-1">
-                    <input
-                        type="radio"
-                        class="radio"
-                        name="pos"
-                        {value}
-                        bind:group={pos}
-                        onchange={on_radio_change}
-                    />
-                    <p>{$t("partofspeech." + label)}</p>
-                </label>
-            {/each}
-        </label>
-        <span class="mt-2 flex flex-col gap-2">
-            <span class="label-text">
-                {instruction}:
+    <div
+        class="card preset-filled-surface-100-900 border-surface-200-800 mx-4 w-fit border p-4"
+    >
+        <form onsubmit={on_submit} id="form" class="my-2 flex flex-col gap-2">
+            <label class="flex flex-row items-center gap-2">
+                <p class="font-bold">{$t("paradigmsize")}:</p>
+                {#each paradigm_sizes as value}
+                    <label class="flex flex-row items-center gap-1">
+                        <input
+                            type="radio"
+                            class="radio"
+                            name="size"
+                            {value}
+                            bind:group={size}
+                            onchange={on_radio_change}
+                        />
+                        <p>{$t("paradigmsize." + value)}</p>
+                    </label>
+                {/each}
+            </label>
+            <label class="flex flex-row items-center gap-2">
+                <p class="font-bold">{$t("partofspeech")}:</p>
+                {#each Object.entries(poses) as [label, value]}
+                    <label class="flex flex-row items-center gap-1">
+                        <input
+                            type="radio"
+                            class="radio"
+                            name="pos"
+                            {value}
+                            bind:group={pos}
+                            onchange={on_radio_change}
+                        />
+                        <p>{$t("partofspeech." + label)}</p>
+                    </label>
+                {/each}
+            </label>
+            <span class="mt-2 flex justify-center">
+                <div class="flex flex-col gap-2">
+                    <span class="label-text">
+                        {instruction}:
+                    </span>
+                    <div class="flex flex-row gap-2">
+                        <input
+                            class="input bg-surface-50 h-12 w-80"
+                            type="text"
+                            name="word"
+                            bind:value={word}
+                        />
+                        <button
+                            class="btn preset-filled-primary-500"
+                            type="submit"
+                        >
+                            {$t("submit")}
+                        </button>
+                    </div>
+                </div>
             </span>
-            <div class="flex flex-row gap-2">
-                <input
-                    class="input h-12 w-80"
-                    type="text"
-                    name="word"
-                    bind:value={word}
-                />
-                <button class="btn preset-filled-primary-500" type="submit">
-                    {$t("submit")}
-                </button>
-            </div>
-        </span>
-    </form>
+        </form>
+    </div>
 
     {#if data?.results && ParadigmTables}
         <Switch
@@ -145,10 +154,10 @@
         {#if !format_switch_checked}
             <ParadigmTables data={data.results} />
         {:else}
-            <ParadigmText data={data.results} />
+            <ParadigmList data={data.results} />
         {/if}
     {:else if data?.results}
-        <ParadigmText data={data.results} />
+        <ParadigmList data={data.results} />
     {:else if data?.error}
         <span class="text-error-500 text-xl">{data.error}</span>
     {/if}
