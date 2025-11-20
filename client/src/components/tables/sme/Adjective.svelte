@@ -3,6 +3,7 @@
     import { get_word } from "$lib/utils";
     import { t } from "svelte-intl-precompile";
     import { ADJ_GRADES, CASES } from "../sme_paradigm_options";
+    import Table from "$components/Table.svelte";
 
     let { elem }: { elem: ParsedParadigm } = $props();
 
@@ -68,24 +69,22 @@
     {@const prefix = "Ord+"}
     <div class="flex flex-col gap-2">
         <h4 class="h4">{$t("paradigm.ordinal")}</h4>
-        <table class="table h-fit w-fit border text-lg shadow-lg">
+        <Table>
             <tbody>
-                <tr class="[&>td]:border [&>td]:pr-4">
-                    <td class="bg-primary-50-950 font-bold">
+                <tr>
+                    <th>
                         {$t("paradigm.attribute")}
-                    </td>
+                    </th>
                     <td>{get_word(prefix + "Attr", elem)}</td>
                 </tr>
             </tbody>
-        </table>
-        <table class="table h-fit w-fit border text-lg shadow-lg">
+        </Table>
+        <Table>
             <thead>
-                <tr
-                    class="bg-primary-50-950 text-surface-950-50 font-bold [&>td]:border"
-                >
-                    <td>{$t("paradigm.case")}</td>
-                    <td>{$t("paradigm.singular")}</td>
-                    <td>{$t("paradigm.plural")}</td>
+                <tr>
+                    <th>{$t("paradigm.case")}</th>
+                    <th>{$t("paradigm.singular")}</th>
+                    <th>{$t("paradigm.plural")}</th>
                 </tr>
             </thead>
             <tbody>
@@ -95,7 +94,7 @@
                         .find((e) => e.endsWith(tag))}
                     {#if row_exists}
                         {#if !(tag === "Ess")}
-                            <tr class="[&>td]:border [&>td]:pr-4">
+                            <tr>
                                 <td class="bg-surface-100-900">
                                     {$t(`paradigm.${name}`)}
                                 </td>
@@ -107,7 +106,7 @@
                                 </td>
                             </tr>
                         {:else}
-                            <tr class="[&>td]:border">
+                            <tr>
                                 <td class="bg-surface-100-900">
                                     {$t(`paradigm.${name}`)}
                                 </td>
@@ -119,7 +118,7 @@
                     {/if}
                 {/each}
             </tbody>
-        </table>
+        </Table>
     </div>
 {:else}
     {#each Object.entries(ADJ_GRADES) as [grade_tag, grade_name]}
@@ -128,24 +127,22 @@
         {#if grade_exists}
             <div class="flex flex-col gap-2">
                 <h4 class="h4">{$t(`paradigm.${grade_name}`)}</h4>
-                <table class="table h-fit w-fit border text-lg shadow-lg">
+                <Table>
                     <tbody>
-                        <tr class="[&>td]:border [&>td]:pr-4">
-                            <td class="bg-primary-50-950 font-bold">
+                        <tr>
+                            <th>
                                 {$t("paradigm.attribute")}
-                            </td>
+                            </th>
                             <td>{get_word(prefix + "Attr", elem)}</td>
                         </tr>
                     </tbody>
-                </table>
-                <table class="table h-fit w-fit border text-lg">
+                </Table>
+                <Table>
                     <thead>
-                        <tr
-                            class="bg-primary-50-950 text-surface-950-50 font-bold [&>td]:border"
-                        >
-                            <td>{$t("paradigm.case")}</td>
-                            <td>{$t("paradigm.singular")}</td>
-                            <td>{$t("paradigm.plural")}</td>
+                        <tr>
+                            <th>{$t("paradigm.case")}</th>
+                            <th>{$t("paradigm.singular")}</th>
+                            <th>{$t("paradigm.plural")}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -153,7 +150,7 @@
                             {@const row_exists = has_row(grade_tag, tag, elem)}
                             {#if row_exists}
                                 {#if !(tag === "Ess")}
-                                    <tr class="[&>td]:border [&>td]:pr-4">
+                                    <tr>
                                         <td class="bg-surface-100-900">
                                             {$t(`paradigm.${name}`)}
                                         </td>
@@ -171,7 +168,7 @@
                                         </td>
                                     </tr>
                                 {:else}
-                                    <tr class="[&>td]:border">
+                                    <tr>
                                         <td class="bg-surface-100-900">
                                             {$t(`paradigm.${name}`)}
                                         </td>
@@ -183,7 +180,7 @@
                             {/if}
                         {/each}
                     </tbody>
-                </table>
+                </Table>
             </div>
         {/if}
     {/each}

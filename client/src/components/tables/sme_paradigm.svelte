@@ -50,5 +50,9 @@
                 {/if}
             </div>
         </Tabs.Content>
+    {:else}
+        <div class="flex justify-center">
+            <p>[l6e] No hits for search...</p>
+        </div>
     {/each}
 </Tabs>

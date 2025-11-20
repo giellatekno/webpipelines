@@ -7,6 +7,7 @@
     import TextArea from "$components/TextArea.svelte";
     import { copy_text, get_usage, POS_TAGS } from "$lib/utils";
     import { CopyIcon } from "@lucide/svelte";
+    import Table from "$components/Table.svelte";
 
     interface Props {
         data: PageData;
@@ -58,14 +59,12 @@
 
         {#if results}
             <div class="flex flex-col">
-                <table class="table h-fit w-fit text-lg shadow-lg">
+                <Table>
                     <thead>
-                        <tr
-                            class="bg-primary-50-950 text-surface-950-50 font-bold [&>td]:border"
-                        >
-                            <td>Wordform</td>
-                            <td>Analysis</td>
-                            <td>Copy</td>
+                        <tr>
+                            <th>Wordform</th>
+                            <th>Analysis</th>
+                            <th>Copy</th>
                         </tr>
                     </thead>
                     {#each results as word_analyses}
@@ -75,9 +74,7 @@
                                 {@const html_tags = color_tags(
                                     combine_tags(lemma, pos, tags),
                                 ).join(plus)}
-                                <tr
-                                    class="align-middle [&>td]:border [&>td]:pr-4"
-                                >
+                                <tr>
                                     <td>
                                         <span class="text-green-700">
                                             {wordform}
@@ -106,7 +103,7 @@
                             {/each}
                         </tbody>
                     {/each}
-                </table>
+                </Table>
             </div>
         {/if}
     </div>

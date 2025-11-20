@@ -10,6 +10,7 @@
         TIMES,
     } from "../sme_paradigm_options";
     import { get_word } from "$lib/utils";
+    import Table from "$components/Table.svelte";
 
     let { elem }: { elem: ParsedParadigm } = $props();
 
@@ -35,30 +36,29 @@
     {#if elem.wordforms.keys().find((t) => t.startsWith(mode_tag))}
         <div class="flex flex-col gap-2">
             <h4 class="h4">{$t(`paradigm.${mode_name}`)}</h4>
-            <table class="table h-fit w-fit border text-lg shadow-lg">
+            <Table>
                 <thead>
-                    <tr
-                        class="bg-primary-50-950 text-surface-950-50 font-bold [&>td]:border"
-                    >
-                        <td>
+                    <tr>
+                        <th>
                             {$t("paradigm.person")}
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             {#if mode_tag !== "Imprt"}
                                 {$t("paradigm.present")}
                             {/if}
-                        </td>
+                        </th>
                         {#if has_preterite(mode_tag, elem)}
-                            <td>
+                            <th>
                                 {$t("paradigm.preterite")}
-                            </td>
+                            </th>
                         {/if}
                     </tr>
                 </thead>
                 <tbody>
                     {#each Object.entries(NUMBER_PERSONS) as [num_tag, persons]}
                         {#each Object.entries(persons) as [pers_tag, pronoun]}
-                            <tr class="[&>td]:border [&>td]:pr-4">
+                            {@const sep = pers_tag.endsWith("3")}
+                            <tr class:separate={sep}>
                                 <td class="bg-surface-100-900">
                                     {pronoun}
                                 </td>
@@ -84,7 +84,7 @@
                             </tr>
                         {/each}
                     {/each}
-                    <tr class="[&>td]:border [&>td]:pr-4">
+                    <tr>
                         <td class="bg-surface-100-900">
                             {$t("paradigm.connegative")}
                         </td>
@@ -102,23 +102,23 @@
                         {/if}
                     </tr>
                 </tbody>
-            </table>
+            </Table>
         </div>
     {/if}
 {/each}
 <div class="flex flex-col gap-2">
     <h4 class="h4">{$t("paradigm.nonfinite")}</h4>
-    <table class="table h-fit w-fit border text-lg shadow-lg">
+    <Table>
         <tbody>
             {#each Object.entries(NONFINITE_FORMS) as [form_tag, form_name]}
                 {@const form_exists = elem.wordforms
                     .keys()
                     .find((t) => t.startsWith(form_tag))}
                 {#if form_exists}
-                    <tr class="[&>td]:border [&>td]:pl-4">
-                        <td class="bg-primary-50-950 font-bold">
+                    <tr>
+                        <th>
                             {$t(`paradigm.${form_name}`)}
-                        </td>
+                        </th>
                         <td>{get_word(form_tag, elem)}</td>
                     </tr>
                     {#if form_tag === "Ger"}
@@ -127,12 +127,12 @@
                             .find((t) => t.startsWith(`${form_tag}+Px`))}
                             {#each Object.entries(NUMBERS) as [num_tag, num_name]}
                                 {#each Object.entries(PERSONS) as [pers_tag, pers_name]}
-                                    <tr class="[&>td]:border [&>td]:pl-4">
-                                        <td class="bg-primary-50-950 font-bold">
+                                    <tr>
+                                        <th>
                                             {$t("paradigm.gerund")}
                                             {$t(`paradigm.${num_name}`)}
                                             {pers_name}
-                                        </td>
+                                        </th>
                                         <td>
                                             {get_word(
                                                 `Ger+Px${num_tag}${pers_tag}`,
@@ -147,5 +147,5 @@
                 {/if}
             {/each}
         </tbody>
-    </table>
+    </Table>
 </div>

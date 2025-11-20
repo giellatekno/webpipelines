@@ -9,12 +9,12 @@
 <div class="">
     <AppBar class="bg-surface-50-950 border-surface-950-50 border-b-2">
         <AppBar.Toolbar
-            class="mx-auto w-full max-w-[1750px] grid-cols-[auto_auto] "
+            class="mx-auto w-full max-w-[1700px] grid-cols-[auto_auto]"
         >
             <AppBar.Headline>
                 <a
                     href={resolve("/")}
-                    class="flex flex-row items-center gap-4 text-4xl font-bold"
+                    class="flex flex-row items-center gap-4 text-3xl font-bold"
                 >
                     <img
                         class="h-10 scale-100"
@@ -22,7 +22,7 @@
                         alt="Giellatekno logo"
                     />
 
-                    {$t("languagetools")}
+                    Webpipelines
                 </a>
             </AppBar.Headline>
 

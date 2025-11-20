@@ -4,11 +4,15 @@
     import {
         CASES,
         NUMBERS,
+        PERSONS,
         PRONOUN_SUBCLASSES,
     } from "../sme_paradigm_options";
     import { get_word } from "$lib/utils";
+    import Table from "$components/Table.svelte";
 
     let { elem }: { elem: ParsedParadigm } = $props();
+
+    // $effect(() => console.log(elem));
 
     let subclass_name = $derived(PRONOUN_SUBCLASSES[elem.subclass]);
 </script>
@@ -16,19 +20,72 @@
 <div class="flex flex-col gap-2">
     <h4 class="h4">{$t(`paradigm.${subclass_name}`)}</h4>
     {#if elem.subclass === "Refl"}
-        todo
+        <Table>
+            <thead>
+                <tr>
+                    <th>{$t("paradigm.case")}</th>
+                    <th>{$t("paradigm.person")}</th>
+                    <th>{$t("paradigm.singularis")}</th>
+                    <th>{$t("paradigm.dualis")}</th>
+                    <th>{$t("paradigm.pluralis")}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {#each Object.entries(CASES) as [case_tag, case_name]}
+                    {#if case_tag === "Nom"}
+                        <tr class="separate">
+                            <td class="bg-surface-100-900">
+                                {$t("paradigm.nominative")}
+                            </td>
+                            <td class="bg-surface-100-900"></td>
+                            <td>{get_word("Sg+Nom", elem)}</td>
+                            <td>{get_word("Du+Nom", elem)}</td>
+                            <td>{get_word("Pl+Nom", elem)}</td>
+                        </tr>
+                    {:else}
+                        {#each Object.keys(PERSONS) as pers_tag}
+                            <tr
+                                class:separate={pers_tag === "3" &&
+                                    case_tag !== "Ess"}
+                            >
+                                {#if pers_tag === "1"}
+                                    <td class="bg-surface-100-900" rowspan={3}>
+                                        {$t(`paradigm.${case_name}`)}
+                                    </td>
+                                {/if}
+                                <td class="bg-surface-100-900">
+                                    {pers_tag}.
+                                </td>
+                                {#each Object.keys(NUMBERS) as num_tag}
+                                    <td>
+                                        {get_word(
+                                            `${case_tag}+Px${num_tag}${pers_tag}`,
+                                            elem,
+                                        )}
+                                    </td>
+                                {/each}
+                            </tr>
+                        {/each}
+                    {/if}
+                {/each}
+            </tbody>
+        </Table>
+        <Table>
+            <tr>
+                <td class="bg-surface-100-900">{$t("paradigm.essive")}</td>
+                <td>{get_word("Ess", elem)}</td>
+            </tr>
+        </Table>
     {:else if elem.subclass === "Pers"}
         <!-- TODO: better way to find pers_tag -->
         {@const pers_tag = elem.wordforms.keys().toArray()[0][2]}
-        <table class="table h-fit w-fit text-lg shadow-lg">
+        <Table>
             <thead>
-                <tr
-                    class="bg-primary-50-950 text-surface-950-50 font-bold [&>td]:border"
-                >
-                    <td>{$t("paradigm.case")}</td>
-                    <td>{$t("paradigm.singularis")}</td>
-                    <td>{$t("paradigm.dualis")}</td>
-                    <td>{$t("paradigm.pluralis")}</td>
+                <tr>
+                    <th>{$t("paradigm.case")}</th>
+                    <th>{$t("paradigm.singularis")}</th>
+                    <th>{$t("paradigm.dualis")}</th>
+                    <th>{$t("paradigm.pluralis")}</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,7 +94,7 @@
                         .keys()
                         .find((e) => e.endsWith(case_tag))}
                     {#if row_exists}
-                        <tr class="[&>td]:border [&>td]:pr-4">
+                        <tr>
                             <td class="bg-surface-100-900">
                                 {$t(`paradigm.${case_name}`)}
                             </td>
@@ -53,7 +110,7 @@
                     {/if}
                 {/each}
             </tbody>
-        </table>
+        </Table>
     {:else}
         {@const has_attr = elem.wordforms
             .keys()
@@ -63,26 +120,24 @@
             .keys()
             .find((t) => t.endsWith("Nom"))}
         {#if has_attr}
-            <table class="table h-fit w-fit border text-lg shadow-lg">
+            <Table>
                 <tbody>
-                    <tr class="[&>td]:border [&>td]:pr-4">
-                        <td class="bg-primary-50-950 font-bold">
+                    <tr>
+                        <th>
                             {$t("paradigm.attribute")}
-                        </td>
+                        </th>
                         <td>{get_word("Attr", elem)}</td>
                     </tr>
                 </tbody>
-            </table>
+            </Table>
         {/if}
         {#if has_cases}
-            <table class="table h-fit w-fit text-lg shadow-lg">
+            <Table>
                 <thead>
-                    <tr
-                        class="bg-primary-50-950 text-surface-950-50 font-bold [&>td]:border"
-                    >
-                        <td>{$t("paradigm.case")}</td>
-                        <td>{$t("paradigm.singular")}</td>
-                        <td>{$t("paradigm.plural")}</td>
+                    <tr>
+                        <th>{$t("paradigm.case")}</th>
+                        <th>{$t("paradigm.singular")}</th>
+                        <th>{$t("paradigm.plural")}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -92,7 +147,7 @@
                             .find((e) => e.endsWith(tag))}
                         {#if row_exists}
                             {#if !(tag === "Ess")}
-                                <tr class="[&>td]:border [&>td]:pr-4">
+                                <tr>
                                     <td class="bg-surface-100-900">
                                         {$t(`paradigm.${name}`)}
                                     </td>
@@ -104,7 +159,7 @@
                                     </td>
                                 </tr>
                             {:else}
-                                <tr class="[&>td]:border">
+                                <tr>
                                     <td class="bg-surface-100-900">
                                         {$t(`paradigm.${name}`)}
                                     </td>
@@ -116,7 +171,7 @@
                         {/if}
                     {/each}
                 </tbody>
-            </table>
+            </Table>
         {/if}
     {/if}
 </div>
