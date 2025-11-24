@@ -5,7 +5,7 @@ use axum::{
     extract::Json,
     response::{IntoResponse, Response},
 };
-use base64::{engine::general_purpose, Engine as _};
+use base64::{Engine as _, engine::general_purpose};
 use cmd_lib::run_fun;
 use http::StatusCode;
 use itertools::Itertools;
@@ -80,7 +80,7 @@ pub fn unknown_in_x_by_freq(input: String, lang1: String, lang2: String) -> Resu
 
     let temp_file = NamedTempFile::new().map_err(|e| e.to_string())?;
     let path = temp_file.path();
-    let _ = temp_file
+    temp_file
         .as_file()
         .write_all(input.as_bytes())
         .map_err(|e| e.to_string())?;
@@ -102,7 +102,7 @@ pub fn unknown_in_x_by_freq(input: String, lang1: String, lang2: String) -> Resu
         //lookup $dict
     )
     .map_err(|e| e.to_string())?;
-    
+
     let recognized_words = results
         .lines()
         .map(|line| line.trim())
@@ -116,13 +116,14 @@ pub fn unknown_in_x_by_freq(input: String, lang1: String, lang2: String) -> Resu
 
     let temp_file2 = NamedTempFile::new().map_err(|e| e.to_string())?;
     let path = temp_file2.path();
-    let _ = temp_file2
+    temp_file2
         .as_file()
         .write_all(recognized_words.as_bytes())
         .map_err(|e| e.to_string())?;
+
     trace!(recognized_words);
 
-    /* 
+    /*
     let lookup_binary = std::env::var("LOOKUP_BINARY").unwrap_or_else(|_| String::from("lookup"));
     let lookup_results = run_fun!(
         cat $path |
@@ -130,16 +131,55 @@ pub fn unknown_in_x_by_freq(input: String, lang1: String, lang2: String) -> Resu
     )
     .map_err(|e| e.to_string())?;
     */
-    let result = run_fun!(cat $path | hfst-lookup $dict);
-    let lookup_results = match result {
-        Ok(results) => {
-            trace!(results, "lookup results");
-            results
+    //let cmd_str = format!("hfst-lookup -q --input={path:?} 
+
+    let mut cmd = std::process::Command::new("hfst-lookup");
+    cmd.arg("-q");
+    cmd.arg(&dict);
+    cmd.stdin(std::process::Stdio::piped());
+
+    match std::fs::exists(path) {
+        Ok(true) => {},
+        Ok(false) => {
+            panic!("file {path:?} verified to not exist!");
         }
-        Err(err) => {
-            let err = err.to_string();
-            trace!(err);
-            return Err(err);
+        Err(e) => {
+            panic!("file {path:?} could not be determined if it exists or not! Error: {e}");
+        }
+    }
+
+    let mut child_handle = match cmd.spawn() {
+        Ok(handle) => handle,
+        Err(error) => {
+            let command = format!("{cmd:?}");
+            tracing::warn!(?command, ?error, "could not run command");
+            return Err(format!("Could not run command: {command}: {error}"));
+        }
+    };
+
+    child_handle.stdin.as_mut().unwrap().write_all(recognized_words.as_bytes())
+        .map_err(|error| {
+            tracing::warn!(?error, "could not write to stdin of subcommand");
+            format!("could not write to stdin of subcommand: error: {error}")
+        })?;
+
+    let lookup_results = match child_handle.wait_with_output() {
+        Ok(output) => {
+            if output.status.code().expect("child output has status code") == 0 {
+                String::from_utf8(output.stdout)
+                    .expect("stdout from hfst-lookup is valid utf-8")
+            } else {
+                let stdout = String::from_utf8_lossy(&output.stdout);
+                let stderr = String::from_utf8_lossy(&output.stderr);
+                let command = format!("{cmd:?}");
+                tracing::warn!(?stdout, ?stderr, command, "non-0 output from cmd");
+                return Err("non-0 from command".into());
+            }
+        }
+        Err(error) => {
+            let command = format!("{cmd:?}");
+            tracing::warn!(?error, command, "could not run command");
+            return Err("could not run command".into());
         }
     };
 
@@ -169,7 +209,10 @@ pub fn unknown_in_x_by_freq(input: String, lang1: String, lang2: String) -> Resu
     // biggest first
     counts.reverse();
 
-    let some_counts = counts.iter().map(|(k, v)| format!("k={k}, v={v}")).join("; ");
+    let some_counts = counts
+        .iter()
+        .map(|(k, v)| format!("k={k}, v={v}"))
+        .join("; ");
     trace!(some_counts, "after sorting the counts");
 
     // finally output them as <count>\t<word>  one per line
