@@ -137,6 +137,8 @@ pub fn unknown_in_x_by_freq(input: String, lang1: String, lang2: String) -> Resu
     cmd.arg("-q");
     cmd.arg(&dict);
     cmd.stdin(std::process::Stdio::piped());
+    cmd.stdout(std::process::Stdio::piped());
+    cmd.stderr(std::process::Stdio::piped());
 
     match std::fs::exists(path) {
         Ok(true) => {},
