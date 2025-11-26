@@ -1,8 +1,8 @@
 import sme from "$locales/sme";
 import nob from "$locales/nob";
 import eng from "$locales/eng";
-import fin from "$locales/fin";
-import rus from "$locales/rus";
+// import fin from "$locales/fin";
+// import rus from "$locales/rus";
 
 import {
     addMessages,
@@ -15,18 +15,18 @@ const DEFAULT_LOCALE = "eng";
 
 export const locale = wrap_precompile_locale();
 export const locales_in_locale = {
-    sme: "Davvisámegillii",
+    sme: "Davvisámegiella",
     nob: "Norsk Bokmål",
     eng: "English",
-    fin: "Suomeksi",
-    rus: "Русский",
+    // fin: "Suomi",
+    // rus: "Русский",
 };
 
 addMessages("sme", sme);
 addMessages("nob", nob);
 addMessages("eng", eng);
-addMessages("fin", fin);
-addMessages("rus", rus);
+// addMessages("fin", fin);
+// addMessages("rus", rus);
 
 init({
     fallbackLocale: DEFAULT_LOCALE,
@@ -50,7 +50,7 @@ function wrap_precompile_locale() {
 function get_initial_locale() {
     if (typeof window === "undefined") {
         // SSR
-        return "sme";
+        return DEFAULT_LOCALE;
     } else {
         // hydration, or client side rendering
         const saved_locale = window.localStorage.getItem("locale");

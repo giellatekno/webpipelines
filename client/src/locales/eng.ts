@@ -4,6 +4,8 @@ export default {
     "developers": "Developers",
     "about": "About",
     "interfacelanguage": "Interface language",
+    "languages": "Languages",
+    "toolspage": "Tools page",
 
     // Developers
     "backtolangs": "Back to language selection",
@@ -17,7 +19,7 @@ export default {
         "Feel free to open Github Issues if you find any technical issues on the site, or on the API.",
 
     // TODO: About page
-    "about.title": "About Giellatekno Webpipelines",
+    "about.title": "About Giellatekno Webpipeline",
 
     // Footer
     "copyright": "Copyright © Centre for Sámi language technology",
@@ -90,6 +92,14 @@ export default {
     "paradigmsize.minimal": "Minimal",
     "paradigmsize.standard": "Standard",
     "paradigmsize.full": "Full",
+    "paradigm.jumpto": "Jump to:",
+    "paradigm.homonyms": "Found {num} homonyms:",
+    "paradigm.noresults": "No results found...",
+    "paradigm.tags": "Tags",
+    "paradigm.wordform": "Wordform",
+    "paradigm.person": "Person",
+
+    // POS
     "partofspeech": "Part of speech",
     "partofspeech.any": "Any",
     "partofspeech.noun": "Noun",
@@ -98,10 +108,6 @@ export default {
     "partofspeech.adjective": "Adjective",
     "partofspeech.adverb": "Adverb",
     "partofspeech.numeral": "Numeral",
-
-    "paradigm.tags": "Tags",
-    "paradigm.wordforms": "Wordforms",
-    "paradigm.person": "Person",
 
     // Nouns
     "paradigm.possessivesuffixes": "Possessive suffixes",
@@ -121,6 +127,9 @@ export default {
     "paradigm.potential": "Potential",
     "paradigm.present": "Present",
     "paradigm.preterite": "Preterite",
+    "paradigm.perfect": "Perfect",
+    "paradigm.pluperfect": "Pluperfect",
+    "paradigm.negative": "Negative",
     "paradigm.connegative": "Connegative",
     "paradigm.nonfinite": "Nonfinite forms",
     "paradigm.infinite": "Infinite",
@@ -146,24 +155,30 @@ export default {
 
     // Cases
     "paradigm.case": "Case",
-    "paradigm.nominative": "Nominative",
-    "paradigm.genitive": "Genitive",
+    "paradigm.ablative": "Ablative",
+    "paradigm.abessive": "Abessive",
     "paradigm.accusative": "Accusative",
-    "paradigm.illative": "Illative",
-    "paradigm.locative": "Locative",
+    "paradigm.adessive": "Adessive",
+    "paradigm.allative": "Allative",
     "paradigm.comitative": "Comitative",
+    "paradigm.elative": "Elative",
     "paradigm.essive": "Essive",
+    "paradigm.genitive": "Genitive",
+    "paradigm.illative": "Illative",
+    "paradigm.inessive": "Inessive",
+    "paradigm.locative": "Locative",
+    "paradigm.nominative": "Nominative",
+    "paradigm.partitive": "Partitive",
+    "paradigm.translative": "Translative",
 
     // Numbers
     "paradigm.number": "Number",
     "paradigm.singular": "Singular",
     "paradigm.plural": "Plural",
-    "paradigm.singularis": "Singularis",
-    "paradigm.dualis": "Dualis",
-    "paradigm.pluralis": "Pluralis",
+    "paradigm.dual": "Dual",
 
     // Numerals
-    "num": "Numerals",
+    "num": "Numbers",
     "num.description": "Generate words from numbers, times or dates.",
 
     // Transcribe
@@ -171,6 +186,52 @@ export default {
     "transcribe.description": "Transcribe words to IPA.",
     "transcribe.instruction":
         "Write the words you want to transcribe below and submit.",
+
+    // Tools title
+    "toolsfor.sjd": "Tools for Kildin Sámi",
+    "toolsfor.sje": "Tools for Pite Sámi",
+    "toolsfor.sma": "Tools for South Sámi",
+    "toolsfor.sme": "Tools for North Sámi",
+    "toolsfor.smj": "Tools for Lule Sámi",
+    "toolsfor.smn": "Tools for Inari Sámi",
+    "toolsfor.sms": "Tools for Skolt Sámi",
+
+    "toolsfor.fin": "Tools for Finnish",
+    "toolsfor.fit": "Tools for Meänkieli",
+    "toolsfor.fkv": "Tools for Kven",
+    "toolsfor.est": "Tools for Estonian",
+    "toolsfor.myv": "Tools for Erzya",
+    "toolsfor.mrj": "Tools for Hill Mari",
+    "toolsfor.izh": "Tools for Ingrian",
+    "toolsfor.kca": "Tools for Khanty",
+    "toolsfor.kpv": "Tools for Komi",
+    "toolsfor.koi": "Tools for Komi Permyak",
+    "toolsfor.liv": "Tools for Livonian",
+    "toolsfor.olo": "Tools for Livvi-Karelian",
+    "toolsfor.mns": "Tools for Mansi",
+    "toolsfor.mdf": "Tools for Moksha",
+    "toolsfor.yrk": "Tools for Nenets",
+    "toolsfor.nio": "Tools for Nganasan",
+    "toolsfor.udm": "Tools for Udmurt",
+    "toolsfor.vep": "Tools for Veps",
+    "toolsfor.vot": "Tools for Votic",
+    "toolsfor.vro": "Tools for Võro",
+    "toolsfor.mhr": "Tools for Eastern Mari",
+
+    "toolsfor.nob": "Tools for Norwegian Bokmål",
+    "toolsfor.bxr": "Tools for Buryat",
+    "toolsfor.ciw": "Tools for Chippewa",
+    "toolsfor.cor": "Tools for Cornish",
+    "toolsfor.evn": "Tools for Evenki",
+    "toolsfor.fao": "Tools for Faroese",
+    "toolsfor.gle": "Tools for Irish",
+    "toolsfor.hdn": "Tools for Northern Haida",
+    "toolsfor.ipk": "Tools for Iñupiaq",
+    "toolsfor.kal": "Tools for Greenlandic",
+    "toolsfor.rmf": "Tools for Finnish Kalo",
+    "toolsfor.rus": "Tools for Russian",
+    "toolsfor.som": "Tools for Somali",
+    "toolsfor.tkl": "Tools for Tokelau",
 
     // Old stuff to clean up
     "search": "Search",

@@ -2,6 +2,7 @@
     import { paradigm_parser } from "$lib/parsers";
     import { Tabs } from "@skeletonlabs/skeleton-svelte";
     import { t } from "svelte-intl-precompile";
+    import Table from "./Table.svelte";
 
     let { data } = $props();
 
@@ -22,20 +23,18 @@
     {#each keys as key}
         <Tabs.Content value={key}>
             <div class="mx-auto flex justify-center">
-                <table class="border text-lg shadow-md">
-                    <thead class="border">
-                        <tr
-                            class="bg-primary-50-950 text-surface-950-50 border font-bold [&>td]:px-4 [&>td]:py-2"
-                        >
-                            <td>{$t("paradigm.tags")}</td>
-                            <td>{$t("paradigm.wordforms")}</td>
+                <Table>
+                    <thead>
+                        <tr>
+                            <th>{$t("paradigm.tags")}</th>
+                            <th>{$t("paradigm.wordform")}</th>
                         </tr>
                     </thead>
                     <tbody>
                         {#each paradigm[key].wordforms.entries() as [tags, wordforms]}
                             {@const obj = paradigm[key]}
                             <tr
-                                class="even:bg-surface-100-900/50 odd:bg-surface-50-950 border [&>td]:px-4 [&>td]:py-1"
+                                class="even:bg-surface-100-900/50 odd:bg-surface-50-950 border"
                             >
                                 <td class="font-bold">
                                     {obj.pos}
@@ -48,7 +47,7 @@
                             </tr>
                         {/each}
                     </tbody>
-                </table>
+                </Table>
             </div>
         </Tabs.Content>
     {/each}

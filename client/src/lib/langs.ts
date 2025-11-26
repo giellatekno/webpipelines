@@ -100,30 +100,29 @@ export const langs = [
 
 // for the filters when selecting language
 export const sami_langs = new Set([
-    "sjd",
-    "sje",
     "sma",
-    "sme",
+    "sje",
     "smj",
+    "sme",
     "smn",
     "sms",
+    "sjd",
 ]);
 
 export const nonsamiuralic_langs = new Set([
-    "myv",
-    "est",
     "fin",
+    "fkv",
+    "fit",
+    "est",
+    "myv",
     "mrj",
     "izh",
-    "rmf",
     "kca",
     "kpv",
     "koi",
-    "fkv",
     "liv",
     "olo",
     "mns",
-    "fit",
     "mdf",
     "yrk",
     "nio",
@@ -135,16 +134,17 @@ export const nonsamiuralic_langs = new Set([
 ]);
 
 export const other_langs = new Set([
+    "kal",
+    "nob",
     "bxr",
+    "rmf",
     "evn",
     "fao",
-    "kal",
     "gle",
     "ipk",
     "cor",
     "hdn",
     "nno",
-    "nob",
     "ciw",
     "crk",
     "rus",

@@ -52,7 +52,7 @@
 </script>
 
 <div class="flex w-full flex-col gap-4">
-    <label class="label">
+    <label class="label ml-2">
         <span class="label-text">{$t("showtoolsfor")}</span>
         <div class="input-group w-3xs grid-cols-[auto_1fr]">
             <div class="ig-cell preset-tonal">
@@ -67,17 +67,18 @@
             />
         </div>
     </label>
+    <hr class="hr" />
 
-    <div class="flex flex-row flex-wrap gap-8">
+    <div class="mx-2 flex flex-row flex-wrap gap-8">
         {#if visible_langs.size}
             {#each Object.entries(groups) as [name, lang_set]}
                 {#if lang_set.size}
                     <div class="flex max-w-lg flex-col gap-2">
                         <h4 class="h4">{$t(name)}</h4>
-                        <div class="flex flex-row flex-wrap gap-2">
+                        <div class="grid min-w-max grid-cols-3 gap-2">
                             {#each lang_set as lng}
                                 <a
-                                    class="btn preset-outlined-primary-500 hover:preset-tonal justify-start"
+                                    class="btn preset-outlined-primary-500 hover:preset-tonal text-center"
                                     href={resolve(`/${lng}`)}
                                 >
                                     {langname(lng, $locale)}

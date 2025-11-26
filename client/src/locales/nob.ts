@@ -91,15 +91,17 @@ export default {
     "paradigmsize.full": "Full",
     "partofspeech": "Ordklasse",
     "partofspeech.any": "Alt",
-    "partofspeech.noun": "Nomen",
+    "partofspeech.noun": "Substantiv",
     "partofspeech.verb": "Verb",
     "partofspeech.pronoun": "Pronomen",
     "partofspeech.adjective": "Adjektiv",
     "partofspeech.adverb": "Adverb",
     "partofspeech.numeral": "Tallord",
 
+    "paradigm.homonyms": "Fant {num} homonymer:",
+    "paradigm.noresults": "Ingen resultater...",
     "paradigm.tags": "Tagger",
-    "paradigm.wordforms": "Ordformer",
+    "paradigm.wordforms": "Ordform",
     "paradigm.person": "Person",
 
     // Nouns

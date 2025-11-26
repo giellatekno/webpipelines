@@ -3,6 +3,19 @@
     import { Popover, Portal } from "@skeletonlabs/skeleton-svelte";
     import { LanguagesIcon } from "@lucide/svelte";
     import { t } from "svelte-intl-precompile";
+    import sme_flag from "$assets/flags/sme.svg";
+    import nob_flag from "$assets/flags/nob.svg";
+    import fin_flag from "$assets/flags/fin.svg";
+    import eng_flag from "$assets/flags/eng.svg";
+    import rus_flag from "$assets/flags/rus.svg";
+
+    let flag_icons: Record<string, string> = {
+        sme: sme_flag,
+        nob: nob_flag,
+        fin: fin_flag,
+        eng: eng_flag,
+        rus: rus_flag,
+    };
 </script>
 
 <Popover>
@@ -23,6 +36,11 @@
                                     class="btn hover:preset-tonal w-full justify-start"
                                     onclick={() => ($locale = iso)}
                                 >
+                                    <img
+                                        src={flag_icons[iso]}
+                                        alt={iso + " flag"}
+                                        class="w-8 shadow-md"
+                                    />
                                     {name}
                                 </button>
                             </li>

@@ -1,8 +1,14 @@
 import { env } from "$env/dynamic/public";
+import { tools_for } from "$lib/langs";
 import { convert_searchtext } from "$lib/utils";
+import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
 
 export const load: PageLoad = async ({ params, url, fetch }) => {
+    if (!tools_for[params.lang].includes("analyze")) {
+        error(404, "Not Found");
+    }
+
     const lang = params.lang;
     const query_params = url.searchParams;
     const q = query_params.get("q");

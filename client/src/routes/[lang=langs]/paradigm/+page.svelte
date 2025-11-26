@@ -53,7 +53,7 @@
         // console.log("Submitting:", word, size, pos);
         await goto(`paradigm?word=${word}&size=${size}&pos=${pos}`, {
             keepFocus: true,
-            replaceState: true,
+            // replaceState: true,
         });
     }
 
@@ -61,7 +61,7 @@
         if (word) {
             await goto(`paradigm?word=${word}&size=${size}&pos=${pos}`, {
                 keepFocus: true,
-                replaceState: true,
+                // replaceState: true,
             });
         }
     }

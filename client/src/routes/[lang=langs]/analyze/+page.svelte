@@ -39,7 +39,7 @@
     }
 
     function combine_tags(lemma: string, pos: string, tags: string[]) {
-        if (!tags) {
+        if (tags.length === 1 && tags[0] === "") {
             return [lemma, pos];
         }
         return [lemma, pos, ...tags];
@@ -67,14 +67,18 @@
                             <th>Copy</th>
                         </tr>
                     </thead>
-                    {#each results as word_analyses}
+                    {#each results as word_analyses, i}
                         {@const plus = "<span class='text-gray-500'>+</span>"}
-                        <tbody class="border-t">
-                            {#each word_analyses.items as { wordform, lemma, pos, tags }}
+                        <tbody>
+                            {#each word_analyses.items as { wordform, lemma, pos, tags }, j}
                                 {@const html_tags = color_tags(
                                     combine_tags(lemma, pos, tags),
                                 ).join(plus)}
-                                <tr>
+                                <tr
+                                    class:separate={j ===
+                                        word_analyses.items.length - 1 &&
+                                        i !== results.length - 1}
+                                >
                                     <td>
                                         <span class="text-green-700">
                                             {wordform}
@@ -83,9 +87,9 @@
                                     <td>
                                         {@html html_tags}
                                     </td>
-                                    <td class="m-auto">
+                                    <td class="">
                                         <button
-                                            class="btn-icon preset-outlined-surface-950-50 hover:preset-tonal size-4"
+                                            class="btn-icon preset-outlined-surface-950-50 hover:preset-tonal h-fit w-fit"
                                             type="button"
                                             onclick={() =>
                                                 copy_text(
@@ -96,7 +100,7 @@
                                                     ).join("+"),
                                                 )}
                                         >
-                                            <CopyIcon class="size-5" />
+                                            <CopyIcon class="size-4" />
                                         </button>
                                     </td>
                                 </tr>

@@ -1,8 +1,13 @@
 import { env } from "$env/dynamic/public";
+import { tools_for } from "$lib/langs";
 import { convert_searchtext } from "$lib/utils";
+import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
 
 export const load: PageLoad = async ({ url, params, fetch }) => {
+    if (!tools_for[params.lang].includes("paradigm")) {
+        error(404, "Not Found");
+    }
     console.log("routes/[lang]/paradigm/+page.js :: load()");
     const lang = params.lang;
     const search_params = url.searchParams;
