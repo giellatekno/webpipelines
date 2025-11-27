@@ -17,7 +17,6 @@
 
 <div class="mx-2 my-4">
     {#if lang === last_part}
-        <!-- TODO: More descriptive title. eg "North Sami tools" -->
         <h3 class="h3">{$t(`toolsfor.${lang}`)}</h3>
     {:else}
         <div class="flex flex-row items-center gap-2">

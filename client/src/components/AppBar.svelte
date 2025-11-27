@@ -8,7 +8,9 @@
     import { GlobeIcon, InfoIcon, WrenchIcon } from "@lucide/svelte";
 </script>
 
-<AppBar class="bg-surface-50-950 border-surface-950-50 sticky top-0 border-b-2">
+<AppBar
+    class="bg-surface-50-950 border-surface-950-50 sticky top-0 z-50 border-b-2"
+>
     <AppBar.Toolbar class="mx-auto w-full max-w-[1700px] grid-cols-[auto_auto]">
         <AppBar.Headline class="flex flex-row gap-4">
             <a

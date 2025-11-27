@@ -6,19 +6,17 @@
         NUMBERS,
         PERSONS,
         PRONOUN_SUBCLASSES,
-    } from "../sme_paradigm_options";
-    import { get_word } from "$lib/utils";
+    } from "./sme_paradigm_options";
+    import { get_entry } from "$lib/utils";
     import Table from "$components/Table.svelte";
 
     let { elem }: { elem: ParsedParadigm } = $props();
-
-    // $effect(() => console.log(elem));
 
     let subclass_name = $derived(PRONOUN_SUBCLASSES[elem.subclass]);
 </script>
 
 <div class="flex flex-col gap-2">
-    <h4 class="h4">{$t(`paradigm.${subclass_name}`)}</h4>
+    <h3 class="h3">{$t(`paradigm.${subclass_name}`)}</h3>
     {#if elem.subclass === "Refl"}
         <Table>
             <thead>
@@ -38,9 +36,9 @@
                                 {$t("paradigm.nominative")}
                             </td>
                             <td class="bg-surface-100-900"></td>
-                            <td>{get_word("Sg+Nom", elem)}</td>
-                            <td>{get_word("Du+Nom", elem)}</td>
-                            <td>{get_word("Pl+Nom", elem)}</td>
+                            <td>{@html get_entry("Sg+Nom", elem)}</td>
+                            <td>{@html get_entry("Du+Nom", elem)}</td>
+                            <td>{@html get_entry("Pl+Nom", elem)}</td>
                         </tr>
                     {:else}
                         {#each Object.keys(PERSONS) as pers_tag}
@@ -58,7 +56,7 @@
                                 </td>
                                 {#each Object.keys(NUMBERS) as num_tag}
                                     <td>
-                                        {get_word(
+                                        {@html get_entry(
                                             `${case_tag}+Px${num_tag}${pers_tag}`,
                                             elem,
                                         )}
@@ -73,7 +71,7 @@
         <Table>
             <tr>
                 <td class="bg-surface-100-900">{$t("paradigm.essive")}</td>
-                <td>{get_word("Ess", elem)}</td>
+                <td>{@html get_entry("Ess", elem)}</td>
             </tr>
         </Table>
     {:else if elem.subclass === "Pers"}
@@ -100,7 +98,7 @@
                             </td>
                             {#each Object.keys(NUMBERS) as num_tag}
                                 <td>
-                                    {get_word(
+                                    {@html get_entry(
                                         `${num_tag}${pers_tag}+${case_tag}`,
                                         elem,
                                     )}
@@ -126,7 +124,7 @@
                         <th>
                             {$t("paradigm.attribute")}
                         </th>
-                        <td>{get_word("Attr", elem)}</td>
+                        <td>{@html get_entry("Attr", elem)}</td>
                     </tr>
                 </tbody>
             </Table>
@@ -152,10 +150,10 @@
                                         {$t(`paradigm.${name}`)}
                                     </td>
                                     <td>
-                                        {get_word(`Sg+${tag}`, elem)}
+                                        {@html get_entry(`Sg+${tag}`, elem)}
                                     </td>
                                     <td>
-                                        {get_word(`Pl+${tag}`, elem)}
+                                        {@html get_entry(`Pl+${tag}`, elem)}
                                     </td>
                                 </tr>
                             {:else}
@@ -164,7 +162,7 @@
                                         {$t(`paradigm.${name}`)}
                                     </td>
                                     <td colspan="2" class="text-center">
-                                        {get_word(tag, elem)}
+                                        {@html get_entry(tag, elem)}
                                     </td>
                                 </tr>
                             {/if}

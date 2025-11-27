@@ -7,12 +7,26 @@
         NUMBER_PERSONS,
         NUMBERS,
         PERSONS,
+        HELP_VERBS,
         TIMES,
-    } from "../sme_paradigm_options";
-    import { get_word } from "$lib/utils";
+    } from "./sme_paradigm_options";
+    import { get_entry } from "$lib/utils";
     import Table from "$components/Table.svelte";
 
-    let { elem }: { elem: ParsedParadigm } = $props();
+    interface Props {
+        elem: ParsedParadigm;
+        headers: string[];
+    }
+    let { elem, headers = $bindable() }: Props = $props();
+
+    const time_color: Record<string, string> = {
+        Prs: "bg-yellow-800/20",
+        Prf: "bg-purple-800/20",
+        Prt: "bg-green-800/20",
+        PluPrf: "bg-red-800/20",
+    };
+
+    headers = [...Object.values(MODES), "nonfinite"];
 
     function has_preterite(mode_tag: string, elem: ParsedParadigm) {
         switch (mode_tag) {
@@ -23,91 +37,168 @@
             case "Imprt":
                 return false;
             case "Pot":
-                return elem.wordforms
+                return !!elem.wordforms
                     .keys()
-                    .find((t) => t.startsWith("Pot+Prt"))
-                    ? true
-                    : false;
+                    .find((t) => t.startsWith("Pot+Prt"));
         }
     }
 </script>
 
 {#each Object.entries(MODES) as [mode_tag, mode_name]}
     {#if elem.wordforms.keys().find((t) => t.startsWith(mode_tag))}
-        <div class="flex flex-col gap-2">
-            <h4 class="h4">{$t(`paradigm.${mode_name}`)}</h4>
-            <Table>
-                <thead>
-                    <tr>
-                        <th>
-                            {$t("paradigm.person")}
-                        </th>
-                        <th>
-                            {#if mode_tag !== "Imprt"}
-                                {$t("paradigm.present")}
-                            {/if}
-                        </th>
-                        {#if has_preterite(mode_tag, elem)}
-                            <th>
-                                {$t("paradigm.preterite")}
-                            </th>
+        {#if mode_tag !== "Imprt"}
+            <div class="flex w-full flex-col gap-2">
+                <h3 class="h3" id={mode_name}>
+                    {$t(`paradigm.${mode_name}`)}
+                </h3>
+                <div class="grid grid-cols-2 place-content-start gap-4">
+                    {#each Object.entries(TIMES[mode_tag]) as [time_tag, time_name]}
+                        {@const color = time_color[time_tag]}
+                        {#if !(mode_tag === "Pot" && time_tag === "Prt" && !has_preterite(mode_tag, elem))}
+                            <Table>
+                                <thead>
+                                    <tr>
+                                        <td
+                                            colspan={3}
+                                            class={[
+                                                color ? color : "",
+                                                "text-center",
+                                                "font-bold",
+                                            ]}
+                                        >
+                                            {$t(`paradigm.${time_name}`)}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            {$t("paradigm.person")}
+                                        </th>
+                                        <th>
+                                            {$t("paradigm.positive")}
+                                        </th>
+                                        <th>
+                                            {$t("paradigm.negative")}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {#each Object.entries(NUMBER_PERSONS) as [num_tag, persons]}
+                                        {#each Object.entries(persons) as [pers_tag, pronoun]}
+                                            {@const sep =
+                                                pers_tag.endsWith("3") &&
+                                                num_tag !== "Pl"}
+                                            <tr class:separate={sep}>
+                                                <td class="bg-surface-100-900">
+                                                    {pronoun}
+                                                </td>
+                                                {#if ["Prf", "PluPrf"].includes(time_tag)}
+                                                    <td>
+                                                        {@html get_entry(
+                                                            "PrfPrc",
+                                                            elem,
+                                                            HELP_VERBS[
+                                                                mode_tag +
+                                                                    time_tag
+                                                            ][num_tag][
+                                                                pers_tag
+                                                            ],
+                                                        )}
+                                                    </td>
+                                                    <td>
+                                                        {@html get_entry(
+                                                            "PrfPrc",
+                                                            elem,
+                                                            HELP_VERBS[
+                                                                mode_tag +
+                                                                    time_tag +
+                                                                    "Neg"
+                                                            ][num_tag][
+                                                                pers_tag
+                                                            ],
+                                                        )}
+                                                    </td>
+                                                {:else}
+                                                    <td>
+                                                        {@html get_entry(
+                                                            `${mode_tag}+${time_tag}+${num_tag}${pers_tag}`,
+                                                            elem,
+                                                        )}
+                                                    </td>
+                                                    <td>
+                                                        {@html get_entry(
+                                                            `${mode_tag}+${time_tag}+ConNeg`,
+                                                            elem,
+                                                            HELP_VERBS["Neg"][
+                                                                num_tag
+                                                            ][pers_tag],
+                                                        )}
+                                                    </td>
+                                                {/if}
+                                            </tr>
+                                        {/each}
+                                    {/each}
+                                </tbody>
+                            </Table>
                         {/if}
-                    </tr>
-                </thead>
-                <tbody>
-                    {#each Object.entries(NUMBER_PERSONS) as [num_tag, persons]}
-                        {#each Object.entries(persons) as [pers_tag, pronoun]}
-                            {@const sep = pers_tag.endsWith("3")}
-                            <tr class:separate={sep}>
-                                <td class="bg-surface-100-900">
-                                    {pronoun}
-                                </td>
-                                {#if mode_tag === "Imprt"}
+                    {/each}
+                </div>
+            </div>
+        {:else}
+            <div class="flex flex-col gap-2">
+                <h3 class="h3" id={mode_name}>
+                    {$t(`paradigm.${mode_name}`)}
+                </h3>
+                <Table>
+                    <thead>
+                        <tr>
+                            <th>
+                                {$t("paradigm.person")}
+                            </th>
+                            <th>
+                                {$t("paradigm.positive")}
+                            </th>
+                            <th>
+                                {$t("paradigm.negative")}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {#each Object.entries(NUMBER_PERSONS) as [num_tag, persons]}
+                            {#each Object.entries(persons) as [pers_tag, pronoun]}
+                                {@const sep =
+                                    pers_tag.endsWith("3") && num_tag !== "Pl"}
+                                <tr class:separate={sep}>
+                                    <td class="bg-surface-100-900">
+                                        {pronoun}
+                                    </td>
                                     <td>
-                                        {get_word(
+                                        {@html get_entry(
                                             `${mode_tag}+${num_tag}${pers_tag}`,
                                             elem,
                                         )}
                                     </td>
-                                {:else}
-                                    {#each Object.entries(TIMES) as [time_tag, _]}
-                                        {#if time_tag === "Prs" || (time_tag === "Prt" && has_preterite(mode_tag, elem))}
-                                            <td>
-                                                {get_word(
-                                                    `${mode_tag}+${time_tag}+${num_tag}${pers_tag}`,
-                                                    elem,
-                                                )}
-                                            </td>
-                                        {/if}
-                                    {/each}
-                                {/if}
-                            </tr>
+                                    <td>
+                                        {@html get_entry(
+                                            `${mode_tag}+ConNeg`,
+                                            elem,
+                                            HELP_VERBS["ImprtNeg"][num_tag][
+                                                pers_tag
+                                            ],
+                                        )}
+                                    </td>
+                                </tr>
+                            {/each}
                         {/each}
-                    {/each}
-                    <tr>
-                        <td class="bg-surface-100-900">
-                            {$t("paradigm.connegative")}
-                        </td>
-                        <td>
-                            {#if mode_tag === "Imprt"}
-                                {get_word(`${mode_tag}+ConNeg`, elem)}
-                            {:else}
-                                {get_word(`${mode_tag}+Prs+ConNeg`, elem)}
-                            {/if}
-                        </td>
-                        {#if has_preterite(mode_tag, elem)}
-                            <td>
-                                {get_word(`${mode_tag}+Prt+ConNeg`, elem)}
-                            </td>
-                        {/if}
-                    </tr>
-                </tbody>
-            </Table>
-        </div>
+                    </tbody>
+                </Table>
+            </div>
+        {/if}
     {/if}
 {/each}
 <div class="flex flex-col gap-2">
-    <h4 class="h4">{$t("paradigm.nonfinite")}</h4>
+    <h3 class="h3" id="nonfinite">
+        {$t("paradigm.nonfinite")}
+    </h3>
     <Table>
         <tbody>
             {#each Object.entries(NONFINITE_FORMS) as [form_tag, form_name]}
@@ -116,10 +207,12 @@
                     .find((t) => t.startsWith(form_tag))}
                 {#if form_exists}
                     <tr>
-                        <th>
+                        <th class="text-left">
                             {$t(`paradigm.${form_name}`)}
                         </th>
-                        <td>{get_word(form_tag, elem)}</td>
+                        <td>
+                            {@html get_entry(form_tag, elem)}
+                        </td>
                     </tr>
                     {#if form_tag === "Ger"}
                         {#if elem.wordforms
@@ -128,13 +221,13 @@
                             {#each Object.entries(NUMBERS) as [num_tag, num_name]}
                                 {#each Object.entries(PERSONS) as [pers_tag, pers_name]}
                                     <tr>
-                                        <th>
+                                        <th class="text-left">
                                             {$t("paradigm.gerund")}
                                             {$t(`paradigm.${num_name}`)}
                                             {pers_name}
                                         </th>
                                         <td>
-                                            {get_word(
+                                            {@html get_entry(
                                                 `Ger+Px${num_tag}${pers_tag}`,
                                                 elem,
                                             )}

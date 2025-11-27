@@ -7,6 +7,9 @@ export default {
     "languages": "Languages",
     "toolspage": "Tools page",
 
+    // Error
+    "notfound": "The page you're looking for doesn't exist.",
+
     // Developers
     "backtolangs": "Back to language selection",
     "fordevelopers": "For developers",

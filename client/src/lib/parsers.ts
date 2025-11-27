@@ -117,6 +117,7 @@ export interface ParsedParadigm {
 export function paradigm_parser(objs: ParadigmResults) {
     // console.log(objs);
     const subclasses = [
+        "Neg",
         "Prop",
         "G3",
         "G7",
@@ -128,6 +129,7 @@ export function paradigm_parser(objs: ParadigmResults) {
         "Indef",
         "Refl",
         "Recipr",
+        "Qu",
     ];
 
     const result: { [key: string]: ParsedParadigm } = {};

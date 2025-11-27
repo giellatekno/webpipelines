@@ -53,7 +53,15 @@ export function get_usage(lang: string | undefined, $t: (_: string) => string) {
     }
 }
 
-export function get_word(tags: string, elem: ParsedParadigm) {
+export function get_entry(tags: string, elem: ParsedParadigm, help_verb = "") {
     const wordforms = elem.wordforms.get(tags);
-    return wordforms ? Array.from(wordforms).join(", ") : "—";
+    if (!wordforms) return "—";
+    if (help_verb) {
+        return Array.from(wordforms)
+            .map((wordform) => {
+                return help_verb + " " + wordform;
+            })
+            .join("<br>");
+    }
+    return Array.from(wordforms).join("<br>");
 }

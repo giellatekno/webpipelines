@@ -1,8 +1,8 @@
 <script lang="ts">
     import type { ParsedParadigm } from "$lib/parsers";
-    import { get_word } from "$lib/utils";
+    import { get_entry } from "$lib/utils";
     import { t } from "svelte-intl-precompile";
-    import { ADJ_GRADES, CASES } from "../sme_paradigm_options";
+    import { ADJ_GRADES, CASES } from "./sme_paradigm_options";
     import Table from "$components/Table.svelte";
 
     let { elem }: { elem: ParsedParadigm } = $props();
@@ -68,14 +68,14 @@
 {#if is_ordinal(elem)}
     {@const prefix = "Ord+"}
     <div class="flex flex-col gap-2">
-        <h4 class="h4">{$t("paradigm.ordinal")}</h4>
+        <h3 class="h3">{$t("paradigm.ordinal")}</h3>
         <Table>
             <tbody>
                 <tr>
                     <th>
                         {$t("paradigm.attribute")}
                     </th>
-                    <td>{get_word(prefix + "Attr", elem)}</td>
+                    <td>{@html get_entry(prefix + "Attr", elem)}</td>
                 </tr>
             </tbody>
         </Table>
@@ -99,10 +99,16 @@
                                     {$t(`paradigm.${name}`)}
                                 </td>
                                 <td>
-                                    {get_word(prefix + `Sg+${tag}`, elem)}
+                                    {@html get_entry(
+                                        prefix + `Sg+${tag}`,
+                                        elem,
+                                    )}
                                 </td>
                                 <td>
-                                    {get_word(prefix + `Pl+${tag}`, elem)}
+                                    {@html get_entry(
+                                        prefix + `Pl+${tag}`,
+                                        elem,
+                                    )}
                                 </td>
                             </tr>
                         {:else}
@@ -111,7 +117,7 @@
                                     {$t(`paradigm.${name}`)}
                                 </td>
                                 <td colspan="2" class="text-center">
-                                    {get_word(prefix + tag, elem)}
+                                    {@html get_entry(prefix + tag, elem)}
                                 </td>
                             </tr>
                         {/if}
@@ -126,14 +132,16 @@
         {@const grade_exists = has_grade(grade_tag, elem)}
         {#if grade_exists}
             <div class="flex flex-col gap-2">
-                <h4 class="h4">{$t(`paradigm.${grade_name}`)}</h4>
+                <h3 class="h3">{$t(`paradigm.${grade_name}`)}</h3>
                 <Table>
                     <tbody>
                         <tr>
                             <th>
                                 {$t("paradigm.attribute")}
                             </th>
-                            <td>{get_word(prefix + "Attr", elem)}</td>
+                            <td>
+                                {@html get_entry(prefix + "Attr", elem)}
+                            </td>
                         </tr>
                     </tbody>
                 </Table>
@@ -155,13 +163,13 @@
                                             {$t(`paradigm.${name}`)}
                                         </td>
                                         <td>
-                                            {get_word(
+                                            {@html get_entry(
                                                 prefix + `Sg+${tag}`,
                                                 elem,
                                             )}
                                         </td>
                                         <td>
-                                            {get_word(
+                                            {@html get_entry(
                                                 prefix + `Pl+${tag}`,
                                                 elem,
                                             )}
@@ -173,7 +181,10 @@
                                             {$t(`paradigm.${name}`)}
                                         </td>
                                         <td colspan="2" class="text-center">
-                                            {get_word(prefix + tag, elem)}
+                                            {@html get_entry(
+                                                prefix + tag,
+                                                elem,
+                                            )}
                                         </td>
                                     </tr>
                                 {/if}
