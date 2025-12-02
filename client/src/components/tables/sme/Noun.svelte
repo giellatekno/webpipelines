@@ -30,10 +30,16 @@
             ),
         ];
     }
+
+    const owners: Record<string, string> = {
+        Sg: "mu/du/su",
+        Du: "munno/dudno/sudno",
+        Pl: "min/din/sin",
+    };
 </script>
 
 <div class="flex flex-col gap-2">
-    <h3 class="h3">{$t("paradigm.generalforms")}</h3>
+    <h3 class="h4 xl:h3">{$t("paradigm.generalforms")}</h3>
     <Table>
         <thead>
             <tr>
@@ -76,13 +82,22 @@
     </Table>
 </div>
 {#if has_possessive_suffixes}
+    <div class="hidden xl:block">
+        {@render px_desktop()}
+    </div>
+    <div class="xl:hidden">
+        {@render px_mobile()}
+    </div>
+{/if}
+
+{#snippet px_desktop()}
     <div class="flex flex-col gap-2">
-        <h4 class="h4">{$t("paradigm.possessivesuffixes")}</h4>
+        <h3 class="h3">{$t("paradigm.possessivesuffixes")}</h3>
         <Table>
             <thead>
                 <tr>
                     <th>{$t("paradigm.case")}</th>
-                    <th>{$t("paradigm.person")}</th>
+                    <th>{$t("paradigm.person.short")}</th>
                     <th>{$t("paradigm.singular")}</th>
                     <th>{$t("paradigm.dual")}</th>
                     <th>{$t("paradigm.plural")}</th>
@@ -161,4 +176,90 @@
             </tbody>
         </Table>
     </div>
-{/if}
+{/snippet}
+
+{#snippet px_mobile()}
+    <div class="flex flex-col gap-2">
+        <h4 class="h4">{$t("paradigm.possessivesuffixes")}</h4>
+        <div class="flex flex-col gap-2">
+            {#each Object.entries(NUMBERS) as [num_tag, num_name]}
+                <h6 class="h6 mt-2">
+                    {$t(`paradigm.${num_name}`)} owner ({owners[num_tag]})
+                </h6>
+                <Table>
+                    <thead>
+                        <tr>
+                            <th>{$t("paradigm.case")}</th>
+                            <th>{$t("paradigm.person.short")}</th>
+                            <th>{$t(`paradigm.${num_name}`)}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {#each Object.entries(CASES) as [case_tag, case_name]}
+                            {#if !(case_tag === "Ess")}
+                                {#each Object.entries(CASE_NUMBERS) as [case_num_tag, case_num_name]}
+                                    {@const rows = px_case_rows(
+                                        elem,
+                                        case_tag,
+                                        case_num_tag,
+                                    )}
+                                    {#if rows}
+                                        {#each rows as pers_tag}
+                                            {@const is_last =
+                                                pers_tag ===
+                                                rows[rows.length - 1]}
+                                            <tr class:separate={is_last}>
+                                                {#if pers_tag === rows[0]}
+                                                    <td
+                                                        class="bg-surface-100-900 w-fit"
+                                                        rowspan={rows.length}
+                                                    >
+                                                        {case_num_tag}. {case_tag}.
+                                                    </td>
+                                                {/if}
+                                                <td class="bg-surface-100-900">
+                                                    {pers_tag}.
+                                                </td>
+                                                <td>
+                                                    {@html get_entry(
+                                                        `${case_num_tag}+${case_tag}+Px${num_tag}${pers_tag}`,
+                                                        elem,
+                                                    )}
+                                                </td>
+                                            </tr>
+                                        {/each}
+                                    {/if}
+                                {/each}
+                            {:else}
+                                {@const rows = px_case_rows(elem, case_tag, "")}
+                                {#if rows}
+                                    {#each rows as pers_tag}
+                                        <tr>
+                                            {#if pers_tag === rows[0]}
+                                                <td
+                                                    class="bg-surface-100-900"
+                                                    rowspan={rows.length}
+                                                >
+                                                    {case_tag}.
+                                                </td>
+                                            {/if}
+                                            <td class="bg-surface-100-900">
+                                                {pers_tag}.
+                                            </td>
+                                            <td>
+                                                {@html get_entry(
+                                                    `${case_tag}+Px${num_tag}${pers_tag}`,
+                                                    elem,
+                                                )}
+                                            </td>
+                                        </tr>
+                                    {/each}
+                                {/if}
+                            {/if}
+                        {/each}
+                    </tbody>
+                </Table>
+            {/each}
+        </div>
+    </div>
+{/snippet}

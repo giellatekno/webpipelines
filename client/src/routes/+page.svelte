@@ -73,12 +73,14 @@
         {#if visible_langs.size}
             {#each Object.entries(groups) as [name, lang_set]}
                 {#if lang_set.size}
-                    <div class="flex max-w-lg flex-col gap-2">
-                        <h4 class="h4">{$t(name)}</h4>
-                        <div class="grid min-w-max grid-cols-3 gap-2">
+                    <div class="flex w-screen max-w-lg flex-col gap-2 xl:w-fit">
+                        <h4 class="xl:h4 h5">{$t(name)}</h4>
+                        <div
+                            class="grid min-w-max grid-cols-2 gap-2 xl:grid-cols-3"
+                        >
                             {#each lang_set as lng}
                                 <a
-                                    class="btn preset-outlined-primary-500 hover:preset-tonal text-center"
+                                    class="btn preset-outlined-primary-500 hover:preset-tonal w-full text-center text-sm text-wrap xl:text-base"
                                     href={resolve(`/${lng}`)}
                                 >
                                     {langname(lng, $locale)}

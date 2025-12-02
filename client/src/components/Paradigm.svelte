@@ -7,10 +7,10 @@
     interface Props {
         data: any;
         lang_tables: Promise<Component[] | undefined>;
-        format_list: boolean;
+        format: string;
     }
 
-    let { data, lang_tables, format_list }: Props = $props();
+    let { data, lang_tables, format }: Props = $props();
 
     const paradigms = $derived(paradigm_parser(data));
 
@@ -42,15 +42,17 @@
         {#each keys as key}
             {@const elem = paradigms[key]}
             <Tabs.Content value={key}>
-                {#if components && !format_list}
+                {#if components && format === "table"}
                     {@const [Adjective, Noun, Numeral, Pronoun, Verb] =
                         components}
-                    <div class="grid grid-cols-[1fr_auto_1fr] gap-8">
+                    <div
+                        class="grid grid-cols-1 gap-8 xl:grid-cols-[1fr_auto_1fr]"
+                    >
                         <div>
                             <!-- {@render header_navigation(headers)} -->
                         </div>
                         <div
-                            class="flex w-full flex-col items-start gap-16 [&_h3]:scroll-mt-24"
+                            class="flex w-full flex-col items-center gap-16 xl:items-start [&_h3]:scroll-mt-24"
                         >
                             {#if elem.pos === "A"}
                                 <Adjective {elem} />

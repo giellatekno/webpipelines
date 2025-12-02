@@ -48,10 +48,12 @@
     {#if elem.wordforms.keys().find((t) => t.startsWith(mode_tag))}
         {#if mode_tag !== "Imprt"}
             <div class="flex w-full flex-col gap-2">
-                <h3 class="h3" id={mode_name}>
+                <h3 class="h4 xl:h3" id={mode_name}>
                     {$t(`paradigm.${mode_name}`)}
                 </h3>
-                <div class="grid grid-cols-2 place-content-start gap-4">
+                <div
+                    class="grid grid-cols-1 place-content-start gap-4 xl:grid-cols-2"
+                >
                     {#each Object.entries(TIMES[mode_tag]) as [time_tag, time_name]}
                         {@const color = time_color[time_tag]}
                         {#if !(mode_tag === "Pot" && time_tag === "Prt" && !has_preterite(mode_tag, elem))}
@@ -145,7 +147,7 @@
             </div>
         {:else}
             <div class="flex flex-col gap-2">
-                <h3 class="h3" id={mode_name}>
+                <h3 class="h4 xl:h3" id={mode_name}>
                     {$t(`paradigm.${mode_name}`)}
                 </h3>
                 <Table>
@@ -196,7 +198,7 @@
     {/if}
 {/each}
 <div class="flex flex-col gap-2">
-    <h3 class="h3" id="nonfinite">
+    <h3 class="h4 xl:h3" id="nonfinite">
         {$t("paradigm.nonfinite")}
     </h3>
     <Table>
@@ -221,10 +223,11 @@
                             {#each Object.entries(NUMBERS) as [num_tag, num_name]}
                                 {#each Object.entries(PERSONS) as [pers_tag, pers_name]}
                                     <tr>
+                                        <!-- TODO: translate short forms -->
                                         <th class="text-left">
                                             {$t("paradigm.gerund")}
-                                            {$t(`paradigm.${num_name}`)}
-                                            {pers_name}
+                                            {num_tag}.
+                                            {pers_tag}. Pers.
                                         </th>
                                         <td>
                                             {@html get_entry(

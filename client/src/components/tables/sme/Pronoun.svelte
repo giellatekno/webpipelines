@@ -16,24 +16,27 @@
 </script>
 
 <div class="flex flex-col gap-2">
-    <h3 class="h3">{$t(`paradigm.${subclass_name}`)}</h3>
+    <h3 class="h4 xl:h3">{$t(`paradigm.${subclass_name}`)}</h3>
     {#if elem.subclass === "Refl"}
         <Table>
             <thead>
                 <tr>
                     <th>{$t("paradigm.case")}</th>
                     <th>{$t("paradigm.person")}</th>
-                    <th>{$t("paradigm.singularis")}</th>
-                    <th>{$t("paradigm.dualis")}</th>
-                    <th>{$t("paradigm.pluralis")}</th>
+                    <th>{$t("paradigm.singular")}</th>
+                    <th>{$t("paradigm.dual")}</th>
+                    <th>{$t("paradigm.plural")}</th>
                 </tr>
             </thead>
             <tbody>
                 {#each Object.entries(CASES) as [case_tag, case_name]}
                     {#if case_tag === "Nom"}
                         <tr class="separate">
-                            <td class="bg-surface-100-900">
+                            <td class="bg-surface-100-900 hidden xl:block">
                                 {$t("paradigm.nominative")}
+                            </td>
+                            <td class="bg-surface-100-900 xl:hidden">
+                                {$t("paradigm.nominative").slice(0, 3)}.
                             </td>
                             <td class="bg-surface-100-900"></td>
                             <td>{@html get_entry("Sg+Nom", elem)}</td>
@@ -47,8 +50,20 @@
                                     case_tag !== "Ess"}
                             >
                                 {#if pers_tag === "1"}
-                                    <td class="bg-surface-100-900" rowspan={3}>
+                                    <td
+                                        class="bg-surface-100-900 hidden xl:block"
+                                        rowspan={3}
+                                    >
                                         {$t(`paradigm.${case_name}`)}
+                                    </td>
+                                    <td
+                                        class="bg-surface-100-900 xl:hidden"
+                                        rowspan={3}
+                                    >
+                                        {$t(`paradigm.${case_name}`).slice(
+                                            0,
+                                            3,
+                                        )}.
                                     </td>
                                 {/if}
                                 <td class="bg-surface-100-900">
@@ -68,12 +83,16 @@
                 {/each}
             </tbody>
         </Table>
-        <Table>
-            <tr>
-                <td class="bg-surface-100-900">{$t("paradigm.essive")}</td>
-                <td>{@html get_entry("Ess", elem)}</td>
-            </tr>
-        </Table>
+        <div class="w-fit">
+            <Table>
+                <tr>
+                    <td class="bg-surface-100-900">
+                        {$t("paradigm.essive")}
+                    </td>
+                    <td>{@html get_entry("Ess", elem)}</td>
+                </tr>
+            </Table>
+        </div>
     {:else if elem.subclass === "Pers"}
         <!-- TODO: better way to find pers_tag -->
         {@const pers_tag = elem.wordforms.keys().toArray()[0][2]}
@@ -81,9 +100,9 @@
             <thead>
                 <tr>
                     <th>{$t("paradigm.case")}</th>
-                    <th>{$t("paradigm.singularis")}</th>
-                    <th>{$t("paradigm.dualis")}</th>
-                    <th>{$t("paradigm.pluralis")}</th>
+                    <th>{$t("paradigm.singular")}</th>
+                    <th>{$t("paradigm.dual")}</th>
+                    <th>{$t("paradigm.plural")}</th>
                 </tr>
             </thead>
             <tbody>

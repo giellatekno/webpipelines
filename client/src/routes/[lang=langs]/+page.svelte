@@ -19,7 +19,9 @@
     let lang = $derived(page.params.lang || "");
 </script>
 
-<div class="mx-auto mt-8 grid max-w-max grid-cols-2 items-stretch gap-6">
+<div
+    class="mx-auto mt-8 grid max-h-max max-w-max grid-cols-1 items-stretch gap-6 xl:grid-cols-2"
+>
     {#each tools_for[lang] as tool}
         <a
             href={resolve(`/${lang}/${tool}`)}
@@ -31,8 +33,12 @@
                 alt=""
             />
             <div class="flex flex-col">
-                <span class="text-2xl font-medium">{$t(tool)}</span>
-                <span class="text-xl font-normal italic">
+                <span class="text-base font-bold xl:text-2xl">
+                    {$t(tool)}
+                </span>
+                <span
+                    class="text-surface-950-50/75 text-sm font-normal italic xl:text-xl"
+                >
                     {$t(tool + ".description")}
                 </span>
             </div>

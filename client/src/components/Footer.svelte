@@ -5,7 +5,7 @@
 <footer
     class="bg-surface-800-200 text-surface-100-900 flex w-full justify-center p-4"
 >
-    <div class="flex flex-col gap-4 text-center">
+    <div class="flex flex-col gap-4 text-center text-xs xl:text-base">
         <div>
             {$t("feedback")}
             <a

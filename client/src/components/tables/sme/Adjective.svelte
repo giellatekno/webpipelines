@@ -68,17 +68,19 @@
 {#if is_ordinal(elem)}
     {@const prefix = "Ord+"}
     <div class="flex flex-col gap-2">
-        <h3 class="h3">{$t("paradigm.ordinal")}</h3>
-        <Table>
-            <tbody>
-                <tr>
-                    <th>
-                        {$t("paradigm.attribute")}
-                    </th>
-                    <td>{@html get_entry(prefix + "Attr", elem)}</td>
-                </tr>
-            </tbody>
-        </Table>
+        <h3 class="h4 xl:h3">{$t("paradigm.ordinal")}</h3>
+        <div class="w-fit">
+            <Table>
+                <tbody>
+                    <tr>
+                        <th>
+                            {$t("paradigm.attribute")}
+                        </th>
+                        <td>{@html get_entry(prefix + "Attr", elem)}</td>
+                    </tr>
+                </tbody>
+            </Table>
+        </div>
         <Table>
             <thead>
                 <tr>
@@ -132,19 +134,21 @@
         {@const grade_exists = has_grade(grade_tag, elem)}
         {#if grade_exists}
             <div class="flex flex-col gap-2">
-                <h3 class="h3">{$t(`paradigm.${grade_name}`)}</h3>
-                <Table>
-                    <tbody>
-                        <tr>
-                            <th>
-                                {$t("paradigm.attribute")}
-                            </th>
-                            <td>
-                                {@html get_entry(prefix + "Attr", elem)}
-                            </td>
-                        </tr>
-                    </tbody>
-                </Table>
+                <h3 class="h4 xl:h3">{$t(`paradigm.${grade_name}`)}</h3>
+                <div class="w-fit">
+                    <Table>
+                        <tbody>
+                            <tr>
+                                <th>
+                                    {$t("paradigm.attribute")}
+                                </th>
+                                <td>
+                                    {@html get_entry(prefix + "Attr", elem)}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </Table>
+                </div>
                 <Table>
                     <thead>
                         <tr>

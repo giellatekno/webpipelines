@@ -17,15 +17,15 @@
 
 <div class="mx-2 my-4">
     {#if lang === last_part}
-        <h3 class="h3">{$t(`toolsfor.${lang}`)}</h3>
+        <h3 class="h5 xl:h3">{$t(`toolsfor.${lang}`)}</h3>
     {:else}
         <div class="flex flex-row items-center gap-2">
-            <a href={resolve(`/${lang}`)} class="h3 hover:underline">
+            <a href={resolve(`/${lang}`)} class="xl:h3 h6 hover:underline">
                 {langname(lang, $locale)}
             </a>
-            <ChevronRight class="size-8" />
+            <ChevronRight class="size-5 xl:size-8" />
 
-            <h3 class="h3">{$t(last_part)}</h3>
+            <h3 class="h6 xl:h3">{$t(last_part)}</h3>
         </div>
     {/if}
 </div>

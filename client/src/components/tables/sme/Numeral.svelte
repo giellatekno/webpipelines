@@ -9,7 +9,7 @@
 </script>
 
 <div class="flex flex-col gap-2">
-    <h3 class="h3">{$t("partofspeech.numeral")}</h3>
+    <h3 class="h4 xl:h3">{$t("partofspeech.numeral")}</h3>
     <Table>
         <thead>
             <tr>
