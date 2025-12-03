@@ -81,7 +81,7 @@ export default {
     "hyphenate.description": " ", // TODO: description
 
     // Paradigm
-    "paradigm": "Paradigmegenerering.",
+    "paradigm": "Paradigmegenerering",
     "paradigm.description":
         "Genererer bøyingsparadigmer av ulik størrelse for det ordet du vil.",
     "paradigm.instruction": "Søk etter ord i grunnform",
@@ -122,6 +122,9 @@ export default {
     "paradigm.potential": "Potensialis",
     "paradigm.present": "Presens",
     "paradigm.preterite": "Preteritum",
+    "paradigm.perfect": "Perfektum",
+    "paradigm.pluperfect": "Pluskvamperfektum",
+    "paradigm.negative": "Negativ",
     "paradigm.connegative": "Nektelsesform",
     "paradigm.nonfinite": "Infinitte former",
     "paradigm.infinite": "Infinitiv",

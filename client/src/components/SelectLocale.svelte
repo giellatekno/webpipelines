@@ -26,7 +26,7 @@
     <Portal>
         <Popover.Positioner>
             <Popover.Content
-                class="card preset-filled-surface-100-900 border-surface-200-800 w-fit border p-4 shadow-xl"
+                class="card preset-filled-surface-100-900 border-surface-200-800 z-50 w-fit border p-4 shadow-xl"
             >
                 <Popover.Description>
                     <ul class="w-full">

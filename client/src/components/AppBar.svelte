@@ -6,6 +6,7 @@
     import giellatekno_logo from "$assets/giellatekno_logo_official.png";
     import { page } from "$app/state";
     import { GlobeIcon, InfoIcon, MenuIcon, WrenchIcon } from "@lucide/svelte";
+    import MobileSideBar from "./MobileSideBar.svelte";
 </script>
 
 <AppBar
@@ -15,9 +16,7 @@
         class="mx-auto w-full max-w-[1700px] grid-cols-[1fr_auto_1fr] xl:grid-cols-[auto_auto]"
     >
         <AppBar.Lead class="xl:hidden">
-            <button class="btn-icon">
-                <MenuIcon class="size-4" />
-            </button>
+            <MobileSideBar />
         </AppBar.Lead>
         <AppBar.Headline class="flex flex-row gap-4">
             <a

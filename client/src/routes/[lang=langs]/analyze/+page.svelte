@@ -15,7 +15,7 @@
 
     let { data }: Props = $props();
 
-    let value = $state(data.q || "");
+    let value = $derived(data.q || "");
     let results = $derived(analyze_parser(data.results?.parsed));
 
     let lang = $derived(page.params.lang || "");

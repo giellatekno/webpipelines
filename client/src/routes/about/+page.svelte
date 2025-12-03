@@ -3,22 +3,22 @@
 </script>
 
 <div class="my-4 flex w-full justify-center">
-    <div class="grid max-h-max w-2/3 grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 gap-4 xl:max-h-max xl:w-2/3 xl:grid-cols-2">
         <div class="w-full">
-            <h3 class="h3">{$t("about.title")}</h3>
+            <h4 class="h5 xl:h4">{$t("about.title")}</h4>
             <div
-                class="card bg-surface-100-900/70 border-secondary-500 mt-2 flex h-full flex-col gap-2 border-2 p-4 shadow-md"
+                class="card bg-surface-100-900/70 border-secondary-500 mt-2 flex flex-col gap-2 border-2 p-4 shadow-md"
             >
                 TODO
             </div>
         </div>
         <div class=" flex w-full flex-col">
             <div>
-                <h3 class="h3">{$t("fordevelopers")}</h3>
+                <h4 class="h5 xl:h4">{$t("fordevelopers")}</h4>
                 <div
-                    class="card bg-surface-100-900/70 border-secondary-500 mt-2 flex h-full flex-col gap-2 border-2 p-4 shadow-md"
+                    class="card bg-surface-100-900/70 border-secondary-500 mt-2 flex flex-col gap-2 border-2 p-4 shadow-md"
                 >
-                    <h4 class="h4">API</h4>
+                    <h5 class="h6 xl:h5">API</h5>
                     <p>
                         {$t("api.paragraph")}
                         <a
@@ -30,7 +30,7 @@
                             gtweb-02.uit.no/webpipeline-api/
                         </a>
                     </p>
-                    <h4 class="h4 mt-2">{$t("sourcecode")}</h4>
+                    <h5 class="h6 xl:h5 mt-2">{$t("sourcecode")}</h5>
                     <p>
                         {$t("developers.code.paragraph")}
                         <a
