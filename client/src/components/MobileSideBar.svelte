@@ -1,30 +1,19 @@
 <script lang="ts">
     import { resolve } from "$app/paths";
     import { page } from "$app/state";
-    import {
-        Dot,
-        GlobeIcon,
-        InfoIcon,
-        MenuIcon,
-        WrenchIcon,
-        XIcon,
-    } from "@lucide/svelte";
+    import { Dot, GlobeIcon, InfoIcon, MenuIcon, XIcon } from "@lucide/svelte";
     import { Dialog, Navigation, Portal } from "@skeletonlabs/skeleton-svelte";
     import { t } from "svelte-intl-precompile";
     import SelectLocale from "./SelectLocale.svelte";
     import { tools_for } from "$lib/langs";
 
-    let lang: string | undefined = $derived(page.params.lang);
-    let on_lang_page = $derived(
-        lang && page.url.pathname.startsWith("/" + lang),
-    );
+    let lang = $derived(page.params.lang);
+    let on_lang_page = $derived(lang && page.url.pathname.includes("/" + lang));
 
     const constant_links = [
         { label: $t("languages"), href: resolve("/"), icon: GlobeIcon },
         { label: $t("about"), href: resolve("/about"), icon: InfoIcon },
     ];
-
-    let dialog = $state(undefined);
 
     const animBackdrop =
         "transition transition-discrete opacity-0 starting:data-[state=open]:opacity-0 data-[state=open]:opacity-100";
@@ -42,7 +31,7 @@
         />
         <Dialog.Positioner class="fixed inset-0 z-50 flex justify-start">
             <Dialog.Content
-                class="card bg-surface-100-900 h-screen w-xs space-y-4 p-4 shadow-xl {animModal}"
+                class="card bg-surface-100-900 h-dvh w-xs space-y-4 p-4 shadow-xl {animModal}"
             >
                 <Navigation
                     layout="sidebar"
