@@ -39,7 +39,7 @@ const LANGNAMES: LangNames = {
     cor: {
         eng: "Cornish",
         nob: "Kornisk",
-        sme: "Kornagiella",
+        sme: "Kornigiella",
         fin: "Korni",
         rus: "Корнский язык",
     },
@@ -53,14 +53,14 @@ const LANGNAMES: LangNames = {
     eng: {
         eng: "English",
         nob: "Engelsk",
-        sme: "Eaŋgalsgiella",
+        sme: "Eŋgelasgiella",
         fin: "Englanti",
         rus: "Англиийский язык",
     },
     evn: {
         eng: "Evenki",
         nob: "Evenkisk",
-        sme: "Evenkaagiela",
+        sme: "Evenkigiella",
         fin: "Evenkin kieli",
         rus: "Эвенкийский язык",
     },
@@ -95,7 +95,7 @@ const LANGNAMES: LangNames = {
     gle: {
         eng: "Irish",
         nob: "Irsk",
-        sme: "Iirragiella",
+        sme: "Iragiella",
         fin: "Iiri",
         rus: "Ирландский язык",
     },
@@ -256,7 +256,7 @@ const LANGNAMES: LangNames = {
     rmf: {
         eng: "Finnish Kalo",
         nob: "Kalo finsk romani",
-        sme: "Suoma romanigiela",
+        sme: "Suoma romanigiella",
         fin: "Suomen romanikieli",
         rus: "Финский кало",
     },

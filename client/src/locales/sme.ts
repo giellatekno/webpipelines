@@ -1,23 +1,251 @@
 export default {
-    "interfacelanguage": "[sme] Interface language",
-    "search": "[sme] Search",
+    // Appbar
     "languagetools": "Giellareaiddut",
-    "generate": "[sme] Generate",
-    "analyze": "[sme] Analyze",
-    "analyze.description": "[sme] Analyze one or more words in isolation",
+    "developers": "Ovdánahtit",
+    "about": "Siiddu birra",
+    "interfacelanguage": "Geavahanlaktagiella",
+    "languages": "Gielat",
+    "toolspage": "Reaidosiidu",
+
+    // Error
+    "notfound": "Siidu maid ozat ii gávdno.",
+
+    // Developers
+    "backtolangs": "Back to language selection",
+    "fordevelopers": "Ovdánahtiide",
+    "sourcecode": "Gáldokoda",
+    "api.paragraph":
+        "API, mii lea čádnon dan siidui, lea rabas ja beasatlaš. Gávnnat dan dáppe:",
+    "developers.code.paragraph":
+        "Sihke siiddu ja API:a koda lea rabas. Gávnnat daid dáppe:",
+    "developers.code.paragraph2":
+        "Áinnas raba Github Issue jus áicát teknihkalaš čuolmmaid siiddus dahjege API:s.",
+
+    // TODO: About page
+    "about.title": "Giellatekno Webpipeline birra",
+
+    // Footer
+    "copyright": "Copyright © Sámi giellateknologiija guovddaš",
+    "feedback": "Sádde máhcahaga siiddu birra midjiide:",
+
+    // Select Language
+    "showtoolsfor": "Oza gielaid:",
+    "filters": "Filtarat",
+    "samilanguages": "Sámegielat",
+    "nonsamiuralic": "Eará Uralalaš gielat",
+    "otherlanguages": "Eará gielat",
+    "noresults": "Ohcansátni ii buktán bohtosiid...",
+
+    // General tool page options
+    "exploreanotherlang": "Explore another language",
+    "backtotools": "Back to tool selection",
+    "submit": "Sádde",
+    "clear": "Sihko",
+    "submit.keys": "Dahje deaddil Shift+Enter vai sáddet.",
+    "description.title": "Reaiddu čilgehus",
+    "usage.title": "Giela geavaheapmi",
+    "instruction.title": "Reaiddu geavaheapmi",
+
+    // Language specific usage
+    "usage.ciw": "The analyser uses the Double Vowel (Fiero) system.",
+    "usage.crk":
+        "You may use both circumflex <b>â</b> and macron <b>ā</b> in order to mark long vowel.",
+    "usage.mns":
+        "Write the word in ordinary Mansi orthography. You may also write the words without length marks.",
+    "usage.sjd":
+        "Write the word in Kildin Sámi orthography. Note that we use Cyrillic Characters also for the Latin-looking ones. The program uses the 1985 orthography.",
+    "usage.sje":
+        "The program accepts both Norwegian <b>æ</b> and <b>ø</b> and Swedish <b>ä</b> and <b>ö</b>.",
+    "usage.sma":
+        "The program accepts both <b>i</b> and the South Sámi character <b>ï</b> and both Norwegian <b>æ</b>, <b>ø</b> and Swedish <b>ä</b>, <b>ö</b>",
+    "usage.sme":
+        'Write The Sámi special letters as usual. If you don\'t have a Sámi keyboard, you may write "<b>á</b>, <b>č</b>, <b>đ</b>, <b>ŋ</b>, <b>š</b>, <b>ŧ</b>, <b>ž</b>" as "<b>a1</b>, <b>c1</b>, <b>d1</b>, <b>n1</b>, <b>s1</b>, <b>t1</b>, <b>z1</b>".',
+    "usage.smj":
+        "You may use the ordinary Lule Sámi characters, the (official) <b>ŋ</b>, or older <b>ń</b>, <b>ñ</b>. The program accepts both Norwegian <b>æ</b>, <b>ø</b> and Swedish <b>ä</b>, <b>ö</b>.",
+    "usage.smn": "Write the word in ordinary Inari Sámi orthography.",
+    "usage.sms": "Write the word in ordinary Skolt Sámi orthography.",
+
+    // Analyze
+    "analyze": "Analysa",
+    "analyze.description":
+        "Analysere ovtta sáni dahje buot eaŋkilsániid cealkagiin.",
+
+    // Dependency
+    "dependency": "Dependeansastruktuvra ",
+    "dependency.description": "Čájet dependeanssa sániid gaskkas cealkagiin.",
+
+    // Disambiguate
+    "disambiguate": "Disambigueren",
+    "disambiguate.description":
+        "Čájet cealkagiid sátneanalysa mii heive kontekstii.", // TODO: description
+
+    // Generate
+    "generate": "Sátnegenereren",
+    "generate.description": "Geavat grammatihkkalaš taggaid genereret sániid.",
+
+    // Hyphenate
+    "hyphenate": "Botke sániid",
+    "hyphenate.description": "Botke sániid stávvaliidda ja távttaide.", // TODO: description
+
+    // Paradigm
+    "paradigm": "Paradigmagenereren",
+    "paradigm.description": "Generere sániid sojahanminstariid.",
+    "paradigm.instruction": "Oza sániid vuođđohámiid",
+    "paradigmsize": "Paradigma sturrodat",
+    "paradigmsize.minimal": "Minimála",
+    "paradigmsize.standard": "Standárda",
+    "paradigmsize.full": "Dievaslaš",
+    "paradigm.jumpto": "Njuikke:",
+    "paradigm.homonyms": "Gávdnan {num} homonyma:",
+    "paradigm.noresults": "Paradigma ii gávdnon",
+    "paradigm.tags": "Taggat",
+    "paradigm.wordform": "Hápmi",
+    "paradigm.person": "Persovdna",
+    "paradigm.person.short": "Pers.",
+
+    // POS
+    "partofspeech": "Sátneluohkká",
+    "partofspeech.any": "Váikko makkár",
+    "partofspeech.noun": "Substantiiva",
+    "partofspeech.verb": "Vearba",
+    "partofspeech.pronoun": "Pronomen",
+    "partofspeech.adjective": "Adjektiiva",
+    "partofspeech.adverb": "Advearba",
+    "partofspeech.numeral": "Lohkosátni",
+
+    // Nouns
+    "paradigm.possessivesuffixes": "Oamastangehčosat",
+    "paradigm.generalforms": "Dábálaš hámit",
+
+    // Adjectives
+    "paradigm.attribute": "Attribuhtta",
+    "paradigm.attribute.short": "Attr.",
+    "paradigm.positive": "Positiiva",
+    "paradigm.comparative": "Komparatiiva",
+    "paradigm.superlative": "Superlatiiva",
+    "paradigm.ordinal": "Ortnetlohku",
+
+    // Verbs
+    "paradigm.indicative": "Indikatiiva",
+    "paradigm.imperative": "Imperatiiva",
+    "paradigm.conditional": "Konditionála",
+    "paradigm.potential": "Potentiála",
+    "paradigm.present": "Preseansa",
+    "paradigm.preterite": "Preterihtta",
+    "paradigm.perfect": "Perfeakta",
+    "paradigm.pluperfect": "Pluskvamperfeakta",
+    "paradigm.negative": "Biehttaleapmi",
+    "paradigm.connegative": "Biehttalanhápmi",
+    "paradigm.nonfinite": "Infinihtta hámit",
+    "paradigm.infinite": "Infinitiiva",
+    "paradigm.perfectparticiple": "Perfeavtta partisihppa",
+    "paradigm.presentparticiple": "Preseansa partisihppa",
+    "paradigm.verbabessive": "Vearbaabessiiva",
+    "paradigm.verbgenitive": "Vearbagenetiiva",
+    "paradigm.supine": "Supiidna",
+    "paradigm.actionominative": "Aktio nominatiiva",
+    "paradigm.actiogenitive": "Aktio genetiiva",
+    "paradigm.actiolocative": "Aktio lokatiiva",
+    "paradigm.actiocomitative": "Aktio komitatiiva",
+    "paradigm.actioessive": "Aktio essiiva",
+    "paradigm.gerund": "Gerunda",
+
+    // Pronouns
+    "paradigm.personal": "Persovdnapronomen",
+    "paradigm.demonstrative": "Čujuheaddji pronomen",
+    "paradigm.interrogative": "Gažaldatpronomen",
+    "paradigm.relative": "Relatiiva pronomen",
+    "paradigm.reflexive": "Refleksiiva pronomen",
+    "paradigm.indefinite": "Eahpemearálaš pronomen",
+
+    // Cases
+    "paradigm.case": "Kásus",
+    "paradigm.ablative": "Ablatiiva",
+    "paradigm.abessive": "Abessiiva",
+    "paradigm.accusative": "Akkusatiiva",
+    "paradigm.adessive": "Adessiiva",
+    "paradigm.allative": "Allatiiva",
+    "paradigm.comitative": "Komitatiiva",
+    "paradigm.elative": "Elatiiva",
+    "paradigm.essive": "Essiiva",
+    "paradigm.genitive": "Genetiiva",
+    "paradigm.illative": "Illatiiva",
+    "paradigm.inessive": "Inessiiva",
+    "paradigm.locative": "Lokatiiva",
+    "paradigm.nominative": "Nominatiiva",
+    "paradigm.partitive": "Partitiiva",
+    "paradigm.translative": "Translatiiva",
+
+    // Numbers
+    "paradigm.number": "Lohku",
+    "paradigm.singular": "Singulára",
+    "paradigm.plural": "Plurála",
+    "paradigm.dual": "Duála",
+
+    // Numerals
+    "num": "Logut",
+    "num.description": "Generere lohkosániid loguin, áiggiin dahje dáhtoniin.",
+
+    // Transcribe
+    "transcribe": "Transkriberen",
+    "transcribe.description": "Konvertere sániid IPA:i.",
+    "transcribe.instruction":
+        "Write the words you want to transcribe below and submit.",
+
+    // Tools title
+    "toolsfor.sjd": "Gielddasámegiela reaiddut",
+    "toolsfor.sje": "Bihtánsámegiela reaiddut",
+    "toolsfor.sma": "Lullisámegiela reaiddut",
+    "toolsfor.sme": "Davvisámegiela reaiddut",
+    "toolsfor.smj": "Julevsámegiela reaiddut",
+    "toolsfor.smn": "Anárašgiela reaiddut",
+    "toolsfor.sms": "Nuortalašgiela reaiddut",
+
+    "toolsfor.fin": "Suomagiela reaiddut",
+    "toolsfor.fit": "Meängiela reaiddut",
+    "toolsfor.fkv": "Kveanagiela reaiddut",
+    "toolsfor.est": "Esttegiela reaiddut",
+    "toolsfor.myv": "Ersagiela reaiddut",
+    "toolsfor.mrj": "Várremarigiela reaiddut",
+    "toolsfor.izh": "Inkeroisgiela reaiddut",
+    "toolsfor.kca": "Hantigiela reaiddut",
+    "toolsfor.kpv": "Komigiela reaiddut",
+    "toolsfor.koi": "Komipermjakgiela reaiddut",
+    "toolsfor.liv": "Liivigiela reaiddut",
+    "toolsfor.olo": "Livvi-Karelengiela reaiddut",
+    "toolsfor.mns": "Mansigiela reaiddut",
+    "toolsfor.mdf": "Mokšagiela reaiddut",
+    "toolsfor.yrk": "Nenetsagiela reaiddut",
+    "toolsfor.nio": "Nganasanagiela reaiddut",
+    "toolsfor.udm": "Udmurtagiela reaiddut",
+    "toolsfor.vep": "Vepsägiela reaiddut",
+    "toolsfor.vro": "Võrogiela reaiddut",
+    "toolsfor.vot": "Vatjagiela reaiddut",
+    "toolsfor.mhr": "Niitomarigiela reaiddut",
+
+    "toolsfor.nob": "Dárogiela reaiddut",
+    "toolsfor.bxr": "Burjátagiela reaiddut",
+    "toolsfor.ciw": "Ojibbwegiela reaiddut",
+    "toolsfor.cor": "Kornigiela reaiddut",
+    "toolsfor.evn": "Evenkigiela reaiddut",
+    "toolsfor.fao": "Fearagiela reaiddut",
+    "toolsfor.gle": "Iragiela reaiddut",
+    "toolsfor.hdn": "Davvihaidagiela reaiddut",
+    "toolsfor.ipk": "Inupiaka reaiddut",
+    "toolsfor.kal": "Ruonáeatnanlaš reaiddut",
+    "toolsfor.rmf": "Suoma romanigiela reaiddut",
+    "toolsfor.rus": "Ruoššagiela reaiddut",
+    "toolsfor.som": "Somaligiela reaiddut",
+    "toolsfor.tkl": "Tokelaugiela reaiddut",
+
+    // Old stuff to clean up
+    "search": "[sme] Search",
     "spellcheck": "[sme] Spellcheck",
     "spellcheck.description":
         "[sme] Run a spell check for one or multiple words",
-    "disambiguate": "[sme] Disambiguate",
-    "dependency": "[sme] Dependency structure",
     "hyphenation": "[sme] Hyphenation",
     "transcription": "[sme] IPA Transcription",
     "nowexploring": "[sme] You are now exploring",
-    "filters": "[sme] filters",
-    "samilanguages": "[sme] sami languages",
-    "nonsamiuralic": "[sme] non-sami uralic",
-    "otherlanguages": "[sme] other languages",
-    "exploreanotherlang": "[sme] Explore another language",
     "index.showtoolsfordotdotdot": "[sme] Show tools for...",
     "langmodellastupdated": "[sme] The language model was last updated",
     "title.tool.analyze.lang.bxr":
@@ -224,7 +452,6 @@ export default {
         "Copyright \u00a9 Senter for samisk spr\u00e5kteknologi og Jack Rueter",
     "copyright.lang.yrk":
         "Copyright \u00a9 Senter for samisk spr\u00e5kteknologi og Jack Rueter",
-    "copyright": "Copyright \u00a9 S\u00e1mi giellateknologiija guovdda\u0161",
     "introduction.tool.analyze":
         '\u010c\u00e1le dahje kopiere s\u00e1niid l\u00e1sii, ja deatte "S\u00e1dde skovi". \u010cilgehusaid\nmorfologala\u0161 ja synt\u00e1vssala\u0161 oan\u00e1dusaide g\u00e1vnnat vuol\u00e1bealde.\nJos v\u00e1lljet "Ea\u014bkils\u00e1niid", de progr\u00e1mma add\u00e1 buot vejola\u0161\nanalysaid, muhto jos v\u00e1lljet "Cealkagiid", de progr\u00e1mma geah\u010d\u010dala\naddit du\u0161\u0161e analysa mii heive dan cealkagii. Progr\u00e1mma s\u00e1htt\u00e1 maid\nbotket s\u00e1niid, dahje addit st\u00e1vvals\u00e1zu - deatte "Botke".',
     "introduction.tool.analyze.lang.kal":
@@ -575,8 +802,6 @@ export default {
         "Morfologala\u0161 ja synt\u00e1vssala\u0161 analysa, ja s\u00e1tnebotken.",
     "analysis_text":
         "Progr\u00e1mma analysere du\u0161\u0161e moadde s\u00e1ni.",
-    "paradigm":
-        "S\u00e1niid sojahanminsttar \u2013 v\u00e1llje dihto s\u00e1ni.",
     "paradigm_text.lang.ipk":
         "Generere vuo\u0111\u0111os\u00e1niid sojahanparadigmaid.",
     "paradigm_text.lang.sjd":

@@ -271,9 +271,9 @@ export const tools = [
     "disambiguate",
     "generate",
     "hyphenate",
-    "num",
+    // "num",
     "paradigm",
-    "spellcheck",
+    // "spellcheck",
     "transcribe",
     //"ortography",
     //"stedsnavnsordbok",
@@ -290,6 +290,6 @@ for (const lang of langs) {
     if (hyphenation_langs.has(lang)) tools_for[lang].push("hyphenate");
     if (paradigm_langs.has(lang)) tools_for[lang].push("paradigm");
     //if (spellcheck_langs.has(lang)) tools_for[lang].push("spellcheck");
-    if (num_langs.has(lang)) tools_for[lang].push("num");
+    // if (num_langs.has(lang)) tools_for[lang].push("num");
     if (transcription_langs.has(lang)) tools_for[lang].push("transcribe");
 }

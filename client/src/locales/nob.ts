@@ -2,7 +2,7 @@ export default {
     // Appbar
     "languagetools": "Språkverktøy",
     "developers": "Utviklere",
-    "about": "Om denne siden",
+    "about": "Om siden",
     "interfacelanguage": "Grensesnittspråk",
     "languages": "Språk",
     "toolspage": "Verktøyside",
