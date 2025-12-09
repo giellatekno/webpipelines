@@ -31,7 +31,7 @@
         />
         <Dialog.Positioner class="fixed inset-0 z-50 flex justify-start">
             <Dialog.Content
-                class="card bg-surface-100-900 h-dvh w-xs space-y-4 p-4 shadow-xl {animModal}"
+                class="card bg-surface-100-900 h-dvh w-fit space-y-4 p-4 shadow-xl {animModal}"
             >
                 <Navigation
                     layout="sidebar"

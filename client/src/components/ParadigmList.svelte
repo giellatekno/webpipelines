@@ -20,9 +20,9 @@
                     class="even:bg-surface-100-900/50 odd:bg-surface-50-950 border"
                 >
                     <td class="font-semibold">
-                        {elem.pos}{elem.subclass
+                        {elem.pos}+{elem.subclass
                             ? elem.subclass + "+"
-                            : ""}+{tags}
+                            : ""}{tags}
                     </td>
                     <td>
                         {@html Array.from(wordforms).join("<br>")}

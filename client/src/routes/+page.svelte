@@ -52,7 +52,7 @@
 </script>
 
 <div class="flex w-full flex-col gap-4">
-    <label class="label ml-2">
+    <label class="label xl:ml-2">
         <span class="label-text">{$t("showtoolsfor")}</span>
         <div class="input-group w-3xs grid-cols-[auto_1fr]">
             <div class="ig-cell preset-tonal">
@@ -69,11 +69,11 @@
     </label>
     <hr class="hr" />
 
-    <div class="mx-2 flex flex-row flex-wrap gap-8">
+    <div class="flex w-full flex-row flex-wrap gap-8 xl:mx-2">
         {#if visible_langs.size}
             {#each Object.entries(groups) as [name, lang_set]}
                 {#if lang_set.size}
-                    <div class="flex w-screen max-w-lg flex-col gap-2 xl:w-fit">
+                    <div class="flex w-full flex-col gap-2 xl:w-fit">
                         <h4 class="xl:h4 h5">{$t(name)}</h4>
                         <div
                             class="grid min-w-max grid-cols-2 gap-2 xl:grid-cols-3"

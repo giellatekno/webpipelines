@@ -16,7 +16,7 @@
 >
     <AppBar />
     <main
-        class="bg-surface-50-950 mx-auto w-full max-w-[1750px] flex-1 p-4 pb-16"
+        class="bg-surface-50-950 mx-auto w-full max-w-[1750px] flex-1 p-1 pb-16 xl:p-4"
     >
         {@render children?.()}
     </main>
