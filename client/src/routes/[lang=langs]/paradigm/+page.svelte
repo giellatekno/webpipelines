@@ -12,7 +12,7 @@
         data: PageData;
     }
     let { data }: Props = $props();
-    let { word, size, pos } = $state(data);
+    let { word, size, pos } = $derived(data);
 
     const allTableModules = import.meta.glob<Component>(
         "../../../components/tables/*/*.svelte",
@@ -74,7 +74,7 @@
     async function on_submit(ev: SubmitEvent) {
         ev.preventDefault();
         // console.log("Submitting:", word, size, pos);
-        await goto(`paradigm?word=${word}&size=${size}&pos=${pos}`, {
+        await goto(`paradigm?word=${word.trim()}&size=${size}&pos=${pos}`, {
             keepFocus: true,
             // replaceState: true,
         });
@@ -82,7 +82,7 @@
 
     async function on_radio_change() {
         if (word) {
-            await goto(`paradigm?word=${word}&size=${size}&pos=${pos}`, {
+            await goto(`paradigm?word=${word.trim()}&size=${size}&pos=${pos}`, {
                 keepFocus: true,
                 // replaceState: true,
             });
@@ -120,61 +120,67 @@
 
 {#snippet paradigm_form()}
     <form onsubmit={on_submit} id="form" class="my-2 flex flex-col gap-2">
-        <label class="flex flex-row items-center gap-2">
+        <div class="grid grid-cols-[1fr_auto] gap-2">
             <p class="font-bold">{$t("paradigmsize")}:</p>
-            {#each paradigm_sizes as value}
-                <label class="flex flex-row items-center gap-1">
-                    <input
-                        type="radio"
-                        class="radio"
-                        name="size"
-                        {value}
-                        bind:group={size}
-                        onchange={on_radio_change}
-                    />
-                    <p>{$t("paradigmsize." + value)}</p>
-                </label>
-            {/each}
-        </label>
-        <label class="flex flex-row items-center gap-2">
+            <label class="flex flex-row items-center gap-2">
+                {#each paradigm_sizes as value}
+                    <label class="flex flex-row items-center gap-1">
+                        <input
+                            type="radio"
+                            class="radio"
+                            name="size"
+                            {value}
+                            bind:group={size}
+                            onchange={on_radio_change}
+                        />
+                        <p>{$t("paradigmsize." + value)}</p>
+                    </label>
+                {/each}
+            </label>
             <p class="font-bold">{$t("partofspeech")}:</p>
-            {#each Object.entries(poses) as [label, value]}
-                <label class="flex flex-row items-center gap-1">
-                    <input
-                        type="radio"
-                        class="radio"
-                        name="pos"
-                        {value}
-                        bind:group={pos}
-                        onchange={on_radio_change}
-                    />
-                    <p>{$t("partofspeech." + label)}</p>
-                </label>
-            {/each}
-        </label>
-        <label class="flex flex-row items-center gap-2">
-            <p class="font-bold">Format:</p>
-            <label class="flex flex-row items-center gap-1">
-                <input
-                    type="radio"
-                    class="radio"
-                    name="format"
-                    value="table"
-                    bind:group={format}
-                />
-                <p>Table</p>
+            <label class="flex flex-row items-center gap-2">
+                {#each Object.entries(poses) as [label, value]}
+                    <label class="flex flex-row items-center gap-1">
+                        <input
+                            type="radio"
+                            class="radio"
+                            name="pos"
+                            {value}
+                            bind:group={pos}
+                            onchange={on_radio_change}
+                        />
+                        <p>{$t("partofspeech." + label)}</p>
+                    </label>
+                {/each}
             </label>
-            <label class="flex flex-row items-center gap-1">
-                <input
-                    type="radio"
-                    class="radio"
-                    name="format"
-                    value="list"
-                    bind:group={format}
-                />
-                <p>Table</p>
-            </label>
-        </label>
+            {#await lang_tables then tables}
+                {#if tables !== undefined}
+                    <p class="font-bold">Format:</p>
+                    <label class="flex flex-row items-center gap-2">
+                        <label class="flex flex-row items-center gap-1">
+                            <input
+                                type="radio"
+                                class="radio"
+                                name="format"
+                                value="table"
+                                bind:group={format}
+                            />
+                            <p>Table</p>
+                        </label>
+                        <label class="flex flex-row items-center gap-1">
+                            <input
+                                type="radio"
+                                class="radio"
+                                name="format"
+                                value="list"
+                                bind:group={format}
+                            />
+                            <p>List</p>
+                        </label>
+                    </label>
+                {/if}
+            {/await}
+        </div>
         <span class="mt-2 flex justify-center">
             <div class="flex flex-col gap-2">
                 <span class="label-text">

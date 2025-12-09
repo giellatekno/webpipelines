@@ -12,7 +12,7 @@
 
     let { data }: Props = $props();
 
-    let value = $state(data.q || "");
+    let value = $derived(data.q || "");
 
     let hyphenate_data = $derived(data.results?.hyphenated);
 

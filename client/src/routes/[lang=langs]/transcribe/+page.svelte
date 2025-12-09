@@ -15,7 +15,7 @@
 
     let loading = $state(false);
 
-    let value = $state(data.q || "");
+    let value = $derived(data.q || "");
 
     let usage = $derived(get_usage(page.params.lang, $t));
     let instruction = $derived($t("transcribe.instruction"));
