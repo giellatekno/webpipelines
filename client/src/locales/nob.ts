@@ -4,6 +4,8 @@ export default {
     "developers": "Utviklere",
     "about": "Om denne siden",
     "interfacelanguage": "Grensesnittspråk",
+    "languages": "Språk",
+    "toolspage": "Verktøyside",
 
     // Developers
     "fordevelopers": "For utviklere",
