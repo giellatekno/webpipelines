@@ -19,7 +19,7 @@
 </script>
 
 <Popover>
-    <Popover.Trigger class="btn preset-filled-primary-500">
+    <Popover.Trigger class="btn preset-filled-primary-50-950">
         <LanguagesIcon />
         {$t("interfacelanguage")}
     </Popover.Trigger>

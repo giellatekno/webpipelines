@@ -69,7 +69,7 @@
     </label>
     <hr class="hr" />
 
-    <div class="flex w-full flex-row flex-wrap gap-8 xl:mx-2">
+    <div class="flex w-full flex-row flex-wrap justify-center gap-8 xl:mx-2">
         {#if visible_langs.size}
             {#each Object.entries(groups) as [name, lang_set]}
                 {#if lang_set.size}

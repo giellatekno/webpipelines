@@ -11,12 +11,10 @@
     <meta name="description" content="Run Giellatekno Pipelines" />
 </svelte:head>
 
-<div
-    class="app preset-gradient-bg bg-secondary-700-300 flex h-full min-h-screen flex-col"
->
+<div class="app bg-primary-50-950 flex h-full min-h-screen flex-col">
     <AppBar />
     <main
-        class="bg-surface-50-950 mx-auto w-full max-w-[1750px] flex-1 p-1 pb-16 xl:p-4"
+        class="bg-surface-50-950 mx-auto w-full max-w-[1750px] flex-1 p-2 pb-16 shadow-md xl:p-4"
     >
         {@render children?.()}
     </main>
