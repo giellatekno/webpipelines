@@ -19,14 +19,16 @@
 </script>
 
 <Popover>
-    <Popover.Trigger class="btn preset-filled-primary-50-950">
+    <Popover.Trigger
+        class="btn preset-filled-primary-500 xl:preset-filled-primary-50-950"
+    >
         <LanguagesIcon />
         {$t("interfacelanguage")}
     </Popover.Trigger>
     <Portal>
         <Popover.Positioner>
             <Popover.Content
-                class="card preset-filled-surface-100-900 border-surface-200-800 z-50 w-fit border p-4 shadow-xl"
+                class="card preset-filled-surface-100-900 z-50 w-fit p-4 shadow-xl"
             >
                 <Popover.Description>
                     <ul class="w-full">
@@ -47,6 +49,11 @@
                         {/each}
                     </ul>
                 </Popover.Description>
+                <Popover.Arrow
+                    class="[--arrow-background:var(--color-surface-100-900)] [--arrow-size:--spacing(2)]"
+                >
+                    <Popover.ArrowTip />
+                </Popover.Arrow>
             </Popover.Content>
         </Popover.Positioner>
     </Portal>

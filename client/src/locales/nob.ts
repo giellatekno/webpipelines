@@ -92,7 +92,7 @@ export default {
     "paradigmsize.standard": "Standard",
     "paradigmsize.full": "Full",
     "partofspeech": "Ordklasse",
-    "partofspeech.any": "Alt",
+    "partofspeech.any": "Alle",
     "partofspeech.noun": "Substantiv",
     "partofspeech.verb": "Verb",
     "partofspeech.pronoun": "Pronomen",
@@ -105,6 +105,9 @@ export default {
     "paradigm.tags": "Tagger",
     "paradigm.wordforms": "Ordform",
     "paradigm.person": "Person",
+    "paradigm.table": "Tabell",
+    "paradigm.list": "Liste",
+    "paradigm.format": "Format",
 
     // Nouns
     "paradigm.possessivesuffixes": "Possessive suffikser",
@@ -141,6 +144,7 @@ export default {
     "paradigm.actiocomitative": "Aktio komitativ",
     "paradigm.actioessive": "Aktio essiv",
     "paradigm.gerund": "Gerundium",
+    "paradigm.negationsupine": "Nektende supinum",
 
     // Pronouns
     "paradigm.personal": "Personlig pronomen",

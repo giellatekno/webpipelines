@@ -5,6 +5,7 @@
     import hyphenate_img from "$assets/hyphenation.svg";
     import num_img from "$assets/num.svg";
     import ipa_img from "$assets/ipa.svg";
+    import paradigm_img from "$assets/paradigm.svg";
     import { t } from "svelte-intl-precompile";
     import { tools_for } from "$lib/langs";
     import { page } from "$app/state";
@@ -14,6 +15,7 @@
         hyphenate: hyphenate_img,
         num: num_img,
         transcribe: ipa_img,
+        paradigm: paradigm_img,
     };
 
     let lang = $derived(page.params.lang || "");

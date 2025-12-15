@@ -45,6 +45,7 @@ export default {
     "description.title": "Reaiddu čilgehus",
     "usage.title": "Giela geavaheapmi",
     "instruction.title": "Reaiddu geavaheapmi",
+    "search": "Oza",
 
     // Language specific usage
     "usage.ciw": "The analyser uses the Double Vowel (Fiero) system.",
@@ -77,7 +78,7 @@ export default {
     // Disambiguate
     "disambiguate": "Disambigueren",
     "disambiguate.description":
-        "Čájet cealkagiid sátneanalysa mii heive kontekstii.", // TODO: description
+        "Čájet cealkagiid sátneanalysa mii heive kontekstii.",
 
     // Generate
     "generate": "Sátnegenereren",
@@ -85,7 +86,7 @@ export default {
 
     // Hyphenate
     "hyphenate": "Botke sániid",
-    "hyphenate.description": "Botke sániid stávvaliidda ja távttaide.", // TODO: description
+    "hyphenate.description": "Botke sániid stávvaliidda ja távttaide.",
 
     // Paradigm
     "paradigm": "Paradigmagenereren",
@@ -102,6 +103,9 @@ export default {
     "paradigm.wordform": "Hápmi",
     "paradigm.person": "Persovdna",
     "paradigm.person.short": "Pers.",
+    "paradigm.table": "Tabealla",
+    "paradigm.list": "Listu",
+    "paradigm.format": "Formáhtta",
 
     // POS
     "partofspeech": "Sátneluohkká",
@@ -149,6 +153,7 @@ export default {
     "paradigm.actiocomitative": "Aktio komitatiiva",
     "paradigm.actioessive": "Aktio essiiva",
     "paradigm.gerund": "Gerunda",
+    "paradigm.negationsupine": "Biehttaleaddji supiidna",
 
     // Pronouns
     "paradigm.personal": "Persovdnapronomen",
@@ -239,7 +244,6 @@ export default {
     "toolsfor.tkl": "Tokelaugiela reaiddut",
 
     // Old stuff to clean up
-    "search": "[sme] Search",
     "spellcheck": "[sme] Spellcheck",
     "spellcheck.description":
         "[sme] Run a spell check for one or multiple words",

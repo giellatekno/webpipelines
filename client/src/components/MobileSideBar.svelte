@@ -10,10 +10,14 @@
     let lang = $derived(page.params.lang);
     let on_lang_page = $derived(lang && page.url.pathname.includes("/" + lang));
 
-    const constant_links = [
-        { label: $t("languages"), href: resolve("/"), icon: GlobeIcon },
+    const constant_links = $derived([
+        {
+            label: $t("languages"),
+            HTMLProgressElementef: resolve("/"),
+            icon: GlobeIcon,
+        },
         { label: $t("about"), href: resolve("/about"), icon: InfoIcon },
-    ];
+    ]);
 
     const animBackdrop =
         "transition transition-discrete opacity-0 starting:data-[state=open]:opacity-0 data-[state=open]:opacity-100";

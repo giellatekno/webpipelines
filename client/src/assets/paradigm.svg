@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+    <style>
+        text {
+            font: 104px sans-serif;
+            fill: "#fff";
+        }
+    </style>
+    <text x="8" y="125">giella</text>
+    <text x="90" y="237">giela</text>
+    <text x="180" y="345">gillii</text>
+</svg>

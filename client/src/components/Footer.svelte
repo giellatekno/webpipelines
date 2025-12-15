@@ -44,7 +44,7 @@
         </div>
         <img
             class="order-3 h-10 scale-100 xl:block xl:h-20"
-            src={uit_logo[$locale]}
+            src={uit_logo[$locale] ?? uit_logo_eng}
             alt="UiT logo"
         />
     </div>

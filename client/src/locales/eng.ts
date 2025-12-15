@@ -75,7 +75,8 @@ export default {
 
     // Disambiguate
     "disambiguate": "Disambiguate",
-    "disambiguate.description": " ", // TODO: description
+    "disambiguate.description":
+        "Show analyses that fits in the context of sentences.",
 
     // Generate
     "generate": "Word generation",
@@ -84,7 +85,7 @@ export default {
 
     // Hyphenate
     "hyphenate": "Hyphenate",
-    "hyphenate.description": " ", // TODO: description
+    "hyphenate.description": "Split words into syllables.",
 
     // Paradigm
     "paradigm": "Paradigm generation",
@@ -101,6 +102,10 @@ export default {
     "paradigm.tags": "Tags",
     "paradigm.wordform": "Wordform",
     "paradigm.person": "Person",
+    "paradigm.person.short": "Pers.",
+    "paradigm.table": "Table",
+    "paradigm.list": "List",
+    "paradigm.format": "Format",
 
     // POS
     "partofspeech": "Part of speech",
@@ -118,6 +123,7 @@ export default {
 
     // Adjectives
     "paradigm.attribute": "Attribute",
+    "paradigm.attribute.short": "Attr.",
     "paradigm.positive": "Positive",
     "paradigm.comparative": "Comparative",
     "paradigm.superlative": "Superlative",
@@ -147,6 +153,7 @@ export default {
     "paradigm.actiocomitative": "Actio comitative",
     "paradigm.actioessive": "Actio essive",
     "paradigm.gerund": "Gerund",
+    "paradigm.negationsupine": "Negation Supine",
 
     // Pronouns
     "paradigm.personal": "Personal pronoun",

@@ -18,17 +18,20 @@
             <MobileSideBar />
         </AppBar.Lead>
         <AppBar.Headline class="flex flex-row gap-4">
-            <a href={resolve("/")} class="mr-4 text-3xl font-bold">
+            <a href={resolve("/")} class="text-xl font-bold xl:text-3xl">
                 Webpipeline
             </a>
-            <a href={resolve("/")} class="xl:btn hover:preset-tonal hidden">
+            <a
+                href={resolve("/")}
+                class="xl:btn hover:preset-tonal ml-4 hidden"
+            >
                 <GlobeIcon class="size-6" />
                 {$t("languages")}
             </a>
             {#if page.params.lang}
                 <a
                     href={resolve(`/${page.params.lang}`)}
-                    class="btn hover:preset-tonal"
+                    class="xl:btn hover:preset-tonal hidden"
                 >
                     <WrenchIcon class="size-6" />
                     {$t("toolspage")}
@@ -36,7 +39,7 @@
             {/if}
         </AppBar.Headline>
 
-        <AppBar.Trail class="flex h-full flex-row gap-4">
+        <AppBar.Trail class="hidden h-full flex-row gap-4 xl:flex">
             <a class="btn hover:preset-tonal" href={resolve("/about")}>
                 <InfoIcon />
                 {$t("about")}
