@@ -17,27 +17,25 @@
         let rootset = langs;
 
         if (search === "") {
-            return new Set(rootset.sort());
+            return rootset.sort();
         } else {
             // TODO: Brede - Search in interface language? or any interface language?
-            return new Set(
-                rootset
-                    .map((iso) => [iso, langname(iso, $locale)])
-                    .filter(([iso, name]) => {
-                        const lower = search.toLowerCase();
-                        return (
-                            iso.includes(lower) ||
-                            name.toLowerCase().includes(lower)
-                        );
-                    })
-                    .map(([iso, _name]) => iso)
-                    .sort(),
-            );
+            return rootset
+                .map((iso) => [iso, langname(iso, $locale)])
+                .filter(([iso, name]) => {
+                    const lower = search.toLowerCase();
+                    return (
+                        iso.includes(lower) ||
+                        name.toLowerCase().includes(lower)
+                    );
+                })
+                .map(([iso, _name]) => iso)
+                .sort();
         }
     }
 
     async function onenter(ev: KeyboardEvent) {
-        if (ev.key === "Enter" && visible_langs.size === 1) {
+        if (ev.key === "Enter" && visible_langs.length === 1) {
             const lang = Array.from(visible_langs)[0];
             await goto(resolve(`/${lang}`));
         }
@@ -45,9 +43,9 @@
     let visible_langs = $derived(filter_langs(search));
 
     let groups = $derived({
-        samilanguages: sami_langs.intersection(visible_langs),
-        nonsamiuralic: nonsamiuralic_langs.intersection(visible_langs),
-        otherlanguages: other_langs.intersection(visible_langs),
+        samilanguages: visible_langs.filter((e) => sami_langs.has(e)),
+        nonsamiuralic: visible_langs.filter((e) => nonsamiuralic_langs.has(e)),
+        otherlanguages: visible_langs.filter((e) => other_langs.has(e)),
     });
 </script>
 
@@ -70,14 +68,12 @@
     <hr class="hr" />
 
     <div class="flex w-full flex-row flex-wrap justify-evenly gap-8 xl:mx-2">
-        {#if visible_langs.size}
+        {#if visible_langs.length}
             {#each Object.entries(groups) as [name, lang_set]}
-                {#if lang_set.size}
+                {#if lang_set.length}
                     <div class="flex w-full flex-col gap-2 xl:w-fit">
                         <h4 class="xl:h4 h5">{$t(name)}</h4>
-                        <div
-                            class="grid min-w-max grid-cols-2 gap-2 xl:grid-cols-3"
-                        >
+                        <div class="grid min-w-max grid-cols-2 gap-2">
                             {#each lang_set as lng}
                                 <a
                                     class="btn preset-outlined-primary-500 hover:preset-tonal w-full text-center text-sm text-wrap xl:text-base"
