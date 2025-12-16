@@ -27,7 +27,7 @@
                 <ChevronRight class="size-5 xl:size-8" />
             </span>
 
-            <h3 class="h6 xl:h3">{$t(last_part)}</h3>
+            <h3 class="h6 xl:h3">{$t(last_part + ".title")}</h3>
         </div>
     {/if}
 </div>

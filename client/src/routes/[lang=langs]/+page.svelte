@@ -36,7 +36,7 @@
             />
             <div class="flex flex-col">
                 <span class="text-base font-bold xl:text-2xl">
-                    {$t(tool)}
+                    {$t(tool + ".title")}
                 </span>
                 <span
                     class="text-surface-950-50/75 text-sm font-normal italic xl:text-xl"

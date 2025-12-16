@@ -5,6 +5,7 @@
     import { get_usage } from "$lib/utils";
     import ToolDescription from "$components/ToolDescription.svelte";
     import TextArea from "$components/TextArea.svelte";
+    import Table from "$components/Table.svelte";
 
     interface Props {
         data: PageData;
@@ -30,40 +31,40 @@
             Error: {data.error}
         {/if}
         {#if hyphenate_data}
-            <div
-                class="card preset-filled-surface-100-900 border-surface-200-800 w-fit border p-2"
-            >
-                <table class="table w-fit">
-                    <thead>
-                        <tr>
-                            <th>Lemma</th>
-                            <th>Hyphenated</th>
-                            <th>Score</th>
-                        </tr>
-                    </thead>
-                    {#each hyphenate_data as { input_word, variations }}
-                        <tbody class="mt-2 border-t">
-                            {#each variations as { hyphenated_word, score }}
-                                <tr>
-                                    <td>{input_word}</td>
-                                    <td>
-                                        {#each hyphenated_word.split("") as char}
-                                            {#if char === "^" || char === "#"}
-                                                <span class="text-red-800">
-                                                    {char}
-                                                </span>
-                                            {:else}
+            <Table>
+                <thead>
+                    <tr>
+                        <th>Lemma</th>
+                        <th>Hyphenated</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {#each hyphenate_data as { input_word, variations }, i}
+                        {#each variations as { hyphenated_word, score }, j}
+                            <tr
+                                class:separate={i !==
+                                    hyphenate_data.length - 1 &&
+                                    j === variations.length - 1}
+                            >
+                                <td>{input_word}</td>
+                                <td>
+                                    {#each hyphenated_word.split("") as char}
+                                        {#if char === "^" || char === "#"}
+                                            <span class="text-red-800">
                                                 {char}
-                                            {/if}
-                                        {/each}
-                                    </td>
-                                    <td>{score}</td>
-                                </tr>
-                            {/each}
-                        </tbody>
+                                            </span>
+                                        {:else}
+                                            {char}
+                                        {/if}
+                                    {/each}
+                                </td>
+                                <td>{score}</td>
+                            </tr>
+                        {/each}
                     {/each}
-                </table>
-            </div>
+                </tbody>
+            </Table>
         {/if}
     </div>
 </div>

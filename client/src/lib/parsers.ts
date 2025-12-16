@@ -16,47 +16,131 @@ export function analyze_parser(data: AnalyzeItem[] | undefined) {
     }));
 }
 
-export interface ParsedDependency {
+export interface ParsedAnalysis {
     wordform: string;
+    analyses: AnalysisElement[][];
+}
+
+interface AnalysisElement {
     lemma: string;
     verbtype: string;
     tags: string;
     syntax: string;
-    relation: string;
+    relation?: string;
+}
+
+function splitStringsByTab(strings: string[]): string[][] {
+    const result: string[][] = [];
+    let currentGroup: string[] = [];
+    for (const str of strings) {
+        if (str.startsWith("\t") && !str.startsWith("\t\t")) {
+            if (currentGroup.length > 0) {
+                result.push(currentGroup);
+            }
+            currentGroup = [str];
+        } else {
+            currentGroup.push(str);
+        }
+    }
+    if (currentGroup.length > 0) {
+        result.push(currentGroup);
+    }
+    return result;
+}
+
+export function disambiguate_parser(data: string) {
+    console.log(data);
+    const results: ParsedAnalysis[] = [];
+
+    const analyses = data.split("\n:").map((a) => a.trim());
+    console.log(analyses);
+
+    const analysis_re = new RegExp(
+        /"([^\s]+)" (<[^\s]+>)?(?: )?([^@#]+) (@[^\s]+)?/,
+    );
+    const wordform_re = new RegExp(/"<([^\s]+)>"/);
+
+    for (const analysis of analyses) {
+        if (analysis === "\\n") continue;
+        const analysis_lines = analysis.split("\n");
+        const wordform = wordform_re.exec(analysis_lines[0]);
+        let parsed: ParsedAnalysis = {
+            wordform: wordform ? wordform[1] : "",
+            analyses: [],
+        };
+
+        const analysis_groups = splitStringsByTab(analysis_lines.slice(1));
+
+        for (const analysis_group of analysis_groups) {
+            const group = [];
+            for (const elem of analysis_group) {
+                const analysis_parts = analysis_re.exec(elem);
+                if (!analysis_parts) {
+                    console.log("Skipping:", elem);
+                    continue;
+                }
+                const obj: AnalysisElement = {
+                    lemma: analysis_parts[1] ?? "",
+                    verbtype: analysis_parts[2] ?? "",
+                    tags: analysis_parts[3] ?? "",
+                    syntax: analysis_parts[4] ?? "",
+                };
+                group.push(obj);
+            }
+            parsed.analyses.push(group);
+        }
+        results.push(parsed);
+    }
+    console.log(results);
+    return results;
 }
 
 export function dependency_parser(data: string) {
-    const results: ParsedDependency[] = [];
+    const results: ParsedAnalysis[] = [];
 
-    console.log(data);
-    const lines = data
-        .trim()
-        .split("\n")
-        .map((l) => l.trim());
+    const analyses = data.split("\n:").map((a) => a.trim());
 
     const analysis_re = new RegExp(
-        /"([^\s]+)" (<[^\s]+>)?(?: )?([^@]+) (@[^\s]+) (#[^\s]+)/,
+        /"([^\s]+)" (<[^\s]+>)?(?: )?([^@#]+) (@[^\s]+)?(?: )?(#[^\s]+)/,
     );
+    const wordform_re = new RegExp(/"<([^\s]+)>"/);
 
-    for (const [i, line] of lines.entries()) {
-        if (!line.match(/"<[^\s]+>"/)) continue;
+    for (const analysis of analyses) {
+        if (analysis === "\\n") continue;
+        const analysis_lines = analysis.split("\n");
+        const wordform = wordform_re.exec(analysis_lines[0]);
+        // console.log(wordform);
+        let parsed: ParsedAnalysis = {
+            wordform: wordform ? wordform[1] : "",
+            analyses: [],
+        };
 
-        const word = line.slice(2, line.length - 2);
+        const analysis_groups = splitStringsByTab(analysis_lines.slice(1));
+        // console.log(analysis_groups);
 
-        const analysis = analysis_re.exec(lines[i + 1]);
-
-        if (analysis !== null) {
-            results.push({
-                wordform: word,
-                lemma: analysis[1],
-                verbtype: analysis[2] ?? "",
-                tags: analysis[3],
-                syntax: analysis[4],
-                relation: analysis[5],
-            });
+        for (const analysis_group of analysis_groups) {
+            const group = [];
+            for (const elem of analysis_group) {
+                // console.log(elem);
+                const analysis_parts = analysis_re.exec(elem);
+                if (!analysis_parts) {
+                    console.log("Skipping:", elem);
+                    continue;
+                }
+                const obj: AnalysisElement = {
+                    lemma: analysis_parts[1] ?? "",
+                    verbtype: analysis_parts[2] ?? "",
+                    tags: analysis_parts[3] ?? "",
+                    syntax: analysis_parts[4] ?? "",
+                    relation: analysis_parts[5] ?? "",
+                };
+                group.push(obj);
+            }
+            parsed.analyses.push(group);
         }
+        results.push(parsed);
     }
-    // console.log(results);
+    console.log(results);
     return results;
 }
 
@@ -70,8 +154,8 @@ export function hyphenate_parser(data: string) {
         if (trimmed_line.length > 0) {
             const parts = trimmed_line.split("\t");
 
-            const input_word = parts[0];
-            const hyphenated_word = parts[1];
+            const input_word = parts[0].replace("-e ", "");
+            const hyphenated_word = parts[1].replace("-e ", "");
             const score = parseFloat(parts[2]);
 
             const variation = {

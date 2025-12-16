@@ -27,12 +27,14 @@ export const load: PageLoad = async ({ url, params, fetch }) => {
     }
 
     const text = await response.text();
+    console.log(text);
     const generated = text
         .split("\n")
         .filter((line) => line.length > 0)
         .map((line) => line.split("\t"))
         .filter((splits) => splits[2] !== "inf")
         .map((splits) => splits[1]);
+    console.log(generated);
 
-    return { q: q, results: { generated } };
+    return { q: q, results: generated };
 };

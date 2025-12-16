@@ -3,6 +3,7 @@ import { tools_for } from "$lib/langs";
 import { convert_searchtext } from "$lib/utils";
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
+import { disambiguate_parser } from "$lib/parsers";
 
 export const load: PageLoad = async ({ url, params, fetch }) => {
     if (!tools_for[params.lang].includes("disambiguate")) {
@@ -27,7 +28,7 @@ export const load: PageLoad = async ({ url, params, fetch }) => {
     }
 
     let text = await response.text();
-    const lines = text.split("\n");
+    const data = disambiguate_parser(text);
 
-    return { q: q, results: { lines } };
+    return { q: q, results: data };
 };

@@ -41,6 +41,7 @@ export default {
     "backtotools": "Back to tool selection",
     "submit": "Sádde",
     "clear": "Sihko",
+    "writehere": "Čális deike...",
     "submit.keys": "Dahje deaddil Shift+Enter vai sáddet.",
     "description.title": "Reaiddu čilgehus",
     "usage.title": "Giela geavaheapmi",
@@ -67,29 +68,29 @@ export default {
     "usage.sms": "Write the word in ordinary Skolt Sámi orthography.",
 
     // Analyze
-    "analyze": "Analysa",
+    "analyze.title": "Analysa",
     "analyze.description":
         "Analysere ovtta sáni dahje buot eaŋkilsániid cealkagiin.",
 
     // Dependency
-    "dependency": "Dependeansastruktuvra ",
+    "dependency.title": "Dependeansastruktuvra ",
     "dependency.description": "Čájet dependeanssa sániid gaskkas cealkagiin.",
 
     // Disambiguate
-    "disambiguate": "Disambigueren",
+    "disambiguate.title": "Disambigueren",
     "disambiguate.description":
         "Čájet cealkagiid sátneanalysa mii heive kontekstii.",
 
     // Generate
-    "generate": "Sátnegenereren",
+    "generate.title": "Sátnegenereren",
     "generate.description": "Geavat grammatihkkalaš taggaid genereret sániid.",
 
     // Hyphenate
-    "hyphenate": "Botke sániid",
+    "hyphenate.title": "Botke sániid",
     "hyphenate.description": "Botke sániid stávvaliidda ja távttaide.",
 
     // Paradigm
-    "paradigm": "Paradigmagenereren",
+    "paradigm.title": "Paradigmagenereren",
     "paradigm.description": "Generere sániid sojahanminstariid.",
     "paradigm.instruction": "Oza sániid vuođđohámiid",
     "paradigmsize": "Paradigma sturrodat",
@@ -188,11 +189,11 @@ export default {
     "paradigm.dual": "Duála",
 
     // Numerals
-    "num": "Logut",
+    "num.title": "Logut",
     "num.description": "Generere lohkosániid loguin, áiggiin dahje dáhtoniin.",
 
     // Transcribe
-    "transcribe": "Transkriberen",
+    "transcribe.title": "Transkriberen",
     "transcribe.description": "Konvertere sániid IPA:i.",
     "transcribe.instruction":
         "Write the words you want to transcribe below and submit.",

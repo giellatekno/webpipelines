@@ -41,6 +41,7 @@ export default {
     "backtotools": "Back to tool selection",
     "submit": "Submit",
     "clear": "Clear",
+    "writehere": "Write here...",
     "submit.keys": "Or press Shift+Enter to submit.",
     "description.title": "Tool description",
     "usage.title": "Language specific usage",
@@ -66,29 +67,29 @@ export default {
     "usage.sms": "Write the word in ordinary Skolt Sámi orthography.",
 
     // Analyze
-    "analyze": "Analyze",
+    "analyze.title": "Analyze",
     "analyze.description": "Analyze one or more words in isolation.",
 
     // Dependency
-    "dependency": "Dependency structure",
+    "dependency.title": "Dependency structure",
     "dependency.description": "Show dependancies between words in sentences.",
 
     // Disambiguate
-    "disambiguate": "Disambiguate",
+    "disambiguate.title": "Disambiguate",
     "disambiguate.description":
         "Show analyses that fits in the context of sentences.",
 
     // Generate
-    "generate": "Word generation",
+    "generate.title": "Word generation",
     "generate.description":
         "Generate words from from grammatical specifications.",
 
     // Hyphenate
-    "hyphenate": "Hyphenate",
+    "hyphenate.title": "Hyphenate",
     "hyphenate.description": "Split words into syllables.",
 
     // Paradigm
-    "paradigm": "Paradigm generation",
+    "paradigm.title": "Paradigm generation",
     "paradigm.description":
         "Generate paradigms of different sizes for any word.",
     "paradigm.instruction": "Search for words in their base form",
@@ -188,11 +189,11 @@ export default {
     "paradigm.dual": "Dual",
 
     // Numerals
-    "num": "Numbers",
+    "num.title": "Numbers",
     "num.description": "Generate words from numbers, times or dates.",
 
     // Transcribe
-    "transcribe": "Transcribe",
+    "transcribe.title": "Transcribe",
     "transcribe.description": "Transcribe words to IPA.",
     "transcribe.instruction":
         "Write the words you want to transcribe below and submit.",

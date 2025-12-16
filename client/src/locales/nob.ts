@@ -38,6 +38,7 @@ export default {
     "backtotools": "Tilbake til verktøyvalg",
     "submit": "Send",
     "clear": "Fjern",
+    "writehere": "Skriv her...",
     "submit.keys": "Eller press Shift+Enter for å sende.",
     "description.title": "Beskrivelse",
     "usage.title": "Språk spesifik bruk",
@@ -63,27 +64,27 @@ export default {
     "usage.sms": "Write the word in ordinary Skolt Sámi orthography.",
 
     // Analyze
-    "analyze": "Analyser",
+    "analyze.title": "Analyser",
     "analyze.description": "Analyser ett eller flere ord hver for seg",
 
     // Dependency
-    "dependency": "Dependensstruktur",
+    "dependency.title": "Dependensstruktur",
     "dependency.description": "Vis dependenser mellom ord i setninger.",
 
     // Disambiguate
-    "disambiguate": "Disambiguer",
-    "disambiguate.description": " ", // TODO: description
+    "disambiguate.title": "Disambiguer",
+    "disambiguate.description": "Vis analyser som passer i setningkonteksten.",
 
     // Generate
-    "generate": "Ordgenerering",
+    "generate.title": "Ordgenerering",
     "generate.description": "Generer ord fra gramatiske spesifikasjoner.",
 
     // Hyphenate
-    "hyphenate": "Ordstavelser",
-    "hyphenate.description": " ", // TODO: description
+    "hyphenate.title": "Ordstavelser",
+    "hyphenate.description": "Del opp ord i takter og stavelser.",
 
     // Paradigm
-    "paradigm": "Paradigmegenerering",
+    "paradigm.title": "Paradigmegenerering",
     "paradigm.description":
         "Genererer bøyingsparadigmer av ulik størrelse for det ordet du vil.",
     "paradigm.instruction": "Søk etter ord i grunnform",
@@ -173,11 +174,11 @@ export default {
     "paradigm.pluralis": "Flertall",
 
     // Numerals
-    "num": "Tallord",
+    "num.title": "Tallord",
     "num.description": "Generer tallord fra tall, tider eller datoer.",
 
     // Transcribe
-    "transcribe": "Transkriber",
+    "transcribe.title": "Transkriber",
     "transcribe.description": "Transkriber ord til IPA.",
     "transcribe.instruction": "Skriv ordene du vil transkribere og send.",
 

@@ -81,7 +81,7 @@
                                             class="btn hover:preset-tonal w-full justify-start px-2 text-sm"
                                         >
                                             <Dot class="" />
-                                            <span>{$t(tool)}</span>
+                                            <span>{$t(tool + ".title")}</span>
                                         </a>
                                     </Dialog.Trigger>
                                 {/each}

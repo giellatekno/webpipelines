@@ -13,7 +13,7 @@
     let { data }: Props = $props();
 
     // the search text
-    let value = $state("");
+    let value = $derived(data.q);
 
     let usage = $derived(get_usage(page.params.lang, $t));
     let instruction = $derived($t("dependency.instruction"));
@@ -24,28 +24,47 @@
     <!-- <ToolDescription {description} {usage} /> -->
     <TextArea {instruction} bind:value />
 
-    <div class="">
+    <div class="text-sm xl:text-lg">
         {#if data.error}
-            <p class="text-error-500 text-lg">
+            <p class="text-error-500">
                 Error: {data.error}
             </p>
         {/if}
 
         {#if data.results}
             <div
-                class="card preset-filled-surface-100-900 border-surface-200-800 w-fit border p-4"
+                class="card border-primary-500 min-w-full overflow-x-auto border-2 px-6 py-4 whitespace-nowrap shadow-md"
             >
-                <div class="flex flex-col gap-2">
-                    {#each data.results as analysis}
-                        <span class="flex flex-row gap-2 text-lg">
-                            <p class="text-red-700">
-                                <b>{analysis.wordform}</b>
-                                [{analysis.lemma}]
+                <div class="inline-block min-w-full whitespace-nowrap">
+                    {#each data.results as result, i}
+                        {#if i !== 0}
+                            <hr class="hr" />
+                        {/if}
+                        <span class="">
+                            <p class="text-red-800">
+                                <b>{result.wordform}</b>
                             </p>
-                            <p>{analysis.verbtype}</p>
-                            <p class="text-blue-700">{analysis.tags}</p>
-                            <p class="text-green-700">{analysis.syntax}</p>
-                            <p>{analysis.relation}</p>
+                            {#each result.analyses as analysis_group}
+                                <div class="mb-2">
+                                    {#each analysis_group as analysis, i}
+                                        {@const tabs = "&emsp;".repeat(i)}
+                                        <div class="flex flex-row gap-2">
+                                            {@html tabs}
+                                            <p class="text-red-700">
+                                                [{analysis.lemma}]
+                                            </p>
+                                            <p>{analysis.verbtype}</p>
+                                            <p class="text-blue-700">
+                                                {analysis.tags}
+                                            </p>
+                                            <p class="text-green-700">
+                                                {analysis.syntax}
+                                            </p>
+                                            <p>{analysis.relation}</p>
+                                        </div>
+                                    {/each}
+                                </div>
+                            {/each}
                         </span>
                     {/each}
                 </div>
