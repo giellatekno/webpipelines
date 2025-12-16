@@ -1,18 +1,7 @@
 <script lang="ts">
     import { t } from "svelte-intl-precompile";
     import giellatekno_logo from "$assets/giellatekno_logo.svg";
-    import uit_logo_nob from "$assets/uit_logo/UiT_Segl_Bok_Hvit.png";
-    import uit_logo_eng from "$assets/uit_logo/UiT_Segl_Eng_Hvit.png";
     import uit_logo_sme from "$assets/uit_logo/UiT_Segl_Sam_Hvit.png";
-    import { locale } from "$lib/locales";
-
-    const uit_logo: Record<string, string> = {
-        sme: uit_logo_sme,
-        eng: uit_logo_eng,
-        nob: uit_logo_nob,
-        fin: uit_logo_eng,
-        rus: uit_logo_eng,
-    };
 </script>
 
 <footer
@@ -44,7 +33,7 @@
         </div>
         <img
             class="order-3 h-10 scale-100 xl:block xl:h-20"
-            src={uit_logo[$locale] ?? uit_logo_eng}
+            src={uit_logo_sme}
             alt="UiT logo"
         />
     </div>
