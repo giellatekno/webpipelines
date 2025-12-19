@@ -7,6 +7,10 @@ export default {
     "languages": "Språk",
     "toolspage": "Verktøyside",
 
+    // Error
+    "notfound": "Siden du ser etter finnes ikke.",
+    "erroroccured": "",
+
     // Developers
     "fordevelopers": "For utviklere",
     "sourcecode": "Kildekode",
@@ -19,7 +23,7 @@ export default {
     "backtolangs": "Tilbake til språkvalg",
 
     // TODO: About page
-    "about.title": "Om Giellatekno Webpipelines",
+    "about.title": "Om Giellatekno Webpipeline",
 
     // Footer
     "copyright": "Copyright © Senter for samisk språkteknologi",
@@ -31,63 +35,50 @@ export default {
     "samilanguages": "Samiske språk",
     "nonsamiuralic": "Ikke-samiske Uralske",
     "otherlanguages": "Andre språk",
-    "noresults": "Ingen resultater for søkeordet...",
+    "noresults": "Ingen resultater for søket...",
 
     // General tool page options
-    "exploreanotherlang": "Utforsk et annet språk",
-    "backtotools": "Tilbake til verktøyvalg",
     "submit": "Send",
     "clear": "Fjern",
     "writehere": "Skriv her...",
     "submit.keys": "Eller press Shift+Enter for å sende.",
-    "description.title": "Beskrivelse",
-    "usage.title": "Språk spesifik bruk",
-    "instruction.title": "Instruksjon",
+    "instruction.title": "Hvordan bruke dette verktøyet",
 
-    // Language specific usage
-    "usage.ciw": "The analyser uses the Double Vowel (Fiero) system.",
-    "usage.crk":
-        "You may use both circumflex <b>â</b> and macron <b>ā</b> in order to mark long vowel.",
-    "usage.mns":
-        "Write the word in ordinary Mansi orthography. You may also write the words without length marks.",
-    "usage.sjd":
-        "Write the word in Kildin Sámi orthography. Note that we use Cyrillic Characters also for the Latin-looking ones. The program uses the 1985 orthography.",
-    "usage.sje":
-        "The program accepts both Norwegian <b>æ</b> and <b>ø</b> and Swedish <b>ä</b> and <b>ö</b>.",
-    "usage.sma":
-        "The program accepts both <b>i</b> and the South Sámi character <b>ï</b> and both Norwegian <b>æ</b>, <b>ø</b> and Swedish <b>ä</b>, <b>ö</b>",
-    "usage.sme":
-        'Write The Sámi special letters as usual. If you don\'t have a Sámi keyboard, you may write "<b>á</b>, <b>č</b>, <b>đ</b>, <b>ŋ</b>, <b>š</b>, <b>ŧ</b>, <b>ž</b>" as "<b>a1</b>, <b>c1</b>, <b>d1</b>, <b>n1</b>, <b>s1</b>, <b>t1</b>, <b>z1</b>".',
-    "usage.smj":
-        "You may use the ordinary Lule Sámi characters, the (official) <b>ŋ</b>, or older <b>ń</b>, <b>ñ</b>. The program accepts both Norwegian <b>æ</b>, <b>ø</b> and Swedish <b>ä</b>, <b>ö</b>.",
-    "usage.smn": "Write the word in ordinary Inari Sámi orthography.",
-    "usage.sms": "Write the word in ordinary Skolt Sámi orthography.",
+    // Table headers
+    "wordform": "Ordform",
+    "copy": "Kopier",
+    "analysis": "Analyse",
 
     // Analyze
     "analyze.title": "Analyser",
     "analyze.description": "Analyser ett eller flere ord hver for seg",
+    "analyze.instruction": "",
 
     // Dependency
     "dependency.title": "Dependensstruktur",
     "dependency.description": "Vis dependenser mellom ord i setninger.",
+    "dependency.instruction": "",
 
     // Disambiguate
     "disambiguate.title": "Disambiguer",
     "disambiguate.description": "Vis analyser som passer i setningkonteksten.",
+    "disambiguate.instruction": "",
 
     // Generate
     "generate.title": "Ordgenerering",
     "generate.description": "Generer ord fra gramatiske spesifikasjoner.",
+    "generate.instruction": "",
 
     // Hyphenate
     "hyphenate.title": "Ordstavelser",
     "hyphenate.description": "Del opp ord i takter og stavelser.",
+    "hyphenate.instruction": "",
 
     // Paradigm
     "paradigm.title": "Paradigmegenerering",
     "paradigm.description":
         "Genererer bøyingsparadigmer av ulik størrelse for det ordet du vil.",
-    "paradigm.instruction": "Søk etter ord i grunnform",
+    "paradigm.instruction": "Søk etter ord i grunnform.",
     "paradigmsize": "Paradigmestørrelse",
     "paradigmsize.minimal": "Minimal",
     "paradigmsize.standard": "Standard",
@@ -176,6 +167,7 @@ export default {
     // Numerals
     "num.title": "Tallord",
     "num.description": "Generer tallord fra tall, tider eller datoer.",
+    "num.instruction": "",
 
     // Transcribe
     "transcribe.title": "Transkriber",
@@ -191,29 +183,28 @@ export default {
     "toolsfor.smn": "Språkverktøy for Enaresamisk",
     "toolsfor.sms": "Språkverktøy for Skoltesamisk",
 
+    "toolsfor.est": "Språkverktøy for Estisk",
     "toolsfor.fin": "Språkverktøy for Finsk",
     "toolsfor.fit": "Språkverktøy for Meänkieli",
     "toolsfor.fkv": "Språkverktøy for Kvensk",
-    "toolsfor.est": "Språkverktøy for Estisk",
-    "toolsfor.myv": "Språkverktøy for Erzja",
-    "toolsfor.mrj": "Språkverktøy for Vestmarisk",
     "toolsfor.izh": "Språkverktøy for Ingrisk",
     "toolsfor.kca": "Språkverktøy for Khanti",
-    "toolsfor.kpv": "Språkverktøy for Syrjensk",
     "toolsfor.koi": "Språkverktøy for Komipermjakisk",
+    "toolsfor.kpv": "Språkverktøy for Syrjensk",
     "toolsfor.liv": "Språkverktøy for Livisk",
-    "toolsfor.olo": "Språkverktøy for Livvisk",
-    "toolsfor.mns": "Språkverktøy for Mansisk",
     "toolsfor.mdf": "Språkverktøy for Moksja",
-    "toolsfor.yrk": "Språkverktøy for Nenetsisk",
+    "toolsfor.mhr": "Språkverktøy for Østmarisk",
+    "toolsfor.mns": "Språkverktøy for Mansisk",
+    "toolsfor.mrj": "Språkverktøy for Vestmarisk",
+    "toolsfor.myv": "Språkverktøy for Erzja",
     "toolsfor.nio": "Språkverktøy for Nganasansk",
+    "toolsfor.olo": "Språkverktøy for Livvisk",
     "toolsfor.udm": "Språkverktøy for Udmurtisk",
     "toolsfor.vep": "Språkverktøy for Vepsisk",
     "toolsfor.vot": "Språkverktøy for Votisk",
     "toolsfor.vro": "Språkverktøy for Võro",
-    "toolsfor.mhr": "Språkverktøy for Østmarisk",
+    "toolsfor.yrk": "Språkverktøy for Nenetsisk",
 
-    "toolsfor.nob": "Språkverktøy for Norsk Bokmål",
     "toolsfor.bxr": "Språkverktøy for Burjatisk",
     "toolsfor.ciw": "Språkverktøy for Ojibwe",
     "toolsfor.cor": "Språkverktøy for Kornisk",
@@ -223,10 +214,30 @@ export default {
     "toolsfor.hdn": "Språkverktøy for Nordhaida",
     "toolsfor.ipk": "Språkverktøy for Inupiak",
     "toolsfor.kal": "Språkverktøy for Grønlandsk",
+    "toolsfor.nob": "Språkverktøy for Norsk Bokmål",
     "toolsfor.rmf": "Språkverktøy for Kalo finsk romani",
     "toolsfor.rus": "Språkverktøy for Russisk",
     "toolsfor.som": "Språkverktøy for Somalisk",
     "toolsfor.tkl": "Språkverktøy for Tokelauisk",
+
+    // Language specific usage
+    "usage.ciw": "The analyser uses the Double Vowel (Fiero) system.",
+    "usage.crk":
+        "You may use both circumflex <b>â</b> and macron <b>ā</b> in order to mark long vowel.",
+    "usage.mns":
+        "Write the word in ordinary Mansi orthography. You may also write the words without length marks.",
+    "usage.sjd":
+        "Write the word in Kildin Sámi orthography. Note that we use Cyrillic Characters also for the Latin-looking ones. The program uses the 1985 orthography.",
+    "usage.sje":
+        "The program accepts both Norwegian <b>æ</b> and <b>ø</b> and Swedish <b>ä</b> and <b>ö</b>.",
+    "usage.sma":
+        "The program accepts both <b>i</b> and the South Sámi character <b>ï</b> and both Norwegian <b>æ</b>, <b>ø</b> and Swedish <b>ä</b>, <b>ö</b>",
+    "usage.sme":
+        'Write The Sámi special letters as usual. If you don\'t have a Sámi keyboard, you may write "<b>á</b>, <b>č</b>, <b>đ</b>, <b>ŋ</b>, <b>š</b>, <b>ŧ</b>, <b>ž</b>" as "<b>a1</b>, <b>c1</b>, <b>d1</b>, <b>n1</b>, <b>s1</b>, <b>t1</b>, <b>z1</b>".',
+    "usage.smj":
+        "You may use the ordinary Lule Sámi characters, the (official) <b>ŋ</b>, or older <b>ń</b>, <b>ñ</b>. The program accepts both Norwegian <b>æ</b>, <b>ø</b> and Swedish <b>ä</b>, <b>ö</b>.",
+    "usage.smn": "Write the word in ordinary Inari Sámi orthography.",
+    "usage.sms": "Write the word in ordinary Skolt Sámi orthography.",
 
     // Old stuff to clean up
     "search": "Søk",
@@ -706,7 +717,7 @@ export default {
     "programs.lang.vro": "Programmet er fremdeles på eksperimentstadiet",
     "programs.lang.vot": "Programmet er fremdeles på eksperimentstadiet",
     "programs.lang.yrk": "Programmet er fremdeles på eksperimentstadiet",
-    "analysis": "Analyser tekst.",
+    // "analysis": "Analyser tekst.",
     "analysis_text": "",
     "analysis_text.lang.cor": "Analyse og disambiguering.",
     "analysis_text.lang.est": "Analyse og disambiguering.",

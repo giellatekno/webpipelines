@@ -11,14 +11,14 @@ const LANGNAMES: LangNames = {
     bxr: {
         eng: "Buryat",
         nob: "Burjatisk",
-        sme: "Burjátagiela",
+        sme: "Burjátagiella",
         fin: "Burjaatin kieli",
         rus: "Бурятский язык",
     },
     ciw: {
         eng: "Chippewa",
         nob: "Ojibwe",
-        sme: "Ojibwegiela",
+        sme: "Ojibwegiella",
         fin: "Ojibwen kieli",
         rus: "Чиппева",
     },

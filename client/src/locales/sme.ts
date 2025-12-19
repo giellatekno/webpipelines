@@ -9,9 +9,9 @@ export default {
 
     // Error
     "notfound": "Siidu maid ozat ii gávdno.",
+    "erroroccured": "",
 
     // Developers
-    "backtolangs": "Back to language selection",
     "fordevelopers": "Ovdánahtiide",
     "sourcecode": "Gáldokoda",
     "api.paragraph":
@@ -34,60 +34,47 @@ export default {
     "samilanguages": "Sámegielat",
     "nonsamiuralic": "Eará Uralalaš gielat",
     "otherlanguages": "Eará gielat",
-    "noresults": "Ohcansátni ii buktán bohtosiid...",
+    "noresults": "Ohcan ii buktán bohtosiid...",
 
     // General tool page options
-    "exploreanotherlang": "Explore another language",
-    "backtotools": "Back to tool selection",
     "submit": "Sádde",
     "clear": "Sihko",
     "writehere": "Čális deike...",
     "submit.keys": "Dahje deaddil Shift+Enter vai sáddet.",
-    "description.title": "Reaiddu čilgehus",
-    "usage.title": "Giela geavaheapmi",
-    "instruction.title": "Reaiddu geavaheapmi",
+    "instruction.title": "Movt geavahit dán reaiddu",
     "search": "Oza",
 
-    // Language specific usage
-    "usage.ciw": "The analyser uses the Double Vowel (Fiero) system.",
-    "usage.crk":
-        "You may use both circumflex <b>â</b> and macron <b>ā</b> in order to mark long vowel.",
-    "usage.mns":
-        "Write the word in ordinary Mansi orthography. You may also write the words without length marks.",
-    "usage.sjd":
-        "Write the word in Kildin Sámi orthography. Note that we use Cyrillic Characters also for the Latin-looking ones. The program uses the 1985 orthography.",
-    "usage.sje":
-        "The program accepts both Norwegian <b>æ</b> and <b>ø</b> and Swedish <b>ä</b> and <b>ö</b>.",
-    "usage.sma":
-        "The program accepts both <b>i</b> and the South Sámi character <b>ï</b> and both Norwegian <b>æ</b>, <b>ø</b> and Swedish <b>ä</b>, <b>ö</b>",
-    "usage.sme":
-        'Write The Sámi special letters as usual. If you don\'t have a Sámi keyboard, you may write "<b>á</b>, <b>č</b>, <b>đ</b>, <b>ŋ</b>, <b>š</b>, <b>ŧ</b>, <b>ž</b>" as "<b>a1</b>, <b>c1</b>, <b>d1</b>, <b>n1</b>, <b>s1</b>, <b>t1</b>, <b>z1</b>".',
-    "usage.smj":
-        "You may use the ordinary Lule Sámi characters, the (official) <b>ŋ</b>, or older <b>ń</b>, <b>ñ</b>. The program accepts both Norwegian <b>æ</b>, <b>ø</b> and Swedish <b>ä</b>, <b>ö</b>.",
-    "usage.smn": "Write the word in ordinary Inari Sámi orthography.",
-    "usage.sms": "Write the word in ordinary Skolt Sámi orthography.",
+    // Table headers
+    "wordform": "Sátnehápmi",
+    "copy": "Máŋge",
+    "analysis": "Analysa",
 
     // Analyze
     "analyze.title": "Analysa",
     "analyze.description":
         "Analysere ovtta sáni dahje buot eaŋkilsániid cealkagiin.",
+    "analyze.instruction": "",
 
     // Dependency
     "dependency.title": "Dependeansastruktuvra ",
     "dependency.description": "Čájet dependeanssa sániid gaskkas cealkagiin.",
+    "dependency.instruction": "",
 
     // Disambiguate
     "disambiguate.title": "Disambigueren",
     "disambiguate.description":
         "Čájet cealkagiid sátneanalysa mii heive kontekstii.",
+    "disambiguate.instruction": "",
 
     // Generate
     "generate.title": "Sátnegenereren",
     "generate.description": "Geavat grammatihkkalaš taggaid genereret sániid.",
+    "generate.instruction": "",
 
     // Hyphenate
     "hyphenate.title": "Botke sániid",
     "hyphenate.description": "Botke sániid stávvaliidda ja távttaide.",
+    "hyphenate.instruction": "",
 
     // Paradigm
     "paradigm.title": "Paradigmagenereren",
@@ -191,12 +178,12 @@ export default {
     // Numerals
     "num.title": "Logut",
     "num.description": "Generere lohkosániid loguin, áiggiin dahje dáhtoniin.",
+    "num.instruction": "",
 
     // Transcribe
     "transcribe.title": "Transkriberen",
     "transcribe.description": "Konvertere sániid IPA:i.",
-    "transcribe.instruction":
-        "Write the words you want to transcribe below and submit.",
+    "transcribe.instruction": "",
 
     // Tools title
     "toolsfor.sjd": "Gielddasámegiela giellareaiddut",
@@ -207,29 +194,28 @@ export default {
     "toolsfor.smn": "Anárašgiela giellareaiddut",
     "toolsfor.sms": "Nuortalašgiela giellareaiddut",
 
+    "toolsfor.est": "Esttegiela giellareaiddut",
     "toolsfor.fin": "Suomagiela giellareaiddut",
     "toolsfor.fit": "Meängiela giellareaiddut",
     "toolsfor.fkv": "Kveanagiela giellareaiddut",
-    "toolsfor.est": "Esttegiela giellareaiddut",
-    "toolsfor.myv": "Ersagiela giellareaiddut",
-    "toolsfor.mrj": "Várremarigiela giellareaiddut",
     "toolsfor.izh": "Inkeroisgiela giellareaiddut",
     "toolsfor.kca": "Hantigiela giellareaiddut",
-    "toolsfor.kpv": "Komigiela giellareaiddut",
     "toolsfor.koi": "Komipermjakgiela giellareaiddut",
+    "toolsfor.kpv": "Komigiela giellareaiddut",
     "toolsfor.liv": "Liivigiela giellareaiddut",
-    "toolsfor.olo": "Livvi-Karelengiela giellareaiddut",
-    "toolsfor.mns": "Mansigiela giellareaiddut",
     "toolsfor.mdf": "Mokšagiela giellareaiddut",
-    "toolsfor.yrk": "Nenetsagiela giellareaiddut",
+    "toolsfor.mhr": "Niitomarigiela giellareaiddut",
+    "toolsfor.mns": "Mansigiela giellareaiddut",
+    "toolsfor.mrj": "Várremarigiela giellareaiddut",
+    "toolsfor.myv": "Ersagiela giellareaiddut",
     "toolsfor.nio": "Nganasanagiela giellareaiddut",
+    "toolsfor.olo": "Livvi-Karelengiela giellareaiddut",
     "toolsfor.udm": "Udmurtagiela giellareaiddut",
     "toolsfor.vep": "Vepsägiela giellareaiddut",
-    "toolsfor.vro": "Võrogiela giellareaiddut",
     "toolsfor.vot": "Vatjagiela giellareaiddut",
-    "toolsfor.mhr": "Niitomarigiela giellareaiddut",
+    "toolsfor.vro": "Võrogiela giellareaiddut",
+    "toolsfor.yrk": "Nenetsagiela giellareaiddut",
 
-    "toolsfor.nob": "Dárogiela giellareaiddut",
     "toolsfor.bxr": "Burjátagiela giellareaiddut",
     "toolsfor.ciw": "Ojibbwegiela giellareaiddut",
     "toolsfor.cor": "Kornigiela giellareaiddut",
@@ -239,10 +225,30 @@ export default {
     "toolsfor.hdn": "Davvihaidagiela giellareaiddut",
     "toolsfor.ipk": "Inupiaka giellareaiddut",
     "toolsfor.kal": "Ruonáeatnanlaš giellareaiddut",
+    "toolsfor.nob": "Dárogiela giellareaiddut",
     "toolsfor.rmf": "Suoma romanigiela giellareaiddut",
     "toolsfor.rus": "Ruoššagiela giellareaiddut",
     "toolsfor.som": "Somaligiela giellareaiddut",
     "toolsfor.tkl": "Tokelaugiela giellareaiddut",
+
+    // Language specific usage
+    "usage.ciw": "The analyser uses the Double Vowel (Fiero) system.",
+    "usage.crk":
+        "You may use both circumflex <b>â</b> and macron <b>ā</b> in order to mark long vowel.",
+    "usage.mns":
+        "Write the word in ordinary Mansi orthography. You may also write the words without length marks.",
+    "usage.sjd":
+        "Write the word in Kildin Sámi orthography. Note that we use Cyrillic Characters also for the Latin-looking ones. The program uses the 1985 orthography.",
+    "usage.sje":
+        "The program accepts both Norwegian <b>æ</b> and <b>ø</b> and Swedish <b>ä</b> and <b>ö</b>.",
+    "usage.sma":
+        "The program accepts both <b>i</b> and the South Sámi character <b>ï</b> and both Norwegian <b>æ</b>, <b>ø</b> and Swedish <b>ä</b>, <b>ö</b>",
+    "usage.sme":
+        'Write The Sámi special letters as usual. If you don\'t have a Sámi keyboard, you may write "<b>á</b>, <b>č</b>, <b>đ</b>, <b>ŋ</b>, <b>š</b>, <b>ŧ</b>, <b>ž</b>" as "<b>a1</b>, <b>c1</b>, <b>d1</b>, <b>n1</b>, <b>s1</b>, <b>t1</b>, <b>z1</b>".',
+    "usage.smj":
+        "You may use the ordinary Lule Sámi characters, the (official) <b>ŋ</b>, or older <b>ń</b>, <b>ñ</b>. The program accepts both Norwegian <b>æ</b>, <b>ø</b> and Swedish <b>ä</b>, <b>ö</b>.",
+    "usage.smn": "Write the word in ordinary Inari Sámi orthography.",
+    "usage.sms": "Write the word in ordinary Skolt Sámi orthography.",
 
     // Old stuff to clean up
     "spellcheck": "[sme] Spellcheck",
@@ -774,7 +780,7 @@ export default {
         "Vatjagillii mis leat testenprogr\u00e1mmat maiguin s\u00e1htt\u00e1 analyseret ja sojahit s\u00e1niid.",
     "introduction.lang.yrk":
         "Nenetsagillii mis leat testenprogr\u00e1mmat maiguin s\u00e1htt\u00e1 analyseret ja sojahit s\u00e1niid.",
-    "analysis": "Teaksta- ja s\u00e1tneanalysa",
+    // "analysis": "Teaksta- ja s\u00e1tneanalysa",
     "analysis.lang.sms": "",
     "analysis_text.lang.bxr": "Analysere teavsttaid.",
     "analysis_text.lang.ciw": "Analysere teavsttaid.",

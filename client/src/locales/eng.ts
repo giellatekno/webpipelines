@@ -9,9 +9,9 @@ export default {
 
     // Error
     "notfound": "The page you're looking for doesn't exist.",
+    "erroroccured": "An error occured",
 
     // Developers
-    "backtolangs": "Back to language selection",
     "fordevelopers": "For developers",
     "sourcecode": "Source code",
     "api.paragraph":
@@ -34,65 +34,53 @@ export default {
     "samilanguages": "Sámi languages",
     "nonsamiuralic": "Non-Sámi Uralic",
     "otherlanguages": "Other languages",
-    "noresults": "No resuts for search term...",
+    "noresults": "No resuts for search...",
 
     // General tool page options
-    "exploreanotherlang": "Explore another language",
-    "backtotools": "Back to tool selection",
     "submit": "Submit",
     "clear": "Clear",
     "writehere": "Write here...",
     "submit.keys": "Or press Shift+Enter to submit.",
-    "description.title": "Tool description",
-    "usage.title": "Language specific usage",
-    "instruction.title": "Tool instruction",
+    "instruction.title": "How to use this tool",
+    "search": "Search",
 
-    // Language specific usage
-    "usage.ciw": "The analyser uses the Double Vowel (Fiero) system.",
-    "usage.crk":
-        "You may use both circumflex <b>â</b> and macron <b>ā</b> in order to mark long vowel.",
-    "usage.mns":
-        "Write the word in ordinary Mansi orthography. You may also write the words without length marks.",
-    "usage.sjd":
-        "Write the word in Kildin Sámi orthography. Note that we use Cyrillic Characters also for the Latin-looking ones. The program uses the 1985 orthography.",
-    "usage.sje":
-        "The program accepts both Norwegian <b>æ</b> and <b>ø</b> and Swedish <b>ä</b> and <b>ö</b>.",
-    "usage.sma":
-        "The program accepts both <b>i</b> and the South Sámi character <b>ï</b> and both Norwegian <b>æ</b>, <b>ø</b> and Swedish <b>ä</b>, <b>ö</b>",
-    "usage.sme":
-        'Write The Sámi special letters as usual. If you don\'t have a Sámi keyboard, you may write "<b>á</b>, <b>č</b>, <b>đ</b>, <b>ŋ</b>, <b>š</b>, <b>ŧ</b>, <b>ž</b>" as "<b>a1</b>, <b>c1</b>, <b>d1</b>, <b>n1</b>, <b>s1</b>, <b>t1</b>, <b>z1</b>".',
-    "usage.smj":
-        "You may use the ordinary Lule Sámi characters, the (official) <b>ŋ</b>, or older <b>ń</b>, <b>ñ</b>. The program accepts both Norwegian <b>æ</b>, <b>ø</b> and Swedish <b>ä</b>, <b>ö</b>.",
-    "usage.smn": "Write the word in ordinary Inari Sámi orthography.",
-    "usage.sms": "Write the word in ordinary Skolt Sámi orthography.",
+    // Table headers
+    "wordform": "Wordform",
+    "copy": "Copy",
+    "analysis": "Analysis",
 
     // Analyze
     "analyze.title": "Analyze",
     "analyze.description": "Analyze one or more words in isolation.",
+    "analyze.instruction": "Use the searchbox below.",
 
     // Dependency
     "dependency.title": "Dependency structure",
     "dependency.description": "Show dependancies between words in sentences.",
+    "dependency.instruction": "Use the searchbox below.",
 
     // Disambiguate
     "disambiguate.title": "Disambiguate",
     "disambiguate.description":
         "Show analyses that fits in the context of sentences.",
+    "disambiguate.instruction": "Use the searchbox below.",
 
     // Generate
     "generate.title": "Word generation",
     "generate.description":
         "Generate words from from grammatical specifications.",
+    "generate.instruction": "Use the searchbox below.",
 
     // Hyphenate
     "hyphenate.title": "Hyphenate",
     "hyphenate.description": "Split words into syllables.",
+    "hyphenate.instruction": "Use the searchbox below.",
 
     // Paradigm
     "paradigm.title": "Paradigm generation",
     "paradigm.description":
         "Generate paradigms of different sizes for any word.",
-    "paradigm.instruction": "Search for words in their base form",
+    "paradigm.instruction": "Search for words in their base form.",
     "paradigmsize": "Paradigm size",
     "paradigmsize.minimal": "Minimal",
     "paradigmsize.standard": "Standard",
@@ -191,6 +179,7 @@ export default {
     // Numerals
     "num.title": "Numbers",
     "num.description": "Generate words from numbers, times or dates.",
+    "num.instruction": "Use the searchbox below.",
 
     // Transcribe
     "transcribe.title": "Transcribe",
@@ -207,29 +196,28 @@ export default {
     "toolsfor.smn": "Inari Sámi language tools",
     "toolsfor.sms": "Skolt Sámi language tools",
 
+    "toolsfor.est": "Estonian language tools",
     "toolsfor.fin": "Finnish language tools",
     "toolsfor.fit": "Meänkieli language tools",
     "toolsfor.fkv": "Kven language tools",
-    "toolsfor.est": "Estonian language tools",
-    "toolsfor.myv": "Erzya language tools",
-    "toolsfor.mrj": "Hill Mari language tools",
     "toolsfor.izh": "Ingrian language tools",
     "toolsfor.kca": "Khanty language tools",
-    "toolsfor.kpv": "Komi language tools",
     "toolsfor.koi": "Komi Permyak language tools",
+    "toolsfor.kpv": "Komi language tools",
     "toolsfor.liv": "Livonian language tools",
-    "toolsfor.olo": "Livvi-Karelian language tools",
-    "toolsfor.mns": "Mansi language tools",
     "toolsfor.mdf": "Moksha language tools",
-    "toolsfor.yrk": "Nenets language tools",
+    "toolsfor.mhr": "Eastern Mari language tools",
+    "toolsfor.mns": "Mansi language tools",
+    "toolsfor.mrj": "Hill Mari language tools",
+    "toolsfor.myv": "Erzya language tools",
     "toolsfor.nio": "Nganasan language tools",
+    "toolsfor.olo": "Livvi-Karelian language tools",
     "toolsfor.udm": "Udmurt language tools",
     "toolsfor.vep": "Veps language tools",
     "toolsfor.vot": "Votic language tools",
     "toolsfor.vro": "Võro language tools",
-    "toolsfor.mhr": "Eastern Mari language tools",
+    "toolsfor.yrk": "Nenets language tools",
 
-    "toolsfor.nob": "Norwegian Bokmål language tools",
     "toolsfor.bxr": "Buryat language tools",
     "toolsfor.ciw": "Chippewa language tools",
     "toolsfor.cor": "Cornish language tools",
@@ -239,13 +227,32 @@ export default {
     "toolsfor.hdn": "Northern Haida language tools",
     "toolsfor.ipk": "Iñupiaq language tools",
     "toolsfor.kal": "Greenlandic language tools",
+    "toolsfor.nob": "Norwegian Bokmål language tools",
     "toolsfor.rmf": "Finnish Kalo language tools",
     "toolsfor.rus": "Russian language tools",
     "toolsfor.som": "Somali language tools",
     "toolsfor.tkl": "Tokelau language tools",
 
+    // Language specific usage
+    "usage.ciw": "The analyser uses the Double Vowel (Fiero) system.",
+    "usage.crk":
+        "You may use both circumflex <b>â</b> and macron <b>ā</b> in order to mark long vowel.",
+    "usage.mns":
+        "Write the word in ordinary Mansi orthography. You may also write the words without length marks.",
+    "usage.sjd":
+        "Write the word in Kildin Sámi orthography. Note that we use Cyrillic Characters also for the Latin-looking ones. The program uses the 1985 orthography.",
+    "usage.sje":
+        "The program accepts both Norwegian <b>æ</b> and <b>ø</b> and Swedish <b>ä</b> and <b>ö</b>.",
+    "usage.sma":
+        "The program accepts both <b>i</b> and the South Sámi character <b>ï</b> and both Norwegian <b>æ</b>, <b>ø</b> and Swedish <b>ä</b>, <b>ö</b>",
+    "usage.sme":
+        'Write The Sámi special letters as usual. If you don\'t have a Sámi keyboard, you may write "<b>á</b>, <b>č</b>, <b>đ</b>, <b>ŋ</b>, <b>š</b>, <b>ŧ</b>, <b>ž</b>" as "<b>a1</b>, <b>c1</b>, <b>d1</b>, <b>n1</b>, <b>s1</b>, <b>t1</b>, <b>z1</b>".',
+    "usage.smj":
+        "You may use the ordinary Lule Sámi characters, the (official) <b>ŋ</b>, or older <b>ń</b>, <b>ñ</b>. The program accepts both Norwegian <b>æ</b>, <b>ø</b> and Swedish <b>ä</b>, <b>ö</b>.",
+    "usage.smn": "Write the word in ordinary Inari Sámi orthography.",
+    "usage.sms": "Write the word in ordinary Skolt Sámi orthography.",
+
     // Old stuff to clean up
-    "search": "Search",
     "langmodellastupdated": "The language model was last updated",
     "place": "Giellatekno, UiT The Arctic University of Norway",
     "copyright.lang.bxr":
@@ -477,7 +484,7 @@ export default {
         "The Inari Sámi analyser gives the morphological analysis of     over 92 % of the words in running text,     and gives a rough syntactic analysis of sentences.",
     "introduction.lang.sms":
         "The Skolt Sámi analyser gives the morphological analysis of     over 70 % of the words in running text, but work has not yet     started on syntactic analysis of sentences.",
-    "analysis": "Text analysis",
+    // "analysis": "Text analysis",
     "analysis_text.lang.izh": "Analyse a handful of words only.",
     "analysis_text.lang.kca": "Analyse a handful of words only.",
     "analysis_text.lang.liv": "Analyse a handful of words only.",
