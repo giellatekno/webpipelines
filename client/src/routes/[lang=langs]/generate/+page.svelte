@@ -1,9 +1,9 @@
 <script lang="ts">
     import { t } from "svelte-intl-precompile";
     import type { PageData } from "./$types";
-    import { page } from "$app/state";
-    import { get_usage } from "$lib/utils";
-    import ToolDescription from "$components/ToolDescription.svelte";
+    import ErrorBox from "$components/ErrorBox.svelte";
+    import FormWrapper from "$components/FormWrapper.svelte";
+    import TextForm from "$components/TextForm.svelte";
 
     interface Props {
         data: PageData;
@@ -11,40 +11,22 @@
 
     let { data }: Props = $props();
 
+    const tool = "generate";
     // the search text
     let value = $derived(data.q || "");
-
-    let usage = $derived(get_usage(page.params.lang, $t));
-    let instruction = $derived($t(`generate.instruction`));
-    let description = $derived($t(`generate.description`));
 </script>
 
+<svelte:head>
+    <title>{$t(tool + ".title")} | Webpipeline</title>
+</svelte:head>
+
 <div class="flex flex-col items-center gap-4">
-    <!-- <ToolDescription {description} {usage} /> -->
-
-    <form
-        class="card preset-filled-surface-100-900 border-surface-200-800 border p-4"
-    >
-        <!-- <label for="q" class="label"> -->
-        <!--     <span class="label-text text-sm">{instruction}</span> -->
-        <!-- </label> -->
-        <span class="flex flex-row gap-2">
-            <input
-                class="input bg-surface-50 h-12 w-80"
-                type="text"
-                name="q"
-                bind:value
-                placeholder={$t("writehere")}
-            />
-            <button class="btn preset-filled-primary-500" type="submit">
-                {$t("submit")}
-            </button>
-        </span>
-    </form>
-
-    <div class="results">
+    <FormWrapper {tool}>
+        <TextForm bind:value rows={2} />
+    </FormWrapper>
+    <div>
         {#if data.error}
-            Error: {data.error}
+            <ErrorBox error={data.error} />
         {/if}
 
         {#if data.results}

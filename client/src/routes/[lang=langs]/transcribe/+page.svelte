@@ -1,11 +1,9 @@
 <script lang="ts">
     import { t } from "svelte-intl-precompile";
     import type { PageData } from "./$types";
-    import { page } from "$app/state";
-    import { Progress } from "@skeletonlabs/skeleton-svelte";
-    import { get_usage } from "$lib/utils";
-    import TextArea from "$components/TextArea.svelte";
-    import ToolDescription from "$components/ToolDescription.svelte";
+    import ErrorBox from "$components/ErrorBox.svelte";
+    import FormWrapper from "$components/FormWrapper.svelte";
+    import TextForm from "$components/TextForm.svelte";
 
     interface Props {
         data: PageData;
@@ -13,48 +11,36 @@
 
     let { data }: Props = $props();
 
-    let loading = $state(false);
-
     let value = $derived(data.q || "");
-
-    let usage = $derived(get_usage(page.params.lang, $t));
-    let instruction = $derived($t("transcribe.instruction"));
-    let description = $derived($t("transcribe.description"));
+    const tool = "transcribe";
 </script>
 
+<svelte:head>
+    <title>{$t(tool + ".title")} | Webpipeline</title>
+</svelte:head>
+
 <div class="flex flex-col items-center gap-4">
-    <!-- <ToolDescription {description} {usage} /> -->
-    <TextArea {instruction} bind:value bind:loading />
+    <FormWrapper {tool}>
+        <TextForm bind:value />
+    </FormWrapper>
 
-    {#if loading}
-        <Progress class="w-lg items-center py-6" value={null}>
-            <Progress.Circle>
-                <Progress.CircleTrack />
-                <Progress.CircleRange />
-            </Progress.Circle>
-            <Progress.ValueText />
-        </Progress>
-    {:else if data.error || data.results}
+    {#if data.error}
+        <ErrorBox error={data.error} />
+    {/if}
+
+    {#if data.results}
         <div
-            class="card preset-filled-surface-100-900 border-surface-200-800 w-xl border px-4 py-6 text-wrap"
+            class="card border-primary-500 w-xl border-2 px-4 py-6 text-wrap shadow-md"
         >
-            {#if data.error}
-                <span class="text-error-500 text-xl">
-                    Error: {data.error}
-                </span>
-            {/if}
-
-            {#if data.results?.analyses}
-                <div class="flex flex-col gap-2 text-xl">
-                    {#each data.results.analyses as result}
-                        <p>
-                            {result}
-                        </p>
-                    {:else}
-                        No analyses
-                    {/each}
-                </div>
-            {/if}
+            <div class="flex flex-col gap-2 text-xl">
+                {#each data.results as result}
+                    <p>
+                        {result}
+                    </p>
+                {:else}
+                    [l6e] No analyses
+                {/each}
+            </div>
         </div>
     {/if}
 </div>

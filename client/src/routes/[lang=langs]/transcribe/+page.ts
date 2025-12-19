@@ -1,8 +1,8 @@
 import { env } from "$env/dynamic/public";
 import { tools_for } from "$lib/langs";
-import { convert_searchtext } from "$lib/utils";
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
+import { transcribe_parser } from "$lib/parsers";
 
 export const load: PageLoad = async ({ url, params, fetch }) => {
     if (!tools_for[params.lang].includes("transcribe")) {
@@ -16,9 +16,7 @@ export const load: PageLoad = async ({ url, params, fetch }) => {
         return {};
     }
 
-    let converted_q = convert_searchtext(q, lang);
-
-    const backend_url = `${env.PUBLIC_API_ROOT}/transcribe/${lang}/${converted_q}`;
+    const backend_url = `${env.PUBLIC_API_ROOT}/transcribe/${lang}/${q}`;
     let response;
     try {
         response = await fetch(backend_url);
@@ -29,17 +27,9 @@ export const load: PageLoad = async ({ url, params, fetch }) => {
 
     const text = await response.text();
     if (response.status !== 200) {
-        return { error: `non-200 from api: ${text}` };
+        return { error: `non-200 from API: ${text}` };
     }
-    console.log(text);
+    const parsed = transcribe_parser(text);
 
-    // Move parsing to parse.ts?
-    const analyses = text
-        .split("\n")
-        .filter((line) => line.length > 0)
-        .map((line) => line.split("\t"))
-        .filter((splits) => splits[2] !== "inf")
-        .map((splits) => splits[1]);
-
-    return { q: q, results: { analyses } };
+    return { q: q, results: parsed };
 };

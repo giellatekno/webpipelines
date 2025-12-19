@@ -1,6 +1,5 @@
 import { env } from "$env/dynamic/public";
 import { tools_for } from "$lib/langs";
-import { convert_searchtext } from "$lib/utils";
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
 
@@ -30,29 +29,26 @@ export const load: PageLoad = async ({ url, params, fetch }) => {
         return load_response;
     }
 
-    let converted_word = convert_searchtext(word, lang);
-
-    const api_path = `paradigm/${lang}/${converted_word}`;
+    const api_path = `paradigm/${lang}/${word}`;
     const api_url = `${env.PUBLIC_API_ROOT}/${api_path}?size=${size}&pos=${pos}&format=json`;
 
-    let response;
     try {
         console.log("Fetching from API:", api_url);
-        response = await fetch(api_url);
+        const response = await fetch(api_url);
+
+        if (!response.ok) {
+            load_response.error = `non-200 from API: ${response.status}`;
+            return load_response;
+        }
+        try {
+            load_response.results = { ...(await response.json()) };
+        } catch (e) {
+            console.error(e);
+            load_response.error = `Response is not JSON: ${e}`;
+        }
     } catch (e) {
         console.error(e);
-        load_response.error = "fetch() from api failed";
-        return load_response;
+        load_response.error = "fetch() from API failed";
     }
-
-    try {
-        load_response.results = { ...(await response.json()) };
-    } catch (e) {
-        console.error(e);
-        load_response.error = "fetch() from api failed.";
-        return load_response;
-    }
-
-    // console.log(load_response.results);
     return load_response;
 };

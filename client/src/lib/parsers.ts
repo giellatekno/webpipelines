@@ -1,3 +1,8 @@
+interface AnalyzeJSON {
+    parsed: AnalyzeItem[];
+    raw: string;
+}
+
 interface AnalyzeItem {
     lemma: string;
     pos: string;
@@ -5,11 +10,11 @@ interface AnalyzeItem {
     wordform: string;
 }
 
-export function analyze_parser(data: AnalyzeItem[] | undefined) {
+export function analyze_parser(data: AnalyzeJSON | undefined) {
     if (!data) return;
 
     // Groups results by wordform
-    let grouped = Object.groupBy(data, ({ wordform }) => wordform);
+    let grouped = Object.groupBy(data.parsed, ({ wordform }) => wordform);
     return Object.entries(grouped).map(([key, items]) => ({
         key: key,
         items: items as AnalyzeItem[],
@@ -144,6 +149,18 @@ export function dependency_parser(data: string) {
     return results;
 }
 
+export function generate_parser(data: string) {
+    console.log(data);
+    const parsed = data
+        .split("\n")
+        .filter((line) => line.length > 0)
+        .map((line) => line.split("\t"))
+        .filter((splits) => splits[2] !== "inf")
+        .map((splits) => splits[1]);
+    console.log(parsed);
+    return parsed;
+}
+
 export function hyphenate_parser(data: string) {
     const results = new Map();
     const lines = data.trim().split("\n");
@@ -256,4 +273,16 @@ export function paradigm_parser(objs: ParadigmResults) {
         }
     }
     return result;
+}
+
+export function transcribe_parser(data: string) {
+    console.log(data);
+    const parsed = data
+        .split("\n")
+        .filter((line) => line.length > 0)
+        .map((line) => line.split("\t"))
+        .filter((splits) => splits[2] !== "inf")
+        .map((splits) => splits[1]);
+    console.log(parsed);
+    return parsed;
 }

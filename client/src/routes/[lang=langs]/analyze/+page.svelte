@@ -1,13 +1,12 @@
 <script lang="ts">
-    import { t } from "svelte-intl-precompile";
     import type { PageData } from "./$types";
-    import { page } from "$app/state";
-    import { analyze_parser } from "$lib/parsers";
-    import ToolDescription from "$components/ToolDescription.svelte";
-    import TextArea from "$components/TextArea.svelte";
-    import { copy_text, get_usage, POS_TAGS } from "$lib/utils";
+    import { copy_text, POS_TAGS } from "$lib/utils";
     import { CopyIcon } from "@lucide/svelte";
     import Table from "$components/Table.svelte";
+    import { t } from "svelte-intl-precompile";
+    import ErrorBox from "$components/ErrorBox.svelte";
+    import FormWrapper from "$components/FormWrapper.svelte";
+    import TextForm from "$components/TextForm.svelte";
 
     interface Props {
         data: PageData;
@@ -15,14 +14,8 @@
 
     let { data }: Props = $props();
 
+    const tool = "analyze";
     let value = $derived(data.q || "");
-    let results = $derived(analyze_parser(data.results?.parsed));
-
-    let lang = $derived(page.params.lang || "");
-
-    let usage = $derived(get_usage(lang, $t));
-    let instruction = $derived($t(`analyze.instruction`));
-    let description = $derived($t(`analyze.description`));
 
     function color_tags(tags: string[]) {
         const results: string[] = [];
@@ -46,28 +39,29 @@
     }
 </script>
 
+<svelte:head>
+    <title>{$t(tool + ".title")} | Webpipeline</title>
+</svelte:head>
+
 <div class="flex flex-col items-center gap-4">
-    <!-- <ToolDescription {description} {usage} /> -->
-    <TextArea {instruction} bind:value />
+    <FormWrapper {tool}>
+        <TextForm bind:value />
+    </FormWrapper>
 
     <div class="mt-6 flex flex-col gap-2">
         {#if data.error}
-            <span class="text-error-500">
-                Error: {data.error}
-            </span>
-        {/if}
-
-        {#if results}
+            <ErrorBox error={data.error} />
+        {:else if data.results}
             <div class="flex flex-col">
                 <Table>
                     <thead>
                         <tr>
-                            <th>Wordform</th>
-                            <th>Analysis</th>
-                            <th>Copy</th>
+                            <th>{$t("wordform")}</th>
+                            <th>{$t("analysis")}</th>
+                            <th>{$t("copy")}</th>
                         </tr>
                     </thead>
-                    {#each results as word_analyses, i}
+                    {#each data.results as word_analyses, i}
                         {@const plus = "<span class='text-gray-500'>+</span>"}
                         <tbody>
                             {#each word_analyses.items as { wordform, lemma, pos, tags }, j}
@@ -77,7 +71,7 @@
                                 <tr
                                     class:separate={j ===
                                         word_analyses.items.length - 1 &&
-                                        i !== results.length - 1}
+                                        i !== data.results.length - 1}
                                 >
                                     <td>
                                         <span class="text-green-700">

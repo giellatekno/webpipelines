@@ -1,8 +1,8 @@
 import { env } from "$env/dynamic/public";
 import { tools_for } from "$lib/langs";
-import { convert_searchtext } from "$lib/utils";
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
+import { generate_parser } from "$lib/parsers";
 
 export const load: PageLoad = async ({ url, params, fetch }) => {
     if (!tools_for[params.lang].includes("generate")) {
@@ -15,26 +15,22 @@ export const load: PageLoad = async ({ url, params, fetch }) => {
     if (q === null || q === "") {
         return {};
     }
-    let converted_q = convert_searchtext(q, lang);
 
-    const backend_url = `${env.PUBLIC_API_ROOT}/generate/${lang}/${converted_q}`;
+    console.log(q);
+    const backend_url = `${env.PUBLIC_API_ROOT}/generate/${lang}/${q}`;
     let response;
     try {
         response = await fetch(backend_url);
     } catch (e) {
         console.error(e);
-        return { error: "fetch() from api failed" };
+        return { error: "fetch() from API failed" };
     }
 
     const text = await response.text();
-    console.log(text);
-    const generated = text
-        .split("\n")
-        .filter((line) => line.length > 0)
-        .map((line) => line.split("\t"))
-        .filter((splits) => splits[2] !== "inf")
-        .map((splits) => splits[1]);
-    console.log(generated);
+    if (response.status !== 200) {
+        return { error: `non-200 from API: ${text}` };
+    }
+    const parsed = generate_parser(text);
 
-    return { q: q, results: generated };
+    return { q: q, results: parsed };
 };

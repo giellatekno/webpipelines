@@ -1,8 +1,8 @@
 import { env } from "$env/dynamic/public";
 import { tools_for } from "$lib/langs";
-import { convert_searchtext } from "$lib/utils";
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
+import { analyze_parser } from "$lib/parsers";
 
 export const load: PageLoad = async ({ params, url, fetch }) => {
     if (!tools_for[params.lang].includes("analyze")) {
@@ -13,41 +13,25 @@ export const load: PageLoad = async ({ params, url, fetch }) => {
     const query_params = url.searchParams;
     const q = query_params.get("q");
 
-    interface Result {
-        q: string | null;
-        results?: {
-            parsed: [
-                {
-                    lemma: string;
-                    pos: string;
-                    tags: string[];
-                    wordform: string;
-                },
-            ];
-            raw: string;
-        };
-        error?: string;
+    if (!q) {
+        return {};
     }
 
-    const result: Result = { q };
-
-    if (q === null || q === "") {
-        return result;
-    }
-    let converted_q = convert_searchtext(q, lang);
-
-    let response;
-    const backend_route = `${env.PUBLIC_API_ROOT}/analyze/${lang}/${converted_q}?format=json`;
+    const backend_route = `${env.PUBLIC_API_ROOT}/analyze/${lang}/${q}?format=json`;
     try {
-        response = await fetch(backend_route);
+        const response = await fetch(backend_route);
+        const text = await response.text();
+        if (!response.ok) {
+            return { error: `Non-200 from API: ${text}` };
+        }
+        try {
+            const json_data = JSON.parse(text);
+            return { q: q, results: analyze_parser(json_data) };
+        } catch (e) {
+            return { error: `Parsing JSON failed: ${e}` };
+        }
     } catch (e) {
-        console.error(`tried backend url: ${backend_route}`);
         console.error(e);
-        result.error = "fetch() from api failed";
-        return result;
+        return { error: "fetch() from API failed" };
     }
-
-    result.results = { ...(await response.json()) };
-    console.log(result.results);
-    return result;
 };

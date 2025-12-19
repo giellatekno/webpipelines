@@ -1,10 +1,9 @@
 <script lang="ts">
-    import { t } from "svelte-intl-precompile";
     import type { PageData } from "./$types";
-    import { page } from "$app/state";
-    import { get_usage } from "$lib/utils";
-    import ToolDescription from "$components/ToolDescription.svelte";
-    import TextArea from "$components/TextArea.svelte";
+    import ErrorBox from "$components/ErrorBox.svelte";
+    import { t } from "svelte-intl-precompile";
+    import FormWrapper from "$components/FormWrapper.svelte";
+    import TextForm from "$components/TextForm.svelte";
 
     interface Props {
         data: PageData;
@@ -12,20 +11,22 @@
 
     let { data }: Props = $props();
 
+    const tool = "disambiguate";
     let value = $derived(data.q || "");
-
-    let usage = $derived(get_usage(page.params.lang, $t));
-    let instruction = $derived($t("disambiguate.instruction"));
-    let description = $derived($t("disambiguate.description"));
 </script>
 
+<svelte:head>
+    <title>{$t(tool + ".title")} | Webpipeline</title>
+</svelte:head>
+
 <div class="flex flex-col items-center gap-4">
-    <!-- <ToolDescription {description} {usage} /> -->
-    <TextArea {instruction} bind:value />
+    <FormWrapper {tool}>
+        <TextForm bind:value />
+    </FormWrapper>
 
     <div>
         {#if data.error}
-            Error: {data.error}
+            <ErrorBox error={data.error} />
         {/if}
 
         {#if data.results}

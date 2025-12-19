@@ -28,10 +28,10 @@
     <Portal>
         <Popover.Positioner>
             <Popover.Content
-                class="card preset-filled-surface-100-900 z-50 w-fit p-4 shadow-xl"
+                class="card preset-filled-primary-50-950 z-50 w-fit p-4 shadow-xl"
             >
                 <Popover.Description>
-                    <ul class="w-full">
+                    <ul class="w-full list-none">
                         {#each Object.entries(locales_in_locale) as [iso, name]}
                             <li>
                                 <button
@@ -50,7 +50,7 @@
                     </ul>
                 </Popover.Description>
                 <Popover.Arrow
-                    class="[--arrow-background:var(--color-surface-100-900)] [--arrow-size:--spacing(2)]"
+                    class="[--arrow-background:var(--color-primary-50-950)] [--arrow-size:--spacing(2)]"
                 >
                     <Popover.ArrowTip />
                 </Popover.Arrow>

@@ -1,21 +1,36 @@
 <script lang="ts">
+    import {
+        ChevronDown,
+        ChevronUp,
+        CircleQuestionMarkIcon,
+    } from "@lucide/svelte";
+    import { Accordion } from "@skeletonlabs/skeleton-svelte";
     import { t } from "svelte-intl-precompile";
-    let { description, usage } = $props();
+    let { tool } = $props();
 </script>
 
-<div class="mb-2 flex flex-row gap-4">
-    <div
-        class="card preset-filled-surface-100-900 border-secondary-500 w-sm border-2 p-4 shadow-md"
-    >
-        <h6 class="h6">{$t("description.title")}</h6>
-        <p class="mt-2">{@html description}</p>
-    </div>
-    {#if usage}
-        <div
-            class="card preset-filled-surface-100-900 border-secondary-500 w-sm border-2 p-4 shadow-md"
-        >
-            <h6 class="h6">{$t("usage.title")}</h6>
-            <p class="mt-2">{@html usage}</p>
-        </div>
-    {/if}
-</div>
+<Accordion collapsible>
+    <Accordion.Item value="1">
+        <h3>
+            <Accordion.ItemTrigger
+                class="flex flex-row items-center justify-between"
+            >
+                <span class="flex flex-row gap-2">
+                    <CircleQuestionMarkIcon />
+                    {$t("instruction.title")}
+                </span>
+                <Accordion.ItemIndicator class="group">
+                    <ChevronUp
+                        class="hidden size-4 group-data-[state=open]:block"
+                    />
+                    <ChevronDown
+                        class="block size-4 group-data-[state=open]:hidden"
+                    />
+                </Accordion.ItemIndicator>
+            </Accordion.ItemTrigger>
+            <Accordion.ItemContent>
+                {$t(tool + ".instruction")}
+            </Accordion.ItemContent>
+        </h3>
+    </Accordion.Item>
+</Accordion>

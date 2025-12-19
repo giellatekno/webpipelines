@@ -1,10 +1,9 @@
 <script lang="ts">
-    import { t } from "svelte-intl-precompile";
     import type { PageData } from "./$types";
-    import { page } from "$app/state";
-    import ToolDescription from "$components/ToolDescription.svelte";
-    import TextArea from "$components/TextArea.svelte";
-    import { get_usage } from "$lib/utils";
+    import ErrorBox from "$components/ErrorBox.svelte";
+    import { t } from "svelte-intl-precompile";
+    import FormWrapper from "$components/FormWrapper.svelte";
+    import TextForm from "$components/TextForm.svelte";
 
     interface Props {
         data: PageData;
@@ -12,26 +11,24 @@
 
     let { data }: Props = $props();
 
+    const tool = "dependency";
     // the search text
     let value = $derived(data.q);
-
-    let usage = $derived(get_usage(page.params.lang, $t));
-    let instruction = $derived($t("dependency.instruction"));
-    let description = $derived($t("dependency.description"));
 </script>
 
+<svelte:head>
+    <title>{$t(tool + ".title")} | Webpipeline</title>
+</svelte:head>
+
 <div class="flex flex-col items-center gap-4">
-    <!-- <ToolDescription {description} {usage} /> -->
-    <TextArea {instruction} bind:value />
+    <FormWrapper {tool}>
+        <TextForm bind:value />
+    </FormWrapper>
 
     <div class="text-sm xl:text-lg">
         {#if data.error}
-            <p class="text-error-500">
-                Error: {data.error}
-            </p>
-        {/if}
-
-        {#if data.results}
+            <ErrorBox error={data.error} />
+        {:else if data.results}
             <div
                 class="card border-primary-500 min-w-full overflow-x-auto border-2 px-6 py-4 whitespace-nowrap shadow-md"
             >

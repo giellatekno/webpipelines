@@ -1,6 +1,5 @@
 import { env } from "$env/dynamic/public";
 import { tools_for } from "$lib/langs";
-import { convert_searchtext } from "$lib/utils";
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
 import { disambiguate_parser } from "$lib/parsers";
@@ -16,19 +15,20 @@ export const load: PageLoad = async ({ url, params, fetch }) => {
     if (q === null || q === "") {
         return {};
     }
-    let converted_q = convert_searchtext(q, lang);
-
-    const backend_url = `${env.PUBLIC_API_ROOT}/disambiguate/${lang}/${converted_q}`;
+    const backend_url = `${env.PUBLIC_API_ROOT}/disambiguate/${lang}/${q}`;
     let response;
     try {
         response = await fetch(backend_url);
     } catch (e) {
         console.error(e);
-        return { error: "fetch() from api failed" };
+        return { error: "fetch() from API failed" };
     }
 
     let text = await response.text();
-    const data = disambiguate_parser(text);
+    if (response.status !== 200) {
+        return { error: `non-200 from API: ${text}` };
+    }
+    const parsed = disambiguate_parser(text);
 
-    return { q: q, results: data };
+    return { q: q, results: parsed };
 };
