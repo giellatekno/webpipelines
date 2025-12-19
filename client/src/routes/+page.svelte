@@ -49,6 +49,10 @@
     });
 </script>
 
+<svelte:head>
+    <title>{$t("languages")} | Webpipeline</title>
+</svelte:head>
+
 <div class="flex w-full flex-col gap-4">
     <label class="label xl:ml-2">
         <span class="label-text">{$t("showtoolsfor")}</span>

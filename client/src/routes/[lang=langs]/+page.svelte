@@ -9,6 +9,8 @@
     import { t } from "svelte-intl-precompile";
     import { tools_for } from "$lib/langs";
     import { page } from "$app/state";
+    import { langname } from "$lib/langnames";
+    import { locale } from "$lib/locales";
 
     const IMAGES: { [key: string]: string } = {
         spellcheck: spellcheck_img,
@@ -20,6 +22,10 @@
 
     let lang = $derived(page.params.lang || "");
 </script>
+
+<svelte:head>
+    <title>{langname(lang, $locale)} | Webpipeline</title>
+</svelte:head>
 
 <div
     class="mx-auto mt-8 grid max-h-max max-w-max grid-cols-1 items-stretch gap-6 xl:grid-cols-2"
