@@ -95,6 +95,10 @@
     "paradigm_superlative": "Superlative",
     "paradigm_ordinal": "Ordinal number",
 
+    "paradigm_first_person": "1. Person",
+    "paradigm_second_person": "2. Person",
+    "paradigm_third_person": "3. Person",
+
     "paradigm_indicative": "Indicative",
     "paradigm_imperative": "Imperative",
     "paradigm_conditional": "Conditional",

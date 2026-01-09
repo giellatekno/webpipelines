@@ -92,6 +92,10 @@
     "paradigm_superlative": "Superlativ",
     "paradigm_ordinal": "Ordenstall",
 
+    "paradigm_first_person": "1. Person",
+    "paradigm_second_person": "2. Person",
+    "paradigm_third_person": "3. Person",
+
     "paradigm_indicative": "Indikativ",
     "paradigm_imperative": "Imperativ",
     "paradigm_conditional": "Kondisjonalis",

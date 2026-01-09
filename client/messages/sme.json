@@ -95,6 +95,10 @@
     "paradigm_superlative": "Superlatiiva",
     "paradigm_ordinal": "Ortnetlohku",
 
+    "paradigm_first_person": "1. Persovdna",
+    "paradigm_second_person": "2. Persovdna",
+    "paradigm_third_person": "3. Persovdna",
+
     "paradigm_indicative": "Indikatiiva",
     "paradigm_imperative": "Imperatiiva",
     "paradigm_conditional": "Konditionála",

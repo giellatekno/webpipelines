@@ -1,76 +1,95 @@
-export const CASES: Record<string, string> = {
-    Nom: "nominative",
-    Gen: "genitive",
-    Acc: "accusative",
-    Ill: "illative",
-    Loc: "locative",
-    Com: "comitative",
-    Ess: "essive",
+import { m } from "$lib/paraglide/messages";
+
+interface Element {
+    tag: string;
+    name: Function;
+}
+
+export const CASES: Element[] = [
+    { tag: "Nom", name: m.paradigm_nominative },
+    { tag: "Gen", name: m.paradigm_genitive },
+    { tag: "Acc", name: m.paradigm_accusative },
+    { tag: "Ill", name: m.paradigm_illative },
+    { tag: "Loc", name: m.paradigm_locative },
+    { tag: "Com", name: m.paradigm_comitative },
+    { tag: "Ess", name: m.paradigm_essive },
+] as const;
+
+export const PERSONS = [
+    { tag: "1", name: m.paradigm_first_person },
+    { tag: "2", name: m.paradigm_second_person },
+    { tag: "3", name: m.paradigm_third_person },
+];
+
+export const NUMBERS = [
+    { tag: "Sg", name: m.paradigm_singular },
+    { tag: "Du", name: m.paradigm_dual },
+    { tag: "Pl", name: m.paradigm_plural },
+];
+
+export const CASE_NUMBERS = [
+    { tag: "Sg", name: m.paradigm_singular },
+    { tag: "Pl", name: m.paradigm_plural },
+];
+
+export const ADJ_GRADES = [
+    { tag: "Posit", name: m.paradigm_positive },
+    { tag: "Der/Comp", name: m.paradigm_comparative },
+    { tag: "Der/Superl", name: m.paradigm_superlative },
+];
+
+export const MODES = [
+    { tag: "Ind", name: m.paradigm_indicative },
+    { tag: "Cond", name: m.paradigm_conditional },
+    { tag: "Imprt", name: m.paradigm_imperative },
+    { tag: "Pot", name: m.paradigm_potential },
+];
+
+export const TIMES: Record<string, Element[]> = {
+    Ind: [
+        { tag: "Prs", name: m.paradigm_present },
+        { tag: "Prf", name: m.paradigm_perfect },
+        { tag: "Prt", name: m.paradigm_preterite },
+        { tag: "PluPrf", name: m.paradigm_pluperfect },
+    ],
+    Cond: [
+        { tag: "Prs", name: m.paradigm_present },
+        { tag: "Prf", name: m.paradigm_perfect },
+    ],
+    Pot: [
+        { tag: "Prs", name: m.paradigm_present },
+        { tag: "Prt", name: m.paradigm_preterite },
+    ],
 };
 
-export const PERSONS: Record<string, string> = {
-    1: "1. Person",
-    2: "2. Person",
-    3: "3. Person",
-};
+export const NONFINITE_FORMS = [
+    { tag: "Inf", name: m.paradigm_infinite },
+    { tag: "PrfPrc", name: m.paradigm_perfectparticiple },
+    { tag: "PrsPrc", name: m.paradigm_presentparticiple },
+    { tag: "VGen", name: m.paradigm_verbgenitive },
+    { tag: "VAbess", name: m.paradigm_verbabessive },
+    { tag: "Actio+Nom", name: m.paradigm_actionominative },
+    { tag: "Actio+Gen", name: m.paradigm_actiogenitive },
+    { tag: "Actio+Loc", name: m.paradigm_actiolocative },
+    { tag: "Actio+Com", name: m.paradigm_actiocomitative },
+    { tag: "Actio+Ess", name: m.paradigm_actioessive },
+    { tag: "Sup", name: m.paradigm_supine },
+    { tag: "Ger", name: m.paradigm_gerund },
+];
 
-export const NUMBERS: Record<string, string> = {
-    Sg: "singular",
-    Du: "dual",
-    Pl: "plural",
-};
+export const PRONOUN_SUBCLASSES = [
+    { tag: "Indef", name: m.paradigm_indefinite },
+    { tag: "Rel", name: m.paradigm_relative },
+    { tag: "Interr", name: m.paradigm_interrogative },
+    { tag: "Pers", name: m.paradigm_personal },
+    { tag: "Refl", name: m.paradigm_reflexive },
+    { tag: "Dem", name: m.paradigm_demonstrative },
+];
 
-export const CASE_NUMBERS: Record<string, string> = {
-    Sg: "singular",
-    Pl: "plural",
-};
-
-export const ADJ_GRADES: Record<string, string> = {
-    "Posit": "positive",
-    "Der/Comp": "comparative",
-    "Der/Superl": "superlative",
-};
-
-export const MODES: Record<string, string> = {
-    Ind: "indicative",
-    Cond: "conditional",
-    Imprt: "imperative",
-    Pot: "potential",
-};
-
-export const TIMES: Record<string, Record<string, string>> = {
-    Ind: {
-        Prs: "present",
-        Prf: "perfect",
-        Prt: "preterite",
-        PluPrf: "pluperfect",
-    },
-    Cond: {
-        Prs: "present",
-        Prf: "perfect",
-    },
-    Pot: {
-        Prs: "present",
-        Prt: "preterite",
-    },
-};
-
-export const NONFINITE_FORMS: Record<string, string> = {
-    "Inf": "infinite",
-    "PrfPrc": "perfectparticiple",
-    "PrsPrc": "presentparticiple",
-    "VGen": "verbgenitive",
-    "VAbess": "verbabessive",
-    "Actio+Nom": "actionominative",
-    "Actio+Gen": "actiogenitive",
-    "Actio+Loc": "actiolocative",
-    "Actio+Com": "actiocomitative",
-    "Actio+Ess": "actioessive",
-    "Sup": "supine",
-    "Ger": "gerund",
-};
-
-export const NUMBER_PERSONS: Record<string, Record<string, string>> = {
+export const NUMBER_PERSONS: Record<
+    "Sg" | "Du" | "Pl",
+    Record<"1" | "2" | "3", string>
+> = {
     Sg: {
         1: "mun/mon",
         2: "don",
@@ -86,15 +105,6 @@ export const NUMBER_PERSONS: Record<string, Record<string, string>> = {
         2: "dii",
         3: "sii/dat",
     },
-};
-
-export const PRONOUN_SUBCLASSES: Record<string, string> = {
-    Indef: "indefinite",
-    Rel: "relative",
-    Interr: "interrogative",
-    Pers: "personal",
-    Refl: "reflexive",
-    Dem: "demonstrative",
 };
 
 export const HELP_VERBS: Record<

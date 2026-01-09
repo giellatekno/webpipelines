@@ -26,19 +26,17 @@
         PluPrf: "bg-red-800/20",
     };
 
-    headers = [...Object.values(MODES), "nonfinite"];
-
     function has_tags(tags: string, elem: ParsedParadigm) {
         return !!elem.wordforms.keys().find((t) => t.includes(tags));
     }
 </script>
 
-{#each Object.entries(MODES) as [mode_tag, mode_name]}
-    {#if has_tags(mode_tag, elem)}
-        {#if mode_tag !== "Imprt"}
+{#each MODES as mode}
+    {#if has_tags(mode.tag, elem)}
+        {#if mode.tag !== "Imprt"}
             <div class="flex w-full flex-col gap-2">
-                <h3 class="h4 xl:h3" id={mode_name}>
-                    {m[`paradigm_${mode_name}`]()}
+                <h3 class="h4 xl:h3" id={mode.tag}>
+                    {mode.name()}
                 </h3>
                 <div
                     class="grid grid-cols-1 place-content-start gap-4 xl:grid-cols-2"
@@ -65,7 +63,7 @@
                                             </td>
                                             <td>
                                                 {@html get_entry(
-                                                    `${mode_tag}+${num_tag}${pers_tag}`,
+                                                    `${mode.tag}+${num_tag}${pers_tag}`,
                                                     elem,
                                                 )}
                                             </td>
@@ -75,11 +73,11 @@
                             </tbody>
                         </Table>
                     {:else}
-                        {#each Object.entries(TIMES[mode_tag]) as [time_tag, time_name]}
-                            {@const color = time_color[time_tag]
-                                ? time_color[time_tag]
+                        {#each TIMES[mode.tag] as time}
+                            {@const color = time_color[time.tag]
+                                ? time_color[time.tag]
                                 : ""}
-                            {#if !(mode_tag === "Pot" && time_tag === "Prt" && !has_tags("Pot+Prt", elem))}
+                            {#if !(mode.tag === "Pot" && time.tag === "Prt" && !has_tags("Pot+Prt", elem))}
                                 <Table>
                                     <thead>
                                         <tr>
@@ -87,7 +85,7 @@
                                                 colspan={3}
                                                 class="{color} text-center font-bold"
                                             >
-                                                {m[`paradigm_${time_name}`]()}
+                                                {time.name()}
                                             </td>
                                         </tr>
                                         <tr>
@@ -114,14 +112,14 @@
                                                     >
                                                         {pronoun}
                                                     </td>
-                                                    {#if ["Prf", "PluPrf"].includes(time_tag)}
+                                                    {#if ["Prf", "PluPrf"].includes(time.tag)}
                                                         <td>
                                                             {@html get_entry(
                                                                 "PrfPrc",
                                                                 elem,
                                                                 HELP_VERBS[
-                                                                    mode_tag +
-                                                                        time_tag
+                                                                    mode.tag +
+                                                                        time.tag
                                                                 ][num_tag][
                                                                     pers_tag
                                                                 ],
@@ -132,8 +130,8 @@
                                                                 "PrfPrc",
                                                                 elem,
                                                                 HELP_VERBS[
-                                                                    mode_tag +
-                                                                        time_tag +
+                                                                    mode.tag +
+                                                                        time.tag +
                                                                         "Neg"
                                                                 ][num_tag][
                                                                     pers_tag
@@ -143,13 +141,13 @@
                                                     {:else}
                                                         <td>
                                                             {@html get_entry(
-                                                                `${mode_tag}+${time_tag}+${num_tag}${pers_tag}`,
+                                                                `${mode.tag}+${time.tag}+${num_tag}${pers_tag}`,
                                                                 elem,
                                                             )}
                                                         </td>
                                                         <td>
                                                             {@html get_entry(
-                                                                `${mode_tag}+${time_tag}+ConNeg`,
+                                                                `${mode.tag}+${time.tag}+ConNeg`,
                                                                 elem,
                                                                 HELP_VERBS[
                                                                     "Neg"
@@ -171,8 +169,8 @@
             </div>
         {:else}
             <div class="flex flex-col gap-2">
-                <h3 class="h4 xl:h3" id={mode_name}>
-                    {m[`paradigm_${mode_name}`]()}
+                <h3 class="h4 xl:h3" id={mode.tag}>
+                    {mode.name()}
                 </h3>
                 {#if elem.subclass == "Neg"}
                     <Table>
@@ -196,7 +194,7 @@
                                         </td>
                                         <td>
                                             {@html get_entry(
-                                                `${mode_tag}+${num_tag}${pers_tag}`,
+                                                `${mode.tag}+${num_tag}${pers_tag}`,
                                                 elem,
                                             )}
                                         </td>
@@ -232,13 +230,13 @@
                                         </td>
                                         <td>
                                             {@html get_entry(
-                                                `${mode_tag}+${num_tag}${pers_tag}`,
+                                                `${mode.tag}+${num_tag}${pers_tag}`,
                                                 elem,
                                             )}
                                         </td>
                                         <td>
                                             {@html get_entry(
-                                                `${mode_tag}+ConNeg`,
+                                                `${mode.tag}+ConNeg`,
                                                 elem,
                                                 HELP_VERBS["ImprtNeg"][num_tag][
                                                     pers_tag
@@ -262,35 +260,35 @@
         </h3>
         <Table>
             <tbody>
-                {#each Object.entries(NONFINITE_FORMS) as [form_tag, form_name]}
+                {#each NONFINITE_FORMS as form}
                     {@const form_exists = elem.wordforms
                         .keys()
-                        .find((t) => t.startsWith(form_tag))}
+                        .find((t) => t.startsWith(form.tag))}
                     {#if form_exists}
                         <tr>
                             <th class="text-left">
-                                {m[`paradigm_${form_name}`]()}
+                                {form.name()}
                             </th>
                             <td>
-                                {@html get_entry(form_tag, elem)}
+                                {@html get_entry(form.tag, elem)}
                             </td>
                         </tr>
-                        {#if form_tag === "Ger"}
+                        {#if form.tag === "Ger"}
                             {#if elem.wordforms
                                 .keys()
-                                .find((t) => t.startsWith(`${form_tag}+Px`))}
-                                {#each Object.entries(NUMBERS) as [num_tag, num_name]}
-                                    {#each Object.entries(PERSONS) as [pers_tag, pers_name]}
+                                .find((t) => t.startsWith(`${form.tag}+Px`))}
+                                {#each NUMBERS as num}
+                                    {#each PERSONS as pers}
                                         <tr>
                                             <!-- TODO: translate short forms -->
                                             <th class="text-left">
                                                 {m.paradigm_gerund()}
-                                                {num_tag}.
-                                                {pers_tag}. Pers.
+                                                {num.tag}.
+                                                {pers.tag}. Pers.
                                             </th>
                                             <td>
                                                 {@html get_entry(
-                                                    `Ger+Px${num_tag}${pers_tag}`,
+                                                    `Ger+Px${num.tag}${pers.tag}`,
                                                     elem,
                                                 )}
                                             </td>

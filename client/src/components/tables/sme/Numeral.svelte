@@ -19,30 +19,30 @@
             </tr>
         </thead>
         <tbody>
-            {#each Object.entries(CASES) as [tag, name]}
+            {#each CASES as gram_case}
                 {@const row_exists = elem.wordforms
                     .keys()
-                    .find((e) => e.endsWith(tag))}
+                    .find((e) => e.endsWith(gram_case.tag))}
                 {#if row_exists}
-                    {#if !(tag === "Ess")}
+                    {#if !(gram_case.tag === "Ess")}
                         <tr>
                             <td class="bg-surface-100-900">
-                                {m[`paradigm_${name}`]()}
+                                {gram_case.name()}
                             </td>
                             <td>
-                                {@html get_entry(`Sg+${tag}`, elem)}
+                                {@html get_entry(`Sg+${gram_case.tag}`, elem)}
                             </td>
                             <td>
-                                {@html get_entry(`Pl+${tag}`, elem)}
+                                {@html get_entry(`Pl+${gram_case.tag}`, elem)}
                             </td>
                         </tr>
                     {:else}
                         <tr>
                             <td class="bg-surface-100-900">
-                                {m[`paradigm_${name}`]()}
+                                {gram_case.name()}
                             </td>
                             <td colspan="2" class="text-center">
-                                {@html get_entry(tag, elem)}
+                                {@html get_entry(gram_case.tag, elem)}
                             </td>
                         </tr>
                     {/if}

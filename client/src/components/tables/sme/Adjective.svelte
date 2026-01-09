@@ -90,25 +90,25 @@
                 </tr>
             </thead>
             <tbody>
-                {#each Object.entries(CASES) as [tag, name]}
+                {#each CASES as cur_case}
                     {@const row_exists = elem.wordforms
                         .keys()
-                        .find((e) => e.endsWith(tag))}
+                        .find((e) => e.endsWith(cur_case.tag))}
                     {#if row_exists}
-                        {#if !(tag === "Ess")}
+                        {#if !(cur_case.tag === "Ess")}
                             <tr>
                                 <td class="bg-surface-100-900">
-                                    {m.paradigm_cases({ case: name })}
+                                    {cur_case.name()}
                                 </td>
                                 <td>
                                     {@html get_entry(
-                                        prefix + `Sg+${tag}`,
+                                        prefix + `Sg+${cur_case.tag}`,
                                         elem,
                                     )}
                                 </td>
                                 <td>
                                     {@html get_entry(
-                                        prefix + `Pl+${tag}`,
+                                        prefix + `Pl+${cur_case.tag}`,
                                         elem,
                                     )}
                                 </td>
@@ -116,10 +116,13 @@
                         {:else}
                             <tr>
                                 <td class="bg-surface-100-900">
-                                    {m.paradigm_cases({ case: name })}
+                                    {cur_case.name()}
                                 </td>
                                 <td colspan="2" class="text-center">
-                                    {@html get_entry(prefix + tag, elem)}
+                                    {@html get_entry(
+                                        prefix + cur_case.tag,
+                                        elem,
+                                    )}
                                 </td>
                             </tr>
                         {/if}
@@ -129,12 +132,12 @@
         </Table>
     </div>
 {:else}
-    {#each Object.entries(ADJ_GRADES) as [grade_tag, grade_name]}
-        {@const prefix = grade_tag === "Posit" ? "" : grade_tag + "+A+"}
-        {@const grade_exists = has_grade(grade_tag, elem)}
+    {#each ADJ_GRADES as grade}
+        {@const prefix = grade.tag === "Posit" ? "" : grade.tag + "+A+"}
+        {@const grade_exists = has_grade(grade.tag, elem)}
         {#if grade_exists}
             <div class="flex flex-col gap-2">
-                <h3 class="h4 xl:h3">{m[`paradigm_${grade_name}`]()}</h3>
+                <h3 class="h4 xl:h3">{grade.name()}</h3>
                 <div class="w-fit">
                     <Table>
                         <tbody>
@@ -158,23 +161,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {#each Object.entries(CASES) as [tag, name]}
-                            {@const row_exists = has_row(grade_tag, tag, elem)}
+                        {#each CASES as cur_case}
+                            {@const row_exists = has_row(
+                                grade.tag,
+                                cur_case.tag,
+                                elem,
+                            )}
                             {#if row_exists}
-                                {#if !(tag === "Ess")}
+                                {#if !(cur_case.tag === "Ess")}
                                     <tr>
                                         <td class="bg-surface-100-900">
-                                            {m[`paradigm_${name}`]()}
+                                            {cur_case.name()}
                                         </td>
                                         <td>
                                             {@html get_entry(
-                                                prefix + `Sg+${tag}`,
+                                                prefix + `Sg+${cur_case.tag}`,
                                                 elem,
                                             )}
                                         </td>
                                         <td>
                                             {@html get_entry(
-                                                prefix + `Pl+${tag}`,
+                                                prefix + `Pl+${cur_case.tag}`,
                                                 elem,
                                             )}
                                         </td>
@@ -182,11 +189,11 @@
                                 {:else}
                                     <tr>
                                         <td class="bg-surface-100-900">
-                                            {m[`paradigm_${name}`]()}
+                                            {cur_case.name()}
                                         </td>
                                         <td colspan="2" class="text-center">
                                             {@html get_entry(
-                                                prefix + tag,
+                                                prefix + cur_case.tag,
                                                 elem,
                                             )}
                                         </td>

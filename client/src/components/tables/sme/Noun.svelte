@@ -49,30 +49,30 @@
             </tr>
         </thead>
         <tbody>
-            {#each Object.entries(CASES) as [tag, name]}
+            {#each CASES as gram_case}
                 {@const row_exists = elem.wordforms
                     .keys()
-                    .find((e) => e.endsWith(tag))}
+                    .find((e) => e.endsWith(gram_case.tag))}
                 {#if row_exists}
-                    {#if !(tag === "Ess")}
+                    {#if !(gram_case.tag === "Ess")}
                         <tr>
                             <td class="bg-surface-100-900 border-r-2">
-                                {m[`paradigm_${name}`]()}
+                                {gram_case.name()}
                             </td>
                             <td>
-                                {@html get_entry(`Sg+${tag}`, elem)}
+                                {@html get_entry(`Sg+${gram_case.tag}`, elem)}
                             </td>
                             <td>
-                                {@html get_entry(`Pl+${tag}`, elem)}
+                                {@html get_entry(`Pl+${gram_case.tag}`, elem)}
                             </td>
                         </tr>
                     {:else}
                         <tr>
                             <td class="bg-surface-100-900">
-                                {m[`paradigm_${name}`]()}
+                                {gram_case.name()}
                             </td>
                             <td colspan="2" class="text-center">
-                                {@html get_entry(tag, elem)}
+                                {@html get_entry(gram_case.tag, elem)}
                             </td>
                         </tr>
                     {/if}
@@ -104,13 +104,13 @@
                 </tr>
             </thead>
             <tbody>
-                {#each Object.entries(CASES) as [case_tag, case_name]}
-                    {#if !(case_tag === "Ess")}
-                        {#each Object.entries(CASE_NUMBERS) as [case_num_tag, case_num_name]}
+                {#each CASES as gram_case}
+                    {#if !(gram_case.tag === "Ess")}
+                        {#each CASE_NUMBERS as case_num}
                             {@const rows = px_case_rows(
                                 elem,
-                                case_tag,
-                                case_num_tag,
+                                gram_case.tag,
+                                case_num.tag,
                             )}
                             {#if rows}
                                 {#each rows as pers_tag}
@@ -122,20 +122,18 @@
                                                 class="bg-surface-100-900"
                                                 rowspan={rows.length}
                                             >
-                                                {m[
-                                                    `paradigm_${case_num_name}`
-                                                ]()}
+                                                {case_num.name()}
                                                 <br />
-                                                {m[`paradigm_${case_name}`]()}
+                                                {gram_case.name()}
                                             </td>
                                         {/if}
                                         <td class="bg-surface-100-900">
                                             {pers_tag}.
                                         </td>
-                                        {#each Object.keys(NUMBERS) as num_tag}
+                                        {#each NUMBERS as num}
                                             <td>
                                                 {@html get_entry(
-                                                    `${case_num_tag}+${case_tag}+Px${num_tag}${pers_tag}`,
+                                                    `${case_num.tag}+${gram_case.tag}+Px${num.tag}${pers_tag}`,
                                                     elem,
                                                 )}
                                             </td>
@@ -145,7 +143,7 @@
                             {/if}
                         {/each}
                     {:else}
-                        {@const rows = px_case_rows(elem, case_tag, "")}
+                        {@const rows = px_case_rows(elem, gram_case.tag, "")}
                         {#if rows}
                             {#each rows as pers_tag}
                                 <tr>
@@ -154,16 +152,16 @@
                                             class="bg-surface-100-900"
                                             rowspan={rows.length}
                                         >
-                                            {m[`paradigm_${case_name}`]()}
+                                            {gram_case.name()}
                                         </td>
                                     {/if}
                                     <td class="bg-surface-100-900">
                                         {pers_tag}.
                                     </td>
-                                    {#each Object.keys(NUMBERS) as num_tag}
+                                    {#each NUMBERS as num}
                                         <td>
                                             {@html get_entry(
-                                                `${case_tag}+Px${num_tag}${pers_tag}`,
+                                                `${gram_case.tag}+Px${num.tag}${pers_tag}`,
                                                 elem,
                                             )}
                                         </td>
@@ -182,26 +180,26 @@
     <div class="flex flex-col gap-2">
         <h4 class="h4">{m.paradigm_possessivesuffixes()}</h4>
         <div class="flex flex-col gap-2">
-            {#each Object.entries(NUMBERS) as [num_tag, num_name]}
+            {#each NUMBERS as num}
                 <h6 class="h6 mt-2">
-                    {m[`paradigm_${num_name}`]()} owner ({owners[num_tag]})
+                    {num.name()} owner ({owners[num.tag]})
                 </h6>
                 <Table>
                     <thead>
                         <tr>
                             <th>{m.paradigm_case()}</th>
                             <th>{m.paradigm_person_short()}</th>
-                            <th>{m[`paradigm_${num_name}`]()}</th>
+                            <th>{num.name()}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {#each Object.entries(CASES) as [case_tag, case_name]}
-                            {#if !(case_tag === "Ess")}
-                                {#each Object.entries(CASE_NUMBERS) as [case_num_tag, case_num_name]}
+                        {#each CASES as gram_case}
+                            {#if !(gram_case.tag === "Ess")}
+                                {#each CASE_NUMBERS as case_num}
                                     {@const rows = px_case_rows(
                                         elem,
-                                        case_tag,
-                                        case_num_tag,
+                                        gram_case.tag,
+                                        case_num.tag,
                                     )}
                                     {#if rows}
                                         {#each rows as pers_tag}
@@ -214,7 +212,7 @@
                                                         class="bg-surface-100-900 w-fit"
                                                         rowspan={rows.length}
                                                     >
-                                                        {case_num_tag}. {case_tag}.
+                                                        {case_num.tag}. {gram_case.tag}.
                                                     </td>
                                                 {/if}
                                                 <td class="bg-surface-100-900">
@@ -222,7 +220,7 @@
                                                 </td>
                                                 <td>
                                                     {@html get_entry(
-                                                        `${case_num_tag}+${case_tag}+Px${num_tag}${pers_tag}`,
+                                                        `${case_num.tag}+${gram_case.tag}+Px${num.tag}${pers_tag}`,
                                                         elem,
                                                     )}
                                                 </td>
@@ -231,7 +229,11 @@
                                     {/if}
                                 {/each}
                             {:else}
-                                {@const rows = px_case_rows(elem, case_tag, "")}
+                                {@const rows = px_case_rows(
+                                    elem,
+                                    gram_case.tag,
+                                    "",
+                                )}
                                 {#if rows}
                                     {#each rows as pers_tag}
                                         <tr>
@@ -240,7 +242,7 @@
                                                     class="bg-surface-100-900"
                                                     rowspan={rows.length}
                                                 >
-                                                    {case_tag}.
+                                                    {gram_case.tag}.
                                                 </td>
                                             {/if}
                                             <td class="bg-surface-100-900">
@@ -248,7 +250,7 @@
                                             </td>
                                             <td>
                                                 {@html get_entry(
-                                                    `${case_tag}+Px${num_tag}${pers_tag}`,
+                                                    `${gram_case.tag}+Px${num.tag}${pers_tag}`,
                                                     elem,
                                                 )}
                                             </td>
