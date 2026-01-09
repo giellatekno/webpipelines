@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { t } from "svelte-intl-precompile";
     import { CASES, CASE_NUMBERS, NUMBERS } from "./sme_paradigm_options";
     import type { ParsedParadigm } from "$lib/parsers";
     import { get_entry } from "$lib/utils";
     import Table from "$components/Table.svelte";
+    import { m } from "$lib/paraglide/messages";
 
     let { elem }: { elem: ParsedParadigm } = $props();
 
@@ -39,13 +39,13 @@
 </script>
 
 <div class="flex flex-col gap-2">
-    <h3 class="h4 xl:h3">{$t("paradigm.generalforms")}</h3>
+    <h3 class="h4 xl:h3">{m.paradigm_generalforms()}</h3>
     <Table>
         <thead>
             <tr>
-                <th>{$t("paradigm.case")}</th>
-                <th>{$t("paradigm.singular")}</th>
-                <th>{$t("paradigm.plural")}</th>
+                <th>{m.paradigm_case()}</th>
+                <th>{m.paradigm_singular()}</th>
+                <th>{m.paradigm_plural()}</th>
             </tr>
         </thead>
         <tbody>
@@ -57,7 +57,7 @@
                     {#if !(tag === "Ess")}
                         <tr>
                             <td class="bg-surface-100-900 border-r-2">
-                                {$t(`paradigm.${name}`)}
+                                {m[`paradigm_${name}`]()}
                             </td>
                             <td>
                                 {@html get_entry(`Sg+${tag}`, elem)}
@@ -69,7 +69,7 @@
                     {:else}
                         <tr>
                             <td class="bg-surface-100-900">
-                                {$t(`paradigm.${name}`)}
+                                {m[`paradigm_${name}`]()}
                             </td>
                             <td colspan="2" class="text-center">
                                 {@html get_entry(tag, elem)}
@@ -92,15 +92,15 @@
 
 {#snippet px_desktop()}
     <div class="flex flex-col gap-2">
-        <h3 class="h3">{$t("paradigm.possessivesuffixes")}</h3>
+        <h3 class="h3">{m.paradigm_possessivesuffixes()}</h3>
         <Table>
             <thead>
                 <tr>
-                    <th>{$t("paradigm.case")}</th>
-                    <th>{$t("paradigm.person.short")}</th>
-                    <th>{$t("paradigm.singular")}</th>
-                    <th>{$t("paradigm.dual")}</th>
-                    <th>{$t("paradigm.plural")}</th>
+                    <th>{m.paradigm_case()}</th>
+                    <th>{m.paradigm_person_short()}</th>
+                    <th>{m.paradigm_singular()}</th>
+                    <th>{m.paradigm_dual()}</th>
+                    <th>{m.paradigm_plural()}</th>
                 </tr>
             </thead>
             <tbody>
@@ -122,11 +122,11 @@
                                                 class="bg-surface-100-900"
                                                 rowspan={rows.length}
                                             >
-                                                {$t(
-                                                    `paradigm.${case_num_name}`,
-                                                )}
+                                                {m[
+                                                    `paradigm_${case_num_name}`
+                                                ]()}
                                                 <br />
-                                                {$t(`paradigm.${case_name}`)}
+                                                {m[`paradigm_${case_name}`]()}
                                             </td>
                                         {/if}
                                         <td class="bg-surface-100-900">
@@ -154,7 +154,7 @@
                                             class="bg-surface-100-900"
                                             rowspan={rows.length}
                                         >
-                                            {$t(`paradigm.${case_name}`)}
+                                            {m[`paradigm_${case_name}`]()}
                                         </td>
                                     {/if}
                                     <td class="bg-surface-100-900">
@@ -180,18 +180,18 @@
 
 {#snippet px_mobile()}
     <div class="flex flex-col gap-2">
-        <h4 class="h4">{$t("paradigm.possessivesuffixes")}</h4>
+        <h4 class="h4">{m.paradigm_possessivesuffixes()}</h4>
         <div class="flex flex-col gap-2">
             {#each Object.entries(NUMBERS) as [num_tag, num_name]}
                 <h6 class="h6 mt-2">
-                    {$t(`paradigm.${num_name}`)} owner ({owners[num_tag]})
+                    {m[`paradigm_${num_name}`]()} owner ({owners[num_tag]})
                 </h6>
                 <Table>
                     <thead>
                         <tr>
-                            <th>{$t("paradigm.case")}</th>
-                            <th>{$t("paradigm.person.short")}</th>
-                            <th>{$t(`paradigm.${num_name}`)}</th>
+                            <th>{m.paradigm_case()}</th>
+                            <th>{m.paradigm_person_short()}</th>
+                            <th>{m[`paradigm_${num_name}`]()}</th>
                         </tr>
                     </thead>
                     <tbody>

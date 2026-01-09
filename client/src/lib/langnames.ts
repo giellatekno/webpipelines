@@ -1,6 +1,3 @@
-// The Intl API is not very consistent between browsers, browser versions,
-// browser editions (mobile vs non-mobile browser).. and maybe OS, and all of
-// this - hence.....
 interface LangNames {
     [key: string]: {
         [key: string]: string;
@@ -400,16 +397,12 @@ export function langname(of: string, in_: string) {
 
     let result = get_our(of, in_);
     if (!result) {
-        // fall back to whatever Intl gives us.
-        result = new Intl.DisplayNames([in_], { type: "language" }).of(of);
-        if (result === of) {
-            console.warn(`Browser doesn't know how to say ${of} in ${in_}`);
-        }
+        result = of;
+        console.warn(`Browser doesn't know how to say ${of} in ${in_}`);
     }
 
     // replace normal spaces with non-breaking space to
     // prevent newlines in the middle of a language name
-    // @ts-ignore
     return result.replaceAll(" ", "\xA0");
 }
 

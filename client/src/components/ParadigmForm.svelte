@@ -1,23 +1,28 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
-    import { t } from "svelte-intl-precompile";
+    import { m } from "$lib/paraglide/messages";
 
     let { word, size, pos, format = $bindable(), has_tables } = $props();
 
     const poses = {
-        any: "any",
-        noun: "N",
-        verb: "V",
-        adjective: "A",
+        any: m.partofspeech_any,
+        N: m.partofspeech_noun,
+        V: m.partofspeech_verb,
+        A: m.partofspeech_adjective,
+        Pron: m.partofspeech_pronoun,
+        Num: m.partofspeech_numeral,
         // adverb: "Adv",
-        pronoun: "Pron",
-        numeral: "Num",
         // Pcle: "Pcle",
         // Po: "Po",
         // Pr: "Pr",
         //Adp: "Adp",
-    };
-    const paradigm_sizes = ["minimal", "standard", "full"];
+    } as const;
+
+    const paradigm_sizes = [
+        [m.paradigmsize_minimal, "minimal"],
+        [m.paradigmsize_standard, "standard"],
+        [m.paradigmsize_full, "full"],
+    ] as const;
 
     let input: HTMLInputElement;
 
@@ -46,7 +51,7 @@
                 for="paradigmsize-select"
                 class="label-text text-right xl:text-left xl:text-sm"
             >
-                {$t("paradigmsize")}:
+                {m.paradigmsize()}:
             </label>
             <select
                 class="select bg-surface-50-950 text-sm xl:text-base"
@@ -55,9 +60,9 @@
                 name="size"
                 id="paradigmsize-select"
             >
-                {#each paradigm_sizes as value}
+                {#each paradigm_sizes as [title, value]}
                     <option {value}>
-                        {$t("paradigmsize." + value)}
+                        {title()}
                     </option>
                 {/each}
             </select>
@@ -69,7 +74,7 @@
                 for="pos-select"
                 class="label-text text-right xl:text-left xl:text-sm"
             >
-                {$t("partofspeech")}:
+                {m.partofspeech()}:
             </label>
             <select
                 class="select bg-surface-50-950 text-sm xl:text-base"
@@ -78,9 +83,9 @@
                 name="pos"
                 id="pos-select"
             >
-                {#each Object.entries(poses) as [label, value]}
+                {#each Object.entries(poses) as [value, title]}
                     <option {value}>
-                        {$t("partofspeech." + label)}
+                        {title()}
                     </option>
                 {/each}
             </select>
@@ -94,7 +99,7 @@
                     for="format-select"
                     class="label-text text-right xl:text-left xl:text-sm"
                 >
-                    {$t("paradigm.format")}:
+                    {m.paradigm_format()}:
                 </label>
                 <select
                     class="select bg-surface-50-950 text-sm xl:text-base"
@@ -104,10 +109,10 @@
                     id="format-select"
                 >
                     <option value="table">
-                        {$t("paradigm.table")}
+                        {m.paradigm_table()}
                     </option>
                     <option value="list">
-                        {$t("paradigm.list")}
+                        {m.paradigm_list()}
                     </option>
                 </select>
             </div>
@@ -125,13 +130,13 @@
                     bind:this={input}
                     autocapitalize="off"
                     spellcheck="false"
-                    placeholder={$t("search") + "..."}
+                    placeholder={m.search() + "..."}
                 />
                 <button
                     class="btn preset-filled-primary-500 text-sm xl:text-base"
                     type="submit"
                 >
-                    {$t("submit")}
+                    {m.submit()}
                 </button>
             </div>
         </div>

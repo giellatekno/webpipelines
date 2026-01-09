@@ -1,13 +1,14 @@
 <script lang="ts">
-    import { locale, locales_in_locale } from "$lib/locales";
     import { Popover, Portal } from "@skeletonlabs/skeleton-svelte";
     import { LanguagesIcon } from "@lucide/svelte";
-    import { t } from "svelte-intl-precompile";
     import sme_flag from "$assets/flags/sme.svg";
     import nob_flag from "$assets/flags/nob.svg";
     import fin_flag from "$assets/flags/fin.svg";
     import eng_flag from "$assets/flags/eng.svg";
     import rus_flag from "$assets/flags/rus.svg";
+    import { m } from "$lib/paraglide/messages";
+    import { locales, setLocale } from "$lib/paraglide/runtime";
+    import { langname } from "$lib/langnames";
 
     let flag_icons: Record<string, string> = {
         sme: sme_flag,
@@ -23,7 +24,7 @@
         class="btn preset-filled-primary-500 xl:preset-filled-primary-50-950"
     >
         <LanguagesIcon />
-        {$t("interfacelanguage")}
+        {m.interfacelanguage()}
     </Popover.Trigger>
     <Portal>
         <Popover.Positioner>
@@ -32,18 +33,18 @@
             >
                 <Popover.Description>
                     <ul class="w-full list-none">
-                        {#each Object.entries(locales_in_locale) as [iso, name]}
+                        {#each locales as iso}
                             <li>
                                 <button
                                     class="btn hover:preset-tonal w-full justify-start"
-                                    onclick={() => ($locale = iso)}
+                                    onclick={() => setLocale(iso)}
                                 >
                                     <img
                                         src={flag_icons[iso]}
                                         alt={iso + " flag"}
                                         class="w-8 shadow-md"
                                     />
-                                    {name}
+                                    {langname(iso, iso)}
                                 </button>
                             </li>
                         {/each}

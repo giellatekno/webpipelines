@@ -3,10 +3,10 @@
     import { copy_text, POS_TAGS } from "$lib/utils";
     import { CopyIcon } from "@lucide/svelte";
     import Table from "$components/Table.svelte";
-    import { t } from "svelte-intl-precompile";
     import ErrorBox from "$components/ErrorBox.svelte";
     import FormWrapper from "$components/FormWrapper.svelte";
     import TextForm from "$components/TextForm.svelte";
+    import { m } from "$lib/paraglide/messages";
 
     interface Props {
         data: PageData;
@@ -14,7 +14,6 @@
 
     let { data }: Props = $props();
 
-    const tool = "analyze";
     let value = $derived(data.q || "");
 
     function color_tags(tags: string[]) {
@@ -40,11 +39,11 @@
 </script>
 
 <svelte:head>
-    <title>{$t(tool + ".title")} | Webpipeline</title>
+    <title>{m.analyze_title()} | Webpipeline</title>
 </svelte:head>
 
 <div class="flex flex-col items-center gap-4">
-    <FormWrapper {tool}>
+    <FormWrapper tool="analyze">
         <TextForm bind:value />
     </FormWrapper>
 
@@ -56,9 +55,9 @@
                 <Table>
                     <thead>
                         <tr>
-                            <th>{$t("wordform")}</th>
-                            <th>{$t("analysis")}</th>
-                            <th>{$t("copy")}</th>
+                            <th>{m.wordform()}</th>
+                            <th>{m.analysis()}</th>
+                            <th>{m.copy()}</th>
                         </tr>
                     </thead>
                     {#each data.results as word_analyses, i}

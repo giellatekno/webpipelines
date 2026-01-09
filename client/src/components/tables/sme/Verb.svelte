@@ -1,6 +1,5 @@
 <script lang="ts">
     import type { ParsedParadigm } from "$lib/parsers";
-    import { t } from "svelte-intl-precompile";
     import {
         MODES,
         NONFINITE_FORMS,
@@ -12,6 +11,7 @@
     } from "./sme_paradigm_options";
     import { get_entry } from "$lib/utils";
     import Table from "$components/Table.svelte";
+    import { m } from "$lib/paraglide/messages";
 
     interface Props {
         elem: ParsedParadigm;
@@ -38,7 +38,7 @@
         {#if mode_tag !== "Imprt"}
             <div class="flex w-full flex-col gap-2">
                 <h3 class="h4 xl:h3" id={mode_name}>
-                    {$t(`paradigm.${mode_name}`)}
+                    {m[`paradigm_${mode_name}`]()}
                 </h3>
                 <div
                     class="grid grid-cols-1 place-content-start gap-4 xl:grid-cols-2"
@@ -48,7 +48,7 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        {$t("paradigm.person")}
+                                        {m.paradigm_person()}
                                     </th>
                                     <th></th>
                                 </tr>
@@ -87,18 +87,18 @@
                                                 colspan={3}
                                                 class="{color} text-center font-bold"
                                             >
-                                                {$t(`paradigm.${time_name}`)}
+                                                {m[`paradigm_${time_name}`]()}
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>
-                                                {$t("paradigm.person")}
+                                                {m.paradigm_person()}
                                             </th>
                                             <th>
-                                                {$t("paradigm.positive")}
+                                                {m.paradigm_positive()}
                                             </th>
                                             <th>
-                                                {$t("paradigm.negative")}
+                                                {m.paradigm_negative()}
                                             </th>
                                         </tr>
                                     </thead>
@@ -172,14 +172,14 @@
         {:else}
             <div class="flex flex-col gap-2">
                 <h3 class="h4 xl:h3" id={mode_name}>
-                    {$t(`paradigm.${mode_name}`)}
+                    {m[`paradigm_${mode_name}`]()}
                 </h3>
                 {#if elem.subclass == "Neg"}
                     <Table>
                         <thead>
                             <tr>
                                 <th>
-                                    {$t("paradigm.person")}
+                                    {m.paradigm_person()}
                                 </th>
                                 <th></th>
                             </tr>
@@ -210,13 +210,13 @@
                         <thead>
                             <tr>
                                 <th>
-                                    {$t("paradigm.person")}
+                                    {m.paradigm_person()}
                                 </th>
                                 <th>
-                                    {$t("paradigm.positive")}
+                                    {m.paradigm_positive()}
                                 </th>
                                 <th>
-                                    {$t("paradigm.negative")}
+                                    {m.paradigm_negative()}
                                 </th>
                             </tr>
                         </thead>
@@ -258,7 +258,7 @@
 {#if !(elem.subclass == "Neg")}
     <div class="flex flex-col gap-2">
         <h3 class="h4 xl:h3" id="nonfinite">
-            {$t("paradigm.nonfinite")}
+            {m.paradigm_nonfinite()}
         </h3>
         <Table>
             <tbody>
@@ -269,7 +269,7 @@
                     {#if form_exists}
                         <tr>
                             <th class="text-left">
-                                {$t(`paradigm.${form_name}`)}
+                                {m[`paradigm_${form_name}`]()}
                             </th>
                             <td>
                                 {@html get_entry(form_tag, elem)}
@@ -284,7 +284,7 @@
                                         <tr>
                                             <!-- TODO: translate short forms -->
                                             <th class="text-left">
-                                                {$t("paradigm.gerund")}
+                                                {m.paradigm_gerund()}
                                                 {num_tag}.
                                                 {pers_tag}. Pers.
                                             </th>

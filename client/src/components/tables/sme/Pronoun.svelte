@@ -1,6 +1,5 @@
 <script lang="ts">
     import type { ParsedParadigm } from "$lib/parsers";
-    import { t } from "svelte-intl-precompile";
     import {
         CASES,
         NUMBERS,
@@ -9,6 +8,7 @@
     } from "./sme_paradigm_options";
     import { get_entry } from "$lib/utils";
     import Table from "$components/Table.svelte";
+    import { m } from "$lib/paraglide/messages";
 
     let { elem }: { elem: ParsedParadigm } = $props();
 
@@ -16,16 +16,16 @@
 </script>
 
 <div class="flex flex-col gap-2">
-    <h3 class="h4 xl:h3">{$t(`paradigm.${subclass_name}`)}</h3>
+    <h3 class="h4 xl:h3">{m[`paradigm_${subclass_name}`]()}</h3>
     {#if elem.subclass === "Refl"}
         <Table>
             <thead>
                 <tr>
-                    <th>{$t("paradigm.case")}</th>
-                    <th>{$t("paradigm.person")}</th>
-                    <th>{$t("paradigm.singular")}</th>
-                    <th>{$t("paradigm.dual")}</th>
-                    <th>{$t("paradigm.plural")}</th>
+                    <th>{m.paradigm_case()}</th>
+                    <th>{m.paradigm_person()}</th>
+                    <th>{m.paradigm_singular()}</th>
+                    <th>{m.paradigm_dual()}</th>
+                    <th>{m.paradigm_plural()}</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,10 +33,10 @@
                     {#if case_tag === "Nom"}
                         <tr class="separate">
                             <td class="bg-surface-100-900 hidden xl:block">
-                                {$t("paradigm.nominative")}
+                                {m.paradigm_nominative()}
                             </td>
                             <td class="bg-surface-100-900 xl:hidden">
-                                {$t("paradigm.nominative").slice(0, 3)}.
+                                {m.paradigm_nominative().slice(0, 3)}.
                             </td>
                             <td class="bg-surface-100-900"></td>
                             <td>{@html get_entry("Sg+Nom", elem)}</td>
@@ -54,13 +54,13 @@
                                         class="bg-surface-100-900 hidden xl:block"
                                         rowspan={3}
                                     >
-                                        {$t(`paradigm.${case_name}`)}
+                                        {m[`paradigm_${case_name}`]()}
                                     </td>
                                     <td
                                         class="bg-surface-100-900 xl:hidden"
                                         rowspan={3}
                                     >
-                                        {$t(`paradigm.${case_name}`).slice(
+                                        {m[`paradigm_${case_name}`]().slice(
                                             0,
                                             3,
                                         )}.
@@ -87,7 +87,7 @@
             <Table>
                 <tr>
                     <td class="bg-surface-100-900">
-                        {$t("paradigm.essive")}
+                        {m.paradigm_essive()}
                     </td>
                     <td>{@html get_entry("Ess", elem)}</td>
                 </tr>
@@ -99,10 +99,10 @@
         <Table>
             <thead>
                 <tr>
-                    <th>{$t("paradigm.case")}</th>
-                    <th>{$t("paradigm.singular")}</th>
-                    <th>{$t("paradigm.dual")}</th>
-                    <th>{$t("paradigm.plural")}</th>
+                    <th>{m.paradigm_case()}</th>
+                    <th>{m.paradigm_singular()}</th>
+                    <th>{m.paradigm_dual()}</th>
+                    <th>{m.paradigm_plural()}</th>
                 </tr>
             </thead>
             <tbody>
@@ -113,7 +113,7 @@
                     {#if row_exists}
                         <tr>
                             <td class="bg-surface-100-900">
-                                {$t(`paradigm.${case_name}`)}
+                                {m[`paradigm_${case_name}`]()}
                             </td>
                             {#each Object.keys(NUMBERS) as num_tag}
                                 <td>
@@ -141,7 +141,7 @@
                 <tbody>
                     <tr>
                         <th>
-                            {$t("paradigm.attribute")}
+                            {m.paradigm_attribute()}
                         </th>
                         <td>{@html get_entry("Attr", elem)}</td>
                     </tr>
@@ -152,9 +152,9 @@
             <Table>
                 <thead>
                     <tr>
-                        <th>{$t("paradigm.case")}</th>
-                        <th>{$t("paradigm.singular")}</th>
-                        <th>{$t("paradigm.plural")}</th>
+                        <th>{m.paradigm_case()}</th>
+                        <th>{m.paradigm_singular()}</th>
+                        <th>{m.paradigm_plural()}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -166,7 +166,7 @@
                             {#if !(tag === "Ess")}
                                 <tr>
                                     <td class="bg-surface-100-900">
-                                        {$t(`paradigm.${name}`)}
+                                        {m[`paradigm_${name}`]()}
                                     </td>
                                     <td>
                                         {@html get_entry(`Sg+${tag}`, elem)}
@@ -178,7 +178,7 @@
                             {:else}
                                 <tr>
                                     <td class="bg-surface-100-900">
-                                        {$t(`paradigm.${name}`)}
+                                        {m[`paradigm_${name}`]()}
                                     </td>
                                     <td colspan="2" class="text-center">
                                         {@html get_entry(tag, elem)}

@@ -6,11 +6,11 @@
     import num_img from "$assets/num.svg";
     import ipa_img from "$assets/ipa.svg";
     import paradigm_img from "$assets/paradigm.svg";
-    import { t } from "svelte-intl-precompile";
     import { tools_for } from "$lib/langs";
     import { page } from "$app/state";
     import { langname } from "$lib/langnames";
-    import { locale } from "$lib/locales";
+    import { getLocale } from "$lib/paraglide/runtime";
+    import { m } from "$lib/paraglide/messages";
 
     const IMAGES: { [key: string]: string } = {
         spellcheck: spellcheck_img,
@@ -21,10 +21,39 @@
     };
 
     let lang = $derived(page.params.lang || "");
+
+    const button_content = {
+        analyze: { title: m.analyze_title, description: m.analyze_description },
+        dependency: {
+            title: m.dependency_title,
+            description: m.dependency_description,
+        },
+        disambiguate: {
+            title: m.disambiguate_title,
+            description: m.disambiguate_description,
+        },
+        generate: {
+            title: m.generate_title,
+            description: m.generate_description,
+        },
+        hyphenate: {
+            title: m.hyphenate_title,
+            description: m.hyphenate_description,
+        },
+        num: { title: m.num_title, description: m.num_description },
+        paradigm: {
+            title: m.paradigm_title,
+            description: m.paradigm_description,
+        },
+        transcribe: {
+            title: m.transcribe_title,
+            description: m.transcribe_description,
+        },
+    };
 </script>
 
 <svelte:head>
-    <title>{langname(lang, $locale)} | Webpipeline</title>
+    <title>{langname(lang, getLocale())} | Webpipeline</title>
 </svelte:head>
 
 <div
@@ -42,12 +71,12 @@
             />
             <div class="flex flex-col">
                 <span class="text-base font-bold xl:text-2xl">
-                    {$t(tool + ".title")}
+                    {button_content[tool].title()}
                 </span>
                 <span
                     class="text-surface-950-50/75 text-sm font-normal italic xl:text-xl"
                 >
-                    {$t(tool + ".description")}
+                    {button_content[tool].description()}
                 </span>
             </div>
         </a>

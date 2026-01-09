@@ -102,9 +102,11 @@ export const tools = [
     //"ortography",
     //"stedsnavnsordbok",
     //"tallordsgenerator",
-];
+] as const;
 
-export const tools_for: { [key: string]: string[] } = {};
+export type Tools = (typeof tools)[number];
+
+export const tools_for: Record<string, Tools[]> = {};
 for (const lang of langs) {
     tools_for[lang] = [];
     if (analysis_langs.has(lang)) tools_for[lang].push("analyze");

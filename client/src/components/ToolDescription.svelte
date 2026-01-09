@@ -1,12 +1,24 @@
 <script lang="ts">
+    import type { Tools } from "$lib/langs";
+    import { m } from "$lib/paraglide/messages";
     import {
         ChevronDown,
         ChevronUp,
         CircleQuestionMarkIcon,
     } from "@lucide/svelte";
     import { Accordion } from "@skeletonlabs/skeleton-svelte";
-    import { t } from "svelte-intl-precompile";
-    let { tool } = $props();
+    let { tool }: { tool: Tools } = $props();
+
+    const instructions = {
+        analyze: m.analyze_instruction,
+        dependency: m.dependency_instruction,
+        disambiguate: m.disambiguate_instruction,
+        generate: m.generate_instruction,
+        hyphenate: m.hyphenate_instruction,
+        num: m.num_instruction,
+        paradigm: m.paradigm_instruction,
+        transcribe: m.transcribe_instruction,
+    };
 </script>
 
 <Accordion collapsible>
@@ -17,7 +29,7 @@
             >
                 <span class="flex flex-row gap-2">
                     <CircleQuestionMarkIcon />
-                    {$t("instruction.title")}
+                    {m.instruction_title()}
                 </span>
                 <Accordion.ItemIndicator class="group">
                     <ChevronUp
@@ -29,7 +41,7 @@
                 </Accordion.ItemIndicator>
             </Accordion.ItemTrigger>
             <Accordion.ItemContent>
-                {$t(tool + ".instruction")}
+                {instructions[tool]()}
             </Accordion.ItemContent>
         </h3>
     </Accordion.Item>

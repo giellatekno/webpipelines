@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { t } from "svelte-intl-precompile";
     import giellatekno_logo from "$assets/giellatekno_logo.svg";
     import uit_logo_sme from "$assets/uit_logo/UiT_Segl_Sam_Hvit.png";
+    import { m } from "$lib/paraglide/messages";
 </script>
 
 <footer
@@ -19,7 +19,7 @@
             class="order-1 col-span-2 flex flex-col justify-between gap-4 text-center text-xs xl:order-2 xl:col-span-1 xl:text-base"
         >
             <div>
-                {$t("feedback")}
+                {m.feedback()}
                 <a
                     href="mailto:giellatekno@uit.no"
                     class="text-primary-300-700 hover:underline"
@@ -28,7 +28,7 @@
                 </a>
             </div>
             <div>
-                {$t("copyright")}
+                {m.copyright()}
             </div>
         </div>
         <img

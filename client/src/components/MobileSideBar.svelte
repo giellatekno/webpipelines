@@ -3,22 +3,28 @@
     import { page } from "$app/state";
     import { Dot, GlobeIcon, InfoIcon, MenuIcon, XIcon } from "@lucide/svelte";
     import { Dialog, Navigation, Portal } from "@skeletonlabs/skeleton-svelte";
-    import { t } from "svelte-intl-precompile";
     import SelectLocale from "./SelectLocale.svelte";
     import { tools_for } from "$lib/langs";
+    import { m } from "$lib/paraglide/messages";
 
     let lang = $derived(page.params.lang);
     let on_lang_page = $derived(lang && page.url.pathname.includes("/" + lang));
 
     const constant_links = $derived([
-        {
-            label: $t("languages"),
-            HTMLProgressElementef: resolve("/"),
-            icon: GlobeIcon,
-        },
-        { label: $t("about"), href: resolve("/about"), icon: InfoIcon },
+        { label: m.languages(), href: resolve("/"), icon: GlobeIcon },
+        { label: m.about(), href: resolve("/about"), icon: InfoIcon },
     ]);
 
+    const tool_titles = {
+        analyze: m.analyze_title,
+        dependency: m.dependency_title,
+        disambiguate: m.disambiguate_title,
+        generate: m.generate_title,
+        hyphenate: m.hyphenate_title,
+        num: m.num_title,
+        paradigm: m.paradigm_title,
+        transcribe: m.transcribe_title,
+    };
     const animBackdrop =
         "transition transition-discrete opacity-0 starting:data-[state=open]:opacity-0 data-[state=open]:opacity-100";
     const animModal =
@@ -71,7 +77,7 @@
                         {#if lang && on_lang_page}
                             <Navigation.Group>
                                 <Navigation.Label class="pl-2">
-                                    {$t(`toolsfor.${lang}`)}
+                                    {m.toolsfor({ iso: lang })}
                                 </Navigation.Label>
                                 {#each tools_for[lang] as tool}
                                     <Dialog.Trigger>
@@ -81,7 +87,7 @@
                                             class="btn hover:preset-tonal w-full justify-start px-2 text-sm"
                                         >
                                             <Dot class="" />
-                                            <span>{$t(tool + ".title")}</span>
+                                            <span>{tool_titles[tool]()}</span>
                                         </a>
                                     </Dialog.Trigger>
                                 {/each}

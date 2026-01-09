@@ -1,9 +1,11 @@
 <script lang="ts">
     import { page } from "$app/state";
-    import { locale, t } from "svelte-intl-precompile";
     import { langname } from "$lib/langnames";
     import { ChevronRight } from "@lucide/svelte";
     import { resolve } from "$app/paths";
+    import { m } from "$lib/paraglide/messages";
+    import { getLocale } from "$lib/paraglide/runtime";
+    import type { Tools } from "$lib/langs";
 
     let { children } = $props();
 
@@ -13,21 +15,37 @@
     let last_part = $derived(
         page.url.pathname.split("/").filter(Boolean).pop() || "",
     );
+
+    const tool_titles = {
+        analyze: m.analyze_title,
+        dependency: m.dependency_title,
+        disambiguate: m.disambiguate_title,
+        generate: m.generate_title,
+        hyphenate: m.hyphenate_title,
+        num: m.num_title,
+        paradigm: m.paradigm_title,
+        transcribe: m.transcribe_title,
+    };
+
+    function isTool(s: string) {
+        return Object.keys(tool_titles).includes(s);
+    }
 </script>
 
 <div class="mx-2 xl:my-4">
     {#if lang === last_part}
-        <h3 class="h5 xl:h3">{$t(`toolsfor.${lang}`)}</h3>
-    {:else}
+        <h3 class="h5 xl:h3">{m.toolsfor({ iso: lang })}</h3>
+    {:else if isTool(last_part)}
+        {@const tool: Tools = last_part as Tools}
         <div class="flex flex-col gap-1 xl:flex-row xl:items-center">
             <span class="flex flex-row items-center gap-1">
                 <a href={resolve(`/${lang}`)} class="xl:h3 h6 hover:underline">
-                    {langname(lang, $locale)}
+                    {langname(lang, getLocale())}
                 </a>
                 <ChevronRight class="size-5 xl:size-8" />
             </span>
 
-            <h3 class="h6 xl:h3">{$t(last_part + ".title")}</h3>
+            <h3 class="h6 xl:h3">{tool_titles[tool]()}</h3>
         </div>
     {/if}
 </div>

@@ -1,12 +1,12 @@
 <script lang="ts">
     import { page } from "$app/state";
-    import { t } from "svelte-intl-precompile";
     import type { PageData } from "./$types";
     import { type SvelteComponent, type Component } from "svelte";
     import Paradigm from "$components/Paradigm.svelte";
     import ErrorBox from "$components/ErrorBox.svelte";
     import FormWrapper from "$components/FormWrapper.svelte";
     import ParadigmForm from "$components/ParadigmForm.svelte";
+    import { m } from "$lib/paraglide/messages";
 
     interface Props {
         data: PageData;
@@ -56,16 +56,15 @@
     }
     let lang_tables = load_tables();
 
-    const tool = "paradigm";
     let format = $state("table");
 </script>
 
 <svelte:head>
-    <title>{$t(tool + ".title")} | Webpipeline</title>
+    <title>{m.paradigm_title()} | Webpipeline</title>
 </svelte:head>
 
 <div class="flex flex-col items-center gap-4">
-    <FormWrapper {tool}>
+    <FormWrapper tool="paradigm">
         <ParadigmForm
             {word}
             {size}

@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { t } from "svelte-intl-precompile";
     import Table from "./Table.svelte";
     import type { ParsedParadigm } from "$lib/parsers";
+    import { m } from "$lib/paraglide/messages";
 
     let { elem }: { elem: ParsedParadigm } = $props();
 </script>
@@ -10,8 +10,8 @@
     <Table>
         <thead>
             <tr class="[&>th]:text-start">
-                <th>{$t("paradigm.tags")}</th>
-                <th>{$t("paradigm.wordform")}</th>
+                <th>{m.paradigm_tags()}</th>
+                <th>{m.paradigm_wordform()}</th>
             </tr>
         </thead>
         <tbody>

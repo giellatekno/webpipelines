@@ -1,6 +1,6 @@
 <script lang="ts">
     import { page } from "$app/state";
-    import { t } from "svelte-intl-precompile";
+    import { m } from "$lib/paraglide/messages";
 </script>
 
 <div class="my-8 flex flex-col items-center">
@@ -11,7 +11,7 @@
             {page.status}: {page.error?.message}
         </h3>
         {#if page.status === 404}
-            <h4 class="h4">{$t("notfound")}</h4>
+            <h4 class="h4">{m.notfound()}</h4>
         {/if}
     </div>
 </div>

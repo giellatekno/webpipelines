@@ -1,6 +1,6 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
-    import { t } from "svelte-intl-precompile";
+    import { m } from "$lib/paraglide/messages";
 
     let { value = $bindable(), rows = 6 } = $props();
 
@@ -35,19 +35,19 @@
         bind:value
         name="q"
         onkeydown={on_textarea_keydown}
-        placeholder={$t("writehere")}
+        placeholder={m.writehere()}
     ></textarea>
     <div class="flex flex-row items-center justify-start gap-2">
         <button class="btn preset-filled-primary-500" type="submit">
-            {$t("submit")}
+            {m.submit()}
         </button>
         <button
             class="btn preset-outlined-error-600-400 hover:preset-tonal-error"
             type="button"
             onclick={on_clear}
         >
-            {$t("clear")}
+            {m.clear()}
         </button>
-        <span class="hidden xl:block">{$t("submit.keys")}</span>
+        <span class="hidden xl:block">{m.submit_keys()}</span>
     </div>
 </form>

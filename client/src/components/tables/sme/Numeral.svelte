@@ -1,21 +1,21 @@
 <script lang="ts">
     import type { ParsedParadigm } from "$lib/parsers";
-    import { t } from "svelte-intl-precompile";
     import { CASES } from "./sme_paradigm_options";
     import { get_entry } from "$lib/utils";
     import Table from "$components/Table.svelte";
+    import { m } from "$lib/paraglide/messages";
 
     let { elem }: { elem: ParsedParadigm } = $props();
 </script>
 
 <div class="flex flex-col gap-2">
-    <h3 class="h4 xl:h3">{$t("partofspeech.numeral")}</h3>
+    <h3 class="h4 xl:h3">{m.partofspeech_numeral()}</h3>
     <Table>
         <thead>
             <tr>
-                <th>{$t("paradigm.case")}</th>
-                <th>{$t("paradigm.singular")}</th>
-                <th>{$t("paradigm.plural")}</th>
+                <th>{m.paradigm_case()}</th>
+                <th>{m.paradigm_singular()}</th>
+                <th>{m.paradigm_plural()}</th>
             </tr>
         </thead>
         <tbody>
@@ -27,7 +27,7 @@
                     {#if !(tag === "Ess")}
                         <tr>
                             <td class="bg-surface-100-900">
-                                {$t(`paradigm.${name}`)}
+                                {m[`paradigm_${name}`]()}
                             </td>
                             <td>
                                 {@html get_entry(`Sg+${tag}`, elem)}
@@ -39,7 +39,7 @@
                     {:else}
                         <tr>
                             <td class="bg-surface-100-900">
-                                {$t(`paradigm.${name}`)}
+                                {m[`paradigm_${name}`]()}
                             </td>
                             <td colspan="2" class="text-center">
                                 {@html get_entry(tag, elem)}

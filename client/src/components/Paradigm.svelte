@@ -1,9 +1,9 @@
 <script lang="ts">
     import { paradigm_parser } from "$lib/parsers";
     import { Tabs } from "@skeletonlabs/skeleton-svelte";
-    import { t } from "svelte-intl-precompile";
     import ParadigmList from "$components/ParadigmList.svelte";
     import type { Component } from "svelte";
+    import { m } from "$lib/paraglide/messages";
     interface Props {
         data: any;
         lang_tables: Promise<Component[] | undefined>;
@@ -26,7 +26,7 @@
     <Tabs {value} onValueChange={(details) => (value = details.value)}>
         {#if keys.length > 1}
             <p class="my-2 self-center font-bold">
-                {$t("paradigm.homonyms", { values: { num: keys.length } })}
+                {m.paradigm_homonyms({ num: keys.length })}
             </p>
         {/if}
         <Tabs.List class="justify-center">
@@ -77,7 +77,7 @@
             </Tabs.Content>
         {:else}
             <div class="flex justify-center">
-                <p>{$t("paradigm.noresults")}</p>
+                <p>{m.paradigm_noresults()}</p>
             </div>
         {/each}
     </Tabs>
@@ -85,21 +85,21 @@
     <p>Error: {error}</p>
 {/await}
 
-{#snippet header_navigation(headers: string[])}
-    {#if headers.length > 0}
-        <div
-            class="card bg-surface-100-900/50 border-surface-400-600 sticky top-1/3 col-span-1 h-fit w-full border p-4 shadow-md"
-        >
-            <h5 class="h5">{$t("paradigm.jumpto")}</h5>
-            <ul class="ml-4 list-disc text-base">
-                {#each headers as header}
-                    <li>
-                        <a href={"#" + header} class="hover:underline">
-                            {$t(`paradigm.${header}`)}
-                        </a>
-                    </li>
-                {/each}
-            </ul>
-        </div>
-    {/if}
-{/snippet}
+<!-- {#snippet header_navigation(headers: string[])} -->
+<!--     {#if headers.length > 0} -->
+<!--         <div -->
+<!--             class="card bg-surface-100-900/50 border-surface-400-600 sticky top-1/3 col-span-1 h-fit w-full border p-4 shadow-md" -->
+<!--         > -->
+<!--             <h5 class="h5">{m.paradigm_jumpto}</h5> -->
+<!--             <ul class="ml-4 list-disc text-base"> -->
+<!--                 {#each headers as header} -->
+<!--                     <li> -->
+<!--                         <a href={"#" + header} class="hover:underline"> -->
+<!--                             {m[`paradigm_${header}`]()} -->
+<!--                         </a> -->
+<!--                     </li> -->
+<!--                 {/each} -->
+<!--             </ul> -->
+<!--         </div> -->
+<!--     {/if} -->
+<!-- {/snippet} -->

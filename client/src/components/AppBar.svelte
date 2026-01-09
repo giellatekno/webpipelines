@@ -1,11 +1,11 @@
 <script lang="ts">
     import { AppBar } from "@skeletonlabs/skeleton-svelte";
-    import { t } from "svelte-intl-precompile";
     import SelectLocale from "./SelectLocale.svelte";
     import { resolve } from "$app/paths";
     import { page } from "$app/state";
     import { GlobeIcon, InfoIcon, WrenchIcon } from "@lucide/svelte";
     import MobileSideBar from "./MobileSideBar.svelte";
+    import { m } from "$lib/paraglide/messages";
 </script>
 
 <AppBar
@@ -26,7 +26,7 @@
                 class="xl:btn hover:preset-tonal ml-4 hidden"
             >
                 <GlobeIcon class="size-6" />
-                {$t("languages")}
+                {m.languages()}
             </a>
             {#if page.params.lang}
                 <a
@@ -34,7 +34,7 @@
                     class="xl:btn hover:preset-tonal hidden"
                 >
                     <WrenchIcon class="size-6" />
-                    {$t("toolspage")}
+                    {m.toolspage()}
                 </a>
             {/if}
         </AppBar.Headline>
@@ -42,7 +42,7 @@
         <AppBar.Trail class="hidden h-full flex-row gap-4 xl:flex">
             <a class="btn hover:preset-tonal" href={resolve("/about")}>
                 <InfoIcon />
-                {$t("about")}
+                {m.about()}
             </a>
             <SelectLocale />
         </AppBar.Trail>

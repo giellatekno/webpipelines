@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { t } from "svelte-intl-precompile";
     import type { PageData } from "./$types";
     import Table from "$components/Table.svelte";
     import FormWrapper from "$components/FormWrapper.svelte";
     import TextForm from "$components/TextForm.svelte";
+    import { m } from "$lib/paraglide/messages";
 
     interface Props {
         data: PageData;
@@ -11,16 +11,15 @@
 
     let { data }: Props = $props();
 
-    const tool = "hyphenate";
     let value = $derived(data.q || "");
 </script>
 
 <svelte:head>
-    <title>{$t(tool + ".title")} | Webpipeline</title>
+    <title>{m.hyphenate_title()} | Webpipeline</title>
 </svelte:head>
 
 <div class="flex flex-col items-center gap-4">
-    <FormWrapper {tool}>
+    <FormWrapper tool="hyphenate">
         <TextForm bind:value />
     </FormWrapper>
 

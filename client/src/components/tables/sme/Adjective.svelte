@@ -1,9 +1,9 @@
 <script lang="ts">
     import type { ParsedParadigm } from "$lib/parsers";
     import { get_entry } from "$lib/utils";
-    import { t } from "svelte-intl-precompile";
     import { ADJ_GRADES, CASES } from "./sme_paradigm_options";
     import Table from "$components/Table.svelte";
+    import { m } from "$lib/paraglide/messages";
 
     let { elem }: { elem: ParsedParadigm } = $props();
 
@@ -68,13 +68,13 @@
 {#if is_ordinal(elem)}
     {@const prefix = "Ord+"}
     <div class="flex flex-col gap-2">
-        <h3 class="h4 xl:h3">{$t("paradigm.ordinal")}</h3>
+        <h3 class="h4 xl:h3">{m.paradigm_ordinal()}</h3>
         <div class="w-fit">
             <Table>
                 <tbody>
                     <tr>
                         <th>
-                            {$t("paradigm.attribute")}
+                            {m.paradigm_attribute()}
                         </th>
                         <td>{@html get_entry(prefix + "Attr", elem)}</td>
                     </tr>
@@ -84,9 +84,9 @@
         <Table>
             <thead>
                 <tr>
-                    <th>{$t("paradigm.case")}</th>
-                    <th>{$t("paradigm.singular")}</th>
-                    <th>{$t("paradigm.plural")}</th>
+                    <th>{m.paradigm_case()}</th>
+                    <th>{m.paradigm_singular()}</th>
+                    <th>{m.paradigm_plural()}</th>
                 </tr>
             </thead>
             <tbody>
@@ -98,7 +98,7 @@
                         {#if !(tag === "Ess")}
                             <tr>
                                 <td class="bg-surface-100-900">
-                                    {$t(`paradigm.${name}`)}
+                                    {m.paradigm_cases({ case: name })}
                                 </td>
                                 <td>
                                     {@html get_entry(
@@ -116,7 +116,7 @@
                         {:else}
                             <tr>
                                 <td class="bg-surface-100-900">
-                                    {$t(`paradigm.${name}`)}
+                                    {m.paradigm_cases({ case: name })}
                                 </td>
                                 <td colspan="2" class="text-center">
                                     {@html get_entry(prefix + tag, elem)}
@@ -134,13 +134,13 @@
         {@const grade_exists = has_grade(grade_tag, elem)}
         {#if grade_exists}
             <div class="flex flex-col gap-2">
-                <h3 class="h4 xl:h3">{$t(`paradigm.${grade_name}`)}</h3>
+                <h3 class="h4 xl:h3">{m[`paradigm_${grade_name}`]()}</h3>
                 <div class="w-fit">
                     <Table>
                         <tbody>
                             <tr>
                                 <th>
-                                    {$t("paradigm.attribute")}
+                                    {m.paradigm_attribute()}
                                 </th>
                                 <td>
                                     {@html get_entry(prefix + "Attr", elem)}
@@ -152,9 +152,9 @@
                 <Table>
                     <thead>
                         <tr>
-                            <th>{$t("paradigm.case")}</th>
-                            <th>{$t("paradigm.singular")}</th>
-                            <th>{$t("paradigm.plural")}</th>
+                            <th>{m.paradigm_case()}</th>
+                            <th>{m.paradigm_singular()}</th>
+                            <th>{m.paradigm_plural()}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -164,7 +164,7 @@
                                 {#if !(tag === "Ess")}
                                     <tr>
                                         <td class="bg-surface-100-900">
-                                            {$t(`paradigm.${name}`)}
+                                            {m[`paradigm_${name}`]()}
                                         </td>
                                         <td>
                                             {@html get_entry(
@@ -182,7 +182,7 @@
                                 {:else}
                                     <tr>
                                         <td class="bg-surface-100-900">
-                                            {$t(`paradigm.${name}`)}
+                                            {m[`paradigm_${name}`]()}
                                         </td>
                                         <td colspan="2" class="text-center">
                                             {@html get_entry(

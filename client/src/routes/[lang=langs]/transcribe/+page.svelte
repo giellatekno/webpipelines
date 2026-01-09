@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { t } from "svelte-intl-precompile";
     import type { PageData } from "./$types";
     import ErrorBox from "$components/ErrorBox.svelte";
     import FormWrapper from "$components/FormWrapper.svelte";
     import TextForm from "$components/TextForm.svelte";
+    import { m } from "$lib/paraglide/messages";
 
     interface Props {
         data: PageData;
@@ -12,15 +12,14 @@
     let { data }: Props = $props();
 
     let value = $derived(data.q || "");
-    const tool = "transcribe";
 </script>
 
 <svelte:head>
-    <title>{$t(tool + ".title")} | Webpipeline</title>
+    <title>{m.transcribe_title()} | Webpipeline</title>
 </svelte:head>
 
 <div class="flex flex-col items-center gap-4">
-    <FormWrapper {tool}>
+    <FormWrapper tool="transcribe">
         <TextForm bind:value />
     </FormWrapper>
 
