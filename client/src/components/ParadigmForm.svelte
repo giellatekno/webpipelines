@@ -2,7 +2,7 @@
     import { goto } from "$app/navigation";
     import { m } from "$lib/paraglide/messages";
 
-    let { word, size, pos, format = $bindable(), has_tables } = $props();
+    let { word, pos, format = $bindable(), has_tables } = $props();
 
     const poses = {
         any: m.partofspeech_any,
@@ -18,24 +18,18 @@
         //Adp: "Adp",
     } as const;
 
-    const paradigm_sizes = [
-        [m.paradigmsize_minimal, "minimal"],
-        [m.paradigmsize_standard, "standard"],
-        [m.paradigmsize_full, "full"],
-    ] as const;
-
     let input: HTMLInputElement;
 
     async function on_radio_change() {
         if (word) {
-            goto(`?word=${word}&size=${size}&pos=${pos}`);
+            goto(`?word=${word}&pos=${pos}`);
             input.focus();
         }
     }
 
     async function on_submit(ev: SubmitEvent) {
         ev.preventDefault();
-        goto(`?word=${word}&size=${size}&pos=${pos}`);
+        goto(`?word=${word}&pos=${pos}`);
         input.focus();
     }
 </script>
@@ -44,29 +38,6 @@
     <div
         class="flex flex-col items-center gap-2 xl:flex-row xl:justify-center xl:gap-4"
     >
-        <div
-            class="grid grid-cols-2 items-center gap-2 xl:grid-cols-1 xl:gap-0"
-        >
-            <label
-                for="paradigmsize-select"
-                class="label-text text-right xl:text-left xl:text-sm"
-            >
-                {m.paradigmsize()}:
-            </label>
-            <select
-                class="select bg-surface-50-950 text-sm xl:text-base"
-                bind:value={size}
-                onchange={on_radio_change}
-                name="size"
-                id="paradigmsize-select"
-            >
-                {#each paradigm_sizes as [title, value]}
-                    <option {value}>
-                        {title()}
-                    </option>
-                {/each}
-            </select>
-        </div>
         <div
             class="grid grid-cols-2 items-center gap-2 xl:grid-cols-1 xl:gap-0"
         >

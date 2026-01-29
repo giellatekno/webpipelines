@@ -1,4 +1,5 @@
 {
+    "$schema": "https://inlang.com/schema/inlang-message-format",
     "languagetools": "Språkverktøy",
     "developers": "Utviklere",
     "about": "Om siden",
@@ -82,6 +83,7 @@
     "paradigm_table": "Tabell",
     "paradigm_list": "Liste",
     "paradigm_format": "Format",
+    "paradigm_empty": "",
 
     "paradigm_possessivesuffixes": "Possessive suffikser",
     "paradigm_generalforms": "Generelle former",
@@ -106,8 +108,11 @@
     "paradigm_pluperfect": "Pluskvamperfektum",
     "paradigm_negative": "Negativ",
     "paradigm_connegative": "Nektelsesform",
+    "paradigm_active": "Aktiv",
+    "paradigm_passive": "Passiv",
     "paradigm_nonfinite": "Infinitte former",
     "paradigm_infinite": "Infinitiv",
+    "paradigm_thirdinfinite": "Tredje infinitiv",
     "paradigm_perfectparticiple": "Perfektum partisipp",
     "paradigm_presentparticiple": "Presens partisipp",
     "paradigm_verbabessive": "Verbabessiv",
@@ -126,7 +131,9 @@
     "paradigm_interrogative": "Spørrende pronomen",
     "paradigm_relative": "Relativt pronomen",
     "paradigm_reflexive": "Refleksivt pronomen",
+    "paradigm_reciprocal": "Resiprokt pronomen",
     "paradigm_indefinite": "Ubestemt pronomen",
+    "paradigm_quantifier": "Kvantor pronomen",
 
     "paradigm_case": "Kasus",
     "paradigm_nominative": "Nominativ",

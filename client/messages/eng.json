@@ -1,4 +1,5 @@
 {
+    "$schema": "https://inlang.com/schema/inlang-message-format",
     "languagetools": "Language tools",
     "developers": "Developers",
     "about": "About",
@@ -75,6 +76,7 @@
     "paradigm_table": "Table",
     "paradigm_list": "List",
     "paradigm_format": "Format",
+    "paradigm_empty": "",
 
     "partofspeech": "Part of speech",
     "partofspeech_any": "Any",
@@ -86,6 +88,7 @@
     "partofspeech_numeral": "Numeral",
 
     "paradigm_possessivesuffixes": "Possessive suffixes",
+    "paradigm_owner": "Owner",
     "paradigm_generalforms": "General forms",
 
     "paradigm_attribute": "Attribute",
@@ -109,8 +112,11 @@
     "paradigm_pluperfect": "Pluperfect",
     "paradigm_negative": "Negative",
     "paradigm_connegative": "Connegative",
+    "paradigm_active": "Active",
+    "paradigm_passive": "Passive",
     "paradigm_nonfinite": "Nonfinite forms",
     "paradigm_infinite": "Infinite",
+    "paradigm_thirdinfinite": "Third infinite",
     "paradigm_perfectparticiple": "Perfect participle",
     "paradigm_presentparticiple": "Present participle",
     "paradigm_verbabessive": "Verb abessive",
@@ -129,30 +135,26 @@
     "paradigm_interrogative": "Interrogative pronoun",
     "paradigm_relative": "Relative pronoun",
     "paradigm_reflexive": "Reflexive pronoun",
+    "paradigm_reciprocal": "Reciprocal pronoun",
     "paradigm_indefinite": "Indefinite pronoun",
+    "paradigm_quantifier": "Quantifier pronoun",
 
     "paradigm_case": "Case",
-    "paradigm_cases": [
-        {
-            "match": {
-                "case=ablative": "Ablative",
-                "case=abessive": "Abessive",
-                "case=accusative": "Accusative",
-                "case=adessive": "Adessive",
-                "case=allative": "Allative",
-                "case=comitative": "Comitative",
-                "case=elative": "Elative",
-                "case=essive": "Essive",
-                "case=genitive": "Genitive",
-                "case=illative": "Illative",
-                "case=inessive": "Inessive",
-                "case=locative": "Locative",
-                "case=nominative": "Nominative",
-                "case=partitive": "Partitive",
-                "case=translative": "Translative"
-            }
-        }
-    ],
+    "paradigm_ablative": "Ablative",
+    "paradigm_abessive": "Abessive",
+    "paradigm_accusative": "Accusative",
+    "paradigm_adessive": "Adessive",
+    "paradigm_allative": "Allative",
+    "paradigm_comitative": "Comitative",
+    "paradigm_elative": "Elative",
+    "paradigm_essive": "Essive",
+    "paradigm_genitive": "Genitive",
+    "paradigm_illative": "Illative",
+    "paradigm_inessive": "Inessive",
+    "paradigm_locative": "Locative",
+    "paradigm_nominative": "Nominative",
+    "paradigm_partitive": "Partitive",
+    "paradigm_translative": "Translative",
 
     "paradigm_number": "Number",
     "paradigm_singular": "Singular",

@@ -1,5 +1,3 @@
-import type { ParsedParadigm } from "./parsers";
-
 export const POS_TAGS: string[] = [
     "A",
     "Adv",
@@ -40,28 +38,4 @@ export function convert_searchtext(text: string, lang: string) {
         return res;
     }
     return text;
-}
-
-export function get_usage(lang: string | undefined, $t: (_: string) => string) {
-    const lang_specific = $t(`usage.${lang}`);
-    if (lang_specific !== `usage.${lang}`) {
-        return lang_specific;
-    } else {
-        return "";
-        // const fallback = $t("usage");
-        // return fallback;
-    }
-}
-
-export function get_entry(tags: string, elem: ParsedParadigm, help_verb = "") {
-    const wordforms = elem.wordforms.get(tags);
-    if (!wordforms) return "—";
-    if (help_verb) {
-        return Array.from(wordforms)
-            .map((wordform) => {
-                return help_verb + " " + wordform;
-            })
-            .join("<br>");
-    }
-    return Array.from(wordforms).join("<br>");
 }

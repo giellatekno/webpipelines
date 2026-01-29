@@ -2,15 +2,19 @@
     import { paradigm_parser } from "$lib/parsers";
     import { Tabs } from "@skeletonlabs/skeleton-svelte";
     import ParadigmList from "$components/ParadigmList.svelte";
-    import type { Component } from "svelte";
     import { m } from "$lib/paraglide/messages";
+    import { getParadigmSchema } from "$lib/paradigms/registry";
+    import { page } from "$app/state";
+    import TableConstructor from "./TableConstructor.svelte";
+
     interface Props {
         data: any;
-        lang_tables: Promise<Component[] | undefined>;
         format: string;
     }
 
-    let { data, lang_tables, format }: Props = $props();
+    let { data, format }: Props = $props();
+
+    let lang = $derived(page.params.lang || "");
 
     const paradigms = $derived(paradigm_parser(data));
 
@@ -20,71 +24,44 @@
     let headers = $state([]);
 </script>
 
-{#await lang_tables}
-    <p>loading tables...</p>
-{:then components}
-    <Tabs {value} onValueChange={(details) => (value = details.value)}>
-        {#if keys.length > 1}
-            <p class="my-2 self-center font-bold">
-                {m.paradigm_homonyms({ num: keys.length })}
-            </p>
-        {/if}
-        <Tabs.List class="justify-center">
-            {#if keys.length > 1}
-                {#each keys as key}
-                    <Tabs.Trigger class="hover:preset-tonal" value={key}>
-                        {key}
-                    </Tabs.Trigger>
-                {/each}
-            {/if}
-            <Tabs.Indicator />
-        </Tabs.List>
+<Tabs {value} onValueChange={(details) => (value = details.value)}>
+    {#if keys.length > 1}
+        <p class="my-2 self-center font-bold">
+            {m.paradigm_homonyms({ num: keys.length })}
+        </p>
+    {/if}
+    <Tabs.List class="justify-center">
         {#each keys as key}
-            {@const elem = paradigms[key]}
-            <Tabs.Content value={key}>
-                {#if components && format === "table"}
-                    {@const [Adjective, Noun, Numeral, Pronoun, Verb] =
-                        components}
-                    <div
-                        class="grid grid-cols-1 gap-8 xl:grid-cols-[1fr_auto_1fr]"
-                    >
-                        <div>
-                            <!-- {@render header_navigation(headers)} -->
-                        </div>
-                        <div
-                            class="flex w-full flex-col items-center gap-16 xl:items-start [&_h3]:scroll-mt-24"
-                        >
-                            {#if elem.pos === "A"}
-                                <Adjective {elem} />
-                            {:else if elem.pos === "N"}
-                                <Noun {elem} />
-                            {:else if elem.pos === "Num"}
-                                <Numeral {elem} />
-                            {:else if elem.pos === "Pron"}
-                                <Pronoun {elem} />
-                            {:else if elem.pos === "V"}
-                                <Verb {elem} bind:headers />
-                            {:else}
-                                <span>
-                                    [l6e] Can't generate table for {key}
-                                </span>
-                            {/if}
-                        </div>
-                    </div>
+            <Tabs.Trigger class="hover:preset-tonal" value={key}>
+                {key}
+            </Tabs.Trigger>
+        {/each}
+        <Tabs.Indicator />
+    </Tabs.List>
+    {#each keys as key}
+        {@const elem = paradigms[key]}
+        {@const schemaPromise = getParadigmSchema(
+            lang,
+            elem.pos,
+            elem.subclass,
+        )}
+        <Tabs.Content value={key}>
+            {#await schemaPromise}
+                Loading tables...
+            {:then schema}
+                {#if schema && format === "table"}
+                    <TableConstructor {schema} {elem} />
                 {:else}
                     <ParadigmList {elem} />
                 {/if}
-            </Tabs.Content>
-        {:else}
-            <div class="flex justify-center">
-                <p>{m.paradigm_noresults()}</p>
-            </div>
-        {/each}
-    </Tabs>
-{:catch error}
-    <p>Error: {error}</p>
-{/await}
-
+            {/await}
+        </Tabs.Content>
+    {:else}
+        <div class="flex justify-center">
+            <p>{m.paradigm_noresults()}</p>
+        </div>
+    {/each}
+</Tabs>
 <!-- {#snippet header_navigation(headers: string[])} -->
 <!--     {#if headers.length > 0} -->
 <!--         <div -->

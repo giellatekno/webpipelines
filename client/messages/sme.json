@@ -1,4 +1,5 @@
 {
+    "$schema": "https://inlang.com/schema/inlang-message-format",
     "languagetools": "Giellareaiddut",
     "developers": "Ovdánahtit",
     "about": "Siiddu birra",
@@ -75,6 +76,7 @@
     "paradigm_table": "Tabealla",
     "paradigm_list": "Listu",
     "paradigm_format": "Formáhtta",
+    "paradigm_empty": "",
 
     "partofspeech": "Sátneluohkká",
     "partofspeech_any": "Váikko makkár",
@@ -109,8 +111,11 @@
     "paradigm_pluperfect": "Pluskvamperfeakta",
     "paradigm_negative": "Biehttaleapmi",
     "paradigm_connegative": "Biehttalanhápmi",
+    "paradigm_active": "Aktiiva",
+    "paradigm_passive": "Passiiva",
     "paradigm_nonfinite": "Infinihtta hámit",
     "paradigm_infinite": "Infinitiiva",
+    "paradigm_thirdinfinite": "Goalmmát infinitiiva",
     "paradigm_perfectparticiple": "Perfeavtta partisihppa",
     "paradigm_presentparticiple": "Preseansa partisihppa",
     "paradigm_verbabessive": "Vearbaabessiiva",
@@ -129,7 +134,9 @@
     "paradigm_interrogative": "Gažaldatpronomen",
     "paradigm_relative": "Relatiiva pronomen",
     "paradigm_reflexive": "Refleksiiva pronomen",
+    "paradigm_reciprocal": "Resiprohka pronomen",
     "paradigm_indefinite": "Eahpemearálaš pronomen",
+    "paradigm_quantifier": "Kvantor pronomen",
 
     "paradigm_case": "Kásus",
     "paradigm_ablative": "Ablatiiva",

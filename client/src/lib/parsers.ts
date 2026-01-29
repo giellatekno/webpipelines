@@ -223,6 +223,7 @@ export function paradigm_parser(objs: ParadigmResults) {
         "G3",
         "G7",
         "NomAg",
+        "Ord",
         "Pers",
         "Rel",
         "Interr",

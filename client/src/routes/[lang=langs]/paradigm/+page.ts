@@ -15,13 +15,13 @@ export const load: PageLoad = async ({ url, params, fetch }) => {
     const pos = search_params.get("pos") || "any";
 
     interface LoadResponse {
-        size: string;
+        // size: string;
         pos: string;
         word: string;
         error?: string;
         results?: Object[];
     }
-    let load_response: LoadResponse = { size, pos, word };
+    let load_response: LoadResponse = { pos, word };
 
     console.assert(typeof word === "string");
 
@@ -30,7 +30,7 @@ export const load: PageLoad = async ({ url, params, fetch }) => {
     }
 
     const api_path = `paradigm/${lang}/${word}`;
-    const api_url = `${env.PUBLIC_API_ROOT}/${api_path}?size=${size}&pos=${pos}&format=json`;
+    const api_url = `${env.PUBLIC_API_ROOT}/${api_path}?size=full&pos=${pos}&format=json`;
 
     try {
         console.log("Fetching from API:", api_url);
