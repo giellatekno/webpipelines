@@ -94,39 +94,6 @@ export function generateReflexiveBlock(caseName: Function, caseTag: string) {
     return block;
 }
 
-export function generateVerbBlock(
-    title: Function,
-    mood: string,
-    tense: string,
-    mainTag: string,
-    isPerfect = false,
-): TableBlock {
-    return {
-        title,
-        headers: [m.paradigm_person, m.paradigm_positive, m.paradigm_negative],
-        rows: PERSONS.map((p) => {
-            let auxStem = "";
-            if (isPerfect) {
-                if (mood === "Ind")
-                    auxStem = tense === "Prs" ? p.auxPrs : p.auxPrt;
-                if (mood === "Cond") auxStem = p.cond;
-            }
-
-            const negAux =
-                mood === "Cond" ? "livčče" : tense === "Prs" ? "leat" : "lean";
-
-            return {
-                label: p.label,
-                tags: [
-                    isPerfect ? mainTag : `${mood}+${tense}+${p.tag}`,
-                    mainTag,
-                ],
-                prefixes: [auxStem, isPerfect ? `${p.neg} ${negAux}` : p.neg],
-            };
-        }),
-    };
-}
-
 export function generatePronounBlock(numTag: string) {
     return {
         showIf: has_tags(numTag),

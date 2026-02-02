@@ -91,42 +91,6 @@ export function generateReflexiveBlock(caseName: Function, caseTag: string) {
     };
 }
 
-export function generateVerbBlock(
-    title: Function,
-    mood: string,
-    tense: string,
-    mainTag: string,
-    isPerfect = false,
-): TableBlock {
-    return {
-        title,
-        headers: [m.paradigm_person, m.paradigm_positive, m.paradigm_negative],
-        rows: PERSONS.map((p) => {
-            let auxStem = "";
-            if (isPerfect) {
-                auxStem = tense === "Prs" ? p.auxPrs : p.auxPrt;
-            }
-
-            const negAux =
-                tense === "Prs"
-                    ? `${p.negPrs} leah`
-                    : `${p.negPrs} ${p.auxPrt}`;
-
-            return {
-                label: p.label,
-                tags: [
-                    isPerfect ? mainTag : `${mood}+${tense}+${p.tag}`,
-                    mainTag,
-                ],
-                prefixes: [
-                    auxStem,
-                    isPerfect ? negAux : tense === "Prs" ? p.negPrs : p.negPrt,
-                ],
-            };
-        }),
-    };
-}
-
 export function generatePronounBlock(persTag: string): TableBlock {
     return {
         showIf: has_tags(persTag),
