@@ -11,13 +11,13 @@ export interface TableBlock {
     title?: Function;
     headers: Function[];
     rows: Row[];
-    strict?: boolean; // Only render full row if first element is present. (e.g. imperative)
     showIf?: (elem: ParsedParadigm) => boolean;
 }
 
 export interface TableSection {
     title: Function;
     tables: TableBlock[];
+    validateRows?: boolean; // Limit which rows to render based on first row
     showIf?: (elem: ParsedParadigm) => boolean;
 }
 

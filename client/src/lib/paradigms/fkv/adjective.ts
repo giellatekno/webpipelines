@@ -28,7 +28,7 @@ const schema: LanguageSchema = {
         },
         {
             title: m.paradigm_superlative,
-            showIf: has_tags("Der/Superl"),
+            showIf: has_tags("Superl"),
             tables: [
                 {
                     headers: [
@@ -38,7 +38,7 @@ const schema: LanguageSchema = {
                     ],
                     rows: CASES.map((c) => ({
                         label: c.label,
-                        tags: [`Sg+Compar+${c.tag}`, `Pl+Compar+${c.tag}`],
+                        tags: [`Sg+Superl+${c.tag}`, `Pl+Superl+${c.tag}`],
                     })),
                 },
             ],

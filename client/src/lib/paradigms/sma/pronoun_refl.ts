@@ -1,6 +1,6 @@
 import { m } from "$lib/paraglide/messages";
 import type { LanguageSchema } from "../types";
-import { generateReflexiveSection } from "./helpers";
+import { generateReflexiveBlock } from "./helpers";
 
 const schema: LanguageSchema = {
     sections: [
@@ -16,12 +16,12 @@ const schema: LanguageSchema = {
                         { label: m.paradigm_plural, tags: ["Pl+Nom"] },
                     ],
                 },
-                generateReflexiveSection(m.paradigm_accusative, "Acc"),
-                generateReflexiveSection(m.paradigm_genitive, "Gen"),
-                generateReflexiveSection(m.paradigm_illative, "Ill"),
-                generateReflexiveSection(m.paradigm_inessive, "Ine"),
-                generateReflexiveSection(m.paradigm_elative, "Ela"),
-                generateReflexiveSection(m.paradigm_comitative, "Com"),
+                generateReflexiveBlock(m.paradigm_accusative, "Acc"),
+                generateReflexiveBlock(m.paradigm_genitive, "Gen"),
+                generateReflexiveBlock(m.paradigm_illative, "Ill"),
+                generateReflexiveBlock(m.paradigm_inessive, "Ine"),
+                generateReflexiveBlock(m.paradigm_elative, "Ela"),
+                generateReflexiveBlock(m.paradigm_comitative, "Com"),
             ],
         },
     ],

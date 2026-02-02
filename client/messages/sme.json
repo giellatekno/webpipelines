@@ -103,6 +103,8 @@
 
     "paradigm_indicative": "Indikatiiva",
     "paradigm_imperative": "Imperatiiva",
+    "paradigm_imperative_i": "Imperatiiva I",
+    "paradigm_imperative_ii": "Imperatiiva II",
     "paradigm_conditional": "Konditionála",
     "paradigm_potential": "Potentiála",
     "paradigm_present": "Preseansa",
@@ -114,7 +116,9 @@
     "paradigm_active": "Aktiiva",
     "paradigm_passive": "Passiiva",
     "paradigm_nonfinite": "Infinihtta hámit",
+
     "paradigm_infinite": "Infinitiiva",
+    "paradigm_firstinfinite": "Vuosttaš infinitiiva",
     "paradigm_thirdinfinite": "Goalmmát infinitiiva",
     "paradigm_perfectparticiple": "Perfeavtta partisihppa",
     "paradigm_presentparticiple": "Preseansa partisihppa",

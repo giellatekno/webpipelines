@@ -1,8 +1,7 @@
 <script lang="ts">
     import { page } from "$app/state";
     import type { PageData } from "./$types";
-    import { type SvelteComponent, type Component } from "svelte";
-    import Paradigm from "$components/Paradigm.svelte";
+    import ParadigmWrapper from "$components/ParadigmWrapper.svelte";
     import ErrorBox from "$components/ErrorBox.svelte";
     import FormWrapper from "$components/FormWrapper.svelte";
     import ParadigmForm from "$components/ParadigmForm.svelte";
@@ -33,7 +32,7 @@
     </FormWrapper>
 
     {#if data.results}
-        <Paradigm data={data.results} {format} />
+        <ParadigmWrapper data={data.results} {format} />
     {:else if data.error}
         <ErrorBox error={data.error} />
     {/if}

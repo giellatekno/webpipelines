@@ -1,29 +1,32 @@
 import { m } from "$lib/paraglide/messages";
 import { has_tags } from "../paradigm_utils";
 import type { LanguageSchema } from "../types";
-import { buildVerbBlock } from "./helpers";
+import { generateVerbBlock } from "./helpers";
 
 // prettier-ignore
 const schema: LanguageSchema = {
     sections: [
         {
             title: m.paradigm_indicative,
+            validateRows: true,
             tables: [
-                buildVerbBlock(m.paradigm_present, "Ind", "Prs", "Ind+Prs+ConNeg"),
-                buildVerbBlock(m.paradigm_perfect, "Ind", "Prs", "PrfPrc", true),
-                buildVerbBlock(m.paradigm_preterite, "Ind", "Prt", "Ind+Prt+ConNeg"),
-                buildVerbBlock(m.paradigm_pluperfect, "Ind", "Prt", "PrfPrc", true),
+                generateVerbBlock(m.paradigm_present, "Ind", "Prs", "Ind+Prs+ConNeg"),
+                generateVerbBlock(m.paradigm_perfect, "Ind", "Prs", "PrfPrc", true),
+                generateVerbBlock(m.paradigm_preterite, "Ind", "Prt", "Ind+Prt+ConNeg"),
+                generateVerbBlock(m.paradigm_pluperfect, "Ind", "Prt", "PrfPrc", true),
             ],
         },
         {
             title: m.paradigm_conditional,
+            validateRows: true,
             tables: [
-                buildVerbBlock(m.paradigm_present, "Cond", "Prs", "Cond+Prs+ConNeg"),
-                buildVerbBlock(m.paradigm_perfect, "Cond", "Prs", "PrfPrc", true),
+                generateVerbBlock(m.paradigm_present, "Cond", "Prs", "Cond+Prs+ConNeg"),
+                generateVerbBlock(m.paradigm_perfect, "Cond", "Prs", "PrfPrc", true),
             ],
         },
         {
             title: m.paradigm_imperative,
+            validateRows: true,
             tables: [
                 {
                     headers: [m.paradigm_person, m.paradigm_positive, m.paradigm_negative],
@@ -43,8 +46,9 @@ const schema: LanguageSchema = {
         },
         {
             title: m.paradigm_potential,
+            validateRows: true,
             tables: [
-                buildVerbBlock(m.paradigm_present, "Pot", "Prs", "Pot+Prs+ConNeg"),
+                generateVerbBlock(m.paradigm_present, "Pot", "Prs", "Pot+Prs+ConNeg"),
                 {
                     showIf: has_tags("Pot", "Prt"),
                     title: m.paradigm_preterite,

@@ -5,7 +5,7 @@
     import { m } from "$lib/paraglide/messages";
     import { getParadigmSchema } from "$lib/paradigms/registry";
     import { page } from "$app/state";
-    import TableConstructor from "./TableConstructor.svelte";
+    import ParadigmTable from "./ParadigmTable.svelte";
 
     interface Props {
         data: any;
@@ -50,7 +50,7 @@
                 Loading tables...
             {:then schema}
                 {#if schema && format === "table"}
-                    <TableConstructor {schema} {elem} />
+                    <ParadigmTable {schema} {elem} />
                 {:else}
                     <ParadigmList {elem} />
                 {/if}

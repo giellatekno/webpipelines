@@ -104,6 +104,8 @@
 
     "paradigm_indicative": "Indicative",
     "paradigm_imperative": "Imperative",
+    "paradigm_imperative_i": "Imperative I",
+    "paradigm_imperative_ii": "Imperative II",
     "paradigm_conditional": "Conditional",
     "paradigm_potential": "Potential",
     "paradigm_present": "Present",
@@ -114,8 +116,10 @@
     "paradigm_connegative": "Connegative",
     "paradigm_active": "Active",
     "paradigm_passive": "Passive",
+
     "paradigm_nonfinite": "Nonfinite forms",
     "paradigm_infinite": "Infinite",
+    "paradigm_firstinfinite": "First infinite",
     "paradigm_thirdinfinite": "Third infinite",
     "paradigm_perfectparticiple": "Perfect participle",
     "paradigm_presentparticiple": "Present participle",

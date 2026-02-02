@@ -1,25 +1,26 @@
 import { m } from "$lib/paraglide/messages";
 import type { LanguageSchema } from "../types";
-import { buildVerbBlock } from "./helpers";
+import { generateVerbBlock } from "./helpers";
 
 // prettier-ignore
 const schema: LanguageSchema = {
     sections: [
         {
             title: m.paradigm_indicative,
+            validateRows: true,
             tables: [
-                buildVerbBlock(m.paradigm_present, "Ind", "Prs", "ConNeg"),
-                buildVerbBlock(m.paradigm_perfect, "Ind", "Prs", "PrfPrc", true),
-                buildVerbBlock(m.paradigm_preterite, "Ind", "Prt", "ConNeg"),
-                buildVerbBlock(m.paradigm_pluperfect, "Ind", "Prt", "PrfPrc", true),
+                generateVerbBlock(m.paradigm_present, "Ind", "Prs", "ConNeg"),
+                generateVerbBlock(m.paradigm_perfect, "Ind", "Prs", "PrfPrc", true),
+                generateVerbBlock(m.paradigm_preterite, "Ind", "Prt", "ConNeg"),
+                generateVerbBlock(m.paradigm_pluperfect, "Ind", "Prt", "PrfPrc", true),
             ],
         },
         {
             title: m.paradigm_imperative,
+            validateRows: true,
             tables: [
                 {
-                    strict: true,
-                    headers: [m.paradigm_person, m.paradigm_positive, m.paradigm_imperative, m.paradigm_imperative],
+                    headers: [m.paradigm_person, m.paradigm_positive, m.paradigm_imperative_i, m.paradigm_imperative_ii],
                     rows: [
                         { label: "manne", tags: ["Imprt+Sg1", "ConNeg", "ConNeg"], prefixes: ["", "aelliem", "ollem"] },
                         { label: "datne", tags: ["Imprt+Sg2", "ConNeg", "ConNeg"], prefixes: ["", "aellieh", "ollh"] },

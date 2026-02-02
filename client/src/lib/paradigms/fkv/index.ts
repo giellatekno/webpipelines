@@ -39,7 +39,7 @@ export async function getFkvSchema(
                     const demMod = await import("./pronoun_dem");
                     return demMod.default;
                 case "Indef":
-                    const indefMod = await import("./pronoun_indef");
+                    const indefMod = await import("./pronoun_qu");
                     return indefMod.default;
                 case "Interr":
                     const interrMod = await import("./pronoun_interr");
@@ -47,6 +47,9 @@ export async function getFkvSchema(
                 case "Pers":
                     const persMod = await import("./pronoun_pers");
                     return persMod.default;
+                case "Qu":
+                    const quMod = await import("./pronoun_qu");
+                    return quMod.default;
                 case "Recipr":
                     const reciprMod = await import("./pronoun_recipr");
                     return reciprMod.default;

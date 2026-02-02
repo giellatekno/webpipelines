@@ -1,4 +1,5 @@
 import { m } from "$lib/paraglide/messages";
+import { has_tags } from "../paradigm_utils";
 import type { TableBlock } from "../types";
 
 export const SME_DEFAULT_CASE_TABLE: TableBlock = {
@@ -45,7 +46,7 @@ const PERSONS = [
     { label: "sii/dat", pxLabel: "sin", tag: "Pl3", neg: "eai", auxPrs: "leat", auxPrt: "ledje", cond: "livčče" },
 ];
 
-export function generatePossessiveSection(
+export function generatePossessiveBlock(
     caseName: Function,
     caseTag: string,
 ): TableBlock {
@@ -53,7 +54,7 @@ export function generatePossessiveSection(
         return {
             title: caseName,
             headers: [m.paradigm_owner, m.paradigm_singular, m.paradigm_plural],
-            rows: PERSONS.map((pers, i) => ({
+            rows: PERSONS.map((pers) => ({
                 label: pers.pxLabel,
                 tags: [
                     `Sg+${caseTag}+Px${pers.tag}`,
@@ -66,7 +67,7 @@ export function generatePossessiveSection(
         return {
             title: caseName,
             headers: [m.paradigm_owner, m.paradigm_empty],
-            rows: PERSONS.map((pers, i) => ({
+            rows: PERSONS.map((pers) => ({
                 label: pers.pxLabel,
                 tags: [`${caseTag}+Px${pers.tag}`],
                 // sep: i === 2 || i === 5, // Add separator after Su and Sudno
@@ -75,18 +76,25 @@ export function generatePossessiveSection(
     }
 }
 
-export function generateReflexiveSection(caseName: Function, caseTag: string) {
-    return {
+export function generateReflexiveBlock(caseName: Function, caseTag: string) {
+    let block = {
         title: caseName,
         headers: [m.paradigm_person, m.paradigm_empty],
-        rows: PERSONS.map((pers, i) => ({
+        rows: PERSONS.map((pers) => ({
             label: pers.label,
             tags: [`${caseTag}+Px${pers.tag}`],
         })),
     };
+    if (caseTag === "Ess") {
+        block.rows.push({
+            label: "Vaikko gii",
+            tags: ["Ess"],
+        });
+    }
+    return block;
 }
 
-export function buildVerbBlock(
+export function generateVerbBlock(
     title: Function,
     mood: string,
     tense: string,
@@ -119,38 +127,43 @@ export function buildVerbBlock(
     };
 }
 
-export function generatePronounTable(persTag: string) {
+export function generatePronounBlock(numTag: string) {
     return {
-        showIf: has_tags("Sg1"),
-        headers: [m.paradigm_case, m.paradigm_singular],
+        showIf: has_tags(numTag),
+        headers: [
+            m.paradigm_case,
+            m.paradigm_singular,
+            m.paradigm_dual,
+            m.paradigm_plural,
+        ],
         rows: [
             {
                 label: m.paradigm_nominative,
-                tags: ["Sg1+Nom"],
+                tags: [`Sg${numTag}+Nom`, `Du${numTag}+Nom`, `Pl${numTag}+Nom`],
             },
             {
                 label: m.paradigm_accusative,
-                tags: ["Sg1+Acc"],
+                tags: [`Sg${numTag}+Acc`, `Du${numTag}+Acc`, `Pl${numTag}+Acc`],
             },
             {
                 label: m.paradigm_genitive,
-                tags: ["Sg1+Gen"],
+                tags: [`Sg${numTag}+Gen`, `Du${numTag}+Gen`, `Pl${numTag}+Gen`],
             },
             {
                 label: m.paradigm_illative,
-                tags: ["Sg1+Ill"],
+                tags: [`Sg${numTag}+Ill`, `Du${numTag}+Ill`, `Pl${numTag}+Ill`],
             },
             {
-                label: m.paradigm_inessive,
-                tags: ["Sg1+Ine"],
-            },
-            {
-                label: m.paradigm_elative,
-                tags: ["Sg1+Ela"],
+                label: m.paradigm_locative,
+                tags: [`Sg${numTag}+Loc`, `Du${numTag}+Loc`, `Pl${numTag}+Loc`],
             },
             {
                 label: m.paradigm_comitative,
-                tags: ["Sg1+Com"],
+                tags: [`Sg${numTag}+Com`, `Du${numTag}+Com`, `Pl${numTag}+Com`],
+            },
+            {
+                label: m.paradigm_essive,
+                tags: [`Sg${numTag}+Ess`, `Du${numTag}+Ess`, `Pl${numTag}+Ess`],
             },
         ],
     };

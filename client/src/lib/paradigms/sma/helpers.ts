@@ -50,7 +50,7 @@ const PERSONS = [
     { label: "dah", pxLabel: "daj", tag: "Pl3", negPrs: "eah", negPrt: "idtjin", auxPrs: "leah", auxPrt: "lin" },
 ];
 
-export function generatePossessiveSection(
+export function generatePossessiveBlock(
     caseName: Function,
     caseTag: string,
 ): TableBlock {
@@ -80,7 +80,7 @@ export function generatePossessiveSection(
     }
 }
 
-export function generateReflexiveSection(caseName: Function, caseTag: string) {
+export function generateReflexiveBlock(caseName: Function, caseTag: string) {
     return {
         title: caseName,
         headers: [m.paradigm_person, m.paradigm_empty],
@@ -91,7 +91,7 @@ export function generateReflexiveSection(caseName: Function, caseTag: string) {
     };
 }
 
-export function buildVerbBlock(
+export function generateVerbBlock(
     title: Function,
     mood: string,
     tense: string,
@@ -127,7 +127,7 @@ export function buildVerbBlock(
     };
 }
 
-export function generatePronounTable(persTag: string): TableBlock {
+export function generatePronounBlock(persTag: string): TableBlock {
     return {
         showIf: has_tags(persTag),
         headers: [m.paradigm_case, m.paradigm_empty],
