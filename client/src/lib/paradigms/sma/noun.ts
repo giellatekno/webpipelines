@@ -1,7 +1,7 @@
 import { m } from "$lib/paraglide/messages";
 import { has_tags } from "../paradigm_utils";
 import type { LanguageSchema } from "../types";
-import { generatePossessiveSection, SMA_DEFAULT_CASE_TABLE } from "./helpers";
+import { generatePossessiveBlock, SMA_DEFAULT_CASE_TABLE } from "./helpers";
 
 const schema: LanguageSchema = {
     sections: [
@@ -13,14 +13,14 @@ const schema: LanguageSchema = {
             title: m.paradigm_possessivesuffixes,
             showIf: has_tags("Px"),
             tables: [
-                generatePossessiveSection(m.paradigm_nominative, "Nom"),
-                generatePossessiveSection(m.paradigm_accusative, "Acc"),
-                generatePossessiveSection(m.paradigm_genitive, "Gen"),
-                generatePossessiveSection(m.paradigm_illative, "Ill"),
-                generatePossessiveSection(m.paradigm_inessive, "Ine"),
-                generatePossessiveSection(m.paradigm_elative, "Ela"),
-                generatePossessiveSection(m.paradigm_comitative, "Com"),
-                generatePossessiveSection(m.paradigm_essive, "Ess"),
+                generatePossessiveBlock(m.paradigm_nominative, "Nom"),
+                generatePossessiveBlock(m.paradigm_accusative, "Acc"),
+                generatePossessiveBlock(m.paradigm_genitive, "Gen"),
+                generatePossessiveBlock(m.paradigm_illative, "Ill"),
+                generatePossessiveBlock(m.paradigm_inessive, "Ine"),
+                generatePossessiveBlock(m.paradigm_elative, "Ela"),
+                generatePossessiveBlock(m.paradigm_comitative, "Com"),
+                generatePossessiveBlock(m.paradigm_essive, "Ess"),
             ],
         },
     ],

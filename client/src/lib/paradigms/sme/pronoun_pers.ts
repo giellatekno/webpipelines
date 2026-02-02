@@ -1,15 +1,15 @@
 import { m } from "$lib/paraglide/messages";
 import type { LanguageSchema } from "../types";
-import { generatePronounTable } from "./helpers";
+import { generatePronounBlock } from "./helpers";
 
 const schema: LanguageSchema = {
     sections: [
         {
             title: m.paradigm_personal,
             tables: [
-                generatePronounTable("1"),
-                generatePronounTable("2"),
-                generatePronounTable("3"),
+                generatePronounBlock("1"),
+                generatePronounBlock("2"),
+                generatePronounBlock("3"),
             ],
         },
     ],
