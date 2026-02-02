@@ -7,54 +7,13 @@
     import FormWrapper from "$components/FormWrapper.svelte";
     import ParadigmForm from "$components/ParadigmForm.svelte";
     import { m } from "$lib/paraglide/messages";
+    import { hasParadigmSchema } from "$lib/paradigms/registry";
 
     interface Props {
         data: PageData;
     }
     let { data }: Props = $props();
-    let { word, size, pos } = $derived(data);
-
-    const allTableModules = import.meta.glob<SvelteComponent>(
-        "../../../components/tables/*/*.svelte",
-    );
-
-    async function load_tables(): Promise<Component[] | undefined> {
-        const lang = page.params.lang;
-
-        const componentNames = [
-            "Adjective",
-            "Noun",
-            "Numeral",
-            "Pronoun",
-            "Verb",
-        ];
-        const loadedComponents: Component[] = [];
-
-        try {
-            for (const componentName of componentNames) {
-                const path = `../../../components/tables/${lang}/${componentName}.svelte`;
-                const loader = allTableModules[path];
-
-                if (loader) {
-                    const module = await loader();
-                    loadedComponents.push(module.default);
-                } else {
-                    console.warn(
-                        `Component not found for language ${lang} at path: ${path}`,
-                    );
-                    return undefined;
-                }
-            }
-            return loadedComponents;
-        } catch (error) {
-            console.warn(
-                `Could not load paradigm component for language: ${lang}`,
-                error,
-            );
-            return undefined;
-        }
-    }
-    let lang_tables = load_tables();
+    let { word, pos } = $derived(data);
 
     let format = $state("table");
 </script>
@@ -67,15 +26,14 @@
     <FormWrapper tool="paradigm">
         <ParadigmForm
             {word}
-            {size}
             {pos}
             bind:format
-            has_tables={!!lang_tables}
+            has_tables={hasParadigmSchema(page.params.lang)}
         />
     </FormWrapper>
 
     {#if data.results}
-        <Paradigm data={data.results} {lang_tables} {format} />
+        <Paradigm data={data.results} {format} />
     {:else if data.error}
         <ErrorBox error={data.error} />
     {/if}
