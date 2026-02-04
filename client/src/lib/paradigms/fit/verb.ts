@@ -127,11 +127,11 @@ const schema: LanguageSchema = {
                     title: m.paradigm_thirdinfinite,
                     headers: [m.paradigm_case, m.paradigm_empty],
                     rows: [
-                        { label: m.paradigm_adessive, tags: ["Act+Inf3+Ade"] },
-                        { label: m.paradigm_illative, tags: ["Act+Inf3+Ill"] },
-                        { label: m.paradigm_inessive, tags: ["Act+Inf3+Ine"] },
-                        { label: m.paradigm_elative, tags: ["Act+Inf3+Ela"] },
-                        { label: m.paradigm_abessive, tags: ["Act+Inf3+Abe"] },
+                        { label: m.paradigm_adessive, tags: ["InfMa+Ade"] },
+                        { label: m.paradigm_illative, tags: ["InfMa+Ill"] },
+                        { label: m.paradigm_inessive, tags: ["InfMa+Ine"] },
+                        { label: m.paradigm_elative, tags: ["InfMa+Ela"] },
+                        { label: m.paradigm_abessive, tags: ["InfMa+Abe"] },
                     ]
                 },
                 {

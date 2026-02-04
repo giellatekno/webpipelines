@@ -4,7 +4,7 @@ import type { LanguageSchema } from "../types";
  * Switcher for Meänkieli (fit).
  * Matches the API result to the specific layout file.
  */
-export async function getFkvSchema(
+export async function getFITSchema(
     pos: string,
     subclass: string,
 ): Promise<LanguageSchema | null> {

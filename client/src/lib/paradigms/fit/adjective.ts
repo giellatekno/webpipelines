@@ -1,13 +1,13 @@
 import { m } from "$lib/paraglide/messages";
 import { has_tags } from "../paradigm_utils";
 import type { LanguageSchema } from "../types";
-import { FKV_DEFAULT_CASE_TABLE, CASES } from "./helpers";
+import { FIT_DEFAULT_CASE_TABLE, CASES } from "./helpers";
 
 const schema: LanguageSchema = {
     sections: [
         {
             title: m.paradigm_positive,
-            tables: [FKV_DEFAULT_CASE_TABLE],
+            tables: [FIT_DEFAULT_CASE_TABLE],
         },
         {
             title: m.paradigm_comparative,
