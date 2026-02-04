@@ -18,7 +18,7 @@ export const CASES = [
     { tag: "Com", label: m.paradigm_comitative },
 ];
 
-export const FIT_DEFAULT_CASE_TABLE: TableBlock = {
+export const FIN_DEFAULT_CASE_TABLE: TableBlock = {
     headers: [m.paradigm_case, m.paradigm_singular, m.paradigm_plural],
     rows: CASES.map((c) => ({
         label: c.label,

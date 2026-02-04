@@ -1,10 +1,10 @@
 import type { LanguageSchema } from "../types";
 
 /**
- * Switcher for Meänkieli (fit).
+ * Switcher for Finnish (fin).
  * Matches the API result to the specific layout file.
  */
-export async function getFITSchema(
+export async function getFINSchema(
     pos: string,
     subclass: string,
 ): Promise<LanguageSchema | null> {
