@@ -11,7 +11,7 @@ const schema: LanguageSchema = {
         },
         {
             title: m.paradigm_comparative,
-            showIf: has_tags("Compar"),
+            showIf: has_tags("Comp"),
             tables: [
                 {
                     headers: [
@@ -21,7 +21,7 @@ const schema: LanguageSchema = {
                     ],
                     rows: CASES.map((c) => ({
                         label: c.label,
-                        tags: [`Sg+Compar+${c.tag}`, `Pl+Compar+${c.tag}`],
+                        tags: [`Comp+Sg+${c.tag}`, `Comp+Pl+${c.tag}`],
                     })),
                 },
             ],
@@ -38,7 +38,7 @@ const schema: LanguageSchema = {
                     ],
                     rows: CASES.map((c) => ({
                         label: c.label,
-                        tags: [`Sg+Superl+${c.tag}`, `Pl+Superl+${c.tag}`],
+                        tags: [`Superl+Sg+${c.tag}`, `Superl+Pl+${c.tag}`],
                     })),
                 },
             ],
