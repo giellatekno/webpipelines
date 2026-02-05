@@ -24,3 +24,19 @@
     );
     color: var(--color-surface-950-50);
 }
+
+@layer components {
+    @keyframes target-pulse {
+        0% {
+            background-color: var(--color-warning-200-800);
+            background-opacity: 0.4;
+        }
+        100% {
+            background-color: transparent;
+        }
+    }
+
+    .highlight-target:target {
+        animation: target-pulse 3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
