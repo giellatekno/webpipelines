@@ -14,11 +14,7 @@ const schema: LanguageSchema = {
             showIf: has_tags("Compar"),
             tables: [
                 {
-                    headers: [
-                        m.paradigm_case,
-                        m.paradigm_singular,
-                        m.paradigm_plural,
-                    ],
+                    headers: [m.paradigm_case, m.paradigm_singular, m.paradigm_plural],
                     rows: CASES.map((c) => ({
                         label: c.label,
                         tags: [`Sg+Compar+${c.tag}`, `Pl+Compar+${c.tag}`],
@@ -31,11 +27,7 @@ const schema: LanguageSchema = {
             showIf: has_tags("Superl"),
             tables: [
                 {
-                    headers: [
-                        m.paradigm_case,
-                        m.paradigm_singular,
-                        m.paradigm_plural,
-                    ],
+                    headers: [m.paradigm_case, m.paradigm_singular, m.paradigm_plural],
                     rows: CASES.map((c) => ({
                         label: c.label,
                         tags: [`Sg+Superl+${c.tag}`, `Pl+Superl+${c.tag}`],

@@ -2,7 +2,6 @@ import { m } from "$lib/paraglide/messages";
 import type { LanguageSchema } from "../types";
 import { CASES } from "./helpers";
 
-// prettier-ignore
 const schema: LanguageSchema = {
     sections: [
         {
@@ -15,13 +14,12 @@ const schema: LanguageSchema = {
                     rows: [
                         { label: "mie", tags: ["Act+Ind+Prs+Sg1", "Act+Ind+Prs+ConNeg"], prefixes: ["", "en"] },
                         { label: "sie", tags: ["Act+Ind+Prs+Sg2", "Act+Ind+Prs+ConNeg"], prefixes: ["", "et"] },
-                        { label: "hän/se", tags: ["Act+Ind+Prs+Sg3", "Act+Ind+Prs+ConNeg"], prefixes: ["", "ei"] },
+                        { label: "hän/se", tags: ["Act+Ind+Prs+Sg3", "Act+Ind+Prs+ConNeg"], prefixes: ["", "ei"], seperator: true },
                         { label: "met", tags: ["Act+Ind+Prs+Pl1", "Act+Ind+Prs+ConNeg"], prefixes: ["", "emmä"] },
                         { label: "tet", tags: ["Act+Ind+Prs+Pl2", "Act+Ind+Prs+ConNeg"], prefixes: ["", "että"] },
-                        { label: "het/net", tags: ["Act+Ind+Prs+Pl3", "Act+Ind+Prs+ConNeg"], prefixes: ["", "ei"] },
-
-                        // { label: m.paradigm_passive, tags: ["Pass+Ind+Prs", "???"], prefixes: ["", "ei"]} // Missing form?
-                    ]
+                        { label: "het/net", tags: ["Act+Ind+Prs+Pl3", "Act+Ind+Prs+ConNeg"], prefixes: ["", "ei"], seperator: true },
+                        { label: m.paradigm_passive, tags: ["Pass+Ind+Prs", "Pass+Ind+Prs+ConNeg"], prefixes: ["", "ei"] }, // Missing form Pass+Ind+Prs+ConNeg
+                    ],
                 },
                 {
                     title: m.paradigm_perfect,
@@ -29,12 +27,12 @@ const schema: LanguageSchema = {
                     rows: [
                         { label: "mie", tags: ["Act+PrfPrc+Sg+Nom", "Act+PrfPrc+Sg+Nom"], prefixes: ["olen", "en ole"] },
                         { label: "sie", tags: ["Act+PrfPrc+Sg+Nom", "Act+PrfPrc+Sg+Nom"], prefixes: ["olet", "et ole"] },
-                        { label: "hän/se", tags: ["Act+PrfPrc+Sg+Nom", "Act+PrfPrc+Sg+Nom"], prefixes: ["oon", "ei ole"] },
+                        { label: "hän/se", tags: ["Act+PrfPrc+Sg+Nom", "Act+PrfPrc+Sg+Nom"], prefixes: ["oon", "ei ole"], seperator: true },
                         { label: "met", tags: ["Act+PrfPrc+Pl+Nom", "Act+PrfPrc+Pl+Nom"], prefixes: ["olema", "emmä ole"] },
                         { label: "tet", tags: ["Act+PrfPrc+Pl+Nom", "Act+PrfPrc+Pl+Nom"], prefixes: ["oletta", "että ole"] },
-                        { label: "het/net", tags: ["Act+PrfPrc+Pl+Nom", "Act+PrfPrc+Pl+Nom"], prefixes: ["oon", "ei ole"] },
-                        // { label: m.paradigm_passive, tags: ["???", "??"], prefixes: ["oon", "ei ole"]}
-                    ]
+                        { label: "het/net", tags: ["Act+PrfPrc+Pl+Nom", "Act+PrfPrc+Pl+Nom"], prefixes: ["oon", "ei ole"], seperator: true },
+                        { label: m.paradigm_passive, tags: ["Pass+PrfPrc+Sg+Nom", "Pass+PrfPrc+Sg+Nom"], prefixes: ["oon", "ei ole"] },
+                    ],
                 },
                 {
                     title: m.paradigm_preterite,
@@ -42,12 +40,12 @@ const schema: LanguageSchema = {
                     rows: [
                         { label: "mie", tags: ["Act+Ind+Prt+Sg1", "Act+Ind+Prt+ConNeg+Sg"], prefixes: ["", "en"] },
                         { label: "sie", tags: ["Act+Ind+Prt+Sg2", "Act+Ind+Prt+ConNeg+Sg"], prefixes: ["", "et"] },
-                        { label: "hän/se", tags: ["Act+Ind+Prt+Sg3", "Act+Ind+Prt+ConNeg+Sg"], prefixes: ["", "ei"] },
+                        { label: "hän/se", tags: ["Act+Ind+Prt+Sg3", "Act+Ind+Prt+ConNeg+Sg"], prefixes: ["", "ei"], seperator: true },
                         { label: "met", tags: ["Act+Ind+Prt+Pl1", "Act+PrfPrc+Pl+Nom"], prefixes: ["", "emmä"] },
                         { label: "tet", tags: ["Act+Ind+Prt+Pl2", "Act+PrfPrc+Pl+Nom"], prefixes: ["", "että"] },
-                        { label: "het/net", tags: ["Act+Ind+Prt+Pl3", "Act+PrfPrc+Pl+Nom"], prefixes: ["", "ei"] },
-                        // { label: m.paradigm_passive, tags: ["Pass+Ind+Prt", "Pass+PrfPrc+Sg+Nom"], prefixes: ["", "ei"]}
-                    ]
+                        { label: "het/net", tags: ["Act+Ind+Prt+Pl3", "Act+PrfPrc+Pl+Nom"], prefixes: ["", "ei"], seperator: true },
+                        { label: m.paradigm_passive, tags: ["Pass+Ind+Prt", "Pass+Ind+Prt+ConNeg"], prefixes: ["", "ei"] }, // Missing form Pass+Ind+Prt+ConNeg
+                    ],
                 },
                 {
                     title: m.paradigm_pluperfect,
@@ -55,12 +53,12 @@ const schema: LanguageSchema = {
                     rows: [
                         { label: "mie", tags: ["Act+PrfPrc+Sg+Nom", "Act+PrfPrc+Sg+Nom"], prefixes: ["olin", "en ollu"] },
                         { label: "sie", tags: ["Act+PrfPrc+Sg+Nom", "Act+PrfPrc+Sg+Nom"], prefixes: ["olit", "et ollu"] },
-                        { label: "hän/se", tags: ["Act+PrfPrc+Sg+Nom", "Act+PrfPrc+Sg+Nom"], prefixes: ["oli", "ei ollu"] },
+                        { label: "hän/se", tags: ["Act+PrfPrc+Sg+Nom", "Act+PrfPrc+Sg+Nom"], prefixes: ["oli", "ei ollu"], seperator: true },
                         { label: "met", tags: ["Act+PrfPrc+Pl+Nom", "Act+PrfPrc+Pl+Nom"], prefixes: ["olima", "emmä olheet"] },
                         { label: "tet", tags: ["Act+PrfPrc+Pl+Nom", "Act+PrfPrc+Pl+Nom"], prefixes: ["olitta", "että olheet"] },
-                        { label: "het/net", tags: ["Act+PrfPrc+Pl+Nom", "Act+PrfPrc+Pl+Nom"], prefixes: ["olit/olthiin", "ei olheet"] },
-                        // { label: m.paradigm_passive, tags: ["???", "???"], prefixes: ["oli", "ei ollu"]}
-                    ]
+                        { label: "het/net", tags: ["Act+PrfPrc+Pl+Nom", "Act+PrfPrc+Pl+Nom"], prefixes: ["olit/olthiin", "ei olheet"], seperator: true },
+                        { label: m.paradigm_passive, tags: ["Pass+PrfPrc+Sg+Nom", "Pass+PrfPrc+Sg+Nom"], prefixes: ["oli", "ei ollu"] },
+                    ],
                 },
             ],
         },
@@ -74,12 +72,12 @@ const schema: LanguageSchema = {
                     rows: [
                         { label: "mie", tags: ["Act+Cond+Sg1", "Act+Cond+ConNeg"], prefixes: ["", "en"] },
                         { label: "sie", tags: ["Act+Cond+Sg2", "Act+Cond+ConNeg"], prefixes: ["", "et"] },
-                        { label: "hän/se", tags: ["Act+Cond+Sg3", "Act+Cond+ConNeg"], prefixes: ["", "ei"] },
+                        { label: "hän/se", tags: ["Act+Cond+Sg3", "Act+Cond+ConNeg"], prefixes: ["", "ei"], seperator: true },
                         { label: "met", tags: ["Act+Cond+Pl1", "Act+Cond+ConNeg"], prefixes: ["", "emmä"] },
                         { label: "tet", tags: ["Act+Cond+Pl2", "Act+Cond+ConNeg"], prefixes: ["", "että"] },
-                        { label: "het/net", tags: ["Act+Cond+Pl3", "Act+Cond+ConNeg"], prefixes: ["", "ei"] },
-                        // { label: m.paradigm_passive, tags: ["Pass+Cond", ""], prefixes: ["", "ei"]}
-                    ]
+                        { label: "het/net", tags: ["Act+Cond+Pl3", "Act+Cond+ConNeg"], prefixes: ["", "ei"], seperator: true },
+                        { label: m.paradigm_passive, tags: ["Pass+Cond", "Pass+Cond"], prefixes: ["", "ei"] },
+                    ],
                 },
                 {
                     title: m.paradigm_perfect,
@@ -87,12 +85,12 @@ const schema: LanguageSchema = {
                     rows: [
                         { label: "mie", tags: ["Act+PrfPrc+Sg+Nom", "Act+PrfPrc+Sg+Nom"], prefixes: ["olisin", "en olis"] },
                         { label: "sie", tags: ["Act+PrfPrc+Sg+Nom", "Act+PrfPrc+Sg+Nom"], prefixes: ["olisit", "et olis"] },
-                        { label: "hän/se", tags: ["Act+PrfPrc+Sg+Nom", "Act+PrfPrc+Sg+Nom"], prefixes: ["olis", "ei olis"] },
+                        { label: "hän/se", tags: ["Act+PrfPrc+Sg+Nom", "Act+PrfPrc+Sg+Nom"], prefixes: ["olis", "ei olis"], seperator: true },
                         { label: "met", tags: ["Act+PrfPrc+Pl+Nom", "Act+PrfPrc+Pl+Nom"], prefixes: ["olisimma", "emmä olis"] },
                         { label: "tet", tags: ["Act+PrfPrc+Pl+Nom", "Act+PrfPrc+Pl+Nom"], prefixes: ["olisitta", "että olis"] },
-                        { label: "het/net", tags: ["Act+PrfPrc+Pl+Nom", "Act+PrfPrc+Pl+Nom"], prefixes: ["oltais", "ei olis"] },
-                        // { label: m.paradigm_passive, tags: ["Pass+Cond", ""], prefixes: ["", "ei"]}
-                    ]
+                        { label: "het/net", tags: ["Act+PrfPrc+Pl+Nom", "Act+PrfPrc+Pl+Nom"], prefixes: ["oltais", "ei olis"], seperator: true },
+                        { label: m.paradigm_passive, tags: ["Pass+PrfPrc+Sg+Nom", "Pass+PrfPrc+Sg+Nom"], prefixes: ["olis", "ei olis"] },
+                    ],
                 },
             ],
         },
@@ -105,11 +103,11 @@ const schema: LanguageSchema = {
                     rows: [
                         { label: "mie", tags: ["", ""], prefixes: ["", ""] },
                         { label: "sie", tags: ["Act+Imprt+Sg2", "Act+Imprt+Sg2"], prefixes: ["", "älä"] },
-                        { label: "hän/se", tags: ["Act+Imprt+Sg3", ""], prefixes: ["", ""] },
+                        { label: "hän/se", tags: ["Act+Imprt+Sg3", ""], prefixes: ["", ""], seperator: true },
                         { label: "met", tags: ["", ""], prefixes: ["", ""] },
                         { label: "tet", tags: ["Act+Imprt+Pl2", "Act+Imprt+Pl2"], prefixes: ["", "älkkää"] },
                         { label: "het/net", tags: ["", ""], prefixes: ["", ""] },
-                    ]
+                    ],
                 },
             ],
         },
@@ -119,9 +117,7 @@ const schema: LanguageSchema = {
                 {
                     title: m.paradigm_firstinfinite,
                     headers: [],
-                    rows: [
-                        { label: m.paradigm_infinite, tags: ["Inf"] },
-                    ]
+                    rows: [{ label: m.paradigm_infinite, tags: ["Inf"] }],
                 },
                 {
                     title: m.paradigm_thirdinfinite,
@@ -132,16 +128,15 @@ const schema: LanguageSchema = {
                         { label: m.paradigm_inessive, tags: ["Act+Inf3+Ine"] },
                         { label: m.paradigm_elative, tags: ["Act+Inf3+Ela"] },
                         { label: m.paradigm_abessive, tags: ["Act+Inf3+Abe"] },
-                    ]
+                    ],
                 },
                 {
                     title: m.paradigm_perfectparticiple,
                     headers: [m.paradigm_case, m.paradigm_singular, m.paradigm_plural],
                     rows: CASES.map((c) => ({
                         label: c.label,
-                        tags: [`Act+PrfPrc+Sg+${c.tag}`, `Act+PrfPrc+Pl+${c.tag}`]
-                    }))
-                    
+                        tags: [`Act+PrfPrc+Sg+${c.tag}`, `Act+PrfPrc+Pl+${c.tag}`],
+                    })),
                 },
                 {
                     title: m.paradigm_presentparticiple,
@@ -149,11 +144,11 @@ const schema: LanguageSchema = {
                     rows: [
                         {
                             label: m.paradigm_nominative,
-                            tags: ["Act+PrsPrc+Sg+Nom", "Act+PrsPrc+Pl+Nom"]
-                        }
-                    ]
+                            tags: ["Act+PrsPrc+Sg+Nom", "Act+PrsPrc+Pl+Nom"],
+                        },
+                    ],
                 },
-            ]
+            ],
         },
     ],
 };

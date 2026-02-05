@@ -5,7 +5,7 @@ import { FKV_DEFAULT_CASE_TABLE } from "./helpers";
 const schema: LanguageSchema = {
     sections: [
         {
-            title: m.paradigm_indefinite,
+            title: m.paradigm_quantifier,
             tables: [FKV_DEFAULT_CASE_TABLE],
         },
     ],

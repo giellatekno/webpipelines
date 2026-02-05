@@ -4,10 +4,7 @@ import type { LanguageSchema } from "../types";
  * Switcher for South Sámi (sma).
  * Matches the API result to the specific layout file.
  */
-export async function getSmaSchema(
-    pos: string,
-    subclass: string,
-): Promise<LanguageSchema | null> {
+export async function getSmaSchema(pos: string, subclass: string): Promise<LanguageSchema | null> {
     switch (pos) {
         case "V":
             if (subclass === "Neg") {

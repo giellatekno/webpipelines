@@ -1,6 +1,5 @@
 import { m } from "$lib/paraglide/messages";
-import { has_tags } from "../paradigm_utils";
-import type { TableBlock } from "../types";
+import type { Table } from "../types";
 
 export const CASES = [
     { tag: "Nom", label: m.paradigm_nominative },
@@ -18,21 +17,10 @@ export const CASES = [
     { tag: "Com", label: m.paradigm_comitative },
 ];
 
-export const FKV_DEFAULT_CASE_TABLE: TableBlock = {
+export const FKV_DEFAULT_CASE_TABLE: Table = {
     headers: [m.paradigm_case, m.paradigm_singular, m.paradigm_plural],
     rows: CASES.map((c) => ({
         label: c.label,
         tags: [`Sg+${c.tag}`, `Pl+${c.tag}`],
     })),
 };
-
-export function generatePronounBlock(persTag: string): TableBlock {
-    return {
-        showIf: has_tags(persTag),
-        headers: [m.paradigm_case, m.paradigm_empty],
-        rows: CASES.map((c) => ({
-            label: c.label,
-            tags: [`${persTag}+${c.tag}`],
-        })),
-    };
-}

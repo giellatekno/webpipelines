@@ -7,16 +7,11 @@ const schema: LanguageSchema = {
         {
             title: m.paradigm_ordinal,
             tables: [
+                SME_DEFAULT_CASE_TABLE,
                 {
                     headers: [],
-                    rows: [
-                        {
-                            label: m.paradigm_attribute,
-                            tags: ["Attr"],
-                        },
-                    ],
+                    rows: [{ label: m.paradigm_attribute, tags: ["Attr"] }],
                 },
-                SME_DEFAULT_CASE_TABLE,
             ],
         },
     ],

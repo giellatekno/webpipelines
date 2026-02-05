@@ -4,10 +4,7 @@ import type { LanguageSchema } from "../types";
  * Switcher for Kven Finnish (fkv).
  * Matches the API result to the specific layout file.
  */
-export async function getFkvSchema(
-    pos: string,
-    subclass: string,
-): Promise<LanguageSchema | null> {
+export async function getFkvSchema(pos: string, subclass: string): Promise<LanguageSchema | null> {
     switch (pos) {
         case "V":
             if (subclass === "Neg") {

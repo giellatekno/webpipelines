@@ -5,22 +5,23 @@ export interface Row {
     tags: string[];
     colspan?: number;
     prefixes?: string[];
+    seperator?: boolean;
 }
 
-export interface TableBlock {
+export interface Table {
     title?: Function;
     headers: Function[];
     rows: Row[];
     showIf?: (elem: ParsedParadigm) => boolean;
 }
 
-export interface TableSection {
-    title: Function;
-    tables: TableBlock[];
-    validateRows?: boolean; // Limit which rows to render based on first row
+export interface Section {
+    title?: Function;
+    tables: Table[];
+    validateRows?: boolean; // Limit which rows to render based on first col of first table
     showIf?: (elem: ParsedParadigm) => boolean;
 }
 
 export interface LanguageSchema {
-    sections: TableSection[];
+    sections: Section[];
 }

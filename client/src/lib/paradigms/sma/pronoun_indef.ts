@@ -9,14 +9,14 @@ const schema: LanguageSchema = {
             title: m.paradigm_indefinite,
             tables: [
                 {
-                    headers: [],
-                    rows: [{ label: m.paradigm_attribute, tags: ["Attr"] }],
-                    showIf: has_tags("Attr"),
-                },
-                {
                     ...SMA_DEFAULT_CASE_TABLE,
 
                     showIf: has_tags("Nom"),
+                },
+                {
+                    headers: [],
+                    rows: [{ label: m.paradigm_attribute, tags: ["Attr"] }],
+                    showIf: has_tags("Attr"),
                 },
             ],
         },

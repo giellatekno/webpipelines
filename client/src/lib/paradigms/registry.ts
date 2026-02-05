@@ -6,11 +6,7 @@ const registry: Record<string, SchemaLoader> = {
     fkv: (l, p) => import("./fkv").then((m) => m.getFkvSchema(l, p)),
 };
 
-export async function getParadigmSchema(
-    lang: string,
-    pos: string,
-    subclass: string,
-) {
+export async function getParadigmSchema(lang: string, pos: string, subclass: string) {
     const loader = registry[lang];
     if (!loader) return null;
     return await loader(pos, subclass);

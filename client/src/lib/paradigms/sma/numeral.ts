@@ -7,33 +7,17 @@ const schema: LanguageSchema = {
         {
             title: m.partofspeech_numeral,
             tables: [
+                SMA_DEFAULT_CASE_TABLE,
                 {
                     title: m.paradigm_attribute,
-                    headers: [
-                        m.paradigm_case,
-                        m.paradigm_singular,
-                        m.paradigm_plural,
-                    ],
+                    headers: [m.paradigm_case, m.paradigm_singular, m.paradigm_plural],
                     rows: [
-                        {
-                            label: m.paradigm_illative,
-                            tags: ["Sg+Ill+Attr", ""],
-                        },
-                        {
-                            label: m.paradigm_inessive,
-                            tags: ["Sg+Ine+Attr", ""],
-                        },
-                        {
-                            label: m.paradigm_elative,
-                            tags: ["Sg+Ela+Attr", ""],
-                        },
-                        {
-                            label: m.paradigm_comitative,
-                            tags: ["", "Pl+Com+Attr"],
-                        },
+                        { label: m.paradigm_illative, tags: ["Sg+Ill+Attr", ""] },
+                        { label: m.paradigm_inessive, tags: ["Sg+Ine+Attr", ""] },
+                        { label: m.paradigm_elative, tags: ["Sg+Ela+Attr", ""] },
+                        { label: m.paradigm_comitative, tags: ["", "Pl+Com+Attr"] },
                     ],
                 },
-                SMA_DEFAULT_CASE_TABLE,
             ],
         },
     ],
