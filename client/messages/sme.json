@@ -66,7 +66,7 @@
     "paradigmsize_minimal": "Minimála",
     "paradigmsize_standard": "Standárda",
     "paradigmsize_full": "Dievaslaš",
-    "paradigm_jumpto": "Njuikke:",
+    "paradigm_jumpto": "Njuikke sekšuvdnii:",
     "paradigm_homonyms": "Gávdnan {num} homonyma:",
     "paradigm_noresults": "Paradigma ii gávdnon",
     "paradigm_tags": "Taggat",
@@ -77,6 +77,7 @@
     "paradigm_list": "Listu",
     "paradigm_format": "Formáhtta",
     "paradigm_empty": "",
+    "paradigm_loadingtables": "Viežžamin tabeallaid...",
 
     "partofspeech": "Sátneluohkká",
     "partofspeech_any": "Váikko makkár",
@@ -88,6 +89,7 @@
     "partofspeech_numeral": "Lohkosátni",
 
     "paradigm_possessivesuffixes": "Oamastangehčosat",
+    "paradigm_owner": "Eaiggát",
     "paradigm_generalforms": "Dábálaš hámit",
 
     "paradigm_attribute": "Attribuhtta",
@@ -101,6 +103,7 @@
     "paradigm_second_person": "2. Persovdna",
     "paradigm_third_person": "3. Persovdna",
 
+    "paradigm_negationverb": "Biehttalanvearba",
     "paradigm_indicative": "Indikatiiva",
     "paradigm_imperative": "Imperatiiva",
     "paradigm_imperative_i": "Imperatiiva I",
@@ -118,6 +121,7 @@
     "paradigm_nonfinite": "Infinihtta hámit",
 
     "paradigm_infinite": "Infinitiiva",
+    "paradigm_actioforms": "Aktiohámit",
     "paradigm_firstinfinite": "Vuosttaš infinitiiva",
     "paradigm_thirdinfinite": "Goalmmát infinitiiva",
     "paradigm_perfectparticiple": "Perfeavtta partisihppa",

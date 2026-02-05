@@ -66,7 +66,7 @@
     "paradigmsize_minimal": "Minimal",
     "paradigmsize_standard": "Standard",
     "paradigmsize_full": "Full",
-    "paradigm_jumpto": "Jump to:",
+    "paradigm_jumpto": "Jump to section:",
     "paradigm_homonyms": "Found {num} homonyms:",
     "paradigm_noresults": "No results found...",
     "paradigm_tags": "Tags",
@@ -77,6 +77,7 @@
     "paradigm_list": "List",
     "paradigm_format": "Format",
     "paradigm_empty": "",
+    "paradigm_loadingtables": "Loading tables...",
 
     "partofspeech": "Part of speech",
     "partofspeech_any": "Any",
@@ -102,6 +103,7 @@
     "paradigm_second_person": "2. Person",
     "paradigm_third_person": "3. Person",
 
+    "paradigm_negationverb": "Negationverb",
     "paradigm_indicative": "Indicative",
     "paradigm_imperative": "Imperative",
     "paradigm_imperative_i": "Imperative I",
@@ -118,6 +120,7 @@
     "paradigm_passive": "Passive",
 
     "paradigm_nonfinite": "Nonfinite forms",
+    "paradigm_actioforms": "Actio-forms",
     "paradigm_infinite": "Infinite",
     "paradigm_firstinfinite": "First infinite",
     "paradigm_thirdinfinite": "Third infinite",

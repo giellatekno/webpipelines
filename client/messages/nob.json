@@ -62,7 +62,7 @@
     "paradigm_title": "Paradigmegenerering",
     "paradigm_description": "Genererer bøyingsparadigmer av ulik størrelse for det ordet du vil.",
     "paradigm_instruction": "Søk etter ord i grunnform.",
-    "paradigm_jumpto": "Hopp til:",
+    "paradigm_jumpto": "Hopp til seksjon:",
     "paradigmsize": "Paradigmestørrelse",
     "paradigmsize_minimal": "Minimal",
     "paradigmsize_standard": "Standard",
@@ -85,6 +85,7 @@
     "paradigm_list": "Liste",
     "paradigm_format": "Format",
     "paradigm_empty": "",
+    "paradigm_loadingtables": "Henter tabeller...",
 
     "paradigm_possessivesuffixes": "Possessive suffikser",
     "paradigm_owner": "Eier",
@@ -100,6 +101,7 @@
     "paradigm_second_person": "2. Person",
     "paradigm_third_person": "3. Person",
 
+    "paradigm_negationverb": "Negasjonsverb",
     "paradigm_indicative": "Indikativ",
     "paradigm_imperative": "Imperativ",
     "paradigm_imperative_i": "Imperativ I",
@@ -117,6 +119,7 @@
     "paradigm_nonfinite": "Infinitte former",
 
     "paradigm_infinite": "Infinitiv",
+    "paradigm_actioforms": "Aktioformer",
     "paradigm_firstinfinite": "Første infinitiv",
     "paradigm_thirdinfinite": "Tredje infinitiv",
     "paradigm_perfectparticiple": "Perfektum partisipp",
