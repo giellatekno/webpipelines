@@ -7,7 +7,7 @@
 </script>
 
 <svelte:head>
-    <title>Giellatekno Webpipeline</title>
+    <title>Giellatekno LingTools</title>
     <meta name="description" content="Run Giellatekno Pipelines" />
 </svelte:head>
 

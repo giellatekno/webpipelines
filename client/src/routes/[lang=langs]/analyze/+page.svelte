@@ -39,7 +39,7 @@
 </script>
 
 <svelte:head>
-    <title>{m.analyze_title()} | Webpipeline</title>
+    <title>{m.analyze_title()} | LingTools</title>
 </svelte:head>
 
 <div class="flex flex-col items-center gap-4">
@@ -86,11 +86,9 @@
                                             type="button"
                                             onclick={() =>
                                                 copy_text(
-                                                    combine_tags(
-                                                        lemma,
-                                                        pos,
-                                                        tags,
-                                                    ).join("+"),
+                                                    combine_tags(lemma, pos, tags).join(
+                                                        "+",
+                                                    ),
                                                 )}
                                         >
                                             <CopyIcon class="size-4" />

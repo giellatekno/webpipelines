@@ -1,11 +1,7 @@
 <script lang="ts">
     import type { Tools } from "$lib/langs";
     import { m } from "$lib/paraglide/messages";
-    import {
-        ChevronDown,
-        ChevronUp,
-        CircleQuestionMarkIcon,
-    } from "@lucide/svelte";
+    import { ChevronDown, ChevronUp, CircleQuestionMarkIcon } from "@lucide/svelte";
     import { Accordion } from "@skeletonlabs/skeleton-svelte";
     let { tool }: { tool: Tools } = $props();
 
@@ -24,20 +20,14 @@
 <Accordion collapsible>
     <Accordion.Item value="1">
         <h3>
-            <Accordion.ItemTrigger
-                class="flex flex-row items-center justify-between"
-            >
+            <Accordion.ItemTrigger class="flex flex-row items-center justify-between">
                 <span class="flex flex-row gap-2">
                     <CircleQuestionMarkIcon />
                     {m.instruction_title()}
                 </span>
                 <Accordion.ItemIndicator class="group">
-                    <ChevronUp
-                        class="hidden size-4 group-data-[state=open]:block"
-                    />
-                    <ChevronDown
-                        class="block size-4 group-data-[state=open]:hidden"
-                    />
+                    <ChevronUp class="hidden size-4 group-data-[state=open]:block" />
+                    <ChevronDown class="block size-4 group-data-[state=open]:hidden" />
                 </Accordion.ItemIndicator>
             </Accordion.ItemTrigger>
             <Accordion.ItemContent>

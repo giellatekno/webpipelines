@@ -16,13 +16,9 @@
         </thead>
         <tbody>
             {#each elem.wordforms.entries() as [tags, wordforms]}
-                <tr
-                    class="even:bg-surface-100-900/50 odd:bg-surface-50-950 border"
-                >
+                <tr class="even:bg-surface-100-900/50 odd:bg-surface-50-950 border">
                     <td class="font-semibold">
-                        {elem.pos}+{elem.subclass
-                            ? elem.subclass + "+"
-                            : ""}{tags}
+                        {elem.pos}+{elem.subclass ? elem.subclass + "+" : ""}{tags}
                     </td>
                     <td>
                         {@html Array.from(wordforms).join("<br>")}

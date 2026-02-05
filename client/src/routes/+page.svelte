@@ -1,12 +1,7 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
     import { resolve } from "$app/paths";
-    import {
-        langs,
-        sami_langs,
-        nonsamiuralic_langs,
-        other_langs,
-    } from "$lib/langs";
+    import { langs, sami_langs, nonsamiuralic_langs, other_langs } from "$lib/langs";
     import { langname } from "$lib/langnames";
     import { SearchIcon } from "@lucide/svelte";
     import { m } from "$lib/paraglide/messages";
@@ -26,10 +21,7 @@
                 .map((iso) => [iso, langname(iso, locale)])
                 .filter(([iso, name]) => {
                     const lower = search.toLowerCase();
-                    return (
-                        iso.includes(lower) ||
-                        name.toLowerCase().includes(lower)
-                    );
+                    return iso.includes(lower) || name.toLowerCase().includes(lower);
                 })
                 .map(([iso, _name]) => iso)
                 .sort();
@@ -61,7 +53,8 @@
 </script>
 
 <svelte:head>
-    <title>{m.languages()} | Webpipeline</title>
+    <title>Giellatekno LingTools</title>
+    <!--     <title>{m.languages()} | Webpipeline</title> -->
 </svelte:head>
 
 <div class="flex w-full flex-col gap-4">

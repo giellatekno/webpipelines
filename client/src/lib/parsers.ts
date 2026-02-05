@@ -60,9 +60,7 @@ export function disambiguate_parser(data: string) {
     const analyses = data.split("\n:").map((a) => a.trim());
     console.log(analyses);
 
-    const analysis_re = new RegExp(
-        /"([^\s]+)" (<[^\s]+>)?(?: )?([^@#]+) (@[^\s]+)?/,
-    );
+    const analysis_re = new RegExp(/"([^\s]+)" (<[^\s]+>)?(?: )?([^@#]+) (@[^\s]+)?/);
     const wordform_re = new RegExp(/"<([^\s]+)>"/);
 
     for (const analysis of analyses) {

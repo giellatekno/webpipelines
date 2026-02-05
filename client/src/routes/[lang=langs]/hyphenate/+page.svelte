@@ -15,7 +15,7 @@
 </script>
 
 <svelte:head>
-    <title>{m.hyphenate_title()} | Webpipeline</title>
+    <title>{m.hyphenate_title()} | LingTools</title>
 </svelte:head>
 
 <div class="flex flex-col items-center gap-4">

@@ -16,7 +16,7 @@
 </script>
 
 <svelte:head>
-    <title>{m.generate_title()} | Webpipeline</title>
+    <title>{m.generate_title()} | LingTools</title>
 </svelte:head>
 
 <div class="flex flex-col items-center gap-4">
@@ -29,9 +29,7 @@
         {/if}
 
         {#if data.results}
-            <div
-                class="card border-primary-500 border-2 p-4 shadow-md xl:text-lg"
-            >
+            <div class="card border-primary-500 border-2 p-4 shadow-md xl:text-lg">
                 <div class="flex flex-col gap-2">
                     <p class="font-bold text-red-800">Result:</p>
 

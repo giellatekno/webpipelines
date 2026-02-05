@@ -4,9 +4,7 @@
     import { m } from "$lib/paraglide/messages";
 </script>
 
-<footer
-    class="bg-surface-800-200 text-surface-100-900 flex w-full justify-center p-4"
->
+<footer class="bg-surface-800-200 text-surface-100-900 flex w-full justify-center p-4">
     <div
         class="grid grid-cols-[1fr_1fr] place-items-center gap-2 xl:grid-cols-[1fr_auto_1fr]"
     >

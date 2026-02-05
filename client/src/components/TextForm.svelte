@@ -9,14 +9,14 @@
     async function on_textarea_keydown(ev: KeyboardEvent) {
         if (ev.key === "Enter" && ev.shiftKey) {
             ev.preventDefault();
-            await goto(`?q=${value}`, { keepFocus: true });
+            await goto(`?q=${encodeURIComponent(value)}`, { keepFocus: true });
             textarea.focus();
         }
     }
 
     async function on_submit(ev: SubmitEvent) {
         ev.preventDefault();
-        await goto(`?q=${value}`, { keepFocus: true });
+        await goto(`?q=${encodeURIComponent(value)}`, { keepFocus: true });
         textarea.focus();
     }
 

@@ -47,9 +47,7 @@
                     layout="sidebar"
                     class="grid grid-rows-[auto_auto_1fr_auto] gap-4"
                 >
-                    <Navigation.Header
-                        class="flex items-center justify-between"
-                    >
+                    <Navigation.Header class="flex items-center justify-between">
                         <Dialog.Title class="text-2xl font-bold">
                             Webpipeline
                         </Dialog.Title>

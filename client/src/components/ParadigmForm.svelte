@@ -35,16 +35,9 @@
 </script>
 
 <form onsubmit={on_submit} id="form" class="mb-2 flex flex-col gap-2">
-    <div
-        class="flex flex-col items-center gap-2 xl:flex-row xl:justify-center xl:gap-4"
-    >
-        <div
-            class="grid grid-cols-2 items-center gap-2 xl:grid-cols-1 xl:gap-0"
-        >
-            <label
-                for="pos-select"
-                class="label-text text-right xl:text-left xl:text-sm"
-            >
+    <div class="flex flex-col items-center gap-2 xl:flex-row xl:justify-center xl:gap-4">
+        <div class="grid grid-cols-2 items-center gap-2 xl:grid-cols-1 xl:gap-0">
+            <label for="pos-select" class="label-text text-right xl:text-left xl:text-sm">
                 {m.partofspeech()}:
             </label>
             <select
@@ -63,9 +56,7 @@
         </div>
 
         {#if has_tables}
-            <div
-                class="grid grid-cols-2 items-center gap-2 xl:grid-cols-1 xl:gap-0"
-            >
+            <div class="grid grid-cols-2 items-center gap-2 xl:grid-cols-1 xl:gap-0">
                 <label
                     for="format-select"
                     class="label-text text-right xl:text-left xl:text-sm"

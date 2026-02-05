@@ -19,12 +19,9 @@
         </AppBar.Lead>
         <AppBar.Headline class="flex flex-row gap-4">
             <a href={resolve("/")} class="text-xl font-bold xl:text-3xl">
-                Webpipeline
+                Giellatekno LingTools
             </a>
-            <a
-                href={resolve("/")}
-                class="xl:btn hover:preset-tonal ml-4 hidden"
-            >
+            <a href={resolve("/")} class="xl:btn hover:preset-tonal ml-4 hidden">
                 <GlobeIcon class="size-6" />
                 {m.languages()}
             </a>

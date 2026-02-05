@@ -16,7 +16,7 @@
 </script>
 
 <svelte:head>
-    <title>{m.dependency_title()} | Webpipeline</title>
+    <title>{m.dependency_title()} | LingTools</title>
 </svelte:head>
 
 <div class="flex flex-col items-center gap-4">
