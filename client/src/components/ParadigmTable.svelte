@@ -32,20 +32,18 @@
 
                 <div class="flex w-full flex-col gap-4 md:flex-wrap md:gap-8 lg:flex-row">
                     {#each section.tables as table}
-                        {#if !table.showIf || table.showIf(elem)}
-                            <div
-                                id={table.tId}
-                                class="highlight-target h-fit scroll-mt-24 rounded-lg p-2 lg:p-4"
-                            >
-                                {#if table.title}
-                                    <h5 class="h5 mb-2 font-semibold italic opacity-70">
-                                        {table.title()}
-                                    </h5>
-                                {/if}
+                        <div
+                            id={table.tId}
+                            class="highlight-target h-fit scroll-mt-24 rounded-lg p-2 lg:p-4"
+                        >
+                            {#if table.title}
+                                <h5 class="h5 mb-2 font-semibold italic opacity-70">
+                                    {table.title()}
+                                </h5>
+                            {/if}
 
-                                {@render table_constructor(table, activeRows)}
-                            </div>
-                        {/if}
+                            {@render table_constructor(table, activeRows)}
+                        </div>
                     {/each}
                 </div>
             </section>
