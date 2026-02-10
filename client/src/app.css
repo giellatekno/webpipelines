@@ -39,4 +39,46 @@
     .highlight-target:target {
         animation: target-pulse 3s cubic-bezier(0.4, 0, 0.2, 1);
     }
+
+    [data-table-container] {
+        @apply w-full overflow-x-auto rounded-lg border shadow-md;
+        @apply border-surface-200-800 bg-surface-50-950 md:w-fit md:min-w-md;
+    }
+
+    /* Paradigm Table Styling */
+    [data-table-theme="paradigm"] {
+        @apply w-full table-auto border-collapse text-left text-sm md:text-base;
+
+        & thead tr {
+            @apply bg-surface-200-800/60 border-surface-200-800 divide-surface-200-800 divide-x border-b;
+        }
+
+        & th {
+            @apply p-2 font-bold tracking-wider uppercase opacity-70 md:p-4;
+        }
+
+        & tbody {
+            @apply divide-surface-100-900 divide-y;
+        }
+
+        & tbody tr {
+            @apply hover:bg-primary-500/5 divide-surface-100-900 h-full divide-x transition-colors;
+        }
+
+        & tbody tr.separator {
+            @apply border-surface-200-800 border-b-2;
+        }
+
+        & tbody tr td {
+            @apply h-full items-center p-2 md:p-4;
+        }
+
+        & tbody tr td.label {
+            @apply bg-surface-100-900/50 w-px font-medium whitespace-nowrap opacity-80;
+        }
+
+        & tbody tr td.header {
+            @apply font-bold;
+        }
+    }
 }

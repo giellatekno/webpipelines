@@ -42,14 +42,14 @@ export function generateReflexiveBlock(caseName: Function, caseTag: string) {
     return {
         title: caseName,
         headers: [m.paradigm_person, m.paradigm_empty],
-        rows: PERSONS.map((pers, i) => ({
+        rows: SMA_PERSONS.map((pers) => ({
             label: pers.label,
             tags: [`${caseTag}+Px${pers.tag}`],
         })),
     };
 }
 
-export function generatePronounBlock(persTag: string): TableBlock {
+export function generatePronounBlock(persTag: string): Table {
     return {
         showIf: has_tags(persTag),
         headers: [m.paradigm_case, m.paradigm_empty],

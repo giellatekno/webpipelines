@@ -198,12 +198,12 @@ interface ParadigmItem {
     pos: string;
     tags: string[];
     wordform: string;
-    weight: number;
+    weight?: number;
 }
 
-interface ParadigmResults {
+interface ParadigmApiResult {
     results: ParadigmItem[][];
-    other_forms?: string[];
+    other_forms?: ParadigmItem[];
 }
 
 export interface ParsedParadigm {
@@ -213,7 +213,16 @@ export interface ParsedParadigm {
     wordforms: Map<string, Set<string>>;
 }
 
-export function paradigm_parser(objs: ParadigmResults) {
+interface ParsedResult {
+    paradigms: ParsedParadigm[];
+    other_hits: {
+        lemma: string;
+        pos: string;
+        tags: string[];
+    }[];
+}
+
+export function paradigm_parser(objs: ParadigmApiResult) {
     // console.log(objs);
     const subclasses = [
         "Neg",
@@ -232,8 +241,9 @@ export function paradigm_parser(objs: ParadigmResults) {
         "Qu",
     ];
 
-    const result: { [key: string]: ParsedParadigm } = {};
+    const result: ParsedResult = { paradigms: [], other_hits: [] };
 
+    const paradigms: { [key: string]: ParsedParadigm } = {};
     for (const entry of objs.results) {
         for (const obj of entry) {
             const lemma = obj.lemma;
@@ -251,8 +261,8 @@ export function paradigm_parser(objs: ParadigmResults) {
             const identifier = subclass
                 ? `${lemma}+${pos}+${subclass}`
                 : `${lemma}+${pos}`;
-            if (!result[identifier]) {
-                result[identifier] = {
+            if (!paradigms[identifier]) {
+                paradigms[identifier] = {
                     lemma: lemma,
                     pos: pos,
                     subclass: subclass,
@@ -260,15 +270,27 @@ export function paradigm_parser(objs: ParadigmResults) {
                 };
             }
 
-            if (result[identifier].wordforms.has(tags)) {
-                const cur_set = result[identifier].wordforms.get(tags);
+            if (paradigms[identifier].wordforms.has(tags)) {
+                const cur_set = paradigms[identifier].wordforms.get(tags);
                 // NOTE: What happens if there is an error? Can it even happen?
                 if (cur_set) {
                     cur_set.add(wordform);
                 }
             } else {
-                result[identifier].wordforms.set(tags, new Set([wordform]));
+                paradigms[identifier].wordforms.set(tags, new Set([wordform]));
             }
+        }
+    }
+    result.paradigms = Object.values(paradigms);
+
+    if (objs.other_forms) {
+        for (const other_hit of objs.other_forms) {
+            const hit = {
+                lemma: other_hit.lemma,
+                pos: other_hit.pos,
+                tags: other_hit.tags,
+            };
+            result.other_hits.push(hit);
         }
     }
     return result;

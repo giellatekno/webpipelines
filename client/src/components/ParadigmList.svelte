@@ -6,22 +6,30 @@
     let { elem }: { elem: ParsedParadigm } = $props();
 </script>
 
-<div class="mx-auto flex justify-center">
+<div class="mx-auto flex w-fit justify-center">
     <Table>
         <thead>
-            <tr class="[&>th]:text-start">
+            <tr>
                 <th>{m.paradigm_tags()}</th>
                 <th>{m.paradigm_wordform()}</th>
             </tr>
         </thead>
         <tbody>
             {#each elem.wordforms.entries() as [tags, wordforms]}
-                <tr class="even:bg-surface-100-900/50 odd:bg-surface-50-950 border">
-                    <td class="font-semibold">
+                <tr>
+                    <td class="label header">
                         {elem.pos}+{elem.subclass ? elem.subclass + "+" : ""}{tags}
                     </td>
                     <td>
-                        {@html Array.from(wordforms).join("<br>")}
+                        <div class="flex flex-col gap-1">
+                            {#each wordforms as wordform}
+                                <p
+                                    class="text-surface-900-100 text-sm text-nowrap lg:text-base"
+                                >
+                                    {wordform}
+                                </p>
+                            {/each}
+                        </div>
                     </td>
                 </tr>
             {/each}

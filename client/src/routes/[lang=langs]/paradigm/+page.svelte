@@ -18,7 +18,7 @@
 </script>
 
 <svelte:head>
-    <title>{m.paradigm_title()} | LingTools</title>
+    <title>{m.paradigm_title()} | Webpipeline</title>
 </svelte:head>
 
 <div class="flex flex-col items-center gap-4">
@@ -31,8 +31,10 @@
         />
     </FormWrapper>
 
+    <hr class="hr my-2 md:my-8" />
+
     {#if data.results}
-        <ParadigmWrapper data={data.results} {format} />
+        <ParadigmWrapper data={data.results} {format} search={word} />
     {:else if data.error}
         <ErrorBox error={data.error} />
     {/if}

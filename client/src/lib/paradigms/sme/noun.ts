@@ -19,7 +19,7 @@ const schema: LanguageSchema = {
                     rows: SME_PERSONS.map((p) => ({
                         label: p.pxLabel,
                         tags: [`Sg+Nom+Px${p.tag}`, `Pl+Nom+Px${p.tag}`],
-                        seperator: p.tag === "Sg3" || p.tag === "Du3",
+                        separator: p.tag === "Sg3" || p.tag === "Du3",
                     })),
                 },
                 {
@@ -28,7 +28,7 @@ const schema: LanguageSchema = {
                     rows: SME_PERSONS.map((p) => ({
                         label: p.pxLabel,
                         tags: [`Sg+Acc+Px${p.tag}`, `Pl+Acc+Px${p.tag}`],
-                        seperator: p.tag === "Sg3" || p.tag === "Du3",
+                        separator: p.tag === "Sg3" || p.tag === "Du3",
                     })),
                 },
                 {
@@ -37,7 +37,7 @@ const schema: LanguageSchema = {
                     rows: SME_PERSONS.map((p) => ({
                         label: p.pxLabel,
                         tags: [`Sg+Gen+Px${p.tag}`, `Pl+Gen+Px${p.tag}`],
-                        seperator: p.tag === "Sg3" || p.tag === "Du3",
+                        separator: p.tag === "Sg3" || p.tag === "Du3",
                     })),
                 },
                 {
@@ -46,7 +46,7 @@ const schema: LanguageSchema = {
                     rows: SME_PERSONS.map((p) => ({
                         label: p.pxLabel,
                         tags: [`Sg+Ill+Px${p.tag}`, `Pl+Ill+Px${p.tag}`],
-                        seperator: p.tag === "Sg3" || p.tag === "Du3",
+                        separator: p.tag === "Sg3" || p.tag === "Du3",
                     })),
                 },
                 {
@@ -55,7 +55,7 @@ const schema: LanguageSchema = {
                     rows: SME_PERSONS.map((p) => ({
                         label: p.pxLabel,
                         tags: [`Sg+Loc+Px${p.tag}`, `Pl+Loc+Px${p.tag}`],
-                        seperator: p.tag === "Sg3" || p.tag === "Du3",
+                        separator: p.tag === "Sg3" || p.tag === "Du3",
                     })),
                 },
                 {
@@ -64,7 +64,7 @@ const schema: LanguageSchema = {
                     rows: SME_PERSONS.map((p) => ({
                         label: p.pxLabel,
                         tags: [`Sg+Com+Px${p.tag}`, `Pl+Com+Px${p.tag}`],
-                        seperator: p.tag === "Sg3" || p.tag === "Du3",
+                        separator: p.tag === "Sg3" || p.tag === "Du3",
                     })),
                 },
                 {
@@ -73,7 +73,7 @@ const schema: LanguageSchema = {
                     rows: SME_PERSONS.map((p) => ({
                         label: p.pxLabel,
                         tags: [`Ess+Px${p.tag}`],
-                        seperator: p.tag === "Sg3" || p.tag === "Du3",
+                        separator: p.tag === "Sg3" || p.tag === "Du3",
                     })),
                 },
             ],

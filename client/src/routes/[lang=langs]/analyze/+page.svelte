@@ -39,7 +39,7 @@
 </script>
 
 <svelte:head>
-    <title>{m.analyze_title()} | LingTools</title>
+    <title>{m.analyze_title()} | Webpipeline</title>
 </svelte:head>
 
 <div class="flex flex-col items-center gap-4">
@@ -68,7 +68,7 @@
                                     combine_tags(lemma, pos, tags),
                                 ).join(plus)}
                                 <tr
-                                    class:separate={j ===
+                                    class:separator={j ===
                                         word_analyses.items.length - 1 &&
                                         i !== data.results.length - 1}
                                 >
@@ -80,7 +80,7 @@
                                     <td>
                                         {@html html_tags}
                                     </td>
-                                    <td class="">
+                                    <td>
                                         <button
                                             class="btn-icon preset-outlined-surface-950-50 hover:preset-tonal h-fit w-fit"
                                             type="button"

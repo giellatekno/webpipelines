@@ -34,14 +34,34 @@
     }
 </script>
 
-<form onsubmit={on_submit} id="form" class="mb-2 flex flex-col gap-2">
-    <div class="flex flex-col items-center gap-2 xl:flex-row xl:justify-center xl:gap-4">
-        <div class="grid grid-cols-2 items-center gap-2 xl:grid-cols-1 xl:gap-0">
-            <label for="pos-select" class="label-text text-right xl:text-left xl:text-sm">
+<form onsubmit={on_submit} id="form" class="mb-2 flex flex-col items-center gap-2">
+    <span class="flex justify-center">
+        <div class="flex flex-col">
+            <div class="flex h-fit flex-row gap-2">
+                <input
+                    class="input bg-surface-50 h-12 text-lg lg:w-80"
+                    id="input"
+                    type="search"
+                    name="word"
+                    bind:value={word}
+                    bind:this={input}
+                    autocapitalize="off"
+                    spellcheck="false"
+                    placeholder={m.search() + "..."}
+                />
+                <button class="btn preset-filled-primary-500 m-0.5" type="submit">
+                    {m.submit()}
+                </button>
+            </div>
+        </div>
+    </span>
+    <div class="mt-4 grid w-1/2 grid-cols-1 gap-4">
+        <div class="w-full">
+            <label for="pos-select" class="label-text">
                 {m.partofspeech()}:
             </label>
             <select
-                class="select bg-surface-50-950 text-sm xl:text-base"
+                class="select bg-surface-50-950 min-h-max w-full"
                 bind:value={pos}
                 onchange={on_radio_change}
                 name="pos"
@@ -55,52 +75,52 @@
             </select>
         </div>
 
-        {#if has_tables}
-            <div class="grid grid-cols-2 items-center gap-2 xl:grid-cols-1 xl:gap-0">
-                <label
-                    for="format-select"
-                    class="label-text text-right xl:text-left xl:text-sm"
-                >
+        <div class="w-full">
+            {#if has_tables}
+                <label for="format-select" class="label-text">
                     {m.paradigm_format()}:
                 </label>
-                <select
-                    class="select bg-surface-50-950 text-sm xl:text-base"
-                    bind:value={format}
-                    onchange={on_radio_change}
-                    name="format"
-                    id="format-select"
+                <div
+                    class="bg-surface-50-950 border-surface-200-800 flex flex-row justify-center gap-4 rounded-sm border p-2"
                 >
-                    <option value="table">
-                        {m.paradigm_table()}
-                    </option>
-                    <option value="list">
-                        {m.paradigm_list()}
-                    </option>
-                </select>
-            </div>
-        {/if}
-    </div>
-    <span class="mt-4 flex justify-center">
-        <div class="flex flex-col">
-            <div class="flex h-fit flex-row gap-2">
-                <input
-                    class="input bg-surface-50 xl:h-12 xl:w-80 xl:text-lg"
-                    id="input"
-                    type="search"
-                    name="word"
-                    bind:value={word}
-                    bind:this={input}
-                    autocapitalize="off"
-                    spellcheck="false"
-                    placeholder={m.search() + "..."}
-                />
-                <button
-                    class="btn preset-filled-primary-500 text-sm xl:text-base"
-                    type="submit"
-                >
-                    {m.submit()}
-                </button>
-            </div>
+                    <div class="flex items-center space-x-2">
+                        <input
+                            type="radio"
+                            class="radio"
+                            bind:group={format}
+                            onchange={on_radio_change}
+                            name="format"
+                            value="table"
+                        />
+                        <p>{m.paradigm_table()}</p>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <input
+                            type="radio"
+                            class="radio"
+                            bind:group={format}
+                            onchange={on_radio_change}
+                            name="format"
+                            value="list"
+                        />
+                        <p>{m.paradigm_list()}</p>
+                    </div>
+                </div>
+                <!-- <select -->
+                <!--     class="select bg-surface-50-950 text-sm xl:text-base" -->
+                <!--     bind:value={format} -->
+                <!--     onchange={on_radio_change} -->
+                <!--     name="format" -->
+                <!--     id="format-select" -->
+                <!-- > -->
+                <!--     <option value="table"> -->
+                <!--         {m.paradigm_table()} -->
+                <!--     </option> -->
+                <!--     <option value="list"> -->
+                <!--         {m.paradigm_list()} -->
+                <!--     </option> -->
+                <!-- </select> -->
+            {/if}
         </div>
-    </span>
+    </div>
 </form>
