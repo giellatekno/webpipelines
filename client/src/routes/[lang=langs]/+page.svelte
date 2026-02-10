@@ -53,7 +53,7 @@
 </script>
 
 <svelte:head>
-    <title>{langname(lang, getLocale())} | LingTools</title>
+    <title>{langname(lang, getLocale())} | Webpipeline</title>
 </svelte:head>
 
 <div

@@ -12,15 +12,13 @@
     class="bg-primary-600 text-primary-contrast-950-50 border-surface-950-50 sticky top-0 z-50 border-b-2"
 >
     <AppBar.Toolbar
-        class="mx-auto w-full max-w-[1700px] grid-cols-[1fr_auto_1fr] xl:grid-cols-[auto_auto]"
+        class="mx-auto w-full max-w-[1900px] grid-cols-[1fr_auto_1fr] xl:grid-cols-[auto_auto]"
     >
         <AppBar.Lead class="xl:hidden">
             <MobileSideBar />
         </AppBar.Lead>
         <AppBar.Headline class="flex flex-row gap-4">
-            <a href={resolve("/")} class="text-xl font-bold xl:text-3xl">
-                Giellatekno LingTools
-            </a>
+            <a href={resolve("/")} class="text-xl font-bold xl:text-3xl">Webpipeline</a>
             <a href={resolve("/")} class="xl:btn hover:preset-tonal ml-4 hidden">
                 <GlobeIcon class="size-6" />
                 {m.languages()}

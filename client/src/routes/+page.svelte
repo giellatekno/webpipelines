@@ -53,7 +53,7 @@
 </script>
 
 <svelte:head>
-    <title>Giellatekno LingTools</title>
+    <title>Giellatekno Webpipeline</title>
     <!--     <title>{m.languages()} | Webpipeline</title> -->
 </svelte:head>
 
