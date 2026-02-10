@@ -77,7 +77,10 @@
     "partofspeech_numeral": "Tallord",
 
     "paradigm_homonyms": "Fant {num} homonymer:",
-    "paradigm_noresults": "Ingen resultater...",
+    "paradigm_noresults": "Ingen treff på \"{search}\"",
+    "paradigm_results": "Resultater",
+    "paradigm_directhits": "Direkte treff",
+    "paradigm_otherhits": "Andre treff",
     "paradigm_tags": "Tagger",
     "paradigm_wordforms": "Ordform",
     "paradigm_person": "Person",
