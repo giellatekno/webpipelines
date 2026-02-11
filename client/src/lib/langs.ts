@@ -1,3 +1,5 @@
+// sjd is commented out because the open model is not good. The actual model used is still closed
+
 // prettier-ignore
 const all_langs = [
     "bxr", "chr", "ciw", "cor", "crk", "deu",
@@ -6,7 +8,7 @@ const all_langs = [
     "kca", "koi", "kom", "kpv", "lav", "liv",
     "lut", "mdf", "mhr", "mns", "mrj", "myv",
     "nio", "nno", "nob", "olo", "rmf", "tkl",
-    "rup", "rus", "sjd", "sje", "sma", "sme",
+    "rup", "rus", "sje", "sma", "sme", //"sjd",
     "smj", "smn", "sms", "som", "swe", "udm",
     "vep", "vot", "vro", "yrk"
 ];
@@ -17,7 +19,7 @@ export const langs = [
     "fin", "fit", "fkv", "gle", "hdn", "ipk",
     "izh", "kal", "kca", "koi", "kpv", "liv",
     "mdf", "mhr", "mns", "mrj", "myv", "nio",
-    "nob", "olo", "rmf", "tkl", "rus", "sjd",
+    "nob", "olo", "rmf", "tkl", "rus", //"sjd",
     "sje", "sma", "sme", "smj", "smn", "sms",
     "som", "udm", "vep", "vot", "vro", "yrk",
 ];
@@ -25,7 +27,7 @@ export const langs = [
 // for the filters when selecting language
 // prettier-ignore
 export const sami_langs = new Set([
-    "sjd", "sje", 
+    "sje", //"sjd",
     "sma", "sme",
     "smj", "smn", 
     "sms",
@@ -65,7 +67,7 @@ export const paradigm_langs = new Set([
     "fit", "fkv", "gle", "ipk", "izh", "kal",
     "kca", "koi", "kpv", "liv", "mdf", "mhr",
     "mns", "mrj", "myv", "nio", "nob", "olo",
-    "rus", "sjd", "sje", "sma", "sme", "smj",
+    "rus", "sje", "sma", "sme", "smj", //"sjd",
     "smn", "sms", "som", "udm", "vep", "vot",
     "vro", "yrk",
 ]);
@@ -76,7 +78,7 @@ export const generation_langs = new Set([
     "fin", "gle", "hdn", "ipk", "izh", "kal",
     "kca", "koi", "kpv", "liv", "mdf", "mhr",
     "mns", "mrj", "myv", "nio", "nob", "olo",
-    "rus", "tkl", "sjd", "sje", "sma", "sme",
+    "rus", "tkl", "sje", "sma", "sme", //"sjd",
     "smj", "smn", "sms", "som", "udm", "vep",
     "vot", "vro", "yrk",
 ]);
@@ -85,7 +87,7 @@ export const generation_langs = new Set([
 export const num_langs = new Set([
     "fin", "hdn", "liv", "mdf", 
     "mhr", "myv", "olo", "rus", 
-    "sjd", "sma", "tkl", "sme",
+    "sma", "tkl", "sme", //"sjd",
     "smj", "smn", "sms", "yrk",
 ]);
 
