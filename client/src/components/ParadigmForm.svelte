@@ -1,6 +1,8 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
     import { m } from "$lib/paraglide/messages";
+    import { SearchIcon } from "@lucide/svelte";
+    import { Switch } from "@skeletonlabs/skeleton-svelte";
 
     let { word, pos, format = $bindable(), has_tables } = $props();
 
@@ -32,14 +34,18 @@
         goto(`?word=${word}&pos=${pos}`);
         input.focus();
     }
+    let checked = $state(true);
+    $effect(() => {
+        format = checked ? "table" : "list";
+    });
 </script>
 
 <form onsubmit={on_submit} id="form" class="mb-2 flex flex-col items-center gap-2">
     <span class="flex justify-center">
         <div class="flex flex-col">
-            <div class="flex h-fit flex-row gap-2">
+            <div class="input-group grid-cols-[auto_1fr_auto] shadow-sm">
                 <input
-                    class="input bg-surface-50 h-12 text-lg lg:w-80"
+                    class="ig-input preset-filled-surface-50-950 h-12 text-lg"
                     id="input"
                     type="search"
                     name="word"
@@ -49,19 +55,22 @@
                     spellcheck="false"
                     placeholder={m.search() + "..."}
                 />
-                <button class="btn preset-filled-primary-500 m-0.5" type="submit">
+                <button class="ig-btn preset-filled-primary-500" type="submit">
                     {m.submit()}
                 </button>
             </div>
         </div>
     </span>
-    <div class="mt-4 grid w-1/2 grid-cols-1 gap-4">
-        <div class="w-full">
-            <label for="pos-select" class="label-text">
+    <div class="mt-4 flex w-full flex-col items-center gap-2">
+        <div class="grid w-full grid-cols-2 gap-4">
+            <label
+                for="pos-select"
+                class="label-text place-self-start self-center text-base lg:place-self-end"
+            >
                 {m.partofspeech()}:
             </label>
             <select
-                class="select bg-surface-50-950 min-h-max w-full"
+                class="select bg-surface-50-950 w-full place-self-start lg:w-fit"
                 bind:value={pos}
                 onchange={on_radio_change}
                 name="pos"
@@ -75,51 +84,24 @@
             </select>
         </div>
 
-        <div class="w-full">
+        <div class="grid w-full grid-cols-2 gap-4">
             {#if has_tables}
-                <label for="format-select" class="label-text">
+                <label
+                    for="format-select"
+                    class="label-text place-self-start self-center text-base lg:place-self-end"
+                >
                     {m.paradigm_format()}:
                 </label>
-                <div
-                    class="bg-surface-50-950 border-surface-200-800 flex flex-row justify-center gap-4 rounded-sm border p-2"
+                <Switch
+                    class="place-self-center lg:place-self-start"
+                    {checked}
+                    onCheckedChange={(details) => (checked = details.checked)}
                 >
-                    <div class="flex items-center space-x-2">
-                        <input
-                            type="radio"
-                            class="radio"
-                            bind:group={format}
-                            onchange={on_radio_change}
-                            name="format"
-                            value="table"
-                        />
-                        <p>{m.paradigm_table()}</p>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <input
-                            type="radio"
-                            class="radio"
-                            bind:group={format}
-                            onchange={on_radio_change}
-                            name="format"
-                            value="list"
-                        />
-                        <p>{m.paradigm_list()}</p>
-                    </div>
-                </div>
-                <!-- <select -->
-                <!--     class="select bg-surface-50-950 text-sm xl:text-base" -->
-                <!--     bind:value={format} -->
-                <!--     onchange={on_radio_change} -->
-                <!--     name="format" -->
-                <!--     id="format-select" -->
-                <!-- > -->
-                <!--     <option value="table"> -->
-                <!--         {m.paradigm_table()} -->
-                <!--     </option> -->
-                <!--     <option value="list"> -->
-                <!--         {m.paradigm_list()} -->
-                <!--     </option> -->
-                <!-- </select> -->
+                    <Switch.Control>
+                        <Switch.Thumb />
+                    </Switch.Control>
+                    <Switch.HiddenInput />
+                </Switch>
             {/if}
         </div>
     </div>

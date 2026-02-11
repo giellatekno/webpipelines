@@ -37,10 +37,7 @@
         onkeydown={on_textarea_keydown}
         placeholder={m.writehere()}
     ></textarea>
-    <div class="flex flex-row items-center justify-start gap-2">
-        <button class="btn preset-filled-primary-500" type="submit">
-            {m.submit()}
-        </button>
+    <div class="flex flex-row items-center justify-between gap-2 lg:justify-start">
         <button
             class="btn preset-outlined-error-600-400 hover:preset-tonal-error"
             type="button"
@@ -48,6 +45,9 @@
         >
             {m.clear()}
         </button>
-        <span class="hidden xl:block">{m.submit_keys()}</span>
+        <button class="btn preset-filled-primary-500" type="submit">
+            {m.submit()}
+        </button>
+        <span class="hidden lg:block">{m.submit_keys()}</span>
     </div>
 </form>
