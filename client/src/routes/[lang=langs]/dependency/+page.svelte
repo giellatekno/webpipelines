@@ -24,7 +24,7 @@
         <TextForm bind:value />
     </FormWrapper>
 
-    <div class="text-sm xl:text-lg">
+    <div class="text-sm lg:text-lg">
         {#if data.error}
             <ErrorBox error={data.error} />
         {:else if data.results}

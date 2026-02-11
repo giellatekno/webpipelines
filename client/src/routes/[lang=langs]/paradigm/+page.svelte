@@ -31,7 +31,7 @@
         />
     </FormWrapper>
 
-    <hr class="hr my-2 md:my-8" />
+    <hr class="hr my-2 lg:my-8" />
 
     {#if data.results}
         <ParadigmWrapper data={data.results} {format} search={word} />

@@ -21,7 +21,7 @@
 
 <Popover>
     <Popover.Trigger
-        class="btn preset-filled-primary-500 xl:preset-filled-primary-50-950"
+        class="btn preset-filled-primary-500 lg:preset-filled-primary-50-950"
     >
         <LanguagesIcon />
         {m.interfacelanguage()}

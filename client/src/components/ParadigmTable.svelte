@@ -30,7 +30,7 @@
                     </h4>
                 {/if}
 
-                <div class="flex w-full flex-col gap-4 md:flex-wrap md:gap-8 lg:flex-row">
+                <div class="flex w-full flex-col gap-4 lg:flex-row lg:flex-wrap lg:gap-8">
                     {#each section.tables as table}
                         <div
                             id={table.tId}

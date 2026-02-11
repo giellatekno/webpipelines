@@ -30,7 +30,7 @@
 
         {#if data.results}
             <div
-                class="card border-primary-500 min-w-full overflow-x-auto border-2 px-6 py-4 whitespace-nowrap shadow-md xl:text-lg"
+                class="card border-primary-500 min-w-full overflow-x-auto border-2 px-6 py-4 whitespace-nowrap shadow-md lg:text-lg"
             >
                 <div class="inline-block min-w-full whitespace-nowrap">
                     {#each data.results as result, i}

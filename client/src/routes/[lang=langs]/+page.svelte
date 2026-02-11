@@ -57,7 +57,7 @@
 </svelte:head>
 
 <div
-    class="mx-auto mt-8 grid max-h-max max-w-max grid-cols-1 items-stretch gap-6 xl:grid-cols-2"
+    class="mx-auto mt-8 grid max-h-max max-w-max grid-cols-1 items-stretch gap-6 lg:grid-cols-2"
 >
     {#each tools_for[lang] as tool}
         <a
@@ -70,11 +70,11 @@
                 alt=""
             />
             <div class="flex flex-col">
-                <span class="text-base font-bold xl:text-2xl">
+                <span class="text-base font-bold lg:text-2xl">
                     {button_content[tool].title()}
                 </span>
                 <span
-                    class="text-surface-950-50/75 text-sm font-normal italic xl:text-xl"
+                    class="text-surface-950-50/75 text-sm font-normal italic lg:text-xl"
                 >
                     {button_content[tool].description()}
                 </span>

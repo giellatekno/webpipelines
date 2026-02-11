@@ -6,15 +6,15 @@
 
 <footer class="bg-surface-800-200 text-surface-100-900 flex w-full justify-center p-4">
     <div
-        class="grid grid-cols-[1fr_1fr] place-items-center gap-2 xl:grid-cols-[1fr_auto_1fr]"
+        class="grid grid-cols-[1fr_1fr] place-items-center gap-2 lg:grid-cols-[1fr_auto_1fr]"
     >
         <img
-            class="order-2 h-5 scale-100 invert xl:order-1 xl:block xl:h-10"
+            class="order-2 h-5 scale-100 invert lg:order-1 lg:block lg:h-10"
             src={giellatekno_logo}
             alt="Giellatekno logo"
         />
         <div
-            class="order-1 col-span-2 flex flex-col justify-between gap-4 text-center text-xs xl:order-2 xl:col-span-1 xl:text-base"
+            class="order-1 col-span-2 flex flex-col justify-between gap-4 text-center text-xs lg:order-2 lg:col-span-1 lg:text-base"
         >
             <div>
                 {m.feedback()}
@@ -30,7 +30,7 @@
             </div>
         </div>
         <img
-            class="order-3 h-10 scale-100 xl:block xl:h-20"
+            class="order-3 h-10 scale-100 lg:block lg:h-20"
             src={uit_logo_sme}
             alt="UiT logo"
         />

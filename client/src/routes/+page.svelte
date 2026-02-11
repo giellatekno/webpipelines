@@ -58,7 +58,7 @@
 </svelte:head>
 
 <div class="flex w-full flex-col gap-4">
-    <label class="label xl:ml-2">
+    <label class="label lg:ml-2">
         <span class="label-text">{m.showtoolsfor()}</span>
         <div class="input-group w-3xs grid-cols-[auto_1fr]">
             <div class="ig-cell preset-tonal">
@@ -75,16 +75,16 @@
     </label>
     <hr class="hr" />
 
-    <div class="flex w-full flex-row flex-wrap justify-evenly gap-8 xl:mx-2">
+    <div class="flex w-full flex-row flex-wrap justify-evenly gap-8 lg:mx-2">
         {#if visible_langs.length}
             {#each groups as group}
                 {#if group.langset.length}
-                    <div class="flex w-full flex-col gap-2 xl:w-fit">
-                        <h4 class="xl:h4 h5">{group.title()}</h4>
+                    <div class="flex w-full flex-col gap-2 lg:w-fit">
+                        <h4 class="lg:h4 h5">{group.title()}</h4>
                         <div class="grid min-w-max grid-cols-2 gap-2">
                             {#each group.langset as lng}
                                 <a
-                                    class="btn preset-outlined-primary-500 hover:preset-tonal w-full text-center text-sm text-wrap xl:text-base"
+                                    class="btn preset-outlined-primary-500 hover:preset-tonal w-full text-center text-sm text-wrap lg:text-base"
                                     href={resolve(`/${lng}`)}
                                 >
                                     {langname(lng, locale)}

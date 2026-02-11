@@ -29,7 +29,7 @@
         {/if}
 
         {#if data.results}
-            <div class="card border-primary-500 border-2 p-4 shadow-md xl:text-lg">
+            <div class="card border-primary-500 border-2 p-4 shadow-md lg:text-lg">
                 <div class="flex flex-col gap-2">
                     <p class="font-bold text-red-800">Result:</p>
 
