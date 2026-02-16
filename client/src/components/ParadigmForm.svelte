@@ -1,7 +1,6 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
     import { m } from "$lib/paraglide/messages";
-    import { SearchIcon } from "@lucide/svelte";
     import { Switch } from "@skeletonlabs/skeleton-svelte";
 
     let { word, pos, format = $bindable(), has_tables } = $props();

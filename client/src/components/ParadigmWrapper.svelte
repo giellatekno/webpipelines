@@ -73,7 +73,8 @@
 
 <div class="grid w-full grid-cols-1 gap-8 lg:grid-cols-[auto_1fr_auto]">
     {#await schemaPromises}
-        <div class="flex justify-center">
+        <div></div>
+        <div class="flex w-full justify-center">
             <Progress class="w-fit items-center" value={null}>
                 <Progress.Circle class="[--size:--spacing(12)]">
                     <Progress.CircleTrack />
@@ -82,6 +83,7 @@
                 <Progress.ValueText />
             </Progress>
         </div>
+        <div></div>
     {:then schemas}
         {@const cur_schema = filterSchema(schemas[value], paradigms[value])}
         <div class="w-full max-w-80 place-self-center lg:w-64 lg:place-self-auto">
