@@ -44,18 +44,3 @@ push-labacr:
 
 # Build And Push -- Runs the commands 'build', 'image' and 'push-labacr' in sequence
 bap: build image push-labacr
-
-# Export the built image to webpipeline-client.tar.gz"
-export-image:
-    podman save -o webpipeline-client.tar webpipeline-client
-    gzip -f webpipeline-client.tar
-
-# Upload webpipeline-client.tar.gz to gtweb (read docs there on how to import and run)
-push-gtweb:
-    #!/usr/bin/env bash
-    if [ ! -f  webpipeline-client.tar.gz]; then
-        echo "error: no webpipeline-client.tar.gz file"
-        exit 1
-    fi
-    scp webpipeline-client.tar.gz gtweb.uit.no:/home/anders/webpipeline-client.tar.gz
-
