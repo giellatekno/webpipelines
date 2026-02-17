@@ -1,0 +1,61 @@
+# Display help information
+default:
+    @just --list
+
+# pnpm run dev  -- Run development build locally
+dev:
+    PUBLIC_API_ROOT=http://localhost:3000 pnpm run dev
+
+# pnpm run build  --  Builds for the server, use build-local to build locally
+build:
+    # SK_BASE=/webpipeline pnpm run build
+    pnpm run build
+
+# pnpm run build  -- Builds locally
+build-local:
+    pnpm run build
+
+# Run the built image, using local settings
+run-local:
+    podman run \
+        --name webpipeline-client \
+        --detach \
+        --init \
+        --stop-signal=SIGINT \
+        --rm \
+        -p 5173:3000 \
+        --env PUBLIC_API_ROOT=http://localhost:3000 \
+        --env ORIGIN=http://localhost:5173 \
+        webpipeline-client
+
+# Stop the locally running container
+stop-local:
+    podman stop webpipeline-client
+
+
+# Build the container image using podman (NOTE: Make sure to "build" first)
+image:
+    podman build -t webpipeline-client -f Dockerfile .
+
+# Push the built image to the gtlab container registry
+push-labacr:
+    podman tag webpipeline-client gtlabcontainerregistry.azurecr.io/webpipeline-client
+    podman push gtlabcontainerregistry.azurecr.io/webpipeline-client
+
+# Build And Push -- Runs the commands 'build', 'image' and 'push-labacr' in sequence
+bap: build image push-labacr
+
+# Export the built image to webpipeline-client.tar.gz"
+export-image:
+    podman save -o webpipeline-client.tar webpipeline-client
+    gzip -f webpipeline-client.tar
+
+# Upload webpipeline-client.tar.gz to gtweb (read docs there on how to import and run)
+push-gtweb:
+    #!/usr/bin/env bash
+    if [ ! -f  webpipeline-client.tar.gz]; then
+        echo "error: no webpipeline-client.tar.gz file"
+        exit 1
+    fi
+    scp webpipeline-client.tar.gz gtweb.uit.no:/home/anders/webpipeline-client.tar.gz
+
