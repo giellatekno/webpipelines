@@ -8,8 +8,7 @@ dev:
 
 # pnpm run build  --  Builds for the server, use build-local to build locally
 build:
-    # SK_BASE=/webpipeline pnpm run build
-    pnpm run build
+    SK_BASE=/webpipeline pnpm run build
 
 # pnpm run build  -- Builds locally
 build-local:
@@ -31,7 +30,6 @@ run-local:
 # Stop the locally running container
 stop-local:
     podman stop webpipeline-client
-
 
 # Build the container image using podman (NOTE: Make sure to "build" first)
 image:
