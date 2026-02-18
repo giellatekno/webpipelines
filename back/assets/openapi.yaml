@@ -34,27 +34,58 @@ paths:
     get:
       tags:
         - pipeline
-      summary: Sentence analysis
+      summary: Word and sentence analysis
       description:
-        "All word forms in the sentence.<br><b>Pipeline:</b><pre>echo \"$string\" |<br>
+        "Gives all wordforms for every word in the sentence.<br><b>Pipeline:</b><pre>echo \"$string\" |<br>
         hfst-tokenize -q [...]$lang/tokeniser-disamb-gt-desc.pmhfst |<br>
         hfst-lookup -q $lang/analyser-gt-desc-hfstol</pre>"
       parameters:
-        - name: lang
-          type: string
-          example: nob
-          in: path
-          required: true
-          description: The target language, a 3-letter iso 6-393 code
+        - $ref: '#/components/parameters/langParam'
         - name: string
           type: string
-          example: Dette er ei lita setning.
+          example: Mánná lohká girjji.
           in: path
           required: true
-          description: The sentence to run analysis on
+          description: The word or sentence to run analysis on
+        - $ref: '#/components/parameters/formatParam'
       responses:
         200:
-          description: A succesful query, with results returned as text
+          description: A succesful query, with results returned as json or text
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/analyzeResponse'
+              example:
+                {
+                  "results": [
+                    {
+                      "wordform": "Mánná",
+                      "analyses": [
+                        "mánnat+V+TV+Ind+Prs+Sg3",
+                        "mánná+N+Sg+Nom",
+                      ]
+                    },
+                    {
+                      "wordform": "lohká",
+                      "analyses": [
+                        "lohkat+V+TV+Ind+Prs+Sg3",
+                      ]
+                    },
+                    {
+                      "wordform": "girjji",
+                      "analyses": [
+                        "girji+N+Sg+Acc",
+                        "girji+N+Sg+Gen",
+                      ]
+                    },
+                    {
+                      "wordform": ".",
+                      "analyses": [
+                        ".+CLB",
+                      ]
+                    },
+                  ]
+                }
         422:
           description: Could not understand the query
         500:
@@ -71,21 +102,17 @@ paths:
         hfst-tokenize -q [...]$lang/tokeniser-disamb-gt-desc.pmhfst |<br>
         hfst-lookup -q [...]$lang/analyser-gt-desc-hfstol</pre>"
       parameters:
-        - name: lang
-          type: string
-          example: nob
-          in: path
-          required: true
-          description: The target language, a 3-letter iso 6-393 code
+        - $ref: '#/components/parameters/langParam'
         - name: string
           type: string
-          example: Dette er ei lita setning.
+          example: Mánná lohká girjji.
           in: path
           required: true
           description: The sentence to run dependency analysis on
+        - $ref: '#/components/parameters/formatParam'
       responses:
         200:
-          description: A succesful query, with results returned as text
+          description: A succesful query, with results returned as json or text
         422:
           description: Could not understand the query
         500:
@@ -100,21 +127,17 @@ paths:
         hfst-tokenize -cg $lang/tokeniser-disamb-gt-desc.pmhfst |<br>
         vislcg3 -g $lang/disambiguator.cg3</pre>"
       parameters:
-        - name: lang
-          type: string
-          example: nob
-          in: path
-          required: true
-          description: The target language, a 3-letter iso 6-393 code
+        - $ref: '#/components/parameters/langParam'
         - name: string
           type: string
-          example: Dette er ei lita setning.
+          example: Mánná lohká girjji.
           in: path
           required: true
-          description: The sentence to run dependency analysis on
+          description: The sentence to run disambiguating analysis on
+        - $ref: '#/components/parameters/formatParam'
       responses:
         200:
-          description: A succesful query, with results returned as text
+          description: A succesful query, with results returned as json or text
         422:
           description: Could not understand the query
         500:
@@ -128,21 +151,33 @@ paths:
         "Generate normative word forms from a lemma + morphological tags<br>
         <br><b>Pipeline:</b><pre>echo \"$string\" | hfst-lookup $lang/generator-gt-norm.hfstol</pre>"
       parameters:
-        - name: lang
-          type: string
-          example: nob
-          in: path
-          required: true
-          description: The target language, a 3-letter iso 6-393 code
+        - $ref: '#/components/parameters/langParam'
         - name: string
           type: string
-          example: fjell+N+Neu+Sg+Def
+          example: viessu+N+Sg+Gen
           in: path
           required: true
-          description: The lemma + morphological tags to generate the word form for
+          description: The lemma + morphological tags to generate the wordforms for
+        - $ref: '#/components/parameters/formatParam'
       responses:
         200:
-          description: A succesful query, with results returned as text
+          description: A succesful query, with results returned as json or text
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/generateResponse'
+              example:
+                {
+                  "results": [
+                    {
+                      "input": "viessu+N+Sg+Gen",
+                      "wordforms": [
+                        "vieso",
+                        "viesu"
+                      ]
+                    }
+                  ]
+                }
         422:
           description: Could not understand the query
         500:
@@ -156,21 +191,45 @@ paths:
         "Add hypenation markers to a word<br>
         <br><b>Pipeline:</b><pre>echo $string | hfst-lookup $lang/hyphenator-gt-desc.hfstol</pre>"
       parameters:
-        - name: lang
-          type: string
-          example: nob
-          in: path
-          required: true
-          description: The target language, a 3-letter iso 6-393 code
+        - $ref: '#/components/parameters/langParam'
         - name: string
           type: string
-          example: konspirasjonsteori
+          example: Dán máilmmi buoremusat
           in: path
           required: true
           description: The word to hyphenate
+        - $ref: '#/components/parameters/formatParam'
       responses:
         200:
-          description: A succesful query, with results returned as text
+          description: A succesful query, with results returned as json or text
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/hyphenateResponse'
+              example:
+                {
+                  "results": [
+                    {
+                      "wordform": "Dán",
+                      "hyphenated": [
+                        "Dán"
+                      ]
+                    },
+                    {
+                      "wordform": "máilmmi",
+                      "hyphenated": [
+                        "má#ilm^mi",
+                        "máilm^mi"
+                      ]
+                    },
+                    {
+                      "wordform": "buoremusat",
+                      "hyphenated": [
+                        "buo^re^mu^sat"
+                      ]
+                    },
+                  ]
+                }
         422:
           description: Could not understand the query
         500:
@@ -211,21 +270,30 @@ paths:
         "<b>Pipeline:</b><pre>echo \"$string\" |<br>
         hfst-lookup -q [...]$lang/txt2ipa.lookup.hfstol</pre>"
       parameters:
-        - name: lang
-          type: string
-          example: nob
-          in: path
-          required: true
-          description: The target language, a 3-letter iso 6-393 code
+        - $ref: '#/components/parameters/langParam'
         - name: string
           type: string
-          example: Dette er ei lita setning.
+          example: Mánná čohkká geađggis.
           in: path
           required: true
-          description: The sentence to transcribe
+          description: The sentence to run dependency analysis on
+        - $ref: '#/components/parameters/formatParam'
       responses:
         200:
-          description: A succesful query, with results returned as text
+          description: A succesful query, with results returned as json or text
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/transcribeResponse'
+              example:
+                {
+                  "results": [
+                    {
+                      "input": "Mánná čohkká geađggis.",
+                      "transcribed": "mˈɑːnːɑː tʃohkːɑː geæðgːis."
+                    }
+                  ]
+                }
         422:
           description: Could not understand the query
         500:
@@ -238,18 +306,13 @@ paths:
       description:
         "Generate paradigm for an input word"
       parameters:
-        - name: lang
-          type: string
-          example: nob
-          in: path
-          required: true
-          description: The target language, a 3-letter iso 6-393 code
+        - $ref: '#/components/parameters/langParam'
         - name: string
           type: string
           example: viessu
           in: path
           required: true
-          description: The sentence to run analysis on
+          description: The word to generate paradigm for.
         - name: size
           type: string
           in: query
@@ -262,9 +325,10 @@ paths:
           description:
             "Part-of-Speech. Any, A, N, V, Adv, Num or Pron. If any (or not
             given, will show all paradigms, with the most relevant first."
+        - $ref: '#/components/parameters/formatParam'
       responses:
         200:
-          description: A succesful query, with results returned as text
+          description: A succesful query, with results returned as json or text
         400:
           description: Could not understand the request
         500:
@@ -287,7 +351,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/definitions/UploadBody"
+              $ref: "#/components/schemas/UploadBody"
       responses:
         200:
           description: A succesful query, with results returned
@@ -319,7 +383,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/definitions/UploadBody"
+              $ref: "#/components/schemas/UploadBody"
       responses:
         200:
           description: A succesful query, with results returned
@@ -327,18 +391,113 @@ paths:
           description: Could not understand the query
         500:
           description: Something went wrong on the server
-definitions:
-  UploadBody:
-    type: object
-    properties:
-      typ:
-        summary: "The type of document. Can be \"text\", \"text+gz+b64\" or \"docx\"."
-        example: text
+components:
+  parameters:
+    langParam:
+      name: lang
+      example: sme
+      in: path
+      required: true
+      description: The target language, a 3-letter iso 6-393 code
+      schema: 
         type: string
-      lang:
-        summary: Language, a 3-letter iso-6-391-3 code. E.g nob, sme
-        example: nob
+        minLength: 3
+        maxLength: 3
+    formatParam:
+      name: format
+      in: query
+      required: false
+      description: The format of the response, either json or text. Defaults to json.
+      example: json
+      schema:
         type: string
-      data:
-        summary: The document data
-        type: string
+        enum:
+          - "json"
+          - "text"
+  schemas:
+    analyzeResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              wordform:
+                type: string
+              analyses:
+                type: array
+                items:
+                  type: string
+    dependencyResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              lemma:
+                type: string
+              analyses:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    level:
+                      type: integer
+                    analysis:
+                      type: string
+    generateResponse: 
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            input:
+              type: string
+              # description: The lemma + morphological tags sent by the user
+            wordforms:
+              # description: The wordforms generated from the input
+              type: array
+              items: 
+                type: string
+    hyphenateResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            wordform:
+              type: string
+            hyphenated:
+              type: array
+              items:
+                type: string
+    transcribeResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            input:
+              type: string
+            transcribed:
+              type: string
+    UploadBody:
+      type: object
+      properties:
+        typ:
+          summary: "The type of document. Can be \"text\", \"text+gz+b64\" or \"docx\"."
+          example: text
+          type: string
+        lang:
+          summary: Language, a 3-letter iso-6-391-3 code. E.g nob, sme
+          example: nob
+          type: string
+        data:
+          summary: The document data
+          type: string
