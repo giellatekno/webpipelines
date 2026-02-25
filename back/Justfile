@@ -1,0 +1,17 @@
+
+
+default:
+    just --list
+
+# run live-reloading server, while developing
+dev:
+    RUSTFLAGS="--cfg tokio_unstable" RUST_BACKTRACE=1 systemfd --no-pid -s http::3000 -- cargo watch -x 'run --release'
+
+errors:
+    CARGO_BUILD_WARNINGS=allow cargo +nightly check -Zwarnings
+
+build:
+    RUSTFLAGS="--cfg tokio_unstable" cargo build --release --target-dir target
+
+image:
+    podman build -t webpipeline-api -f Dockerfile .
