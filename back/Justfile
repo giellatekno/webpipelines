@@ -14,4 +14,8 @@ build:
     RUSTFLAGS="--cfg tokio_unstable" cargo build --release --target-dir target
 
 image:
-    podman build -t webpipeline-api -f Dockerfile .
+    podman build -t lingtools-api -f Containerfile .
+
+push:
+    podman tag lingtools-api gtlabcontainerregistry.azurecr.io/lingtools-api
+    podman push gtlabcontainerregistry.azurecr.io/lingtools-api

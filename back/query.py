@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Send a query to the webpipeline API, running locally, or elsewhere."""
+"""Send a query to the lingtools API, running locally, or elsewhere."""
 
 import argparse
 import pathlib
@@ -14,7 +14,7 @@ from urllib.request import Request, urlopen
 thisfile = pathlib.Path(__file__).name
 LOCAL_API = "http://localhost:3000"
 PROD_API = "https://something.something"
-GTWEB_API = "https://gtweb.uit.no/webpipeline-api"
+GTWEB_API = "https://gtweb.uit.no/lingtools-api"
 LAB_API = "https://dictapi.livelybeach-54ee1a2e.norwayeast.azurecontainerapps.io"
 HOUR = 60 * 60
 DAY = 60 * 60 * 24
