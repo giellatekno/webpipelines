@@ -2,6 +2,10 @@
     import { m } from "$lib/paraglide/messages";
 </script>
 
+<svelte:head>
+    <title>{m.about()} • {m.page_title()}</title>
+</svelte:head>
+
 <div class="my-4 flex w-full justify-center">
     <div class="grid grid-cols-1 gap-4 lg:max-h-max lg:w-2/3 lg:grid-cols-2">
         <div class="w-full">

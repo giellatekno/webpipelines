@@ -7,12 +7,17 @@
     import FormWrapper from "$components/FormWrapper.svelte";
     import TextForm from "$components/TextForm.svelte";
     import { m } from "$lib/paraglide/messages";
+    import { page } from "$app/state";
+    import { getLocale } from "$lib/paraglide/runtime";
+    import { langname } from "$lib/langnames";
 
     interface Props {
         data: PageData;
     }
 
     let { data }: Props = $props();
+
+    let lang = $derived(page.params.lang || "");
 
     let value = $derived(data.q || "");
 
@@ -39,7 +44,7 @@
 </script>
 
 <svelte:head>
-    <title>{m.analyze_title()} | Webpipeline</title>
+    <title>{m.analyze_title()} • {langname(lang, getLocale())} • {m.page_title()}</title>
 </svelte:head>
 
 <div class="flex flex-col items-center gap-4">

@@ -49,7 +49,7 @@
                 >
                     <Navigation.Header class="flex items-center justify-between">
                         <Dialog.Title class="text-2xl font-bold">
-                            Webpipeline
+                            {m.page_title()}
                         </Dialog.Title>
                         <Dialog.CloseTrigger class="btn-icon preset-tonal">
                             <XIcon />

@@ -9,22 +9,24 @@
 
     let search = $state("");
 
-    let locale = $state(getLocale());
+    let locale = $derived(getLocale());
     function filter_langs(search: string) {
         let rootset = langs;
 
+        const mappedLangs = rootset.map((iso) => ({
+            iso,
+            name: langname(iso, locale),
+        }));
+
         if (search === "") {
-            return rootset.sort();
+            return mappedLangs.sort((a, b) => a.name.localeCompare(b.name));
         } else {
-            // TODO: Brede - Search in interface language? or any interface language?
-            return rootset
-                .map((iso) => [iso, langname(iso, locale)])
-                .filter(([iso, name]) => {
+            return mappedLangs
+                .filter(({ iso, name }) => {
                     const lower = search.toLowerCase();
                     return iso.includes(lower) || name.toLowerCase().includes(lower);
                 })
-                .map(([iso, _name]) => iso)
-                .sort();
+                .sort((a, b) => a.name.localeCompare(b.name));
         }
     }
 
@@ -39,22 +41,21 @@
     let groups = $derived([
         {
             title: m.samilanguages,
-            langset: visible_langs.filter((e) => sami_langs.has(e)),
+            langset: visible_langs.filter((e) => sami_langs.has(e.iso)),
         },
         {
             title: m.nonsamiuralic,
-            langset: visible_langs.filter((e) => nonsamiuralic_langs.has(e)),
+            langset: visible_langs.filter((e) => nonsamiuralic_langs.has(e.iso)),
         },
         {
             title: m.otherlanguages,
-            langset: visible_langs.filter((e) => other_langs.has(e)),
+            langset: visible_langs.filter((e) => other_langs.has(e.iso)),
         },
     ]);
 </script>
 
 <svelte:head>
-    <title>Giellatekno Webpipeline</title>
-    <!--     <title>{m.languages()} | Webpipeline</title> -->
+    <title>{m.page_title()}</title>
 </svelte:head>
 
 <div class="flex w-full flex-col gap-4">
@@ -82,12 +83,12 @@
                     <div class="flex w-full flex-col gap-2 lg:w-fit">
                         <h4 class="lg:h4 h5">{group.title()}</h4>
                         <div class="grid min-w-max grid-cols-2 gap-2">
-                            {#each group.langset as lng}
+                            {#each group.langset as { iso, name }}
                                 <a
                                     class="btn preset-outlined-primary-500 hover:preset-tonal w-full text-center text-sm text-wrap lg:text-base"
-                                    href={resolve(`/${lng}`)}
+                                    href={resolve(`/${iso}`)}
                                 >
-                                    {langname(lng, locale)}
+                                    {name}
                                 </a>
                             {/each}
                         </div>

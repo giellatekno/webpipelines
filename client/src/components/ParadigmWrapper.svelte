@@ -8,7 +8,7 @@
     import { page } from "$app/state";
     import { resolve } from "$app/paths";
     import type { LanguageSchema } from "$lib/paradigms/types";
-    import { MenuIcon, XIcon } from "@lucide/svelte";
+    import { ChevronUp, XIcon } from "@lucide/svelte";
 
     interface Props {
         data: any;
@@ -210,7 +210,7 @@
         <Dialog>
             <Dialog.Trigger>
                 <button class="btn-icon preset-filled-primary-500">
-                    <MenuIcon class="size-5" />
+                    <ChevronUp class="size-5" />
                 </button>
             </Dialog.Trigger>
             <Portal>

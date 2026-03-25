@@ -12,13 +12,15 @@
     class="bg-primary-600 text-primary-contrast-950-50 border-surface-950-50 sticky top-0 z-50 border-b-2"
 >
     <AppBar.Toolbar
-        class="mx-auto w-full max-w-[1900px] grid-cols-[1fr_auto_1fr] lg:grid-cols-[auto_auto]"
+        class="mx-auto w-full max-w-480 grid-cols-[1fr_auto_1fr] lg:grid-cols-[auto_auto]"
     >
         <AppBar.Lead class="lg:hidden">
             <MobileSideBar />
         </AppBar.Lead>
         <AppBar.Headline class="flex flex-row gap-4">
-            <a href={resolve("/")} class="text-xl font-bold lg:text-3xl">Webpipeline</a>
+            <a href={resolve("/")} class="text-xl font-bold lg:text-3xl">
+                {m.page_title()}
+            </a>
             <a href={resolve("/")} class="lg:btn hover:preset-tonal ml-4 hidden">
                 <GlobeIcon class="size-6" />
                 {m.languages()}

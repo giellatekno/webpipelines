@@ -91,13 +91,31 @@ export const num_langs = new Set([
     "smj", "smn", "sms", "yrk",
 ]);
 
+export const num_lang_details = {
+    fin: ["num", "time"],
+    hdn: ["num", "time"],
+    liv: ["num"],
+    mdf: ["num"],
+    mhr: ["num"],
+    myv: ["num"],
+    olo: ["num"],
+    rus: ["num", "date", "time"],
+    sma: ["num", "date", "time"],
+    tkl: ["num", "date", "time"],
+    sme: ["num", "date", "time"],
+    // sjd: ["num", "date", "time"],
+    smj: ["num", "date"],
+    smn: ["num", "time"],
+    sms: ["num", "time"],
+    yrk: ["num"],
+};
 export const tools = [
     "analyze",
     "dependency",
     "disambiguate",
     "generate",
     "hyphenate",
-    // "num",
+    "num",
     "paradigm",
     // "spellcheck",
     "transcribe",

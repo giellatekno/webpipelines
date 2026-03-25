@@ -13,7 +13,7 @@
     const LANGS = ["fin", "fit", "fkv", "nob", "sma", "sme", "smj", "smn", "sms"];
 
     let files = $state<File[]>([]);
-    let lang = $state(["nob"]);
+    let lang = $state(["sme"]);
     let textarea_value = $state("");
     let is_processing = $state(false);
     let textinput_disabled = $derived(files.length > 0);
@@ -49,7 +49,7 @@
 </script>
 
 <svelte:head>
-    <title>{m.lemmacount_title()} | Giellatekno Webpipeline</title>
+    <title>{m.lemmacount_title()} • {m.page_title()}</title>
 </svelte:head>
 
 <div class="mb-32 grid grid-cols-2 items-start gap-4">
@@ -173,7 +173,7 @@
                             {m.lemmacount_no_results()}
                         </p>
                     {/if}
-                    <pre>{form.result}</pre>
+                    <pre class="text-wrap">{form.result}</pre>
                 {/if}
             </div>
         {:else}

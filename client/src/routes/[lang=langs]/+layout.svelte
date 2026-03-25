@@ -11,6 +11,8 @@
 
     let lang = $derived(page.params.lang || "");
 
+    let locale = $derived(getLocale());
+
     // Get last part of url
     let last_part = $derived(page.url.pathname.split("/").filter(Boolean).pop() || "");
 
@@ -38,7 +40,7 @@
         <div class="flex flex-col gap-1 lg:flex-row lg:items-center">
             <span class="flex flex-row items-center gap-1">
                 <a href={resolve(`/${lang}`)} class="lg:h3 h6 hover:underline">
-                    {langname(lang, getLocale())}
+                    {langname(lang, locale)}
                 </a>
                 <ChevronRight class="size-5 lg:size-8" />
             </span>

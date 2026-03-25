@@ -1,9 +1,6 @@
 import adapter from "@sveltejs/adapter-node";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 
-const dev = process.env.NODE_ENV == "development";
-const prod = process.env.NODE_ENV == "production";
-
 // If the app should live under a subpath on the domain, such as
 // e.g. some.domain.com/subdir - then set this to "/subdir"
 const base = process.env.SK_BASE || "";
