@@ -167,7 +167,7 @@ def run_info(
         print(result)
 
 
-def run_analyze(word=None, lang=None, verbose=False, api=LOCAL_API):
+def run_analyze(word=None, lang=None, format="text", verbose=False, api=LOCAL_API):
     word = urllib.parse.quote(word)
     url = f"{api}/analyze/{lang}/{word}"
     if result := do_query(url, verbose=verbose):

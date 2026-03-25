@@ -47,7 +47,6 @@ impl std::str::FromStr for Analysis {
     /// that is, strings of this format:
     /// "<input_word> \t <lemma> "+" <pos> "+" <...remaining tags> \t <weight>"
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        println!("{s}");
         let line = s.to_string();
         let mut i: usize = 0;
 
@@ -116,8 +115,9 @@ impl std::fmt::Display for Analysis {
 
 impl serde::Serialize for Analysis {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: serde::Serializer {
+    where
+        S: serde::Serializer,
+    {
         serializer.serialize_str(&self.line)
     }
 }
@@ -223,10 +223,13 @@ pub fn analyze<'a>(input: &str, lang: &str, tokenize: bool) -> Result<String, St
             }
         }
     } else {
-        run_fun!(
+        trace!("XXX");
+        let x = run_fun!(
             echo "$input" |
             hfst-lookup -q --beam=0 $analyzer_gt_desc_hfstol
-        )
+        );
+        trace!("YYY");
+        x
     };
 
     let analyses_string = results.map_err(|e| e.to_string())?;

@@ -100,5 +100,6 @@ http-body-util = "0.1.2"
 # used by the panic handler
 # MIT
 bytes = "1.6.0"
+thiserror = "2.0.17"
 
 #validator = { version = "0.16.1", features = ["derive"] }

@@ -244,7 +244,8 @@ pub fn load_langfiles() -> usize {
             debug!(?path_server, "found file on server");
             path_server
         } else {
-            let path = std::path::PathBuf::from(format!("/usr/share/giella/{l1}/{l1}{l2}-all.hfst"));
+            let path =
+                std::path::PathBuf::from(format!("/usr/share/giella/{l1}/{l1}{l2}-all.hfst"));
             debug!(?path, "found file locally");
             path
         };

@@ -1,6 +1,6 @@
 use itertools::Itertools;
 use once_cell::sync::Lazy;
-use std::{collections::{HashMap, HashSet}};
+use std::collections::{HashMap, HashSet};
 
 use axum::{
     extract::{Path, Query},
@@ -13,9 +13,8 @@ use tokio::{fs::File, io::AsyncReadExt};
 
 use tracing::trace;
 
-use crate::analysis::{self, analyses_raw_to_vec, analyze_async, Analysis};
+use crate::analysis::{analyze_async, Analysis};
 use crate::langmodel_files::get_langfile;
-//use crate::pipelines::run_pipeline_single_lang;
 
 //use cached::proc_macro::cached;
 //use cached::TimedSizedCache;
@@ -30,7 +29,7 @@ pub struct LangAndStringParams {
 
 #[derive(Deserialize, Serialize, Debug, PartialEq, Eq, Hash, Clone, Copy)]
 enum ParadigmSize {
-    #[serde(rename(deserialize="minimal", serialize="min"))]
+    #[serde(rename(deserialize = "minimal", serialize = "min"))]
     Minimal,
     #[serde(rename = "standard")]
     Standard,
@@ -120,9 +119,23 @@ pub async fn paradigm_endpoint(
     Path(LangAndStringParams { lang, string }): Path<LangAndStringParams>,
     Query(query_params): Query<QueryParams>,
 ) -> Response {
+    trace!("paradigm_endpoint()");
     let pos = query_params.pos.unwrap_or(Pos::Any);
     let size = query_params.size.unwrap_or(ParadigmSize::Standard);
     let format = query_params.format.unwrap_or(Format::Text);
+
+    let paradigm_file = match get_paradigmfile(&lang, size).await {
+        Ok(paradigm_file) => paradigm_file,
+        Err(e) => match format {
+            Format::Json => {
+                return axum::response::Json(serde_json::json!({
+                    "error": e,
+                }))
+                .into_response()
+            }
+            Format::Text => return format!("error: {e}").into_response(),
+        },
+    };
 
     let analyses_raw = match analyze_async(&string, &lang, false).await {
         Ok(analyses) => analyses,
@@ -150,7 +163,15 @@ pub async fn paradigm_endpoint(
         seen.insert((lemma, pos));
 
         if analysis.lemma() == string {
-            match all_paradigms(analysis.lemma(), &lang, analysis.pos().into(), size).await {
+            match all_paradigms(
+                &paradigm_file,
+                analysis.lemma(),
+                &lang,
+                analysis.pos().into(),
+                size,
+            )
+            .await
+            {
                 Ok(result) => results.push(result),
                 Err(e) => errors.push(e),
             };
@@ -177,11 +198,14 @@ pub async fn paradigm_endpoint(
                 .iter()
                 .map(|form| format!("- {}", form))
                 .join("\n");
-            (StatusCode::OK, format!("{text}\n\n{string} is also a form of:\n{other}")).into_response()
+            (
+                StatusCode::OK,
+                format!("{text}\n\n{string} is also a form of:\n{other}"),
+            )
+                .into_response()
         }
     }
 }
-
 
 // This takes it from 500ms -> 130ms. Analysis usually takes 130ms.
 //#[cached(
@@ -190,12 +214,12 @@ pub async fn paradigm_endpoint(
 //    convert = "{ (String::from(input_lemma), String::from(lang), pos, size) }",
 //)]
 async fn all_paradigms(
+    paradigm_file: &str,
     input_lemma: &str,
     lang: &str,
     pos: Pos,
     size: ParadigmSize,
 ) -> Result<Vec<ParadigmResultLine>, String> {
-    let paradigm_file = get_paradigmfile(lang, size, pos).await?;
     let pos = &pos.to_string();
 
     let generator_input = paradigm_file
@@ -264,7 +288,13 @@ impl std::str::FromStr for ParadigmResultLine {
         let wordform = wordform.to_string();
         let weight = splits.next().and_then(|w| w.parse::<f64>().ok());
 
-        Ok(Self { lemma, pos, tags, wordform, weight })
+        Ok(Self {
+            lemma,
+            pos,
+            tags,
+            wordform,
+            weight,
+        })
     }
 }
 
@@ -294,12 +324,10 @@ fn is_compound(tags: &str) -> bool {
     !tags.starts_with("+#") && tags.contains("#")
 }
 
-async fn read_gramfile(gramfile: std::path::PathBuf) -> Result<Vec<String>, String> {
-    let mut file = File::open(gramfile).await.map_err(|e| e.to_string())?;
+async fn read_gramfile(gramfile: std::path::PathBuf) -> Result<Vec<String>, std::io::Error> {
+    let mut file = File::open(gramfile).await?;
     let mut contents = String::new();
-    file.read_to_string(&mut contents)
-        .await
-        .map_err(|e| e.to_string())?;
+    file.read_to_string(&mut contents).await?;
 
     Ok(contents
         .lines()
@@ -317,12 +345,11 @@ async fn read_gramfile(gramfile: std::path::PathBuf) -> Result<Vec<String>, Stri
 ///   "Person-Number" => ["Sg1", "Sg2", "Sg3", "Du1", ...]
 ///   "Transitivity" => ["TV", "IV"]
 ///   "Infinite" => ["Inf", "PrfPrc", "PrsPrc", "Sup", "VGen", ...]
-async fn read_tagfile(tagfile: std::path::PathBuf) -> Result<HashMap<String, Vec<String>>, String> {
-    let mut file = File::open(tagfile).await.map_err(|e| e.to_string())?;
+async fn read_tagfile(tagfile: std::path::PathBuf) -> Result<HashMap<String, Vec<String>>, std::io::Error> {
+    let mut file = File::open(tagfile).await?;
     let mut contents = String::new();
     file.read_to_string(&mut contents)
-        .await
-        .map_err(|e| e.to_string())?;
+        .await?;
 
     let mut m: HashMap<String, Vec<String>> = HashMap::new();
     let mut current_vec = vec![];
@@ -398,9 +425,7 @@ where
     (direct_hits, other_hits)
 }
 
-// (lang, size, pos) => Either Ok with paradigm_file (string), or Err with
-// error message string
-static PARADIGM_FILES: Lazy<RwLock<HashMap<(String, ParadigmSize, Pos), Result<String, String>>>> =
+static PARADIGM_FILES: Lazy<RwLock<HashMap<(String, ParadigmSize), Result<String, GenerateParadigmFileError>>>> =
     Lazy::new(|| {
         let m = HashMap::with_capacity(16);
         RwLock::new(m)
@@ -408,34 +433,56 @@ static PARADIGM_FILES: Lazy<RwLock<HashMap<(String, ParadigmSize, Pos), Result<S
 
 /// Get the paradigm file for a 3-tuple of (lang, size, pos)
 /// From a cache
-async fn get_paradigmfile(lang: &str, size: ParadigmSize, pos: Pos) -> Result<String, String> {
-    let key = (lang.to_owned(), size, pos);
+async fn get_paradigmfile(lang: &str, size: ParadigmSize) -> Result<String, GenerateParadigmFileError> {
+    let key = (lang.to_string(), size);
     let guard = PARADIGM_FILES.read().await;
+
     match guard.get(&key) {
         Some(paradigm_file) => paradigm_file.clone(),
         None => {
+            let t0 = std::time::Instant::now();
             drop(guard);
             let paradigm_file = generate_paradigm_file(lang, size).await;
             let mut guard = PARADIGM_FILES.write().await;
-            guard.insert(key, paradigm_file.clone());
-            paradigm_file
+            guard.insert(key.clone(), paradigm_file);
+            let dur = t0.elapsed();
+            trace!("generate_paradigm_file took {dur:?}");
+            guard.get(&key).unwrap().clone()
         }
     }
 }
 
-/// Generate the file of all paradigms
-async fn generate_paradigm_file(lang: &str, size: ParadigmSize) -> Result<String, String> {
-    let paradigm_text_file = format!("paradigm_{size}.{lang}.txt");
-    let gramfile = get_langfile(&lang, &paradigm_text_file).ok_or_else(|| {
-        format!("language not supported ({paradigm_text_file} doesn't exist for language {lang})\n")
-    })?;
-    let korpustags_file = format!("korpustags.{lang}.txt");
-    let tagfile = get_langfile(&lang, &korpustags_file).ok_or_else(|| {
-        format!("language not supported ({korpustags_file} doesn't exist for language {lang})\n")
-    })?;
+#[derive(Clone, Debug, thiserror::Error, serde::Serialize)]
+enum GenerateParadigmFileError {
+    #[error("Missing language file: {0}")]
+    MissingFile(String),
+    // notice: not storing the std::io::Error, because it can't be cloned
+    // (and we need to clone when return results from the hashmap, since
+    // returning references to it proved too difficult (even though the hashmap
+    // is static..))
+    #[error("Error reading language file: {0}")]
+    ReadFile(String),
+}
 
-    let gram_entries = read_gramfile(gramfile).await?;
-    let tagmap = read_tagfile(tagfile).await?;
+/// Generate the file of all paradigms
+async fn generate_paradigm_file(
+    lang: &str,
+    size: ParadigmSize,
+) -> Result<String, GenerateParadigmFileError> {
+    let paradigm_text_file = format!("paradigm_{size}.{lang}.txt");
+
+    let gramfile = get_langfile(&lang, &paradigm_text_file)
+        .ok_or(GenerateParadigmFileError::MissingFile(paradigm_text_file))?;
+
+    let korpustags_file = format!("korpustags.{lang}.txt");
+
+    let tagfile = get_langfile(&lang, &korpustags_file)
+        .ok_or(GenerateParadigmFileError::MissingFile(korpustags_file))?;
+
+    let gram_entries = read_gramfile(gramfile).await
+        .map_err(|e| GenerateParadigmFileError::ReadFile(e.to_string()))?;
+    let tagmap = read_tagfile(tagfile).await
+        .map_err(|e| GenerateParadigmFileError::ReadFile(e.to_string()))?;
 
     Ok(expand_gram_entries(gram_entries, tagmap))
 }
