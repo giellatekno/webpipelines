@@ -65,7 +65,7 @@
     "analysis": "Analyse",
 
     "analyze_title": "Analyser",
-    "analyze_description": "Analyser ett eller flere ord hver for seg",
+    "analyze_description": "Analyser ett eller flere ord hver for seg.",
     "analyze_instruction": " ",
 
     "dependency_title": "Dependensstruktur",
@@ -77,7 +77,7 @@
     "disambiguate_instruction": " ",
 
     "generate_title": "Ordgenerering",
-    "generate_description": "Generer ord fra gramatiske spesifikasjoner.",
+    "generate_description": "Generer ord fra grammatiske spesifikasjoner.",
     "generate_instruction": " ",
 
     "hyphenate_title": "Ordstavelser",
