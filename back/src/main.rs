@@ -109,7 +109,7 @@ fn handle_panic(
 
 #[tokio::main]
 async fn main() {
-    info!("starting webpipeline");
+    info!("starting lingtools api");
     dotenv::dotenv().ok();
 
     tracing_subscriber::registry()
@@ -122,7 +122,7 @@ async fn main() {
             tracing_subscriber::EnvFilter::try_from_default_env().unwrap_or_else(|_| {
                 // axum logs rejections from built-in extractors with the `axum::rejection`
                 // target, at `TRACE` level. `axum::rejection=trace` enables showing those events
-                "webpipeline=trace,tower_http=debug,axum::rejection=trace,tokio=debug,runtime=debug"
+                "lingtools=trace,tower_http=debug,axum::rejection=trace,tokio=debug,runtime=debug"
                     .into()
             }),
         )

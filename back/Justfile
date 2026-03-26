@@ -1,0 +1,20 @@
+# Display help information
+default:
+    @just --list
+
+# start development server on port 3000
+dev:
+    RUSTFLAGS="--cfg tokio_unstable" WP_LANGFOLDER=/usr/share/giella/ RUST_BACKTRACE=1 systemfd --no-pid -s http::3000 -- cargo watch -x run
+
+# build rust binary in target/
+build:
+    RUSTFLAGS="--cfg tokio_unstable" cargo build --release --target-dir target
+
+# build container image 'lingtools-api' from the built binary in target/
+image:
+    podman build -t lingtools-api -f Containerfile .
+
+# push the container image to gtlabcontainerregistry.azurecr.io
+push:
+    podman tag lingtools-api gtlabcontainerregistry.azurecr.io/lingtools-api
+    podman push gtlabcontainerregistry.azurecr.io/lingtools-api

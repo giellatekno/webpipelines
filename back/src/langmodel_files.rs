@@ -8,7 +8,7 @@ use dotenv;
 use once_cell::sync::Lazy;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
-use tracing::{debug, error, info, span, trace, Level};
+use tracing::{debug, error, info, span, Level};
 
 use crate::util::query_param_is_trueish;
 
@@ -448,7 +448,7 @@ where
     }
 }
 
-fn path_component_as_normal_str(component: std::path::Component) -> Result<&str, ()> {
+fn path_component_as_normal_str(component: std::path::Component<'_>) -> Result<&str, ()> {
     let std::path::Component::Normal(osstr) = component else {
         error!("always expect path component to be normal component");
         return Err(());
