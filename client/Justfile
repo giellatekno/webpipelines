@@ -8,7 +8,7 @@ dev:
 
 # pnpm run build  --  Builds for the server, use build-local to build locally
 build:
-    SK_BASE=/webpipeline pnpm run build
+    SK_BASE=/lingtools pnpm run build
 
 # pnpm run build  -- Builds locally
 build-local:
@@ -17,7 +17,7 @@ build-local:
 # Run the built image, using local settings
 run-local:
     podman run \
-        --name webpipeline-client \
+        --name lingtools-client \
         --detach \
         --init \
         --stop-signal=SIGINT \
@@ -25,20 +25,20 @@ run-local:
         -p 5173:3000 \
         --env PUBLIC_API_ROOT=http://localhost:3000 \
         --env ORIGIN=http://localhost:5173 \
-        webpipeline-client
+        lingtools-client
 
 # Stop the locally running container
 stop-local:
-    podman stop webpipeline-client
+    podman stop lingtools-client
 
 # Build the container image using podman (NOTE: Make sure to "build" first)
 image:
-    podman build -t webpipeline-client -f Dockerfile .
+    podman build -t lingtools-client -f Dockerfile .
 
 # Push the built image to the gtlab container registry
 push-labacr:
-    podman tag webpipeline-client gtlabcontainerregistry.azurecr.io/webpipeline-client
-    podman push gtlabcontainerregistry.azurecr.io/webpipeline-client
+    podman tag lingtools-client gtlabcontainerregistry.azurecr.io/lingtools-client
+    podman push gtlabcontainerregistry.azurecr.io/lingtools-client
 
 # Build And Push -- Runs the commands 'build', 'image' and 'push-labacr' in sequence
 bap: build image push-labacr

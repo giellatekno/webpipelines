@@ -28,10 +28,10 @@
                         <a
                             class="text-primary-700-300 hover:underline"
                             rel="external"
-                            href="https://gtweb-02.uit.no/webpipeline-api/"
+                            href="https://gtweb.uit.no/lingtools-api/"
                             target="_blank"
                         >
-                            gtweb-02.uit.no/webpipeline-api/
+                            gtweb-02.uit.no/lingtools-api/
                         </a>
                     </p>
                     <h5 class="h6 lg:h5 mt-2">{m.sourcecode()}</h5>
@@ -40,10 +40,10 @@
                         <a
                             class="text-primary-700-300 hover:underline"
                             rel="external"
-                            href="https://github.com/giellatekno/webpipelines"
+                            href="https://github.com/giellatekno/lingtools"
                             target="_blank"
                         >
-                            github.com/giellatekno/webpipelines
+                            github.com/giellatekno/lingtools
                         </a>
                     </p>
                     <p>{m.developers_code_paragraph2()}</p>
