@@ -32,7 +32,7 @@
 </script>
 
 <Dialog>
-    <Dialog.Trigger class="btn-icon preset-tonal">
+    <Dialog.Trigger class="btn-icon preset-tonal-primary">
         <MenuIcon class="size-5" />
     </Dialog.Trigger>
     <Portal>
@@ -67,14 +67,14 @@
                                         class="btn hover:preset-tonal w-full justify-start px-2"
                                     >
                                         <Icon class="size-5" />
-                                        <span>{link.label}</span>
+                                        {link.label}
                                     </a>
                                 </Dialog.Trigger>
                             {/each}
                         </Navigation.Group>
                         {#if lang && on_lang_page}
                             <Navigation.Group>
-                                <Navigation.Label class="pl-2">
+                                <Navigation.Label>
                                     {m.toolsfor({ iso: lang })}
                                 </Navigation.Label>
                                 {#each tools_for[lang] as tool}
@@ -82,15 +82,37 @@
                                         <a
                                             href={resolve(`/${lang}/${tool}`)}
                                             title={tool}
-                                            class="btn hover:preset-tonal w-full justify-start px-2 text-sm"
+                                            class="btn text-primary-900-100 w-full justify-start px-2 text-sm"
                                         >
-                                            <Dot class="" />
-                                            <span>{tool_titles[tool]()}</span>
+                                            {tool_titles[tool]()}
                                         </a>
                                     </Dialog.Trigger>
                                 {/each}
                             </Navigation.Group>
                         {/if}
+                        <!-- <Navigation.Group> -->
+                        <!--     <Navigation.Label> -->
+                        <!--         {m.other_tools()} -->
+                        <!--     </Navigation.Label> -->
+                        <!--     <Dialog.Trigger> -->
+                        <!--         <a -->
+                        <!--             href={resolve("/unknown-lemmas")} -->
+                        <!--             title="unknown lemmas" -->
+                        <!--             class="btn text-primary-900-100 w-full justify-start px-2 text-sm" -->
+                        <!--         > -->
+                        <!--             {m.unknownlemmas_title()} -->
+                        <!--         </a> -->
+                        <!--     </Dialog.Trigger> -->
+                        <!--     <Dialog.Trigger> -->
+                        <!--         <a -->
+                        <!--             href={resolve("/lemmacount")} -->
+                        <!--             title="lemmacount" -->
+                        <!--             class="btn text-primary-900-100 w-full justify-start px-2 text-sm" -->
+                        <!--         > -->
+                        <!--             {m.lemmacount_title()} -->
+                        <!--         </a> -->
+                        <!--     </Dialog.Trigger> -->
+                        <!-- </Navigation.Group> -->
                     </Navigation.Content>
                     <Navigation.Footer>
                         <SelectLocale />

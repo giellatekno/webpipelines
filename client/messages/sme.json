@@ -10,12 +10,16 @@
     "toolspage": "Reaidosiidu",
     "notfound": "Siidu maid ozat ii gávdno.",
     "erroroccured": "Juoga boastut geavvai",
+
+    "about_title": "Giellatekno LingTools birra",
+    "about_body": "Giellatekno LingTools siiddus sáhttá álkit geavahit Giellatekno lingvisttalaš reaidduid badjel 40 gillii. Siidu lea ain árra muttus.",
+
     "fordevelopers": "Ovdánahtiide",
     "sourcecode": "Gáldokoda",
     "api_paragraph": "API, mii lea čádnon dan siidui, lea rabas ja beasatlaš. Gávnnat dan dáppe:",
     "developers_code_paragraph": "Sihke siiddu ja API:a koda lea rabas. Gávnnat daid dáppe:",
     "developers_code_paragraph2": "Áinnas raba Github Issue jus áicát teknihkalaš čuolmmaid siiddus dahjege API:s.",
-    "about_title": "Giellatekno LingTools birra",
+
     "copyright": "Copyright © Sámi giellateknologiija guovddaš",
     "feedback": "Sádde máhcahaga siiddu birra midjiide:",
     "showtoolsfor": "Oza gielaid:",
@@ -27,15 +31,20 @@
     "submit": "Sádde",
     "clear": "Sihko",
     "writehere": "Čális deike...",
-    "submit_keys": "Dahje deaddil Shift+Enter vai sáddet.",
+    "submit_keys_1": "Dahje deaddil",
+    "submit_keys_2": "vai sáddet.",
     "instruction_title": "Movt geavahit dán reaiddu",
     "search": "Oza",
+    "other_tools": "Eará reaiddut",
+
     "unknownlemmas_title": "Amas lemmat sátnegirjjis",
     "unknownlemmas_description": "Prográmma addá listtu sániguin mat eai gávdno sátnegirjjis, ordnejuvvon frekveanssa mielde.",
     "unknownlemmas_no_results": "Ii gávdnan amas lemmaid teavsttas.",
+
     "lemmacount_title": "Lemmalistu",
     "lemmacount_description": "Prográmma addá listtu buot lemmaiguin teavsttas, ordnejuvvon frekveanssa mielde.",
     "lemmacount_no_results": "Addon fiilas eai leat sánit.",
+
     "fileform_choose_language": "Váljje giela",
     "fileform_choose_dictionary": "Váljje sátnegirjji",
     "fileform_from": "Man gielas",
@@ -52,24 +61,31 @@
     "fileform_submit": "Sádde",
     "fileform_results": "Bohtosat",
     "fileform_not_submitted": "Eai leat vel bohtosat. Deavdde skovi ja sádde vai oažžut bohtosiid.",
+
     "wordform": "Sátnehápmi",
     "copy": "Máŋge",
     "analysis": "Analysa",
+
     "analyze_title": "Analysa",
     "analyze_description": "Analysere ovtta sáni dahje buot eaŋkilsániid cealkagiin.",
     "analyze_instruction": " ",
+
     "dependency_title": "Dependeansastruktuvra ",
     "dependency_description": "Čájet dependeanssa sániid gaskkas cealkagiin.",
     "dependency_instruction": " ",
+
     "disambiguate_title": "Disambigueren",
     "disambiguate_description": "Čájet cealkagiid sátneanalysa mii heive kontekstii.",
     "disambiguate_instruction": " ",
+
     "generate_title": "Sátnegenereren",
     "generate_description": "Geavat grammatihkkalaš taggaid genereret sániid.",
     "generate_instruction": " ",
+
     "hyphenate_title": "Botke sániid",
     "hyphenate_description": "Botke sániid stávvaliidda ja távttaide.",
     "hyphenate_instruction": " ",
+
     "paradigm_title": "Paradigmat",
     "paradigm_description": "Generere sániid sojahanminstariid.",
     "paradigm_instruction": "Oza sániid vuođđohámiid",
@@ -92,6 +108,7 @@
     "paradigm_format": "Tabellaformáhtta",
     "paradigm_empty": "",
     "paradigm_loadingtables": "Viežžamin tabeallaid...",
+
     "partofspeech": "Sátneluohkká",
     "partofspeech_any": "Váikko makkár",
     "partofspeech_noun": "Substantiiva",
@@ -100,6 +117,7 @@
     "partofspeech_adjective": "Adjektiiva",
     "partofspeech_adverb": "Advearba",
     "partofspeech_numeral": "Lohkosátni",
+
     "paradigm_possessivesuffixes": "Oamastangehčosat",
     "paradigm_owner": "Eaiggát",
     "paradigm_generalforms": "Dábálaš hámit",
@@ -174,12 +192,15 @@
     "paradigm_singular": "Singulára",
     "paradigm_plural": "Plurála",
     "paradigm_dual": "Duála",
+
     "num_title": "Logut",
     "num_description": "Generere lohkosániid loguin, áiggiin dahje dáhtoniin.",
     "num_instruction": " ",
+
     "transcribe_title": "Transkriberen",
     "transcribe_description": "Konvertere sániid IPA:i.",
     "transcribe_instruction": " ",
+
     "toolsfor": [
         {
             "match": {
@@ -232,6 +253,7 @@
             }
         }
     ],
+
     "usage_ciw": "The analyser uses the Double Vowel (Fiero) system.",
     "usage_crk": "You may use both circumflex <b>â</b> and macron <b>ā</b> in order to mark long vowel.",
     "usage_mns": "Write the word in ordinary Mansi orthography. You may also write the words without length marks.",
@@ -701,4 +723,3 @@
     "other_lang_koi": "Analysatorane for komipermjakisk er eit samarbeidsprosjekt mellom FU-lab, Giellatekno og Jack Rueter. Ordboka som ligg til grunn for leksikondelen er Jack Rueters Komi-suomi-englanti sanakirja.",
     "other_lang_mhr": "Analysatorane for marisk er eit samarbeidsprosjekt mellom Giellatekno og Jorma Luutonen. Ordboka som ligg til grunn for leksikondelen er Arto Moisios Mari-suomi sanakirja."
 }
-

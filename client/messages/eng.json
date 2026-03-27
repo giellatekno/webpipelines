@@ -12,13 +12,14 @@
     "notfound": "The page you're looking for doesn't exist.",
     "erroroccured": "An error occured",
 
+    "about_title": "About Giellatekno LingTools",
+    "about_body": "Giellatekno LingTools provides easy access and use of Giellateknos linguistic tools for over 40 languages. This page is still in early development.",
+
     "fordevelopers": "For developers",
     "sourcecode": "Source code",
     "api_paragraph": "The API for this site is open and freely available, and is found at:",
     "developers_code_paragraph": "The code for both the frontend and the API is open. Find it at:",
     "developers_code_paragraph2": "Feel free to open Github Issues if you find any technical issues on the site, or on the API.",
-
-    "about_title": "About Giellatekno Lingtools",
 
     "copyright": "Copyright © Centre for Sámi language technology",
     "feedback": "Send feedback about the webpage to:",
@@ -33,9 +34,11 @@
     "submit": "Submit",
     "clear": "Clear",
     "writehere": "Write here...",
-    "submit_keys": "Or press Shift+Enter to submit.",
+    "submit_keys_1": "Or press",
+    "submit_keys_2": "to submit.",
     "instruction_title": "How to use this tool",
     "search": "Search",
+    "other_tools": "Other tools",
 
     "unknownlemmas_title": "Unknown lemmas in dict",
     "unknownlemmas_description": "Given a text, returns a list of words in that doesn't exist in the dictionary, sorted by frequency.",

@@ -12,14 +12,15 @@
     "notfound": "Siden du ser etter finnes ikke.",
     "erroroccured": "En feil oppsto",
 
+    "about_title": "Om Giellatekno LingTools",
+    "about_body": "Giellatekno LingTools lar deg enkelt bruke Giellatekno sine lingvistiske verktøy for over 40 språk. Siden er fortsatt i tidlig utviklingsfase.",
+
     "fordevelopers": "For utviklere",
     "sourcecode": "Kildekode",
     "api_paragraph": "APIet for denne siden er fritt, og åpent tilgjengelig. Det ligger på:",
     "developers_code_paragraph": "Kildekoden for både frontenden og backenden er åpen. Den finnes på:",
     "developers_code_paragraph2": "Legg gjerne inn Issues på Github om du skulle oppdage tekniske feil på siden, eller på APIet.",
     "backtolangs": "Tilbake til språkvalg",
-
-    "about_title": "Om Giellatekno LingTools",
 
     "copyright": "Copyright © Senter for samisk språkteknologi",
     "feedback": "Send tilbakemelding om nettsiden til:",
@@ -34,8 +35,10 @@
     "submit": "Send",
     "clear": "Fjern",
     "writehere": "Skriv her...",
-    "submit_keys": "Eller press Shift+Enter for å sende.",
+    "submit_keys_1": "Eller press",
+    "submit_keys_2": "for å sende.",
     "instruction_title": "Hvordan bruke dette verktøyet",
+    "other_tools": "Andre verktøy",
 
     "unknownlemmas_title": "Ukjente ordbokslemma",
     "unknownlemmas_description": "Programmet gir ei liste over ord i teksten som ikke finnes i ordboka, sortert slik at de ordene som opptrer oftest i teksten kommer først.",

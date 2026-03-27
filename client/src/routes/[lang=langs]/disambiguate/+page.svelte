@@ -26,6 +26,7 @@
 </svelte:head>
 
 <div class="flex flex-col items-center gap-4">
+    <h3 class="h4 lg:h3">{m.disambiguate_title()}</h3>
     <FormWrapper tool="disambiguate">
         <TextForm bind:value />
     </FormWrapper>

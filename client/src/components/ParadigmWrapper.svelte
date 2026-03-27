@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Dialog, Portal, Progress, Navigation } from "@skeletonlabs/skeleton-svelte";
+    import { Dialog, Portal, Progress } from "@skeletonlabs/skeleton-svelte";
     import ParadigmTable from "./ParadigmTable.svelte";
     import ParadigmList from "$components/ParadigmList.svelte";
     import { m } from "$lib/paraglide/messages";
@@ -8,7 +8,7 @@
     import { page } from "$app/state";
     import { resolve } from "$app/paths";
     import type { LanguageSchema } from "$lib/paradigms/types";
-    import { ChevronUp, XIcon } from "@lucide/svelte";
+    import { ChevronDown, ChevronUp } from "@lucide/svelte";
 
     interface Props {
         data: any;
@@ -53,6 +53,9 @@
         return schema;
     }
 
+    // Reset value when paradigms changes
+    let value = $derived(paradigms.length - paradigms.length);
+
     function onResultButtonClick(i: number) {
         value = i;
         const tables = document.getElementById("tables");
@@ -66,9 +69,6 @@
         "transition transition-discrete opacity-0 starting:data-[state=open]:opacity-0 data-[state=open]:opacity-100";
     const animModal =
         "transition transition-discrete opacity-0 translate-y-full starting:data-[state=open]:opacity-0 starting:data-[state=open]:translate-y-full data-[state=open]:opacity-100 data-[state=open]:-translate-y-0";
-
-    // Reset value when paradigms changes
-    let value = $derived(paradigms.length - paradigms.length);
 </script>
 
 <div class="grid w-full grid-cols-1 gap-8 lg:grid-cols-[auto_1fr_auto]">
@@ -86,11 +86,12 @@
         <div></div>
     {:then schemas}
         {@const cur_schema = filterSchema(schemas[value], paradigms[value])}
-        <div class="w-full max-w-80 place-self-center lg:w-64 lg:place-self-auto">
+        <div class="w-full place-self-center lg:w-64 lg:place-self-auto">
             {#if parsed_data}
                 {@render results()}
             {/if}
         </div>
+        <hr class="hr lg:hidden" />
 
         <div class="w-full scroll-mt-24" id="tables">
             {#if paradigms.length !== 0}
@@ -113,23 +114,19 @@
 
 {#snippet results()}
     <div
-        class="card bg-surface-100-900 border-surface-200-800 flex h-fit flex-col gap-2 border p-2 shadow-sm lg:sticky lg:top-24 lg:shrink-0 lg:p-4"
+        class="card lg:bg-surface-100-900 lg:border-surface-200-800 flex h-fit w-full flex-col items-center gap-2 p-2 lg:sticky lg:top-24 lg:shrink-0 lg:border lg:p-4 lg:shadow-sm"
     >
-        <h3 class="text-base font-bold uppercase">{m.paradigm_results()}:</h3>
-        <hr class="hr" />
-        <div class="flex flex-col gap-4 text-sm">
+        <div class="flex w-max flex-col gap-4 text-sm">
             <div class="flex flex-col gap-2">
-                <span class="font-bold uppercase">
+                <span class="font-bold uppercase opacity-80">
                     {m.paradigm_directhits()}:
                 </span>
                 {#each paradigms as paradigm_elem, i}
-                    {@const btnStyling =
-                        value === i
-                            ? "preset-filled-primary-500"
-                            : "preset-tonal-primary border-primary-200-800 border"}
                     <button
-                        onclick={() => onResultButtonClick(i)}
-                        class="btn {btnStyling}"
+                        onclick={() => (value = i)}
+                        class="btn {value === i
+                            ? 'preset-filled-primary-500'
+                            : 'border-primary-200-800 hover:preset-tonal border'}"
                     >
                         {paradigm_elem.lemma}
                         ({paradigm_elem.pos}{paradigm_elem.subclass
@@ -142,12 +139,12 @@
             </div>
             {#if other_hits.length !== 0}
                 <div class="flex flex-col gap-2">
-                    <span class="font-bold uppercase">
+                    <span class="font-bold uppercase opacity-80">
                         {m.paradigm_otherhits()}:
                     </span>
                     {#each other_hits as other_hit}
                         <a
-                            class="btn border-secondary-200-800 preset-tonal-secondary border text-center"
+                            class="btn border-secondary-200-800 hover:preset-tonal border text-center"
                             href={resolve(
                                 `/${lang}/paradigm?word=${other_hit.lemma}&pos=${other_hit.pos}`,
                             )}
@@ -219,60 +216,56 @@
                 />
                 <Dialog.Positioner class="fixed inset-0 z-50 flex justify-start">
                     <Dialog.Content
-                        class="card bg-surface-100-900 fixed inset-x-0 bottom-0 max-h-4/5 w-full space-y-4 overflow-y-auto p-4 shadow-xl {animModal}"
+                        class="card bg-surface-100-900 fixed inset-x-0 bottom-0 max-h-3/5 w-full space-y-4 overflow-y-auto px-4 shadow-xl {animModal}"
                     >
-                        <Navigation
-                            layout="bar"
-                            class="grid grid-rows-[auto_auto_1fr_auto] gap-4"
-                        >
-                            <Navigation.Header class="flex items-center justify-between">
-                                <Dialog.Title class="text-2xl font-bold">
-                                    {m.paradigm_jumpto()}
-                                </Dialog.Title>
-                                <Dialog.CloseTrigger class="btn-icon preset-tonal">
-                                    <XIcon />
-                                </Dialog.CloseTrigger>
-                            </Navigation.Header>
-                            <hr class="hr" />
-                            <Navigation.Content>
-                                <Navigation.Group>
-                                    <div class="flex flex-col gap-2">
-                                        <div class="space-y-4">
-                                            {#each schema.sections as section}
-                                                {#if section.title}
-                                                    <div>
+                        <div class="flex h-full flex-col">
+                            <div
+                                class="bg-surface-100-900 sticky top-0 flex flex-col gap-2 pt-2"
+                            >
+                                <div class="flex items-center justify-between">
+                                    <Dialog.Title class="text-2xl font-bold">
+                                        {m.paradigm_jumpto()}
+                                    </Dialog.Title>
+                                    <Dialog.CloseTrigger class="btn-icon preset-tonal">
+                                        <ChevronDown />
+                                    </Dialog.CloseTrigger>
+                                </div>
+
+                                <hr class="hr" />
+                            </div>
+                            <div class="my-4 flex flex-col gap-2">
+                                {#each schema.sections as section}
+                                    {#if section.title}
+                                        <div>
+                                            <Dialog.Trigger>
+                                                <a
+                                                    href="#{section.sId}"
+                                                    class="anchor text-primary-500 mb-2 block py-2 font-bold uppercase"
+                                                >
+                                                    {section.title()}
+                                                </a>
+                                            </Dialog.Trigger>
+                                            <div
+                                                class="border-surface-200 ml-4 flex flex-col space-y-2 border-l-2 pl-2"
+                                            >
+                                                {#each section.tables as table}
+                                                    {#if table.title}
                                                         <Dialog.Trigger>
                                                             <a
-                                                                href="#{section.sId}"
-                                                                class="anchor text-primary-500 mb-2 block py-2 font-bold uppercase"
+                                                                href="#{table.tId}"
+                                                                class="anchor text-surface-700-300 block w-full py-1 text-left text-sm"
                                                             >
-                                                                {section.title()}
+                                                                {table.title()}
                                                             </a>
                                                         </Dialog.Trigger>
-                                                        <div
-                                                            class="border-surface-200 ml-4 flex flex-col space-y-2 border-l-2 pl-2"
-                                                        >
-                                                            {#each section.tables as table}
-                                                                {#if table.title}
-                                                                    <Dialog.Trigger>
-                                                                        <a
-                                                                            href="#{table.tId}"
-                                                                            class="anchor text-surface-700-300 block w-full py-1 text-left text-sm"
-                                                                        >
-                                                                            {table.title()}
-                                                                        </a>
-                                                                    </Dialog.Trigger>
-                                                                {/if}
-                                                            {/each}
-                                                        </div>
-                                                    </div>
-                                                {/if}
-                                            {/each}
+                                                    {/if}
+                                                {/each}
+                                            </div>
                                         </div>
-                                    </div>
-                                </Navigation.Group>
-                            </Navigation.Content>
-                        </Navigation>
+                                    {/if}
+                                {/each}
+                            </div>
+                        </div>
                     </Dialog.Content>
                 </Dialog.Positioner>
             </Portal>

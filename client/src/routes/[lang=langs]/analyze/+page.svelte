@@ -1,7 +1,6 @@
 <script lang="ts">
     import type { PageData } from "./$types";
     import { copy_text, POS_TAGS } from "$lib/utils";
-    import { CopyIcon } from "@lucide/svelte";
     import Table from "$components/Table.svelte";
     import ErrorBox from "$components/ErrorBox.svelte";
     import FormWrapper from "$components/FormWrapper.svelte";
@@ -10,6 +9,8 @@
     import { page } from "$app/state";
     import { getLocale } from "$lib/paraglide/runtime";
     import { langname } from "$lib/langnames";
+    import { createToaster, Toast } from "@skeletonlabs/skeleton-svelte";
+    import { CopyCheckIcon } from "@lucide/svelte";
 
     interface Props {
         data: PageData;
@@ -41,6 +42,13 @@
         }
         return [lemma, pos, ...tags];
     }
+
+    const toaster = createToaster({ duration: 2000, overlap: true });
+
+    function onTextClick(text: string) {
+        copy_text(text);
+        toaster.info({});
+    }
 </script>
 
 <svelte:head>
@@ -48,6 +56,7 @@
 </svelte:head>
 
 <div class="flex flex-col items-center gap-4">
+    <h3 class="h4 lg:h3">{m.analyze_title()}</h3>
     <FormWrapper tool="analyze">
         <TextForm bind:value />
     </FormWrapper>
@@ -56,13 +65,12 @@
         {#if data.error}
             <ErrorBox error={data.error} />
         {:else if data.results}
-            <div class="flex flex-col">
+            <div class="flex max-w-dvw flex-col p-2">
                 <Table>
                     <thead>
                         <tr>
                             <th>{m.wordform()}</th>
                             <th>{m.analysis()}</th>
-                            <th>{m.copy()}</th>
                         </tr>
                     </thead>
                     {#each data.results as word_analyses, i}
@@ -83,20 +91,17 @@
                                         </span>
                                     </td>
                                     <td>
-                                        {@html html_tags}
-                                    </td>
-                                    <td>
                                         <button
-                                            class="btn-icon preset-outlined-surface-950-50 hover:preset-tonal h-fit w-fit"
                                             type="button"
+                                            class="text-nowrap"
                                             onclick={() =>
-                                                copy_text(
+                                                onTextClick(
                                                     combine_tags(lemma, pos, tags).join(
                                                         "+",
                                                     ),
                                                 )}
                                         >
-                                            <CopyIcon class="size-4" />
+                                            {@html html_tags}
                                         </button>
                                     </td>
                                 </tr>
@@ -108,3 +113,15 @@
         {/if}
     </div>
 </div>
+
+<Toast.Group {toaster}>
+    {#snippet children(toast)}
+        <Toast {toast}>
+            <Toast.Message>
+                <CopyCheckIcon />
+                Text copied
+            </Toast.Message>
+            <Toast.CloseTrigger />
+        </Toast>
+    {/snippet}
+</Toast.Group>

@@ -56,29 +56,33 @@
     <title>{langname(lang, getLocale())} • {m.page_title()}</title>
 </svelte:head>
 
-<div
-    class="mx-auto mt-8 grid max-h-max max-w-max grid-cols-1 items-stretch gap-6 lg:grid-cols-2"
->
-    {#each tools_for[lang] as tool}
-        <a
-            href={resolve(`/${lang}/${tool}`)}
-            class="btn text-surface-950-50 preset-gradient-button border-surface-950-50 justify-start border-2 py-2 text-wrap shadow-md"
+<div class="flex flex-col items-center gap-2">
+    <div class="flex w-fit flex-col items-center gap-2 lg:w-max">
+        <h2 class="h4 lg:h3">{m.linguistic_tools()}:</h2>
+
+        <div
+            class="mx-auto grid max-h-max max-w-max grid-cols-1 items-stretch gap-6 lg:grid-cols-2"
         >
-            <img
-                class="mr-2 size-16 justify-start"
-                src={IMAGES[tool] || example_img}
-                alt=""
-            />
-            <div class="flex flex-col">
-                <span class="text-base font-bold lg:text-2xl">
-                    {button_content[tool].title()}
-                </span>
-                <span
-                    class="text-surface-950-50/75 text-sm font-normal italic lg:text-xl"
+            {#each tools_for[lang] as tool}
+                <a
+                    href={resolve(`/${lang}/${tool}`)}
+                    class="border-primary-100 hover:preset-tonal grid max-w-lg grid-cols-[auto_1fr] gap-2 rounded-lg border-2 text-wrap shadow-md"
                 >
-                    {button_content[tool].description()}
-                </span>
-            </div>
-        </a>
-    {/each}
+                    <div
+                        class="preset-filled-primary-100-900 flex items-center justify-center p-2"
+                    >
+                        <img class="h-16" src={IMAGES[tool] || example_img} alt="" />
+                    </div>
+                    <div class="flex flex-col p-2">
+                        <span class="text-base font-bold lg:text-2xl">
+                            {button_content[tool].title()}
+                        </span>
+                        <span class="text-sm font-normal italic opacity-75 lg:text-xl">
+                            {button_content[tool].description()}
+                        </span>
+                    </div>
+                </a>
+            {/each}
+        </div>
+    </div>
 </div>

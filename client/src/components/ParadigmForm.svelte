@@ -1,6 +1,7 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
     import { m } from "$lib/paraglide/messages";
+    import { SearchIcon } from "@lucide/svelte";
     import { Switch } from "@skeletonlabs/skeleton-svelte";
 
     let { word, pos, format = $bindable(), has_tables } = $props();
@@ -55,7 +56,7 @@
                     placeholder={m.search() + "..."}
                 />
                 <button class="ig-btn preset-filled-primary-500" type="submit">
-                    {m.submit()}
+                    <SearchIcon />
                 </button>
             </div>
         </div>

@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { browser } from "$app/environment";
     import { goto } from "$app/navigation";
     import { m } from "$lib/paraglide/messages";
 
@@ -6,8 +7,14 @@
 
     let textarea: HTMLTextAreaElement;
 
+    const isMac = $derived.by(() => {
+        const ua = browser ? window.navigator.userAgent : "";
+        return ua ? ua.includes("Mac") : false;
+    });
+    const ctrl = $derived(isMac ? "⌘" : "Ctrl");
+
     async function on_textarea_keydown(ev: KeyboardEvent) {
-        if (ev.key === "Enter" && ev.shiftKey) {
+        if ((ev.metaKey || ev.ctrlKey) && ev.key === "Enter") {
             ev.preventDefault();
             await goto(`?q=${encodeURIComponent(value)}`, { keepFocus: true });
             textarea.focus();
@@ -48,6 +55,12 @@
         <button class="btn preset-filled-primary-500" type="submit">
             {m.submit()}
         </button>
-        <span class="hidden lg:block">{m.submit_keys()}</span>
+        <span class="hidden items-center gap-1 opacity-70 lg:flex">
+            {m.submit_keys_1()}
+            <kbd class="kbd preset-filled-surface-200-800">{ctrl}</kbd>
+            +
+            <kbd class="kbd preset-filled-surface-200-800">↵</kbd>
+            {m.submit_keys_2()}
+        </span>
     </div>
 </form>

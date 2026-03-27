@@ -12,7 +12,7 @@ const schema: LanguageSchema = {
                     showIf: has_tags("1"),
                     headers: [m.paradigm_case, m.paradigm_singular, m.paradigm_dual, m.paradigm_plural],
                     rows: SME_CASES.map((c) => ({
-                        label: m.paradigm_nominative,
+                        label: c.label,
                         tags: [`Sg1+${c.tag}`, `Du1+${c.tag}`, `Pl1+${c.tag}`],
                     })),
                 },
@@ -20,7 +20,7 @@ const schema: LanguageSchema = {
                     showIf: has_tags("2"),
                     headers: [m.paradigm_case, m.paradigm_singular, m.paradigm_dual, m.paradigm_plural],
                     rows: SME_CASES.map((c) => ({
-                        label: m.paradigm_nominative,
+                        label: c.label,
                         tags: [`Sg2+${c.tag}`, `Du2+${c.tag}`, `Pl2+${c.tag}`],
                     })),
                 },
@@ -28,7 +28,7 @@ const schema: LanguageSchema = {
                     showIf: has_tags("3"),
                     headers: [m.paradigm_case, m.paradigm_singular, m.paradigm_dual, m.paradigm_plural],
                     rows: SME_CASES.map((c) => ({
-                        label: m.paradigm_nominative,
+                        label: c.label,
                         tags: [`Sg3+${c.tag}`, `Du3+${c.tag}`, `Pl3+${c.tag}`],
                     })),
                 },

@@ -27,6 +27,7 @@
 </svelte:head>
 
 <div class="flex flex-col items-center gap-4">
+    <h3 class="h4 lg:h3">{m.dependency_title()}</h3>
     <FormWrapper tool="dependency">
         <TextForm bind:value />
     </FormWrapper>

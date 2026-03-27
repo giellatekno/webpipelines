@@ -1,11 +1,8 @@
 <script lang="ts">
     import { page } from "$app/state";
     import { langname } from "$lib/langnames";
-    import { ChevronRight } from "@lucide/svelte";
     import { resolve } from "$app/paths";
-    import { m } from "$lib/paraglide/messages";
     import { getLocale } from "$lib/paraglide/runtime";
-    import type { Tools } from "$lib/langs";
 
     let { children } = $props();
 
@@ -13,43 +10,21 @@
 
     let locale = $derived(getLocale());
 
-    // Get last part of url
-    let last_part = $derived(page.url.pathname.split("/").filter(Boolean).pop() || "");
-
-    const tool_titles = {
-        analyze: m.analyze_title,
-        dependency: m.dependency_title,
-        disambiguate: m.disambiguate_title,
-        generate: m.generate_title,
-        hyphenate: m.hyphenate_title,
-        num: m.num_title,
-        paradigm: m.paradigm_title,
-        transcribe: m.transcribe_title,
-    };
-
-    function isTool(s: string) {
-        return Object.keys(tool_titles).includes(s);
-    }
+    let maturity_url = $derived(
+        `https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fgiellalt%2Flang-${lang}%2Fgh-pages%2Fmaturity.json`,
+    );
 </script>
 
-<div class="mx-2 lg:my-4">
-    {#if lang === last_part}
-        <h3 class="h5 lg:h3">{m.toolsfor({ iso: lang })}</h3>
-    {:else if isTool(last_part)}
-        {@const tool: Tools = last_part as Tools}
-        <div class="flex flex-col gap-1 lg:flex-row lg:items-center">
-            <span class="flex flex-row items-center gap-1">
-                <a href={resolve(`/${lang}`)} class="lg:h3 h6 hover:underline">
-                    {langname(lang, locale)}
-                </a>
-                <ChevronRight class="size-5 lg:size-8" />
-            </span>
-
-            <h3 class="h6 lg:h3">{tool_titles[tool]()}</h3>
-        </div>
-    {/if}
+<div class="my-2 flex flex-col items-center gap-2 lg:my-4">
+    <div class="flex w-full flex-row items-center justify-between gap-1">
+        <a href={resolve(`/${lang}`)} class="lg:h3 h6 hover:underline">
+            {langname(lang, locale)}
+        </a>
+        <a href="https://giellalt.github.io/MaturityClassification.html" class="shadow">
+            <img src={maturity_url} alt="" class="h-5 lg:h-7" />
+        </a>
+    </div>
+    <hr class="hr" />
 </div>
-
-<hr class="hr my-4" />
 
 {@render children?.()}

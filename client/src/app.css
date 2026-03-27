@@ -47,7 +47,7 @@
 
     /* Paradigm Table Styling */
     [data-table-theme="paradigm"] {
-        @apply w-full table-auto border-collapse text-left text-sm lg:text-base;
+        @apply w-full table-auto border-collapse text-left text-xs lg:text-base;
 
         & thead tr {
             @apply bg-surface-200-800/60 border-surface-200-800 divide-surface-200-800 divide-x border-b;
