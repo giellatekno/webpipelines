@@ -1,0 +1,108 @@
+{
+    "$schema": "../paradigm_schema.json",
+    "sections": [
+        {
+            "tables": [
+                {
+                    "title": "nominative",
+                    "headers": ["number", ""],
+                    "rows": [
+                        { "label": "singular", "tags": ["Sg+Nom"] },
+                        { "label": "dual", "tags": ["Du+Nom"] },
+                        { "label": "plural", "tags": ["Pl+Nom"] }
+                    ]
+                },
+                {
+                    "title": "accusative",
+                    "headers": ["person", ""],
+                    "rows": [
+                        { "label": "mannem", "tags": ["Acc+PxSg1"] },
+                        { "label": "datnem", "tags": ["Acc+PxSg2"] },
+                        { "label": "dam", "tags": ["Acc+PxSg3"] },
+                        { "label": "monnem", "tags": ["Acc+PxDu1"] },
+                        { "label": "dotnoem", "tags": ["Acc+PxDu2"] },
+                        { "label": "dejtie", "tags": ["Acc+PxDu3"] },
+                        { "label": "mijjem", "tags": ["Acc+PxPl1"] },
+                        { "label": "dijjem", "tags": ["Acc+PxPl2"] },
+                        { "label": "dejtie", "tags": ["Acc+PxPl3"] }
+                    ]
+                },
+                {
+                    "title": "genitive",
+                    "headers": ["person", ""],
+                    "rows": [
+                        { "label": "mov", "tags": ["Gen+PxSg1"] },
+                        { "label": "dov", "tags": ["Gen+PxSg2"] },
+                        { "label": "dan", "tags": ["Gen+PxSg3"] },
+                        { "label": "monnen", "tags": ["Gen+PxDu1"] },
+                        { "label": "dotnen", "tags": ["Gen+PxDu2"] },
+                        { "label": "daj", "tags": ["Gen+PxDu3"] },
+                        { "label": "mijjen", "tags": ["Gen+PxPl1"] },
+                        { "label": "dijjen", "tags": ["Gen+PxPl2"] },
+                        { "label": "daj", "tags": ["Gen+PxPl3"] }
+                    ]
+                },
+                {
+                    "title": "illative",
+                    "headers": ["person", ""],
+                    "rows": [
+                        { "label": "munnjien", "tags": ["Ill+PxSg1"] },
+                        { "label": "dutnjien", "tags": ["Ill+PxSg2"] },
+                        { "label": "dïsse", "tags": ["Ill+PxSg3"] },
+                        { "label": "monnese", "tags": ["Ill+PxDu1"] },
+                        { "label": "dotnese", "tags": ["Ill+PxDu2"] },
+                        { "label": "dejtie", "tags": ["Ill+PxDu3"] },
+                        { "label": "mijjese", "tags": ["Ill+PxPl1"] },
+                        { "label": "dijjese", "tags": ["Ill+PxPl2"] },
+                        { "label": "dejtie", "tags": ["Ill+PxPl3"] }
+                    ]
+                },
+                {
+                    "title": "inessive",
+                    "headers": ["person", ""],
+                    "rows": [
+                        { "label": "mannesne", "tags": ["Ine+PxSg1"] },
+                        { "label": "datnesne", "tags": ["Ine+PxSg2"] },
+                        { "label": "desnie", "tags": ["Ine+PxSg3"] },
+                        { "label": "monnesne", "tags": ["Ine+PxDu1"] },
+                        { "label": "dotnesne", "tags": ["Ine+PxDu2"] },
+                        { "label": "dejnie", "tags": ["Ine+PxDu3"] },
+                        { "label": "mijjesne", "tags": ["Ine+PxPl1"] },
+                        { "label": "dijjesne", "tags": ["Ine+PxPl2"] },
+                        { "label": "dejnie", "tags": ["Ine+PxPl3"] }
+                    ]
+                },
+                {
+                    "title": "elative",
+                    "headers": ["person", ""],
+                    "rows": [
+                        { "label": "manneste", "tags": ["Ela+PxSg1"] },
+                        { "label": "datneste", "tags": ["Ela+PxSg2"] },
+                        { "label": "destie", "tags": ["Ela+PxSg3"] },
+                        { "label": "monneste", "tags": ["Ela+PxDu1"] },
+                        { "label": "dotneste", "tags": ["Ela+PxDu2"] },
+                        { "label": "dejstie", "tags": ["Ela+PxDu3"] },
+                        { "label": "mijjeste", "tags": ["Ela+PxPl1"] },
+                        { "label": "dijjeste", "tags": ["Ela+PxPl2"] },
+                        { "label": "dejstie", "tags": ["Ela+PxPl3"] }
+                    ]
+                },
+                {
+                    "title": "comitative",
+                    "headers": ["person", ""],
+                    "rows": [
+                        { "label": "mannine", "tags": ["Com+PxSg1"] },
+                        { "label": "datnine", "tags": ["Com+PxSg2"] },
+                        { "label": "dejnie", "tags": ["Com+PxSg3"] },
+                        { "label": "monnine", "tags": ["Com+PxDu1"] },
+                        { "label": "dotnine", "tags": ["Com+PxDu2"] },
+                        { "label": "dajgujmie", "tags": ["Com+PxDu3"] },
+                        { "label": "mijjine", "tags": ["Com+PxPl1"] },
+                        { "label": "dijjine", "tags": ["Com+PxPl2"] },
+                        { "label": "dajgujmie", "tags": ["Com+PxPl3"] }
+                    ]
+                }
+            ]
+        }
+    ]
+}

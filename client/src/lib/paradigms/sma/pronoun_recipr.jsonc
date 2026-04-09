@@ -1,0 +1,20 @@
+{
+    "$schema": "../paradigm_schema.json",
+    "sections": [
+        {
+            "tables": [
+                {
+                    "headers": ["case", "singular", "plural"],
+                    "rows": [
+                        { "label": "accusative", "tags": ["Sg+Acc", "Pl+Acc"] },
+                        { "label": "genitive", "tags": ["Sg+Gen", ""] },
+                        { "label": "illative", "tags": ["Sg+Ill", ""] },
+                        { "label": "elative", "tags": ["Sg+Ela", ""] },
+                        { "label": "comitative", "tags": ["Sg+Com", ""] }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+

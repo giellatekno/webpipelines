@@ -1,0 +1,76 @@
+{
+    "$schema": "../paradigm_schema.json",
+    "sections": [
+        {
+            "title": "positive",
+            "tables": [
+                {
+                    "headers": ["case", "singular", "plural"],
+                    "rows": [
+                        { "label": "nominative", "tags": ["Sg+Nom", "Pl+Nom"] },
+                        { "label": "genitive", "tags": ["Sg+Gen", "Pl+Gen"] },
+                        { "label": "partitive", "tags": ["Sg+Par", "Pl+Par"] },
+                        { "label": "inessive", "tags": ["Sg+Ine", "Pl+Ine"] },
+                        { "label": "illative", "tags": ["Sg+Ill", "Pl+Ill"] },
+                        { "label": "elative", "tags": ["Sg+Ela", "Pl+Ela"] },
+                        { "label": "adessive", "tags": ["Sg+Ade", "Pl+Ade"] },
+                        { "label": "allative", "tags": ["Sg+All", "Pl+All"] },
+                        { "label": "ablative", "tags": ["Sg+Abl", "Pl+Abl"] },
+                        { "label": "abessive", "tags": ["Sg+Abe", "Pl+Abe"] },
+                        { "label": "essive", "tags": ["Sg+Ess", "Pl+Ess"] },
+                        { "label": "translative", "tags": ["Sg+Tra", "Pl+Tra"] },
+                        { "label": "comitative", "tags": ["Sg+Com", "Pl+Com"] }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "comparative",
+            "showIf": ["Compar"],
+            "tables": [
+                {
+                    "headers": ["case", "singular", "plural"],
+                    "rows": [
+                        { "label": "nominative", "tags": ["Sg+Compar+Nom", "Pl+Compar+Nom"] },
+                        { "label": "genitive", "tags": ["Sg+Compar+Gen", "Pl+Compar+Gen"] },
+                        { "label": "partitive", "tags": ["Sg+Compar+Par", "Pl+Compar+Par"] },
+                        { "label": "inessive", "tags": ["Sg+Compar+Ine", "Pl+Compar+Ine"] },
+                        { "label": "illative", "tags": ["Sg+Compar+Ill", "Pl+Compar+Ill"] },
+                        { "label": "elative", "tags": ["Sg+Compar+Ela", "Pl+Compar+Ela"] },
+                        { "label": "adessive", "tags": ["Sg+Compar+Ade", "Pl+Compar+Ade"] },
+                        { "label": "allative", "tags": ["Sg+Compar+All", "Pl+Compar+All"] },
+                        { "label": "ablative", "tags": ["Sg+Compar+Abl", "Pl+Compar+Abl"] },
+                        { "label": "abessive", "tags": ["Sg+Compar+Abe", "Pl+Compar+Abe"] },
+                        { "label": "essive", "tags": ["Sg+Compar+Ess", "Pl+Compar+Ess"] },
+                        { "label": "translative", "tags": ["Sg+Compar+Tra", "Pl+Compar+Tra"] },
+                        { "label": "comitative", "tags": ["Sg+Compar+Com", "Pl+Compar+Com"] }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "superlative",
+            "showIf": ["Superl"],
+            "tables": [
+                {
+                    "headers": ["case", "singular", "plural"],
+                    "rows": [
+                        { "label": "nominative", "tags": ["Sg+Superl+Nom", "Pl+Superl+Nom"] },
+                        { "label": "genitive", "tags": ["Sg+Superl+Gen", "Pl+Superl+Gen"] },
+                        { "label": "partitive", "tags": ["Sg+Superl+Par", "Pl+Superl+Par"] },
+                        { "label": "inessive", "tags": ["Sg+Superl+Ine", "Pl+Superl+Ine"] },
+                        { "label": "illative", "tags": ["Sg+Superl+Ill", "Pl+Superl+Ill"] },
+                        { "label": "elative", "tags": ["Sg+Superl+Ela", "Pl+Superl+Ela"] },
+                        { "label": "adessive", "tags": ["Sg+Superl+Ade", "Pl+Superl+Ade"] },
+                        { "label": "allative", "tags": ["Sg+Superl+All", "Pl+Superl+All"] },
+                        { "label": "ablative", "tags": ["Sg+Superl+Abl", "Pl+Superl+Abl"] },
+                        { "label": "abessive", "tags": ["Sg+Superl+Abe", "Pl+Superl+Abe"] },
+                        { "label": "essive", "tags": ["Sg+Superl+Ess", "Pl+Superl+Ess"] },
+                        { "label": "translative", "tags": ["Sg+Superl+Tra", "Pl+Superl+Tra"] },
+                        { "label": "comitative", "tags": ["Sg+Superl+Com", "Pl+Superl+Com"] }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,11 +1,11 @@
 {
+    "$schema": "https://www.schemastore.org/prettierrc.json",
     "plugins": ["prettier-plugin-svelte", "prettier-plugin-tailwindcss"],
-    "pluginSearchDirs": ["."],
     "overrides": [
         { "files": "*.svelte", "options": { "parser": "svelte" } },
         {
-            "files": "./src/lib/paradigms/**/*.ts",
-            "options": { "printWidth": 200 }
+            "files": ["*.jsonc"],
+            "options": { "printWidth": 200, "trailingComma": "none" }
         }
     ],
     "printWidth": 90,
